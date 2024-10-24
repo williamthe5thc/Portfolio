@@ -6,11 +6,10 @@ export default defineConfig({
   base: '/EDPS_WilliamCharles/',
   build: {
     outDir: 'dist',
-    assetsDir: 'assets',
-    rollupOptions: {
-      input: {
-        main: './index.html',
-      },
+  },
+  server: {
+    headers: {
+      'Content-Type': 'application/javascript',
     },
   },
 })
