@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { Home, User, Briefcase, Mail } from 'lucide-react';
-
+console.log("loading Navigation.jsx");
 const Navigation = () => (
   <nav className="bg-white shadow-sm sticky top-0 z-50">
     <div className="max-w-6xl mx-auto px-4">
