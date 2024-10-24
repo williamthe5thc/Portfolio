@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-
+console.log("loading loading screen.jsx");
 const LoadingScreen = () => {
   return (
     <div className="fixed inset-0 bg-gray-50 flex items-center justify-center">
