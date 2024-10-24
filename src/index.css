@@ -2,22 +2,77 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
+/* Base styles */
+@layer base {
+  body {
+    @apply bg-[floralwhite];
+  }
+
+  h1 {
+    @apply ml-5 font-sans;
+  }
+
+  p {
+    @apply text-black font-sans;
+  }
 }
 
-::-webkit-scrollbar-track {
-  background: #f1f1f1;
+/* Custom components */
+@layer components {
+  .nav-link {
+    @apply text-2xl;
+  }
+
+  .container {
+    @apply flex flex-wrap flex-row h-fit rounded-md items-start gap-2 pb-20 max-w-full;
+  }
+
+  .picture-container {
+    @apply p-2.5 m-2.5;
+  }
+
+  .picture-container img {
+    @apply rounded-md w-full;
+  }
+
+  .bio-container {
+    @apply flex-1 bg-[bisque] text-2xl p-2.5;
+  }
+
+  .portfolio-item {
+    @apply flex flex-col h-auto bg-[bisque] rounded-3xl p-5 m-2.5 w-full;
+  }
+
+  .about-container {
+    @apply text-lg bg-[bisque] p-5 m-5 w-full text-left;
+  }
+
+  .footer {
+    @apply fixed bottom-0 left-0 bg-[antiquewhite];
+  }
+
+  /* Social Icons */
+  .social-icon {
+    @apply p-5 text-3xl w-[50px] text-center no-underline m-[5px_2px] bg-black;
+  }
+
+  .social-icon:hover {
+    @apply opacity-70;
+  }
+
+  .linkedin-icon {
+    @apply bg-[#007bb5] text-white;
+  }
 }
 
-::-webkit-scrollbar-thumb {
-  background: #888;
-  border-radius: 4px;
+/* Custom animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: #555;
+.float-animation {
+  animation: float 3s ease-in-out infinite;
 }
 
 /* Page transitions */
@@ -43,19 +98,39 @@
   transition: opacity 300ms, transform 300ms;
 }
 
-/* Custom animations */
-@keyframes float {
-  0% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
-  100% {
-    transform: translateY(0px);
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Responsive designs */
+@media (max-width: 760px) {
+  .bio-container {
+    @apply min-w-[500px] text-base;
   }
 }
 
-.float-animation {
-  animation: float 3s ease-in-out infinite;
+@media (min-width: 693px) {
+  .portfolio-item {
+    width: calc((100% / 2) - 30px);
+  }
+}
+
+@media (min-width: 960px) {
+  .portfolio-item {
+    width: calc((100% / 3) - 30px);
+  }
 }
