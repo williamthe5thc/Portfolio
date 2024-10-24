@@ -7,7 +7,7 @@ import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
 import PortfolioPage from './pages/PortfolioPage';
 import ContactPage from './pages/ContactPage';
-
+console.log("loading app.jsx");
 const App = () => {
   const [isLoading, setIsLoading] = useState(true);
   const location = useLocation();
