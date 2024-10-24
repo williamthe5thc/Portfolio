@@ -1,5 +1,6 @@
 import React from 'react';
 import { GithubIcon, Linkedin, Mail, FileText } from 'lucide-react';
+console.log("loading");
 
 const Portfolio = () => {
   return (
