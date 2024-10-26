@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://williamthe5thc.github.io/EDPS_WilliamCharles",
+  "homepage": "https://williamthe5thc.github.io/Portfolio",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
