@@ -38,29 +38,15 @@
   }
 }
 
-/* Basic animations */
 .float-animation {
   animation: float 3s ease-in-out infinite;
 }
 
 @keyframes float {
   0%, 100% {
-    transform: translateY(0px);
+    transform: translateY(0);
   }
   50% {
     transform: translateY(-10px);
-  }
-}
-
-/* Media queries */
-@media (min-width: 693px) {
-  .portfolio-item {
-    width: calc(50% - 30px);
-  }
-}
-
-@media (min-width: 960px) {
-  .portfolio-item {
-    width: calc(33.333% - 30px);
   }
 }
