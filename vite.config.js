@@ -3,7 +3,18 @@ import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   plugins: [react()],
-  base: '/Portfolio/', // Make sure this matches your repo name
+  base: '/Portfolio/',
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ['react', 'react-dom', 'react-router-dom', 'framer-motion'],
+          ui: ['lucide-react'],
+        }
+      }
+    },
+    chunkSizeWarningLimit: 1000
+  },
   resolve: {
     extensions: ['.js', '.jsx', '.json'],
   },
