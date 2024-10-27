@@ -1,38 +1,17 @@
+// src/App.jsx
 import React, { useState, useEffect } from 'react';
-import { Routes, Route, useLocation } from 'react-router-dom';
+import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
-import Navigation from './components/Navigation.jsx';
-import LoadingScreen from './components/LoadingScreen.jsx';
-import HomePage from './pages/HomePage.jsx';
-import AboutPage from './pages/AboutPage.jsx';
-import PortfolioPage from './pages/PortfolioPage.jsx';
-import ContactPage from './pages/ContactPage.jsx';
+import Navigation from './components/shared/Navigation';
+import LoadingScreen from './components/shared/LoadingScreen';
+import ErrorBoundary from './components/shared/ErrorBoundary';
+import HomePage from './pages/HomePage';
+import AboutPage from './pages/AboutPage';
+import PortfolioPage from './pages/PortfolioPage';
+import ContactPage from './pages/ContactPage';
+import NotFoundPage from './pages/NotFoundPage';
 
-// Scroll Progress Component
-const ScrollProgress = () => {
-  const [scrollProgress, setScrollProgress] = useState(0);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const totalScroll = document.documentElement.scrollHeight - window.innerHeight;
-      const currentProgress = (window.pageYOffset / totalScroll) * 100;
-      setScrollProgress(currentProgress);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  return (
-    <motion.div
-      className="fixed top-0 left-0 right-0 h-1 bg-blue-600 z-50"
-      style={{ scaleX: scrollProgress / 100 }}
-      initial={{ transformOrigin: "0%" }}
-    />
-  );
-};
-
-// Page Transition Wrapper
+// Page transition wrapper component
 const PageTransition = ({ children }) => (
   <motion.div
     initial={{ opacity: 0, y: 20 }}
@@ -46,43 +25,59 @@ const PageTransition = ({ children }) => (
 
 const App = () => {
   const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState(null);
   const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
-    try {
-      const timer = setTimeout(() => {
-        setIsLoading(false);
-      }, 2000);
-
-      return () => clearTimeout(timer);
-    } catch (err) {
-      console.error("Error in App component:", err);
-      setError(err.message);
+    // Handle 404 redirects from static page
+    const redirect = localStorage.getItem('404-redirect');
+    if (redirect) {
+      localStorage.removeItem('404-redirect');
+      navigate(redirect);
     }
-  }, []);
 
-  if (error) {
-    return <div>Error: {error}</div>;
-  }
+    // Simulate initial loading
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
+
+    return () => clearTimeout(timer);
+  }, [navigate]);
 
   if (isLoading) {
     return <LoadingScreen />;
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <ScrollProgress />
-      <Navigation />
-      <AnimatePresence mode="wait">
-        <Routes location={location} key={location.pathname}>
-          <Route path="/" element={<PageTransition><HomePage /></PageTransition>} />
-          <Route path="/about" element={<PageTransition><AboutPage /></PageTransition>} />
-          <Route path="/portfolio" element={<PageTransition><PortfolioPage /></PageTransition>} />
-          <Route path="/contact" element={<PageTransition><ContactPage /></PageTransition>} />
-        </Routes>
-      </AnimatePresence>
-    </div>
+    <ErrorBoundary>
+      <div className="min-h-screen bg-background-light">
+        <Navigation />
+        <AnimatePresence mode="wait">
+          <Routes location={location} key={location.pathname}>
+            <Route 
+              path="/" 
+              element={<PageTransition><HomePage /></PageTransition>} 
+            />
+            <Route 
+              path="/about" 
+              element={<PageTransition><AboutPage /></PageTransition>} 
+            />
+            <Route 
+              path="/portfolio" 
+              element={<PageTransition><PortfolioPage /></PageTransition>} 
+            />
+            <Route 
+              path="/contact" 
+              element={<PageTransition><ContactPage /></PageTransition>} 
+            />
+            <Route 
+              path="*" 
+              element={<PageTransition><NotFoundPage /></PageTransition>} 
+            />
+          </Routes>
+        </AnimatePresence>
+      </div>
+    </ErrorBoundary>
   );
 };
 

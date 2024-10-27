@@ -1,21 +1,81 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>W. Jordan Charles Portfolio</title>
-    <script type="text/javascript">
-      var pathSegmentsToKeep = 1;
-
-      var l = window.location;
-      l.replace(
-        l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
-        l.pathname.split('/').slice(0, 1 + pathSegmentsToKeep).join('/') + '/?/' +
-        l.pathname.slice(1).split('/').slice(pathSegmentsToKeep).join('/').replace(/&/g, '~and~') +
-        (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
-        l.hash
-      );
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Not Found - W. Jordan Charles</title>
+    <script>
+        // Single Page App fallback - handles GitHub Pages routing
+        // This redirects all 404s to your index.html where React routing takes over
+        (function() {
+            var pathSegments = window.location.pathname.split('/');
+            var repoName = 'Portfolio'; // Your GitHub repo name
+            var path = window.location.pathname;
+            
+            // Check if we're on GitHub Pages
+            if (pathSegments[1] === repoName) {
+                path = path.substr(repoName.length + 1);
+            }
+            
+            localStorage.setItem('404-redirect', path);
+            window.location.href = window.location.origin + 
+                (pathSegments[1] === repoName ? '/' + repoName : '') + '/';
+        })();
     </script>
-  </head>
-  <body>
-  </body>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background-color: #f8fafc;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .container {
+            text-align: center;
+            padding: 2rem;
+        }
+        h1 {
+            font-size: 6rem;
+            margin: 0;
+            color: #0284c7;
+        }
+        h2 {
+            font-size: 2rem;
+            color: #1e293b;
+            margin: 1rem 0;
+        }
+        p {
+            color: #64748b;
+            margin: 1rem 0 2rem;
+            max-width: 24rem;
+        }
+        .button {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background-color: #0284c7;
+            color: white;
+            text-decoration: none;
+            border-radius: 0.5rem;
+            font-weight: 500;
+            transition: background-color 0.2s;
+        }
+        .button:hover {
+            background-color: #0369a1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>404</h1>
+        <h2>Page Not Found</h2>
+        <p>
+            Sorry, we couldn't find the page you're looking for. 
+            You'll be redirected to the homepage automatically.
+        </p>
+        <a href="/" class="button">Return to Homepage</a>
+    </div>
+</body>
 </html>

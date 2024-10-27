@@ -1,148 +1,150 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Card, Section } from '../components/ui';
-import {
-  SEO,
+// src/pages/ContactPage.jsx
+import React from 'react';
+import { motion } from 'framer-motion';
+import { SEO } from '../components/shared/SEO';
+import { 
   PageHeader,
-  PageLayout,
   SectionContainer,
-  fadeInUp,
-  staggerChildren
+  ContactForm,
+  ContactMethod
 } from '../components/shared';
-import { ContactMethod, ContactForm } from '../components/contact';
-import { contact, siteMetadata } from '../data/siteData';
+import { fadeInUp, staggerChildren } from '../constants/design/animations';
+import { siteMetadata } from '../data/siteData';
 
 const ContactPage = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: ''
-  });
-  const [status, setStatus] = useState('');
-  const [touched, setTouched] = useState({});
-
-  const handleChange = (e) => {
-    const { id, value } = e.target;
-    setFormData(prevData => ({
-      ...prevData,
-      [id]: value
-    }));
-  };
-
-  const handleBlur = (field) => {
-    setTouched(prev => ({
-      ...prev,
-      [field]: true
-    }));
-  };
-
-  const validateForm = () => {
-    const errors = {};
-    if (!formData.name) errors.name = 'Name is required';
-    if (!formData.email) errors.email = 'Email is required';
-    if (!/\S+@\S+\.\S+/.test(formData.email)) errors.email = 'Email is invalid';
-    if (!formData.message) errors.message = 'Message is required';
-    return errors;
-  };
-
-  const errors = validateForm();
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (Object.keys(errors).length === 0) {
-      setStatus('sending');
-      try {
-        // Simulate API call
-        await new Promise(resolve => setTimeout(resolve, 1000));
-        setStatus('success');
-        setFormData({ name: '', email: '', message: '' });
-        setTouched({});
-        setTimeout(() => setStatus(''), 3000);
-      } catch (error) {
-        console.error('Failed to send message:', error);
-        setStatus('error');
-        setTimeout(() => setStatus(''), 3000);
-      }
-    } else {
-      setTouched({
-        name: true,
-        email: true,
-        message: true
-      });
-    }
+  const handleSubmit = async (formData) => {
+    // Implement your form submission logic here
+    console.log('Form submitted:', formData);
+    // Simulate API call
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    return true;
   };
 
   return (
-    <PageLayout>
+       <>
       <SEO 
-        title="Contact Me"
-        description="Get in touch with W. Jordan Charles for instructional design opportunities and collaborations"
+        title="Contact"
+        description="Get in touch with me to discuss your instructional design needs and potential collaboration opportunities"
+        keywords={[
+          'contact instructional designer',
+          'hire learning designer',
+          'instructional design services',
+          'learning solutions consultation'
+        ]}
       />
-
+    <div className="min-h-screen">
       <PageHeader
-        title="Get in Touch"
-        subtitle="I'm always interested in discussing new opportunities and collaborations 
-        in instructional design and educational technology."
+        title="Contact Me"
+        subtitle="Let's discuss how we can work together to create amazing learning experiences"
       />
 
-      <Section dark={true}>
-        <SectionContainer className="max-w-4xl">
-          <motion.div 
-            className="grid grid-cols-1 md:grid-cols-2 gap-8"
+      <SectionContainer className="py-20">
+        <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
+          {/* Contact Info */}
+          <motion.div
             variants={staggerChildren}
-            initial="initial"
-            animate="animate"
+            className="space-y-8"
           >
-            {/* Contact Methods */}
-            <motion.div variants={fadeInUp}>
-              <Card className="p-8 h-full">
-                <h2 className="text-2xl font-bold text-text-primary mb-6">
-                  Contact Information
-                </h2>
-                
-                <div className="space-y-6">
-                  {Object.values(contact).map((method, index) => (
-                    <ContactMethod
-                      key={method.title}
-                      icon={method.icon}
-                      title={method.title}
-                      content={method.content}
-                      link={method.link}
-                      color={
-                        method.icon === "Linkedin" ? "text-[#0077b5]" :
-                        method.icon === "Mail" ? "text-primary-600" :
-                        method.icon === "MapPin" ? "text-accent-red" :
-                        "text-accent-green"
-                      }
-                    />
-                  ))}
-                </div>
-              </Card>
-            </motion.div>
-
-            {/* Contact Form */}
-            <motion.div variants={fadeInUp}>
-              <Card className="p-8 h-full">
-                <h2 className="text-2xl font-bold text-text-primary mb-6">
-                  Send a Message
-                </h2>
-                
-                <ContactForm
-                  onSubmit={handleSubmit}
-                  status={status}
-                  errors={errors}
-                  touched={touched}
-                  handleChange={handleChange}
-                  handleBlur={handleBlur}
-                  formData={formData}
-                />
-              </Card>
-            </motion.div>
+            <motion.h2 
+              className="text-2xl font-bold text-text-primary"
+              variants={fadeInUp}
+            >
+              Get in Touch
+            </motion.h2>
+            
+            <ContactMethod
+              icon="Mail"
+              title="Email"
+              content={siteMetadata.contactInfo.email}
+              link={`mailto:${siteMetadata.contactInfo.email}`}
+            />
+            
+            <ContactMethod
+              icon="Phone"
+              title="Phone"
+              content={siteMetadata.contactInfo.phone}
+              link={`tel:${siteMetadata.contactInfo.phone}`}
+            />
+            
+            <ContactMethod
+              icon="Linkedin"
+              title="LinkedIn"
+              content={siteMetadata.contactInfo.linkedin}
+              link={`https://${siteMetadata.contactInfo.linkedin}`}
+            />
+            
+            <ContactMethod
+              icon="MapPin"
+              title="Location"
+              content={siteMetadata.contactInfo.location}
+            />
           </motion.div>
-        </SectionContainer>
-      </Section>
-    </PageLayout>
+
+          {/* Contact Form */}
+          <motion.div
+            variants={fadeInUp}
+            className="bg-white rounded-xl shadow-lg p-8"
+          >
+            <h2 className="text-2xl font-bold text-text-primary mb-6">
+              Send a Message
+            </h2>
+            <ContactForm onSubmit={handleSubmit} />
+          </motion.div>
+        </div>
+      </SectionContainer>
+
+      {/* FAQ Section */}
+      <SectionContainer className="py-20 bg-background">
+        <motion.div
+          className="max-w-4xl mx-auto"
+          variants={staggerChildren}
+        >
+          <motion.h2 
+            className="text-3xl font-bold text-text-primary mb-12 text-center"
+            variants={fadeInUp}
+          >
+            Frequently Asked Questions
+          </motion.h2>
+          <div className="grid gap-8">
+            {faqs.map((faq, index) => (
+              <motion.div
+                key={index}
+                variants={fadeInUp}
+                className="bg-white rounded-xl shadow-lg p-6"
+              >
+                <h3 className="font-semibold text-text-primary mb-2">
+                  {faq.question}
+                </h3>
+                <p className="text-text-secondary">
+                  {faq.answer}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+      </SectionContainer>
+    </div>
   );
 };
+
+// FAQ Data
+const faqs = [
+  {
+    question: "What types of projects do you work on?",
+    answer: "I specialize in creating engaging e-learning experiences, instructional design solutions, and learning management system implementations."
+  },
+  {
+    question: "What is your typical project timeline?",
+    answer: "Project timelines vary based on scope and complexity. Most projects take 4-8 weeks from initial consultation to final delivery."
+  },
+  {
+    question: "Do you offer ongoing support after project completion?",
+    answer: "Yes, I provide post-project support to ensure smooth implementation and address any questions or concerns."
+  },
+  {
+    question: "What is your preferred collaboration method?",
+    answer: "I'm flexible and can adapt to your preferred communication tools. I typically use a combination of video calls, email, and project management software."
+  }
+];
 
 export default ContactPage;
