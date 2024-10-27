@@ -2,22 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Base styles */
 @layer base {
   body {
     @apply bg-background-light;
   }
-
-  h1 {
-    @apply ml-5 font-sans;
-  }
-
-  p {
-    @apply text-text-primary font-sans;
-  }
 }
 
-/* Custom components */
 @layer components {
   .nav-link {
     @apply text-2xl;
@@ -29,10 +19,6 @@
 
   .picture-container {
     @apply p-2.5 m-2.5;
-  }
-
-  .picture-container img {
-    @apply rounded-md w-full;
   }
 
   .bio-container {
@@ -50,87 +36,31 @@
   .footer {
     @apply fixed bottom-0 left-0 bg-background-light w-full;
   }
-
-  /* Social Icons */
-  .social-icon {
-    @apply p-5 text-3xl w-[50px] text-center no-underline m-[5px_2px] bg-text-primary;
-  }
-
-  .social-icon:hover {
-    @apply opacity-70;
-  }
-
-  .linkedin-icon {
-    @apply bg-[#007bb5] text-white;
-  }
 }
 
-/* Custom animations */
-@keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
-}
-
+/* Basic animations */
 .float-animation {
   animation: float 3s ease-in-out infinite;
 }
 
-/* Page transitions */
-.page-transition-enter {
-  opacity: 0;
-  transform: translateY(20px);
-}
-
-.page-transition-enter-active {
-  opacity: 1;
-  transform: translateY(0);
-  transition: opacity 300ms, transform 300ms;
-}
-
-.page-transition-exit {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.page-transition-exit-active {
-  opacity: 0;
-  transform: translateY(-20px);
-  transition: opacity 300ms, transform 300ms;
-}
-
-/* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: theme('colors.background.light');
-}
-
-::-webkit-scrollbar-thumb {
-  background: theme('colors.text.secondary');
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: theme('colors.text.primary');
-}
-
-/* Responsive designs */
-@media (max-width: 760px) {
-  .bio-container {
-    @apply min-w-[500px] text-base;
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
   }
 }
 
+/* Media queries */
 @media (min-width: 693px) {
   .portfolio-item {
-    width: calc((100% - 30px) / 2);
+    width: calc(50% - 30px);
   }
 }
 
 @media (min-width: 960px) {
   .portfolio-item {
-    width: calc((100% - 60px) / 3);
+    width: calc(33.333% - 30px);
   }
 }
