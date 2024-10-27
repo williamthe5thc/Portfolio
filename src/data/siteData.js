@@ -24,7 +24,7 @@ export const projects = [
     ],
     tags: ["Articulate 360", "AI Integration", "ADDIE", "UX Design"],
     status: "Current Project",
-    image: "Portfolio/images/projects/online-dating.jpg",
+    image: "public/images/projects/online-dating.jpg",
     category: "E-Learning",
     date: "May 2024 - Jul 2024",
     associated: "University of Utah"
@@ -41,7 +41,7 @@ export const projects = [
       "Implemented in Canvas LMS with custom modules"
     ],
     tags: ["Canvas LMS", "Video Production", "Curriculum Design"],
-    image: "Portfolio/Portfolio/images/projects/how-to-waltz.jpg",
+    image: "Portfolio/public/images/projects/how-to-waltz.jpg",
     category: "Course Development",
     date: "Aug 2023 - Dec 2023",
     associated: "University of Utah"
@@ -58,7 +58,7 @@ export const projects = [
       "Conducted extensive user testing"
     ],
     tags: ["Android", "Mobile Development", "UX Design"],
-    image: "Portfolio/images/projects/variable-timer.png",
+    image: "public/images/projects/variable-timer.png",
     category: "Mobile Development",
     date: "May 2019 - Aug 2019"
   }
