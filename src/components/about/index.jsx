@@ -1,18 +1,14 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import * as Icons from 'lucide-react';
 import { Card } from '../ui';
 import { fadeInUp, staggerChildren } from '../shared';
+import * as Icons from 'lucide-react';
 
-// Journey Card Component
-export const JourneyCard = ({ icon: IconName, title, items, color }) => {
-  const Icon = Icons[IconName];
+export const JourneyCard = ({ icon, title, items, color }) => {
+  const Icon = Icons[icon];
   
   return (
-    <motion.div
-      variants={fadeInUp}
-      className="h-full"
-    >
+    <motion.div variants={fadeInUp} className="h-full">
       <Card className="p-8 h-full">
         <Icon className={`w-8 h-8 ${color} mb-4`} />
         <h3 className="text-xl font-semibold text-text-primary mb-4">{title}</h3>
@@ -35,6 +31,7 @@ export const JourneyCard = ({ icon: IconName, title, items, color }) => {
     </motion.div>
   );
 };
+
 
 // Philosophy Card Component
 export const PhilosophyCard = ({ icon: IconName, content }) => {
