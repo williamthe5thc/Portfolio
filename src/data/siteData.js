@@ -41,7 +41,7 @@ export const projects = [
       "Implemented in Canvas LMS with custom modules"
     ],
     tags: ["Canvas LMS", "Video Production", "Curriculum Design"],
-    image: "public/images/projects/how-to-waltz.jpg",
+    image: "Portfolio/public/images/projects/how-to-waltz.jpg",
     category: "Course Development",
     date: "Aug 2023 - Dec 2023",
     associated: "University of Utah"
