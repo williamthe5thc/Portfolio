@@ -2,8 +2,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import * as Icons from 'lucide-react';
-import { navigation } from '../../data/siteData';  // Fixed path - need to go up two levels
-
+import { navigation } from '../../data/siteData';  // Fixed path
 
 const Navigation = () => (
   <nav className="bg-white shadow-sm sticky top-0 z-50">

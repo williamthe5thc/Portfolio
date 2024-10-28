@@ -2,13 +2,8 @@
 import React from 'react';
 import { AlertCircle } from 'lucide-react';
 
-export const FormInput = ({ 
-  label, 
-  error, 
-  touched, 
-  className = '', 
-  ...props 
-}) => (
+export const FormInput = ({ label, error, touched, className = '', ...props }) => {
+
   <div className="space-y-1">
     {label && (
       <label className="block text-sm font-medium text-text-primary">
@@ -39,7 +34,7 @@ export const FormInput = ({
   </div>
 );
 
-export const FormTextArea = ({ 
+export const FormTextArea = ({ label, error, touched, className = '', ...props }) => {
   label, 
   error, 
   touched, 

@@ -1,8 +1,8 @@
-// src/components/shared/cards/ProjectCard.jsx
+// src/components/shared/cards/StatsGrid.jsx
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { ZoomIn, X } from 'lucide-react';
-import { BaseCard, ImagePlaceholder } from '../../ui';  // Import from UI index
+import { BaseCard, ImagePlaceholder } from '../../ui';  // Import from ui index
 import { fadeInUp } from '../animations';
 
 export const ProjectCard = ({ project }) => {
