@@ -1,3 +1,2 @@
-// src/components/shared/forms/index.jsx
-export { ContactForm } from './ContactForm';
-export { ContactMethod } from './ContactMethod';
+export { default as ContactForm } from './ContactForm';
+export { default as ContactMethod } from './ContactMethod';

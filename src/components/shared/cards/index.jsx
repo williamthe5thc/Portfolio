@@ -1,5 +1,4 @@
-//src/components/cards/index.jsx
-export { JourneyCard } from './JourneyCard';
-export { PhilosophyCard } from './PhilosophyCard';
-export { ProjectCard } from './ProjectCard';
-export { StatsGrid } from './StatsGrid';
+export { default as JourneyCard } from './JourneyCard';
+export { default as PhilosophyCard } from './PhilosophyCard';
+export { default as ProjectCard } from './ProjectCard';
+export { default as StatsGrid } from './StatsGrid';
