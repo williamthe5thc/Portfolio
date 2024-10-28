@@ -46,12 +46,12 @@ export const navigation = [
 ];
 
 export const projects = [
-  {
+   {
     id: "dating-course",
     title: "How to Effectively Date Better",
     description: "Designed a comprehensive course on effective dating using Articulate Storyline",
     tags: ["Articulate", "Instructional Design", "eLearning"],
-    image: "/api/placeholder/600/400",
+    image: "/images/projects/online-dating.jpg",
     status: "Completed",
     date: "May 2024 - Jul 2024",
     category: "elearning"
@@ -61,7 +61,7 @@ export const projects = [
     title: "How to Learn the Waltz",
     description: "Developed a Canvas LMS course for 'The Social Dance Effect'",
     tags: ["Canvas", "LMS", "Dance Education"],
-    image: "/api/placeholder/600/400",
+    image: "/images/projects/how-to-waltz.jpg",
     status: "Completed",
     date: "Aug 2023 - Dec 2023",
     category: "id"
