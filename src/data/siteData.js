@@ -52,7 +52,7 @@ export const projects = [
     description: "Designed a comprehensive course on effective dating using Articulate Storyline",
     tags: ["Articulate", "Instructional Design", "eLearning"],
     image: "/public/images/projects/online-dating.jpg",
-    status: "Completed",
+    status: "in progress",
     date: "May 2024 - Jul 2024",
     category: "elearning"
   },
@@ -62,7 +62,7 @@ export const projects = [
     description: "Developed a Canvas LMS course for 'The Social Dance Effect'",
     tags: ["Canvas", "LMS", "Dance Education"],
     image: "public/images/projects/how-to-waltz.jpg",
-    status: "Completed",
+    status: "in progress",
     date: "Aug 2023 - Dec 2023",
     category: "id"
   }
