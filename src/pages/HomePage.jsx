@@ -152,6 +152,7 @@ const HomePage = () => {
         </div>
       </SectionContainer>
     </div>
+      </>
   );
 };
 
