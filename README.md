@@ -1,34 +1,27 @@
 # W. Jordan Charles Portfolio
 
-A modern, responsive portfolio website showcasing instructional design projects and expertise. Built with React, Tailwind CSS, and Framer Motion.
-
-![Portfolio Preview](public/Images/projects/preview.png)
+A modern, responsive portfolio website showcasing my instructional design projects and expertise. Built with React, Tailwind CSS, and Framer Motion.
 
 ## 🌟 Features
 
+- **Professional Projects Showcase**
+  - Interactive project grid with filtering
+  - Project details with image galleries
+  - Case studies and outcomes
+  - Live demo links where available
+
 - **Modern Design System**
-  - Custom color theming with Tailwind CSS
-  - Consistent component library
-  - Responsive layouts
+  - Clean, professional UI components
+  - Responsive layouts for all devices
   - Smooth animations and transitions
+  - Consistent typography and spacing
 
-- **Modular Architecture**
-  - Reusable UI components
-  - Centralized data management
-  - DRY principles
-  - Type-safe implementations
-
-- **SEO Optimized**
-  - Meta tag management
-  - Semantic HTML structure
-  - OpenGraph support
-  - Proper heading hierarchy
-
-- **Interactive Elements**
-  - Dynamic project filtering
-  - Animated transitions
-  - Form validation
-  - Loading states
+- **Core Sections**
+  - About Me / Professional Journey
+  - Portfolio Projects
+  - Core Competencies
+  - Contact Information
+  - Professional Timeline
 
 ## 🛠️ Tech Stack
 
@@ -38,8 +31,7 @@ A modern, responsive portfolio website showcasing instructional design projects 
 - **Icons**: Lucide React
 - **Routing**: React Router
 - **Build Tool**: Vite
-- **Type Safety**: JavaScript
-- **Form Handling**: Custom implementation
+- **Deployment**: GitHub Pages
 
 ## 📦 Installation
 
@@ -63,104 +55,70 @@ npm run dev
 npm run build
 ```
 
-## 🗂️ Project Structure
-
-```
-src/
-├── components/
-│   ├── about/
-│   │   └── index.jsx
-│   ├── contact/
-│   │   └── index.jsx
-│   ├── shared/
-│   │   └── index.jsx
-│   ├── ui/
-│   │   └── index.jsx
-│   ├── EnhancedComponents.jsx
-│   ├── LoadingScreen.jsx
-│   └── Navigation.jsx
-├── data/
-│   └── siteData.js
-├── pages/
-│   ├── AboutPage.jsx
-│   ├── ContactPage.jsx
-│   ├── HomePage.jsx
-│   └── PortfolioPage.jsx
-├── App.jsx
-└── main.jsx
-```
-
-## 🎨 Color System
-
-- **Primary Colors**: Blue shades (primary-50 to primary-900)
-- **Secondary Colors**: Purple shades (secondary-50 to secondary-900)
-- **Accent Colors**:
-  - Green (light/default/dark)
-  - Orange (light/default/dark)
-  - Red (light/default/dark)
-- **Background Colors**: Light/Default/Dark
-- **Text Colors**: Primary/Secondary/Light
-
-## 🧩 Components
-
-### UI Components
-- `<Button>` - Versatile button component with variants
-- `<Card>` - Container component with consistent styling
-- `<Tag>` - Label/badge component with color variants
-- `<Section>` - Section wrapper with background options
-
-### Shared Components
-- `<SEO>` - Meta tag management
-- `<PageHeader>` - Consistent page headers
-- `<PageLayout>` - Base layout wrapper
-- `<GridContainer>` - Responsive grid system
-
-### Page-Specific Components
-- About page components (Journey, Philosophy cards)
-- Contact form components
-- Portfolio grid and filters
-
-## 📱 Responsive Design
-
-- Mobile-first approach
-- Breakpoint system:
-  - sm: 640px
-  - md: 768px
-  - lg: 1024px
-  - xl: 1280px
-  - 2xl: 1536px
-
-## 🚀 Deployment
-
-1. Update `vite.config.js` with your base URL:
-```javascript
-export default defineConfig({
-  base: '/Portfolio/',
-  // ... other config
-})
-```
-
-2. Deploy to GitHub Pages:
+5. Deploy to GitHub Pages:
 ```bash
 npm run deploy
 ```
 
-## 💡 Development Notes
+## 🗂️ Project Structure
 
-- Use the shared components from `components/ui` for consistency
-- Follow the color system defined in `tailwind.config.js`
-- Keep data updates centralized in `data/siteData.js`
-- Maintain responsive design patterns
-- Use animation variants from shared components
+```
+Portfolio/
+├── src/
+│   ├── components/
+│   │   ├── shared/          # Shared components
+│   │   │   ├── cards/       # Card components
+│   │   │   └── forms/       # Form components
+│   │   └── ui/             # Base UI components
+│   ├── pages/              # Page components
+│   ├── layouts/            # Layout templates
+│   ├── hooks/             # Custom React hooks
+│   ├── data/              # Site data & constants
+│   └── constants/         # Design constants
+├── public/               # Static assets
+└── config files         # Configuration files
+```
 
-## 📝 Future Enhancements
+## 🎨 Key Components
 
-- [ ] Add dark mode support
-- [ ] Implement blog section
-- [ ] Add case studies
-- [ ] Enhance animations
-- [ ] Add search functionality
-- [ ] Implement CMS integration
+### UI Components
+- `Button`: Reusable button component with variants
+- `BaseCard`: Card container with consistent styling
+- `FormElements`: Form input components
+- `LoadingStates`: Loading indicators and animations
+
+### Shared Components
+- `ProjectGrid`: Portfolio project display grid
+- `Timeline`: Professional journey timeline
+- `CoreCompetencies`: Skills and expertise display
+- `ContactForm`: Contact form with validation
+
+### Page Components
+- `HomePage`: Landing page with featured content
+- `PortfolioPage`: Project showcase with filters
+- `AboutPage`: Professional background and skills
+- `ContactPage`: Contact information and form
+
+## 📱 Responsive Design
+
+- Mobile-first approach
+- Breakpoints:
+  - sm: 640px
+  - md: 768px
+  - lg: 1024px
+  - xl: 1280px
+
+## 🔧 Configuration
+
+Key configuration files:
+- `vite.config.js`: Vite build configuration
+- `tailwind.config.js`: Tailwind CSS customization
+- `package.json`: Project dependencies and scripts
+
+## 🚀 Deployment
+
+The site is deployed using GitHub Pages and can be accessed at:
+[https://williamthe5thc.github.io/Portfolio/](https://williamthe5thc.github.io/Portfolio/)
 
 ## 👤 Contact
 
@@ -168,3 +126,6 @@ W. Jordan Charles
 - LinkedIn: [jordan-charles](https://linkedin.com/in/jordan-charles)
 - Email: williamthe5thc@gmail.com
 
+## 📄 License
+
+This project is open source and available under the [MIT License](LICENSE).
