@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
-import { ZoomIn, X, Image as ImageIcon } from 'lucide-react';
+// src/components/ui/ImagePlaceholder.jsx
+import React from 'react';
+import { Image as ImageIcon } from 'lucide-react';
 
-// Image Placeholder Component
 const ImagePlaceholder = ({ className = '' }) => (
   <div 
     className={`bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center ${className}`}

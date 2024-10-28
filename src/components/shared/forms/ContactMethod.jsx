@@ -2,7 +2,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import * as Icons from 'lucide-react';
-import { animations, typography } from '../../../constants/design';
+import { animations } from '../animations';
 
 export const ContactMethod = ({ 
   icon: IconName, 

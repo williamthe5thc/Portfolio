@@ -2,8 +2,8 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { ZoomIn, X } from 'lucide-react';
-import { BaseCard } from '../../ui/BaseCard';
-import { ImagePlaceholder } from '../../ui/ImagePlaceholder';
+import { BaseCard, ImagePlaceholder } from '../../ui';  // Import from UI index
+import { fadeInUp } from '../animations';
 
 export const ProjectCard = ({ project }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
