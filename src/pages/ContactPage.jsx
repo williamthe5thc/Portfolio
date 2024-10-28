@@ -7,7 +7,7 @@ import {
   ContactForm,
   ContactMethod
 } from '../components/shared';
-import { fadeInUp, staggerChildren } from '../components/shared/animations';
+import { fadeInUp, staggerContainer } from '../components/shared/animations';
 import { siteMetadata, faqs } from '../data/siteData';
 
 const ContactPage = () => {

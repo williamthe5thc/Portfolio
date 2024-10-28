@@ -1,3 +1,4 @@
+// src/pages/HomePage.jsx
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
@@ -10,7 +11,7 @@ import {
   CoreCompetencies
 } from '../components/shared';
 import { Button } from '../components/ui/components';
-import { fadeInUp, staggerChildren } from '../components/shared/animations';
+import { fadeInUp, staggerContainer } from '../components/shared/animations';
 import { 
   siteMetadata,
   projects,
@@ -37,7 +38,7 @@ const HomePage = () => {
         {/* Hero Section */}
         <motion.section 
           className="min-h-[80vh] flex items-center justify-center bg-gradient-to-b from-background-light to-background"
-          variants={staggerChildren}
+          variants={staggerContainer}
         >
           <div className="text-center px-4 max-w-4xl mx-auto">
             <motion.h1 

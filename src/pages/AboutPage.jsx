@@ -9,7 +9,7 @@ import {
   StatsGrid
 } from '../components/shared';
 import { BaseCard } from '../components/ui/components';
-import { fadeInUp, staggerChildren } from '../components/shared/animations';
+import { fadeInUp, staggerContainer } from '../components/shared/animations';
 import { 
   siteMetadata,
   education, 

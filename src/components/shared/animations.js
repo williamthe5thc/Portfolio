@@ -140,8 +140,3 @@ export const modalContent = {
   exit: { opacity: 0, scale: 0.8 },
   transition: { type: "spring", stiffness: 260, damping: 20 }
 };
-
-// Utility function for stagger children
-export const getStaggerTransition = (delay = 0.1) => ({
-  transition: { staggerChildren: delay }
-});
