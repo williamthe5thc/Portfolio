@@ -2,14 +2,13 @@
 import React from 'react';
 import { Image as ImageIcon } from 'lucide-react';
 
-const ImagePlaceholder = ({ className = '' }) => (
+export const ImagePlaceholder = ({ className = '' }) => (
   <div 
     className={`bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center ${className}`}
   >
     <ImageIcon className="w-12 h-12 text-gray-400" />
   </div>
 );
-
 // Image Modal Component
 export const ImageModal = ({ isOpen, image, onClose }) => {
   if (!isOpen) return null;

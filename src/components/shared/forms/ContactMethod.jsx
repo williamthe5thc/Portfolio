@@ -2,7 +2,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import * as Icons from 'lucide-react';
-import { animations } from '../animations';
+import { fadeInUp } from '../animations';  // Changed from { animations }
 
 export const ContactMethod = ({ 
   icon: IconName, 
@@ -17,8 +17,8 @@ export const ContactMethod = ({
     <>
       <Icon className={`w-6 h-6 ${color} mt-1`} />
       <div>
-        <h3 className={typography.heading.h4}>{title}</h3>
-        <p className={link ? `${color} hover:opacity-80` : typography.body.secondary}>
+        <h3 className="text-lg font-medium text-text-primary">{title}</h3>
+        <p className={link ? `${color} hover:opacity-80` : "text-text-secondary"}>
           {content}
         </p>
       </div>
@@ -27,14 +27,15 @@ export const ContactMethod = ({
 
   return (
     <motion.div 
-      variants={animations.fadeInUp}
+      variants={fadeInUp}
       className="flex items-start gap-4"
     >
       {link ? (
         <motion.a 
           href={link}
           className="flex items-start gap-4"
-          {...animations.hover.scale}
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.98 }}
         >
           <Inner />
         </motion.a>

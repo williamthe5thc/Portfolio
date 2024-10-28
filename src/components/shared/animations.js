@@ -1,20 +1,4 @@
-// src/constants/design/animations.js
-export const hover = {
-  scale: {
-    whileHover: { scale: 1.02 },
-    whileTap: { scale: 0.98 }
-  },
-  lift: {
-    whileHover: { y: -5 },
-    whileTap: { y: 0 }
-  }
-};
-
-export const transitions = {
-  default: { duration: 0.3 },
-  spring: { type: "spring", stiffness: 260, damping: 20 }
-};
-
+// src/components/shared/animations.js
 export const fadeIn = {
   initial: { opacity: 0 },
   animate: { opacity: 1 },
@@ -35,6 +19,22 @@ export const staggerChildren = {
       staggerChildren: 0.1
     }
   }
+};
+
+export const hover = {
+  scale: {
+    whileHover: { scale: 1.02 },
+    whileTap: { scale: 0.98 }
+  },
+  lift: {
+    whileHover: { y: -5 },
+    whileTap: { y: 0 }
+  }
+};
+
+export const transitions = {
+  default: { duration: 0.3 },
+  spring: { type: "spring", stiffness: 260, damping: 20 }
 };
 
 export const slideIn = {
