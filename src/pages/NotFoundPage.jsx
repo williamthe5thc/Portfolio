@@ -3,7 +3,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '../components/ui';
-import { fadeInUp } from '../constants/shared/animations';
+import { fadeInUp } from '../components/shared/animations';
 
 const NotFoundPage = () => {
   const navigate = useNavigate();

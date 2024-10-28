@@ -10,7 +10,7 @@ import {
   StatsGrid
 } from '../components/shared';
 import { BaseCard } from '../components/ui';
-import { fadeInUp, staggerChildren } from '../constants/shared/animations';
+import { fadeInUp, staggerChildren } from '../components/shared/animations';
 import { education, experience, achievements } from '../data/siteData';
 
 const AboutPage = () => {
