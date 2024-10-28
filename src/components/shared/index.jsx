@@ -4,7 +4,6 @@ export { fadeIn, fadeInUp, staggerChildren } from './animations';
 
 // Layout Components
 export { PageHeader } from './PageHeader';
-export { PageLayout } from './PageLayout';
 export { GridContainer, SectionContainer } from './containers';
 export { CallToAction } from './CallToAction';
 export { Timeline } from './Timeline';
