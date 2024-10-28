@@ -2,7 +2,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { BaseCard } from '../../ui/BaseCard';
-import { typography, spacing, animations } from '../../../constants/design';
+import { fadeInUp } from '../animations';
 
 export const StatsGrid = ({ stats }) => (
   <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 ${spacing.grid}`}>
