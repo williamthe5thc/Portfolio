@@ -1,0 +1,1 @@
+//CoreCompetencies.jsx needs to be created

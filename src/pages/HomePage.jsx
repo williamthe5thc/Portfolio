@@ -10,7 +10,7 @@ import {
   JourneyCard
 } from '../components/shared';
 import { Button } from '../components/ui';
-import { fadeInUp, staggerChildren } from '../components/shared/animations';
+import { fadeInUp, staggerChildren } from '../components/shared/animations'; // Correct path
 import { siteMetadata, featuredProjects } from '../data/siteData';
 
 const HomePage = () => {
