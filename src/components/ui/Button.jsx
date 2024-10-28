@@ -1,17 +1,9 @@
-//button
+//src/components/ui/Button.jsx
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Loader2 } from 'lucide-react';
 
-const Button = ({ 
-  children, 
-  variant = 'primary', 
-  size = 'md',
-  isLoading = false,
-  icon: Icon,
-  className = '',
-  ...props 
-}) => {
+export const Button = ({ children, variant = 'primary', ...props }) => {
   const baseStyles = 'inline-flex items-center justify-center font-medium rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2';
   
   const variants = {

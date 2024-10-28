@@ -2,7 +2,7 @@
 import React from 'react';
 
 // src/components/ui/index.jsx
-export { default as Button } from './Button';
-export { default as BaseCard } from './BaseCard';
+export { Button } from './Button';
+export { BaseCard } from './BaseCard';
 export { FormInput, FormTextArea } from './FormElements';
-export { default as ImagePlaceholder } from './ImagePlaceholder';
+export { ImagePlaceholder } from './ImagePlaceholder';

@@ -2,13 +2,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-export const BaseCard = ({ 
-  children, 
-  className = '', 
-  animate = true,
-  hover = true,
-  ...props 
-}) => {
+export const BaseCard = ({ children, className = '', ...props }) => {
   const baseClass = 'bg-white rounded-xl shadow-lg overflow-hidden p-6';
   const hoverAnimation = hover ? {
     whileHover: { y: -5, transition: { duration: 0.2 } },
