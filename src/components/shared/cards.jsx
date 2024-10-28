@@ -5,6 +5,27 @@ import * as Icons from 'lucide-react';
 import { fadeInUp, cardHover, modalContent, modalBackdrop } from './animations';
 import { BaseCard } from '../ui/components';
 
+export const CoreCompetencies = ({ items }) => (
+  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    {items.map((item, index) => (
+      <motion.div
+        key={index}
+        variants={fadeInUp}
+      >
+        <BaseCard>
+          {item.icon && <item.icon className={`w-8 h-8 ${item.color} mb-4`} />}
+          <h3 className="text-xl font-semibold text-text-primary mb-2">
+            {item.title}
+          </h3>
+          <p className="text-text-secondary">
+            {item.description}
+          </p>
+        </BaseCard>
+      </motion.div>
+    ))}
+  </div>
+);
+
 // Journey Card Component
 export const JourneyCard = ({ 
   icon: IconName, 

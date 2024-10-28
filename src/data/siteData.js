@@ -20,6 +20,24 @@ export const siteMetadata = {
   }
 };
 
+export const projectCategories = [
+  {
+    id: 'elearning',
+    label: 'E-Learning',
+    description: 'Interactive digital learning experiences and modules'
+  },
+  {
+    id: 'id',
+    label: 'Instructional Design',
+    description: 'Comprehensive learning strategy and curriculum design'
+  },
+  {
+    id: 'lms',
+    label: 'LMS Implementation',
+    description: 'Learning Management System setup and customization'
+  }
+];
+
 export const navigation = [
   { path: "/", label: "Home", icon: "Home" },
   { path: "/about", label: "About", icon: "User" },

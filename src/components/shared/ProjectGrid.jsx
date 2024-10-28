@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ProjectCard } from './cards';
-import { fadeInUp, staggerChildren } from './animations';
+import { fadeInUp, staggerContainer } from './animations';
 import { Badge } from '../ui/components';
 
 const ProjectGrid = ({ 
@@ -56,7 +56,7 @@ const ProjectGrid = ({
       {/* Projects Grid */}
       <motion.div 
         className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-        variants={staggerChildren}
+        variants={staggerContainer}
       >
         <AnimatePresence mode="wait">
           {filteredProjects.map(project => (
