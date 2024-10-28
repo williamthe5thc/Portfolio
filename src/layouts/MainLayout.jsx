@@ -1,9 +1,8 @@
 // src/layouts/MainLayout.jsx
 import React from 'react';
 import { motion } from 'framer-motion';
-import Navigation from '../components/shared/Navigation';
-import { fadeIn } from '../constants/design/animations';
-
+import Navigation from '../components/shared/Navigation';  // Fix: Match Navigation export type
+import { fadeIn } from '../components/shared/animations';  // Fix: Correct animations path
 const MainLayout = ({ children }) => {
   return (
     <div className="min-h-screen bg-background-light">

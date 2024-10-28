@@ -1,8 +1,8 @@
 // src/components/shared/Timeline.jsx
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Card } from '../ui';
-import { fadeInUp } from './animations';
+import { fadeInUp } from './animations';  // Fix: Import from local animations
+import { Card } from '../ui';  // Fix: Check if Card is exported from ui
 
 export const Timeline = ({ events }) => (
   <div className="relative space-y-8">

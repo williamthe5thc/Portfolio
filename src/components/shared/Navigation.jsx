@@ -2,7 +2,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import * as Icons from 'lucide-react';
-import { navigation } from '../data/siteData';
+import { navigation } from '../../data/siteData';  // Fixed path - need to go up two levels
 
 
 const Navigation = () => (

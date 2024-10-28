@@ -1,5 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Loader2 } from 'lucide-react';
+
+
 console.log("loading loading screen.jsx");
 const LoadingScreen = () => {
   return (

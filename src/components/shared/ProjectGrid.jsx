@@ -1,8 +1,8 @@
 // src/components/shared/ProjectGrid.jsx
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ProjectCard } from './cards/ProjectCard';
-import { fadeInUp, staggerChildren } from '../constants/design/animations';
+import { ProjectCard } from './cards/ProjectCard';  // Fix: Correct import path
+import { fadeInUp, staggerChildren } from './animations';  // Fix: Import from local animations
 
 export const ProjectGrid = ({ 
   projects, 
