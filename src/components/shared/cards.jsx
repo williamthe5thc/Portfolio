@@ -78,6 +78,22 @@ export const PhilosophyCard = ({ icon: IconName, content }) => {
 export const ProjectCard = ({ project }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
+  const [imageError, setImageError] = useState(false);
+
+  // Function to get the image source with fallback
+  const getImageSource = () => {
+    if (imageError || !project.image) {
+      return '/images/projects/coming_soon.png';
+    }
+    // Remove any leading 'public' from the path if it exists
+    return project.image.replace(/^\/public/, '');
+  };
+
+  // Handle image load error
+  const handleImageError = () => {
+    console.log('Image failed to load:', project.image);
+    setImageError(true);
+  };
 
   return (
     <>
@@ -91,14 +107,14 @@ export const ProjectCard = ({ project }) => {
       >
         <div className="relative">
           <div className="aspect-video bg-gray-100 relative overflow-hidden">
-            {project.image ? (
-              <motion.img
-                src={project.image}
-                alt={project.title}
-                className="w-full h-full object-cover"
-                animate={{ scale: isHovered ? 1.05 : 1 }}
-                transition={{ duration: 0.3 }}
-              />
+            <motion.img
+              src={getImageSource()}
+              alt={project.title}
+              onError={handleImageError}
+              className="w-full h-full object-cover"
+              animate={{ scale: isHovered ? 1.05 : 1 }}
+              transition={{ duration: 0.3 }}
+            />
             ) : (
               <div className="w-full h-full flex items-center justify-center bg-gray-200">
                 <Icons.Image className="w-12 h-12 text-gray-400" />
