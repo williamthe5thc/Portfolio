@@ -108,6 +108,7 @@ const AboutPage = () => {
         />
       </SectionContainer>
     </div>
+      </>
   );
 };
 

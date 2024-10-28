@@ -68,6 +68,7 @@ const PortfolioPage = () => {
         <ProjectGrid projects={filteredProjects} />
       </SectionContainer>
     </div>
+      </>
   );
 };
 
