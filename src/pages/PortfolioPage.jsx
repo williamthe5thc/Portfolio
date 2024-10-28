@@ -8,7 +8,7 @@ import {
   ProjectGrid
 } from '../components/shared';
 import { projects } from '../data/siteData';
-import { fadeInUp } from '../constants/design/animations';
+import { fadeInUp } from '../constants/shared/animations';
 
 const PortfolioPage = () => {
   const categories = [

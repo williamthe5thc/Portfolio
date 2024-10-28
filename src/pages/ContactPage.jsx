@@ -7,7 +7,7 @@ import {
   ContactForm,
   ContactMethod
 } from '../components/shared';
-import { fadeInUp, staggerChildren } from '../constants/design/animations';
+import { fadeInUp, staggerChildren } from '../constants/shared/animations';
 import { siteMetadata } from '../data/siteData';
 
 // Move FAQs array outside of component
