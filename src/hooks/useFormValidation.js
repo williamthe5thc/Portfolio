@@ -1,22 +1,11 @@
-// src/hooks/useFormValidation.js
-import { useState, useCallback } from 'react';
+// src/hooks/useFormValidations.js
 
+// Form validation hook
 export const useFormValidation = (initialValues, validate) => {
   const [formData, setFormData] = useState(initialValues);
   const [errors, setErrors] = useState({});
   const [touched, setTouched] = useState({});
   const [status, setStatus] = useState(null);
-
-  // Basic validation function if no validation schema is provided
-  const defaultValidate = (name, value) => {
-    let error;
-    if (!value) {
-      error = `${name} is required`;
-    } else if (name === 'email' && !/\S+@\S+\.\S+/.test(value)) {
-      error = 'Email is invalid';
-    }
-    return error;
-  };
 
   const validateField = useCallback((name, value) => {
     const validationError = validate ? 
@@ -49,13 +38,6 @@ export const useFormValidation = (initialValues, validate) => {
     setStatus(null);
   }, [initialValues]);
 
-  const setFieldValue = useCallback((name, value) => {
-    setFormData(prev => ({ ...prev, [name]: value }));
-    if (touched[name]) {
-      validateField(name, value);
-    }
-  }, [touched, validateField]);
-
   return {
     formData,
     errors,
@@ -64,7 +46,78 @@ export const useFormValidation = (initialValues, validate) => {
     setStatus,
     handleChange,
     handleBlur,
-    setFieldValue,
     reset
+  };
+};
+
+// Animation presence hook
+export const useAnimationPresence = () => {
+  const [isPresent, setIsPresent] = useState(true);
+
+  const safeUnmount = useCallback((callback) => {
+    setIsPresent(false);
+    setTimeout(callback, 300); // Match this with your animation duration
+  }, []);
+
+  return { isPresent, safeUnmount };
+};
+
+// Modal hook
+export const useModal = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const open = useCallback(() => setIsOpen(true), []);
+  const close = useCallback(() => setIsOpen(false), []);
+  const toggle = useCallback(() => setIsOpen(prev => !prev), []);
+
+  return {
+    isOpen,
+    open,
+    close,
+    toggle
+  };
+};
+
+// Intersection observer hook for animations
+export const useIntersectionObserver = (options = {}) => {
+  const [ref, setRef] = useState(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  const callback = useCallback(
+    ([entry]) => {
+      setIsVisible(entry.isIntersecting);
+    },
+    []
+  );
+
+  useEffect(() => {
+    if (ref) {
+      const observer = new IntersectionObserver(callback, options);
+      observer.observe(ref);
+      return () => observer.disconnect();
+    }
+  }, [ref, options, callback]);
+
+  return [setRef, isVisible];
+};
+
+// Basic form state hook
+export const useForm = (initialState = {}) => {
+  const [values, setValues] = useState(initialState);
+
+  const handleChange = useCallback((e) => {
+    const { name, value } = e.target;
+    setValues(prev => ({ ...prev, [name]: value }));
+  }, []);
+
+  const reset = useCallback(() => {
+    setValues(initialState);
+  }, [initialState]);
+
+  return {
+    values,
+    handleChange,
+    reset,
+    setValues
   };
 };

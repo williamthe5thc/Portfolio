@@ -2,14 +2,13 @@
 import React, { useState, useEffect } from 'react';
 import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
-import Navigation from './components/shared/Navigation';
-import LoadingScreen from './components/shared/LoadingScreen';
-import ErrorBoundary from './components/shared/ErrorBoundary';
+import { Navigation, LoadingScreen, ErrorBoundary } from './components/shared';
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
 import PortfolioPage from './pages/PortfolioPage';
 import ContactPage from './pages/ContactPage';
 import NotFoundPage from './pages/NotFoundPage';
+import { siteMetadata } from './data/siteData';
 
 // Page transition wrapper component
 const PageTransition = ({ children }) => (
@@ -39,7 +38,7 @@ const App = () => {
     // Simulate initial loading
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 2000);
+    }, 1500); // Reduced from 2000ms for better UX
 
     return () => clearTimeout(timer);
   }, [navigate]);
@@ -76,6 +75,11 @@ const App = () => {
             />
           </Routes>
         </AnimatePresence>
+        <footer className="bg-white border-t border-gray-200 py-8 mt-auto">
+          <div className="max-w-6xl mx-auto px-4 text-center text-text-secondary">
+            <p>© {new Date().getFullYear()} {siteMetadata.author}. All rights reserved.</p>
+          </div>
+        </footer>
       </div>
     </ErrorBoundary>
   );
