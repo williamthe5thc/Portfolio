@@ -1,9 +1,8 @@
-
 // src/components/Navigation.jsx
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import * as Icons from 'lucide-react';
-import { navigation } from '../../data/siteData';
+import { navigation } from '../data/siteData';
 
 
 const Navigation = () => (

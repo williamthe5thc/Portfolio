@@ -4,7 +4,6 @@ import { motion } from 'framer-motion';
 import { ZoomIn, X } from 'lucide-react';
 import { BaseCard } from '../../ui/BaseCard';
 import { ImagePlaceholder } from '../../ui/ImagePlaceholder';
-import { typography, animations } from '../../../constants/design';
 
 export const ProjectCard = ({ project }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);

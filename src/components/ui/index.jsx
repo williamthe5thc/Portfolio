@@ -20,5 +20,5 @@ export const Button = ({ variant = 'primary', children, className = '', ...props
 
 // Re-export other UI components
 export { BaseCard } from './BaseCard';
-export { FormElements } from './FormElements';
+export { FormInput, FormTextArea } from './FormElements';
 export { ImagePlaceholder } from './ImagePlaceholder';

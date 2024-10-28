@@ -2,7 +2,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-const BaseCard = ({ 
+export const BaseCard = ({ 
   children, 
   className = '', 
   animate = true,

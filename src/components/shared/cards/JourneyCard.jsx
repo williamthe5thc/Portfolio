@@ -2,7 +2,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import * as Icons from 'lucide-react';
-import BaseCard from '../../../ui/BaseCard';
+import { BaseCard } from '../../ui/BaseCard';
+
 
 const JourneyCard = ({ 
   icon: IconName, 

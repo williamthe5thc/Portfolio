@@ -5,7 +5,6 @@ export { fadeInUp, staggerChildren } from './animations';
 
 // Layout Components
 export { PageHeader } from './PageHeader.jsx';
-export { PageLayout } from './PageLayout.jsx';
 export { GridContainer, SectionContainer } from './containers.jsx';
 export { CallToAction } from './CallToAction.jsx';
 export { Timeline } from './Timeline.jsx';

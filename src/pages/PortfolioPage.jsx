@@ -7,7 +7,6 @@ import {
   SectionContainer,
   ProjectGrid
 } from '../components/shared';
-import { projects } from '../data/siteData';
 import { fadeInUp } from '../components/shared/animations';
 
 const PortfolioPage = () => {

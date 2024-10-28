@@ -1,6 +1,7 @@
 // src/pages/ContactPage.jsx
 import React from 'react';
 import { motion } from 'framer-motion';
+import { SEO } from '../components/shared/SEO';
 import { 
   PageHeader,
   SectionContainer,

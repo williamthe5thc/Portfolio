@@ -2,7 +2,6 @@
 import React from 'react';
 import * as Icons from 'lucide-react';
 import { BaseCard } from '../../ui/BaseCard';
-import { typography } from '../../../constants/design';
 
 export const PhilosophyCard = ({ icon: IconName, content }) => {
   const Icon = Icons[IconName];
