@@ -1,8 +1,3 @@
-export * from './cards';
-export * from './features';
-export * from './forms';
-export * from './layout';
-export { ErrorBoundary } from './ErrorBoundary';
-export { ProjectGrid } from './ProjectGrid';
-export { SEO } from './SEO';
-export { Timeline } from './Timeline';
+export { default as ErrorBoundary } from "./ErrorBoundary";
+export { default as SEO } from "./SEO";
+export { default as Timeline } from "./Timeline";

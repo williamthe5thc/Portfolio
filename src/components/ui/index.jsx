@@ -1,6 +1,6 @@
-export { default as BaseCard } from './BaseCard/BaseCard';
-export { default as Button } from './Button/Button';
-export { default as FormElements } from './FormElements/FormElements';
-export { default as ImagePlaceholder } from './ImagePlaceholder/ImagePlaceholder';
-export { default as LoadingSpinner } from './LoadingSpinner/LoadingSpinner';
-export { default as LoadingStates } from './LoadingStates/LoadingStates';
+export { default as BaseCard } from './BaseCard';
+export { default as Button } from './Button';
+export { default as FormElements } from './FormElements';
+export { default as ImagePlaceholder } from './ImagePlaceholder';
+export { default as LoadingSpinner } from './LoadingSpinner';
+export { default as LoadingStates } from './LoadingStates';

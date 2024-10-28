@@ -1,3 +1,1 @@
-// Export your type definitions here
-// Example:
-// export type { ComponentProps } from './components';
+// Export type definitions here
