@@ -9,6 +9,7 @@ export const ImagePlaceholder = ({ className = '' }) => (
     <ImageIcon className="w-12 h-12 text-gray-400" />
   </div>
 );
+
 // Image Modal Component
 export const ImageModal = ({ isOpen, image, onClose }) => {
   if (!isOpen) return null;

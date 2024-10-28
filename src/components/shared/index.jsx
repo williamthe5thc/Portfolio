@@ -1,26 +1,23 @@
 // src/components/shared/index.jsx
-
 // Animations
-export { fadeInUp, staggerChildren } from './animations';
+export { fadeIn, fadeInUp, staggerChildren } from './animations';
 
 // Layout Components
-export { PageHeader } from './PageHeader.jsx';
-export { GridContainer, SectionContainer } from './containers.jsx';
-export { CallToAction } from './CallToAction.jsx';
-export { Timeline } from './Timeline.jsx';
-export { SEO } from './SEO.jsx';
-export { default as LoadingScreen } from './LoadingScreen.jsx';
-export { default as Navigation } from './Navigation.jsx';
+export { PageHeader } from './PageHeader';
+export { PageLayout } from './PageLayout';
+export { GridContainer, SectionContainer } from './containers';
+export { CallToAction } from './CallToAction';
+export { Timeline } from './Timeline';
+export { SEO } from './SEO';
+export { LoadingScreen } from './LoadingScreen';
+export { Navigation } from './Navigation';
 
 // Card Components
-export { JourneyCard } from './cards/JourneyCard.jsx';
-export { PhilosophyCard } from './cards/PhilosophyCard.jsx';
-export { ProjectCard } from './cards/ProjectCard.jsx';
-export { StatsGrid } from './cards/StatsGrid.jsx';
+export { JourneyCard, PhilosophyCard, ProjectCard, StatsGrid } from './cards';
 
 // Form Components
-export { default as ContactForm } from './forms/ContactForm.jsx';
-export { ContactMethod } from './forms/ContactMethod.jsx';
+export { ContactForm, ContactMethod } from './forms';
 
 // Feature Components
-export { ProjectGrid } from './ProjectGrid.jsx';
+export { CoreCompetencies } from './CoreCompetencies';
+export { ProjectGrid } from './ProjectGrid';
