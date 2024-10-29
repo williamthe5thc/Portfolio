@@ -9,7 +9,10 @@ import {
   ProjectGrid,
   JourneyCard
 } from '../components/shared';
-import { Button } from '../components/ui/components';
+import { 
+  Button,
+  BaseCard
+} from '../components/ui/components';
 import { fadeInUp, staggerContainer } from '../components/shared/animations';
 import { 
   siteMetadata,
@@ -19,8 +22,19 @@ import {
   coreCompetencies
 } from '../data/siteData';
 
-// Import CoreCompetencies from cards
-import { CoreCompetencies } from '../components/shared/cards';
+const CoreCompetencyCard = ({ title, description, icon: Icon, color }) => (
+  <motion.div variants={fadeInUp}>
+    <BaseCard className="h-full transition-shadow duration-300 hover:shadow-lg">
+      <div className="flex items-start gap-3 p-6">
+        {Icon && <Icon className={`w-6 h-6 ${color || 'text-primary-600'}`} />}
+        <div>
+          <h3 className="font-semibold text-text-primary mb-1">{title}</h3>
+          <p className="text-text-secondary">{description}</p>
+        </div>
+      </div>
+    </BaseCard>
+  </motion.div>
+);
 
 const HomePage = () => {
   return (
@@ -28,23 +42,19 @@ const HomePage = () => {
       <SEO 
         title="Home"
         description={siteMetadata.description}
-        keywords={[
-          'instructional design',
-          'learning solutions',
-          'elearning development',
-          siteMetadata.author
-        ]}
       />
       
       <div className="min-h-screen">
         {/* Hero Section */}
         <motion.section 
-          className="min-h-[80vh] flex items-center justify-center bg-gradient-to-b from-background-light to-background"
+          className="min-h-[80vh] flex items-center justify-center bg-gradient-to-b from-background-light to-background px-4 sm:px-6 md:px-8 pb-safe"
           variants={staggerContainer}
+          initial="initial"
+          animate="animate"
         >
-          <div className="text-center px-4 max-w-4xl mx-auto">
+          <div className="text-center max-w-4xl mx-auto">
             <motion.h1 
-              className="text-4xl md:text-6xl font-bold text-text-primary mb-6"
+              className="text-4xl md:text-5xl lg:text-6xl font-bold text-text-primary mb-6"
               variants={fadeInUp}
             >
               {siteMetadata.slogan}
@@ -56,19 +66,20 @@ const HomePage = () => {
               {siteMetadata.tagline}
             </motion.p>
             <motion.div 
-              className="flex gap-4 justify-center"
+              className="flex flex-col sm:flex-row gap-4 justify-center"
               variants={fadeInUp}
             >
               <Button 
                 href="/portfolio"
-                className="flex items-center gap-2"
+                className="w-full sm:w-auto"
               >
                 View Portfolio
-                <ArrowRight className="w-4 h-4" />
+                <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
               <Button 
                 href="/contact"
                 variant="outline"
+                className="w-full sm:w-auto"
               >
                 Contact Me
               </Button>
@@ -76,74 +87,88 @@ const HomePage = () => {
           </div>
         </motion.section>
 
-        {/* Core Competencies */}
+        {/* Core Competencies Section */}
         <SectionContainer className="py-20 bg-background">
-          <motion.div
-            className="text-center mb-12"
-            variants={fadeInUp}
-          >
-            <h2 className="text-3xl font-bold text-text-primary mb-4">
-              Core Competencies
-            </h2>
-            <p className="text-text-secondary max-w-2xl mx-auto">
-              Combining instructional design expertise with technical skills
-              to create impactful learning solutions.
-            </p>
-          </motion.div>
-          <CoreCompetencies items={coreCompetencies} />
+          <div className="max-w-7xl mx-auto">
+            <motion.div
+              className="text-center mb-12"
+              variants={fadeInUp}
+            >
+              <h2 className="text-3xl font-bold text-text-primary mb-4">
+                Core Competencies
+              </h2>
+              <p className="text-text-secondary max-w-2xl mx-auto">
+                Combining instructional design expertise with technical skills
+                to create impactful learning solutions.
+              </p>
+            </motion.div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {coreCompetencies.map((competency, index) => (
+                <CoreCompetencyCard
+                  key={index}
+                  {...competency}
+                />
+              ))}
+            </div>
+          </div>
         </SectionContainer>
 
         {/* Journey Section */}
         <SectionContainer className="py-20">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <JourneyCard 
-              icon="GraduationCap"
-              title="Education"
-              items={education.degrees.map(deg => ({
-                title: deg.degree,
-                subtitle: deg.institution,
-                date: deg.period
-              }))}
-            />
-            <JourneyCard
-              icon="Briefcase"
-              title="Experience"
-              items={experience.map(exp => ({
-                title: exp.title,
-                subtitle: exp.company,
-                date: exp.period
-              }))}
-            />
-            <JourneyCard
-              icon="Award"
-              title="Certifications"
-              items={education.certifications.map(cert => ({
-                title: cert.title,
-                subtitle: cert.issuer,
-                date: cert.date
-              }))}
-            />
+          <div className="max-w-7xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <JourneyCard 
+                icon="GraduationCap"
+                title="Education"
+                items={education.degrees.map(deg => ({
+                  title: deg.degree,
+                  subtitle: deg.institution,
+                  date: deg.period
+                }))}
+              />
+              <JourneyCard
+                icon="Briefcase"
+                title="Experience"
+                items={experience.map(exp => ({
+                  title: exp.title,
+                  subtitle: exp.company,
+                  date: exp.period
+                }))}
+              />
+              <JourneyCard
+                icon="Award"
+                title="Certifications"
+                items={education.certifications.map(cert => ({
+                  title: cert.title,
+                  subtitle: cert.issuer,
+                  date: cert.date
+                }))}
+              />
+            </div>
           </div>
         </SectionContainer>
 
         {/* Featured Projects */}
         <SectionContainer className="py-20 bg-background">
-          <motion.div
-            className="text-center mb-12"
-            variants={fadeInUp}
-          >
-            <h2 className="text-3xl font-bold text-text-primary mb-4">
-              Featured Projects
-            </h2>
-            <p className="text-text-secondary max-w-2xl mx-auto">
-              Explore some of my recent instructional design work and
-              learning solutions.
-            </p>
-          </motion.div>
-          <ProjectGrid 
-            projects={projects.slice(0, 3)} // Show only first 3 projects
-            showFilters={false}
-          />
+          <div className="max-w-7xl mx-auto">
+            <motion.div
+              className="text-center mb-12"
+              variants={fadeInUp}
+            >
+              <h2 className="text-3xl font-bold text-text-primary mb-4">
+                Featured Projects
+              </h2>
+              <p className="text-text-secondary max-w-2xl mx-auto">
+                Explore some of my recent instructional design work and
+                learning solutions.
+              </p>
+            </motion.div>
+            <ProjectGrid 
+              projects={projects.slice(0, 3)}
+              showFilters={false}
+            />
+          </div>
         </SectionContainer>
       </div>
     </>

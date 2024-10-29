@@ -1,3 +1,4 @@
+// src/pages/ContactPage.jsx
 import React from 'react';
 import { motion } from 'framer-motion';
 import { 
@@ -7,16 +8,18 @@ import {
   ContactForm,
   ContactMethod
 } from '../components/shared';
+import { 
+  ResponsiveContainer,
+  ResponsiveGrid,
+  ResponsiveText,
+  BaseCard 
+} from '../components/ui/components';
 import { fadeInUp, staggerContainer, staggerChildren } from '../components/shared/animations';
-
-
 import { siteMetadata, faqs } from '../data/siteData';
 
 const ContactPage = () => {
   const handleSubmit = async (formData) => {
-    // In a real app, you would handle the form submission here
     console.log('Form submitted:', formData);
-    // Simulate API call
     await new Promise(resolve => setTimeout(resolve, 1000));
     return true;
   };
@@ -26,12 +29,6 @@ const ContactPage = () => {
       <SEO 
         title="Contact"
         description={`Get in touch with ${siteMetadata.author} to discuss your instructional design needs`}
-        keywords={[
-          'contact instructional designer',
-          'hire learning designer',
-          'instructional design services',
-          'learning solutions consultation'
-        ]}
       />
       <div className="min-h-screen">
         <PageHeader
@@ -40,89 +37,111 @@ const ContactPage = () => {
         />
 
         <SectionContainer className="py-20">
-          <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
-            {/* Contact Info */}
-            <motion.div
-              variants={staggerChildren}
-              className="space-y-8"
+          <ResponsiveContainer>
+            <ResponsiveGrid
+              cols={{ default: 1, md: 2 }}
+              gap="gap-12"
+              className="max-w-6xl mx-auto"
             >
-              <motion.h2 
-                className="text-2xl font-bold text-text-primary"
-                variants={fadeInUp}
+              {/* Contact Info */}
+              <motion.div
+                variants={staggerChildren}
+                className="space-y-8"
               >
-                Get in Touch
-              </motion.h2>
-              
-              <ContactMethod
-                icon="Mail"
-                title="Email"
-                content={siteMetadata.contactInfo.email}
-                link={`mailto:${siteMetadata.contactInfo.email}`}
-              />
-              
-              <ContactMethod
-                icon="Phone"
-                title="Phone"
-                content={siteMetadata.contactInfo.phone}
-                link={`tel:${siteMetadata.contactInfo.phone.replace(/\D/g,'')}`}
-              />
-              
-              <ContactMethod
-                icon="Linkedin"
-                title="LinkedIn"
-                content={siteMetadata.contactInfo.linkedin}
-                link={`https://${siteMetadata.contactInfo.linkedin}`}
-              />
+                <motion.h2 
+                  className="text-2xl md:text-3xl font-bold text-text-primary animate-fade-in"
+                  variants={fadeInUp}
+                >
+                  Get in Touch
+                </motion.h2>
+                
+                <div className="space-y-6">
+                  <ContactMethod
+                    icon="Mail"
+                    title="Email"
+                    content={siteMetadata.contactInfo.email}
+                    link={`mailto:${siteMetadata.contactInfo.email}`}
+                    className="min-h-touch"
+                  />
+                  
+                  <ContactMethod
+                    icon="Phone"
+                    title="Phone"
+                    content={siteMetadata.contactInfo.phone}
+                    link={`tel:${siteMetadata.contactInfo.phone.replace(/\D/g,'')}`}
+                    className="min-h-touch"
+                  />
+                  
+                  <ContactMethod
+                    icon="Linkedin"
+                    title="LinkedIn"
+                    content={siteMetadata.contactInfo.linkedin}
+                    link={`https://${siteMetadata.contactInfo.linkedin}`}
+                    className="min-h-touch"
+                  />
 
-              <ContactMethod
-                icon="MapPin"
-                title="Location"
-                content={siteMetadata.contactInfo.location}
-              />
-            </motion.div>
+                  <ContactMethod
+                    icon="MapPin"
+                    title="Location"
+                    content={siteMetadata.contactInfo.location}
+                    className="min-h-touch"
+                  />
+                </div>
+              </motion.div>
 
-            {/* Contact Form */}
-            <motion.div
-              variants={fadeInUp}
-              className="bg-white rounded-xl shadow-lg p-8"
-            >
-              <h2 className="text-2xl font-bold text-text-primary mb-6">
-                Send a Message
-              </h2>
-              <ContactForm onSubmit={handleSubmit} />
-            </motion.div>
-          </div>
+              {/* Contact Form */}
+              <motion.div
+                variants={fadeInUp}
+                className="animate-slide-up"
+              >
+                <BaseCard className="shadow-lg">
+                  <h2 className="text-2xl font-bold text-text-primary mb-6">
+                    Send a Message
+                  </h2>
+                  <ContactForm 
+                    onSubmit={handleSubmit}
+                    className="space-y-6"
+                    inputClassName="min-h-touch"
+                  />
+                </BaseCard>
+              </motion.div>
+            </ResponsiveGrid>
+          </ResponsiveContainer>
         </SectionContainer>
 
         {/* FAQ Section */}
         <SectionContainer className="py-20 bg-background">
-          <motion.div
-            className="max-w-4xl mx-auto"
-            variants={staggerChildren}
-          >
-            <motion.h2 
-              className="text-3xl font-bold text-text-primary mb-12 text-center"
-              variants={fadeInUp}
+          <ResponsiveContainer>
+            <motion.div
+              className="max-w-4xl mx-auto"
+              variants={staggerChildren}
             >
-              Frequently Asked Questions
-            </motion.h2>
-            <div className="grid gap-8">
-              {faqs.map((faq, index) => (
-                <motion.div
-                  key={index}
-                  variants={fadeInUp}
-                  className="bg-white rounded-xl shadow-lg p-6"
-                >
-                  <h3 className="font-semibold text-text-primary mb-2">
-                    {faq.question}
-                  </h3>
-                  <p className="text-text-secondary">
-                    {faq.answer}
-                  </p>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
+              <motion.h2 
+                className="text-2xl md:text-3xl font-bold text-text-primary mb-12 text-center animate-fade-in"
+                variants={fadeInUp}
+              >
+                Frequently Asked Questions
+              </motion.h2>
+              <div className="grid gap-8">
+                {faqs.map((faq, index) => (
+                  <motion.div
+                    key={index}
+                    variants={fadeInUp}
+                    className="animate-slide-up"
+                  >
+                    <BaseCard className="transition-shadow duration-300 hover:shadow-lg">
+                      <h3 className="font-semibold text-text-primary mb-2 text-lg md:text-xl">
+                        {faq.question}
+                      </h3>
+                      <p className="text-text-secondary prose">
+                        {faq.answer}
+                      </p>
+                    </BaseCard>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+          </ResponsiveContainer>
         </SectionContainer>
       </div>
     </>

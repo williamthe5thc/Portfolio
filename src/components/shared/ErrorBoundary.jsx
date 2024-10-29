@@ -7,7 +7,7 @@ class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { 
-      hasError: false, 
+      hasError: false,
       error: null,
       errorInfo: null 
     };
@@ -18,10 +18,15 @@ class ErrorBoundary extends React.Component {
   }
 
   componentDidCatch(error, errorInfo) {
-    this.setState({ errorInfo });
-    // In a real app, you'd want to log this to an error reporting service
-    console.error('Error:', error);
-    console.error('Error Info:', errorInfo);
+    this.setState({
+      error,
+      errorInfo
+    });
+    // Log the error to console in development
+    if (process.env.NODE_ENV === 'development') {
+      console.error('Error caught by ErrorBoundary:', error);
+      console.error('Error Info:', errorInfo);
+    }
   }
 
   handleReload = () => {
@@ -36,42 +41,46 @@ class ErrorBoundary extends React.Component {
     if (this.state.hasError) {
       return (
         <div className="min-h-screen flex items-center justify-center p-4 bg-background-light">
-          <div className="text-center max-w-lg">
-            <AlertTriangle className="w-16 h-16 text-accent-red mx-auto mb-4" />
-            <h1 className="text-2xl font-bold text-text-primary mb-2">
-              Something went wrong
-            </h1>
-            <p className="text-text-secondary mb-6">
-              We're sorry, but there was an error loading this page. Our team has been
-              notified and we're working to fix it.
-            </p>
-            <div className="space-x-4">
-              <Button
-                onClick={this.handleReload}
-                icon={RefreshCw}
-              >
-                Reload page
-              </Button>
-              <Button
-                variant="outline"
-                onClick={this.handleGoHome}
-                icon={Home}
-              >
-                Go home
-              </Button>
+          <div className="max-w-md w-full bg-white rounded-lg shadow-lg p-6">
+            <div className="text-center">
+              <AlertTriangle className="w-16 h-16 text-accent-red mx-auto mb-4" />
+              <h1 className="text-2xl font-bold text-text-primary mb-2">
+                Something went wrong
+              </h1>
+              <p className="text-text-secondary mb-6">
+                We apologize for the inconvenience. Please try refreshing the page or return to the home page.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Button
+                  onClick={this.handleReload}
+                  className="w-full sm:w-auto"
+                >
+                  <RefreshCw className="w-4 h-4 mr-2" />
+                  Reload page
+                </Button>
+                <Button
+                  onClick={this.handleGoHome}
+                  variant="outline"
+                  className="w-full sm:w-auto"
+                >
+                  <Home className="w-4 h-4 mr-2" />
+                  Go home
+                </Button>
+              </div>
+              
+              {process.env.NODE_ENV === 'development' && this.state.error && (
+                <details className="mt-6 text-left">
+                  <summary className="cursor-pointer text-text-primary font-medium">
+                    Error Details
+                  </summary>
+                  <pre className="mt-2 p-4 bg-gray-100 rounded-lg overflow-auto text-sm text-text-secondary">
+                    {this.state.error.toString()}
+                    {'\n\n'}
+                    {this.state.errorInfo?.componentStack}
+                  </pre>
+                </details>
+              )}
             </div>
-            {process.env.NODE_ENV === 'development' && this.state.errorInfo && (
-              <details className="mt-6 text-left bg-white p-4 rounded-lg">
-                <summary className="cursor-pointer text-text-primary font-medium">
-                  Error Details
-                </summary>
-                <pre className="mt-2 text-sm text-text-secondary overflow-auto">
-                  {this.state.error?.toString()}
-                  {'\n'}
-                  {this.state.errorInfo.componentStack}
-                </pre>
-              </details>
-            )}
           </div>
         </div>
       );

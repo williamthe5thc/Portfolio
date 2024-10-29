@@ -1,8 +1,187 @@
 // src/components/ui/components.jsx
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Loader2, AlertCircle, Image as ImageIcon } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ArrowUp, Loader2, AlertCircle, Image as ImageIcon } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+
+// Add to src/components/ui/components.jsx
+
+export const CollapsibleSection = ({ 
+  title, 
+  children, 
+  defaultOpen = false,
+  className = '' 
+}) => {
+  const [isOpen, setIsOpen] = useState(defaultOpen);
+
+  return (
+    <div className={`border rounded-lg ${className}`}>
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="w-full px-4 py-3 flex items-center justify-between text-left focus:outline-none focus:ring-2 focus:ring-primary-500"
+      >
+        <span className="text-lg font-medium">{title}</span>
+        <motion.div
+          animate={{ rotate: isOpen ? 180 : 0 }}
+          transition={{ duration: 0.2 }}
+        >
+          <Icons.ChevronDown className="w-5 h-5" />
+        </motion.div>
+      </button>
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: 'auto', opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="overflow-hidden"
+          >
+            <div className="px-4 py-3 border-t">
+              {children}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+};
+
+export const BackToTop = () => {
+  const [isVisible, setIsVisible] = useState(false);
+
+  // Show button when page is scrolled up to given distance
+  const toggleVisibility = () => {
+    if (window.pageYOffset > 300) {
+      setIsVisible(true);
+    } else {
+      setIsVisible(false);
+    }
+  };
+
+  // Set the top cordinate to 0
+  // Make scrolling smooth
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", toggleVisibility);
+    return () => {
+      window.removeEventListener("scroll", toggleVisibility);
+    };
+  }, []);
+
+  return (
+    <AnimatePresence>
+      {isVisible && (
+        <motion.button
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: 20 }}
+          onClick={scrollToTop}
+          className="fixed bottom-4 right-4 p-3 rounded-full bg-primary-600 text-white shadow-lg hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 md:bottom-8 md:right-8"
+          aria-label="Scroll to top"
+        >
+          <ArrowUp className="w-6 h-6" />
+        </motion.button>
+      )}
+    </AnimatePresence>
+  );
+};
+
+// ResponsiveContainer handles different screen sizes with appropriate padding
+export const ResponsiveContainer = ({ children, className = '' }) => (
+  <div className={`
+    w-full px-4 mx-auto
+    sm:px-6 
+    md:px-8 
+    lg:px-12 
+    xl:max-w-7xl
+    ${className}
+  `}>
+    {children}
+  </div>
+);
+
+// ResponsiveGrid provides a responsive grid layout
+export const ResponsiveGrid = ({ 
+  children, 
+  cols = {
+    default: 1,
+    sm: 1,
+    md: 2,
+    lg: 3
+  },
+  gap = "gap-6",
+  className = '' 
+}) => {
+  const getGridCols = () => {
+    const colClasses = [];
+    if (cols.default) colClasses.push(`grid-cols-${cols.default}`);
+    if (cols.sm) colClasses.push(`sm:grid-cols-${cols.sm}`);
+    if (cols.md) colClasses.push(`md:grid-cols-${cols.md}`);
+    if (cols.lg) colClasses.push(`lg:grid-cols-${cols.lg}`);
+    return colClasses.join(' ');
+  };
+
+  return (
+    <div className={`grid ${getGridCols()} ${gap} ${className}`}>
+      {children}
+    </div>
+  );
+};
+
+// ResponsiveText adjusts text size based on screen size
+export const ResponsiveText = ({ 
+  children,
+  size = {
+    default: 'base',
+    sm: 'lg',
+    md: 'xl',
+    lg: '2xl'
+  },
+  className = '' 
+}) => {
+  const getTextSize = () => {
+    const sizeClasses = [];
+    if (size.default) sizeClasses.push(`text-${size.default}`);
+    if (size.sm) sizeClasses.push(`sm:text-${size.sm}`);
+    if (size.md) sizeClasses.push(`md:text-${size.md}`);
+    if (size.lg) sizeClasses.push(`lg:text-${size.lg}`);
+    return sizeClasses.join(' ');
+  };
+
+  return (
+    <div className={`${getTextSize()} ${className}`}>
+      {children}
+    </div>
+  );
+};
+
+// ResponsiveImage handles image sizing and loading
+export const ResponsiveImage = ({ 
+  src, 
+  alt, 
+  className = '',
+  sizes = "100vw",
+  priority = false 
+}) => {
+  return (
+    <div className={`relative w-full ${className}`}>
+      <img
+        src={src}
+        alt={alt}
+        loading={priority ? "eager" : "lazy"}
+        className="w-full h-auto object-cover"
+        sizes={sizes}
+      />
+    </div>
+  );
+};
 
 export const Button = ({ 
   children, 
@@ -118,13 +297,16 @@ export const BaseCard = ({
 };
 
 // Form Input Component
+// Update in src/components/ui/components.jsx
+
 export const FormInput = ({ 
   label, 
   error, 
   className = '', 
+  type = 'text',
   ...props 
 }) => (
-  <div className="space-y-1">
+  <div className="space-y-2">
     {label && (
       <label className="block text-sm font-medium text-text-primary">
         {label}
@@ -132,14 +314,21 @@ export const FormInput = ({
     )}
     <div className="relative">
       <input
+        type={type}
         className={`
-          w-full rounded-lg border px-4 py-2
+          w-full rounded-lg border px-4 py-3 min-h-[44px] text-base
           ${error 
             ? 'border-accent-red focus:border-accent-red focus:ring-accent-red' 
             : 'border-gray-300 focus:border-primary-500 focus:ring-primary-500'
           }
           ${className}
         `}
+        autoComplete={
+          type === 'email' ? 'email' :
+          type === 'tel' ? 'tel' :
+          type === 'name' ? 'name' :
+          'off'
+        }
         {...props}
       />
       {error && (
@@ -149,19 +338,18 @@ export const FormInput = ({
       )}
     </div>
     {error && (
-      <p className="text-sm text-accent-red mt-1">{error}</p>
+      <p className="text-sm text-accent-red">{error}</p>
     )}
   </div>
 );
 
-// Form Textarea Component
 export const FormTextArea = ({ 
   label, 
   error, 
   className = '', 
   ...props 
 }) => (
-  <div className="space-y-1">
+  <div className="space-y-2">
     {label && (
       <label className="block text-sm font-medium text-text-primary">
         {label}
@@ -170,7 +358,8 @@ export const FormTextArea = ({
     <div className="relative">
       <textarea
         className={`
-          w-full rounded-lg border px-4 py-2 resize-y min-h-[100px]
+          w-full rounded-lg border px-4 py-3 resize-y min-h-[120px] text-base
+          leading-relaxed
           ${error 
             ? 'border-accent-red focus:border-accent-red focus:ring-accent-red' 
             : 'border-gray-300 focus:border-primary-500 focus:ring-primary-500'
@@ -180,16 +369,17 @@ export const FormTextArea = ({
         {...props}
       />
       {error && (
-        <div className="absolute top-2 right-2">
+        <div className="absolute top-3 right-3">
           <AlertCircle className="h-5 w-5 text-accent-red" />
         </div>
       )}
     </div>
     {error && (
-      <p className="text-sm text-accent-red mt-1">{error}</p>
+      <p className="text-sm text-accent-red">{error}</p>
     )}
   </div>
 );
+
 
 // Loading Spinner Component
 export const LoadingSpinner = ({ 

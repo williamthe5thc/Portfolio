@@ -1,3 +1,4 @@
+// tailwind.config.js
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
@@ -62,26 +63,79 @@ export default {
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
       },
-      typography: (theme) => ({
+      typography: {
         DEFAULT: {
           css: {
-            color: theme('colors.text.secondary'),
+            color: '#64748b', // text-secondary
+            fontSize: '16px',
+            lineHeight: '1.6',
+            p: {
+              marginBottom: '1.5em',
+              lineHeight: '1.8',
+            },
+            'h1, h2, h3, h4': {
+              color: '#1e293b', // text-primary
+              lineHeight: '1.3',
+            },
             a: {
-              color: theme('colors.primary.600'),
+              color: '#0284c7', // primary-600
               '&:hover': {
-                color: theme('colors.primary.700'),
+                color: '#0369a1', // primary-700
               },
             },
           },
         },
-      }),
+      },
+      spacing: {
+        'touch': '44px', // Minimum touch target size
+        'safe': 'env(safe-area-inset-bottom)', // iOS safe area
+      },
+      minHeight: {
+        'touch': '44px',
+      },
+      minWidth: {
+        'touch': '44px',
+      },
+      screens: {
+        'xs': '375px',  // iPhone SE size
+        'sm': '640px',
+        'md': '768px',
+        'lg': '1024px',
+        'xl': '1280px',
+        '2xl': '1536px',
+      },
       animation: {
         'spin-slow': 'spin 3s linear infinite',
-      }
+        'fade-in': 'fadeIn 0.3s ease-in-out',
+        'slide-up': 'slideUp 0.3s ease-out',
+        'slide-down': 'slideDown 0.3s ease-out',
+      },
+      keyframes: {
+        fadeIn: {
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' },
+        },
+        slideUp: {
+          '0%': { transform: 'translateY(20px)', opacity: '0' },
+          '100%': { transform: 'translateY(0)', opacity: '1' },
+        },
+        slideDown: {
+          '0%': { transform: 'translateY(-20px)', opacity: '0' },
+          '100%': { transform: 'translateY(0)', opacity: '1' },
+        },
+      },
+      touchAction: {
+        'none': 'none',
+        'pan-x': 'pan-x',
+        'pan-y': 'pan-y',
+        'manipulation': 'manipulation',
+      },
     },
   },
   plugins: [
-    require('@tailwindcss/forms'),
+    require('@tailwindcss/forms')({
+      strategy: 'class', // only generate classes
+    }),
     require('@tailwindcss/typography'),
   ],
 }

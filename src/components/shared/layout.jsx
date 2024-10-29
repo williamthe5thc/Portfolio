@@ -1,5 +1,5 @@
 // src/components/shared/layout.jsx
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { NavLink } from 'react-router-dom';
 import * as Icons from 'lucide-react';
@@ -54,6 +54,8 @@ export const Navigation = () => {
           <button
             className="md:hidden p-2 rounded-md text-text-secondary hover:text-primary-600 hover:bg-primary-50"
             onClick={toggleMenu}
+            aria-label="Toggle menu"
+            aria-expanded={isMenuOpen}
           >
             {isMenuOpen ? (
               <Icons.X className="w-6 h-6" />
@@ -96,6 +98,7 @@ export const Navigation = () => {
     </nav>
   );
 };
+
 
 export default Navigation;
 // Page Header Component
@@ -200,7 +203,7 @@ export const Timeline = ({ events }) => {
     </div>
   );
 };
-// SEO Component
+
 export const SEO = ({ 
   title, 
   description, 
@@ -217,7 +220,7 @@ export const SEO = ({
     <Helmet>
       <title>{pageTitle}</title>
       <meta name="description" content={metaDescription} />
-      <meta name="keywords" content={keywords.join(', ')} />
+      {keywords.length > 0 && <meta name="keywords" content={keywords.join(', ')} />}
       {noindex && <meta name="robots" content="noindex" />}
 
       {/* Open Graph / Facebook */}
@@ -231,25 +234,10 @@ export const SEO = ({
       <meta name="twitter:title" content={pageTitle} />
       <meta name="twitter:description" content={metaDescription} />
       {metaImage && <meta name="twitter:image" content={metaImage} />}
-
-      {/* Schema.org for Google */}
-      <script type="application/ld+json">
-        {JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "Person",
-          "name": siteMetadata.author,
-          "url": siteMetadata.siteUrl,
-          "sameAs": [
-            siteMetadata.social?.linkedin,
-            siteMetadata.social?.github,
-          ].filter(Boolean),
-          "jobTitle": "Instructional Designer",
-          "description": siteMetadata.description,
-        })}
-      </script>
     </Helmet>
   );
 };
+
 
 // Section Header Component
 export const SectionHeader = ({ title, subtitle, className = '' }) => (
