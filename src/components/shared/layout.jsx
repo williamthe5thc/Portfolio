@@ -106,29 +106,35 @@ export const CallToAction = ({ title, subtitle, buttons }) => (
 );
 
 // Timeline Component
-export const Timeline = ({ events }) => (
-  <div className="relative space-y-8">
-    {events.map((event, index) => (
-      <motion.div
-        key={index}
-        variants={fadeInUp}
-        className="flex gap-4"
-      >
-        <div className="flex flex-col items-center">
-          <div className="w-3 h-3 bg-primary-600 rounded-full" />
-          {index !== events.length - 1 && (
-            <div className="w-0.5 h-full bg-primary-200" />
-          )}
-        </div>
-        <div className="flex-1 bg-white rounded-lg shadow-lg p-6">
-          <h4 className="font-semibold text-text-primary">{event.title}</h4>
-          <p className="text-text-light text-sm">{event.date}</p>
-          <p className="text-text-secondary mt-2">{event.description}</p>
-        </div>
-      </motion.div>
-    ))}
-  </div>
-);
+export const Timeline = ({ events = [] }) => {
+  if (!Array.isArray(events) || events.length === 0) {
+    return null;
+  }
+
+  return (
+    <div className="relative space-y-8">
+      {events.map((event, index) => (
+        <motion.div
+          key={index}
+          variants={fadeInUp}
+          className="flex gap-4"
+        >
+          <div className="flex flex-col items-center">
+            <div className="w-3 h-3 bg-primary-600 rounded-full" />
+            {index !== events.length - 1 && (
+              <div className="w-0.5 h-full bg-primary-200" />
+            )}
+          </div>
+          <div className="flex-1 bg-white rounded-lg shadow-lg p-6">
+            <h4 className="font-semibold text-text-primary">{event?.title || 'Untitled'}</h4>
+            {event?.date && <p className="text-text-light text-sm">{event.date}</p>}
+            {event?.description && <p className="text-text-secondary mt-2">{event.description}</p>}
+          </div>
+        </motion.div>
+      ))}
+    </div>
+  );
+};
 
 // SEO Component
 export const SEO = ({ 

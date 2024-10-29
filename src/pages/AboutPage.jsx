@@ -43,12 +43,16 @@ const CompetencyItem = ({ icon: IconName, title, description, color }) => {
 
 const AboutPage = () => {
   // Prepare experience items with null check
-  const experienceItems = experience?.map(exp => ({
-    title: exp.title,
-    subtitle: exp.company,
-    date: exp.period,
-    description: exp.highlights?.join('. ')
-  })) || [];
+  const experienceItems = React.useMemo(() => {
+    if (!Array.isArray(experience)) return [];
+    
+    return experience.map(exp => ({
+      title: exp?.title || '',
+      subtitle: exp?.company || '',
+      date: exp?.period || '',
+      description: Array.isArray(exp?.highlights) ? exp.highlights.join('. ') : ''
+    }));
+  }, []);
 
   return (
     <>
@@ -106,21 +110,20 @@ const AboutPage = () => {
           </div>
         </SectionContainer>
 
-        {/* Education & Experience */}
-        {experienceItems.length > 0 && (
-          <SectionContainer className="py-20">
-            <motion.div className="max-w-4xl mx-auto">
-              <motion.h2 
-                className="text-3xl font-bold text-text-primary mb-12 text-center"
-                variants={fadeInUp}
-              >
-                Education & Experience
-              </motion.h2>
-              <Timeline items={experienceItems} />
-            </motion.div>
-          </SectionContainer>
-        )}
-      </div>
+         {/* Education & Experience Section */}
+      <SectionContainer className="py-20">
+        <motion.div className="max-w-4xl mx-auto">
+          <motion.h2 
+            className="text-3xl font-bold text-text-primary mb-12 text-center"
+            variants={fadeInUp}
+          >
+            Education & Experience
+          </motion.h2>
+          <Timeline 
+            events={experienceItems} 
+          />
+        </motion.div>
+      </SectionContainer>
     </>
   );
 };
