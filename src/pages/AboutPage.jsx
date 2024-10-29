@@ -42,7 +42,7 @@ const CompetencyItem = ({ icon: IconName, title, description, color }) => {
 };
 
 const AboutPage = () => {
-  // Prepare experience items with null check
+  // Safely transform experience data
   const experienceItems = React.useMemo(() => {
     if (!Array.isArray(experience)) return [];
     
@@ -110,7 +110,7 @@ const AboutPage = () => {
           </div>
         </SectionContainer>
 
-         {/* Education & Experience Section */}
+           {/* Education & Experience Section */}
       <SectionContainer className="py-20">
         <motion.div className="max-w-4xl mx-auto">
           <motion.h2 
