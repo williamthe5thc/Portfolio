@@ -7,12 +7,13 @@ import { Helmet } from 'react-helmet';
 import { fadeInUp } from './animations';
 import { navigation, siteMetadata } from '../../data/siteData';
 
-// Navigation Component
+//  Navigation component
+
 export const Navigation = () => (
   <nav className="bg-white shadow-sm sticky top-0 z-50">
     <div className="max-w-6xl mx-auto px-4">
       <div className="flex items-center justify-between h-16">
-        <NavLink to="/" className="font-bold text-xl text-text-primary hover:text-primary-600">
+        <NavLink to="/" className="font-bold text-xl text-text-primary hover:text-primary-600 transition-all duration-300">
           W. Jordan Charles
         </NavLink>
         <div className="hidden md:flex space-x-4">
@@ -24,12 +25,18 @@ export const Navigation = () => (
                 to={path}
                 className={({ isActive }) => `
                   px-3 py-2 rounded-md flex items-center gap-2
-                  ${isActive ? 'text-primary-600 bg-primary-50' : 'text-text-secondary hover:text-primary-600'}
+                  transition-all duration-300 relative
+                  group
+                  ${isActive 
+                    ? 'text-primary-600 bg-primary-50' 
+                    : 'text-text-secondary hover:text-primary-600'
+                  }
                 `}
-                end={path === "/"} // Add this to ensure exact matching for home route
+                end={path === "/"}
               >
                 <Icon className="w-4 h-4" />
                 {label}
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-600 group-hover:w-full transition-all duration-300" />
               </NavLink>
             );
           })}

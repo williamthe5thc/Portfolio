@@ -22,14 +22,14 @@ const PageTransition = ({ children }) => (
   </motion.div>
 );
 
-// In your App.jsx
 const App = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    // Reduced timeout to match shorter animations
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 1500);
+    }, 800); // Adjusted to match total animation duration
 
     return () => clearTimeout(timer);
   }, []);
@@ -37,7 +37,7 @@ const App = () => {
   if (isLoading) {
     return <LoadingScreen />;
   }
-
+    
   return (
     <ErrorBoundary>
       <Router>
