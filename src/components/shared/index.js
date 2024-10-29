@@ -16,6 +16,7 @@ export {
 
 // Export card components
 export {
+  CoreCompetencies,  // Make sure this is exported
   JourneyCard,
   PhilosophyCard,
   ProjectCard,
