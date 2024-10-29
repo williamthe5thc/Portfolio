@@ -7,8 +7,7 @@ import {
   PageHeader, 
   SectionContainer,
   ProjectGrid,
-  JourneyCard,
-  CoreCompetencies
+  JourneyCard
 } from '../components/shared';
 import { Button } from '../components/ui/components';
 import { fadeInUp, staggerContainer } from '../components/shared/animations';

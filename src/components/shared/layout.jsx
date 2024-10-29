@@ -12,7 +12,7 @@ export const Navigation = () => (
   <nav className="bg-white shadow-sm sticky top-0 z-50">
     <div className="max-w-6xl mx-auto px-4">
       <div className="flex items-center justify-between h-16">
-        <NavLink to="/#" className="font-bold text-xl text-text-primary hover:text-primary-600">
+        <NavLink to="/" className="font-bold text-xl text-text-primary hover:text-primary-600">
           W. Jordan Charles
         </NavLink>
         <div className="hidden md:flex space-x-4">
@@ -24,8 +24,9 @@ export const Navigation = () => (
                 to={path}
                 className={({ isActive }) => `
                   px-3 py-2 rounded-md flex items-center gap-2
-                  ${isActive ? 'text-primary-600' : 'text-text-secondary hover:text-primary-600'}
+                  ${isActive ? 'text-primary-600 bg-primary-50' : 'text-text-secondary hover:text-primary-600'}
                 `}
+                end={path === "/"} // Add this to ensure exact matching for home route
               >
                 <Icon className="w-4 h-4" />
                 {label}
