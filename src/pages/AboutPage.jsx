@@ -25,11 +25,13 @@ import {
 } from '../data/siteData';
 
 const CompetencyItem = ({ icon: IconName, title, description, color }) => {
+  // Check if IconName exists in Icons
   const Icon = Icons[IconName];
+  
   return (
     <motion.div variants={fadeInUp} className="mb-6">
       <div className="flex items-start gap-3">
-        {Icon && <Icon className={`w-6 h-6 ${color}`} />}
+        {Icon && <Icon className={`w-6 h-6 ${color || 'text-primary-600'}`} />}
         <div>
           <h3 className="font-semibold text-text-primary mb-1">{title}</h3>
           <p className="text-text-secondary text-sm">{description}</p>
@@ -40,6 +42,14 @@ const CompetencyItem = ({ icon: IconName, title, description, color }) => {
 };
 
 const AboutPage = () => {
+  // Prepare experience items with null check
+  const experienceItems = experience?.map(exp => ({
+    title: exp.title,
+    subtitle: exp.company,
+    date: exp.period,
+    description: exp.highlights?.join('. ')
+  })) || [];
+
   return (
     <>
       <SEO 
@@ -53,9 +63,11 @@ const AboutPage = () => {
         />
 
         {/* Quick Stats */}
-        <SectionContainer className="py-12">
-          <StatsGrid stats={stats} />
-        </SectionContainer>
+        {stats && (
+          <SectionContainer className="py-12">
+            <StatsGrid stats={stats} />
+          </SectionContainer>
+        )}
 
         {/* Bio Section */}
         <SectionContainer className="py-20 bg-background">
@@ -86,7 +98,7 @@ const AboutPage = () => {
                 Areas of Expertise
               </h2>
               <div className="space-y-4">
-                {coreCompetencies.map((competency, index) => (
+                {coreCompetencies?.map((competency, index) => (
                   <CompetencyItem key={index} {...competency} />
                 ))}
               </div>
@@ -95,22 +107,19 @@ const AboutPage = () => {
         </SectionContainer>
 
         {/* Education & Experience */}
-        <SectionContainer className="py-20">
-          <motion.div className="max-w-4xl mx-auto">
-            <motion.h2 
-              className="text-3xl font-bold text-text-primary mb-12 text-center"
-              variants={fadeInUp}
-            >
-              Education & Experience
-            </motion.h2>
-            <Timeline items={experience.map(exp => ({
-              title: exp.title,
-              subtitle: exp.company,
-              date: exp.period,
-              description: exp.highlights?.join('. ')
-            }))} />
-          </motion.div>
-        </SectionContainer>
+        {experienceItems.length > 0 && (
+          <SectionContainer className="py-20">
+            <motion.div className="max-w-4xl mx-auto">
+              <motion.h2 
+                className="text-3xl font-bold text-text-primary mb-12 text-center"
+                variants={fadeInUp}
+              >
+                Education & Experience
+              </motion.h2>
+              <Timeline items={experienceItems} />
+            </motion.div>
+          </SectionContainer>
+        )}
       </div>
     </>
   );
