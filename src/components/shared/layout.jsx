@@ -106,14 +106,20 @@ export const CallToAction = ({ title, subtitle, buttons }) => (
 );
 
 // Timeline Component
-export const Timeline = ({ events = [] }) => {
-  if (!Array.isArray(events) || events.length === 0) {
+// src/components/shared/layout.jsx
+// Only modify the Timeline component, keep everything else the same
+
+export const Timeline = ({ events }) => {
+  // Add safety check
+  const safeEvents = Array.isArray(events) ? events : [];
+  
+  if (safeEvents.length === 0) {
     return null;
   }
 
   return (
     <div className="relative space-y-8">
-      {events.map((event, index) => (
+      {safeEvents.map((event, index) => (
         <motion.div
           key={index}
           variants={fadeInUp}
@@ -121,12 +127,12 @@ export const Timeline = ({ events = [] }) => {
         >
           <div className="flex flex-col items-center">
             <div className="w-3 h-3 bg-primary-600 rounded-full" />
-            {index !== events.length - 1 && (
+            {index !== safeEvents.length - 1 && (
               <div className="w-0.5 h-full bg-primary-200" />
             )}
           </div>
           <div className="flex-1 bg-white rounded-lg shadow-lg p-6">
-            <h4 className="font-semibold text-text-primary">{event?.title || 'Untitled'}</h4>
+            <h4 className="font-semibold text-text-primary">{event?.title}</h4>
             {event?.date && <p className="text-text-light text-sm">{event.date}</p>}
             {event?.description && <p className="text-text-secondary mt-2">{event.description}</p>}
           </div>
@@ -135,7 +141,6 @@ export const Timeline = ({ events = [] }) => {
     </div>
   );
 };
-
 // SEO Component
 export const SEO = ({ 
   title, 
