@@ -35,7 +35,7 @@ const PortfolioPage = () => {
       />
       <div className="min-h-screen">
         <PageHeader
-          title="Portfolio"
+          title="Jordan's Online Portfolio"
           subtitle="Explore my latest instructional design projects and achievements"
         />
 

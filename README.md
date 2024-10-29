@@ -136,6 +136,7 @@ Planned improvements:
 
  Future Enhancements
 🎯 In Progress
+update code so that each function is it's own file 
 
 Enhanced project card animations for better user engagement
 Scroll improvements including Back to Top button

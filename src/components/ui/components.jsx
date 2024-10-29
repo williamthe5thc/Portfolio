@@ -2,8 +2,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Loader2, AlertCircle, Image as ImageIcon } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
-// Button Component
 export const Button = ({ 
   children, 
   variant = 'primary', 
@@ -11,8 +11,12 @@ export const Button = ({
   icon: Icon,
   isLoading = false,
   className = '',
+  href,
+  onClick,
   ...props 
 }) => {
+  const navigate = useNavigate();
+  
   const baseStyles = 'inline-flex items-center justify-center font-medium rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2';
   
   const variants = {
@@ -29,11 +33,29 @@ export const Button = ({
     lg: 'px-6 py-3 text-lg'
   };
 
+  const handleClick = (e) => {
+    if (isLoading) return;
+    
+    if (href) {
+      e.preventDefault();
+      if (href.startsWith('http')) {
+        window.open(href, '_blank');
+      } else {
+        navigate(href);
+      }
+    }
+    
+    if (onClick) {
+      onClick(e);
+    }
+  };
+
   return (
     <motion.button
       whileHover={{ scale: 1.02 }}
       whileTap={{ scale: 0.98 }}
       disabled={isLoading}
+      onClick={handleClick}
       className={`
         ${baseStyles}
         ${variants[variant]}

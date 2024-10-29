@@ -8,44 +8,96 @@ import { fadeInUp } from './animations';
 import { navigation, siteMetadata } from '../../data/siteData';
 
 //  Navigation component
+export const Navigation = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-export const Navigation = () => (
-  <nav className="bg-white shadow-sm sticky top-0 z-50">
-    <div className="max-w-6xl mx-auto px-4">
-      <div className="flex items-center justify-between h-16">
-        <NavLink to="/" className="font-bold text-xl text-text-primary hover:text-primary-600 transition-all duration-300">
-          W. Jordan Charles
-        </NavLink>
-        <div className="hidden md:flex space-x-4">
-          {navigation.map(({ path, label, icon }) => {
-            const Icon = Icons[icon];
-            return (
-              <NavLink
-                key={path}
-                to={path}
-                className={({ isActive }) => `
-                  px-3 py-2 rounded-md flex items-center gap-2
-                  transition-all duration-300 relative
-                  group
-                  ${isActive 
-                    ? 'text-primary-600 bg-primary-50' 
-                    : 'text-text-secondary hover:text-primary-600'
-                  }
-                `}
-                end={path === "/"}
-              >
-                <Icon className="w-4 h-4" />
-                {label}
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-600 group-hover:w-full transition-all duration-300" />
-              </NavLink>
-            );
-          })}
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  return (
+    <nav className="bg-white shadow-sm sticky top-0 z-50">
+      <div className="max-w-6xl mx-auto px-4">
+        <div className="flex items-center justify-between h-16">
+          {/* Logo/Name */}
+          <NavLink to="/" className="font-bold text-xl text-text-primary hover:text-primary-600 transition-all duration-300">
+            W. Jordan Charles
+          </NavLink>
+
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex space-x-4">
+            {navigation.map(({ path, label, icon }) => {
+              const Icon = Icons[icon];
+              return (
+                <NavLink
+                  key={path}
+                  to={path}
+                  className={({ isActive }) => `
+                    px-3 py-2 rounded-md flex items-center gap-2
+                    transition-all duration-300 relative group
+                    ${isActive 
+                      ? 'text-primary-600 bg-primary-50' 
+                      : 'text-text-secondary hover:text-primary-600'
+                    }
+                  `}
+                  end={path === "/"}
+                >
+                  <Icon className="w-4 h-4" />
+                  {label}
+                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-600 group-hover:w-full transition-all duration-300" />
+                </NavLink>
+              );
+            })}
+          </div>
+
+          {/* Mobile Menu Button */}
+          <button
+            className="md:hidden p-2 rounded-md text-text-secondary hover:text-primary-600 hover:bg-primary-50"
+            onClick={toggleMenu}
+          >
+            {isMenuOpen ? (
+              <Icons.X className="w-6 h-6" />
+            ) : (
+              <Icons.Menu className="w-6 h-6" />
+            )}
+          </button>
         </div>
-      </div>
-    </div>
-  </nav>
-);
 
+        {/* Mobile Navigation */}
+        {isMenuOpen && (
+          <div className="md:hidden pb-4">
+            <div className="flex flex-col space-y-2">
+              {navigation.map(({ path, label, icon }) => {
+                const Icon = Icons[icon];
+                return (
+                  <NavLink
+                    key={path}
+                    to={path}
+                    onClick={() => setIsMenuOpen(false)}
+                    className={({ isActive }) => `
+                      px-3 py-2 rounded-md flex items-center gap-2
+                      transition-all duration-300
+                      ${isActive 
+                        ? 'text-primary-600 bg-primary-50' 
+                        : 'text-text-secondary hover:text-primary-600 hover:bg-primary-50'
+                      }
+                    `}
+                    end={path === "/"}
+                  >
+                    <Icon className="w-5 h-5" />
+                    {label}
+                  </NavLink>
+                );
+              })}
+            </div>
+          </div>
+        )}
+      </div>
+    </nav>
+  );
+};
+
+export default Navigation;
 // Page Header Component
 export const PageHeader = ({ title, subtitle }) => (
   <motion.section 
