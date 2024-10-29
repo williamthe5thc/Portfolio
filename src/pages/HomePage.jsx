@@ -19,6 +19,9 @@ import {
   coreCompetencies
 } from '../data/siteData';
 
+// Import CoreCompetencies from cards
+import { CoreCompetencies } from '../components/shared/cards';
+
 const HomePage = () => {
   return (
     <>
