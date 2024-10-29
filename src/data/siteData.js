@@ -51,7 +51,7 @@ export const projects = [
     title: "How to Effectively Date Better",
     description: "Designed a comprehensive course on effective dating using Articulate Storyline",
     tags: ["Articulate", "Instructional Design", "eLearning"],
-    image: "/images/projects/online-dating.jpg",
+    image: "./images/projects/online-dating.jpg", // Using relative path
     status: "in progress",
     date: "May 2024 - Jul 2024",
     category: "elearning"
@@ -61,7 +61,7 @@ export const projects = [
     title: "How to Learn the Waltz",
     description: "Developed a Canvas LMS course for 'The Social Dance Effect'",
     tags: ["Canvas", "LMS", "Dance Education"],
-    image: "/images/projects/how-to-waltz.jpg",
+    image: "./images/projects/how-to-waltz.jpg", // Using relative path
     status: "in progress",
     date: "Aug 2023 - Dec 2023",
     category: "id"

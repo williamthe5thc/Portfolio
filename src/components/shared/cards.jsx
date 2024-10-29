@@ -83,10 +83,12 @@ export const ProjectCard = ({ project }) => {
   // Function to get the image source with fallback
   const getImageSource = () => {
     if (imageError || !project.image) {
-      return '/images/projects/coming_soon.png';
+      return './images/projects/coming_soon.png';
     }
-    // Remove any leading 'public' from the path if it exists
-    return project.image.replace(/^\/public/, '');
+    
+    // Clean up the path to ensure it's relative
+    const cleanPath = project.image.replace(/^\/+/, './');
+    return cleanPath;
   };
 
   // Handle image load error
