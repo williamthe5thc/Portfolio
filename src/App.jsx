@@ -22,11 +22,11 @@ const PageTransition = ({ children }) => (
   </motion.div>
 );
 
+// In your App.jsx
 const App = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Simulate initial loading
     const timer = setTimeout(() => {
       setIsLoading(false);
     }, 1500);
@@ -45,26 +45,11 @@ const App = () => {
           <Navigation />
           <AnimatePresence mode="wait">
             <Routes>
-              <Route 
-                path="/" 
-                element={<PageTransition><HomePage /></PageTransition>} 
-              />
-              <Route 
-                path="/about" 
-                element={<PageTransition><AboutPage /></PageTransition>} 
-              />
-              <Route 
-                path="/portfolio" 
-                element={<PageTransition><PortfolioPage /></PageTransition>} 
-              />
-              <Route 
-                path="/contact" 
-                element={<PageTransition><ContactPage /></PageTransition>} 
-              />
-              <Route 
-                path="*" 
-                element={<PageTransition><NotFoundPage /></PageTransition>} 
-              />
+              <Route path="/" element={<PageTransition><HomePage /></PageTransition>} />
+              <Route path="/about" element={<PageTransition><AboutPage /></PageTransition>} />
+              <Route path="/portfolio" element={<PageTransition><PortfolioPage /></PageTransition>} />
+              <Route path="/contact" element={<PageTransition><ContactPage /></PageTransition>} />
+              <Route path="*" element={<PageTransition><NotFoundPage /></PageTransition>} />
             </Routes>
           </AnimatePresence>
           <footer className="bg-white border-t border-gray-200 py-8 mt-auto">

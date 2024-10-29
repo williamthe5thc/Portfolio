@@ -38,11 +38,12 @@ export const projectCategories = [
   }
 ];
 
+// src/data/siteData.js
 export const navigation = [
-  { path: "/", label: "Home", icon: "Home" },
-  { path: "/about", label: "About", icon: "User" },
-  { path: "/portfolio", label: "Portfolio", icon: "Briefcase" },
-  { path: "/contact", label: "Contact", icon: "Mail" }
+  { path: "/#", label: "Home", icon: "Home" },
+  { path: "/#/about", label: "About", icon: "User" },
+  { path: "/#/portfolio", label: "Portfolio", icon: "Briefcase" },
+  { path: "/#/contact", label: "Contact", icon: "Mail" }
 ];
 
 export const projects = [

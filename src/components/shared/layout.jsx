@@ -12,7 +12,7 @@ export const Navigation = () => (
   <nav className="bg-white shadow-sm sticky top-0 z-50">
     <div className="max-w-6xl mx-auto px-4">
       <div className="flex items-center justify-between h-16">
-        <NavLink to="/" className="font-bold text-xl text-text-primary hover:text-primary-600">
+        <NavLink to="/#" className="font-bold text-xl text-text-primary hover:text-primary-600">
           W. Jordan Charles
         </NavLink>
         <div className="hidden md:flex space-x-4">
