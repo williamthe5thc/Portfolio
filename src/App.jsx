@@ -1,6 +1,6 @@
 // src/App.jsx
 import React, { useState, useEffect } from 'react';
-import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Navigation, LoadingScreen, ErrorBoundary } from './components/shared';
 import HomePage from './pages/HomePage';
@@ -24,24 +24,15 @@ const PageTransition = ({ children }) => (
 
 const App = () => {
   const [isLoading, setIsLoading] = useState(true);
-  const location = useLocation();
-  const navigate = useNavigate();
 
   useEffect(() => {
-    // Handle 404 redirects from static page
-    const redirect = localStorage.getItem('404-redirect');
-    if (redirect) {
-      localStorage.removeItem('404-redirect');
-      navigate(redirect);
-    }
-
     // Simulate initial loading
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 1500); // Reduced from 2000ms for better UX
+    }, 1500);
 
     return () => clearTimeout(timer);
-  }, [navigate]);
+  }, []);
 
   if (isLoading) {
     return <LoadingScreen />;
@@ -49,38 +40,40 @@ const App = () => {
 
   return (
     <ErrorBoundary>
-      <div className="min-h-screen bg-background-light">
-        <Navigation />
-        <AnimatePresence mode="wait">
-          <Routes location={location} key={location.pathname}>
-            <Route 
-              path="/" 
-              element={<PageTransition><HomePage /></PageTransition>} 
-            />
-            <Route 
-              path="/about" 
-              element={<PageTransition><AboutPage /></PageTransition>} 
-            />
-            <Route 
-              path="/portfolio" 
-              element={<PageTransition><PortfolioPage /></PageTransition>} 
-            />
-            <Route 
-              path="/contact" 
-              element={<PageTransition><ContactPage /></PageTransition>} 
-            />
-            <Route 
-              path="*" 
-              element={<PageTransition><NotFoundPage /></PageTransition>} 
-            />
-          </Routes>
-        </AnimatePresence>
-        <footer className="bg-white border-t border-gray-200 py-8 mt-auto">
-          <div className="max-w-6xl mx-auto px-4 text-center text-text-secondary">
-            <p>© {new Date().getFullYear()} {siteMetadata.author}. All rights reserved.</p>
-          </div>
-        </footer>
-      </div>
+      <Router>
+        <div className="min-h-screen bg-background-light">
+          <Navigation />
+          <AnimatePresence mode="wait">
+            <Routes>
+              <Route 
+                path="/" 
+                element={<PageTransition><HomePage /></PageTransition>} 
+              />
+              <Route 
+                path="/about" 
+                element={<PageTransition><AboutPage /></PageTransition>} 
+              />
+              <Route 
+                path="/portfolio" 
+                element={<PageTransition><PortfolioPage /></PageTransition>} 
+              />
+              <Route 
+                path="/contact" 
+                element={<PageTransition><ContactPage /></PageTransition>} 
+              />
+              <Route 
+                path="*" 
+                element={<PageTransition><NotFoundPage /></PageTransition>} 
+              />
+            </Routes>
+          </AnimatePresence>
+          <footer className="bg-white border-t border-gray-200 py-8 mt-auto">
+            <div className="max-w-6xl mx-auto px-4 text-center text-text-secondary">
+              <p>© {new Date().getFullYear()} {siteMetadata.author}. All rights reserved.</p>
+            </div>
+          </footer>
+        </div>
+      </Router>
     </ErrorBoundary>
   );
 };
