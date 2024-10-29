@@ -10,7 +10,12 @@ import {
   StatsGrid
 } from '../components/shared';
 import { BaseCard } from '../components/ui/components';
-import { fadeInUp } from '../components/shared/animations';
+import { 
+  fadeInUp, 
+  staggerContainer, 
+  staggerChildren 
+} from '../components/shared/animations';
+
 import { 
   siteMetadata,
   education, 

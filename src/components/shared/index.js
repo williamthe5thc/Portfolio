@@ -19,8 +19,7 @@ export {
   JourneyCard,
   PhilosophyCard,
   ProjectCard,
-  StatsGrid,
-  CoreCompetencies
+  StatsGrid
 } from './cards';
 
 // Export form components
@@ -33,14 +32,20 @@ export {
 export {
   fadeIn,
   fadeInUp,
+  fadeInDown,
   slideIn,
   scaleUp,
   hover,
   staggerContainer,
+  staggerChildren,
   pageTransition,
   loadingSpinner,
+  loadingPulse,
+  cardHover,
   modalBackdrop,
-  modalContent
+  modalContent,
+  listItem,
+  getStaggerDelay
 } from './animations';
 
 // Export standalone components
