@@ -1,21 +1,38 @@
+// src/pages/AboutPage.jsx
 import React from 'react';
 import { motion } from 'framer-motion';
+import * as Icons from 'lucide-react';
 import { 
   SEO,
   PageHeader, 
   SectionContainer,
   Timeline, 
-  PhilosophyCard,
   StatsGrid
 } from '../components/shared';
 import { BaseCard } from '../components/ui/components';
-import { fadeInUp, staggerContainer } from '../components/shared/animations';
+import { fadeInUp } from '../components/shared/animations';
 import { 
   siteMetadata,
   education, 
   experience,
-  stats
+  stats,
+  coreCompetencies 
 } from '../data/siteData';
+
+const CompetencyItem = ({ icon: IconName, title, description, color }) => {
+  const Icon = Icons[IconName];
+  return (
+    <motion.div variants={fadeInUp} className="mb-6">
+      <div className="flex items-start gap-3">
+        {Icon && <Icon className={`w-6 h-6 ${color}`} />}
+        <div>
+          <h3 className="font-semibold text-text-primary mb-1">{title}</h3>
+          <p className="text-text-secondary text-sm">{description}</p>
+        </div>
+      </div>
+    </motion.div>
+  );
+};
 
 const AboutPage = () => {
   return (
@@ -23,12 +40,6 @@ const AboutPage = () => {
       <SEO 
         title="About"
         description={`Learn about ${siteMetadata.author}'s journey, expertise, and approach to instructional design`}
-        keywords={[
-          'instructional designer background',
-          'learning experience developer',
-          'education technology expert',
-          `${siteMetadata.author} bio`
-        ]}
       />
       <div className="min-h-screen">
         <PageHeader
@@ -69,84 +80,31 @@ const AboutPage = () => {
               <h2 className="text-2xl font-bold text-text-primary mb-6">
                 Areas of Expertise
               </h2>
-              <ul className="space-y-4 text-text-secondary">
-                {coreCompetencies.map(competency => (
-                  <li key={competency.title} className="flex items-center gap-2">
-                    • {competency.title}
-                  </li>
+              <div className="space-y-4">
+                {coreCompetencies.map((competency, index) => (
+                  <CompetencyItem key={index} {...competency} />
                 ))}
-              </ul>
+              </div>
             </motion.div>
           </div>
         </SectionContainer>
 
         {/* Education & Experience */}
         <SectionContainer className="py-20">
-          <motion.div
-            className="max-w-4xl mx-auto"
-            variants={staggerChildren}
-          >
+          <motion.div className="max-w-4xl mx-auto">
             <motion.h2 
               className="text-3xl font-bold text-text-primary mb-12 text-center"
               variants={fadeInUp}
             >
               Education & Experience
             </motion.h2>
-            <div className="grid md:grid-cols-2 gap-8 mb-16">
-              <motion.div variants={fadeInUp}>
-                <BaseCard>
-                  <h3 className="text-2xl font-bold text-text-primary mb-6">
-                    Education
-                  </h3>
-                  {education.degrees.map((degree, index) => (
-                    <div key={index} className="mb-6 last:mb-0">
-                      <h4 className="font-semibold text-text-primary">
-                        {degree.degree} in {degree.field}
-                      </h4>
-                      <p className="text-text-secondary">{degree.institution}</p>
-                      <p className="text-text-light">{degree.period}</p>
-                      {degree.gpa && (
-                        <p className="text-text-light">GPA: {degree.gpa}</p>
-                      )}
-                    </div>
-                  ))}
-                </BaseCard>
-              </motion.div>
-
-              <motion.div variants={fadeInUp}>
-                <BaseCard>
-                  <h3 className="text-2xl font-bold text-text-primary mb-6">
-                    Certifications
-                  </h3>
-                  {education.certifications.map((cert, index) => (
-                    <div key={index} className="mb-6 last:mb-0">
-                      <h4 className="font-semibold text-text-primary">
-                        {cert.title}
-                      </h4>
-                      <p className="text-text-secondary">{cert.issuer}</p>
-                      <p className="text-text-light">{cert.date}</p>
-                    </div>
-                  ))}
-                </BaseCard>
-              </motion.div>
-            </div>
+            <Timeline items={experience.map(exp => ({
+              title: exp.title,
+              subtitle: exp.company,
+              date: exp.period,
+              description: exp.highlights?.join('. ')
+            }))} />
           </motion.div>
-        </SectionContainer>
-
-        {/* Experience Timeline */}
-        <SectionContainer className="py-20 bg-background">
-          <motion.h2 
-            className="text-3xl font-bold text-text-primary mb-12 text-center"
-            variants={fadeInUp}
-          >
-            Professional Journey
-          </motion.h2>
-          <Timeline items={experience.map(exp => ({
-            title: exp.title,
-            subtitle: exp.company,
-            date: exp.period,
-            description: exp.highlights?.join('. ')
-          }))} />
         </SectionContainer>
       </div>
     </>
