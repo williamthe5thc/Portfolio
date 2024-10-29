@@ -1,0 +1,14 @@
+{
+  "name": "W. Jordan Charles Portfolio",
+  "short_name": "JC Portfolio",
+  "icons": [
+    {
+      "src": "/Portfolio/favicon.ico",
+      "sizes": "64x64",
+      "type": "image/x-icon"
+    }
+  ],
+  "theme_color": "#0ea5e9",
+  "background_color": "#ffffff",
+  "display": "standalone"
+}
