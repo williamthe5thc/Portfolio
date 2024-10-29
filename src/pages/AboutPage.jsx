@@ -25,7 +25,6 @@ import {
 } from '../data/siteData';
 
 const CompetencyItem = ({ icon: IconName, title, description, color }) => {
-  // Check if IconName exists in Icons
   const Icon = Icons[IconName];
   
   return (
@@ -42,7 +41,6 @@ const CompetencyItem = ({ icon: IconName, title, description, color }) => {
 };
 
 const AboutPage = () => {
-  // Safely transform experience data
   const experienceItems = React.useMemo(() => {
     if (!Array.isArray(experience)) return [];
     
@@ -60,6 +58,7 @@ const AboutPage = () => {
         title="About"
         description={`Learn about ${siteMetadata.author}'s journey, expertise, and approach to instructional design`}
       />
+      
       <div className="min-h-screen">
         <PageHeader
           title="About Me"
@@ -110,20 +109,19 @@ const AboutPage = () => {
           </div>
         </SectionContainer>
 
-           {/* Education & Experience Section */}
-      <SectionContainer className="py-20">
-        <motion.div className="max-w-4xl mx-auto">
-          <motion.h2 
-            className="text-3xl font-bold text-text-primary mb-12 text-center"
-            variants={fadeInUp}
-          >
-            Education & Experience
-          </motion.h2>
-          <Timeline 
-            events={experienceItems} 
-          />
-        </motion.div>
-      </SectionContainer>
+        {/* Education & Experience */}
+        <SectionContainer className="py-20">
+          <motion.div className="max-w-4xl mx-auto">
+            <motion.h2 
+              className="text-3xl font-bold text-text-primary mb-12 text-center"
+              variants={fadeInUp}
+            >
+              Education & Experience
+            </motion.h2>
+            <Timeline events={experienceItems} />
+          </motion.div>
+        </SectionContainer>
+      </div>
     </>
   );
 };
