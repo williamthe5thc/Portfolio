@@ -93,7 +93,6 @@ export const ProjectCard = ({ project }) => {
 
   // Handle image load error
   const handleImageError = () => {
-    console.log('Image failed to load:', project.image);
     setImageError(true);
   };
 
