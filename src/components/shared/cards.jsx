@@ -4,6 +4,8 @@ import { motion } from 'framer-motion';
 import * as Icons from 'lucide-react';
 import { fadeInUp, cardHover, modalContent, modalBackdrop } from './animations';
 import { BaseCard } from '../ui/components';
+import { useNavigate } from 'react-router-dom';
+import { ExternalLink, ArrowRight, X, ZoomIn } from 'lucide-react';
 
 export const CoreCompetencies = ({ items }) => (
   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -76,65 +78,62 @@ export const PhilosophyCard = ({ icon: IconName, content }) => {
 
 // Project Card Component
 export const ProjectCard = ({ project }) => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const navigate = useNavigate();
   const [isHovered, setIsHovered] = useState(false);
-  const [imageError, setImageError] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-  // Function to get the image source with fallback
-  const getImageSource = () => {
-    if (imageError || !project.image) {
-      return './images/projects/coming_soon.png';
+  const handleClick = () => {
+    if (project.projectUrl) {
+      window.open(project.projectUrl, '_blank');
+    } else if (project.detailPage) {
+      navigate(`/portfolio/${project.id}`);
     }
-    
-    // Clean up the path to ensure it's relative
-    const cleanPath = project.image.replace(/^\/+/, './');
-    return cleanPath;
   };
 
-  // Handle image load error
-  const handleImageError = () => {
-    setImageError(true);
+  const handleZoomClick = (e) => {
+    e.stopPropagation();
+    setIsModalOpen(true);
   };
 
   return (
     <>
       <motion.div
-        className="bg-white rounded-xl shadow-lg overflow-hidden"
+        className="bg-white rounded-xl shadow-lg overflow-hidden cursor-pointer"
         variants={cardHover}
         whileHover="whileHover"
         whileTap="whileTap"
         onHoverStart={() => setIsHovered(true)}
         onHoverEnd={() => setIsHovered(false)}
+        onClick={handleClick}
       >
         <div className="relative">
           <div className="aspect-video bg-gray-100 relative overflow-hidden">
             <motion.img
-              src={getImageSource()}
+              src={project.image}
               alt={project.title}
-              onError={handleImageError}
               className="w-full h-full object-cover"
               animate={{ scale: isHovered ? 1.05 : 1 }}
               transition={{ duration: 0.3 }}
             />
-            ) : (
-              <div className="w-full h-full flex items-center justify-center bg-gray-200">
-                <Icons.Image className="w-12 h-12 text-gray-400" />
-              </div>
-            )}
             <motion.div
               className="absolute inset-0 bg-black bg-opacity-0 flex items-center justify-center"
               animate={{ backgroundColor: isHovered ? 'rgba(0,0,0,0.3)' : 'rgba(0,0,0,0)' }}
               transition={{ duration: 0.3 }}
             >
-              <motion.button
-                className="bg-white p-2 rounded-full opacity-0"
+              <motion.div
+                className="text-white opacity-0 flex items-center gap-2"
                 animate={{ opacity: isHovered ? 1 : 0 }}
-                onClick={() => setIsModalOpen(true)}
               >
-                <Icons.ZoomIn className="w-6 h-6 text-gray-800" />
-              </motion.button>
+                {project.projectUrl ? (
+                  <ExternalLink className="w-6 h-6" />
+                ) : (
+                  <ArrowRight className="w-6 h-6" />
+                )}
+                <span>View {project.projectUrl ? 'Project' : 'Details'}</span>
+              </motion.div>
             </motion.div>
           </div>
+
           {project.status && (
             <motion.div
               className="absolute top-4 right-4 bg-primary-500 text-white px-3 py-1 rounded-full text-sm"
@@ -145,6 +144,7 @@ export const ProjectCard = ({ project }) => {
             </motion.div>
           )}
         </div>
+
         <div className="p-6">
           <h3 className="text-xl font-semibold text-text-primary mb-2">{project.title}</h3>
           <p className="text-text-secondary mb-4">{project.description}</p>
@@ -163,7 +163,6 @@ export const ProjectCard = ({ project }) => {
         </div>
       </motion.div>
 
-      {/* Project Modal */}
       {isModalOpen && (
         <motion.div
           className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-75 p-4"
@@ -182,7 +181,7 @@ export const ProjectCard = ({ project }) => {
               className="absolute top-4 right-4 text-white hover:text-gray-300"
               onClick={() => setIsModalOpen(false)}
             >
-              <Icons.X className="w-6 h-6" />
+              <X className="w-6 h-6" />
             </button>
             {project.image && (
               <img 

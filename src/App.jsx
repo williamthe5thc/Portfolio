@@ -10,7 +10,7 @@ import PortfolioPage from './pages/PortfolioPage';
 import ContactPage from './pages/ContactPage';
 import NotFoundPage from './pages/NotFoundPage';
 import { siteMetadata } from './data/siteData';
-
+import ProjectDetailPage from './pages/ProjectDetailPage';
 // Page transition wrapper component
 const PageTransition = ({ children }) => (
   <motion.div
@@ -46,12 +46,16 @@ const App = () => {
           <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <AnimatePresence mode="wait">
               <Routes>
-                <Route path="/" element={<PageTransition><HomePage /></PageTransition>} />
-                <Route path="/about" element={<PageTransition><AboutPage /></PageTransition>} />
-                <Route path="/portfolio" element={<PageTransition><PortfolioPage /></PageTransition>} />
-                <Route path="/contact" element={<PageTransition><ContactPage /></PageTransition>} />
-                <Route path="*" element={<PageTransition><NotFoundPage /></PageTransition>} />
-              </Routes>
+  <Route path="/" element={<PageTransition><HomePage /></PageTransition>} />
+  <Route path="/about" element={<PageTransition><AboutPage /></PageTransition>} />
+  <Route path="/portfolio" element={<PageTransition><PortfolioPage /></PageTransition>} />
+  <Route 
+    path="/portfolio/:projectId" 
+    element={<PageTransition><ProjectDetailPage /></PageTransition>} 
+  />
+  <Route path="/contact" element={<PageTransition><ContactPage /></PageTransition>} />
+  <Route path="*" element={<PageTransition><NotFoundPage /></PageTransition>} />
+</Routes>
             </AnimatePresence>
           </main>
           <footer className="bg-white border-t border-gray-200 py-8 mt-auto">

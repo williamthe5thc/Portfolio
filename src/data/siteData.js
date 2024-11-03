@@ -54,7 +54,19 @@ export const projects = [
     image: "./images/projects/online-dating.jpg",
     status: "in progress",
     date: "May 2024 - Jul 2024",
-    category: "elearning"
+    category: "elearning",
+      projectUrl: "https://360.articulate.com/review/content/2cd611c0-132c-439a-82e9-b883037d6385/review", // External link to live project
+    detailPage: true, // Set to true if you want a detail page for this project
+    fullDescription: `
+      A detailed look at the dating course project...
+      - Project goals
+      - Development process
+      - Technologies used
+      - Outcomes and results
+    `,
+    challenges: ["Challenge 1", "Challenge 2"],
+    solutions: ["Solution 1", "Solution 2"],
+    results: ["Result 1", "Result 2"]
   },
   {
     id: "waltz-course",
@@ -73,6 +85,26 @@ export const projects = [
     status: "completed",
     date: "Aug 2023 - Dec 2023",
     category: "id"
+  },
+    {
+    id: "photoshop-project-1",
+    title: "Brand Identity Design",
+    description: "Created comprehensive brand identity including logo and marketing materials",
+    tags: ["Photoshop", "Branding", "Design"],
+    image: "./images/projects/brand-identity.jpg",
+    status: "completed",
+    date: "Jan 2024",
+    category: "photoshop"
+  },
+  {
+    id: "premiere-project-1",
+    title: "Training Video Series",
+    description: "Produced and edited a series of instructional videos for software training",
+    tags: ["Premiere Pro", "Video Editing", "Training"],
+    image: "./images/projects/training-videos.jpg",
+    status: "completed",
+    date: "Feb 2024",
+    category: "premier"
   },
   {
     id: "variable-timer",
@@ -177,6 +209,16 @@ export const projectCategories = [
     id: 'elearning',
     label: 'E-Learning',
     description: 'Interactive digital learning experiences and modules'
+  },
+  {
+    id: 'photoshop',
+    label: 'Photoshop',
+    description: 'Digital art and image manipulation projects'
+  },
+  {
+    id: 'premier',
+    label: 'Premiere Pro',
+    description: 'Video editing and production work'
   },
   {
     id: 'id',

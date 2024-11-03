@@ -6,6 +6,8 @@ import * as Icons from 'lucide-react';
 import { Helmet } from 'react-helmet';
 import { fadeInUp } from './animations';
 import { navigation, siteMetadata } from '../../data/siteData';
+import { useLocation } from 'react-router-dom';
+
 
 //  Navigation component
 export const Navigation = () => {
@@ -210,49 +212,66 @@ export const SEO = ({
   type = 'website', 
   image,
   keywords = [],
-  noindex = false 
+  noindex = false,
+  schema,
+  canonical
 }) => {
+  const location = useLocation();
   const pageTitle = title ? `${title} | ${siteMetadata.title}` : siteMetadata.title;
   const metaDescription = description || siteMetadata.description;
   const metaImage = image || siteMetadata.defaultImage;
+  const url = `${siteMetadata.siteUrl}${location.pathname}`;
+
+  // Default schema
+  const defaultSchema = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": siteMetadata.author,
+    "url": siteMetadata.siteUrl,
+    "sameAs": [
+      siteMetadata.social?.linkedin,
+      siteMetadata.social?.github,
+    ].filter(Boolean),
+    "jobTitle": "Instructional Designer",
+    "description": siteMetadata.description,
+  };
+
+  const finalSchema = schema || defaultSchema;
 
   return (
     <Helmet>
+      {/* Basic */}
       <title>{pageTitle}</title>
       <meta name="description" content={metaDescription} />
-      {keywords.length > 0 && <meta name="keywords" content={keywords.join(', ')} />}
-      {noindex && <meta name="robots" content="noindex" />}
-
-      {/* Open Graph / Facebook */}
+      <meta name="keywords" content={keywords.join(', ')} />
+      {noindex && <meta name="robots" content="noindex,nofollow" />}
+      {canonical && <link rel="canonical" href={canonical} />}
+      
+      {/* Open Graph */}
+      <meta property="og:url" content={url} />
       <meta property="og:type" content={type} />
       <meta property="og:title" content={pageTitle} />
       <meta property="og:description" content={metaDescription} />
       {metaImage && <meta property="og:image" content={metaImage} />}
+      <meta property="og:site_name" content={siteMetadata.title} />
 
       {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={pageTitle} />
       <meta name="twitter:description" content={metaDescription} />
       {metaImage && <meta name="twitter:image" content={metaImage} />}
+
+      {/* Schema.org */}
+      <script type="application/ld+json">
+        {JSON.stringify(finalSchema)}
+      </script>
+
+      {/* Additional meta tags */}
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
+      <meta name="language" content="English" />
+      <meta name="revisit-after" content="7 days" />
+      <meta name="author" content={siteMetadata.author} />
     </Helmet>
   );
 };
-
-
-// Section Header Component
-export const SectionHeader = ({ title, subtitle, className = '' }) => (
-  <motion.div
-    className={`text-center mb-12 ${className}`}
-    variants={fadeInUp}
-  >
-    <h2 className="text-3xl font-bold text-text-primary mb-4">{title}</h2>
-    {subtitle && (
-      <p className="text-text-secondary max-w-2xl mx-auto">{subtitle}</p>
-    )}
-  </motion.div>
-);
-
-// Divider Component
-export const Divider = ({ className = '' }) => (
-  <hr className={`border-t border-gray-200 my-8 ${className}`} />
-);
