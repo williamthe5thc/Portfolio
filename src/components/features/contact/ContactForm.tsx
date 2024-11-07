@@ -1,10 +1,8 @@
-// src/components/features/contact/ContactForm.tsx
-
 import React, { useState, useCallback } from 'react';
 import emailjs from '@emailjs/browser';
-import { Mail, Loader2, CheckCircle, AlertTriangle, RefreshCw } from 'lucide-react';
-import { Input, TextArea, Button } from '@/components/ui';
-import { useFormValidation } from '@/hooks/useFormValidation';
+import { Mail, AlertTriangle, CheckCircle, RefreshCw } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { useAnalytics } from '@/hooks/useAnalytics';
 
 interface FormData {
   name: string;
@@ -18,23 +16,18 @@ interface FormErrors {
   message?: string;
 }
 
-type FormStatus = null | 'sending' | 'success' | 'error' | 'rate-limited';
+type FormStatus = 'idle' | 'sending' | 'success' | 'error' | 'rate-limited';
 
 interface RateLimitConfig {
   maxAttempts: number;
-  duration: number;  // in milliseconds
-}
-
-interface ContactFormProps {
-  onSuccess?: () => void;
-  onError?: (error: Error) => void;
-  className?: string;
-  rateLimitConfig?: RateLimitConfig;
+  timeWindow: number; // in milliseconds
+  cooldownPeriod: number; // in milliseconds
 }
 
 const DEFAULT_RATE_LIMIT: RateLimitConfig = {
   maxAttempts: 3,
-  duration: 60000, // 1 minute
+  timeWindow: 300000, // 5 minutes
+  cooldownPeriod: 3600000, // 1 hour
 };
 
 const validateForm = (values: FormData): FormErrors => {
@@ -56,193 +49,232 @@ const validateForm = (values: FormData): FormErrors => {
     errors.message = 'Message is required';
   } else if (values.message.length < 10) {
     errors.message = 'Message must be at least 10 characters';
-  } else if (values.message.length > 1000) {
-    errors.message = 'Message must be less than 1000 characters';
   }
   
   return errors;
 };
 
-export const ContactForm: React.FC<ContactFormProps> = ({ 
-  onSuccess,
-  onError,
-  className = '',
-  rateLimitConfig = DEFAULT_RATE_LIMIT
-}) => {
-  const [status, setStatus] = useState<FormStatus>(null);
+export const ContactForm: React.FC<ContactFormProps> = () => {
+  const { trackFormSubmission } = useAnalytics();
+
+const [formData, setFormData] = useState<FormData>({
+    name: '',
+    email: '',
+    message: ''
+  });
+  const [errors, setErrors] = useState<FormErrors>({});
+  const [status, setStatus] = useState<FormStatus>('idle');
   const [attempts, setAttempts] = useState(0);
   const [lastSubmitTime, setLastSubmitTime] = useState(0);
-  const [errorDetails, setErrorDetails] = useState('');
+  const [cooldownEnd, setCooldownEnd] = useState(0);
 
-  const {
-    formData,
-    errors,
-    touched,
-    handleChange,
-    handleBlur,
-    reset: resetForm
-  } = useFormValidation<FormData>(
-    {
-      name: '',
-      email: '',
-      message: ''
-    },
-    validateForm
-  );
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    const validationErrors = validateForm(formData);
-
-    // Check rate limiting
-    const now = Date.now();
-    if (now - lastSubmitTime < rateLimitConfig.duration) {
-      setStatus('rate-limited');
-      setErrorDetails(`Please wait ${Math.ceil((rateLimitConfig.duration - (now - lastSubmitTime)) / 1000)} seconds`);
-      return;
-    }
-
-    if (attempts >= rateLimitConfig.maxAttempts) {
-      setStatus('rate-limited');
-      setErrorDetails('Maximum attempts reached. Please try again later.');
-      return;
-    }
-
-    if (Object.keys(validationErrors).length === 0) {
-      setStatus('sending');
-      setAttempts(prev => prev + 1);
-      setLastSubmitTime(now);
-      
-      try {
-        const result = await emailjs.send(
-          import.meta.env.VITE_EMAILJS_SERVICE_ID,
-          import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
-          {
-            from_name: formData.name,
-            reply_to: formData.email,
-            message: formData.message,
-            to_name: 'Jordan Charles',
-          },
-          import.meta.env.VITE_EMAILJS_PUBLIC_KEY
-        );
-
-        if (result.status === 200) {
-          setStatus('success');
-          resetForm();
-          setAttempts(0);
-          onSuccess?.();
-          setTimeout(() => setStatus(null), 5000);
-        } else {
-          throw new Error('Failed to send message');
-        }
-      } catch (error) {
-        console.error('EmailJS error:', error);
-        setStatus('error');
-        setErrorDetails((error as Error).message || 'Failed to send message');
-        onError?.(error as Error);
-      }
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+    // Clear error when user starts typing
+    if (errors[name as keyof FormErrors]) {
+      setErrors(prev => ({ ...prev, [name]: undefined }));
     }
   };
 
-  const renderStatusMessage = () => {
-    if (!status) return null;
+  const checkRateLimit = useCallback(() => {
+    const now = Date.now();
+    
+    // Check if in cooldown period
+    if (now < cooldownEnd) {
+      return false;
+    }
+    
+    // Reset attempts if outside time window
+    if (now - lastSubmitTime > DEFAULT_RATE_LIMIT.timeWindow) {
+      setAttempts(0);
+      return true;
+    }
+    
+    // Check if exceeded max attempts
+    if (attempts >= DEFAULT_RATE_LIMIT.maxAttempts) {
+      setCooldownEnd(now + DEFAULT_RATE_LIMIT.cooldownPeriod);
+      return false;
+    }
+    
+    return true;
+  }, [attempts, lastSubmitTime, cooldownEnd]);
 
-    const statusConfig = {
-      success: {
-        bgColor: 'bg-green-50',
-        textColor: 'text-green-600',
-        Icon: CheckCircle,
-        message: 'Message sent successfully!'
-      },
-      error: {
-        bgColor: 'bg-red-50',
-        textColor: 'text-red-600',
-        Icon: AlertTriangle,
-        message: 'Failed to send message.'
-      },
-      'rate-limited': {
-        bgColor: 'bg-yellow-50',
-        textColor: 'text-yellow-600',
-        Icon: AlertTriangle,
-        message: errorDetails
+  const handleSubmit = async (e: React.FormEvent) => {
+    try {
+    e.preventDefault();
+    const validationErrors = validateForm(formData);
+    
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+      return;
+    }
+
+    if (!checkRateLimit()) {
+      setStatus('rate-limited');
+      return;
+    }
+
+    setStatus('sending');
+    setAttempts(prev => prev + 1);
+    setLastSubmitTime(Date.now());
+
+    try {
+      const result = await emailjs.send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        {
+          from_name: formData.name,
+          reply_to: formData.email,
+          message: formData.message,
+        },
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+      );
+
+      if (result.status === 200) {
+        setStatus('success');
+        setFormData({ name: '', email: '', message: '' });
+        setTimeout(() => setStatus('idle'), 5000);
+      } else {
+        throw new Error('Failed to send message');
       }
-    };
+    } catch (error) {
+      console.error('EmailJS error:', error);
+      setStatus('error');
+    }
+  } catch (error) {
+      trackFormSubmission('contact_form', 'error', error.message);
+    }
+  };
 
-    const config = statusConfig[status === 'sending' ? 'success' : status];
-    if (!config) return null;
-
-    const { bgColor, textColor, Icon, message } = config;
-
-    return (
-      <div
-        className={`flex items-center gap-2 p-3 rounded ${bgColor} ${textColor}`}
-        role="alert"
-      >
-        <Icon className="w-5 h-5" />
-        <div className="flex-1">
-          <span>{message}</span>
-          {status === 'error' && errorDetails && (
-            <span className="block text-sm">{errorDetails}</span>
-          )}
-        </div>
-        {status === 'error' && (
-          <button
-            onClick={resetForm}
-            className="p-1 hover:bg-red-100 rounded-full transition-colors"
-            aria-label="Try again"
+  const getStatusMessage = () => {
+    switch (status) {
+      case 'success':
+        return (
+          <motion.div 
+            className="flex items-center gap-2 p-4 bg-green-50 text-green-700 rounded-lg"
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
           >
-            <RefreshCw className="w-4 h-4" />
-          </button>
-        )}
-      </div>
-    );
+            <CheckCircle className="w-5 h-5" />
+            <span>Message sent successfully!</span>
+          </motion.div>
+        );
+      case 'error':
+        return (
+          <motion.div 
+            className="flex items-center gap-2 p-4 bg-red-50 text-red-700 rounded-lg"
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+          >
+            <AlertTriangle className="w-5 h-5" />
+            <span>Failed to send message. Please try again.</span>
+          </motion.div>
+        );
+      case 'rate-limited':
+        const timeLeft = Math.ceil((cooldownEnd - Date.now()) / 1000);
+        return (
+          <motion.div 
+            className="flex items-center gap-2 p-4 bg-yellow-50 text-yellow-700 rounded-lg"
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+          >
+            <AlertTriangle className="w-5 h-5" />
+            <span>
+              Too many attempts. Please wait {timeLeft} seconds before trying again.
+            </span>
+          </motion.div>
+        );
+      default:
+        return null;
+    }
   };
 
   return (
-    <form onSubmit={handleSubmit} className={`space-y-6 ${className}`}>
-      <Input
-        name="name"
-        label="Name"
-        value={formData.name}
-        onChange={handleChange}
-        onBlur={handleBlur}
-        error={touched.name ? errors.name : undefined}
-        disabled={status === 'sending'}
-      />
+    <form onSubmit={handleSubmit} className="space-y-6">
+      <div className="space-y-2">
+        <label htmlFor="name" className="block text-sm font-medium text-gray-700">
+          Name
+        </label>
+        <input
+          type="text"
+          id="name"
+          name="name"
+          value={formData.name}
+          onChange={handleChange}
+          className={`w-full rounded-lg border ${
+            errors.name ? 'border-red-500' : 'border-gray-300'
+          } focus:ring-2 focus:ring-blue-500`}
+          disabled={status === 'sending'}
+        />
+        {errors.name && (
+          <p className="text-sm text-red-600">{errors.name}</p>
+        )}
+      </div>
 
-      <Input
-        name="email"
-        type="email"
-        label="Email"
-        value={formData.email}
-        onChange={handleChange}
-        onBlur={handleBlur}
-        error={touched.email ? errors.email : undefined}
-        disabled={status === 'sending'}
-      />
+      <div className="space-y-2">
+        <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+          Email
+        </label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
+          className={`w-full rounded-lg border ${
+            errors.email ? 'border-red-500' : 'border-gray-300'
+          } focus:ring-2 focus:ring-blue-500`}
+          disabled={status === 'sending'}
+        />
+        {errors.email && (
+          <p className="text-sm text-red-600">{errors.email}</p>
+        )}
+      </div>
 
-      <TextArea
-        name="message"
-        label="Message"
-        value={formData.message}
-        onChange={handleChange}
-        onBlur={handleBlur}
-        error={touched.message ? errors.message : undefined}
-        disabled={status === 'sending'}
-        rows={4}
-      />
+      <div className="space-y-2">
+        <label htmlFor="message" className="block text-sm font-medium text-gray-700">
+          Message
+        </label>
+        <textarea
+          id="message"
+          name="message"
+          value={formData.message}
+          onChange={handleChange}
+          rows={4}
+          className={`w-full rounded-lg border ${
+            errors.message ? 'border-red-500' : 'border-gray-300'
+          } focus:ring-2 focus:ring-blue-500`}
+          disabled={status === 'sending'}
+        />
+        {errors.message && (
+          <p className="text-sm text-red-600">{errors.message}</p>
+        )}
+      </div>
 
-      <Button
+      <button
         type="submit"
-        isLoading={status === 'sending'}
         disabled={status === 'sending' || status === 'rate-limited'}
-        className="w-full"
-        icon={Mail}
+        className="w-full flex items-center justify-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed"
       >
-        Send Message
-      </Button>
+        {status === 'sending' ? (
+          <>
+            <RefreshCw className="w-5 h-5 animate-spin" />
+            Sending...
+          </>
+        ) : (
+          <>
+            <Mail className="w-5 h-5" />
+            Send Message
+          </>
+        )}
+      </button>
 
-      {renderStatusMessage()}
+      <AnimatePresence>
+        {status !== 'idle' && getStatusMessage()}
+      </AnimatePresence>
     </form>
   );
 };
+
+export default ContactForm;

@@ -1,3 +1,18 @@
+// src/components/ui/ProjectCard.tsx
+/**
+ * @file ProjectCard.tsx - Project display card component
+ * @module components/ui
+ * @description Card component for displaying individual portfolio projects.
+ * Includes image preview, description, and interactive features.
+ * 
+ * Features:
+ * - Image preview with hover effects
+ * - Project details display
+ * - Tag/category display
+ * - Modal preview integration
+ * - Link handling
+ */
+
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
@@ -72,10 +87,18 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleClick = () => {
-    if (project.projectUrl) {
+ console.log('Project clicked:', project);
+  console.log('Project ID:', project.id);
+  console.log('Detail Page:', project.detailPage);
+  if (project.projectUrl) {
+    console.log("Opening external url");
       window.open(project.projectUrl, '_blank');
     } else if (project.detailPage) {
+    console.log("Opening internal details url");
       navigate(`/portfolio/${project.id}`);
+    }
+    else {
+    console.log('No action - missing projectUrl or detailPage flag');
     }
   };
 

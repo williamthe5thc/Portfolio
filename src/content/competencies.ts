@@ -1,4 +1,15 @@
-// src/content/professional/competencies.ts
+// src/content/competencies.ts
+/**
+ * @file competencies.ts - Professional competencies data
+ * @module content/professional
+ * @description Structured data describing professional skills,
+ * competencies, and expertise areas.
+ * 
+ * Categories:
+ * - Technical skills
+ * - Design skills
+ * - Professional capabilities
+ */
 import { CoreCompetency } from '@/types/content';
 
 export const competencies: CoreCompetency[] = [

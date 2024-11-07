@@ -1,5 +1,18 @@
-// src/components/ui/TextArea.tsx
 
+// src/components/ui/TextArea.tsx
+/**
+ * @file TextArea.tsx - Text area input component
+ * @module components/ui
+ * @description Enhanced textarea component with integrated
+ * label, error handling, and styling.
+ * 
+ * Features:
+ * - Error states
+ * - Label support
+ * - Resize handling
+ * - Character counting
+ */
+ 
 import React, { forwardRef } from 'react';
 import { AlertCircle } from 'lucide-react';
 

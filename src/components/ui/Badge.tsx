@@ -1,3 +1,17 @@
+// src/components/ui/Badge.tsx
+/**
+ * @file Badge.tsx - Badge display component
+ * @module components/ui
+ * @description A versatile badge component for displaying status, labels, or counts.
+ * Supports multiple variants and sizes with Tailwind styling.
+ * 
+ * Features:
+ * - Multiple color variants
+ * - Configurable sizes
+ * - Animated entrance
+ * - Flexible content support
+ */
+ 
 import React from 'react';
 import { motion } from 'framer-motion';
 

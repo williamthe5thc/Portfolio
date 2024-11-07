@@ -1,4 +1,15 @@
 // src/hooks/useModal.ts
+/**
+ * @file useModal.ts - Modal state management hook
+ * @module hooks
+ * @description Custom hook for managing modal state and providing
+ * consistent modal control methods.
+ * 
+ * Features:
+ * - Open/close state management
+ * - Toggle functionality
+ * - Memoized handlers
+ */
 import { useState, useCallback } from 'react';
 
 interface UseModalReturn {

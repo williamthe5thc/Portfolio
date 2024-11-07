@@ -1,4 +1,15 @@
 // src/hooks/useAnimationPresence.ts
+/**
+ * @file useAnimationPresence.ts - Animation presence hook
+ * @module hooks
+ * @description Custom hook for managing animation presence states
+ * and safe unmounting of animated components.
+ * 
+ * Features:
+ * - Presence state management
+ * - Safe unmounting
+ * - Animation timing coordination
+ */
 import { useState, useCallback } from 'react';
 
 interface UseAnimationPresenceReturn {

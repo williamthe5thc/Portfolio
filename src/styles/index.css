@@ -1,99 +1,114 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
 
-@layer base {
-  body {
-    @apply bg-background-light text-text-primary antialiased;
-  }
-  
-  /* Improved link styles */
-  a {
-    @apply text-primary-600 hover:text-primary-700 transition-colors;
-  }
-  
-  /* Heading styles */
-  h1, h2, h3, h4, h5, h6 {
-    @apply font-bold text-text-primary;
-  }
-}
-
-@layer components {
-  /* Navigation styles */
-  .nav-link {
-    @apply px-3 py-2 rounded-md text-text-secondary hover:text-primary-600 transition-colors;
-  }
-  
-  .nav-link.active {
-    @apply text-primary-600 bg-primary-50;
-  }
-  
-  /* Container styles */
-  .container-padding {
-    @apply px-4 sm:px-6 lg:px-8;
-  }
-  
-  /* Card styles */
-  .card {
-    @apply bg-white rounded-xl shadow-lg p-6;
-  }
-  
-  /* Form styles */
-  .form-input {
-    @apply w-full rounded-lg border border-gray-300 focus:border-primary-500 focus:ring-primary-500;
-  }
-  
-  .form-label {
-    @apply block text-sm font-medium text-text-primary mb-1;
-  }
-  
-  /* Button styles */
-  .btn {
-    @apply inline-flex items-center justify-center px-4 py-2 rounded-lg font-medium transition-colors;
-  }
-  
-  .btn-primary {
-    @apply bg-primary-600 text-white hover:bg-primary-700;
-  }
-  
-  .btn-outline {
-    @apply border-2 border-primary-600 text-primary-600 hover:bg-primary-50;
-  }
-}
-
-/* Animations */
-.float-animation {
-  animation: float 3s ease-in-out infinite;
-}
-
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
-}
-
-/* Loading animation */
-.loading-spinner {
-  @apply animate-spin;
-}
-
-/* Transitions */
-.page-transition {
-  @apply transition-all duration-300;
-}
-
-/* Responsive adjustments */
-@screen md {
-  .container-padding {
-    @apply px-8;
-  }
-}
-
-@screen lg {
-  .container-padding {
-    @apply px-12;
-  }
-}
+/**
+* //src/styles/index.css
+ * @file index.css - Global styles
+ * @module styles
+ * @description Global Tailwind CSS imports and custom style
+ * definitions.
+ * 
+ * Contents:
+ * - Tailwind imports
+ * - Base styles
+ * - Component styles
+ * - Utility classes
+ * - Animations
+ */
+ @tailwind base;
+ @tailwind components;
+ @tailwind utilities;
+ 
+ @layer base {
+   body {
+     @apply bg-background-light text-text-primary antialiased;
+   }
+   
+   /* Improved link styles */
+   a {
+     @apply text-primary-600 hover:text-primary-700 transition-colors;
+   }
+   
+   /* Heading styles */
+   h1, h2, h3, h4, h5, h6 {
+     @apply font-bold text-text-primary;
+   }
+ }
+ 
+ @layer components {
+   /* Navigation styles */
+   .nav-link {
+     @apply px-3 py-2 rounded-md text-text-secondary hover:text-primary-600 transition-colors;
+   }
+   
+   .nav-link.active {
+     @apply text-primary-600 bg-primary-50;
+   }
+   
+   /* Container styles */
+   .container-padding {
+     @apply px-4 sm:px-6 lg:px-8;
+   }
+   
+   /* Card styles */
+   .card {
+     @apply bg-white rounded-xl shadow-lg p-6;
+   }
+   
+   /* Form styles */
+   .form-input {
+     @apply w-full rounded-lg border border-gray-300 focus:border-primary-500 focus:ring-primary-500;
+   }
+   
+   .form-label {
+     @apply block text-sm font-medium text-text-primary mb-1;
+   }
+   
+   /* Button styles */
+   .btn {
+     @apply inline-flex items-center justify-center px-4 py-2 rounded-lg font-medium transition-colors;
+   }
+   
+   .btn-primary {
+     @apply bg-primary-600 text-white hover:bg-primary-700;
+   }
+   
+   .btn-outline {
+     @apply border-2 border-primary-600 text-primary-600 hover:bg-primary-50;
+   }
+ }
+ 
+ /* Animations */
+ .float-animation {
+   animation: float 3s ease-in-out infinite;
+ }
+ 
+ @keyframes float {
+   0%, 100% {
+     transform: translateY(0);
+   }
+   50% {
+     transform: translateY(-10px);
+   }
+ }
+ 
+ /* Loading animation */
+ .loading-spinner {
+   @apply animate-spin;
+ }
+ 
+ /* Transitions */
+ .page-transition {
+   @apply transition-all duration-300;
+ }
+ 
+ /* Responsive adjustments */
+ @screen md {
+   .container-padding {
+     @apply px-8;
+   }
+ }
+ 
+ @screen lg {
+   .container-padding {
+     @apply px-12;
+   }
+ }

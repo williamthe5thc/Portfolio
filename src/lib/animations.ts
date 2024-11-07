@@ -1,4 +1,16 @@
 // src/lib/animations.ts
+/**
+ * @file animations.ts - Animation configurations
+ * @module lib
+ * @description Framer Motion animation configurations and variants
+ * for consistent animations across the portfolio.
+ * 
+ * Animations:
+ * - Fade effects
+ * - Slide transitions
+ * - Stagger effects
+ * - Modal animations
+ */
 import { Variants } from 'framer-motion';
 
 export interface AnimationConfig {

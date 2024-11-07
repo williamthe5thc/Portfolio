@@ -1,4 +1,17 @@
-// src/components/shared/transitions/PageTransition.tsx
+// src/components/shared/PageTransition.tsx
+/**
+ * @file PageTransition.tsx - Page transition wrapper
+ * @module components/shared
+ * @description Provides smooth transitions between pages using
+ * Framer Motion animations.
+ * 
+ * Features:
+ * - Fade transitions
+ * - Motion variants
+ * - Exit animations
+ * - Configurable durations
+ */
+ 
 import React, { ReactNode } from 'react';
 import { motion } from 'framer-motion';
 
@@ -36,7 +49,5 @@ const PageTransition: React.FC<PageTransitionProps> = ({ children }) => {
 };
 
 export default PageTransition;
-
-
 
 

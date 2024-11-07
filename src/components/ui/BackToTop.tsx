@@ -1,4 +1,16 @@
 // src/components/ui/BackToTop.tsx
+/**
+ * @file BackToTop.tsx - Scroll to top button component
+ * @module components/ui
+ * @description A floating button that appears when scrolling down and allows users
+ * to quickly return to the top of the page. Features smooth animation and transition.
+ * 
+ * Features:
+ * - Scroll position tracking
+ * - Smooth scroll behavior
+ * - Animated appearance/disappearance
+ * - Configurable threshold
+ */
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowUp } from 'lucide-react';

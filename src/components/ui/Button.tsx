@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import type { LucideIcon } from 'lucide-react';
 import { Loader2 } from 'lucide-react';
+import { useAnalytics } from '@/hooks/useAnalytics';
 
 export interface ButtonProps {
   variant?: 'primary' | 'secondary' | 'outline' | 'ghost' | 'danger';
@@ -16,6 +17,8 @@ export interface ButtonProps {
   onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
   type?: 'button' | 'submit' | 'reset';
   disabled?: boolean;
+  id?: string; // Add id prop for analytics tracking
+  analyticsLabel?: string; // Optional label for better analytics tracking
 }
 
 export const Button: React.FC<ButtonProps> = ({
@@ -29,8 +32,12 @@ export const Button: React.FC<ButtonProps> = ({
   onClick,
   type = 'button',
   disabled = false,
+  id,
+  analyticsLabel,
   ...props
 }) => {
+  const { trackEngagement } = useAnalytics();
+
   const baseStyles = 'inline-flex items-center justify-center font-medium rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2';
   
   const variants = {
@@ -45,6 +52,27 @@ export const Button: React.FC<ButtonProps> = ({
     sm: 'px-3 py-1.5 text-sm',
     md: 'px-4 py-2 text-base',
     lg: 'px-6 py-3 text-lg'
+  };
+
+  const handleInteraction = (actionType: 'click' | 'link' = 'click') => {
+    trackEngagement(
+      id || analyticsLabel || 'unknown',
+      'button',
+      actionType,
+      {
+        button_variant: variant,
+        button_text: typeof children === 'string' ? children : analyticsLabel,
+        button_type: type,
+        button_href: href
+      }
+    );
+  };
+
+  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    if (!isLoading && !disabled) {
+      handleInteraction('click');
+      onClick?.(e);
+    }
   };
 
   const buttonContent = (
@@ -63,61 +91,55 @@ export const Button: React.FC<ButtonProps> = ({
     </>
   );
 
-  // If there's an href and it starts with '/', use Link
-  if (href && href.startsWith('/')) {
+  const commonClassNames = `
+    ${baseStyles}
+    ${variants[variant]}
+    ${sizes[size]}
+    ${(isLoading || disabled) ? 'opacity-50 cursor-not-allowed' : ''}
+    ${className}
+  `;
+
+  // Internal link using React Router
+  if (href?.startsWith('/')) {
     return (
       <Link
         to={href}
-        className={`
-          ${baseStyles}
-          ${variants[variant]}
-          ${sizes[size]}
-          ${disabled ? 'opacity-50 cursor-not-allowed' : ''}
-          ${className}
-        `}
+        className={commonClassNames}
+        onClick={() => handleInteraction('link')}
       >
         {buttonContent}
       </Link>
     );
   }
 
-  // If there's an href and it's external, use anchor
+  // External link
   if (href && !href.startsWith('/')) {
     return (
       <a
         href={href}
         target="_blank"
         rel="noopener noreferrer"
-        className={`
-          ${baseStyles}
-          ${variants[variant]}
-          ${sizes[size]}
-          ${disabled ? 'opacity-50 cursor-not-allowed' : ''}
-          ${className}
-        `}
+        className={commonClassNames}
+        onClick={() => handleInteraction('link')}
       >
         {buttonContent}
       </a>
     );
   }
 
-  // Otherwise, use button
+  // Regular button
   return (
-    <button
+    <motion.button
       type={type}
-      onClick={onClick}
+      onClick={handleClick}
       disabled={isLoading || disabled}
-      className={`
-        ${baseStyles}
-        ${variants[variant]}
-        ${sizes[size]}
-        ${(isLoading || disabled) ? 'opacity-50 cursor-not-allowed' : ''}
-        ${className}
-      `}
+      className={commonClassNames}
+      whileHover={!(isLoading || disabled) ? { scale: 1.02 } : {}}
+      whileTap={!(isLoading || disabled) ? { scale: 0.98 } : {}}
       {...props}
     >
       {buttonContent}
-    </button>
+    </motion.button>
   );
 };
 

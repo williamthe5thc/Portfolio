@@ -1,3 +1,18 @@
+// src/components/shared/SEO.tsx
+/**
+ * @file SEO.tsx - SEO management component
+ * @module components/shared
+ * @description Handles meta tags and SEO optimization using
+ * React Helmet.
+ * 
+ * Features:
+ * - Meta tag management
+ * - OpenGraph data
+ * - Twitter cards
+ * - Dynamic titles
+ * - Canonical URLs
+ */
+ 
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { useLocation } from 'react-router-dom';
