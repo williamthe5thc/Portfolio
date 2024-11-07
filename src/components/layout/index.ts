@@ -23,4 +23,4 @@ export type {
 } from './Container';
 export type { FooterProps } from './Footer';
 export type { NavigationProps } from './Navigation';
-export type { PageHeaderProps } from './PageHeader';
+export type { PageHeaderProps } from './PageHeader';    

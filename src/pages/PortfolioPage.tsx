@@ -2,7 +2,8 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { ProjectGrid } from '@/components/features';
-import { BaseCard, SectionContainer } from '@/components/ui';
+import { BaseCard } from '@/components/ui';
+import { SectionContainer } from '@/components/layout';
 import { fadeInUp } from '@/lib/animations';
 import { 
   siteConfig,
