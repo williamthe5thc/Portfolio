@@ -1,8 +1,26 @@
 // src/components/layout/index.ts
-export { Container } from './Container.tsx';
-export { Footer } from './Footer.tsx';
-export { Navigation } from './Navigation.tsx';
-export { PageHeader } from './PageHeader.tsx';
+
+// Container exports
+export {
+  Container,
+  Section,
+  GridContainer,
+  SectionContainer,
+  containerPadding
+} from './Container';
+
+// Other layout component exports
+export { Footer } from './Footer';
+export { Navigation } from './Navigation';
+export { PageHeader } from './PageHeader';
 
 // Export types
-export type { ContainerProps } from './Container';
+export type {
+  ContainerBaseProps,
+  ContainerProps,
+  SectionProps,
+  GridContainerProps
+} from './Container';
+export type { FooterProps } from './Footer';
+export type { NavigationProps } from './Navigation';
+export type { PageHeaderProps } from './PageHeader';

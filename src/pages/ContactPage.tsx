@@ -1,10 +1,13 @@
 // src/pages/ContactPage.tsx
 import { motion } from 'framer-motion';
 import { ContactForm } from '@/components/features';
-import { ContactMethod, Button, BaseCard, SectionContainer } from '@/components/ui';
+import { ContactMethod, Button, BaseCard } from '@/components/ui';
 import { fadeInUp, staggerContainer } from '@/lib/animations';
 import { siteConfig, faqs } from '@/content';
 import BasePage from './BasePage';
+import {
+  SectionContainer
+} from '@/components/layout';
 
 interface ContactFormData {
   name: string;

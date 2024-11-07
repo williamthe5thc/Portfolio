@@ -11,12 +11,13 @@ import {
 
 import {
   PageHeader,
-  Container
+  Container,
+  SectionContainer
 } from '@/components/layout';
 
 import { 
   Button,
-BaseCard, CoreCompetency, JourneyCard, StatsGrid, PhilosophyCard, SectionContainer
+BaseCard, CoreCompetency, JourneyCard, StatsGrid, PhilosophyCard
 
 } from '@/components/ui';
 

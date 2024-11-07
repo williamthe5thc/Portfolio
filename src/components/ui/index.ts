@@ -23,14 +23,9 @@ export { FormField } from './FormField.tsx';
 export { ContactMethod } from './ContactMethod';
 
 
-// Layout Components
-export { SectionContainer } from './Container.tsx';
-export { GridContainer } from './Container.tsx';
-
 // Types
 export type { ButtonProps } from './Button.tsx';
 export type { CardProps } from './Card.tsx';
-export type { ContainerProps, SectionProps, GridContainerProps } from './Container.tsx';
 export type { InputProps } from './Input.tsx';
 export type { TextAreaProps } from './TextArea.tsx';
 export type { FormFieldProps } from './FormField.tsx';

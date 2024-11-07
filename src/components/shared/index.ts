@@ -7,8 +7,6 @@ export { SEO } from './SEO.tsx';
 export { Timeline } from './Timeline.tsx';
 
 
-// Card related exports
-export * from './cards';  // This will export everything from cards/index.tsx
 
 // Animation exports
 export * from './animations';

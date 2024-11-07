@@ -13,6 +13,10 @@ BaseCard, CoreCompetency, JourneyCard, StatsGrid, PhilosophyCard, SectionContain
 
 } from '@/components/ui';
 
+import {
+  SectionContainer
+} from '@/components/layout';
+
 import { fadeInUp, staggerContainer } from '@/lib/animations';
 import { 
   siteConfig,

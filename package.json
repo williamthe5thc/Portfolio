@@ -1,20 +1,22 @@
-{  
-"name": "william-charles-portfolio",
+{
+  "name": "william-charles-portfolio",
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "homepage": "https://williamthe5thc.github.io/Portfolio/",
   "scripts": {
     "dev": "vite",
+    "dev:staging": "vite --mode staging",
     "build": "vite build",
+    "build:staging": "vite build --mode staging",
     "preview": "vite preview",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist",
+    "preview:staging": "vite preview --mode staging",
+    "deploy": "npm run build:staging && gh-pages -d dist -b gh-pages --repo https://github.com/williamthe5thc/Portfolio-Staging.git",
+    "deploy:production": "npm run build && gh-pages -d dist -b gh-pages --repo https://github.com/williamthe5thc/Portfolio.git",
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "format": "prettier --write \"src/**/*.{ts,tsx,css,md}\"",
     "type-check": "tsc --noEmit"
   },
-  "dependencies": {
+    "dependencies": {
     "@emailjs/browser": "^4.4.1",
     "@tailwindcss/forms": "^0.5.7",
     "@tailwindcss/typography": "^0.5.10",
