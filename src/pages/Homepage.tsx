@@ -81,18 +81,7 @@ const HomePage = () => {
     >
       {/* Hero Section with Dynamic Grid Layout */}
       <section className="container mx-auto px-4 py-12">
-        {/* Try adjusting these spacing values:
-            px-4 -> controls horizontal padding (try px-8, px-12)
-            py-12 -> controls vertical padding (try py-16, py-20)
-        */}
-        
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          {/* gap-6 controls space between left and right sections
-              Try: gap-8, gap-12, gap-16 for more space
-              
-              lg:grid-cols-3 means the space is split into 3 columns on large screens
-          */}
-          
           {/* Profile Section - Takes up 1/3 on large screens */}
           <div className="lg:col-span-1">
             <div className="bg-white rounded-xl shadow-lg overflow-hidden">
