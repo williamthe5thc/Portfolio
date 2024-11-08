@@ -56,7 +56,7 @@ const FeaturedProjectsCarousel = ({ projects }) => {
               <img 
                 src="/api/placeholder/400/300"
                 alt={project.title}
-                className="w-full h-60 object-cover"
+                className="w-full h-48 object-cover"
               />
               <div className="p-4">
                 <h3 className="text-xl font-bold mb-2">{project.title}</h3>
@@ -81,28 +81,39 @@ const HomePage = () => {
     >
       {/* Hero Section with Dynamic Grid Layout */}
       <section className="container mx-auto px-4 py-12">
+        {/* Try adjusting these spacing values:
+            px-4 -> controls horizontal padding (try px-8, px-12)
+            py-12 -> controls vertical padding (try py-16, py-20)
+        */}
+        
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          {/* gap-6 controls space between left and right sections
+              Try: gap-8, gap-12, gap-16 for more space
+              
+              lg:grid-cols-3 means the space is split into 3 columns on large screens
+          */}
+          
           {/* Profile Section - Takes up 1/3 on large screens */}
           <div className="lg:col-span-1">
             <div className="bg-white rounded-xl shadow-lg overflow-hidden">
               <img
-                src="/images/attention_grabber.png"
+                src="/api/placeholder/600/400"
                 alt="Hero"
-                className="w-full h-64 object-cover"
+                className="w-full h-96 object-cover" /* Increased height from h-64 to h-96 */
               />
               <div className="p-6">
                 <h1 className="text-4xl font-bold text-text-primary mb-4">
                   Designing Learning Expereinces That Drives Results for YOU
                 </h1>
-                                  <p className="text-xl text-text-secondary">
-                    Building Better Learning Experiences to meet your needs
-                  </p>
+                <p className="text-text-secondary text-lg">
+                  Building Better Learning Experiences to meet your needs
+                </p>
               </div>
             </div>
           </div>
 
           {/* Dynamic Link Grid - Takes up 2/3 on large screens */}
-          <div className="lg:col-span-2 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="lg:col-span-2 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:pl-8"> {/* Added lg:pl-8 for left padding on larger screens */}
             {[
               { href: "/resume", title: "Resume", bg: "bg-blue-500" },
               { href: "/portfolio", title: "Portfolio", bg: "bg-purple-500" },
