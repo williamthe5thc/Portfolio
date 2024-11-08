@@ -9,7 +9,8 @@
  * - Project grid
  * - Category filtering
  * - Animated transitions
- * - Project previews
+ * - Project preview
+ * 
  */
  
 import React from 'react';
