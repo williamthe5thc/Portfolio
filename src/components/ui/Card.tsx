@@ -1,74 +1,55 @@
 // src/components/ui/Card.tsx
-/**
- * @file Card.tsx
- * @description A collection of card components for displaying content in consistent, 
- * visually appealing containers. Includes base card and specialized variants for
- * different content types.
- * 
- * Components:
- * - BaseCard: Foundation card component with animation support
- * - CoreCompetency: Displays professional skills and competencies
- * - JourneyCard: Shows timeline or progression information
- * - PhilosophyCard: Presents philosophical or mission statements
- * - StatsGrid: Displays statistical information in a grid layout
- */
-
 import React from 'react';
-import { motion, HTMLMotionProps } from 'framer-motion';
-import type { LucideIcon } from 'lucide-react';
-import { fadeInUp } from '@/lib/animations';
+import { motion } from 'framer-motion';
+import type { HTMLMotionProps } from 'framer-motion';
 
-// Base Card Types
-export interface BaseCardProps extends HTMLMotionProps<'div'> {
+interface CardProps extends HTMLMotionProps<'div'> {
   children: React.ReactNode;
   className?: string;
   animate?: boolean;
   hover?: boolean;
 }
 
-// Specialized Card Types
-export interface CoreCompetencyProps {
+interface CoreCompetencyProps {
   icon: LucideIcon;
   title: string;
   description: string;
   color?: string;
 }
 
-export interface JourneyItemProps {
+interface JourneyItemProps {
   title: string;
   subtitle: string;
   date?: string;
 }
 
-export interface JourneyCardProps {
+interface JourneyCardProps {
   icon: LucideIcon;
   title: string;
   items: JourneyItemProps[];
   color?: string;
 }
 
-export interface PhilosophyCardProps {
+interface PhilosophyCardProps {
   icon: LucideIcon;
   content: string;
 }
 
-export interface StatsItemProps {
+interface StatsItemProps {
   label: string;
   value: string | number;
 }
 
-export interface StatsGridProps {
+interface StatsGridProps {
   stats: StatsItemProps[];
 }
 
-// Base Card Component
 export const BaseCard: React.FC<BaseCardProps> = ({
   children,
   className = '',
   animate = true,
   hover = true,
-  onClick,
-  ...props
+  onClick
 }) => {
   const baseClass = 'bg-white rounded-xl shadow-lg overflow-hidden p-6';
   const hoverAnimation = hover ? {
@@ -96,14 +77,12 @@ export const BaseCard: React.FC<BaseCardProps> = ({
       className={`${baseClass} ${className}`}
       onClick={onClick}
       {...hoverAnimation}
-      {...props}
     >
       {children}
     </motion.div>
   );
 };
 
-// Specialized Card Components
 export const CoreCompetency: React.FC<CoreCompetencyProps> = ({ 
   icon: Icon,
   title, 
