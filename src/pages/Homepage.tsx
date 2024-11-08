@@ -23,7 +23,7 @@ const CoreCompetencyCard = ({ title, description, icon: Icon, color }) => (
 const ProjectCarousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState(0);
-  const displayedProjects = projects.slice(0, 5); // Take first 5 projects
+  const displayedProjects = projects.slice(2, 5); // Take first 5 projects
 
   const nextSlide = () => {
     setDirection(1);
