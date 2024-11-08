@@ -1,39 +1,54 @@
 // src/components/ui/index.ts
+/**
+ * @file index.ts
+ * @description Centralized export point for all UI components.
+ * Re-exports components from their respective files for clean imports.
+ */
 
-// Core Components
-export { Button  } from './Button.tsx';  // Add the .tsx extension and export named export
-export { BackToTop } from './BackToTop.tsx';
-export { Badge } from './Badge.tsx';
+// Base UI Components
+export * from './components';
 
-//export the cards
-export { BaseCard, CoreCompetency, JourneyCard, StatsGrid, PhilosophyCard } from './Card.jsx';
-export type {
-  CoreCompetencyProps,
-  JourneyItemProps,
-  JourneyCardProps,
-  PhilosophyCardProps,
-  StatsItemProps,
-  StatsGridProps,
-} from './Card.tsx';
+// Card Components
+export {
+  BaseCard,
+  CoreCompetency,
+  JourneyCard,
+  PhilosophyCard,
+  StatsGrid,
+} from './Card';
+
+// Container Components
+export {
+  Container,
+  Section,
+  GridContainer,
+  SectionContainer,
+  containerPadding,
+} from './Container';
 
 // Form Components
-export { Input } from './Input.tsx';
-export { TextArea } from './TextArea.tsx';
-export { FormField } from './FormField.tsx';
-export { ContactMethod } from './ContactMethod';
+export {
+  Form,
+  FormField,
+  FormInput,
+  FormTextArea,
+  ContactMethod,
+} from './Form';
 
+// Individual Components
+export { BackToTop } from './BackToTop';
+export { Badge } from './Badge';
+export { Button } from './Button';
+export { Icon } from './Icon';
 
-// Layout Components
-export { SectionContainer } from './Container.tsx';
-export { GridContainer } from './Container.tsx';
-
-// Types
-export type { ButtonProps } from './Button.tsx';
-export type { CardProps } from './Card.tsx';
-export type { ContainerProps, SectionProps, GridContainerProps } from './Container.tsx';
-export type { InputProps } from './Input.tsx';
-export type { TextAreaProps } from './TextArea.tsx';
-export type { FormFieldProps } from './FormField.tsx';
-export type { BackToTopProps } from './BackToTop.tsx';
-export type { BadgeProps } from './Badge.tsx';
-export type { ContactMethodProps } from './ContactMethod';
+// Export component types
+export type {
+  ButtonProps,
+  CardProps,
+  ContainerProps,
+  GridProps,
+  FormFieldProps,
+  FormInputProps,
+  FormTextAreaProps,
+  ContactMethodProps,
+} from './components';

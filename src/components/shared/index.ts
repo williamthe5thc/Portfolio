@@ -1,23 +1,23 @@
 // src/components/shared/index.ts
+/**
+ * @file index.ts
+ * @description Centralized export point for shared components
+ * that are used across multiple features.
+ */
 
-// Core components
-export { ErrorBoundary } from './ErrorBoundary.tsx';
-export { LoadingScreen } from './LoadingScreen.tsx';
-export { SEO } from './SEO.tsx';
-export { Timeline } from './Timeline.tsx';
-
-
-// Card related exports
-export * from './cards';  // This will export everything from cards/index.tsx
-
-// Animation exports
-export * from './animations';
-
-// Transition exports
+// Core Components
+export { ErrorBoundary } from './ErrorBoundary';
+export { LoadingScreen } from './LoadingScreen';
+export { SEO } from './SEO';
+export { Timeline } from './Timeline';
 export { default as PageTransition } from './PageTransition';
+export { default as GoogleAnalytics } from './GoogleAnalytics';
 
-// Types
+// Animation Exports
+export * from '@/lib/animations';
+
+// Export component types
 export type { ErrorBoundaryProps } from './ErrorBoundary';
 export type { LoadingScreenProps } from './LoadingScreen';
 export type { SEOProps } from './SEO';
-export type { TimelineEvent } from './Timeline';
+export type { TimelineProps } from './Timeline';

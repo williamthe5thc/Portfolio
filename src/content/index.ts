@@ -1,16 +1,17 @@
 // src/content/index.ts
+/**
+ * @file index.ts
+ * @description Central export point for all content and configuration data.
+ * Organizes and re-exports content from individual domain files.
+ */
 
-// Site configuration and metadata
-export { siteConfig } from './siteData';  
+// Site Configuration
+export { siteConfig } from './siteData';
+
+// Content Data
 export { stats, projectCategories } from './info';
-
-// Professional content
 export { competencies } from './competencies';
 export { education } from './education';
 export { experience } from './experience';
-
-// Project data
 export { projects, type ProjectId } from './projects';
-
-// Support content
 export { faqs } from './faqs';
