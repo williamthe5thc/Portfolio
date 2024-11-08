@@ -1,18 +1,25 @@
-// vite.config.ts
 import { defineConfig, loadEnv } from 'vite';
 import react from '@vitejs/plugin-react';
 import path from 'path';
 
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '');
-  const base = mode === 'production' ? '/Portfolio/' : mode === 'staging' ? '/Portfolio-Staging/' : '/';
+  const base = mode === 'production' 
+    ? '/Portfolio/' 
+    : mode === 'staging' 
+      ? '/Portfolio-Staging/' 
+      : '/';
 
   return {
     plugins: [react()],
-    base: base,
+    base,
+    define: {
+      __ENV__: JSON.stringify(mode),
+      __BASE_URL__: JSON.stringify(base)
+    },
     build: {
       outDir: 'dist',
-      sourcemap: true,
+      sourcemap: mode !== 'production',
       assetsDir: 'assets',
       rollupOptions: {
         output: {
@@ -21,7 +28,6 @@ export default defineConfig(({ mode }) => {
             'ui-vendor': ['framer-motion', 'lucide-react'],
             'form-vendor': ['@emailjs/browser']
           },
-          // Add this to ensure consistent chunk naming
           chunkFileNames: 'assets/[name]-[hash].js',
           entryFileNames: 'assets/[name]-[hash].js',
           assetFileNames: 'assets/[name]-[hash].[ext]'
@@ -44,7 +50,8 @@ export default defineConfig(({ mode }) => {
     },
     server: {
       port: mode === 'staging' ? 3001 : 3000,
-      open: true
+      open: true,
+      host: true
     }
   };
 });
