@@ -25,7 +25,8 @@ const preloadRoutes = () => {
     () => import('@/pages/PortfolioPage'),
     () => import('@/pages/ContactPage'),
     () => import('@/pages/ProjectDetailPage'),
-    () => import('@/pages/NotFoundPage')
+    () => import('@/pages/NotFoundPage'),
+    () => import('@/pages/ResumePage')
   ];
 
   routes.forEach(route => {
@@ -36,6 +37,12 @@ const preloadRoutes = () => {
 // Lazy load pages with better error handling and preloading
 const HomePage = React.lazy(() => 
   import('@/pages/HomePage').catch(() => ({
+    default: ErrorFallback
+  }))
+);
+
+const ResumePage = React.lazy(() => 
+  import('@/pages/ResumePage').catch(() => ({
     default: ErrorFallback
   }))
 );
@@ -123,6 +130,7 @@ const App: React.FC = () => {
               <Route path="/portfolio/:projectId" element={renderWithLoadingState(ProjectDetailPage)} />
               <Route path="/contact" element={renderWithLoadingState(ContactPage)} />
               <Route path="*" element={renderWithLoadingState(NotFoundPage)} />
+              <Route path="/resume" element={renderWithLoadingState(ResumePage)} />
             </Routes>
           </AnimatePresence>
         </main>

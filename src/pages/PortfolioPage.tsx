@@ -1,23 +1,54 @@
-// src/pages/PortfolioPage.tsx
-import { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ProjectGrid } from '@/components/features';
 import { BaseCard, SectionContainer } from '@/components/ui';
 import { fadeInUp } from '@/lib/animations';
-import { 
-  siteConfig,
-  projects,
-  projectCategories 
-} from '@/content';
-import type { ProjectCategory } from '@/types/content';
+import { siteConfig, projects } from '@/content';
 import BasePage from './BasePage';
 
-const PortfolioPage: React.FC = () => {
-  const [activeCategory, setActiveCategory] = useState<ProjectCategory | 'all'>('all');
+const ProjectCategories = {
+  coding: {
+    id: 'coding',
+    label: 'Coding Projects',
+    description: 'Software development and programming projects',
+    tags: ['Python', 'React', 'JavaScript', 'C++', 'Development', 'Web Development']
+  },
+  instructional: {
+    id: 'instructional',
+    label: 'Instructional Design',
+    description: 'E-learning and educational content development',
+    tags: ['E-Learning', 'Instructional Design', 'Educational Software', 'Canvas LMS']
+  },
+  media: {
+    id: 'media',
+    label: 'Art & Video',
+    description: 'Digital art and video production projects',
+    tags: ['Adobe Photoshop', 'Adobe Premiere Pro', 'Digital Art', 'Video Editing']
+  }
+};
 
-  const filteredProjects = activeCategory === 'all'
-    ? projects
-    : projects.filter(project => project.category === activeCategory);
+const PortfolioPage = () => {
+  const [searchParams] = useSearchParams();
+  const [activeCategory, setActiveCategory] = useState(searchParams.get('type') || 'all');
+
+  useEffect(() => {
+    const type = searchParams.get('type');
+    if (type && Object.keys(ProjectCategories).includes(type)) {
+      setActiveCategory(type);
+    }
+  }, [searchParams]);
+
+  const filterProjects = (category: string) => {
+    if (category === 'all') return projects;
+    
+    const categoryInfo = ProjectCategories[category as keyof typeof ProjectCategories];
+    return projects.filter(project => 
+      project.tags.some(tag => categoryInfo.tags.includes(tag))
+    );
+  };
+
+  const filteredProjects = filterProjects(activeCategory);
 
   // Category Filter Section
   const CategoryFilters = () => (
@@ -36,7 +67,7 @@ const PortfolioPage: React.FC = () => {
       >
         All Projects
       </button>
-      {projectCategories.map(category => (
+      {Object.values(ProjectCategories).map(category => (
         <button
           key={category.id}
           onClick={() => setActiveCategory(category.id)}
@@ -53,41 +84,14 @@ const PortfolioPage: React.FC = () => {
     </motion.div>
   );
 
-  // Category Overview Section
-  const CategoryOverview = () => (
-    <SectionContainer className="py-20 bg-background">
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {projectCategories.map(category => (
-          <motion.div
-            key={category.id}
-            variants={fadeInUp}
-            onClick={() => setActiveCategory(category.id)}
-          >
-            <BaseCard className="cursor-pointer hover:shadow-lg transition-shadow">
-              <h3 className="text-xl font-semibold mb-2">
-                {category.label}
-              </h3>
-              <p className="text-text-secondary">
-                {category.description}
-              </p>
-              <div className="mt-4 text-sm text-text-light">
-                {projects.filter(p => p.category === category.id).length} projects
-              </div>
-            </BaseCard>
-          </motion.div>
-        ))}
-      </div>
-    </SectionContainer>
-  );
-
   return (
     <BasePage
       seo={{
         title: "Portfolio",
-        description: `Explore ${siteConfig.author}'s instructional design projects and achievements`
+        description: `Explore ${siteConfig.author}'s projects and achievements`
       }}
       title="Portfolio"
-      subtitle="Explore my latest instructional design projects and achievements"
+      subtitle="Explore my latest projects and achievements"
       className="bg-background-light"
     >
       <div className="py-20">
@@ -96,7 +100,31 @@ const PortfolioPage: React.FC = () => {
           projects={filteredProjects}
           className="mb-20"
         />
-        <CategoryOverview />
+        
+        {/* Category Overview */}
+        <SectionContainer className="py-20 bg-background">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {Object.values(ProjectCategories).map(category => (
+              <motion.div
+                key={category.id}
+                variants={fadeInUp}
+                onClick={() => setActiveCategory(category.id)}
+              >
+                <BaseCard className="cursor-pointer hover:shadow-lg transition-shadow">
+                  <h3 className="text-xl font-semibold mb-2">
+                    {category.label}
+                  </h3>
+                  <p className="text-text-secondary">
+                    {category.description}
+                  </p>
+                  <div className="mt-4 text-sm text-text-light">
+                    {filterProjects(category.id).length} projects
+                  </div>
+                </BaseCard>
+              </motion.div>
+            ))}
+          </div>
+        </SectionContainer>
       </div>
     </BasePage>
   );

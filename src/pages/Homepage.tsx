@@ -110,10 +110,10 @@ const ProjectCarousel = () => {
 
 const QuickLinks = () => {
   const links = [
-    { href: "/resume", title: "Resume", bg: "bg-blue-500" },
-    { href: "/portfolio", title: "Portfolio", bg: "bg-purple-500" },
-    { href: "/contact", title: "Contact Me", bg: "bg-green-500" },
-    { href: "/about", title: "About Me", bg: "bg-yellow-500" }
+   { href: "/resume", title: "Resume", bg: "bg-blue-500" },
+    { href: "/portfolio?type=coding", title: "Coding Projects", bg: "bg-purple-500" },
+    { href: "/portfolio?type=instructional", title: "Instructional Design Projects", bg: "bg-green-500" },
+    { href: "/portfolio?type=media", title: "Art & Video Projects", bg: "bg-pink-500" }
   ];
 
   return (
