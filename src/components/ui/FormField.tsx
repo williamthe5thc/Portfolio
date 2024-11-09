@@ -1,4 +1,47 @@
 // src/components/ui/FormField.tsx
+/**
+ * @file FormField.tsx
+ * @description Reusable form field wrapper with label and error handling
+ * @module components/ui
+ * 
+ * Features:
+ * - Label management
+ * - Error display
+ * - Required field indication
+ * - Help text support
+ * - Animation effects
+ * 
+ * @example
+ * ```tsx
+ * <FormField
+ *   label="Email"
+ *   error={errors.email}
+ *   required
+ * >
+ *   <Input
+ *     type="email"
+ *     name="email"
+ *     onChange={handleChange}
+ *   />
+ * </FormField>
+ * 
+ * <FormField
+ *   label="Message"
+ *   error={errors.message}
+ *   hint="Max 500 characters"
+ * >
+ *   <TextArea
+ *     name="message"
+ *     onChange={handleChange}
+ *   />
+ * </FormField>
+ * ```
+ * 
+ * @accessibility
+ * - Associated labels
+ * - Error announcements
+ * - Required field indicators
+ */
 
 import React from 'react';
 import { motion } from 'framer-motion';

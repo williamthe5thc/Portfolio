@@ -1,4 +1,38 @@
 // src/pages/BasePage.tsx
+/**
+ * @file BasePage.tsx
+ * @description Base page layout component with consistent structure
+ * @module pages
+ * 
+ * @requires framer-motion - For page transitions
+ * @requires @/components/shared - For SEO and layout components
+ * 
+ * Features:
+ * - SEO management
+ * - Page transitions
+ * - Header handling
+ * - Breadcrumb support
+ * - Container layout
+ * 
+ * @example
+ * ```tsx
+ * <BasePage
+ *   seo={{
+ *     title: "About Us",
+ *     description: "Learn about our company"
+ *   }}
+ *   title="About Us"
+ *   subtitle="Our story and mission"
+ *   breadcrumbs={[
+ *     { label: "Home", href: "/" },
+ *     { label: "About", href: "/about" }
+ *   ]}
+ * >
+ *   <PageContent />
+ * </BasePage>
+ * ```
+ */
+
 import React, {useEffect}  from 'react';
 import { motion } from 'framer-motion';
 import { SEO } from '@/components/shared';

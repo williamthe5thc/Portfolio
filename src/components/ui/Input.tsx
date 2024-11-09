@@ -1,4 +1,33 @@
-// src/components/ui/Input.tsx
+/**
+ * @file Input.tsx
+ * @description Reusable input component with validation and icon support
+ * @module components/ui
+ * 
+ * Features:
+ * - Error states
+ * - Icon support
+ * - Label integration
+ * - Hint text
+ * - Disabled states
+ * 
+ * @example
+ * ```tsx
+ * // Basic usage
+ * <Input
+ *   label="Username"
+ *   name="username"
+ *   onChange={handleChange}
+ * />
+ * 
+ * // With icon and error
+ * <Input
+ *   icon={<UserIcon />}
+ *   label="Email"
+ *   error="Invalid email"
+ *   type="email"
+ * />
+ * ```
+ */
 
 import React, { forwardRef } from 'react';
 import { AlertCircle } from 'lucide-react';

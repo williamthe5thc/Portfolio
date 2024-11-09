@@ -1,24 +1,44 @@
-// src/lib/animations.ts
 /**
  * @file animations.ts
- * @description Centralized animation configurations using Framer Motion
- * @module lib/animations
+ * @description Centralized animation configurations and variants
+ * @module lib
  * 
- * This file contains reusable animation variants and configurations for consistent
- * animations throughout the application. All animations are built using Framer Motion's
- * variant system for maintainability and reusability.
+ * @requires framer-motion - For animation types and functionality
  * 
  * Features:
- * - Basic transitions (fade, slide)
- * - Complex animations (modals, cards)
+ * - Reusable animation variants
+ * - Consistent timing configurations
+ * - Page transitions
+ * - Modal animations
+ * - Hover effects
+ * 
+ * Categories:
+ * - Fade animations
+ * - Slide animations
+ * - Scale animations
  * - Stagger effects
- * - Reusable animation configs
- * - Type-safe animation variants
  * 
- * Usage:
- * import { fadeIn, slideIn, cardHover } from '@/lib/animations';
+ * @example
+ * ```tsx
+ * // Basic fade animation
+ * <motion.div variants={fadeIn}>
+ *   Content
+ * </motion.div>
  * 
- * <motion.div variants={fadeIn}>...</motion.div>
+ * // Card hover effect
+ * <motion.div 
+ *   variants={cardHover}
+ *   whileHover="hover"
+ *   whileTap="tap"
+ * >
+ *   Card content
+ * </motion.div>
+ * ```
+ * 
+ * @notes
+ * - All durations are in seconds
+ * - Prefer spring animations for interactive elements
+ * - Consider reduced motion preferences
  */
 
 import { Variants } from 'framer-motion';

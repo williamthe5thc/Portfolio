@@ -1,3 +1,39 @@
+/**
+ * @file HomePage.tsx
+ * @description Main landing page component with project showcase and core competencies
+ * @module pages
+ * 
+ * @requires framer-motion - For scroll and entrance animations
+ * @requires lucide-react - For section icons
+ * @requires @/components - For UI components
+ * @requires @/content - For site configuration and content
+ * 
+ * Features:
+ * - Animated project carousel
+ * - Quick links grid
+ * - Core competencies showcase
+ * - Education and certification timeline
+ * - Responsive layout
+ * 
+ * Sections:
+ * - Hero
+ * - Project Showcase
+ * - Core Competencies
+ * - Education & Certifications
+ * 
+ * @example
+ * ```tsx
+ * // Used in App.tsx routing
+ * <Route path="/" element={<HomePage />} />
+ * ```
+ * 
+ * @accessibility
+ * - All images have descriptive alt text
+ * - Keyboard navigable carousel
+ * - ARIA labels for interactive elements
+ * - Color contrast meets WCAG standards
+ */
+
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';

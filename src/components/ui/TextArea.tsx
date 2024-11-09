@@ -1,4 +1,35 @@
 // src/components/ui/TextArea.tsx
+/**
+ * @file TextArea.tsx
+ * @description Styled textarea component with error handling and validation
+ * @module components/ui
+ * 
+ * Features:
+ * - Auto resize
+ * - Character count
+ * - Error states
+ * - Focus styles
+ * - Disabled states
+ * 
+ * @example
+ * ```tsx
+ * <TextArea
+ *   label="Description"
+ *   name="description"
+ *   value={value}
+ *   onChange={handleChange}
+ *   error={errors.description}
+ *   maxLength={500}
+ *   rows={4}
+ * />
+ * ```
+ * 
+ * @accessibility
+ * - Keyboard navigation
+ * - Error announcements
+ * - Character count
+ * - Label association
+ */
 
 import React, { forwardRef } from 'react';
 import { AlertCircle } from 'lucide-react';

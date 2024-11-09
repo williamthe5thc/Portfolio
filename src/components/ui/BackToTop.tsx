@@ -1,4 +1,36 @@
 // src/components/ui/BackToTop.tsx
+/**
+ * @file BackToTop.tsx
+ * @description Animated scroll-to-top button component
+ * @module components/ui
+ * 
+ * @requires framer-motion - For appear/disappear animations
+ * @requires lucide-react - For arrow icon
+ * 
+ * Features:
+ * - Show/hide based on scroll position
+ * - Smooth scroll behavior
+ * - Animated transitions
+ * - Customizable threshold
+ * 
+ * @example
+ * ```tsx
+ * // Basic usage
+ * <BackToTop />
+ * 
+ * // Custom threshold
+ * <BackToTop threshold={600} />
+ * 
+ * // With custom styling
+ * <BackToTop className="custom-button" />
+ * ```
+ * 
+ * @accessibility
+ * - Keyboard accessible
+ * - ARIA label
+ * - Focus visible styles
+ */
+
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowUp } from 'lucide-react';

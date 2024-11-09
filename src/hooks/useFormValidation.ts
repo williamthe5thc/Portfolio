@@ -1,4 +1,42 @@
 // src/hooks/useFormValidation.ts
+/**
+ * @file useFormValidation.ts
+ * @description Custom hook for form validation and state management
+ * @module hooks
+ * 
+ * Features:
+ * - Real-time validation
+ * - Error tracking
+ * - Touch state management
+ * - Custom validation rules
+ * - Form submission handling
+ * 
+ * @example
+ * ```typescript
+ * const {
+ *   values,
+ *   errors,
+ *   touched,
+ *   handleChange,
+ *   handleBlur,
+ *   handleSubmit
+ * } = useFormValidation({
+ *   initialValues: { email: '', password: '' },
+ *   validationSchema: {
+ *     email: (value) => !value ? 'Required' : null,
+ *     password: (value) => value.length < 8 ? 'Too short' : null
+ *   },
+ *   onSubmit: (values) => console.log(values)
+ * });
+ * ```
+ * 
+ * @notes
+ * - Supports async validation
+ * - Handles nested objects
+ * - Supports custom error messages
+ */
+
+
 import { useState, useCallback, ChangeEvent, FocusEvent } from 'react';
 
 type ValidationRules<T> = {

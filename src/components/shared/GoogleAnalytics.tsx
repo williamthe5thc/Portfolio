@@ -1,3 +1,16 @@
+/**
+ * @file GoogleAnalytics.tsx
+ * @description Analytics integration component for tracking page views and events
+ * @module components/shared
+ * 
+ * Features:
+ * - Automatic page view tracking
+ * - Route change detection
+ * - Path formatting
+ * - Error handling for missing GA
+ * 
+ * @requires react-router-dom - For location tracking
+ */
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 

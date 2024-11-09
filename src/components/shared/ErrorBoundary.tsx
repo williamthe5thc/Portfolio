@@ -1,4 +1,32 @@
 // src/components/shared/ErrorBoundary.tsx
+/**
+ * @file ErrorBoundary.tsx
+ * @description Error boundary component for graceful error handling
+ * @module components/shared
+ * 
+ * Features:
+ * - Catches and handles React component errors
+ * - Customizable fallback UI
+ * - Development mode error details
+ * - Error reporting integration
+ * - Recovery options
+ * 
+ * @example
+ * ```tsx
+ * // Basic usage
+ * <ErrorBoundary>
+ *   <App />
+ * </ErrorBoundary>
+ * 
+ * // With custom error handler
+ * <ErrorBoundary 
+ *   onError={(error, errorInfo) => logError(error, errorInfo)}
+ *   fallback={<CustomErrorUI />}
+ * >
+ *   <App />
+ * </ErrorBoundary>
+ * ```
+ */
 import React, { Component, ErrorInfo, ReactNode } from 'react';
 import { AlertTriangle, RefreshCw, Home } from 'lucide-react';
 import { Button } from '@/components/ui';

@@ -1,4 +1,38 @@
 // src/components/ui/ContactMethod.tsx
+/**
+ * @file ContactMethod.tsx
+ * @description Contact information display component with icons and links
+ * @module components/ui
+ * 
+ * Features:
+ * - Icon integration
+ * - Link handling
+ * - Hover animations
+ * - Responsive layout
+ * - Accessibility support
+ * 
+ * @example
+ * ```tsx
+ * <ContactMethod
+ *   icon="Mail"
+ *   title="Email"
+ *   content="example@domain.com"
+ *   link="mailto:example@domain.com"
+ * />
+ * 
+ * <ContactMethod
+ *   icon="Phone"
+ *   title="Phone"
+ *   content="+1 234 567 8900"
+ *   link="tel:+12345678900"
+ * />
+ * ```
+ * 
+ * @accessibility
+ * - Proper aria labels
+ * - Semantic markup
+ * - Color contrast
+ */
 
 import React from 'react';
 import { motion } from 'framer-motion';

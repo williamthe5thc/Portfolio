@@ -1,4 +1,39 @@
 // src/components/shared/Timeline.tsx
+/**
+ * @file Timeline.tsx
+ * @description Vertical timeline component for displaying chronological events
+ * @module components/shared
+ * 
+ * @requires framer-motion - For entrance animations
+ * @requires lucide-react - For timeline icons
+ * 
+ * Features:
+ * - Animated entrance
+ * - Responsive design
+ * - Icon support
+ * - Date formatting
+ * - Optional descriptions
+ * 
+ * @example
+ * ```tsx
+ * const events = [
+ *   {
+ *     title: "Started Position",
+ *     subtitle: "Company Name",
+ *     date: "2023",
+ *     description: "Role description"
+ *   }
+ * ];
+ * 
+ * <Timeline events={events} />
+ * ```
+ * 
+ * @accessibility
+ * - Semantic HTML structure
+ * - Proper heading hierarchy
+ * - High color contrast
+ */
+
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Calendar } from 'lucide-react';

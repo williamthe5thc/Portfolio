@@ -1,4 +1,37 @@
 // src/components/ui/Button.tsx
+/**
+ * @file Button.tsx
+ * @description A reusable button component with multiple variants, sizes, and states
+ * @module components/ui
+ * 
+ * @requires framer-motion - For hover/tap animations
+ * @requires lucide-react - For icon support
+ * @requires react-router-dom - For internal link support
+ * 
+ * Features:
+ * - Multiple variants (primary, secondary, outline, ghost, danger)
+ * - Different sizes (sm, md, lg)
+ * - Loading state
+ * - Icon support (left/right)
+ * - Link capability
+ * - Analytics tracking
+ * 
+ * @example
+ * ```tsx
+ * // Basic usage
+ * <Button variant="primary" size="md">Click me</Button>
+ * 
+ * // With icon and loading state
+ * <Button 
+ *   variant="primary"
+ *   icon={ArrowRight}
+ *   isLoading={isLoading}
+ * >
+ *   Submit
+ * </Button>
+ * ```
+ */
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';

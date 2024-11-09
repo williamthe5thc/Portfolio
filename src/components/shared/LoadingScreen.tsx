@@ -1,4 +1,35 @@
 // src/components/shared/LoadingScreen.tsx
+/**
+ * @file LoadingScreen.tsx
+ * @description Animated loading screen component with branding
+ * @module components/shared
+ * 
+ * @requires framer-motion - For loading animations
+ * @requires @/content - For site branding configuration
+ * 
+ * Features:
+ * - Animated logo
+ * - Branded content display
+ * - Smooth transitions
+ * - Responsive design
+ * - Configurable animation duration
+ * 
+ * @example
+ * ```tsx
+ * // Basic usage
+ * <LoadingScreen />
+ * 
+ * // Without branding
+ * <LoadingScreen showBranding={false} />
+ * 
+ * // With custom animation duration
+ * <LoadingScreen animationDuration={0.8} />
+ * ```
+ * 
+ * @notes
+ * - Keep animation duration under 1s for optimal UX
+ * - Consider reducing motion for users with vestibular disorders
+ */
 
 import React from 'react';
 import { motion, SVGMotionProps, HTMLMotionProps } from 'framer-motion';

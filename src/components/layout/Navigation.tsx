@@ -1,3 +1,34 @@
+/**
+ * @file Navigation.tsx
+ * @description Main navigation component with mobile responsiveness and animation
+ * @module components/layout
+ * 
+ * @requires framer-motion - For menu and hover animations
+ * @requires lucide-react - For navigation icons
+ * @requires react-router-dom - For navigation handling
+ * 
+ * Features:
+ * - Responsive mobile menu with animation
+ * - Active route highlighting
+ * - Hover animations
+ * - Accessible keyboard navigation
+ * - Icon support for menu items
+ * 
+ * @example
+ * ```tsx
+ * // Default usage with standard navigation items
+ * <Navigation />
+ * 
+ * // Custom navigation items
+ * <Navigation 
+ *   items={[
+ *     { path: "/dashboard", label: "Dashboard", icon: "Home" },
+ *     { path: "/profile", label: "Profile", icon: "User" }
+ *   ]}
+ * />
+ * ```
+ */
+
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { motion } from 'framer-motion';

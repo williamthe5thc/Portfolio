@@ -1,29 +1,39 @@
 // src/components/layout/Container.tsx
 /**
  * @file Container.tsx
- * @description A collection of container components for layout management
- * and content organization. Provides consistent spacing, padding, and
- * responsive grid layouts throughout the application.
+ * @description Layout container components for consistent spacing and structure
+ * @module components/layout
  * 
  * Components:
  * - Container: Basic container with max-width and padding
  * - Section: Full-width section with background options
  * - GridContainer: Responsive grid layout container
+ * - SectionContainer: Convenience wrapper for sections
  * 
- * Usage:
+ * Features:
+ * - Responsive padding and margins
+ * - Background color variants
+ * - Grid system integration
+ * - Animation support
+ * 
+ * @example
  * ```tsx
+ * // Basic container
  * <Container>
- *   <h1>Content</h1>
+ *   <Content />
  * </Container>
  * 
- * <Section background="light">
- *   <p>Section content</p>
- * </Section>
- * 
- * <GridContainer cols={{ sm: 1, md: 2, lg: 3 }}>
+ * // Grid container
+ * <GridContainer cols={{ sm: 1, md: 2, lg: 3 }} gap="lg">
+ *   <Card />
  *   <Card />
  *   <Card />
  * </GridContainer>
+ * 
+ * // Section with background
+ * <Section background="primary" paddingY="lg">
+ *   <Content />
+ * </Section>
  * ```
  */
 

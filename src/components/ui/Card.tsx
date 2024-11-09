@@ -1,16 +1,35 @@
 // src/components/ui/Card.tsx
 /**
  * @file Card.tsx
- * @description A collection of card components for displaying content in consistent, 
- * visually appealing containers. Includes base card and specialized variants for
- * different content types.
+ * @description A collection of card components for displaying content in consistent containers
+ * @module components/ui
+ * 
+ * @requires framer-motion - For animations
+ * @requires lucide-react - For icons
  * 
  * Components:
- * - BaseCard: Foundation card component with animation support
- * - CoreCompetency: Displays professional skills and competencies
- * - JourneyCard: Shows timeline or progression information
- * - PhilosophyCard: Presents philosophical or mission statements
- * - StatsGrid: Displays statistical information in a grid layout
+ * - BaseCard: Foundation card component
+ * - CoreCompetency: For displaying skills/competencies
+ * - JourneyCard: For timeline/progression information
+ * - PhilosophyCard: For mission statements
+ * - StatsGrid: For statistical information
+ * 
+ * @example
+ * ```tsx
+ * // Basic card
+ * <BaseCard>
+ *   <h2>Title</h2>
+ *   <p>Content</p>
+ * </BaseCard>
+ * 
+ * // Stats grid
+ * <StatsGrid 
+ *   stats={[
+ *     { label: "Users", value: "1.2k" },
+ *     { label: "Revenue", value: "$50k" }
+ *   ]} 
+ * />
+ * ```
  */
 
 import React from 'react';

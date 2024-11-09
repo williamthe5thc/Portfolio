@@ -1,3 +1,39 @@
+/**
+ * @file ProjectGrid.tsx
+ * @description Responsive grid layout for displaying project cards with filtering
+ * @module components/features
+ * 
+ * @requires framer-motion - For grid animations and transitions
+ * @requires @/components/ui - For filter buttons and cards
+ * 
+ * Features:
+ * - Responsive grid layout
+ * - Category filtering
+ * - Animated transitions
+ * - Empty state handling
+ * - Filter button highlighting
+ * 
+ * @example
+ * ```tsx
+ * // Basic usage
+ * <ProjectGrid 
+ *   projects={projectList}
+ *   showFilters={true}
+ * />
+ * 
+ * // With specific filter
+ * <ProjectGrid 
+ *   projects={projectList}
+ *   filter="development"
+ *   showFilters={false}
+ * />
+ * ```
+ * 
+ * @notes
+ * - Grid adjusts columns based on screen size
+ * - Animations use stagger effect for performance
+ */
+
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ProjectCard } from './ProjectCard';

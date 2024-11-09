@@ -1,4 +1,36 @@
 // src/types/content.ts
+/**
+ * @file content.ts
+ * @description Type definitions for site content and configuration
+ * @module types
+ * 
+ * Types defined:
+ * - ProjectBase - Project data structure
+ * - SiteConfig - Site-wide configuration
+ * - Experience - Professional experience
+ * - Education - Educational background
+ * - Competency - Professional competencies
+ * 
+ * @example
+ * ```typescript
+ * // Project type usage
+ * const project: ProjectBase = {
+ *   id: 'project-1',
+ *   title: 'Project Title',
+ *   description: 'Project description',
+ *   category: 'development',
+ *   // ...other fields
+ * };
+ * 
+ * // Site config usage
+ * const config: SiteConfig = {
+ *   title: 'Site Title',
+ *   author: 'Author Name',
+ *   // ...other fields
+ * };
+ * ```
+ */
+
 import type { LucideIcon } from 'lucide-react';
 
 export interface ProjectBase {

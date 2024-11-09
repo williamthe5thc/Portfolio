@@ -1,3 +1,41 @@
+/**
+ * @file ProjectCard.tsx
+ * @description Interactive project display card with hover effects and modal preview
+ * @module components/features
+ * 
+ * @requires framer-motion - For card and modal animations
+ * @requires lucide-react - For action icons
+ * @requires react-router-dom - For navigation handling
+ * 
+ * Features:
+ * - Hover animations
+ * - Image zoom effect
+ * - Modal preview
+ * - Status badge
+ * - Tag display
+ * - External/internal linking
+ * 
+ * @example
+ * ```tsx
+ * // Basic usage
+ * <ProjectCard 
+ *   project={projectData}
+ *   showPreview={true}
+ * />
+ * 
+ * // Without preview
+ * <ProjectCard 
+ *   project={projectData}
+ *   showPreview={false}
+ * />
+ * ```
+ * 
+ * @accessibility
+ * - Interactive elements are keyboard focusable
+ * - Modal is screen reader friendly
+ * - Images have descriptive alt text
+ * - ARIA labels for buttons
+ */
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';

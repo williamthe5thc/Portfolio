@@ -1,4 +1,36 @@
 // src/pages/ProjectDetailPage.tsx
+/**
+ * @file ProjectDetailPage.tsx
+ * @description Dynamic project detail page component with rich content display
+ * @module pages
+ * 
+ * Features:
+ * - Dynamic routing
+ * - Image gallery
+ * - Project metadata
+ * - Related projects
+ * - Technology stack display
+ * - Navigation between projects
+ * 
+ * @example
+ * ```tsx
+ * // In router configuration
+ * <Route 
+ *   path="/portfolio/:projectId" 
+ *   element={<ProjectDetailPage />} 
+ * />
+ * 
+ * // Navigation to project
+ * navigate(`/portfolio/${project.id}`);
+ * ```
+ * 
+ * @accessibility
+ * - Semantic HTML structure
+ * - Image descriptions
+ * - Keyboard navigation
+ * - Screen reader considerations
+ */
+
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';

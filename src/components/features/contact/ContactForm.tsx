@@ -1,3 +1,28 @@
+/**
+ * @file ContactForm.tsx
+ * @description A comprehensive contact form component with validation, rate limiting, and error handling
+ * @module components/features
+ * 
+ * @requires @emailjs/browser - For handling email submissions
+ * @requires framer-motion - For animation effects
+ * @requires lucide-react - For icons
+ * @requires @/hooks/useAnalytics - For tracking form submissions
+ * 
+ * Features:
+ * - Real-time form validation
+ * - Rate limiting to prevent spam
+ * - Animated success/error states
+ * - Analytics tracking
+ * - Accessibility support
+ * 
+ * @example
+ * ```tsx
+ * <ContactForm 
+ *   onSubmit={(data) => console.log(data)}
+ *   className="max-w-lg mx-auto"
+ * />
+ * ```
+ */
 import React, { useState, useCallback } from 'react';
 import emailjs from '@emailjs/browser';
 import { Mail, AlertTriangle, CheckCircle, RefreshCw } from 'lucide-react';

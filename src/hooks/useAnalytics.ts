@@ -1,4 +1,31 @@
 // src/hooks/useAnalytics.ts
+/**
+ * @file useAnalytics.ts
+ * @description Custom hook for Google Analytics tracking
+ * @module hooks
+ * 
+ * Features:
+ * - Automatic page view tracking
+ * - Event tracking
+ * - User engagement tracking
+ * - Form submission tracking
+ * - Error reporting
+ * 
+ * @example
+ * ```tsx
+ * // Basic usage
+ * const { trackEvent, trackEngagement } = useAnalytics();
+ * 
+ * // Track custom event
+ * trackEvent('button_click', { 
+ *   button_id: 'submit',
+ *   page_location: '/contact' 
+ * });
+ * 
+ * // Track form submission
+ * trackFormSubmission('contact_form', 'success');
+ * ```
+ */
 import { useEffect, useCallback } from 'react';
 import { useLocation } from 'react-router-dom';
 

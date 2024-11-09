@@ -1,3 +1,27 @@
+/**
+ * @file Badge.tsx
+ * @description Animated badge component for displaying status and categories
+ * @module components/ui
+ * 
+ * Features:
+ * - Multiple variants
+ * - Size options
+ * - Animation support
+ * - Custom colors
+ * - Responsive design
+ * 
+ * @example
+ * ```tsx
+ * // Basic usage
+ * <Badge>New</Badge>
+ * 
+ * // With variant and size
+ * <Badge variant="success" size="lg">
+ *   Completed
+ * </Badge>
+ * ```
+ */
+
 import React from 'react';
 import { motion } from 'framer-motion';
 

@@ -1,4 +1,38 @@
 // src/components/layout/PageHeader.tsx
+/**
+ * @file PageHeader.tsx
+ * @description Consistent page header component with breadcrumbs and animations
+ * @module components/layout
+ * 
+ * @requires framer-motion - For entrance animations
+ * @requires lucide-react - For breadcrumb icons
+ * 
+ * Features:
+ * - Title and subtitle support
+ * - Optional breadcrumb navigation
+ * - Animated entrance
+ * - Responsive design
+ * - Custom background support
+ * 
+ * @example
+ * ```tsx
+ * // Basic usage
+ * <PageHeader 
+ *   title="About Us"
+ *   subtitle="Learn more about our company"
+ * />
+ * 
+ * // With breadcrumbs
+ * <PageHeader 
+ *   title="Project Details"
+ *   breadcrumbs={[
+ *     { label: "Projects", href: "/projects" },
+ *     { label: "Project Name", href: "/projects/123" }
+ *   ]}
+ * />
+ * ```
+ */
+
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';

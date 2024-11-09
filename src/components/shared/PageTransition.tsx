@@ -1,4 +1,31 @@
 // src/components/shared/transitions/PageTransition.tsx
+/**
+ * @file PageTransition.tsx
+ * @description Page transition wrapper component for smooth route changes
+ * @module components/shared
+ * 
+ * Features:
+ * - Smooth page transitions
+ * - Exit animations
+ * - Scroll restoration
+ * - Route-based animations
+ * 
+ * @example
+ * ```tsx
+ * <PageTransition>
+ *   <Routes>
+ *     <Route path="/" element={<HomePage />} />
+ *     <Route path="/about" element={<AboutPage />} />
+ *   </Routes>
+ * </PageTransition>
+ * ```
+ * 
+ * @notes
+ * - Uses framer-motion for animations
+ * - Handles scroll position
+ * - Supports route-based transitions
+ */
+
 import React, { ReactNode } from 'react';
 import { motion } from 'framer-motion';
 
