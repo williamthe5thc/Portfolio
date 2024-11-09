@@ -26,7 +26,12 @@ const preloadRoutes = () => {
     () => import('@/pages/ContactPage'),
     () => import('@/pages/ProjectDetailPage'),
     () => import('@/pages/NotFoundPage'),
-    () => import('@/pages/ResumePage')
+    () => import('@/pages/ResumePage'),
+    () => import('@/pages/resumes/InstructionalDesignResume'),
+    () => import('@/pages/resumes/AcademicResume'),
+    () => import('@/pages/resumes/SoftwareDevResume')
+    
+
   ];
 
   routes.forEach(route => {
@@ -37,6 +42,24 @@ const preloadRoutes = () => {
 // Lazy load pages with better error handling and preloading
 const HomePage = React.lazy(() => 
   import('@/pages/HomePage').catch(() => ({
+    default: ErrorFallback
+  }))
+);
+
+const SoftwareDevResume = React.lazy(() => 
+  import('@/pages/resumes/SoftwareDevResume').catch(() => ({
+    default: ErrorFallback
+  }))
+);
+
+const InstructionalDesignResume = React.lazy(() => 
+  import('@/pages/resumes/InstructionalDesignResume').catch(() => ({
+    default: ErrorFallback
+  }))
+);
+
+const AcademicResume = React.lazy(() => 
+  import('@/pages/resumes/AcademicResume').catch(() => ({
     default: ErrorFallback
   }))
 );
@@ -125,12 +148,15 @@ const App: React.FC = () => {
           <AnimatePresence mode="wait">
             <Routes location={location} key={location.pathname}>
               <Route path="/" element={renderWithLoadingState(HomePage)} />
-              <Route path="/about" element={renderWithLoadingState(AboutPage)} />
-              <Route path="/portfolio" element={renderWithLoadingState(PortfolioPage)} />
-              <Route path="/portfolio/:projectId" element={renderWithLoadingState(ProjectDetailPage)} />
-              <Route path="/contact" element={renderWithLoadingState(ContactPage)} />
-              <Route path="*" element={renderWithLoadingState(NotFoundPage)} />
-              <Route path="/resume" element={renderWithLoadingState(ResumePage)} />
+  <Route path="/about" element={renderWithLoadingState(AboutPage)} />
+  <Route path="/portfolio" element={renderWithLoadingState(PortfolioPage)} />
+  <Route path="/portfolio/:projectId" element={renderWithLoadingState(ProjectDetailPage)} />
+  <Route path="/contact" element={renderWithLoadingState(ContactPage)} />
+  <Route path="/resume" element={renderWithLoadingState(ResumePage)} />
+  <Route path="/resume/software" element={renderWithLoadingState(SoftwareDevResume)} />
+  <Route path="/resume/instructional" element={renderWithLoadingState(InstructionalDesignResume)} />
+  <Route path="/resume/academic" element={renderWithLoadingState(AcademicResume)} />
+  <Route path="*" element={renderWithLoadingState(NotFoundPage)} />
             </Routes>
           </AnimatePresence>
         </main>
