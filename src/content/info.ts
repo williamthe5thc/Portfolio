@@ -1,9 +1,9 @@
 // src/content/info.ts
 export const stats = [
-  { label: "Years Experience", value: "5+" },
-  { label: "Projects Completed", value: "20+" },
-  { label: "Certifications", value: "15+" },
-  { label: "Happy Clients", value: "10+" }
+  { label: "Years Experience", value: "1+" },
+  { label: "Projects Completed", value: "5+" },
+  { label: "Certifications", value: "10+" },
+  { label: "Happy Clients", value: "5+" }
 ];
 
 export const projectCategories = [

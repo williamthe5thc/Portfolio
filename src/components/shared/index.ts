@@ -10,6 +10,7 @@ export { ErrorBoundary } from './ErrorBoundary';
 export { LoadingScreen } from './LoadingScreen';
 export { SEO } from './SEO';
 export { Timeline } from './Timeline';
+export { ProjectCarousel } from './ProjectCarousel';
 export { default as PageTransition } from './PageTransition';
 export { default as GoogleAnalytics } from './GoogleAnalytics';
 

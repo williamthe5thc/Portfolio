@@ -1,7 +1,9 @@
-//src/components/shared/ProjectCarousel.tsx
+// src/components/shared/ProjectCarousel.tsx
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { Button } from '@/components/ui';
 import type { ProjectBase } from '@/types/content';
 
 interface ProjectCarouselProps {
@@ -55,17 +57,23 @@ export const ProjectCarousel: React.FC<ProjectCarouselProps> = ({
           <div className="p-6">
             <h3 className="text-2xl font-bold mb-2">{currentProject.title}</h3>
             <p className="text-gray-600 mb-4 line-clamp-2">{currentProject.description}</p>
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap gap-2 mb-4">
               {currentProject.tags.slice(0, 3).map((tag) => (
                 <span key={tag} className="px-3 py-1 bg-primary-100 text-primary-600 rounded-full text-sm">
                   {tag}
                 </span>
               ))}
             </div>
+            {currentProject.detailPage && (
+              <Link to={`/portfolio/${currentProject.id}`}>
+                <Button variant="outline" size="sm">View Details</Button>
+              </Link>
+            )}
           </div>
         </motion.div>
       </AnimatePresence>
 
+      {/* Navigation Buttons */}
       <button
         onClick={previousSlide}
         className="absolute left-4 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white/80 hover:bg-white shadow-lg"
@@ -81,6 +89,7 @@ export const ProjectCarousel: React.FC<ProjectCarouselProps> = ({
         <ChevronRight className="w-6 h-6" />
       </button>
 
+      {/* Dots Navigation */}
       <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
         {displayedProjects.map((_, index) => (
           <button
@@ -99,3 +108,5 @@ export const ProjectCarousel: React.FC<ProjectCarouselProps> = ({
     </div>
   );
 };
+
+export default ProjectCarousel;

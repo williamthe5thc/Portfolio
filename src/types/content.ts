@@ -134,3 +134,32 @@ export interface FAQ {
   answer: string;
   category?: string;
 }
+
+export interface QuickLink {
+  href: string;
+  title: string;
+  bgColor: string;
+  description: string;
+}
+
+export interface HomePageContent {
+  hero: {
+    title: string;
+    subtitle: string;
+    cta: {
+      primary: {
+        text: string;
+        href: string;
+      };
+      secondary: {
+        text: string;
+        href: string;
+      };
+    };
+  };
+  featuredProjects: {
+    title: string;
+    subtitle: string;
+    count: number;
+  };
+}
