@@ -1,3 +1,35 @@
+/**
+ * @file App.tsx
+ * @description Root application component managing routing and global layout
+ * @module app
+ * 
+ * @requires react-router-dom - For application routing
+ * @requires framer-motion - For page transitions
+ * @requires @/components - For layout and shared components
+ * 
+ * Features:
+ * - Dynamic route loading with code splitting
+ * - Animated page transitions
+ * - Global error boundary
+ * - Loading states
+ * - Analytics integration
+ * 
+ * @example
+ * ```tsx
+ * // In root index file
+ * ReactDOM.createRoot(document.getElementById('root')).render(
+ *   <React.StrictMode>
+ *     <App />
+ *   </React.StrictMode>
+ * );
+ * ```
+ * 
+ * @notes
+ * - Uses React.lazy for route-based code splitting
+ * - Implements error boundaries for route loading
+ * - Manages global loading states
+ */
+ 
 import React, { useState, useEffect, Suspense } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';

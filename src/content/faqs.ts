@@ -1,4 +1,23 @@
 // src/content/support/faqs.ts
+/**
+ * @file faqs.ts
+ * @description Frequently asked questions and answers
+ * @module content/support
+ * 
+ * Features:
+ * - Categorized questions
+ * - Detailed answers
+ * - SEO-friendly content
+ * - Support information
+ * 
+ * @example
+ * ```tsx
+ * import { faqs } from '@/content/support';
+ * 
+ * // Display FAQ accordion
+ * <FAQSection questions={faqs} />
+ * ```
+ */
 import { FAQ } from '@/types/content';
 
 export const faqs: FAQ[] = [

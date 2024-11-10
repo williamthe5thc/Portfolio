@@ -1,4 +1,25 @@
 // src/content/professional/competencies.ts
+/**
+ * @file competencies.ts
+ * @description Core competency definitions and metadata
+ * @module content/professional
+ * 
+ * Features:
+ * - Skill categorization
+ * - Icon associations
+ * - Detailed descriptions
+ * - Color theming
+ * 
+ * @example
+ * ```tsx
+ * import { competencies } from '@/content/professional';
+ * 
+ * // Render competencies list
+ * {competencies.map(comp => (
+ *   <CompetencyCard key={comp.title} {...comp} />
+ * ))}
+ * ```
+ */
 import { CoreCompetency } from '@/types/content';
 
 export const competencies: CoreCompetency[] = [

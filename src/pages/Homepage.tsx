@@ -38,7 +38,8 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight, ChevronLeft, ChevronRight, GraduationCap, Award } from 'lucide-react';
-import { Button, BaseCard, JourneyCard, SectionContainer } from '@/components/ui';
+import { Button, BaseCard, JourneyCard } from '@/components/ui';
+import { SectionContainer } from '@/components/layout';
 import { fadeInUp, staggerContainer } from '@/lib/animations';
 import { siteConfig, projects, education, competencies } from '@/content';
 

@@ -1,4 +1,23 @@
 // src/content/career/experience.ts
+/**
+ * @file experience.ts
+ * @description Professional experience and work history
+ * @module content/career
+ * 
+ * Features:
+ * - Chronological work history
+ * - Key achievements
+ * - Role responsibilities
+ * - Technology usage
+ * 
+ * @example
+ * ```tsx
+ * import { experience } from '@/content/career';
+ * 
+ * // Render experience section
+ * <ExperienceTimeline experiences={experience} />
+ * ```
+ */
 import { Experience } from '@/types/content';
 
 export const experience: Experience[] = [

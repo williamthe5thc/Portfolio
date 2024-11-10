@@ -1,4 +1,23 @@
 // src/content/career/education.ts
+/**
+ * @file education.ts
+ * @description Educational background and certification data
+ * @module content/career
+ * 
+ * Categories:
+ * - Formal education
+ * - Certifications
+ * - Professional training
+ * - Relevant coursework
+ * 
+ * @example
+ * ```tsx
+ * import { education } from '@/content/career';
+ * 
+ * // Display education timeline
+ * <Timeline events={education.degrees} />
+ * ```
+ */
 import { Education } from '@/types/content';
 
 export const education: Education = {

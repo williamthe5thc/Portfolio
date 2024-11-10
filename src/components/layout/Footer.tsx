@@ -1,5 +1,35 @@
 // src/components/layout/Footer.tsx
-
+/**
+ * @file Footer.tsx
+ * @description Global footer component with navigation and social links
+ * @module components/layout
+ * 
+ * @requires react-router-dom - For internal navigation
+ * @requires lucide-react - For social and contact icons
+ * @requires @/content - For site configuration
+ * 
+ * Features:
+ * - Responsive layout
+ * - Dynamic navigation sections
+ * - Social media links
+ * - Contact information
+ * - Copyright notice
+ * 
+ * @example
+ * ```tsx
+ * // Basic usage in App.tsx
+ * <Footer />
+ * 
+ * // With custom className
+ * <Footer className="custom-footer" />
+ * ```
+ * 
+ * @accessibility
+ * - Semantic footer structure
+ * - Proper heading hierarchy
+ * - ARIA labels for social links
+ * - Skip navigation support
+ */
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Github, Linkedin, Mail, MapPin } from 'lucide-react';
