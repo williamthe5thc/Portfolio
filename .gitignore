@@ -43,3 +43,5 @@ lerna-debug.log*
 # System
 .DS_Store
 Thumbs.db
+/assets
+/assets
