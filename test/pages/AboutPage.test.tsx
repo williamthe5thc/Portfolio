@@ -1,104 +1,116 @@
 //tests/pages/AboutPage.test.tsx
-// src/pages/AboutPage.tsx
-import React from 'react';
-import { motion } from 'framer-motion';
-import * as Icons from 'lucide-react';
-import { 
-  SEO,
-  Timeline 
-} from '@/components/shared';
-import { 
-  PageHeader,
-  Container,
-  SectionContainer
-} from '@/components/layout';
-import { 
-  BaseCard, 
-  CoreCompetency 
-} from '@/components/ui';
-import { fadeInUp } from '@/lib/animations';
-import { 
-  siteConfig,
-  education, 
-  experience,
-  stats,
-  competencies 
-} from '@/content';
+import { describe, it, expect, beforeEach } from 'vitest';
+import { render, screen } from '@testing-library/react';
+import AboutPage from '@/pages/AboutPage';
+import { siteConfig, stats, competencies } from '@/content';
 
-const AboutPage: React.FC = () => {
-  // Create memoized experience items
-  const experienceItems = React.useMemo(() => {
-    return experience.map(exp => ({
-      title: exp.title,
-      subtitle: exp.company,
-      date: exp.period,
-      description: exp.highlights.join('. ')
-    }));
-  }, []);
+describe('AboutPage', () => {
+  beforeEach(() => {
+    render(<AboutPage />);
+  });
 
-  return (
-    <>
-      <SEO 
-        title="About"
-        description={`Learn about ${siteConfig.author}'s journey, expertise, and approach to instructional design`}
-      />
+  describe('Page Structure', () => {
+    it('renders page header with correct title', () => {
+      expect(screen.getByText('About Me')).toBeInTheDocument();
+      expect(screen.getByText(/learn about my journey/i)).toBeInTheDocument();
+    });
+
+    it('sets correct meta tags', () => {
+      const title = document.title;
+      expect(title).toContain('About');
       
-      {/* Quick Stats */}
-      <SectionContainer className="py-12">
-        <Container>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {stats.map((stat, index) => (
-              <motion.div
-                key={index}
-                variants={fadeInUp}
-              >
-                <BaseCard className="text-center">
-                  <div className="text-4xl font-bold text-primary-600 mb-2">
-                    {stat.value}
-                  </div>
-                  <p className="text-text-secondary">{stat.label}</p>
-                </BaseCard>
-              </motion.div>
-            ))}
-          </div>
-        </Container>
-      </SectionContainer>
+      const description = document.querySelector('meta[name="description"]');
+      expect(description?.getAttribute('content')).toContain(siteConfig.author);
+    });
+  });
 
-      {/* Bio Section */}
-      <SectionContainer className="py-20 bg-background">
-        <Container>
-          <div className="grid md:grid-cols-2 gap-12">
-            {/* Competencies Section */}
-            <div className="space-y-4">
-              {competencies.map((competency, index) => (
-                <CoreCompetency 
-                  key={index}
-                  {...competency}
-                />
-              ))}
-            </div>
-          </div>
-        </Container>
-      </SectionContainer>
+  describe('Stats Section', () => {
+    it('displays all statistics', () => {
+      stats.forEach(stat => {
+        expect(screen.getByText(stat.value)).toBeInTheDocument();
+        expect(screen.getByText(stat.label)).toBeInTheDocument();
+      });
+    });
 
-      {/* Education & Experience Timeline */}
-      <SectionContainer className="py-20">
-        <Container>
-          <Timeline events={experienceItems} />
-          
-          {/* Add Education Timeline */}
-          <Timeline 
-            events={education.degrees.map(deg => ({
-              title: deg.degree,
-              subtitle: deg.institution,
-              date: deg.period,
-              description: deg.relevantCourses?.join(', ')
-            }))}
-          />
-        </Container>
-      </SectionContainer>
-    </>
-  );
-};
+    it('applies animation to stat cards', () => {
+      const statCards = screen.getAllByRole('article');
+      statCards.forEach(card => {
+        expect(card).toHaveAttribute('data-animate');
+      });
+    });
+  });
 
-export default AboutPage;
+  describe('Bio Section', () => {
+    it('displays approach section', () => {
+      expect(screen.getByText('My Approach')).toBeInTheDocument();
+      expect(screen.getByText(/background in psychology/i)).toBeInTheDocument();
+    });
+
+    it('shows areas of expertise', () => {
+      expect(screen.getByText('Areas of Expertise')).toBeInTheDocument();
+      competencies.forEach(comp => {
+        expect(screen.getByText(comp.title)).toBeInTheDocument();
+      });
+    });
+  });
+
+  describe('Education & Experience', () => {
+    it('displays timeline section', () => {
+      expect(screen.getByText('Education & Experience')).toBeInTheDocument();
+    });
+
+    it('shows timeline events in chronological order', () => {
+      const timelineEvents = screen.getAllByRole('listitem');
+      expect(timelineEvents.length).toBeGreaterThan(0);
+      
+      // Check dates are in descending order
+      const dates = timelineEvents.map(event => {
+        const dateText = event.textContent?.match(/\d{4}/)?.[0];
+        return dateText ? parseInt(dateText) : 0;
+      });
+      
+      const isSorted = dates.every((date, i) => {
+        return i === 0 || date <= dates[i - 1];
+      });
+      
+      expect(isSorted).toBe(true);
+    });
+  });
+
+  describe('Interactive Elements', () => {
+    it('animates elements on scroll', () => {
+      const sections = screen.getAllByRole('region');
+      sections.forEach(section => {
+        expect(section).toHaveAttribute('data-animate');
+      });
+    });
+  });
+
+  describe('Responsive Layout', () => {
+    it('adjusts grid layout for different screens', () => {
+      const grid = screen.getAllByRole('grid')[0];
+      expect(grid).toHaveClass(
+        'grid-cols-1',
+        'md:grid-cols-2',
+        'lg:grid-cols-4'
+      );
+    });
+  });
+
+  describe('Accessibility', () => {
+    it('uses proper heading hierarchy', () => {
+      const h1 = screen.getByRole('heading', { level: 1 });
+      expect(h1).toHaveTextContent('About Me');
+
+      const h2s = screen.getAllByRole('heading', { level: 2 });
+      expect(h2s.length).toBeGreaterThan(0);
+    });
+
+    it('provides proper section landmarks', () => {
+      const sections = screen.getAllByRole('region');
+      sections.forEach(section => {
+        expect(section).toHaveAttribute('aria-labelledby');
+      });
+    });
+  });
+});

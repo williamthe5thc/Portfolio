@@ -50,3 +50,9 @@ export { projects, type ProjectId } from './projects';
 
 // Support content
 export { faqs } from './faqs';
+
+//methodlogy content
+export {methodology} from './methodology';
+
+//Quick links in the home page
+export { quickLinks } from './navigation';

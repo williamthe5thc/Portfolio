@@ -1,69 +1,22 @@
 // src/pages/AboutPage.tsx
+
 import React from 'react';
 import { motion } from 'framer-motion';
-import * as Icons from 'lucide-react';
-import BasePage from './BasePage';
-
-import { 
-  SEO,
-  Timeline
-} from '@/components/shared';
-
-import {
-  PageHeader,
-  Container,
-  SectionContainer
-} from '@/components/layout';
-
-import { 
-  Button,
-BaseCard, CoreCompetency, JourneyCard, StatsGrid, PhilosophyCard
-
-} from '@/components/ui';
-
-import { 
-  fadeInUp, 
-  staggerContainer, 
-  staggerChildren 
-} from '@/lib/animations';
-
-
+import { Timeline } from '@/components/shared';
+import { PageHeader, Container, SectionContainer } from '@/components/layout';
+import { BaseCard, StatsGrid } from '@/components/ui';
+import { fadeInUp, staggerContainer } from '@/lib/animations';
 import { 
   siteConfig,
   education, 
   experience,
   stats,
-  competencies 
+  methodology 
 } from '@/content';
-import type { Competency } from '@/types/content';
-
-interface CompetencyItemProps extends Competency {
-  className?: string;
-}
-
-const CompetencyItem: React.FC<CompetencyItemProps> = ({ 
-  icon: IconName, 
-  title, 
-  description, 
-  color,
-  className = '' 
-}) => {
-  const Icon = Icons[IconName as keyof typeof Icons];
-  
-  return (
-    <motion.div variants={fadeInUp} className={`mb-6 ${className}`}>
-      <div className="flex items-start gap-3 min-h-touch">
-        {Icon && <Icon className={`w-6 h-6 ${color || 'text-primary-600'}`} />}
-        <div>
-          <h3 className="font-semibold text-text-primary mb-1">{title}</h3>
-          <p className="text-text-secondary text-sm md:text-base">{description}</p>
-        </div>
-      </div>
-    </motion.div>
-  );
-};
+import BasePage from './BasePage';
 
 const AboutPage: React.FC = () => {
+  // Convert experience items for Timeline component
   const experienceItems = React.useMemo(() => {
     return experience.map(exp => ({
       title: exp.title,
@@ -74,97 +27,196 @@ const AboutPage: React.FC = () => {
   }, []);
 
   return (
-    <>
-      <SEO 
-        title="About"
-        description={`Learn about ${siteConfig.author}'s journey, expertise, and approach to instructional design`}
-      />
-      
-      <div className="min-h-screen">
-        <PageHeader
-          title="About Me"
-          subtitle="Learn about my journey, philosophy, and approach to instructional design"
-        />
-
-        {/* Quick Stats */}
-        {stats && (
-          <SectionContainer className="py-12">
-            <Container>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                {stats.map((stat, index) => (
-                  <motion.div
-                    key={index}
-                    variants={fadeInUp}
-                    className="animate-fade-in"
-                  >
-                    <BaseCard className="text-center">
-                      <div className="text-4xl font-bold text-primary-600 mb-2">
-                        {stat.value}
-                      </div>
-                      <p className="text-text-secondary">{stat.label}</p>
-                    </BaseCard>
-                  </motion.div>
-                ))}
-              </div>
-            </Container>
-          </SectionContainer>
-        )}
-
-        {/* Bio Section */}
-        <SectionContainer className="py-20 bg-background">
-          <Container>
-            <div className="grid md:grid-cols-2 gap-12">
-              <motion.div 
-                variants={fadeInUp}
-                className="animate-slide-up"
-              >
-                <h2 className="text-3xl font-bold text-text-primary mb-6">
-                  My Approach
-                </h2>
-                <div className="prose prose-lg text-text-secondary">
-                  <p>
-                    With a background in psychology and a passion for education,
-                    I bring a unique perspective to instructional design. My 
-                    approach combines research-based methodologies with creative
-                    solutions to deliver meaningful learning experiences.
-                  </p>
-                </div>
-              </motion.div>
-              
-              <motion.div 
-                variants={fadeInUp}
-                className="animate-slide-up"
-              >
-                <h2 className="text-3xl font-bold text-text-primary mb-6">
-                  Areas of Expertise
-                </h2>
-                <div className="space-y-4">
-                  {competencies.map((competency, index) => (
-                    <CompetencyItem key={index} {...competency} />
-                  ))}
-                </div>
-              </motion.div>
-            </div>
-          </Container>
-        </SectionContainer>
-
-        {/* Education & Experience */}
-        <SectionContainer className="py-20">
-          <Container>
-            <motion.div className="max-w-4xl mx-auto">
-              <motion.h2 
-                className="text-3xl font-bold text-text-primary mb-12 text-center"
-                variants={fadeInUp}
-              >
-                Education & Experience
-              </motion.h2>
-              <Timeline events={experienceItems} />
-            </motion.div>
-          </Container>
-        </SectionContainer>
-      </div>
-    </>
+    <BasePage
+      seo={{
+        title: "About",
+        description: `Learn about ${siteConfig.author}'s journey, expertise, and approach to instructional design`
+      }}
+      title="About Me"
+      subtitle="Exploring the intersection of learning theory, technology, and design"
+      className="bg-background-light"
+    >
+      <StatsSection />
+      <ProfessionalPracticeSection />
+      <SkillsSection />
+      <ToolsSection />
+      <BackgroundSection experienceItems={experienceItems} />
+    </BasePage>
   );
 };
+
+// Component Definitions
+const StatsSection = () => (
+  <SectionContainer className="py-12">
+    <Container>
+      <StatsGrid stats={stats} />
+    </Container>
+  </SectionContainer>
+);
+
+const ProfessionalPracticeSection = () => (
+  <SectionContainer id="Professional-practice" className="py-20 bg-background">
+    <Container>
+      <motion.div 
+        variants={staggerContainer}
+        initial="initial"
+        animate="animate"
+        className="max-w-4xl mx-auto"
+      >
+        {/* Title */}
+        <motion.div variants={fadeInUp} className="text-center mb-12">
+          <h2 className="text-3xl font-bold text-text-primary mb-4">
+            {methodology.title}
+          </h2>
+          <p className="text-xl text-text-secondary">
+            {methodology.summary}
+          </p>
+        </motion.div>
+
+        {/* Core Principles */}
+        <div className="grid md:grid-cols-2 gap-8 mb-12">
+          {methodology.corePrinciples.map((principle) => (
+            <motion.div 
+              key={principle.title}
+              variants={fadeInUp}
+            >
+              <BaseCard className="h-full">
+                <h3 className="text-xl font-semibold text-text-primary mb-2">
+                  {principle.title}
+                </h3>
+                <p className="text-text-secondary">
+                  {principle.description}
+                </p>
+              </BaseCard>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Design Process */}
+        <motion.div variants={fadeInUp}>
+          <h3 className="text-2xl font-bold text-text-primary mb-6 text-center">
+            Design Process
+          </h3>
+          <div className="space-y-6">
+            {methodology.process.map((phase) => (
+              <BaseCard 
+                key={phase.phase} 
+                className="border-l-4 border-primary-500"
+              >
+                <h4 className="text-xl font-semibold text-text-primary mb-4">
+                  {phase.phase}
+                </h4>
+                <ul className="grid sm:grid-cols-2 gap-3">
+                  {phase.activities.map((activity) => (
+                    <li 
+                      key={activity} 
+                      className="text-text-secondary flex items-start gap-2"
+                    >
+                      <span className="w-2 h-2 mt-2 rounded-full bg-primary-300 flex-shrink-0" />
+                      {activity}
+                    </li>
+                  ))}
+                </ul>
+              </BaseCard>
+            ))}
+          </div>
+        </motion.div>
+      </motion.div>
+    </Container>
+  </SectionContainer>
+);
+
+const SkillsSection = () => (
+  <SectionContainer className="py-20">
+    <Container>
+      <motion.div variants={fadeInUp} className="mt-12">
+        <h3 className="text-2xl font-bold text-text-primary mb-6 text-center">
+          Professional Skills
+        </h3>
+        <div className="grid md:grid-cols-3 gap-6">
+          {Object.entries(methodology.skills).map(([category, skillList]) => (
+            <BaseCard key={category} className="h-full">
+              <h4 className="font-semibold text-text-primary mb-2 capitalize">
+                {category.replace(/([A-Z])/g, ' $1').trim()}
+              </h4>
+              <ul className="space-y-2">
+                {skillList.map((skill) => (
+                  <li 
+                    key={skill}
+                    className="text-text-secondary flex items-start gap-2"
+                  >
+                    <span className="w-1.5 h-1.5 mt-1.5 rounded-full bg-primary-300 flex-shrink-0" />
+                    {skill}
+                  </li>
+                ))}
+              </ul>
+            </BaseCard>
+          ))}
+        </div>
+      </motion.div>
+    </Container>
+  </SectionContainer>
+);
+
+const ToolsSection = () => (
+  <SectionContainer className="py-10"> 
+    <Container>
+      <motion.div variants={fadeInUp} className="mt-12">
+        <h3 className="text-2xl font-bold text-text-primary mb-6 text-center">
+          Technical Tools
+        </h3>
+        <div className="grid md:grid-cols-3 gap-4">
+          {Object.entries(methodology.tools).map(([category, toolsets]) => (
+            <div key={category} className="space-y-6">
+              {toolsets.map((toolset) => (
+                <BaseCard key={toolset.name} className="p-6">
+              <h4 className="font-semibold text-text-primary mb-2 capitalize">
+                    {toolset.name}
+                  </h4>
+                  <ul className="space-y-2">
+                    {toolset.applications.map((tool) => (
+                      <li 
+                        key={tool}
+                        className="text-text-secondary flex items-start gap-2"
+                      >
+                        <span className="w-1.5 h-1.5 mt-1.5 rounded-full bg-primary-300 flex-shrink-0" />
+                        {tool}
+                      </li>
+                    ))}
+                  </ul>
+                </BaseCard>
+              ))}
+            </div>
+          ))}
+        </div>
+      </motion.div>
+    </Container>
+  </SectionContainer>
+);
+
+interface BackgroundSectionProps {
+  experienceItems: Array<{
+    title: string;
+    subtitle: string;
+    date: string;
+    description: string;
+  }>;
+}
+
+const BackgroundSection: React.FC<BackgroundSectionProps> = ({ experienceItems }) => (
+  <SectionContainer className="py-20">
+    <Container>
+      <motion.div className="max-w-4xl mx-auto">
+        <motion.h2 
+          className="text-3xl font-bold text-text-primary mb-12 text-center"
+          variants={fadeInUp}
+        >
+          Experience & Education
+        </motion.h2>
+        <Timeline events={experienceItems} />
+      </motion.div>
+    </Container>
+  </SectionContainer>
+);
 
 export default AboutPage;

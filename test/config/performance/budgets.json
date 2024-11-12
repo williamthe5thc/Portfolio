@@ -1,0 +1,12 @@
+{
+  "resourceSizes": {
+    "javascript": {
+      "budget": 300000,
+      "warning": 250000
+    },
+    "total": {
+      "budget": 1000000,
+      "warning": 900000
+    }
+  }
+}

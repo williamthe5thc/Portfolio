@@ -2,72 +2,64 @@ import '@testing-library/jest-dom';
 import { expect, afterEach, vi } from 'vitest';
 import { cleanup } from '@testing-library/react';
 import matchers from '@testing-library/jest-dom/matchers';
-import { mockResizeObserver } from './__mocks__/resizeObserver';
 
-// Extend vitest's expect with testing-library matchers
+// Extend Vitest's expect method with methods from react-testing-library
 expect.extend(matchers);
 
-// Clean up after each test
+// Cleanup after each test case (e.g. clearing jsdom)
 afterEach(() => {
   cleanup();
 });
 
-// Mock IntersectionObserver
-const mockIntersectionObserver = vi.fn();
-mockIntersectionObserver.mockReturnValue({
-  observe: vi.fn(),
-  unobserve: vi.fn(),
-  disconnect: vi.fn(),
+// Mock window.matchMedia
+Object.defineProperty(window, 'matchMedia', {
+  writable: true,
+  value: vi.fn().mockImplementation(query => ({
+    matches: false,
+    media: query,
+    onchange: null,
+    addListener: vi.fn(), // deprecated
+    removeListener: vi.fn(), // deprecated
+    addEventListener: vi.fn(),
+    removeEventListener: vi.fn(),
+    dispatchEvent: vi.fn(),
+  })),
 });
-window.IntersectionObserver = mockIntersectionObserver;
+
+// Mock IntersectionObserver
+class MockIntersectionObserver {
+  observe = vi.fn()
+  disconnect = vi.fn()
+  unobserve = vi.fn()
+}
+
+Object.defineProperty(window, 'IntersectionObserver', {
+  writable: true,
+  configurable: true,
+  value: MockIntersectionObserver
+});
 
 // Mock ResizeObserver
-window.ResizeObserver = mockResizeObserver;
+class MockResizeObserver {
+  observe = vi.fn()
+  disconnect = vi.fn()
+  unobserve = vi.fn()
+}
+
+Object.defineProperty(window, 'ResizeObserver', {
+  writable: true,
+  configurable: true,
+  value: MockResizeObserver
+});
 
 // Mock window.scrollTo
 window.scrollTo = vi.fn();
 
-// Mock window.fs for file reading tests
-window.fs = {
-  readFile: vi.fn(),
-  readFileSync: vi.fn(),
-  writeFile: vi.fn(),
-  writeFileSync: vi.fn(),
+// Mock console.error to fail tests on React errors
+const originalError = console.error;
+console.error = (...args) => {
+  if (/Warning.*not wrapped in act/.test(args[0])) {
+    return;
+  }
+  originalError.call(console, ...args);
 };
-
-// Mock matchMedia
-window.matchMedia = vi.fn().mockImplementation((query) => ({
-  matches: false,
-  media: query,
-  onchange: null,
-  addListener: vi.fn(),
-  removeListener: vi.fn(),
-  addEventListener: vi.fn(),
-  removeEventListener: vi.fn(),
-  dispatchEvent: vi.fn(),
-}));
-
-// Mock window.gtag for analytics
-window.gtag = vi.fn();
-
-// Mock document.createRange for selection tests
-document.createRange = () => ({
-  setStart: vi.fn(),
-  setEnd: vi.fn(),
-  commonAncestorContainer: document.createElement('div'),
-  getBoundingClientRect: () => ({
-    top: 0,
-    right: 0,
-    bottom: 0,
-    left: 0,
-    width: 0,
-    height: 0,
-    x: 0,
-    y: 0,
-    toJSON: vi.fn(),
-  }),
-  getClientRects: () => [],
-}) as any;
-
-// Global test timeout
-vi.setConfig({ testTimeout: 10000 });

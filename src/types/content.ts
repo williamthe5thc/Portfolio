@@ -163,3 +163,51 @@ export interface HomePageContent {
     count: number;
   };
 }
+// src/types/content.ts (add to existing file)
+
+export interface MethodologyPrinciple {
+  title: string;
+  description: string;
+}
+
+export interface ProcessPhase {
+  phase: string;
+  activities: string[];
+}
+
+export interface FrameworkStep {
+  name: string;
+  description: string;
+}
+
+export interface Framework {
+  name: string;
+  description: string;
+  steps?: FrameworkStep[];
+  phases?: FrameworkStep[];
+}
+
+export interface Methodology {
+  title: string;
+  summary: string;
+  corePrinciples: MethodologyPrinciple[];
+  process: ProcessPhase[];
+  frameworks: {
+    addie: Framework;
+    sam: Framework;
+  };
+  skills: {
+    instructionalDesign: string[];
+    technicalDesign: string[];
+    research: string[];
+  };
+  tools: {
+    design: ToolSet[];
+    development: ToolSet[];
+    learning: ToolSet[];
+  };
+}
+export interface ToolSet {
+  name: string;
+  applications: string[];
+}

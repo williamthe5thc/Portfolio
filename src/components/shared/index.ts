@@ -22,3 +22,6 @@ export type { ErrorBoundaryProps } from './ErrorBoundary';
 export type { LoadingScreenProps } from './LoadingScreen';
 export type { SEOProps } from './SEO';
 export type { TimelineProps } from './Timeline';
+
+//Quick Links
+export { QuickLinks } from './QuickLinks';

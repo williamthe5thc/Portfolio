@@ -29,7 +29,7 @@
  * - Implements error boundaries for route loading
  * - Manages global loading states
  */
- 
+ import { SkeletonLoader } from '@/components/shared/loading';
 import React, { useState, useEffect, Suspense } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
@@ -154,14 +154,17 @@ const App: React.FC = () => {
   }, [location]);
 
   if (isInitialLoading) {
-    return <LoadingScreen />;
+    return <SkeletonLoader />;
+  }
+  else{
+  console.log("app.tsx loaded");
   }
 
   const renderWithLoadingState = (Component: React.ComponentType) => (
     <Suspense 
       fallback={
         <div className="min-h-screen">
-          <LoadingScreen />
+          <SkeletonLoader />
         </div>
       }
     >

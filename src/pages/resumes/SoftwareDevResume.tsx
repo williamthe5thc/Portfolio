@@ -1,40 +1,60 @@
 // src/pages/resumes/SoftwareDevResume.tsx
-/*
 import React from 'react';
-import ResumeTemplate from '@/components/templates/ResumeTemplate';
 import BasePage from '../BasePage';
+import ResumeTemplate from '@/components/shared/ResumeTemplate';
 
-const SoftwareDevResume = () => {
+const SoftwareDevResume: React.FC = () => {
   const resumeData = {
     title: "Software Development Resume",
     subtitle: "Full-Stack Developer & Technical Problem Solver",
     summary: `Results-driven software developer with expertise in React, Python, and full-stack development. 
     Passionate about creating efficient, user-friendly solutions and automating complex processes.`,
-    downloadUrl: "/documents/Coding Resume.docx",
+    downloadUrl: "/documents/Software-Dev-Resume.pdf",
     experience: [
-      // Add your software development experience here
+      {
+        title: "Software Developer",
+        company: "NACVA",
+        period: "2023",
+        highlights: [
+          "Developed Python automation scripts for data processing",
+          "Created efficient document conversion tools",
+          "Streamlined course processing workflows"
+        ]
+      }
     ],
     education: [
-      // Add relevant education
+      {
+        degree: "Bachelor of Science",
+        field: "Psychology",
+        institution: "Brigham Young University - Idaho",
+        period: "2012 - 2018",
+        relevantCourses: [
+          "Data Structures",
+          "Algorithms",
+          "Web Development"
+        ]
+      }
     ],
     skills: [
       {
         category: "Programming Languages",
-        skills: ["Python", "JavaScript", "TypeScript", "C++", "Java"]
+        skills: ["Python", "JavaScript", "TypeScript", "C++", "HTML/CSS"]
       },
       {
-        category: "Web Technologies",
-        skills: ["React", "Node.js", "HTML5", "CSS3", "Tailwind"]
+        category: "Frameworks & Libraries",
+        skills: ["React", "Node.js", "Express", "Tailwind CSS"]
       },
-      // Add more skill categories
+      {
+        category: "Tools & Platforms",
+        skills: ["Git", "VS Code", "AWS", "Docker"]
+      }
     ],
     projects: [
       {
-        title: "Portfolio Website",
-        description: "React-based portfolio with dynamic content management",
-        url: "https://github.com/yourusername/portfolio"
-      },
-      // Add more projects
+        title: "NACVA Course Processing Automation",
+        description: "Developed Python scripts to automate course processing and data entry, significantly improving workflow efficiency.",
+        url: "https://github.com/yourusername/nacva-automation"
+      }
     ]
   };
 
@@ -48,4 +68,6 @@ const SoftwareDevResume = () => {
       <ResumeTemplate {...resumeData} />
     </BasePage>
   );
-};*/
+};
+
+export default SoftwareDevResume;

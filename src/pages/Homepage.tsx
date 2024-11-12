@@ -4,7 +4,8 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { GraduationCap, Award } from 'lucide-react';
 import { 
-  ProjectCarousel 
+  ProjectCarousel,
+  QuickLinks
 } from '@/components/shared';
 import { 
   Button, 
@@ -19,7 +20,7 @@ import {
   projects,
   stats,
   education,
-  competencies 
+  competencies,
 } from '@/content';
 
 const HomePage: React.FC = () => {
@@ -29,62 +30,7 @@ const HomePage: React.FC = () => {
     [projects]
   );
 
-  const QuickLinks = () => (
-    <div className="grid grid-cols-2 gap-4">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        whileHover={{ scale: 1.02 }}
-        className="bg-blue-500 rounded-xl shadow-lg transition-all duration-300"
-      >
-        <Link
-          to="/resume"
-          className="block w-full h-full p-6 text-white text-xl font-semibold text-center"
-        >
-          Resume
-        </Link>
-      </motion.div>
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        whileHover={{ scale: 1.02 }}
-        className="bg-purple-500 rounded-xl shadow-lg transition-all duration-300"
-      >
-        <Link
-          to="/portfolio?type=coding"
-          className="block w-full h-full p-6 text-white text-xl font-semibold text-center"
-        >
-          Coding Projects
-        </Link>
-      </motion.div>
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        whileHover={{ scale: 1.02 }}
-        className="bg-green-500 rounded-xl shadow-lg transition-all duration-300"
-      >
-        <Link
-          to="/portfolio?type=instructional"
-          className="block w-full h-full p-6 text-white text-xl font-semibold text-center"
-        >
-          Instructional Design
-        </Link>
-      </motion.div>
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        whileHover={{ scale: 1.02 }}
-        className="bg-pink-500 rounded-xl shadow-lg transition-all duration-300"
-      >
-        <Link
-          to="/portfolio?type=media"
-          className="block w-full h-full p-6 text-white text-xl font-semibold text-center"
-        >
-          Art & Video
-        </Link>
-      </motion.div>
-    </div>
-  );
+  
 
   return (
     <div className="min-h-screen bg-background-light">

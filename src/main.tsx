@@ -25,6 +25,7 @@
  * - Provides global error handling
  */
 
+// src/main.tsx
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { HashRouter } from 'react-router-dom';
@@ -32,6 +33,16 @@ import { HelmetProvider } from 'react-helmet-async';
 import { ErrorBoundary } from '@/components/shared';
 import App from './App';
 import './styles/index.css';
+
+// Create a dedicated Suspense fallback for initial loading
+const LoadingFallback = () => (
+  <div className="min-h-screen flex items-center justify-center">
+    <div className="text-center">
+      <div className="w-16 h-16 border-4 border-primary-600 border-t-transparent rounded-full animate-spin mx-auto" />
+      <p className="mt-4 text-gray-600">Loading application...</p>
+    </div>
+  </div>
+);
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -42,7 +53,9 @@ root.render(
     <ErrorBoundary>
       <HelmetProvider>
         <HashRouter>
-          <App />
+          <React.Suspense fallback={<LoadingFallback />}>
+            <App />
+          </React.Suspense>
         </HashRouter>
       </HelmetProvider>
     </ErrorBoundary>

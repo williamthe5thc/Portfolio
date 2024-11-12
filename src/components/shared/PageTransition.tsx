@@ -25,7 +25,7 @@
  * - Handles scroll position
  * - Supports route-based transitions
  */
-
+// src/components/shared/PageTransition.tsx
 import React, { ReactNode } from 'react';
 import { motion } from 'framer-motion';
 
@@ -63,7 +63,3 @@ const PageTransition: React.FC<PageTransitionProps> = ({ children }) => {
 };
 
 export default PageTransition;
-
-
-
-
