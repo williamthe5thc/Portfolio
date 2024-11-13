@@ -1,4 +1,40 @@
 // tailwind.config.ts
+/**
+ * @file tailwind.config.ts
+ * @description Tailwind CSS configuration with custom theme and plugins
+ * 
+ * Features:
+ * - Custom color palette
+ * - Typography configuration
+ * - Responsive breakpoints
+ * - Custom plugins
+ * - Form styling
+ * 
+ * Color Schemes:
+ * - Primary: Blue-based scheme
+ * - Background: Light neutral scheme
+ * - Text: Slate-based hierarchy
+ * 
+ * @example
+ * ```tsx
+ * // Using custom colors
+ * <div className="bg-primary-600 text-text-primary">
+ *   Content
+ * </div>
+ * 
+ * // Using typography
+ * <div className="prose prose-lg">
+ *   <h1>Title</h1>
+ *   <p>Content</p>
+ * </div>
+ * ```
+ * 
+ * @notes
+ * - Uses semantic color naming
+ * - Includes dark mode support
+ * - Optimized for accessibility
+ */
+
 import type { Config } from 'tailwindcss';
 
 const config: Config = {
