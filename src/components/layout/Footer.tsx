@@ -30,11 +30,14 @@
  * - ARIA labels for social links
  * - Skip navigation support
  */
+ 
+ 
 import React from 'react';
-import { Link } from 'react-router-dom';
+//import { Link } from 'react-router-dom';
 import { Github, Linkedin, Mail, MapPin } from 'lucide-react';
 import { Container } from './Container';
 import { siteConfig } from '@/content';
+import { ScrollToSection } from '@/components/shared';
 
 interface FooterLink {
   label: string;
@@ -132,12 +135,12 @@ export const Footer: React.FC<FooterProps> = ({ className = '' }) => {
                         {link.label}
                       </a>
                     ) : (
-                      <Link
+                      <ScrollToSection
                         to={link.href}
                         className="text-text-secondary hover:text-primary-600"
                       >
                         {link.label}
-                      </Link>
+                      </ScrollToSection>
                     )}
                   </li>
                 ))}

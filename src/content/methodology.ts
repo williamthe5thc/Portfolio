@@ -9,13 +9,14 @@ export const methodology = {
 
   corePrinciples: [
     {
-      title: "Theory-Informed Design",
-      description: "Applying foundational learning theories and cognitive principles to create research-backed solutions"
-    },
-    {
-      title: "Human-Centered Approach", 
+      title: "Learner-Centered Approach", 
       description: "Focusing on learner needs, contexts, and experiences through systematic analysis and iterative design"
     },
+    {
+      title: "Designs Informed from Learning Theories",
+      description: "Applying foundational learning theories and cognitive principles to create research-backed solutions"
+    },
+   
     {
       title: "Evidence-Based Practice",
       description: "Using research findings and established frameworks while staying current with emerging technologies and methods"

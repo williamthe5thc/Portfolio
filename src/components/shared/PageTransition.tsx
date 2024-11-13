@@ -26,27 +26,35 @@
  * - Supports route-based transitions
  */
 // src/components/shared/PageTransition.tsx
-import React, { ReactNode } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 
-interface PageTransitionProps {
-  children: ReactNode;
-}
-
-export const pageVariants = {
-  initial: {
+const pageVariants = {
+  initial: { 
     opacity: 0,
-    y: 20
+    y: 20 
   },
-  animate: {
+  animate: { 
     opacity: 1,
-    y: 0
+    y: 0,
+    transition: {
+      duration: 0.3,
+      ease: "easeOut"
+    }
   },
-  exit: {
+  exit: { 
     opacity: 0,
-    y: -20
+    y: -20,
+    transition: {
+      duration: 0.2,
+      ease: "easeIn"
+    }
   }
 };
+
+interface PageTransitionProps {
+  children: React.ReactNode;
+}
 
 const PageTransition: React.FC<PageTransitionProps> = ({ children }) => {
   return (
@@ -55,7 +63,6 @@ const PageTransition: React.FC<PageTransitionProps> = ({ children }) => {
       initial="initial"
       animate="animate"
       exit="exit"
-      transition={{ duration: 0.3 }}
     >
       {children}
     </motion.div>

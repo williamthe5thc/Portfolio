@@ -2,7 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ProjectGrid } from '@/components/features';
+import {PageTransition } from '@/components/shared';
 import { BaseCard } from '@/components/ui';
+import {RouteTransition } from '@/components/layout/RouteTransition';
 import { SectionContainer } from '@/components/layout';
 import { fadeInUp } from '@/lib/animations';
 import { siteConfig, projects } from '@/content';
@@ -86,13 +88,15 @@ const PortfolioPage = () => {
   );
 
   return (
+  <RouteTransition>
+      <PageTransition>
     <BasePage
       seo={{
         title: "Portfolio",
         description: `Explore ${siteConfig.author}'s projects and achievements`
       }}
       title="Portfolio"
-      subtitle="Explore my latest projects and achievements"
+      subtitle="Explore all my work & latest projects and achievements"
       className="bg-background-light"
     >
       <div className="py-20">
@@ -128,6 +132,8 @@ const PortfolioPage = () => {
         </SectionContainer>
       </div>
     </BasePage>
+      </PageTransition>
+    </RouteTransition>
   );
 };
 

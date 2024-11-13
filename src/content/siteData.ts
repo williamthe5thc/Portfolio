@@ -5,7 +5,7 @@ export const siteConfig: SiteConfig = {
   title: "W. Jordan Charles Portfolio",
   author: "William Jordan Charles's Portfolio",
   description: "Instructional Designer & Learning Solutions Developer",
-  slogan: "Unlock YOUR Employees Potential through Learning",
+  slogan: "Unlock YOUR Employees' Potential through Learning",
   tagline: "Dedicated to partnering with organizations to unlock the full potential of their target demographic through engaging, results-driven learning experiences.",
   siteUrl: "https://williamthe5thc.github.io/Portfolio",
   defaultImage: "/path/to/default-og-image.jpg",

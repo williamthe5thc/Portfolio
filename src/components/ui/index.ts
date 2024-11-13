@@ -37,9 +37,9 @@
  * - All components have proper TypeScript definitions
  */
 // Core Components
-export { Button  } from './Button.tsx';  // Add the .tsx extension and export named export
-export { BackToTop } from './BackToTop.tsx';
-export { Badge } from './Badge.tsx';
+export { Button  } from './Button'; 
+export { BackToTop } from './BackToTop';
+export { Badge } from './Badge';
 
 //export the cards
 export { BaseCard, CoreCompetency, JourneyCard, StatsGrid, PhilosophyCard } from './Card.jsx';
@@ -53,18 +53,18 @@ export type {
 } from './Card.tsx';
 
 // Form Components
-export { Input } from './Input.tsx';
-export { TextArea } from './TextArea.tsx';
-export { FormField } from './FormField.tsx';
+export { Input } from './Input';
+export { TextArea } from './TextArea';
+export { FormField } from './FormField';
 export { ContactMethod } from './ContactMethod';
 
 
 // Types
-export type { ButtonProps } from './Button.tsx';
-export type { CardProps } from './Card.tsx';
-export type { InputProps } from './Input.tsx';
-export type { TextAreaProps } from './TextArea.tsx';
-export type { FormFieldProps } from './FormField.tsx';
-export type { BackToTopProps } from './BackToTop.tsx';
-export type { BadgeProps } from './Badge.tsx';
+export type { ButtonProps } from './Button';
+export type { CardProps } from './Card';
+export type { InputProps } from './Input';
+export type { TextAreaProps } from './TextArea';
+export type { FormFieldProps } from './FormField';
+export type { BackToTopProps } from './BackToTop';
+export type { BadgeProps } from './Badge';
 export type { ContactMethodProps } from './ContactMethod';

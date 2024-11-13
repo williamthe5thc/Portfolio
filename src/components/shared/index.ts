@@ -25,3 +25,11 @@ export type { TimelineProps } from './Timeline';
 
 //Quick Links
 export { QuickLinks } from './QuickLinks';
+
+//Scrolling 
+export { ScrollLink } from './ScrollLink';
+export { ScrollProgress } from './ScrollProgress';
+export { ScrollReveal } from './ScrollReveal';
+export { ScrollToSection } from './ScrollToSection';
+export { ScrollToTopButton } from './ScrollToTopButton';
+export { navigateAndScroll, scrollToTop } from './scrollUtils';

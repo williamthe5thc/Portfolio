@@ -1,9 +1,12 @@
 // src/pages/AboutPage.tsx
 
 import React from 'react';
+import { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { Timeline } from '@/components/shared';
+import { useLocation } from 'react-router-dom';
+import { Timeline, PageTransition } from '@/components/shared';
 import { PageHeader, Container, SectionContainer } from '@/components/layout';
+import {RouteTransition } from '@/components/layout/RouteTransition';
 import { BaseCard, StatsGrid } from '@/components/ui';
 import { fadeInUp, staggerContainer } from '@/lib/animations';
 import { 
@@ -16,6 +19,28 @@ import {
 import BasePage from './BasePage';
 
 const AboutPage: React.FC = () => {
+const location = useLocation();
+  const initialRender = useRef(true);
+
+  useEffect(() => {
+    // Handle initial page load with hash
+    if (location.hash && initialRender.current) {
+      initialRender.current = false;
+      // Small delay to ensure content is rendered
+      setTimeout(() => {
+        const element = document.getElementById(location.hash.slice(1));
+        element?.scrollIntoView({ behavior: 'smooth' });
+      }, 100);
+    }
+    
+    // Handle navigation state with scrollTo
+    if (location.state?.scrollTo) {
+      const element = document.getElementById(location.state.scrollTo);
+      element?.scrollIntoView({ behavior: 'smooth' });
+      // Clean up state
+      window.history.replaceState({}, document.title);
+    }
+  }, [location]);
   // Convert experience items for Timeline component
   const experienceItems = React.useMemo(() => {
     return experience.map(exp => ({
@@ -27,6 +52,8 @@ const AboutPage: React.FC = () => {
   }, []);
 
   return (
+   <RouteTransition>
+      <PageTransition>
     <BasePage
       seo={{
         title: "About",
@@ -42,6 +69,9 @@ const AboutPage: React.FC = () => {
       <ToolsSection />
       <BackgroundSection experienceItems={experienceItems} />
     </BasePage>
+     </PageTransition>
+     </RouteTransition>
+      
   );
 };
 

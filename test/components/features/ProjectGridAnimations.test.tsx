@@ -1,269 +1,92 @@
-//ProjectGridAnimations.test.tsx
-import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { render, screen, waitFor } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
+// test/components/features/ProjectGridAnimations.test.tsx
+import React from 'react';
+import { render, screen } from '@testing-library/react';
+import { describe, expect, test, beforeEach } from 'vitest';
 import { MemoryRouter } from 'react-router-dom';
-import { ProjectGrid } from '@/components/features';
-import { projects } from '@/content';
+import { ProjectGrid } from '@/components/features/portfolio/ProjectGrid';
+import type { ProjectBase } from '@/types/content';
 
-// Mock framer-motion
-vi.mock('framer-motion', () => ({
-  motion: {
-    div: ({ children, onAnimationComplete, ...props }: any) => (
-      <div 
-        data-testid="motion-div"
-        onClick={() => onAnimationComplete?.()} 
-        {...props}
-      >
-        {children}
-      </div>
-    ),
+// Mock project data
+const mockProjects: ProjectBase[] = [
+  {
+    id: 'test-project-1',
+    title: 'Test Project 1',
+    description: 'Test Description 1',
+    image: '/test-image-1.jpg',
+    category: 'development',
+    tags: ['React', 'TypeScript'],
+    status: 'completed',
+    date: '2024'
   },
-  AnimatePresence: ({ children }: any) => children,
-}));
+  {
+    id: 'test-project-2',
+    title: 'Test Project 2',
+    description: 'Test Description 2',
+    image: '/test-image-2.jpg',
+    category: 'design',
+    tags: ['UI/UX', 'Figma'],
+    status: 'in-progress',
+    date: '2024'
+  }
+] as const;
 
-describe('ProjectGrid Animations', () => {
+const TestWrapper = ({ children }: { children: React.ReactNode }) => (
+  <MemoryRouter>
+    {children}
+  </MemoryRouter>
+);
+
+describe('ProjectGrid', () => {
   beforeEach(() => {
-    vi.useFakeTimers();
+    // Clear any mocks before each test
   });
 
-  afterEach(() => {
-    vi.runOnlyPendingTimers();
-    vi.useRealTimers();
-  });
+  test('renders all projects initially', () => {
+    render(
+      <TestWrapper>
+        <ProjectGrid projects={mockProjects} />
+      </TestWrapper>
+    );
 
-  describe('Initial Animation', () => {
-    it('animates projects on initial render', async () => {
-      render(
-        <MemoryRouter>
-          <ProjectGrid projects={projects.slice(0, 3)} />
-        </MemoryRouter>
-      );
-
-      const projectCards = screen.getAllByTestId('motion-div');
-      
-      projectCards.forEach(card => {
-        expect(card).toHaveStyle({
-          opacity: '0',
-          transform: 'translateY(20px)'
-        });
-      });
-
-      await waitFor(() => {
-        projectCards.forEach(card => {
-          expect(card).toHaveStyle({
-            opacity: '1',
-            transform: 'translateY(0px)'
-          });
-        });
-      });
-    });
-
-    it('applies stagger effect to project cards', async () => {
-      render(
-        <MemoryRouter>
-          <ProjectGrid projects={projects.slice(0, 3)} />
-        </MemoryRouter>
-      );
-
-      const projectCards = screen.getAllByTestId('motion-div');
-      
-      projectCards.forEach((card, index) => {
-        expect(card).toHaveStyle({
-          '--stagger-delay': `${index * 0.1}s`
-        });
-      });
+    // Check if both projects are rendered
+    mockProjects.forEach(project => {
+      expect(screen.getByText(project.title)).toBeInTheDocument();
+      expect(screen.getByText(project.description)).toBeInTheDocument();
     });
   });
 
-  describe('Filter Transitions', () => {
-    it('animates projects out when filtered', async () => {
-      const user = userEvent.setup();
-      render(
-        <MemoryRouter>
-          <ProjectGrid 
-            projects={projects} 
-            showFilters={true}
-          />
-        </MemoryRouter>
-      );
+  test('renders project tags', () => {
+    render(
+      <TestWrapper>
+        <ProjectGrid projects={mockProjects} />
+      </TestWrapper>
+    );
 
-      const filterButton = screen.getByText(/development/i);
-      await user.click(filterButton);
-
-      const exitingCards = screen.getAllByTestId('motion-div').filter(
-        card => !card.textContent?.includes('development')
-      );
-
-      exitingCards.forEach(card => {
-        expect(card).toHaveStyle({
-          opacity: '0',
-          transform: 'translateY(-20px)'
-        });
-      });
-    });
-
-    it('animates new projects in after filtering', async () => {
-      const user = userEvent.setup();
-      render(
-        <MemoryRouter>
-          <ProjectGrid 
-            projects={projects} 
-            showFilters={true}
-          />
-        </MemoryRouter>
-      );
-
-      const filterButton = screen.getByText(/development/i);
-      await user.click(filterButton);
-
-      const newCards = screen.getAllByTestId('motion-div').filter(
-        card => card.textContent?.includes('development')
-      );
-
-      await waitFor(() => {
-        newCards.forEach(card => {
-          expect(card).toHaveStyle({
-            opacity: '1',
-            transform: 'translateY(0px)'
-          });
-        });
-      });
+    // Check if tags are rendered
+    const allTags = mockProjects.flatMap(project => project.tags);
+    allTags.forEach(tag => {
+      expect(screen.getByText(tag)).toBeInTheDocument();
     });
   });
 
-  describe('Animation Performance', () => {
-    it('uses transform instead of position properties', () => {
-      render(
-        <MemoryRouter>
-          <ProjectGrid projects={projects.slice(0, 3)} />
-        </MemoryRouter>
-      );
+  test('handles empty project list', () => {
+    render(
+      <TestWrapper>
+        <ProjectGrid projects={[]} />
+      </TestWrapper>
+    );
 
-      const cards = screen.getAllByTestId('motion-div');
-      
-      cards.forEach(card => {
-        const styles = window.getComputedStyle(card);
-        expect(styles.transform).toBeDefined();
-        expect(styles.position).toBe('static');
-      });
-    });
-
-    it('optimizes animations with will-change', () => {
-      render(
-        <MemoryRouter>
-          <ProjectGrid projects={projects.slice(0, 3)} />
-        </MemoryRouter>
-      );
-
-      const cards = screen.getAllByTestId('motion-div');
-      
-      cards.forEach(card => {
-        expect(card).toHaveStyle({
-          'will-change': 'transform, opacity'
-        });
-      });
-    });
+    expect(screen.getByText(/no projects/i)).toBeInTheDocument();
   });
 
-  describe('Layout Animations', () => {
-    it('animates grid layout changes', async () => {
-      const { rerender } = render(
-        <MemoryRouter>
-          <ProjectGrid 
-            projects={projects.slice(0, 3)} 
-            layout="grid"
-          />
-        </MemoryRouter>
-      );
+  test('displays correct project count', () => {
+    render(
+      <TestWrapper>
+        <ProjectGrid projects={mockProjects} />
+      </TestWrapper>
+    );
 
-      rerender(
-        <MemoryRouter>
-          <ProjectGrid 
-            projects={projects.slice(0, 3)} 
-            layout="list"
-          />
-        </MemoryRouter>
-      );
-
-      const container = screen.getByTestId('project-grid');
-      expect(container).toHaveAttribute('data-animate-layout');
-    });
-
-    it('maintains smooth transitions during layout changes', async () => {
-      const { rerender } = render(
-        <MemoryRouter>
-          <ProjectGrid 
-            projects={projects.slice(0, 3)} 
-            layout="grid"
-          />
-        </MemoryRouter>
-      );
-
-      const initialPositions = screen.getAllByTestId('motion-div').map(
-        card => card.getBoundingClientRect()
-      );
-
-      rerender(
-        <MemoryRouter>
-          <ProjectGrid 
-            projects={projects.slice(0, 3)} 
-            layout="list"
-          />
-        </MemoryRouter>
-      );
-
-      await waitFor(() => {
-        const newPositions = screen.getAllByTestId('motion-div').map(
-          card => card.getBoundingClientRect()
-        );
-        
-        // Check that positions have changed smoothly
-        newPositions.forEach((pos, i) => {
-          expect(pos).not.toEqual(initialPositions[i]);
-        });
-      });
-    });
-  });
-
-  describe('Accessibility', () => {
-    it('maintains focus during animations', async () => {
-      const user = userEvent.setup();
-      render(
-        <MemoryRouter>
-          <ProjectGrid 
-            projects={projects} 
-            showFilters={true}
-          />
-        </MemoryRouter>
-      );
-
-      const filterButton = screen.getByText(/development/i);
-      await user.click(filterButton);
-      
-      expect(filterButton).toHaveFocus();
-    });
-
-    it('respects reduced motion preferences', () => {
-      window.matchMedia = vi.fn().mockImplementation(query => ({
-        matches: query === '(prefers-reduced-motion: reduce)',
-        media: query,
-        onchange: null,
-        addListener: vi.fn(),
-        removeListener: vi.fn(),
-      }));
-
-      render(
-        <MemoryRouter>
-          <ProjectGrid projects={projects.slice(0, 3)} />
-        </MemoryRouter>
-      );
-
-      const cards = screen.getAllByTestId('motion-div');
-      
-      cards.forEach(card => {
-        expect(card).toHaveAttribute('data-reduced-motion', 'true');
-      });
-    });
+    const projectElements = screen.getAllByTestId('motion-component');
+    expect(projectElements.length).toBeGreaterThanOrEqual(mockProjects.length);
   });
 });

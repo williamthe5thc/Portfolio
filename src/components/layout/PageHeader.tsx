@@ -35,7 +35,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
+import { ScrollLink } from '@/components/shared';
 import { ChevronRight } from 'lucide-react';
 import { Container } from './Container';
 
@@ -72,7 +72,7 @@ export const PageHeader: React.FC<PageHeaderProps> = ({
                     {index > 0 && (
                       <ChevronRight className="w-4 h-4 mx-2 text-text-light" />
                     )}
-                    <Link
+                    <ScrollToSection
                       to={crumb.href}
                       className={`hover:text-primary-600 transition-colors ${
                         index === breadcrumbs.length - 1
@@ -81,7 +81,7 @@ export const PageHeader: React.FC<PageHeaderProps> = ({
                       }`}
                     >
                       {crumb.label}
-                    </Link>
+                    </ScrollToSection>
                   </li>
                 ))}
               </ol>

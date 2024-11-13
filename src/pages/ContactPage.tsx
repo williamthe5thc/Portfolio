@@ -7,6 +7,10 @@ import { fadeInUp, staggerContainer } from '@/lib/animations';
 import { siteConfig, faqs } from '@/content';
 import BasePage from './BasePage';
 
+import { PageTransition } from '@/components/shared';
+
+import {RouteTransition } from '@/components/layout/RouteTransition';
+
 interface ContactFormData {
   name: string;
   email: string;
@@ -120,6 +124,8 @@ const ContactPage: React.FC = () => {
   );
 
   return (
+   <RouteTransition>
+      <PageTransition>
     <BasePage
       seo={{
         title: "Contact",
@@ -137,6 +143,8 @@ const ContactPage: React.FC = () => {
       </div>
       <FAQSection />
     </BasePage>
+      </PageTransition>
+    </RouteTransition>
   );
 };
 
