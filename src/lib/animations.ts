@@ -1,7 +1,6 @@
-// src/lib/animations.ts
 /**
  * @file animations.ts
- * @description Centralized animation configurations and variants
+ * @description Centralized animation configurations and variants for the entire application
  * @module lib
  * 
  * @requires framer-motion - For animation types and functionality
@@ -12,12 +11,16 @@
  * - Page transitions
  * - Modal animations
  * - Hover effects
+ * - Container animations
+ * - List animations
  * 
  * Categories:
  * - Fade animations
  * - Slide animations
  * - Scale animations
  * - Stagger effects
+ * - Modal animations
+ * - Interactive animations
  * 
  * @example
  * ```tsx
@@ -26,7 +29,7 @@
  *   Content
  * </motion.div>
  * 
- * // Card hover effect
+ * // Card hover effect with spring animation
  * <motion.div 
  *   variants={cardHover}
  *   whileHover="hover"
@@ -34,25 +37,49 @@
  * >
  *   Card content
  * </motion.div>
+ * 
+ * // Staggered list animation
+ * <motion.div variants={staggerContainer}>
+ *   {items.map((item, index) => (
+ *     <motion.div 
+ *       key={item.id} 
+ *       variants={listItem}
+ *       {...getStaggerDelay(index)}
+ *     >
+ *       {item.content}
+ *     </motion.div>
+ *   ))}
+ * </motion.div>
  * ```
  * 
  * @notes
  * - All durations are in seconds
  * - Prefer spring animations for interactive elements
  * - Consider reduced motion preferences
+ * - Use consistent easing curves for related animations
  */
+
 import { Variants } from 'framer-motion';
 
+// Types
 export interface AnimationConfig {
   duration: number;
   ease: [number, number, number, number];
 }
 
+// Base Configurations
 export const defaultConfig: AnimationConfig = {
   duration: 0.3,
   ease: [0.43, 0.13, 0.23, 0.96]
 };
 
+export const springConfig = {
+  type: 'spring',
+  stiffness: 300,
+  damping: 30
+};
+
+// Fade Animations
 export const fadeIn: Variants = {
   initial: { opacity: 0 },
   animate: { opacity: 1 },
@@ -67,6 +94,7 @@ export const fadeInUp: Variants = {
   transition: { ...defaultConfig }
 };
 
+// Slide Animations
 export const slideIn: Record<'left' | 'right', Variants> = {
   left: {
     initial: { opacity: 0, x: -20 },
@@ -82,6 +110,7 @@ export const slideIn: Record<'left' | 'right', Variants> = {
   }
 };
 
+// Container Animations
 export const staggerContainer: Variants = {
   initial: { opacity: 0 },
   animate: { 
@@ -93,6 +122,7 @@ export const staggerContainer: Variants = {
   }
 };
 
+// Interactive Animations
 export const cardHover: Variants = {
   initial: { scale: 1 },
   whileHover: { 
@@ -102,16 +132,13 @@ export const cardHover: Variants = {
   whileTap: { scale: 0.98 }
 };
 
+// Modal Animations
 export const modalVariants: Variants = {
   initial: { opacity: 0, scale: 0.9 },
   animate: { 
     opacity: 1, 
     scale: 1,
-    transition: {
-      type: 'spring',
-      stiffness: 300,
-      damping: 30
-    }
+    transition: springConfig
   },
   exit: { 
     opacity: 0, 
@@ -120,14 +147,19 @@ export const modalVariants: Variants = {
   }
 };
 
-
 export const modalContent: Variants = {
-  hidden: { opacity: 0, scale: 0.8 },
-  visible: { opacity: 1, scale: 1 },
-  exit: { opacity: 0, scale: 0.8 },
+  initial: { opacity: 0, scale: 0.8 },
+  animate: { opacity: 1, scale: 1 },
+  exit: { opacity: 0, scale: 0.8 }
 };
 
+export const modalBackdrop: Variants = {
+  initial: { opacity: 0 },
+  animate: { opacity: 0.5 },
+  exit: { opacity: 0 }
+};
 
+// List Animations
 export const listItem: Variants = {
   initial: { opacity: 0, x: -20 },
   animate: { opacity: 1, x: 0 },
@@ -135,11 +167,20 @@ export const listItem: Variants = {
   transition: { ...defaultConfig }
 };
 
-// Helper function for creating stagger delays
+/**
+ * Helper function for creating staggered animation delays
+ * @param index Index of the item in a list
+ * @param baseDelay Base delay between items (default: 0.1)
+ * @returns Object containing transition delay
+ */
 export const getStaggerDelay = (index: number, baseDelay: number = 0.1): { transition: { delay: number } } => ({
   transition: { delay: index * baseDelay }
 });
-export const modalBackdrop: Variants = {
-  hidden: { opacity: 0 },
-  visible: { opacity: 0.5 },
+
+// Page Transitions
+export const pageTransition: Variants = {
+  initial: { opacity: 0, y: 20 },
+  animate: { opacity: 1, y: 0 },
+  exit: { opacity: 0, y: -20 },
+  transition: { ...defaultConfig }
 };

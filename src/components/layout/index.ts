@@ -40,3 +40,8 @@ export type { FooterProps } from './Footer';
 export { PageHeader } from './PageHeader';
 export type { PageHeaderProps } from './PageHeader';
 
+//Page transition
+export { default as PageTransition } from './PageTransition';
+
+
+

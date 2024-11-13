@@ -6,8 +6,7 @@ import { ScrollToSection } from '@/components/shared/ScrollToSection';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { GraduationCap, Award } from 'lucide-react';
-import {RouteTransition} from '@/components/layout/RouteTransition';
-import { ProjectCarousel, QuickLinks, PageTransition } from '@/components/shared';
+import { ProjectCarousel, QuickLinks } from '@/components/shared';
 import { Button, BaseCard, JourneyCard, StatsGrid, CoreCompetency } from '@/components/ui';
 import { fadeInUp, staggerContainer } from '@/lib/animations';
 import { siteConfig, projects, stats, education, competencies } from '@/content';
@@ -20,8 +19,6 @@ const HomePage: React.FC = () => {
   );
 
   return (
-   <RouteTransition>
-      <PageTransition>
     <div className="min-h-screen bg-background-light">
       {/* Hero Section */}
       <section id="hero" className="relative py-20 bg-gradient-to-b from-background-light to-background">
@@ -47,7 +44,7 @@ const HomePage: React.FC = () => {
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-3 gap-8">
             <div className="lg:col-span-2">
-              <h2 className="text-3xl font-bold mb-6">Featured Work</h2>
+              <h2 className="text-3xl font-bold mb-6">My Featured Work</h2>
               <ProjectCarousel projects={featuredProjects} />
             </div>
             <div className="lg:col-span-1">
@@ -207,8 +204,6 @@ const HomePage: React.FC = () => {
   </div>
 </section>
     </div>
-     </PageTransition>
-    </RouteTransition>
   );
 };
 

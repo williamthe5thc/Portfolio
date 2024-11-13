@@ -31,12 +31,13 @@
  */
  import { SkeletonLoader } from '@/components/shared/loading';
 import React, { useState, useEffect, Suspense } from 'react';
-import { Routes, Route, useLocation } from 'react-router-dom';
+import { Routes, Route, useLocation, useNavigationType } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import { AppProviders } from './providers/AppProviders';
 import { Navigation, Footer } from '@/components/layout';
 import { BackToTop } from '@/components/ui';
-import { LoadingScreen, ErrorBoundary, PageTransition } from '@/components/shared';
+import { LoadingScreen, PageTransition } from '@/components/layout';
+import {ErrorBoundary} from '@/components/shared';
 import GoogleAnalytics from '@/components/shared/GoogleAnalytics';
 
 // Error Fallback Component
@@ -133,8 +134,9 @@ const NotFoundPage = React.lazy(() =>
 );
 
 const App: React.FC = () => {
-  const [isInitialLoading, setIsInitialLoading] = useState(true);
+   const [isInitialLoading, setIsInitialLoading] = useState(true);
   const location = useLocation();
+  const navigationType = useNavigationType();
 
   // Initial loading and route preloading
   useEffect(() => {
@@ -144,20 +146,43 @@ const App: React.FC = () => {
       preloadRoutes();
     }, 800);
 
+    // Disable default scroll restoration
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+
     return () => clearTimeout(timer);
   }, []);
+
+  // Handle scroll behavior
+  useEffect(() => {
+    const handleScrollRestoration = () => {
+      // Don't scroll if there's a hash in the URL
+      if (location.hash) {
+        return;
+      }
+
+      // If it was a back/forward navigation (POP), let the browser handle it
+      if (navigationType === 'POP') {
+        return;
+      }
+
+      // For regular navigation (PUSH), scroll to top
+      window.scrollTo(0, 0);
+    };
+
+    handleScrollRestoration();
+  }, [location, navigationType]);
 
   // Debug logging
   useEffect(() => {
     console.log('Current location:', location);
+    console.log('Navigation type:', navigationType);
     console.log('Environment:', import.meta.env.MODE);
-  }, [location]);
+  }, [location, navigationType]);
 
   if (isInitialLoading) {
     return <SkeletonLoader />;
-  }
-  else{
-  console.log("app.tsx loaded");
   }
 
   const renderWithLoadingState = (Component: React.ComponentType) => (
@@ -180,7 +205,7 @@ const App: React.FC = () => {
         <GoogleAnalytics />
         <Navigation />
         <main className="flex-grow">
-          <AnimatePresence mode="wait">
+          <AnimatePresence mode="sync">
             <Routes location={location} key={location.pathname}>
               <Route path="/" element={renderWithLoadingState(HomePage)} />
   <Route path="/about" element={renderWithLoadingState(AboutPage)} />

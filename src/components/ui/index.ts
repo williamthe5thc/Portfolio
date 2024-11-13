@@ -58,6 +58,8 @@ export { TextArea } from './TextArea';
 export { FormField } from './FormField';
 export { ContactMethod } from './ContactMethod';
 
+//loading screen
+export { LoadingScreen } from './LoadingScreen';
 
 // Types
 export type { ButtonProps } from './Button';
@@ -68,3 +70,9 @@ export type { FormFieldProps } from './FormField';
 export type { BackToTopProps } from './BackToTop';
 export type { BadgeProps } from './Badge';
 export type { ContactMethodProps } from './ContactMethod';
+export type { LoadingScreenProps } from './LoadingScreen';
+
+export { ScrollToTopButton } from './ScrollToTopButton';
+
+
+

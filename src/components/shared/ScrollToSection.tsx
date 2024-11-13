@@ -14,24 +14,27 @@ export const ScrollToSection: React.FC<ScrollToSectionProps> = ({
     e.preventDefault();
     const [path, hash] = to.split('#');
     
-    const performScroll = () => {
+    const scrollToElement = () => {
+    
       if (hash) {
-        const element = document.getElementById(hash);
-        if (element) {
-          element.scrollIntoView({ behavior: 'smooth' });
-        }
-      } else {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        setTimeout(() => {
+          const element = document.getElementById(hash);
+          if (element) {
+            element.scrollIntoView({ 
+              behavior: 'smooth',
+              block: 'start'
+            });
+          }
+        }, 100); // Small delay to ensure the new page is rendered
       }
     };
-
-    if (location.pathname === path || (!path && location.pathname === '/')) {
-      performScroll();
+    if (location.pathname === path) {
+      // If we're already on the right page, just scroll
+      scrollToElement();
     } else {
-      // For cross-page navigation
+      // Navigate to new page then scroll
       navigate(path, {
-        state: { scrollTo: hash },
-        replace: false
+        state: { scrollTo: hash }
       });
     }
   };

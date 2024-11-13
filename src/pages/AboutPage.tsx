@@ -4,9 +4,8 @@ import React from 'react';
 import { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { useLocation } from 'react-router-dom';
-import { Timeline, PageTransition } from '@/components/shared';
+import { Timeline } from '@/components/shared';
 import { PageHeader, Container, SectionContainer } from '@/components/layout';
-import {RouteTransition } from '@/components/layout/RouteTransition';
 import { BaseCard, StatsGrid } from '@/components/ui';
 import { fadeInUp, staggerContainer } from '@/lib/animations';
 import { 
@@ -52,8 +51,6 @@ const location = useLocation();
   }, []);
 
   return (
-   <RouteTransition>
-      <PageTransition>
     <BasePage
       seo={{
         title: "About",
@@ -69,8 +66,6 @@ const location = useLocation();
       <ToolsSection />
       <BackgroundSection experienceItems={experienceItems} />
     </BasePage>
-     </PageTransition>
-     </RouteTransition>
       
   );
 };

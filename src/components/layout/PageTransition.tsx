@@ -26,8 +26,13 @@
  * - Supports route-based transitions
  */
 // src/components/shared/PageTransition.tsx
-import React from 'react';
+import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { useLocation, useNavigationType } from 'react-router-dom';
+
+interface PageTransitionProps {
+  children: React.ReactNode;
+}
 
 const pageVariants = {
   initial: { 
@@ -52,11 +57,16 @@ const pageVariants = {
   }
 };
 
-interface PageTransitionProps {
-  children: React.ReactNode;
-}
-
 const PageTransition: React.FC<PageTransitionProps> = ({ children }) => {
+  const location = useLocation();
+  const navigationType = useNavigationType();
+
+  useEffect(() => {
+    if (!location.hash && navigationType !== 'POP') {
+      window.scrollTo(0, 0);
+    }
+  }, [location, navigationType]);
+
   return (
     <motion.div
       variants={pageVariants}

@@ -55,4 +55,4 @@ export { faqs } from './faqs';
 export {methodology} from './methodology';
 
 //Quick links in the home page
-export { quickLinks } from './navigation';
+export { quickLinks } from './quickLinks';

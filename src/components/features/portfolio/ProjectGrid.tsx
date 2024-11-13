@@ -123,7 +123,7 @@ export const ProjectGrid: React.FC<ProjectGridProps> = ({
         className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
         variants={staggerContainer}
       >
-        <AnimatePresence mode="wait">
+        {/*<AnimatePresence mode="wait">*/}
           {filteredProjects.map(project => (
             <motion.div
               key={project.id}
@@ -136,7 +136,7 @@ export const ProjectGrid: React.FC<ProjectGridProps> = ({
               <ProjectCard project={project} />
             </motion.div>
           ))}
-        </AnimatePresence>
+        {/*</AnimatePresence>*/}
       </motion.div>
       
       {/* Empty State */}

@@ -36,6 +36,8 @@
  * - Images have descriptive alt text
  * - ARIA labels for buttons
  */
+import ProjectModal from './ProjectModal';
+
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
@@ -50,55 +52,6 @@ interface ProjectCardProps {
   className?: string;
 }
 
-interface ProjectModalProps {
-  project: ProjectBase;
-  isOpen: boolean;
-  onClose: () => void;
-}
-
-const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onClose }) => (
-  <AnimatePresence>
-    {isOpen && (
-      <motion.div
-        className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-75 p-4"
-        variants={modalBackdrop}
-        initial="initial"
-        animate="animate"
-        exit="exit"
-        onClick={onClose}
-      >
-        <motion.div
-          className="relative max-w-4xl w-full bg-white rounded-lg overflow-hidden"
-          variants={modalContent}
-          onClick={e => e.stopPropagation()}
-        >
-          <button 
-            className="absolute top-4 right-4 text-white hover:text-gray-300"
-            onClick={onClose}
-          >
-            <X className="w-6 h-6" />
-          </button>
-          {project.image && (
-            <img 
-              src={project.image} 
-              alt={project.title} 
-              className="w-full h-auto"
-            />
-          )}
-          <div className="p-6">
-            <h3 className="text-2xl font-bold mb-4">{project.title}</h3>
-            <p className="text-text-secondary mb-4">{project.description}</p>
-            {project.longDescription && (
-              <div className="prose prose-sm max-w-none">
-                {project.longDescription}
-              </div>
-            )}
-          </div>
-        </motion.div>
-      </motion.div>
-    )}
-  </AnimatePresence>
-);
 
 export const ProjectCard: React.FC<ProjectCardProps> = ({ 
   project,

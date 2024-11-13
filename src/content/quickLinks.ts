@@ -1,4 +1,4 @@
-// src/content/navigation.ts
+// src/content/quickLinks.ts
 import { QuickLink } from '@/types/content';
 
 export const quickLinks: quickLinks[] = [
@@ -9,16 +9,16 @@ export const quickLinks: quickLinks[] = [
     description: "View my professional experience"
   },
   {
-    href: "/portfolio?type=coding",
-    title: "Coding Projects",
-    bgColor: "bg-purple-500",
-    description: "Software development portfolio"
-  },
-  {
     href: "/portfolio?type=instructional",
     title: "Instructional Design Projects",
     bgColor: "bg-green-500",
     description: "E-learning and course design"
+  },
+  {
+    href: "/portfolio?type=coding",
+    title: "Coding Projects",
+    bgColor: "bg-purple-500",
+    description: "Software development portfolio"
   },
   {
     href: "/portfolio?type=media",
@@ -27,7 +27,7 @@ export const quickLinks: quickLinks[] = [
     description: "Digital media creations"
   },
   {
-    href: "/about",
+    href: "/about#",
     title: "How I Approach Projects",
     bgColor: "bg-orange-500",
     description: "Educational Philsophy"

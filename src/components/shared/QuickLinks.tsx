@@ -1,27 +1,30 @@
 // src/components/QuickLinks.tsx
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
-import { quickLinks } from '@/content/navigation';  // Importing the data from navigation.ts
+import { ScrollToSection } from '@/components/shared';
+import { quickLinks } from '@/content/quickLinks';
 
 export const QuickLinks: React.FC = () => {
+  console.log('QuickLinks rendering with links:', quickLinks);
+
   return (
     <div className="grid grid-cols-2 gap-4">
       {quickLinks.map((link) => (
-        <motion.div
+        <ScrollToSection
           key={link.href}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          whileHover={{ scale: 1.02 }}
-          className={`${link.bgColor} rounded-xl shadow-lg transition-all duration-300`}
+          to={link.href}
         >
-          <Link
-            to={link.href}
-            className="block w-full h-full p-6 text-white text-xl font-semibold text-center"
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            whileHover={{ scale: 1.02 }}
+            className={`${link.bgColor} rounded-xl shadow-lg transition-all duration-300 block w-full h-full p-6 text-white text-xl font-semibold text-center`}
           >
-            {link.title}
-          </Link>
-        </motion.div>
+            <div className="pointer-events-none">
+              {link.title}
+            </div>
+          </motion.div>
+        </ScrollToSection>
       ))}
     </div>
   );
