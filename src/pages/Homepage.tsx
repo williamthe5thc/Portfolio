@@ -56,6 +56,60 @@ const HomePage: React.FC = () => {
       </section>
 
 
+{/* Education & Certifications */}
+<section id="credentials" className="py-20 bg-background">
+  <div className="container mx-auto px-4">
+    <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+      {/* Education Card */}
+      <motion.div
+        variants={fadeInUp}
+        className="h-full"
+      >
+        <BaseCard className="h-full">
+          <div className="flex items-start gap-4">
+            <GraduationCap className="w-8 h-8 text-primary-600 flex-shrink-0" />
+            <div>
+              <h3 className="text-xl font-bold text-text-primary mb-4">Education</h3>
+              <div className="space-y-4">
+                {education.degrees.map((degree, index) => (
+                  <div key={index} className="border-l-2 border-primary-100 pl-4">
+                    <h4 className="font-semibold text-text-primary">{degree.degree} in {degree.field}</h4>
+                    <p className="text-text-secondary">{degree.institution}</p>
+                    <p className="text-sm text-text-light">{degree.period}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </BaseCard>
+      </motion.div>
+
+      {/* Certifications Card */}
+      <motion.div
+        variants={fadeInUp}
+        className="h-full"
+      >
+        <BaseCard className="h-full">
+          <div className="flex items-start gap-4">
+            <Award className="w-8 h-8 text-primary-600 flex-shrink-0" />
+            <div>
+              <h3 className="text-xl font-bold text-text-primary mb-4">Certifications</h3>
+              <div className="space-y-4">
+                {education.certifications.map((cert, index) => (
+                  <div key={index} className="border-l-2 border-primary-100 pl-4">
+                    <h4 className="font-semibold text-text-primary">{cert.title}</h4>
+                    <p className="text-text-secondary">{cert.issuer}</p>
+                    <p className="text-sm text-text-light">{cert.date}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </BaseCard>
+      </motion.div>
+    </div>
+  </div>
+</section>
 {/* Learning Design Philosophy */}
 <section id="philosophy" className="py-20 bg-background">
   <div className="container mx-auto px-4">
@@ -205,6 +259,7 @@ const HomePage: React.FC = () => {
 </section>
     </div>
   );
+  
 };
 
 export default HomePage;

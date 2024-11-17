@@ -4,7 +4,7 @@ import { ContactForm } from '@/components/features';
 import { ContactMethod, Button, BaseCard } from '@/components/ui';
 import {SectionContainer} from '@/components/layout';
 import { fadeInUp, staggerContainer } from '@/lib/animations';
-import { siteConfig, faqs } from '@/content';
+import { siteConfig } from '@/content';
 import BasePage from './BasePage';
 
 
@@ -87,39 +87,7 @@ const ContactPage: React.FC = () => {
     </motion.div>
   );
 
-  // FAQ Section
-  const FAQSection = () => (
-    <SectionContainer className="py-20 bg-background">
-      <motion.div
-        className="max-w-4xl mx-auto"
-        variants={staggerContainer}
-      >
-        <motion.h2 
-          className="text-3xl font-bold text-text-primary mb-12 text-center"
-          variants={fadeInUp}
-        >
-          Frequently Asked Questions
-        </motion.h2>
-        <div className="grid gap-8">
-          {faqs.map((faq, index) => (
-            <motion.div
-              key={index}
-              variants={fadeInUp}
-            >
-              <BaseCard>
-                <h3 className="font-semibold text-text-primary mb-2 text-xl">
-                  {faq.question}
-                </h3>
-                <p className="text-text-secondary">
-                  {faq.answer}
-                </p>
-              </BaseCard>
-            </motion.div>
-          ))}
-        </div>
-      </motion.div>
-    </SectionContainer>
-  );
+  
 
   return (
  
@@ -138,7 +106,6 @@ const ContactPage: React.FC = () => {
           <ContactFormSection />
         </div>
       </div>
-      <FAQSection />
     </BasePage>
   
   );

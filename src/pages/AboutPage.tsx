@@ -5,15 +5,21 @@ import { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { useLocation } from 'react-router-dom';
 import { Timeline } from '@/components/shared';
+import { GraduationCap, Award } from 'lucide-react';
+import { Link } from 'react-router-dom';
+
+import { ScrollToSection } from '@/components/shared/ScrollToSection';
+
 import { PageHeader, Container, SectionContainer } from '@/components/layout';
-import { BaseCard, StatsGrid } from '@/components/ui';
+import { Button, BaseCard, StatsGrid } from '@/components/ui';
 import { fadeInUp, staggerContainer } from '@/lib/animations';
 import { 
   siteConfig,
   education, 
   experience,
   stats,
-  methodology 
+  methodology,
+  faqs
 } from '@/content';
 import BasePage from './BasePage';
 
@@ -60,11 +66,13 @@ const location = useLocation();
       subtitle="Exploring the intersection of learning theory, technology, and design"
       className="bg-background-light"
     >
-      <StatsSection />
+      {/*<StatsSection />*/}
+      <BackgroundSection experienceItems={experienceItems} />
       <ProfessionalPracticeSection />
       <SkillsSection />
       <ToolsSection />
-      <BackgroundSection experienceItems={experienceItems} />
+            <FAQSection />
+
     </BasePage>
       
   );
@@ -77,6 +85,7 @@ const StatsSection = () => (
       <StatsGrid stats={stats} />
     </Container>
   </SectionContainer>
+  
 );
 
 const ProfessionalPracticeSection = () => (
@@ -216,6 +225,7 @@ const ToolsSection = () => (
         </div>
       </motion.div>
     </Container>
+
   </SectionContainer>
 );
 
@@ -236,12 +246,124 @@ const BackgroundSection: React.FC<BackgroundSectionProps> = ({ experienceItems }
           className="text-3xl font-bold text-text-primary mb-12 text-center"
           variants={fadeInUp}
         >
-          Experience & Education
+          
         </motion.h2>
-        <Timeline events={experienceItems} />
+            
+{/* Education & Certifications */}
+<section id="credentials" className="py-20 bg-background">
+  <div className="container mx-auto px-4">
+    <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+      {/* Education Card */}
+      <motion.div
+        variants={fadeInUp}
+        className="h-full"
+      >
+        <BaseCard className="h-full">
+          <div className="flex items-start gap-4">
+            <GraduationCap className="w-8 h-8 text-primary-600 flex-shrink-0" />
+            <div>
+              <h3 className="text-xl font-bold text-text-primary mb-4">Education</h3>
+              <div className="space-y-4">
+                {education.degrees.map((degree, index) => (
+                  <div key={index} className="border-l-2 border-primary-100 pl-4">
+                    <h4 className="font-semibold text-text-primary">{degree.degree} in {degree.field}</h4>
+                    <p className="text-text-secondary">{degree.institution}</p>
+                    <p className="text-sm text-text-light">{degree.period}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </BaseCard>
+      </motion.div>
+
+      {/* Certifications Card */}
+      <motion.div
+        variants={fadeInUp}
+        className="h-full"
+      >
+        <BaseCard className="h-full">
+          <div className="flex items-start gap-4">
+            <Award className="w-8 h-8 text-primary-600 flex-shrink-0" />
+            <div>
+              <h3 className="text-xl font-bold text-text-primary mb-4">Certifications</h3>
+              <div className="space-y-4">
+                {education.certifications.map((cert, index) => (
+                  <div key={index} className="border-l-2 border-primary-100 pl-4">
+                    <h4 className="font-semibold text-text-primary">{cert.title}</h4>
+                    <p className="text-text-secondary">{cert.issuer}</p>
+                    <p className="text-sm text-text-light">{cert.date}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </BaseCard>
+      </motion.div>
+    </div>
+  </div>
+</section>
       </motion.div>
     </Container>
+    
   </SectionContainer>
+  
 );
+// FAQ Section
+  const FAQSection = () => (
+    <SectionContainer className="py-20 bg-background">
+      <motion.div
+        className="max-w-4xl mx-auto"
+        variants={staggerContainer}
+      >
+        <motion.h2 
+          className="text-3xl font-bold text-text-primary mb-12 text-center"
+          variants={fadeInUp}
+        >
+          Frequently Asked Questions
+        </motion.h2>
+        <div className="grid gap-8">
+          {faqs.map((faq, index) => (
+            <motion.div
+              key={index}
+              variants={fadeInUp}
+            >
+              <BaseCard>
+                <h3 className="font-semibold text-text-primary mb-2 text-xl">
+                  {faq.question}
+                </h3>
+                <p className="text-text-secondary">
+                  {faq.answer}
+                </p>
+              </BaseCard>
+            </motion.div>
+          ))}
+        </div>
+      </motion.div>
+      {/* Call to Action */}
+<section id="Contact Me" className="py-20 bg-primary-50">
+  <div className="container mx-auto px-4 text-center">
+    <div className="max-w-3xl mx-auto">
+      <h2 className="text-3xl font-bold mb-6">Ready to Transform Your Learning Experience?</h2>
+      <p className="text-xl text-text-secondary mb-8">
+        Let's collaborate to create engaging, effective learning solutions for your organization.
+      </p>
+          <ScrollToSection to="/Contact">
+
+      <Button 
+        as={Link} 
+        to="./contact" 
+        variant="primary" 
+        size="lg"
+        className="hover:bg-primary-700"
+      >
+        Start a Conversation
+      </Button>
+      </ScrollToSection>
+    </div>
+  </div>
+</section>
+    </SectionContainer>
+  );
 
 export default AboutPage;
