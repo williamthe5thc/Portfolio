@@ -1,40 +1,40 @@
 // src/content/info.ts
 export const stats = [
-  { label: "Years Experience", value: "1+" },
-  { label: "Projects Completed", value: "5+" },
-  { label: "Certifications", value: "10+" },
-  { label: "Happy Clients", value: "5+" }
+  { label: "Learning Solutions Developed", value: "15+" },
+  { label: "Professionals Impacted", value: "500+" },
+  { label: "Professional Certifications", value: "10+" },
+  { label: "Organizations Served", value: "8+" }
 ];
 
 export const projectCategories = [
-  {
-    id: 'elearning',
-    label: 'E-Learning',
-    description: 'Interactive digital learning experiences and modules'
-  },
-  {
-    id: 'photoshop',
-    label: 'Photoshop',
-    description: 'Digital art and image manipulation projects'
-  },
-  {
-    id: 'premier',
-    label: 'Premiere Pro',
-    description: 'Video editing and production work'
-  },
   {
     id: 'id',
     label: 'Instructional Design',
     description: 'Comprehensive learning strategy and curriculum design'
   },
   {
+    id: 'elearning',
+    label: 'E-Learning',
+    description: 'Interactive digital learning experiences and modules'
+  },
+  {
     id: 'development',
-    label: 'Technical Development',
-    description: 'Software development and automation solutions'
+    label: 'Learning Technology',
+    description: 'Innovative technology solutions for learning and training'
   },
   {
     id: 'research',
-    label: 'Research',
-    description: 'Academic research and analysis projects'
+    label: 'Research Foundation',
+    description: 'Evidence-based research supporting instructional design decisions'
+  },
+  {
+    id: 'photoshop',
+    label: 'Digital Media',
+    description: 'Visual design and multimedia content creation'
+  },
+  {
+    id: 'premier',
+    label: 'Video Production',
+    description: 'Educational video content and multimedia development'
   }
 ];

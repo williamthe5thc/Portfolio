@@ -13,11 +13,17 @@ import { fadeInUp, staggerContainer } from '@/lib/animations';
 import { siteConfig, projects, stats, education, competencies } from '@/content';
 
 const HomePage: React.FC = () => {
-  // Featured projects - take first 3 projects
-  const featuredProjects = React.useMemo(() => 
-    projects.slice(2, 5),
-    []
-  );
+  // Featured projects - prioritize NACVA automation and waltz course for ID career focus
+  const featuredProjects = React.useMemo(() => {
+    const priorityProjects = projects.filter(project => 
+      project.id === 'nacva-automation' || project.id === 'teaching-waltz'
+    );
+    // Add one more high-impact project to make 3 total
+    const otherProjects = projects.filter(project => 
+      project.id !== 'nacva-automation' && project.id !== 'teaching-waltz'
+    ).slice(0, 1);
+    return [...priorityProjects, ...otherProjects];
+  }, []);
 
   return (
    <RouteTransition>

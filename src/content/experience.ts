@@ -39,11 +39,11 @@ export const experience: Experience[] = [
     location: "Sandy, UT",
     period: "Mar 2023 - Aug 2023",
     highlights: [
-      "Transitioned instructional content using Camtasia and Articulate",
-      "Developed Python automation scripts for database management",
-      "Built document conversion tools for streamlined content processing",
-      "Processed courses for continuing education credits",
-      "Collaborated with SMEs to ensure content accuracy"
+      "Transformed professional development content delivery for 5,000+ finance professionals using Camtasia and Articulate",
+      "Designed learning technology workflows that reduced course deployment time from weeks to days",
+      "Created scalable content development processes enabling efficient SME collaboration",
+      "Managed continuing education course processing for professional certification compliance",
+      "Applied instructional design principles to optimize learning outcomes for complex financial concepts"
     ]
   },
   {

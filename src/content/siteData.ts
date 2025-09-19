@@ -4,9 +4,9 @@ import { SiteConfig } from '@/types/content';
 export const siteConfig: SiteConfig = {
   title: "W. Jordan Charles Portfolio",
   author: "William Jordan Charles's Portfolio",
-  description: "Instructional Designer & Learning Solutions Developer",
-  slogan: "Unlock YOUR Employees' Potential through Learning",
-  tagline: "Dedicated to partnering with organizations to unlock the full potential of their target demographic through engaging, results-driven learning experiences.",
+  description: "Instructional Designer & Learning Technology Specialist",
+  slogan: "Transform Your Workforce Through Strategic Learning Design",
+  tagline: "Combining evidence-based instructional design with innovative learning technology to create scalable, high-impact training solutions that drive measurable business results.",
   siteUrl: "https://williamthe5thc.github.io/Portfolio",
   defaultImage: "/path/to/default-og-image.jpg",
   social: {

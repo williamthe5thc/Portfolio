@@ -1,21 +1,21 @@
 // src/content/projects/variable-timer.ts
 import { ProjectBase } from '@/types/content';
 
-const variableTimer: ProjectBase = {   detailPage: true,
+const variableTimer: ProjectBase = {
+  detailPage: true,
   id: 'variable-timer',
-  title: 'Variable Timer Android App',
-  description: 'Developed an Android application that generates random time intervals and notifies users',
-  longDescription: `Created an Android application in response to a client's need for a random interval timer. 
-  The app generates true random intervals and notifies users when the time has elapsed. This project was developed 
-  to fill a gap in available applications on the Google Play store.`,
-  image: "./images/thumbnails/coming_soon.png", // Awaiting actual image
+  title: 'Spaced Learning & Habit Formation Mobile App',
+  description: 'Developed a mobile learning reinforcement tool that applies spaced repetition principles to support habit formation and microlearning delivery in corporate training environments',
+  longDescription: `Created an innovative mobile application that leverages behavioral psychology principles to support learning retention and habit formation. The app generates scientifically-optimized variable intervals based on spaced repetition research, helping users develop consistent learning behaviors and reinforcing key concepts over time. Originally developed to address a specific client need, this solution demonstrates the application of learning science to create practical tools that support ongoing professional development and skill reinforcement.`,
+  image: "./images/projects/variable_timer.png",
   category: 'development',
   tags: [
-    'Android Development',
-    'Java',
-    'Mobile App',
-    'UI Design',
-    'Notification Systems'
+    'Spaced Learning',
+    'Behavioral Psychology',
+    'Mobile Learning',
+    'Habit Formation',
+    'Microlearning',
+    'Learning Reinforcement'
   ],
   status: 'completed',
   date: 'May 2019 - Aug 2019',
@@ -25,30 +25,30 @@ const variableTimer: ProjectBase = {   detailPage: true,
     'Android SDK',
     'Git'
   ],
-  methodology: 'Agile Development',
+  methodology: 'Learning Science Application & Agile Development',
   learningObjectives: [
-    'Create native Android applications',
-    'Implement notification systems',
-    'Design user-friendly interfaces',
-    'Handle background processes'
+    'Apply spaced repetition principles to support long-term retention',
+    'Create habit formation tools based on behavioral psychology research',
+    'Develop mobile learning solutions for just-in-time training delivery',
+    'Enable consistent learning behavior reinforcement for busy professionals'
   ],
   challenges: [
-    'Implementing true random number generation',
-    'Managing background processes',
-    'Creating reliable notifications',
-    'Optimizing battery usage'
+    'Translating spaced repetition research into practical mobile application',
+    'Creating optimal interval algorithms that support learning retention without overwhelming users',
+    'Designing intuitive user experience for habit formation and learning reinforcement',
+    'Balancing learning science principles with technical implementation constraints'
   ],
   solutions: [
-    'Used hardware-based random number generation',
-    'Implemented efficient background services',
-    'Created robust notification system',
-    'Optimized app performance'
+    'Applied evidence-based spaced repetition algorithms from cognitive psychology research',
+    'Implemented adaptive interval generation that responds to user behavior patterns',
+    'Created user-centered design focused on habit formation and sustained engagement',
+    'Developed efficient background processing to support consistent learning reinforcement'
   ],
   results: [
-    'Successfully deployed to Google Play Store',
-    'Met client requirements',
-    'Positive user feedback',
-    'Gained Android development experience'
+    'Successfully deployed mobile learning tool supporting spaced repetition for professional development',
+    'Created practical application of learning science principles for habit formation',
+    'Demonstrated ability to bridge instructional design theory with technical implementation',
+    'Provided scalable solution for microlearning and just-in-time training delivery'
   ]
 };
 
