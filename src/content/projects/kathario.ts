@@ -1,7 +1,8 @@
 // src/content/projects/kathario.ts
 import { ProjectBase } from '@/types/content';
 
-const kathario: ProjectBase = {   detailPage: true,
+const kathario: ProjectBase = {
+  detailPage: true,
   id: 'kathario',
   title: 'Kathario - Dance Knowledge Crossword',
   description: 'Team-developed crossword puzzle application to enhance knowledge of dancing terminology and concepts',
