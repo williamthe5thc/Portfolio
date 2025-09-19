@@ -12,18 +12,18 @@ import { Button, BaseCard, JourneyCard, StatsGrid, CoreCompetency } from '@/comp
 import { fadeInUp, staggerContainer } from '@/lib/animations';
 import { siteConfig, projects, stats, education, competencies } from '@/content';
 
+// Import specific featured projects
+import nacvaAutomation from '@/content/projects/nacva-automation';
+import waltzCourse from '@/content/projects/course-waltz';
+import variableTimer from '@/content/projects/variable-timer';
+
 const HomePage: React.FC = () => {
-  // Featured projects - prioritize NACVA automation and waltz course for ID career focus
-  const featuredProjects = React.useMemo(() => {
-    const priorityProjects = projects.filter(project => 
-      project.id === 'nacva-automation' || project.id === 'teaching-waltz'
-    );
-    // Add one more high-impact project to make 3 total
-    const otherProjects = projects.filter(project => 
-      project.id !== 'nacva-automation' && project.id !== 'teaching-waltz'
-    ).slice(0, 1);
-    return [...priorityProjects, ...otherProjects];
-  }, []);
+  // Featured projects - directly specify the projects we want to showcase
+  const featuredProjects = React.useMemo(() => [
+    nacvaAutomation,  // NACVA automation - our strongest ID case study
+    waltzCourse,      // Waltz course - comprehensive ID project
+    variableTimer     // Variable timer - learning technology innovation
+  ], []);
 
   return (
    <RouteTransition>
