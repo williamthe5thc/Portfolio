@@ -110,18 +110,25 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleClick = () => {
- console.log('Project clicked:', project);
-  console.log('Project ID:', project.id);
-  console.log('Detail Page:', project.detailPage);
-  if (project.projectUrl) {
-    console.log("Opening external url");
+    console.log('Project clicked:', project);
+    console.log('Project ID:', project.id);
+    console.log('Detail Page:', project.detailPage);
+    if (project.projectUrl) {
+      console.log("Opening external url");
       window.open(project.projectUrl, '_blank');
     } else if (project.detailPage) {
-    console.log("Opening internal details url");
+      console.log("Opening internal details url");
       navigate(`/portfolio/${project.id}`);
     }
     else {
-    console.log('No action - missing projectUrl or detailPage flag');
+      console.log('No action - missing projectUrl or detailPage flag');
+    }
+  };
+
+  const handleDemoClick = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (project.demoUrl) {
+      window.open(project.demoUrl, '_blank');
     }
   };
 
@@ -187,6 +194,36 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
             {project.title}
           </h3>
           <p className="text-text-secondary mb-4">{project.description}</p>
+          
+          {/* Action Buttons */}
+          <div className="flex flex-wrap gap-2 mb-4">
+            {project.demoUrl && (
+              <button
+                onClick={handleDemoClick}
+                className="px-4 py-2 bg-primary-500 text-white rounded-lg hover:bg-primary-600 transition-colors flex items-center gap-2"
+              >
+                <ExternalLink className="w-4 h-4" />
+                View Demo
+              </button>
+            )}
+            <button
+              onClick={handleClick}
+              className="px-4 py-2 border border-primary-500 text-primary-500 rounded-lg hover:bg-primary-50 transition-colors flex items-center gap-2"
+            >
+              {project.projectUrl ? (
+                <>
+                  <ExternalLink className="w-4 h-4" />
+                  View Project
+                </>
+              ) : (
+                <>
+                  <ArrowRight className="w-4 h-4" />
+                  Learn More
+                </>
+              )}
+            </button>
+          </div>
+          
           <div className="flex flex-wrap gap-2">
             {project.tags?.map((tag) => (
               <Badge key={tag} variant="primary">

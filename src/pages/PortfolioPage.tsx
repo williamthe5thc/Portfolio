@@ -1,35 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ProjectGrid } from '@/components/features';
+import { ProjectGrid } from '@/components/features/portfolio/ProjectGrid';
 import {PageTransition } from '@/components/shared';
 import { BaseCard } from '@/components/ui';
 import {RouteTransition } from '@/components/layout/RouteTransition';
 import { SectionContainer } from '@/components/layout';
 import { fadeInUp } from '@/lib/animations';
-import { siteConfig, projects } from '@/content';
+import { siteConfig, projects, projectCategories } from '@/content';
 import BasePage from './BasePage';
-
-const ProjectCategories = {
-  coding: {
-    id: 'coding',
-    label: 'Coding Projects',
-    description: 'Software development and programming projects',
-    tags: ['Python', 'React', 'JavaScript', 'C++', 'Development', 'Web Development']
-  },
-  instructional: {
-    id: 'instructional',
-    label: 'Instructional Design',
-    description: 'E-learning and educational content development',
-    tags: ['E-Learning', 'Instructional Design', 'Educational Software', 'Canvas LMS']
-  },
-  media: {
-    id: 'media',
-    label: 'Art & Video',
-    description: 'Digital art and video production projects',
-    tags: ['Adobe Photoshop', 'Adobe Premiere Pro', 'Digital Art', 'Video Editing']
-  }
-};
 
 const PortfolioPage = () => {
   const [searchParams] = useSearchParams();
@@ -37,18 +16,14 @@ const PortfolioPage = () => {
 
   useEffect(() => {
     const type = searchParams.get('type');
-    if (type && Object.keys(ProjectCategories).includes(type)) {
+    if (type && projectCategories.some(cat => cat.id === type)) {
       setActiveCategory(type);
     }
   }, [searchParams]);
 
   const filterProjects = (category: string) => {
     if (category === 'all') return projects;
-    
-    const categoryInfo = ProjectCategories[category as keyof typeof ProjectCategories];
-    return projects.filter(project => 
-      project.tags.some(tag => categoryInfo.tags.includes(tag))
-    );
+    return projects.filter(project => project.category === category);
   };
 
   const filteredProjects = filterProjects(activeCategory);
@@ -70,7 +45,7 @@ const PortfolioPage = () => {
       >
         All Projects
       </button>
-      {Object.values(ProjectCategories).map(category => (
+      {projectCategories.map(category => (
         <button
           key={category.id}
           onClick={() => setActiveCategory(category.id)}
@@ -93,10 +68,10 @@ const PortfolioPage = () => {
     <BasePage
       seo={{
         title: "Portfolio",
-        description: `Explore ${siteConfig.author}'s projects and achievements`
+        description: `Explore ${siteConfig.author}'s instructional design projects and learning solutions`
       }}
       title="Portfolio"
-      subtitle="Explore all my work & latest projects and achievements"
+      subtitle="Explore my instructional design work & learning technology solutions"
       className="bg-background-light"
     >
       <div className="py-20">
@@ -109,7 +84,7 @@ const PortfolioPage = () => {
         {/* Category Overview */}
         <SectionContainer className="py-20 bg-background">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {Object.values(ProjectCategories).map(category => (
+            {projectCategories.map(category => (
               <motion.div
                 key={category.id}
                 variants={fadeInUp}

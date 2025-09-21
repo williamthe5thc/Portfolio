@@ -1,41 +1,41 @@
 // src/content/navigation.ts
 import { QuickLink } from '@/types/content';
 
-export const quickLinks: quickLinks[] = [
+export const quickLinks: QuickLink[] = [
+  {
+    href: "/portfolio",
+    title: "Portfolio",
+    bgColor: "bg-primary-500",
+    description: "Interactive demos & case studies"
+  },
+  {
+    href: "/portfolio?demo=true",
+    title: "Live Demos",
+    bgColor: "bg-blue-500",
+    description: "Articulate Storyline & interactive projects"
+  },
   {
     href: "/resume",
     title: "Resume",
-    bgColor: "bg-blue-500",
-    description: "View my professional experience"
-  },
-  {
-    href: "/portfolio?type=coding",
-    title: "Coding Projects",
-    bgColor: "bg-purple-500",
-    description: "Software development portfolio"
-  },
-  {
-    href: "/portfolio?type=instructional",
-    title: "Instructional Design Projects",
     bgColor: "bg-green-500",
-    description: "E-learning and course design"
-  },
-  {
-    href: "/portfolio?type=media",
-    title: "Art & Video Projects",
-    bgColor: "bg-red-500",
-    description: "Digital media creations"
+    description: "Professional experience & credentials"
   },
   {
     href: "/about",
-    title: "How I Approach Projects",
-    bgColor: "bg-orange-500",
-    description: "Educational Philsophy"
+    title: "Design Process",
+    bgColor: "bg-purple-500",
+    description: "ADDIE methodology & learning theory"
   },
   {
     href: "/contact",
-    title: "Work With Me!",
-    bgColor: "bg-yellow-500",
-    description: "Send me a message"
+    title: "Work With Me",
+    bgColor: "bg-orange-500",
+    description: "Corporate training & financial wellness"
+  },
+  {
+    href: "/contact",
+    title: "Free Consultation",
+    bgColor: "bg-red-500",
+    description: "Discuss your learning objectives"
   }
 ];

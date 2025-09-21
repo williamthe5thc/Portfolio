@@ -195,14 +195,30 @@ const ProjectDetailPage: React.FC = () => {
                 </div>
               </div>
 
-              {currentProject.projectUrl && (
-                <Button
-                  href={currentProject.projectUrl}
-                  className="w-full mt-6"
-                  icon={ExternalLink}
-                >
-                  View Live Project
-                </Button>
+              {(currentProject.demoUrl || currentProject.projectUrl) && (
+                <div className="mt-6 space-y-3">
+                  {currentProject.demoUrl && (
+                    <Button
+                      href={currentProject.demoUrl}
+                      className="w-full"
+                      icon={ExternalLink}
+                      target="_blank"
+                    >
+                      View Interactive Demo
+                    </Button>
+                  )}
+                  {currentProject.projectUrl && (
+                    <Button
+                      href={currentProject.projectUrl}
+                      className="w-full"
+                      variant="outline"
+                      icon={ExternalLink}
+                      target="_blank"
+                    >
+                      View Live Project
+                    </Button>
+                  )}
+                </div>
               )}
             </BaseCard>
           </motion.div>

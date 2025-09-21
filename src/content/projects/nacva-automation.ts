@@ -7,7 +7,7 @@ const nacvaAutomation: ProjectBase = {
   title: 'Learning Technology Workflow Optimization - NACVA',
   description: 'Transformed professional development content delivery workflows, enabling 500+ professionals to access timely certification training through streamlined learning technology solutions',
   longDescription: `Led a comprehensive learning technology optimization initiative at the National Association of Certified Valuators and Analysts (NACVA), transforming how professional development content reaches finance professionals nationwide. Collaborated with subject matter experts to streamline continuing education course development, implemented scalable content processing systems, and created automated workflows that reduced course deployment time from weeks to days. This strategic learning technology solution enabled faster access to critical professional development for NACVA's 5,000+ members while maintaining rigorous quality standards for certification requirements.`,
-  image: "./images/thumbnails/coming_soon.png", // Awaiting actual image
+  image: "/images/thumbnails/coming_soon.png",
   category: 'id',
   tags: [
     'Learning Technology',
@@ -19,6 +19,10 @@ const nacvaAutomation: ProjectBase = {
   ],
   status: 'completed',
   date: 'Apr 2023 - Aug 2023',
+  
+  // Interactive demo URL
+  demoUrl: '/demos/nacva-automation/index.html',
+  
   tools: [
     'Learning Management Systems',
     'Content Development Workflows',

@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI & Law Course - Quinney School of Law | Portfolio Preview</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 40px;
+            margin-bottom: 30px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header h1 {
+            color: #1e3c72;
+            margin-bottom: 10px;
+            font-size: 2.8em;
+            font-weight: 300;
+        }
+        
+        .header .subtitle {
+            color: #666;
+            font-size: 1.3em;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+        
+        .header p {
+            color: #666;
+            font-size: 1.1em;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .course-overview {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .overview-content {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 30px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+        
+        .course-stats {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 30px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        
+        .stat {
+            margin: 20px 0;
+        }
+        
+        .stat-number {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #1e3c72;
+            display: block;
+        }
+        
+        .stat-label {
+            color: #666;
+            font-size: 1.1em;
+        }
+        
+        .modules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        
+        .module-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 25px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+        
+        .module-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.15);
+            border-color: #2a5298;
+        }
+        
+        .module-card.active {
+            border-color: #1e3c72;
+            background: rgba(30, 60, 114, 0.05);
+        }
+        
+        .module-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .module-number {
+            background: #1e3c72;
+            color: white;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        
+        .module-title {
+            color: #1e3c72;
+            font-size: 1.3em;
+            font-weight: 600;
+        }
+        
+        .module-content {
+            color: #666;
+            margin-bottom: 15px;
+        }
+        
+        .module-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .module-item {
+            background: #f8f9fa;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.9em;
+            color: #555;
+            border: 1px solid #e9ecef;
+        }
+        
+        .module-detail {
+            background: rgba(255, 255, 255, 0.98);
+            border-radius: 15px;
+            padding: 30px;
+            margin-top: 30px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            display: none;
+        }
+        
+        .module-detail.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .detail-header {
+            border-bottom: 3px solid #1e3c72;
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+        }
+        
+        .detail-title {
+            color: #1e3c72;
+            font-size: 1.8em;
+            margin-bottom: 10px;
+        }
+        
+        .detail-section {
+            margin: 25px 0;
+        }
+        
+        .detail-section h4 {
+            color: #1e3c72;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+        
+        .learning-objectives {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .learning-objectives li {
+            margin: 8px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+        
+        .learning-objectives li:before {
+            content: "🎯";
+            position: absolute;
+            left: 0;
+        }
+        
+        .assessment-item {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+            border-left: 4px solid #1e3c72;
+        }
+        
+        .cta-section {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            border-radius: 15px;
+            padding: 40px;
+            text-align: center;
+            margin-top: 40px;
+        }
+        
+        .cta-button {
+            background: white;
+            color: #1e3c72;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.2em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            margin: 10px;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+        }
+        
+        .methodology-badge {
+            background: #28a745;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 500;
+            display: inline-block;
+            margin: 10px 0;
+        }
+        
+        @media (max-width: 768px) {
+            .course-overview {
+                grid-template-columns: 1fr;
+            }
+            .modules-grid {
+                grid-template-columns: 1fr;
+            }
+            .header h1 {
+                font-size: 2.2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>AI & Law</h1>
+            <div class="subtitle">Quinney School of Law - University of Utah</div>
+            <p>A comprehensive 10-module graduate course preparing Master of Legal Studies students for the intersection of artificial intelligence and legal practice. Developed using evidence-based instructional design principles and adult learning theory.</p>
+            <div class="methodology-badge">ADDIE Framework + Universal Design for Learning</div>
+        </div>
+
+        <div class="course-overview">
+            <div class="overview-content">
+                <h3>Course Development Approach</h3>
+                <p><strong>Target Audience:</strong> Master of Legal Studies (MLS) graduate students with diverse legal backgrounds, requiring scaffolded learning from basic AI concepts to advanced legal applications.</p>
+                
+                <p><strong>Instructional Design Strategy:</strong> Applied competency-based design principles with emphasis on practical application and real-world legal scenarios. Collaborated extensively with legal and technical subject matter experts to ensure accuracy and relevance.</p>
+                
+                <p><strong>Learning Architecture:</strong> Progressive complexity design moving from foundational AI concepts through practical applications to advanced ethical and professional considerations, culminating in a comprehensive portfolio demonstrating AI competency in legal contexts.</p>
+            </div>
+            
+            <div class="course-stats">
+                <div class="stat">
+                    <span class="stat-number">10</span>
+                    <span class="stat-label">Learning Modules</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">25+</span>
+                    <span class="stat-label">Learning Activities</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">15</span>
+                    <span class="stat-label">Assessments</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">40+</span>
+                    <span class="stat-label">Hours Content</span>
+                </div>
+            </div>
+        </div>
+
+        <h2 style="color: white; text-align: center; margin-bottom: 30px; font-size: 2.2em;">Course Module Navigation</h2>
+        <p style="color: white; text-align: center; margin-bottom: 30px; opacity: 0.9;">Click any module to explore detailed learning objectives, activities, and assessments</p>
+
+        <div class="modules-grid">
+            <div class="module-card" onclick="showModuleDetail(1)">
+                <div class="module-header">
+                    <div class="module-number">1</div>
+                    <div class="module-title">AI Foundations & History</div>
+                </div>
+                <div class="module-content">
+                    Understanding AI development, models, and historical patterns that inform current legal applications.
+                </div>
+                <div class="module-items">
+                    <span class="module-item">Historical Analysis</span>
+                    <span class="module-item">AI Models Quiz</span>
+                    <span class="module-item">Discussion Board</span>
+                </div>
+            </div>
+
+            <div class="module-card" onclick="showModuleDetail(2)">
+                <div class="module-header">
+                    <div class="module-number">2</div>
+                    <div class="module-title">Prompt Engineering Fundamentals</div>
+                </div>
+                <div class="module-content">
+                    Mastering zero-shot, one-shot, and few-shot prompting techniques for legal applications.
+                </div>
+                <div class="module-items">
+                    <span class="module-item">Prompting Practice</span>
+                    <span class="module-item">Technique Quiz</span>
+                    <span class="module-item">Legal Examples</span>
+                </div>
+            </div>
+
+            <div class="module-card" onclick="showModuleDetail(3)">
+                <div class="module-header">
+                    <div class="module-number">3</div>
+                    <div class="module-title">Chatbots & Legal Applications</div>
+                </div>
+                <div class="module-content">
+                    Evaluating chatbot platforms, ethics, and legal implications for professional practice.
+                </div>
+                <div class="module-items">
+                    <span class="module-item">Platform Assessment</span>
+                    <span class="module-item">Ethics Analysis</span>
+                    <span class="module-item">Assignment</span>
+                </div>
+            </div>
+
+            <div class="module-card" onclick="showModuleDetail(4)">
+                <div class="module-header">
+                    <div class="module-number">4</div>
+                    <div class="module-title">AI Media Creation Tools</div>
+                </div>
+                <div class="module-content">
+                    Hands-on experience with AI tools for creating visual and multimedia content for legal work.
+                </div>
+                <div class="module-items">
+                    <span class="module-item">Tool Comparison</span>
+                    <span class="module-item">Media Portfolio</span>
+                    <span class="module-item">Discussion</span>
+                </div>
+            </div>
+
+            <div class="module-card" onclick="showModuleDetail(5)">
+                <div class="module-header">
+                    <div class="module-number">5</div>
+                    <div class="module-title">Legal AI Tools Exploration</div>
+                </div>
+                <div class="module-content">
+                    Comprehensive analysis of AI tools specifically designed for legal practice and research.
+                </div>
+                <div class="module-items">
+                    <span class="module-item">Tools Assessment</span>
+                    <span class="module-item">Comparison Matrix</span>
+                    <span class="module-item">Quiz</span>
+                </div>
+            </div>
+
+            <div class="module-card" onclick="showModuleDetail(6)">
+                <div class="module-header">
+                    <div class="module-number">6</div>
+                    <div class="module-title">Advanced Prompting & Guardrails</div>
+                </div>
+                <div class="module-content">
+                    Advanced techniques for prompt engineering with focus on professional safeguards and limitations.
+                </div>
+                <div class="module-items">
+                    <span class="module-item">Advanced Techniques</span>
+                    <span class="module-item">Guardrails</span>
+                    <span class="module-item">Assignment</span>
+                </div>
+            </div>
+
+            <div class="module-card" onclick="showModuleDetail(7)">
+                <div class="module-header">
+                    <div class="module-number">7</div>
+                    <div class="module-title">AI Ethics in Legal Practice</div>
+                </div>
+                <div class="module-content">
+                    Comprehensive examination of ethical considerations when implementing AI in legal contexts.
+                </div>
+                <div class="module-items">
+                    <span class="module-item">Ethics Blueprint</span>
+                    <span class="module-item">Case Studies</span>
+                    <span class="module-item">Quiz</span>
+                </div>
+            </div>
+
+            <div class="module-card" onclick="showModuleDetail(8)">
+                <div class="module-header">
+                    <div class="module-number">8</div>
+                    <div class="module-title">Professional AI Toolkit</div>
+                </div>
+                <div class="module-content">
+                    Building a comprehensive toolkit of AI resources for ongoing professional development.
+                </div>
+                <div class="module-items">
+                    <span class="module-item">Toolkit Presentation</span>
+                    <span class="module-item">Tool Overview</span>
+                    <span class="module-item">Quiz</span>
+                </div>
+            </div>
+
+            <div class="module-card" onclick="showModuleDetail(9)">
+                <div class="module-header">
+                    <div class="module-number">9</div>
+                    <div class="module-title">Learning Enhancement with AI</div>
+                </div>
+                <div class="module-content">
+                    Exploring AI tools that enhance personal learning and professional development strategies.
+                </div>
+                <div class="module-items">
+                    <span class="module-item">Learning Tools</span>
+                    <span class="module-item">Video Guide</span>
+                    <span class="module-item">Discussion</span>
+                </div>
+            </div>
+
+            <div class="module-card" onclick="showModuleDetail(10)">
+                <div class="module-header">
+                    <div class="module-number">10</div>
+                    <div class="module-title">Future of AI & Career Integration</div>
+                </div>
+                <div class="module-content">
+                    Synthesis and future-focused analysis of AI's role in legal careers and professional practice.
+                </div>
+                <div class="module-items">
+                    <span class="module-item">Career Analysis</span>
+                    <span class="module-item">Final Portfolio</span>
+                    <span class="module-item">Quiz</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Module Detail Sections -->
+        <div id="module-1-detail" class="module-detail">
+            <div class="detail-header">
+                <div class="detail-title">Module 1: AI Foundations & History</div>
+                <p>Establishing foundational understanding of AI development and historical patterns</p>
+            </div>
+            
+            <div class="detail-section">
+                <h4>Learning Objectives</h4>
+                <ul class="learning-objectives">
+                    <li>Identify key developments in AI history and their legal implications</li>
+                    <li>Distinguish between different AI models and their applications</li>
+                    <li>Analyze historical patterns that inform current AI regulation discussions</li>
+                </ul>
+            </div>
+            
+            <div class="detail-section">
+                <h4>Learning Activities</h4>
+                <div class="assessment-item">
+                    <strong>AI Evolution Timeline:</strong> Interactive timeline creation mapping AI development to legal milestones
+                </div>
+                <div class="assessment-item">
+                    <strong>Model Comparison:</strong> Hands-on exploration of different AI model types and their legal applications
+                </div>
+            </div>
+            
+            <div class="detail-section">
+                <h4>Assessments</h4>
+                <div class="assessment-item">
+                    <strong>AI Models Quiz:</strong> Competency-based assessment of foundational concepts
+                </div>
+                <div class="assessment-item">
+                    <strong>Historical Patterns Discussion:</strong> Peer analysis of AI development trends
+                </div>
+            </div>
+        </div>
+
+        <div id="module-3-detail" class="module-detail">
+            <div class="detail-header">
+                <div class="detail-title">Module 3: Chatbots & Legal Applications</div>
+                <p>Comprehensive analysis of chatbot technology in legal practice contexts</p>
+            </div>
+            
+            <div class="detail-section">
+                <h4>Learning Objectives</h4>
+                <ul class="learning-objectives">
+                    <li>Evaluate different chatbot platforms for legal practice applications</li>
+                    <li>Analyze ethical implications of chatbot use in legal contexts</li>
+                    <li>Apply legal reasoning to chatbot implementation decisions</li>
+                    <li>Assess legal liability and compliance requirements</li>
+                </ul>
+            </div>
+            
+            <div class="detail-section">
+                <h4>Learning Activities</h4>
+                <div class="assessment-item">
+                    <strong>Platform Assessment Matrix:</strong> Comparative analysis of legal chatbot platforms
+                </div>
+                <div class="assessment-item">
+                    <strong>Ethics Case Studies:</strong> Real-world scenarios examining ethical decision-making
+                </div>
+                <div class="assessment-item">
+                    <strong>Legal Implications Analysis:</strong> Professional liability and compliance considerations
+                </div>
+            </div>
+            
+            <div class="detail-section">
+                <h4>Major Assignment</h4>
+                <div class="assessment-item">
+                    <strong>Chatbot Implementation Proposal:</strong> Comprehensive proposal for implementing chatbot technology in a legal practice setting, including platform selection, ethical considerations, and compliance framework
+                </div>
+            </div>
+        </div>
+
+        <div class="cta-section">
+            <h2>Complete Course Available for Review</h2>
+            <p>This preview showcases the comprehensive instructional design approach applied to complex technical content for graduate-level legal education. The full course includes detailed learning activities, rubrics, and assessment strategies.</p>
+            <button class="cta-button" onclick="requestFullCourse()">Request Full Course Access</button>
+            <button class="cta-button" onclick="downloadSyllabus()">Download Detailed Syllabus</button>
+        </div>
+    </div>
+
+    <script>
+        function showModuleDetail(moduleNumber) {
+            // Hide all module details
+            const details = document.querySelectorAll('.module-detail');
+            details.forEach(detail => detail.classList.remove('active'));
+            
+            // Remove active class from all cards
+            const cards = document.querySelectorAll('.module-card');
+            cards.forEach(card => card.classList.remove('active'));
+            
+            // Show selected module detail if it exists
+            const selectedDetail = document.getElementById(`module-${moduleNumber}-detail`);
+            if (selectedDetail) {
+                selectedDetail.classList.add('active');
+                // Add active class to clicked card
+                cards[moduleNumber - 1].classList.add('active');
+                // Scroll to detail
+                selectedDetail.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            } else {
+                // Show coming soon message for modules without detailed content
+                alert(`Module ${moduleNumber} detailed view:\n\nThis module includes comprehensive learning activities, assessments, and resources. Full course materials available upon request.\n\nKey components:\n• Interactive learning activities\n• Competency-based assessments\n• Real-world application exercises\n• Peer collaboration opportunities`);
+            }
+        }
+
+        function requestFullCourse() {
+            alert("Full Course Access Request:\n\nThe complete AI & Law course includes:\n• All 10 modules with detailed content\n• Interactive Canvas navigation\n• Assessment rubrics and answer keys\n• Student feedback and completion data\n• Instructional design documentation\n\nContact: williamthe5thc@gmail.com");
+        }
+
+        function downloadSyllabus() {
+            alert("Detailed Syllabus Available:\n\nComprehensive course documentation includes:\n• Complete learning objectives for all modules\n• Assessment strategy and grading rubrics\n• Required and recommended resources\n• Course calendar and milestone schedule\n• Technology requirements and support\n\nFull documentation available upon request.");
+        }
+
+        // Add animation on load
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.module-card');
+            
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                
+                setTimeout(() => {
+                    card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, index * 100);
+            });
+        });
+    </script>
+</body>
+</html>

@@ -41,6 +41,7 @@ export interface ProjectBase {
   longDescription?: string;
   image: string;
   projectUrl?: string;
+  demoUrl?: string;
   detailPage?: boolean;
   category: ProjectCategory;
   tags: string[];
@@ -57,12 +58,9 @@ export interface ProjectBase {
 export type ProjectStatus = 'in-progress' | 'completed' | 'planned';
 
 export type ProjectCategory = 
-  | 'elearning'
-  | 'photoshop'
-  | 'premier'
   | 'id'
-  | 'development'
-  | 'research';
+  | 'learning-technology'
+  | 'assessment';
 
 export interface ProjectCategoryInfo {
   id: ProjectCategory;

@@ -1,0 +1,93 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom base styles */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-background text-text-primary;
+  }
+  
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    @apply w-2;
+  }
+  
+  ::-webkit-scrollbar-track {
+    @apply bg-gray-100;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    @apply bg-gray-300 rounded-full;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-gray-400;
+  }
+}
+
+/* Custom component styles */
+@layer components {
+  .page-transition {
+    @apply transition-all duration-300 ease-in-out;
+  }
+  
+  .card-hover {
+    @apply transition-transform duration-200 hover:scale-105;
+  }
+  
+  .gradient-text {
+    @apply bg-gradient-to-r from-primary-600 to-primary-800 bg-clip-text text-transparent;
+  }
+}
+
+/* Custom utility styles */
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .bg-background {
+    @apply bg-slate-50;
+  }
+  
+  .bg-background-light {
+    @apply bg-white;
+  }
+  
+  .text-text-primary {
+    @apply text-slate-900;
+  }
+  
+  .text-text-secondary {
+    @apply text-slate-600;
+  }
+  
+  .text-primary-600 {
+    @apply text-blue-600;
+  }
+  
+  .bg-primary-600 {
+    @apply bg-blue-600;
+  }
+  
+  .bg-primary-700 {
+    @apply bg-blue-700;
+  }
+  
+  .bg-primary-50 {
+    @apply bg-blue-50;
+  }
+  
+  .bg-primary-100 {
+    @apply bg-blue-100;
+  }
+  
+  .border-primary-600 {
+    @apply border-blue-600;
+  }
+}

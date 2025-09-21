@@ -2,11 +2,11 @@
 import { SiteConfig } from '@/types/content';
 
 export const siteConfig: SiteConfig = {
-  title: "W. Jordan Charles Portfolio",
-  author: "William Jordan Charles's Portfolio",
-  description: "Instructional Designer & Learning Technology Specialist",
-  slogan: "Transform Your Workforce Through Strategic Learning Design",
-  tagline: "Combining evidence-based instructional design with innovative learning technology to create scalable, high-impact training solutions that drive measurable business results.",
+  title: "Jordan Charles - Learning Technology Specialist",
+  author: "W. Jordan Charles Portfolio",
+  description: "Financial Wellness Instructional Designer & Learning Technology Specialist",
+  slogan: "Evidence-Based Learning Solutions That Drive Business Results",
+  tagline: "Combining behavioral psychology research with innovative learning technology to create scalable financial wellness programs that measurably improve lives and organizational outcomes.",
   siteUrl: "https://williamthe5thc.github.io/Portfolio",
   defaultImage: "/path/to/default-og-image.jpg",
   social: {

@@ -7,8 +7,8 @@ const variableTimer: ProjectBase = {
   title: 'Spaced Learning & Habit Formation Mobile App',
   description: 'Developed a mobile learning reinforcement tool that applies spaced repetition principles to support habit formation and microlearning delivery in corporate training environments',
   longDescription: `Created an innovative mobile application that leverages behavioral psychology principles to support learning retention and habit formation. The app generates scientifically-optimized variable intervals based on spaced repetition research, helping users develop consistent learning behaviors and reinforcing key concepts over time. Originally developed to address a specific client need, this solution demonstrates the application of learning science to create practical tools that support ongoing professional development and skill reinforcement.`,
-  image: "./images/projects/variable_timer.png",
-  category: 'development',
+  image: "/images/projects/variable_timer.png",
+  category: 'learning-technology',
   tags: [
     'Spaced Learning',
     'Behavioral Psychology',

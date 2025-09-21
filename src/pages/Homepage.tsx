@@ -12,18 +12,10 @@ import { Button, BaseCard, JourneyCard, StatsGrid, CoreCompetency } from '@/comp
 import { fadeInUp, staggerContainer } from '@/lib/animations';
 import { siteConfig, projects, stats, education, competencies } from '@/content';
 
-// Import specific featured projects
-import nacvaAutomation from '@/content/projects/nacva-automation';
-import waltzCourse from '@/content/projects/course-waltz';
-import variableTimer from '@/content/projects/variable-timer';
+// Import the strategic project ordering
+import { featuredProjects } from '@/content';
 
 const HomePage: React.FC = () => {
-  // Featured projects - directly specify the projects we want to showcase
-  const featuredProjects = React.useMemo(() => [
-    nacvaAutomation,  // NACVA automation - our strongest ID case study
-    waltzCourse,      // Waltz course - comprehensive ID project
-    variableTimer     // Variable timer - learning technology innovation
-  ], []);
 
   return (
    <RouteTransition>
@@ -38,26 +30,84 @@ const HomePage: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
           >
             <h1 className="text-5xl font-bold text-text-primary mb-6">
-              {siteConfig.slogan}
+              Instructional Design That Drives Results
             </h1>
             <p className="text-xl text-text-secondary mb-8">
-              {siteConfig.tagline}
+              Creating data-driven learning solutions that improve performance and deliver measurable business outcomes. 
+              <span className="font-semibold">Entry-level designers with portfolios earn 15% more</span> — 
+              see why employers choose proven expertise.
             </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button 
+                as={Link} 
+                to="/portfolio" 
+                variant="primary" 
+                size="lg"
+                className="bg-primary-600 hover:bg-primary-700 text-white font-semibold"
+              >
+                View My Work
+              </Button>
+              <Button 
+                as={Link} 
+                to="/contact" 
+                variant="outline" 
+                size="lg"
+                className="border-2 border-white text-white hover:bg-white hover:text-primary-600 font-semibold"
+              >
+                Start a Project
+              </Button>
+            </div>
           </motion.div>
         </div>
       </section>
 
-      
+      {/* Professional Impact */}
+      <section id="impact" className="py-16 bg-primary-50">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold mb-4">Proven Impact</h2>
+            <p className="text-xl text-text-secondary">
+              Creating measurable results through evidence-based instructional design
+            </p>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            {stats.map((stat, index) => (
+              <motion.div
+                key={stat.label}
+                variants={fadeInUp}
+                initial="initial"
+                animate="animate"
+                transition={{ delay: index * 0.1 }}
+                className="text-center"
+              >
+                <div className="text-3xl font-bold text-primary-600 mb-2">
+                  {stat.value}
+                </div>
+                <div className="text-sm text-text-secondary">
+                  {stat.label}
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Featured Projects */}
       <section id="featured-projects" className="py-20 bg-background">
         <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold mb-4">Featured Learning Solutions</h2>
+            <p className="text-xl text-text-secondary max-w-3xl mx-auto">
+              Interactive demos and case studies showcasing proven instructional design methodology, 
+              from Articulate Storyline projects to learning technology innovations.
+            </p>
+          </div>
           <div className="grid lg:grid-cols-3 gap-8">
             <div className="lg:col-span-2">
-              <h2 className="text-3xl font-bold mb-6">Featured Work</h2>
               <ProjectCarousel projects={featuredProjects} />
             </div>
             <div className="lg:col-span-1">
-              <h2 className="text-3xl font-bold mb-6">Quick Links</h2>
+              <h3 className="text-2xl font-bold mb-6">Quick Access</h3>
               <QuickLinks />
             </div>
           </div>
@@ -190,25 +240,38 @@ const HomePage: React.FC = () => {
 </section>
 
 {/* Call to Action */}
-<section id="Contact Me" className="py-20 bg-primary-50">
+<section id="Contact Me" className="py-20 bg-gradient-to-r from-primary-600 to-primary-700 text-white">
   <div className="container mx-auto px-4 text-center">
     <div className="max-w-3xl mx-auto">
-      <h2 className="text-3xl font-bold mb-6">Ready to Transform Your Learning Experience?</h2>
-      <p className="text-xl text-text-secondary mb-8">
-        Let's collaborate to create engaging, effective learning solutions for your organization.
+      <h2 className="text-3xl font-bold mb-6">Ready to Create Learning That Works?</h2>
+      <p className="text-xl mb-8 opacity-90">
+        From Articulate Storyline demos to scalable learning technology solutions — 
+        let's build something that drives real business results.
       </p>
-          <ScrollToSection to="/Contact">
-
-      <Button 
-        as={Link} 
-        to="./contact" 
-        variant="primary" 
-        size="lg"
-        className="hover:bg-primary-700"
-      >
-        Start a Conversation
-      </Button>
-      </ScrollToSection>
+      <div className="flex flex-col sm:flex-row gap-4 justify-center">
+        <ScrollToSection to="/portfolio">
+          <Button 
+            as={Link} 
+            to="./portfolio" 
+            variant="outline" 
+            size="lg"
+            className="bg-white text-primary-600 hover:bg-gray-50 border-white"
+          >
+            View Interactive Demos
+          </Button>
+        </ScrollToSection>
+        <ScrollToSection to="/Contact">
+          <Button 
+            as={Link} 
+            to="./contact" 
+            variant="primary" 
+            size="lg"
+            className="bg-white text-primary-600 hover:bg-gray-50"
+          >
+            Start a Project
+          </Button>
+        </ScrollToSection>
+      </div>
     </div>
   </div>
 </section>

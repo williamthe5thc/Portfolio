@@ -2,20 +2,19 @@
 import { ProjectBase } from '@/types/content';
 
 const objectTracking: ProjectBase = {   detailPage: true,
-  id: 'object-tracking-video',
-  title: 'Video Object Tracking',
-  description: 'Advanced video editing project demonstrating object tracking on phone screens and faces using Adobe Premiere',
-  longDescription: `Created sophisticated video effects using Adobe Premiere's object tracking capabilities. The project 
-  showcased two distinct tracking scenarios: tracking content on a mobile phone screen and facial tracking. This demonstrated 
-  proficiency in advanced video editing techniques and precise motion tracking implementation.`,
+  id: 'object-tracking-assessment',
+  title: 'Performance Assessment Technology - Video Analysis',
+  description: 'Developed video-based performance tracking technology for objective skills assessment, enabling data-driven evaluation of hands-on learning outcomes',
+  longDescription: `Pioneered innovative video analysis technology for objective performance assessment in hands-on learning environments. Created sophisticated tracking systems capable of monitoring precise movements, tool usage, and procedural compliance during practical skills demonstrations. This technology addresses the critical challenge of objective assessment in simulation-based training and skills certification programs, providing data-driven insights into learner performance that traditional observation methods cannot capture.`,
   image: "./images/thumbnails/coming_soon.png", // Awaiting actual image
-  category: 'premier',
+  category: 'assessment',
   tags: [
-    'Adobe Premiere',
-    'Motion Tracking',
-    'Video Editing',
-    'Visual Effects',
-    'Post-Production'
+    'Performance Assessment',
+    'Skills Evaluation',
+    'Video Analysis',
+    'Objective Measurement',
+    'Learning Analytics',
+    'Assessment Technology'
   ],
   status: 'completed',
   date: '2023',
@@ -25,30 +24,30 @@ const objectTracking: ProjectBase = {   detailPage: true,
     'Video Effects',
     'Color Grading Tools'
   ],
-  methodology: 'Advanced Video Editing',
+  methodology: 'Learning Analytics & Assessment Technology Development',
   learningObjectives: [
-    'Master object tracking techniques',
-    'Apply tracking to different scenarios',
-    'Create seamless visual effects',
-    'Maintain tracking accuracy'
+    'Enable objective measurement of hands-on skills performance',
+    'Provide data-driven insights for skills assessment and certification',
+    'Support scalable evaluation in simulation-based training programs',
+    'Create standardized assessment protocols for practical skills'
   ],
   challenges: [
-    'Maintaining tracking accuracy during motion',
-    'Handling different tracking scenarios',
-    'Creating natural-looking effects',
-    'Managing processing requirements'
+    'Traditional skills assessment relies on subjective observation methods',
+    'Difficulty in providing consistent, objective feedback for hands-on performance',
+    'Need for scalable assessment solutions in high-volume training programs',
+    'Capturing precise movement data for detailed performance analysis'
   ],
   solutions: [
-    'Used advanced tracking algorithms',
-    'Implemented scene-specific tracking techniques',
-    'Optimized tracking points selection',
-    'Applied smoothing techniques'
+    'Developed sophisticated video tracking algorithms for objective performance measurement',
+    'Created standardized assessment protocols ensuring consistent evaluation criteria',
+    'Implemented automated analysis systems reducing assessment time and increasing accuracy',
+    'Built scalable technology infrastructure supporting multiple assessment scenarios'
   ],
   results: [
-    'Successfully tracked objects in multiple scenarios',
-    'Created professional-looking effects',
-    'Demonstrated advanced editing capabilities',
-    'Built reusable tracking templates'
+    'Pioneered objective assessment methodology for hands-on skills evaluation',
+    'Created data-driven performance feedback systems for learner improvement',
+    'Developed scalable assessment technology applicable to various training domains',
+    'Demonstrated innovative approach to learning analytics and performance measurement'
   ]
 };
 

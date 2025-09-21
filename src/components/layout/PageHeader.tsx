@@ -35,7 +35,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ScrollLink } from '@/components/shared';
+import { ScrollToSection } from '@/components/shared';
 import { ChevronRight } from 'lucide-react';
 import { Container } from './Container';
 

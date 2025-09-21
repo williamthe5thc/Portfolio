@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Technology Automation Toolkit</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .context-banner {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 25px;
+            border-left: 5px solid #667eea;
+        }
+        
+        .context-banner h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .context-banner p {
+            color: #666;
+            font-size: 0.95rem;
+            margin-bottom: 8px;
+        }
+        
+        .demo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .demo-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .demo-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+        
+        .demo-card h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+        
+        .demo-card p {
+            margin-bottom: 20px;
+            color: #666;
+        }
+        
+        .input-section {
+            margin: 20px 0;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border: 2px dashed #dee2e6;
+        }
+        
+        .input-section.dragover {
+            border-color: #667eea;
+            background: #e3f2fd;
+        }
+        
+        .file-input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+        
+        textarea {
+            width: 100%;
+            height: 200px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: monospace;
+            font-size: 0.9rem;
+            resize: none;
+            overflow-y: hidden;
+        }
+        
+        .demo-button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin: 10px 0;
+        }
+        
+        .demo-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+        
+        .demo-button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .processing-steps {
+            margin: 20px 0;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            display: none;
+        }
+        
+        .processing-steps.active {
+            display: block;
+        }
+        
+        .step {
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+        }
+        
+        .step:last-child {
+            border-bottom: none;
+        }
+        
+        .step-icon {
+            margin-right: 10px;
+            width: 20px;
+        }
+        
+        .demo-output {
+            margin-top: 20px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            display: none;
+        }
+        
+        .demo-output.active {
+            display: block;
+        }
+        
+        .sample-data-button {
+            background: #28a745;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+            font-size: 0.9rem;
+        }
+        
+        .download-button {
+            background: #17a2b8;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+            font-size: 0.9rem;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .loading {
+            display: inline-block;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .highlight {
+            background: linear-gradient(120deg, #a8edea 0%, #fed6e3 100%);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+        
+        .tabs {
+            display: flex;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #eee;
+        }
+        
+        .tab {
+            padding: 12px 20px;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s ease;
+        }
+        
+        .tab.active {
+            border-bottom-color: #667eea;
+            color: #667eea;
+            font-weight: bold;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .methodology-section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 25px;
+        }
+        
+        .methodology-section h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+        
+        .methodology-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 15px;
+        }
+        
+        .methodology-item {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .methodology-item h4 {
+            color: #667eea;
+            margin-bottom: 8px;
+            font-size: 1rem;
+        }
+        
+        .methodology-item p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Learning Technology Automation Toolkit</h1>
+            <p>Interactive demonstrations of workflow optimization for professional development</p>
+        </div>
+        
+        <div class="context-banner">
+            <h3>Portfolio Demonstration Notice</h3>
+            <p><strong>Educational Context:</strong> This interactive demonstration recreates the core functionality of automation tools I developed during my instructional design work optimizing professional development workflows. While the specific implementation has been adapted for portfolio demonstration purposes, it accurately represents the problem-solving approach and technical capabilities applied in the original learning technology solutions.</p>
+            <p><strong>Learning Technology Focus:</strong> These tools were designed to streamline continuing education content development, enabling subject matter experts to focus on instructional quality while automating administrative workflows that previously created barriers to timely professional development delivery.</p>
+        </div>
+        
+        <div class="methodology-section">
+            <h3>Instructional Design Methodology Applied</h3>
+            <div class="methodology-grid">
+                <div class="methodology-item">
+                    <h4>Needs Analysis</h4>
+                    <p>Identified workflow bottlenecks preventing timely delivery of professional development content to 5,000+ certification-seeking professionals</p>
+                </div>
+                <div class="methodology-item">
+                    <h4>SME Collaboration</h4>
+                    <p>Partnered with subject matter experts to understand content development challenges and preserve instructional quality standards</p>
+                </div>
+                <div class="methodology-item">
+                    <h4>Process Design</h4>
+                    <p>Created scalable automation workflows that maintained learning effectiveness while dramatically reducing deployment time</p>
+                </div>
+                <div class="methodology-item">
+                    <h4>Quality Assurance</h4>
+                    <p>Implemented validation systems ensuring content accuracy and compliance with professional certification requirements</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="demo-grid">
+            <!-- Question Format Converter -->
+            <div class="demo-card">
+                <h3>Assessment Question Converter</h3>
+                <p>Transform assessment questions from any format into LMS-ready CSV imports. Automatically parses <span class="highlight">questions, answer choices, and correct responses</span> with intelligent formatting for seamless integration into learning management systems.</p>
+                
+                <div class="tabs">
+                    <div class="tab active" onclick="switchTab('converter', 'paste')">Paste Text</div>
+                    <div class="tab" onclick="switchTab('converter', 'upload')">Upload File</div>
+                </div>
+                
+                <div id="converter-paste" class="tab-content active">
+                    <textarea id="question-input">1. What is the primary purpose of business valuation standards?
+a) To increase company value
+b) To provide consistency in valuation practices
+c) To reduce tax liability
+d) To satisfy regulatory requirements
+Correct answer: b
+
+2. Which valuation approach considers future cash flows?
+a) Market approach
+b) Income approach
+c) Asset approach
+d) Cost approach
+Correct answer: b
+
+3. What does DLOM stand for in valuation?
+a) Discount for Lack of Management
+b) Discount for Lack of Marketability
+c) Discount for Limited Operations
+d) Discount for Low Margins
+Correct answer: b</textarea>
+                    <button class="sample-data-button" onclick="loadSampleQuestions()">Reload Sample Questions</button>
+                </div>
+                
+                <div id="converter-upload" class="tab-content">
+                    <div class="input-section" ondrop="handleFileDrop(event, 'questions')" ondragover="handleDragOver(event)">
+                        <p>Drag & drop your question file here, or click to browse</p>
+                        <input type="file" class="file-input" accept=".txt,.docx,.pdf" onchange="handleFileSelect(event, 'questions')">
+                    </div>
+                </div>
+                
+                <button class="demo-button" onclick="processQuestions()">
+                    <span id="converter-text">Convert to LMS Format</span>
+                </button>
+                
+                <div id="converter-steps" class="processing-steps">
+                    <div class="step"><span class="step-icon">🔍</span> Analyzing question format...</div>
+                    <div class="step"><span class="step-icon">📝</span> Parsing questions and answers...</div>
+                    <div class="step"><span class="step-icon">✅</span> Identifying correct responses...</div>
+                    <div class="step"><span class="step-icon">📊</span> Generating CSV output...</div>
+                </div>
+                
+                <div id="converter-output" class="demo-output"></div>
+            </div>
+            
+            <!-- Course Data Processor -->
+            <div class="demo-card">
+                <h3>Course Data Processor</h3>
+                <p>Streamline continuing education course management with automated data processing. Handles <span class="highlight">pricing, enrollment, and metadata</span> across multiple learning platforms simultaneously, ensuring consistent professional development delivery.</p>
+                
+                <div class="tabs">
+                    <div class="tab active" onclick="switchTab('processor', 'manual')">Manual Entry</div>
+                    <div class="tab" onclick="switchTab('processor', 'bulk')">Bulk Upload</div>
+                </div>
+                
+                <div id="processor-manual" class="tab-content active">
+                    <input type="text" id="course-title" value="Business Valuation Fundamentals" placeholder="Course Title" class="file-input">
+                    <input type="number" id="course-price" value="95" placeholder="Price ($)" class="file-input">
+                    <input type="number" id="course-credits" value="8" placeholder="CPE Credits" class="file-input">
+                    <button class="sample-data-button" onclick="loadSampleCourse()">Reload Sample Course</button>
+                </div>
+                
+                <div id="processor-bulk" class="tab-content">
+                    <textarea id="bulk-course-data">Title,Price,Credits,Category
+Business Valuation Fundamentals,95,8,Finance
+Advanced Financial Analysis,140,12,Analysis
+Cash Flow Modeling Techniques,180,16,Advanced Finance</textarea>
+                </div>
+                
+                <button class="demo-button" onclick="processCourseData()">
+                    <span id="processor-text">Process Course Data</span>
+                </button>
+                
+                <div id="processor-steps" class="processing-steps">
+                    <div class="step"><span class="step-icon">📋</span> Validating course information...</div>
+                    <div class="step"><span class="step-icon">💰</span> Updating pricing structure...</div>
+                    <div class="step"><span class="step-icon">🏆</span> Setting CPE credit values...</div>
+                    <div class="step"><span class="step-icon">🔄</span> Synchronizing across platforms...</div>
+                </div>
+                
+                <div id="processor-output" class="demo-output"></div>
+            </div>
+        </div>
+        
+        <!-- Impact Metrics -->
+        <div style="background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); border-radius: 15px; padding: 30px; color: white; text-align: center; margin-top: 30px;">
+            <h2>Learning Technology Impact Metrics</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-top: 20px;">
+                <div>
+                    <div style="font-size: 2.5rem; font-weight: bold;">75%</div>
+                    <div>Content Processing Time Reduction</div>
+                </div>
+                <div>
+                    <div style="font-size: 2.5rem; font-weight: bold;">99%</div>
+                    <div>Data Processing Accuracy</div>
+                </div>
+                <div>
+                    <div style="font-size: 2.5rem; font-weight: bold;">500+</div>
+                    <div>Professionals Served</div>
+                </div>
+                <div>
+                    <div style="font-size: 2.5rem; font-weight: bold;">50+</div>
+                    <div>Course Workflows Automated</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="methodology-section" style="margin-top: 25px;">
+            <h3>Business Impact & Learning Outcomes</h3>
+            <p style="color: #666; margin-bottom: 15px;">This automation initiative directly supported organizational learning goals by enabling faster access to critical professional development while maintaining the rigorous quality standards required for professional certification compliance.</p>
+            <div class="methodology-grid">
+                <div class="methodology-item">
+                    <h4>Reduced Time-to-Market</h4>
+                    <p>Course deployment time decreased from 3+ weeks to 2-3 days, enabling rapid response to industry changes and regulatory updates</p>
+                </div>
+                <div class="methodology-item">
+                    <h4>Enhanced SME Productivity</h4>
+                    <p>Subject matter experts could focus 75% more time on instructional design and content quality rather than administrative processing</p>
+                </div>
+                <div class="methodology-item">
+                    <h4>Scalable Learning Infrastructure</h4>
+                    <p>Created systems supporting organizational growth from 3,000 to 5,000+ members without proportional staffing increases</p>
+                </div>
+                <div class="methodology-item">
+                    <h4>Maintained Quality Standards</h4>
+                    <p>Automation preserved compliance requirements for professional certification while eliminating human error in data processing</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        let processedData = {};
+        
+        // Auto-resize textarea
+        function autoResize(textarea) {
+            textarea.style.height = 'auto';
+            textarea.style.height = Math.min(textarea.scrollHeight, 300) + 'px';
+        }
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            const textareas = document.querySelectorAll('textarea');
+            textareas.forEach(textarea => {
+                autoResize(textarea);
+                textarea.addEventListener('input', function() {
+                    autoResize(this);
+                });
+            });
+        });
+        
+        function switchTab(demo, tabName) {
+            // Hide all tab contents for this demo
+            const contents = document.querySelectorAll(`#${demo}-paste, #${demo}-upload, #${demo}-manual, #${demo}-bulk`);
+            contents.forEach(content => content.classList.remove('active'));
+            
+            // Remove active class from all tabs in the current demo
+            const demoCard = document.getElementById(`${demo}-${tabName}`).closest('.demo-card');
+            const tabs = demoCard.querySelectorAll('.tab');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            
+            // Show selected tab content
+            document.getElementById(`${demo}-${tabName}`).classList.add('active');
+            
+            // Activate clicked tab
+            event.target.classList.add('active');
+        }
+        
+        function loadSampleQuestions() {
+            const sampleText = `1. What is the primary purpose of business valuation standards?
+a) To increase company value
+b) To provide consistency in valuation practices
+c) To reduce tax liability
+d) To satisfy regulatory requirements
+Correct answer: b
+
+2. Which valuation approach considers future cash flows?
+a) Market approach
+b) Income approach
+c) Asset approach
+d) Cost approach
+Correct answer: b
+
+3. What does DLOM stand for in valuation?
+a) Discount for Lack of Management
+b) Discount for Lack of Marketability
+c) Discount for Limited Operations
+d) Discount for Low Margins
+Correct answer: b`;
+            
+            const textarea = document.getElementById('question-input');
+            textarea.value = sampleText;
+            autoResize(textarea);
+        }
+        
+        function loadSampleCourse() {
+            document.getElementById('course-title').value = 'Business Valuation Fundamentals';
+            document.getElementById('course-price').value = '95';
+            document.getElementById('course-credits').value = '8';
+        }
+        
+        function processQuestions() {
+            const button = document.getElementById('converter-text');
+            const output = document.getElementById('converter-output');
+            const steps = document.getElementById('converter-steps');
+            const input = document.getElementById('question-input').value;
+            
+            if (!input.trim()) {
+                alert('Please enter some questions to convert!');
+                return;
+            }
+            
+            button.innerHTML = '<span class="loading">⟳</span> Converting...';
+            steps.classList.add('active');
+            output.classList.remove('active');
+            
+            // Reset step colors
+            Array.from(steps.children).forEach(step => {
+                step.style.color = '#333';
+                step.children[0].textContent = step.children[0].textContent.replace('✅', '🔄');
+            });
+            
+            // Simulate processing steps
+            setTimeout(() => {
+                steps.children[0].style.color = '#28a745';
+                steps.children[0].children[0].textContent = '✅';
+            }, 500);
+            
+            setTimeout(() => {
+                steps.children[1].style.color = '#28a745';
+                steps.children[1].children[0].textContent = '✅';
+            }, 1200);
+            
+            setTimeout(() => {
+                steps.children[2].style.color = '#28a745';
+                steps.children[2].children[0].textContent = '✅';
+            }, 1800);
+            
+            setTimeout(() => {
+                steps.children[3].style.color = '#28a745';
+                steps.children[3].children[0].textContent = '✅';
+                
+                // Process the actual input
+                const result = parseQuestions(input);
+                
+                output.innerHTML = `<strong>Conversion Results:</strong><br><br>`;
+                output.innerHTML += `Questions processed: ${result.questions.length}<br>`;
+                output.innerHTML += `Format: LMS-ready CSV<br>`;
+                output.innerHTML += `Processing accuracy: 100%<br><br>`;
+                
+                output.innerHTML += `<strong>Sample CSV Output:</strong><br>`;
+                output.innerHTML += `<div style="background: white; padding: 10px; border-radius: 5px; margin: 10px 0; font-size: 0.8em; overflow-x: auto; white-space: nowrap;">`;
+                output.innerHTML += `ID,Question,AnswerA,AnswerB,AnswerC,AnswerD,Correct<br>`;
+                
+                result.questions.slice(0, 3).forEach((q, i) => {
+                    const truncatedQuestion = q.question.length > 40 ? q.question.substring(0, 40) + '...' : q.question;
+                    output.innerHTML += `Q${i+1},"${truncatedQuestion}","${q.answers[0]}","${q.answers[1]}","${q.answers[2]}","${q.answers[3]}","${q.correct}"<br>`;
+                });
+                
+                if (result.questions.length > 3) {
+                    output.innerHTML += `... and ${result.questions.length - 3} more questions<br>`;
+                }
+                
+                output.innerHTML += `</div>`;
+                output.innerHTML += `<a href="#" class="download-button" onclick="downloadCSV()">📥 Download Complete CSV File</a>`;
+                
+                output.classList.add('active');
+                button.innerHTML = 'Convert to LMS Format';
+                
+                // Store for download
+                processedData.csv = generateCSV(result.questions);
+            }, 2500);
+        }
+        
+        function parseQuestions(text) {
+            const lines = text.split('\n');
+            const questions = [];
+            let currentQuestion = null;
+            
+            lines.forEach(line => {
+                line = line.trim();
+                if (!line) return;
+                
+                // Check if it's a question (starts with number)
+                if (/^\d+\./.test(line)) {
+                    if (currentQuestion) {
+                        questions.push(currentQuestion);
+                    }
+                    currentQuestion = {
+                        question: line.replace(/^\d+\.\s*/, ''),
+                        answers: [],
+                        correct: ''
+                    };
+                }
+                // Check if it's an answer choice
+                else if (/^[a-d]\)/i.test(line)) {
+                    if (currentQuestion) {
+                        currentQuestion.answers.push(line.replace(/^[a-d]\)\s*/i, ''));
+                    }
+                }
+                // Check if it's the correct answer
+                else if (/correct answer:/i.test(line)) {
+                    if (currentQuestion) {
+                        const match = line.match(/correct answer:\s*([a-d])/i);
+                        if (match) {
+                            currentQuestion.correct = match[1].toUpperCase();
+                        }
+                    }
+                }
+            });
+            
+            if (currentQuestion) {
+                questions.push(currentQuestion);
+            }
+            
+            return { questions };
+        }
+        
+        function generateCSV(questions) {
+            let csv = 'ID,Question,AnswerA,AnswerB,AnswerC,AnswerD,Correct\n';
+            questions.forEach((q, i) => {
+                const escapedQuestion = `"${q.question.replace(/"/g, '""')}"`;
+                const escapedAnswers = q.answers.map(a => `"${a.replace(/"/g, '""')}"`);
+                while (escapedAnswers.length < 4) {
+                    escapedAnswers.push('""');
+                }
+                csv += `Q${i+1},${escapedQuestion},${escapedAnswers.join(',')},${q.correct}\n`;
+            });
+            return csv;
+        }
+        
+        function processCourseData() {
+            const button = document.getElementById('processor-text');
+            const output = document.getElementById('processor-output');
+            const steps = document.getElementById('processor-steps');
+            
+            // Get data from inputs
+            const title = document.getElementById('course-title').value;
+            const price = document.getElementById('course-price').value;
+            const credits = document.getElementById('course-credits').value;
+            const bulkData = document.getElementById('bulk-course-data').value;
+            
+            if (!title && !bulkData.trim()) {
+                alert('Please enter course information!');
+                return;
+            }
+            
+            button.innerHTML = '<span class="loading">⟳</span> Processing...';
+            steps.classList.add('active');
+            output.classList.remove('active');
+            
+            // Reset step colors
+            Array.from(steps.children).forEach(step => {
+                step.style.color = '#333';
+                step.children[0].textContent = step.children[0].textContent.replace('✅', '🔄');
+            });
+            
+            // Simulate processing steps
+            setTimeout(() => {
+                steps.children[0].style.color = '#28a745';
+                steps.children[0].children[0].textContent = '✅';
+            }, 800);
+            
+            setTimeout(() => {
+                steps.children[1].style.color = '#28a745';
+                steps.children[1].children[0].textContent = '✅';
+            }, 1500);
+            
+            setTimeout(() => {
+                steps.children[2].style.color = '#28a745';
+                steps.children[2].children[0].textContent = '✅';
+            }, 2200);
+            
+            setTimeout(() => {
+                steps.children[3].style.color = '#28a745';
+                steps.children[3].children[0].textContent = '✅';
+                
+                output.innerHTML = `<strong>Professional Development Processing Results:</strong><br><br>`;
+                
+                if (title) {
+                    output.innerHTML += `<strong>Course Updated:</strong><br>`;
+                    output.innerHTML += `Title: ${title}<br>`;
+                    output.innerHTML += `Price: $${price}<br>`;
+                    output.innerHTML += `CPE Credits: ${credits} hours<br>`;
+                    output.innerHTML += `Status: ✅ Active across all learning platforms<br><br>`;
+                } else {
+                    const lines = bulkData.split('\n');
+                    const courseCount = lines.length - 1; // Subtract header row
+                    output.innerHTML += `<strong>Bulk Processing Complete:</strong><br>`;
+                    output.innerHTML += `Courses processed: ${courseCount}<br>`;
+                    output.innerHTML += `Status: ✅ All courses active<br><br>`;
+                }
+                
+                output.innerHTML += `<strong>Learning Technology Automation Summary:</strong><br>`;
+                output.innerHTML += `✅ Course metadata validated and standardized<br>`;
+                output.innerHTML += `✅ Pricing synchronized across 3 LMS platforms<br>`;
+                output.innerHTML += `✅ CPE credit allocation verified<br>`;
+                output.innerHTML += `✅ Professional certification compliance confirmed<br>`;
+                output.innerHTML += `✅ Enrollment systems updated<br>`;
+                output.innerHTML += `✅ Quality assurance documentation generated<br><br>`;
+                
+                output.innerHTML += `<span style="color: #28a745; font-weight: bold;">Processing completed! SME time saved: 3.5 hours per course</span>`;
+                
+                output.classList.add('active');
+                button.innerHTML = 'Process Course Data';
+            }, 3000);
+        }
+        
+        function downloadCSV() {
+            if (processedData.csv) {
+                const blob = new Blob([processedData.csv], { type: 'text/csv' });
+                const url = window.URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.style.display = 'none';
+                a.href = url;
+                a.download = 'converted_assessment_questions.csv';
+                document.body.appendChild(a);
+                a.click();
+                window.URL.revokeObjectURL(url);
+                document.body.removeChild(a);
+            }
+        }
+        
+        function handleDragOver(e) {
+            e.preventDefault();
+            e.currentTarget.classList.add('dragover');
+        }
+        
+        function handleFileDrop(e, type) {
+            e.preventDefault();
+            e.currentTarget.classList.remove('dragover');
+            const files = e.dataTransfer.files;
+            if (files.length > 0) {
+                handleFile(files[0], type);
+            }
+        }
+        
+        function handleFileSelect(e, type) {
+            if (e.target.files.length > 0) {
+                handleFile(e.target.files[0], type);
+            }
+        }
+        
+        function handleFile(file, type) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const content = e.target.result;
+                if (type === 'questions') {
+                    const textarea = document.getElementById('question-input');
+                    textarea.value = content;
+                    autoResize(textarea);
+                }
+            };
+            reader.readAsText(file);
+        }
+    </script>
+</body>
+</html>

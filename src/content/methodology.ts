@@ -4,26 +4,26 @@ import { Methodology } from '@/types/content';
 // src/content/professional/methodology.ts
 
 export const methodology = {
-  title: "Design Philosophy & Methodology",
-  summary: "As a graduate student in Instructional Design and Educational Technology, I combine learning theory with evidence-based practices to create effective learning experiences. My approach integrates key principles from cognitive science, human-computer interaction, and multimedia learning.",
+  title: "Evidence-Based Learning Solutions That Drive Results",
+  summary: "As a Learning Technology Specialist completing my M.Ed. in Instructional Design (May 2025), I combine behavioral psychology research with innovative technology to create scalable learning solutions. My approach delivers measurable business outcomes through data-driven design and strategic automation.",
 
   corePrinciples: [
     {
-      title: "Learner-Centered Approach", 
-      description: "Focusing on learner needs, contexts, and experiences through systematic analysis and iterative design"
+      title: "Business Impact Focus", 
+      description: "Creating learning solutions that deliver measurable organizational outcomes and drive performance improvements"
     },
     {
-      title: "Designs Informed from Learning Theories",
-      description: "Applying foundational learning theories and cognitive principles to create research-backed solutions"
+      title: "Learning Technology Innovation",
+      description: "Leveraging automation and advanced tools to scale learning delivery and optimize organizational workflows"
     },
    
     {
-      title: "Evidence-Based Practice",
-      description: "Using research findings and established frameworks while staying current with emerging technologies and methods"
+      title: "Evidence-Based Design",
+      description: "Applying behavioral psychology research and proven instructional design principles to ensure learning effectiveness"
     },
     {
-      title: "Continuous Learning",  
-      description: "Developing expertise through coursework, projects, and collaboration with experienced practitioners"
+      title: "SME Collaboration Excellence",  
+      description: "Partnering with subject matter experts to preserve content quality while streamlining development processes"
     }
   ],
 
@@ -128,54 +128,55 @@ export const methodology = {
   tools: {
     design: [
       {
-        name: "Adobe Creative Suite",
+        name: "Articulate Suite",
         applications: [
-          "Photoshop - Image editing & user personas",
-          "Premiere Pro - Video production & demonstrations",
-          "Illustrator - Vector graphics & interface elements"
+          "Storyline 360 - Interactive e-learning development",
+          "Rise 360 - Responsive course creation",
+          "Review 360 - Stakeholder feedback management"
         ]
       },
       {
-        name: "Prototyping",
+        name: "Learning Technology",
         applications: [
-          "Figma - Interface design",
-          "Adobe XD - UX prototyping",
-          "InVision - Interactive prototypes"
+          "Canvas LMS - Course management & delivery",
+          "Assessment Design - Competency-based evaluation",
+          "Learning Analytics - Performance measurement"
         ]
       }
     ],
     development: [
       {
-        name: "Web Technologies",
+        name: "Automation & Efficiency",
         applications: [
-          "HTML5 - Structure & content",
-          "CSS3 - Styling & responsiveness",
-          "Bootstrap - UI framework"
+          "Python - Workflow automation & data processing",
+          "Process Optimization - Content development streamlining",
+          "Quality Assurance - Validation system implementation"
         ]
       },
       {
-        name: "Version Control",
+        name: "Professional Content",
         applications: [
-          "Git - Code versioning",
-          "GitHub - Project hosting"
+          "Adobe Creative Suite - Multimedia content creation",
+          "Camtasia - Video production & demonstrations",
+          "Microsoft 365 - Professional documentation"
         ]
       }
     ],
     learning: [
       {
-        name: "Learning Platforms",
+        name: "Financial Wellness",
         applications: [
-          "Canvas LMS - Course management",
-          "Articulate - E-learning development",
-          "Captivate - Interactive content"
+          "Professional Development - Continuing education design",
+          "Compliance Training - Certification requirement management",
+          "Adult Learning - Evidence-based curriculum development"
         ]
       },
       {
-        name: "Collaboration",
+        name: "Learning Measurement",
         applications: [
-          "Microsoft 365 - Documentation",
-          "Google Workspace - Team collaboration",
-          "Zoom - Virtual instruction"
+          "Impact Assessment - Business outcome evaluation",
+          "Data Analysis - Learning effectiveness measurement",
+          "Stakeholder Reporting - Results communication"
         ]
       }
     ]
