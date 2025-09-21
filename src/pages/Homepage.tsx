@@ -30,31 +30,29 @@ const HomePage: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
           >
             <h1 className="text-5xl font-bold text-text-primary mb-6">
-              Instructional Design That Drives Results
+              Learning Technology Specialist & Instructional Designer
             </h1>
             <p className="text-xl text-text-secondary mb-8">
-              Creating data-driven learning solutions that improve performance and deliver measurable business outcomes. 
-              <span className="font-semibold">Entry-level designers with portfolios earn 15% more</span> — 
-              see why employers choose proven expertise.
+              I design interactive learning experiences that solve real business problems. 
+              From Articulate Storyline demos to automated workflow solutions, 
+              I combine behavioral psychology with innovative technology to create training that actually works.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button 
-                as={Link} 
-                to="/portfolio" 
+                href="/portfolio" 
                 variant="primary" 
                 size="lg"
                 className="bg-primary-600 hover:bg-primary-700 text-white font-semibold"
               >
-                View My Work
+                View Portfolio
               </Button>
               <Button 
-                as={Link} 
-                to="/contact" 
+                href="/contact" 
                 variant="outline" 
                 size="lg"
                 className="border-2 border-white text-white hover:bg-white hover:text-primary-600 font-semibold"
               >
-                Start a Project
+                Get In Touch
               </Button>
             </div>
           </motion.div>
@@ -245,34 +243,28 @@ const HomePage: React.FC = () => {
 <section id="Contact Me" className="py-20 bg-gradient-to-r from-primary-600 to-primary-700 text-white">
   <div className="container mx-auto px-4 text-center">
     <div className="max-w-3xl mx-auto">
-      <h2 className="text-3xl font-bold mb-6">Ready to Create Learning That Works?</h2>
+      <h2 className="text-3xl font-bold mb-6">Ready to Collaborate?</h2>
       <p className="text-xl mb-8 opacity-90">
-        From Articulate Storyline demos to scalable learning technology solutions — 
-        let's build something that drives real business results.
+        Looking for someone who can design engaging learning experiences and solve complex training challenges? 
+        Let's discuss your project.
       </p>
       <div className="flex flex-col sm:flex-row gap-4 justify-center">
-        <ScrollToSection to="/portfolio">
-          <Button 
-            as={Link} 
-            to="./portfolio" 
-            variant="outline" 
-            size="lg"
-            className="bg-white text-primary-600 hover:bg-gray-50 border-white"
-          >
-            View Interactive Demos
-          </Button>
-        </ScrollToSection>
-        <ScrollToSection to="/Contact">
-          <Button 
-            as={Link} 
-            to="./contact" 
-            variant="primary" 
-            size="lg"
-            className="bg-white text-primary-600 hover:bg-gray-50"
-          >
-            Start a Project
-          </Button>
-        </ScrollToSection>
+        <Button 
+          href="/portfolio" 
+          variant="outline" 
+          size="lg"
+          className="bg-white text-primary-600 hover:bg-gray-50 border-white"
+        >
+          View My Work
+        </Button>
+        <Button 
+          href="/contact" 
+          variant="primary" 
+          size="lg"
+          className="bg-white text-primary-600 hover:bg-gray-50"
+        >
+          Get In Touch
+        </Button>
       </div>
     </div>
   </div>
