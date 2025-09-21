@@ -61,6 +61,28 @@ const HomePage: React.FC = () => {
         </div>
       </section>
 
+      {/* Featured Projects */}
+      <section id="featured-projects" className="py-20 bg-background">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold mb-4">Featured Learning Solutions</h2>
+            <p className="text-xl text-text-secondary max-w-3xl mx-auto">
+              Interactive demos and case studies showcasing proven instructional design methodology, 
+              from Articulate Storyline projects to learning technology innovations.
+            </p>
+          </div>
+          <div className="grid lg:grid-cols-3 gap-8">
+            <div className="lg:col-span-2">
+              <ProjectCarousel projects={featuredProjects} />
+            </div>
+            <div className="lg:col-span-1">
+              <h3 className="text-2xl font-bold mb-6">Quick Access</h3>
+              <QuickLinks />
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Professional Impact */}
       <section id="impact" className="py-16 bg-primary-50">
         <div className="container mx-auto px-4">
@@ -91,29 +113,6 @@ const HomePage: React.FC = () => {
           </div>
         </div>
       </section>
-
-      {/* Featured Projects */}
-      <section id="featured-projects" className="py-20 bg-background">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">Featured Learning Solutions</h2>
-            <p className="text-xl text-text-secondary max-w-3xl mx-auto">
-              Interactive demos and case studies showcasing proven instructional design methodology, 
-              from Articulate Storyline projects to learning technology innovations.
-            </p>
-          </div>
-          <div className="grid lg:grid-cols-3 gap-8">
-            <div className="lg:col-span-2">
-              <ProjectCarousel projects={featuredProjects} />
-            </div>
-            <div className="lg:col-span-1">
-              <h3 className="text-2xl font-bold mb-6">Quick Access</h3>
-              <QuickLinks />
-            </div>
-          </div>
-        </div>
-      </section>
-
 
 {/* Learning Design Philosophy */}
 <section id="philosophy" className="py-20 bg-background">
