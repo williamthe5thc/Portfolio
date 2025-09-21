@@ -4,9 +4,9 @@ import { ProjectBase } from '@/types/content';
 const chartwayFicepEnhanced: ProjectBase = {
   detailPage: true,
   id: 'chartway-ficep-enhanced',
-  title: 'Financial Wellness Curriculum Modernization - Chartway Credit Union',
-  description: 'Leading evidence-based redesign of FiCEP certification curriculum using comprehensive ADDIE framework, improving financial literacy outcomes for 10,000+ credit union members through accessible, engaging learning experiences',
-  longDescription: `Spearheading a comprehensive modernization of Chartway Federal Credit Union's Financial Information Counseling and Education Program (FiCEP) curriculum to meet 6th Edition standards while dramatically improving learner engagement and outcomes. Applied systematic ADDIE methodology including thorough needs analysis, learner interviews, and evidence-based design principles to address the financial wellness challenges facing diverse credit union member populations. This strategic curriculum redesign directly supports Chartway's mission of strengthening communities through financial empowerment and education.`,
+  title: 'FiCEP Certification Training Enhancement - Chartway Credit Union',
+  description: 'Designing enhanced professional certification training curriculum for Chartway Credit Union\'s 100,000+ member base through systematic ADDIE implementation and evidence-based instructional design methodology',
+  longDescription: `Currently leading instructional design enhancement for Chartway Credit Union's Financial Information Counseling and Education Program (FiCEP) certification training serving their 100,000+ member base. Applying comprehensive ADDIE methodology including needs analysis, learner interviews, and stakeholder consultation to identify performance gaps in existing certification preparation materials. Designing evidence-based instructional improvements and UX/UI enhancements to restructure training content, ensuring WCAG 2.1 AA accessibility compliance. The enhanced curriculum design positions Chartway to better prepare financial counselors for professional certification requirements while improving overall learning experience quality and member financial wellness outcomes.`,
   image: "/images/thumbnails/coming_soon.png",
   category: 'id',
   tags: [

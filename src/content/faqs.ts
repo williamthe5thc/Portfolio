@@ -23,7 +23,7 @@ import { FAQ } from '@/types/content';
 export const faqs: FAQ[] = [
   {
     question: "What types of projects do you work on?",
-    answer: "I specialize in creating engaging e-learning experiences, instructional design solutions, and learning management system implementations, with a focus on measurable outcomes and learner engagement."
+    answer: "I specialize in creating engaging e-learning experiences, instructional design solutions, and learning management system implementations with a focus on measurable outcomes and learner engagement."
   },
   {
     question: "What is your approach to instructional design?",
@@ -31,7 +31,7 @@ export const faqs: FAQ[] = [
   },
   {
     question: "What tools and technologies do you use?",
-    answer: "I'm proficient in Articulate Storyline, Camtasia, Canvas LMS, and various other authoring tools. I also have experience with programming languages for custom solutions."
+    answer: "I'm proficient in Articulate Storyline, Camtasia, Canvas LMS, and various authoring tools. I also have experience with programming languages for custom solutions."
   },
   {
     question: "How do you measure the success of your learning solutions?",

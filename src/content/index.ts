@@ -46,7 +46,7 @@ export { education } from './education';
 export { experience } from './experience';
 
 // Project data
-export { projects, featuredProjects, type ProjectId } from './projects';
+export { projects, featuredProjects, projectTiers, type ProjectId } from './projects';
 
 // Support content
 export { faqs } from './faqs';

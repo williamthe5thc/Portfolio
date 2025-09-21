@@ -3,7 +3,6 @@ import React, { useState, useEffect } from 'react';
 
 import { ScrollToSection } from '@/components/shared/ScrollToSection';
 
-import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { GraduationCap, Award } from 'lucide-react';
 import {RouteTransition} from '@/components/layout/RouteTransition';
@@ -33,9 +32,9 @@ const HomePage: React.FC = () => {
               Learning Technology Specialist & Instructional Designer
             </h1>
             <p className="text-xl text-text-secondary mb-8">
-              I design interactive learning experiences that solve real business problems. 
-              From Articulate Storyline demos to automated workflow solutions, 
-              I combine behavioral psychology with innovative technology to create training that actually works.
+              I create measurable learning solutions that drive business results. 
+              From Articulate Storyline 360 development to scalable learning technology automation, 
+              I combine evidence-based instructional design with behavioral psychology to deliver training that improves performance and reduces costs.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button 
@@ -253,7 +252,7 @@ const HomePage: React.FC = () => {
           href="/portfolio" 
           variant="outline" 
           size="lg"
-          className="bg-white text-primary-600 hover:bg-gray-50 border-white"
+          className="bg-white text-primary-600 hover:bg-gray-100 border-white font-semibold shadow-md"
         >
           View My Work
         </Button>
@@ -261,7 +260,7 @@ const HomePage: React.FC = () => {
           href="/contact" 
           variant="primary" 
           size="lg"
-          className="bg-white text-primary-600 hover:bg-gray-50"
+          className="bg-primary-800 text-white hover:bg-primary-900 border-primary-800 font-semibold shadow-md"
         >
           Get In Touch
         </Button>

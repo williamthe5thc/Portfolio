@@ -4,9 +4,9 @@ import { ProjectBase } from '@/types/content';
 const nacvaAutomation: ProjectBase = {
   detailPage: true,
   id: 'nacva-automation',
-  title: 'Learning Technology Workflow Optimization - NACVA',
-  description: 'Transformed professional development content delivery workflows, enabling 500+ professionals to access timely certification training through streamlined learning technology solutions',
-  longDescription: `Led a comprehensive learning technology optimization initiative at the National Association of Certified Valuators and Analysts (NACVA), transforming how professional development content reaches finance professionals nationwide. Collaborated with subject matter experts to streamline continuing education course development, implemented scalable content processing systems, and created automated workflows that reduced course deployment time from weeks to days. This strategic learning technology solution enabled faster access to critical professional development for NACVA's 5,000+ members while maintaining rigorous quality standards for certification requirements.`,
+  title: 'Learning Content Migration & System Optimization - NACVA',
+  description: 'Optimized continuing education content delivery workflow by converting legacy video content and streamlining backend processing systems, reducing course deployment time from weeks to days for NACVA\'s professional development member base',
+  longDescription: `Contributed to NACVA's comprehensive learning technology modernization initiative by converting legacy educational videos to updated formats and optimizing backend processing systems. Focused specifically on accelerating content delivery workflows through technical improvements and systematic content migration. Applied efficient content processing techniques to transform existing professional development materials while maintaining quality standards for certification requirements. This technical optimization work enabled faster deployment of continuing education courses for NACVA's extensive membership of certified valuators and analysts nationwide.`,
   image: "/images/thumbnails/coming_soon.png",
   category: 'id',
   tags: [
@@ -38,22 +38,22 @@ const nacvaAutomation: ProjectBase = {
     'Ensure quality standards for professional certification requirements'
   ],
   challenges: [
-    'Manual content processing created weeks-long delays for time-sensitive professional development',
-    'Subject matter experts spent excessive time on administrative tasks rather than knowledge transfer',
-    'Inconsistent content formatting hindered learning experience quality',
-    'Scalability limitations prevented serving growing membership needs'
+    'Legacy video content in outdated formats hindering delivery to modern learning platforms',
+    'Manual content processing workflows creating weeks-long delays for course deployment',
+    'Backend system inefficiencies preventing timely access to continuing education',
+    'Maintaining content quality during technical conversion and migration processes'
   ],
   solutions: [
-    'Designed automated content processing workflows that maintained SME focus on instructional quality',
-    'Created standardized content development templates ensuring consistent learning experiences',
-    'Implemented quality assurance systems that preserved certification compliance standards',
-    'Built scalable learning technology infrastructure supporting organizational growth'
+    'Applied systematic video conversion techniques ensuring compatibility with updated delivery systems',
+    'Developed efficient content processing workflows reducing manual handling time',
+    'Implemented backend system optimizations to accelerate course deployment workflows',
+    'Maintained quality assurance standards throughout technical migration process'
   ],
   results: [
-    'Reduced course deployment time from 3+ weeks to 2-3 days, enabling faster access to critical professional development',
-    'Enabled SMEs to focus 75% more time on instructional design and content quality improvement',
-    'Improved content consistency across 50+ professional development courses',
-    'Created scalable system supporting 5,000+ member organization with potential for future growth'
+    'Successfully converted 50+ legacy educational videos to modern formats for improved accessibility',
+    'Reduced course deployment time from 3+ weeks to 2-3 days through workflow optimization',
+    'Enabled seamless delivery of continuing education content to NACVA\'s professional development member base',
+    'Created scalable learning technology infrastructure supporting organizational growth and efficiency'
   ]
 };
 

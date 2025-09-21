@@ -24,12 +24,12 @@ import objectTracking from './projects/object-tracking';
 import jeopardyGame from './projects/jeopardy-game';
 
 // Strategically curated portfolio optimized for corporate instructional design positions
-// Order reflects priority: Articulate Proficiency → Graduate Curriculum → Learning Technology → Financial Wellness → Innovation → Traditional ID → Assessment → Engagement
+// Reordered based on portfolio audit: Graduate Curriculum → Learning Technology → Financial Wellness → Articulate Demo → Innovation → Traditional ID → Assessment → Engagement
 export const projects: ProjectBase[] = [
-  professionalCommunicationTraining, // FLAGSHIP: Articulate Storyline 360 proficiency with working interactive demo
-  aiLawCourse,                       // GRADUATE: Complex content translation for legal education with interactive navigation
-  nacvaAutomation,                   // LEARNING TECH: Learning technology optimization for 5,000+ professionals
+  aiLawCourse,                       // FLAGSHIP: Graduate curriculum design + interactive navigation (no content conflicts)
+  nacvaAutomation,                   // LEARNING TECH: Learning technology optimization for professional development
   chartwayFicepEnhanced,            // CURRENT: Financial wellness curriculum modernization - target market alignment
+  professionalCommunicationTraining, // ARTICULATE DEMO: Advanced Storyline 360 capabilities (now accurately positioned)
   variableTimer,                     // INNOVATION: Spaced learning & behavioral psychology application
   waltzCourse,                       // FOUNDATION: Comprehensive Canvas LMS course design showing traditional ID skills
   objectTracking,                    // ASSESSMENT: Performance evaluation technology for skills-based learning
@@ -46,7 +46,33 @@ export type ProjectId = typeof projects[number]['id'];
 export const featuredProjects = projects.slice(0, 3);
 
 /**
- * Project categories optimized for instructional design career positioning
+ * Tiered project organization optimized for hiring manager review
+ * Based on 2024 research: hiring managers review maximum 3-6 projects
+ */
+export const projectTiers = {
+  // Top 3 projects for immediate hiring manager impact
+  featured: [
+    aiLawCourse,           // Graduate curriculum design excellence
+    nacvaAutomation,       // Learning technology optimization
+    chartwayFicepEnhanced  // Current financial wellness work
+  ],
+  
+  // Supporting projects demonstrating technical capabilities
+  learningTechnology: [
+    variableTimer,     // Behavioral psychology + mobile learning
+    objectTracking     // Performance assessment innovation
+  ],
+  
+  // Additional ID methodology demonstrations
+  curriculumDesign: [
+    professionalCommunicationTraining, // Articulate Storyline 360 mastery
+    waltzCourse,                      // Traditional Canvas LMS design
+    jeopardyGame                      // Gamification & engagement
+  ]
+};
+
+/**
+ * Legacy category structure for backward compatibility
  */
 export const projectsByCategory = {
   'learning-technology': [nacvaAutomation, variableTimer, objectTracking],

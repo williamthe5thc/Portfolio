@@ -87,7 +87,12 @@ export default defineConfig(({ mode }) => {
     server: {
       port: mode === 'staging' ? 3001 : 3000,
       open: true,
-      host: true
-    }
+      host: true,
+      fs: {
+        // Allow serving files from one level up from the project root
+        allow: ['..', '.'],
+      },
+    },
+    publicDir: 'public'
   };
 });

@@ -12,7 +12,7 @@ import BasePage from './BasePage';
 
 const PortfolioPage = () => {
   const [searchParams] = useSearchParams();
-  const [activeCategory, setActiveCategory] = useState(searchParams.get('type') || 'all');
+  const [activeCategory, setActiveCategory] = useState('all'); // Always default to 'all' to show projects immediately
 
   useEffect(() => {
     const type = searchParams.get('type');
