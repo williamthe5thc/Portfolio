@@ -65,11 +65,14 @@ const HomePage: React.FC = () => {
       <section id="featured-projects" className="py-20 bg-background">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">Featured Learning Solutions</h2>
+            <h2 className="text-3xl font-bold mb-4">Featured Portfolio Projects</h2>
             <p className="text-xl text-text-secondary max-w-3xl mx-auto">
-              Interactive demos and case studies showcasing proven instructional design methodology, 
-              from Articulate Storyline projects to learning technology innovations.
+              <span className="font-semibold">Top 3 Projects</span> showcasing proven instructional design methodology: 
+              Articulate Storyline 360 proficiency, graduate curriculum design, and learning technology innovation.
             </p>
+            <div className="mt-4 text-sm text-primary-600 font-medium">
+              ✓ Interactive Demos Available  ✓ Complete Case Studies  ✓ Business Impact Documented
+            </div>
           </div>
           <div className="grid lg:grid-cols-3 gap-8">
             <div className="lg:col-span-2">

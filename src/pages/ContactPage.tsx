@@ -131,8 +131,8 @@ const ContactPage: React.FC = () => {
         title: "Contact",
         description: `Get in touch with ${siteConfig.author} to discuss your instructional design needs`
       }}
-      title="Contact Me"
-      subtitle="Let's discuss how we can work together to create amazing learning experiences"
+      title="Let's Create Learning Solutions That Drive Results"
+      subtitle="Ready to discuss Articulate Storyline development, learning technology optimization, or systematic curriculum design?"
       className="bg-background-light"
     >
       <div className="py-20">

@@ -71,7 +71,7 @@ const PortfolioPage = () => {
         description: `Explore ${siteConfig.author}'s instructional design projects and learning solutions`
       }}
       title="Portfolio"
-      subtitle="Explore my instructional design work & learning technology solutions"
+      subtitle="Evidence-based instructional design: ADDIE methodology, learning theory application, and measurable business outcomes"
       className="bg-background-light"
     >
       <div className="py-20">
