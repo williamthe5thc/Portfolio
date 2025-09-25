@@ -8,6 +8,15 @@ import BasePage from './BasePage';
 
 const resumeTypes = [
   {
+    id: 'instructional',
+    title: 'Instructional Design Resume',
+    description: 'Highlighting learning design experience, educational technology, and course development',
+    icon: BookOpen,
+    color: 'bg-primary-500',
+    path: '/resume/instructional',
+    downloadPath: '/resumes/instructional-design-resume.pdf'
+  },
+  {
     id: 'software',
     title: 'Software Development Resume',
     description: 'Focused on programming skills, software projects, and technical expertise',
@@ -15,15 +24,6 @@ const resumeTypes = [
     color: 'bg-blue-500',
     path: '/resume/software',
     downloadPath: '/resumes/software-dev-resume.pdf'
-  },
-  {
-    id: 'instructional',
-    title: 'Instructional Design Resume',
-    description: 'Highlighting learning design experience, educational technology, and course development',
-    icon: BookOpen,
-    color: 'bg-green-500',
-    path: '/resume/instructional',
-    downloadPath: '/resumes/instructional-design-resume.pdf'
   },
   {
     id: 'academic',

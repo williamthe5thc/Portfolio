@@ -27,49 +27,25 @@ export const experience: Experience[] = [
     location: "South Jordan, UT", 
     period: "May 2025 - July 2025",
     highlights: [
-      "Leading comprehensive modernization of FiCEP curriculum serving 10,000+ credit union members using evidence-based ADDIE framework",
-      "Conducting systematic needs analysis through learner interviews and stakeholder consultations to identify financial wellness barriers",
-      "Applying adult learning theory and UX design principles to create accessible financial education experiences",
-      "Implementing agile instructional design workflows enabling rapid curriculum iteration and improvement",
-      "Ensuring WCAG 2.1 AA compliance for inclusive financial literacy education across diverse member populations",
-      "Collaborating with financial wellness team and subject matter experts to align curriculum with community empowerment mission"
+      "Applied evidence-based ADDIE framework to redesign FiCEP curriculum helping financial counselors pass American First Credit Union professional examinations",
+      "Conducted systematic needs analysis through learner interviews and stakeholder consultations to improve exam preparation effectiveness",
+      "Applied adult learning theory and UX design principles to create accessible financial education experiences for diverse learner populations",
+      "Collaborated with financial wellness team and subject matter experts to ensure curriculum alignment with certification requirements",
+      "Implemented WCAG 2.1 AA compliance standards for inclusive curriculum design and accessibility",
+      "Gained hands-on experience in professional instructional design implementation and evaluation frameworks"
     ]
   },
   {
-    title: "Help Desk Specialist",
-    company: "All Season Control Cover",
-    location: "Salt Lake City Metropolitan Area",
-    period: "Jan 2021 - May 2024",
-    highlights: [
-      "Provided technical support and problem resolution for users",
-      "Implemented solutions for complex technical issues",
-      "Delivered quality advice and feedback to improve user experience",
-      "Maintained ongoing support relationships with clients"
-    ]
-  },
-  {
-    title: "Instructional Designer",
-    company: "National Association of Certified Valuators and Analysts",
+    title: "Learning Technology Specialist (Contract)",
+    company: "National Association of Certified Valuators and Analysts (NACVA)",
     location: "Sandy, UT",
     period: "Mar 2023 - Aug 2023",
     highlights: [
-      "Transformed professional development content delivery for 5,000+ finance professionals using Camtasia and Articulate",
-      "Designed learning technology workflows that reduced course deployment time from weeks to days",
-      "Created scalable content development processes enabling efficient SME collaboration",
-      "Managed continuing education course processing for professional certification compliance",
-      "Applied instructional design principles to optimize learning outcomes for complex financial concepts"
-    ]
-  },
-  {
-    title: "Accounts Payable Clerk",
-    company: "The Church of Jesus Christ of Latter-day Saints",
-    location: "Salt Lake City Metropolitan Area",
-    period: "Dec 2022 - Mar 2023",
-    highlights: [
-      "Processed invoices and managed payment systems",
-      "Handled mail distribution and check deposits",
-      "Collaborated with team members to meet deadlines",
-      "Maintained accurate financial records"
+      "Optimized continuing education content delivery workflows by converting legacy video content and streamlining backend processing systems",
+      "Applied technical skills to reduce course deployment time from weeks to days for professional development member base",
+      "Collaborated with subject matter experts to maintain content quality while implementing scalable learning technology solutions",
+      "Developed understanding of professional certification compliance requirements and continuing education standards",
+      "Contributed to learning technology infrastructure supporting organizational growth and efficiency improvements"
     ]
   }
 ];

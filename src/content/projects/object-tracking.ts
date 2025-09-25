@@ -7,7 +7,7 @@ const objectTracking: ProjectBase = {   detailPage: true,
   description: 'Developed video-based performance tracking technology for objective skills assessment, enabling data-driven evaluation of hands-on learning outcomes',
   longDescription: `Pioneered innovative video analysis technology for objective performance assessment in hands-on learning environments. Created sophisticated tracking systems capable of monitoring precise movements, tool usage, and procedural compliance during practical skills demonstrations. This technology addresses the critical challenge of objective assessment in simulation-based training and skills certification programs, providing data-driven insights into learner performance that traditional observation methods cannot capture.`,
   image: "./images/thumbnails/coming_soon.png", // Awaiting actual image
-  category: 'assessment',
+  category: 'id',
   tags: [
     'Performance Assessment',
     'Skills Evaluation',

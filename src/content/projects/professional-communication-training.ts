@@ -4,12 +4,12 @@ import { ProjectBase } from '@/types/content';
 const professionalCommunicationTraining: ProjectBase = {
   detailPage: true,
   id: "professional-communication-training",
-  title: "Advanced Articulate Storyline 360 Development - Interpersonal Communication Course",
-  description: "Graduate-level Articulate Storyline 360 project demonstrating advanced authoring capabilities through a 278-slide interactive course on interpersonal communication and relationship dynamics. Showcases transferable ID methodology, complex branching scenarios, and behavioral psychology application suitable for professional communication training contexts",
+  title: "Articulate Storyline 360 Demonstration - Interactive E-learning Course",
+  description: "Graduate-level Articulate Storyline 360 project demonstrating advanced authoring capabilities through a 278-slide interactive e-learning experience. Academic project showcasing complex branching scenarios, behavioral psychology application, and sophisticated interactive design suitable for corporate training adaptation",
   longDescription: "Originally developed as an academic project focused on interpersonal communication and dating relationships, this comprehensive interactive e-learning experience showcases advanced Articulate Storyline 360 development capabilities and evidence-based instructional design methodology. While the content addresses personal relationship dynamics, the underlying instructional design framework, branching scenarios, and behavioral psychology applications demonstrate transferable skills highly relevant to professional communication training, team building workshops, and workplace relationship development programs. The project exemplifies systematic ADDIE implementation, interactive scenario design, and assessment integration that could be readily adapted for corporate soft skills training, customer service communication, or leadership development initiatives.",
-  image: "./images/projects/online-dating.jpg", // Reusing existing image
+  image: "/images/thumbnails/professional-communication.png",
   category: "id",
-  tags: ["Articulate Storyline 360", "Interpersonal Communication", "Scenario-Based Learning", "Behavioral Psychology", "Interactive Design", "Academic Project", "Transferable Skills"],
+  tags: ["Articulate Storyline 360", "Interactive Design", "Scenario-Based Learning", "Behavioral Psychology", "Academic Project", "Advanced Features", "E-learning Development"],
   status: "completed",
   date: "2025",
   tools: ["Articulate Storyline 360", "Interactive Design", "Behavioral Psychology", "Professional Development Strategy"],

@@ -9,33 +9,21 @@ export const quickLinks: QuickLink[] = [
     description: "Interactive demos & case studies"
   },
   {
-    href: "/portfolio?demo=true",
-    title: "Live Demos",
-    bgColor: "bg-blue-500",
-    description: "Articulate Storyline & interactive projects"
-  },
-  {
     href: "/resume",
     title: "Resume",
     bgColor: "bg-green-500",
     description: "Professional experience & credentials"
   },
   {
-    href: "/about",
+    href: "/#design-process",
     title: "Design Process",
     bgColor: "bg-purple-500",
     description: "ADDIE methodology & learning theory"
   },
   {
     href: "/contact",
-    title: "Work With Me",
+    title: "Get In Touch",
     bgColor: "bg-orange-500",
-    description: "Corporate training & financial wellness"
-  },
-  {
-    href: "/contact",
-    title: "Free Consultation",
-    bgColor: "bg-red-500",
-    description: "Discuss your learning objectives"
+    description: "Let's discuss your training needs"
   }
 ];

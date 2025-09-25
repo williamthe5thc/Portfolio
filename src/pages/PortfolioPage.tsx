@@ -7,22 +7,26 @@ import { BaseCard } from '@/components/ui';
 import {RouteTransition } from '@/components/layout/RouteTransition';
 import { SectionContainer } from '@/components/layout';
 import { fadeInUp } from '@/lib/animations';
-import { siteConfig, projects, projectCategories } from '@/content';
+import { siteConfig, projects, featuredProjects } from '@/content';
 import BasePage from './BasePage';
 
 const PortfolioPage = () => {
   const [searchParams] = useSearchParams();
-  const [activeCategory, setActiveCategory] = useState('all'); // Always default to 'all' to show projects immediately
+  const [activeCategory, setActiveCategory] = useState('featured'); // Start with featured projects for hiring managers
 
   useEffect(() => {
+    // Only support 'all' and 'featured' categories now
     const type = searchParams.get('type');
-    if (type && projectCategories.some(cat => cat.id === type)) {
-      setActiveCategory(type);
+    if (type === 'all') {
+      setActiveCategory('all');
+    } else {
+      setActiveCategory('featured');
     }
   }, [searchParams]);
 
   const filterProjects = (category: string) => {
     if (category === 'all') return projects;
+    if (category === 'featured') return featuredProjects;
     return projects.filter(project => project.category === category);
   };
 
@@ -35,30 +39,27 @@ const PortfolioPage = () => {
       variants={fadeInUp}
     >
       <button
+        onClick={() => setActiveCategory('featured')}
+        className={`
+          px-6 py-3 rounded-full text-sm font-medium transition-all
+          ${activeCategory === 'featured'
+            ? 'bg-primary-600 text-white shadow-md'
+            : 'bg-gray-100 text-gray-700 hover:bg-gray-200'}
+        `}
+      >
+        Featured Projects
+      </button>
+      <button
         onClick={() => setActiveCategory('all')}
         className={`
-          px-6 py-3 rounded-full text-sm transition-all
+          px-6 py-3 rounded-full text-sm font-medium transition-all
           ${activeCategory === 'all'
-            ? 'bg-primary-600 text-white'
-            : 'bg-gray-100 text-gray-600 hover:bg-gray-200'}
+            ? 'bg-primary-600 text-white shadow-md'
+            : 'bg-gray-100 text-gray-700 hover:bg-gray-200'}
         `}
       >
         All Projects
       </button>
-      {projectCategories.map(category => (
-        <button
-          key={category.id}
-          onClick={() => setActiveCategory(category.id)}
-          className={`
-            px-6 py-3 rounded-full text-sm transition-all
-            ${activeCategory === category.id
-              ? 'bg-primary-600 text-white'
-              : 'bg-gray-100 text-gray-600 hover:bg-gray-200'}
-          `}
-        >
-          {category.label}
-        </button>
-      ))}
     </motion.div>
   );
 
@@ -80,31 +81,6 @@ const PortfolioPage = () => {
           projects={filteredProjects}
           className="mb-20"
         />
-        
-        {/* Category Overview */}
-        <SectionContainer className="py-20 bg-background">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {projectCategories.map(category => (
-              <motion.div
-                key={category.id}
-                variants={fadeInUp}
-                onClick={() => setActiveCategory(category.id)}
-              >
-                <BaseCard className="cursor-pointer hover:shadow-lg transition-shadow">
-                  <h3 className="text-xl font-semibold mb-2">
-                    {category.label}
-                  </h3>
-                  <p className="text-text-secondary">
-                    {category.description}
-                  </p>
-                  <div className="mt-4 text-sm text-text-light">
-                    {filterProjects(category.id).length} projects
-                  </div>
-                </BaseCard>
-              </motion.div>
-            ))}
-          </div>
-        </SectionContainer>
       </div>
     </BasePage>
       </PageTransition>

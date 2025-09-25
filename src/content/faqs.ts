@@ -22,19 +22,19 @@ import { FAQ } from '@/types/content';
 
 export const faqs: FAQ[] = [
   {
-    question: "What types of projects do you work on?",
-    answer: "I specialize in creating engaging e-learning experiences, instructional design solutions, and learning management system implementations with a focus on measurable outcomes and learner engagement."
+    question: "What makes your instructional design approach unique?",
+    answer: "I bring a research-based foundation from the University of Utah's IDET program, specializing in cognitive science applications, evidence-based practice, and systematic evaluation methodologies. This combination of learning theory expertise and technical skills enables me to create learning solutions grounded in how people actually learn and process information."
   },
   {
-    question: "What is your approach to instructional design?",
-    answer: "I follow established methodologies like ADDIE and SAM, while maintaining flexibility to adapt to each project's unique needs. I emphasize learner-centered design and measurable outcomes."
+    question: "What kind of internship opportunities are you seeking?",
+    answer: "I'm looking for entry-level instructional design internships where I can apply my graduate-level competencies in ADDIE methodology, learning theory, and technical development while learning from experienced professionals. I'm particularly interested in organizations that value research-based design and systematic evaluation."
   },
   {
-    question: "What tools and technologies do you use?",
-    answer: "I'm proficient in Articulate Storyline, Camtasia, Canvas LMS, and various authoring tools. I also have experience with programming languages for custom solutions."
+    question: "What tools and technologies have you mastered?",
+    answer: "I'm proficient in Articulate Storyline 360, Rise 360, Canvas LMS, Adobe Creative Suite, and Camtasia. My programming background includes Python for workflow automation and web development fundamentals. I also have training in accessibility compliance (WCAG standards) and learning analytics approaches."
   },
   {
-    question: "How do you measure the success of your learning solutions?",
-    answer: "I establish clear metrics at the start of each project and use various assessment methods to measure learning outcomes, engagement, and practical application of skills."
+    question: "How do you approach measuring learning effectiveness?",
+    answer: "Through my University of Utah training, I've learned to design comprehensive evaluation frameworks that include both formative and summative assessment strategies. I focus on establishing clear learning objectives linked to specific cognitive processes and use systematic data collection methods to measure both learning outcomes and transfer of skills to real-world applications."
   }
 ];

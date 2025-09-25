@@ -14,7 +14,8 @@ import {
   education, 
   experience,
   stats,
-  methodology 
+  methodology,
+  faqs 
 } from '@/content';
 import BasePage from './BasePage';
 
@@ -41,14 +42,29 @@ const location = useLocation();
       window.history.replaceState({}, document.title);
     }
   }, [location]);
-  // Convert experience items for Timeline component
-  const experienceItems = React.useMemo(() => {
-    return experience.map(exp => ({
+  // Convert experience and education items for Timeline component
+  const timelineItems = React.useMemo(() => {
+    const educationItems = education.degrees.map(deg => ({
+      title: deg.degree,
+      subtitle: deg.institution,
+      date: deg.period,
+      description: `${deg.field}. GPA: ${deg.gpa || 'N/A'}. ${deg.highlights?.join('. ') || ''}`,
+      type: 'education' as const
+    }));
+    
+    const experienceItems = experience.map(exp => ({
       title: exp.title,
       subtitle: exp.company,
       date: exp.period,
-      description: exp.highlights.join('. ')
+      description: exp.highlights.join('. '),
+      type: 'experience' as const
     }));
+    
+    // Combine and sort by date (most recent first)
+    return [...educationItems, ...experienceItems].sort((a, b) => {
+      // Simple date comparison - adjust as needed for your date format
+      return b.date.localeCompare(a.date);
+    });
   }, []);
 
   return (
@@ -67,7 +83,8 @@ const location = useLocation();
       <ProfessionalPracticeSection />
       <SkillsSection />
       <ToolsSection />
-      <BackgroundSection experienceItems={experienceItems} />
+      <BackgroundSection timelineItems={timelineItems} />
+      <FAQSection />
     </BasePage>
      </PageTransition>
      </RouteTransition>
@@ -225,15 +242,16 @@ const ToolsSection = () => (
 );
 
 interface BackgroundSectionProps {
-  experienceItems: Array<{
+  timelineItems: Array<{
     title: string;
     subtitle: string;
     date: string;
     description: string;
+    type?: 'education' | 'experience';
   }>;
 }
 
-const BackgroundSection: React.FC<BackgroundSectionProps> = ({ experienceItems }) => (
+const BackgroundSection: React.FC<BackgroundSectionProps> = ({ timelineItems }) => (
   <SectionContainer className="py-20">
     <Container>
       <motion.div className="max-w-4xl mx-auto">
@@ -243,7 +261,45 @@ const BackgroundSection: React.FC<BackgroundSectionProps> = ({ experienceItems }
         >
           Experience & Education
         </motion.h2>
-        <Timeline events={experienceItems} />
+        <Timeline events={timelineItems} />
+      </motion.div>
+    </Container>
+  </SectionContainer>
+);
+
+// FAQ Section
+const FAQSection = () => (
+  <SectionContainer className="py-20 bg-background">
+    <Container>
+      <motion.div
+        className="max-w-4xl mx-auto"
+        variants={staggerContainer}
+        initial="initial"
+        animate="animate"
+      >
+        <motion.h2 
+          className="text-3xl font-bold text-text-primary mb-12 text-center"
+          variants={fadeInUp}
+        >
+          Frequently Asked Questions
+        </motion.h2>
+        <div className="grid gap-8">
+          {faqs.map((faq, index) => (
+            <motion.div
+              key={index}
+              variants={fadeInUp}
+            >
+              <BaseCard>
+                <h3 className="font-semibold text-text-primary mb-2 text-xl">
+                  {faq.question}
+                </h3>
+                <p className="text-text-secondary">
+                  {faq.answer}
+                </p>
+              </BaseCard>
+            </motion.div>
+          ))}
+        </div>
       </motion.div>
     </Container>
   </SectionContainer>

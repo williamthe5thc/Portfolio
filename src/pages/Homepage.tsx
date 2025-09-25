@@ -29,12 +29,13 @@ const HomePage: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
           >
             <h1 className="text-5xl font-bold text-text-primary mb-6">
-              Learning Technology Specialist & Instructional Designer
+              Learning Experiences That Work
             </h1>
+            <p className="text-lg text-text-secondary mb-2">
+              Evidence-Based Instructional Designer | Adult Learning Specialist
+            </p>
             <p className="text-xl text-text-secondary mb-8">
-              I create measurable learning solutions that drive business results. 
-              From Articulate Storyline 360 development to scalable learning technology automation, 
-              I combine evidence-based instructional design with behavioral psychology to deliver training that improves performance and reduces costs.
+              I create learning experiences that work. With an M.Ed. from the University of Utah and hands-on experience in financial wellness training, I apply andragogy principles and evidence-based instructional design to solve complex learning challenges through systematic ADDIE methodology. Whether it's helping employees pass certification exams or building graduate-level curricula, I focus on what adult learners need to succeed.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button 
@@ -58,18 +59,11 @@ const HomePage: React.FC = () => {
         </div>
       </section>
 
-      {/* Featured Projects */}
+      {/* Featured Projects - Moved Higher */}
       <section id="featured-projects" className="py-20 bg-background">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">Featured Portfolio Projects</h2>
-            <p className="text-xl text-text-secondary max-w-3xl mx-auto">
-              <span className="font-semibold">Top 3 Projects</span> showcasing proven instructional design methodology: 
-              Articulate Storyline 360 proficiency, graduate curriculum design, and learning technology innovation.
-            </p>
-            <div className="mt-4 text-sm text-primary-600 font-medium">
-              ✓ Interactive Demos Available  ✓ Complete Case Studies  ✓ Business Impact Documented
-            </div>
+            <h2 className="text-3xl font-bold mb-4">Featured Projects</h2>
           </div>
           <div className="grid lg:grid-cols-3 gap-8">
             <div className="lg:col-span-2">
@@ -83,13 +77,13 @@ const HomePage: React.FC = () => {
         </div>
       </section>
 
-      {/* Professional Impact */}
+      {/* Academic & Professional Growth */}
       <section id="impact" className="py-16 bg-primary-50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">Proven Impact</h2>
+            <h2 className="text-3xl font-bold mb-4">Academic & Professional Preparation</h2>
             <p className="text-xl text-text-secondary">
-              Creating measurable results through evidence-based instructional design
+              Building strong instructional design foundations through education and hands-on experience
             </p>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
@@ -154,63 +148,62 @@ const HomePage: React.FC = () => {
               Evidence-Based Approach
             </h3>
             <p className="text-text-secondary">
-              Combining learning science with practical experience to create 
-              solutions that are both theoretically sound and practically effective.
+              Grounding design decisions in learning science research and cognitive psychology principles. I apply Mayer's multimedia learning principles, constructivist learning theory, and Universal Design for Learning (UDL) to create solutions that are both theoretically sound and practically effective.
             </p>
           </BaseCard>
         </motion.div>
       </div>
 
       {/* Design Process */}
-      <motion.div variants={fadeInUp}>
+      <motion.div variants={fadeInUp} id="design-process">
         <BaseCard className="p-8">
           <h3 className="text-2xl font-bold text-text-primary mb-6 text-center">
-            Design Process
+            ADDIE Design Methodology
           </h3>
           <div className="grid md:grid-cols-5 gap-6">
             <div className="text-center">
               <div className="w-12 h-12 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-primary-600 font-bold">1</span>
+                <span className="text-primary-600 font-bold">A</span>
               </div>
               <h4 className="font-semibold mb-2">Analyze</h4>
               <p className="text-sm text-text-secondary">
-                Understand needs and objectives
+                Conduct systematic learner analysis, identify performance gaps, and assess organizational needs using andragogy principles
               </p>
             </div>
             <div className="text-center">
               <div className="w-12 h-12 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-primary-600 font-bold">2</span>
+                <span className="text-primary-600 font-bold">D</span>
               </div>
               <h4 className="font-semibold mb-2">Design</h4>
               <p className="text-sm text-text-secondary">
-                Create learner-centered solutions
+                Create learning objectives, design assessments, and plan instructional strategies using scaffolding and UDL principles
               </p>
             </div>
             <div className="text-center">
               <div className="w-12 h-12 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-primary-600 font-bold">3</span>
+                <span className="text-primary-600 font-bold">D</span>
               </div>
               <h4 className="font-semibold mb-2">Develop</h4>
               <p className="text-sm text-text-secondary">
-                Build engaging experiences
+                Build content applying cognitive load theory, multimedia learning principles, and accessibility standards
               </p>
             </div>
             <div className="text-center">
               <div className="w-12 h-12 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-primary-600 font-bold">4</span>
+                <span className="text-primary-600 font-bold">I</span>
               </div>
               <h4 className="font-semibold mb-2">Implement</h4>
               <p className="text-sm text-text-secondary">
-                Deploy and support solutions
+                Deploy learning solutions with change management support and social learning approaches
               </p>
             </div>
             <div className="text-center">
               <div className="w-12 h-12 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-primary-600 font-bold">5</span>
+                <span className="text-primary-600 font-bold">E</span>
               </div>
-              <h4 className="font-semibold mb-2">Measure</h4>
+              <h4 className="font-semibold mb-2">Evaluate</h4>
               <p className="text-sm text-text-secondary">
-                Evaluate and improve impact
+                Measure learning outcomes using Kirkpatrick model and implement continuous improvement cycles
               </p>
             </div>
           </div>
@@ -238,14 +231,14 @@ const HomePage: React.FC = () => {
   </div>
 </section>
 
-{/* Call to Action */}
+{/* Call to Action - WCAG AA Compliant Colors */}
 <section id="Contact Me" className="py-20 bg-gradient-to-r from-primary-600 to-primary-700 text-white">
   <div className="container mx-auto px-4 text-center">
     <div className="max-w-3xl mx-auto">
-      <h2 className="text-3xl font-bold mb-6">Ready to Collaborate?</h2>
-      <p className="text-xl mb-8 opacity-90">
-        Looking for someone who can design engaging learning experiences and solve complex training challenges? 
-        Let's discuss your project.
+      <h2 className="text-3xl font-bold mb-6 drop-shadow-sm">Let's Work Together</h2>
+      <p className="text-xl mb-8 opacity-95 drop-shadow-sm">
+        I'm actively seeking entry-level instructional design opportunities where I can contribute evidence-based design expertise, 
+        fresh perspectives, and passion for creating learning experiences that work. Let's discuss how I can support your organization's goals.
       </p>
       <div className="flex flex-col sm:flex-row gap-4 justify-center">
         <Button 
@@ -254,7 +247,7 @@ const HomePage: React.FC = () => {
           size="lg"
           className="bg-white text-primary-600 hover:bg-gray-100 border-white font-semibold shadow-md"
         >
-          View My Work
+          View My Projects
         </Button>
         <Button 
           href="/contact" 
@@ -262,7 +255,7 @@ const HomePage: React.FC = () => {
           size="lg"
           className="bg-primary-800 text-white hover:bg-primary-900 border-primary-800 font-semibold shadow-md"
         >
-          Get In Touch
+          Let's Connect
         </Button>
       </div>
     </div>

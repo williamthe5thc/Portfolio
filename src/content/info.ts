@@ -1,9 +1,9 @@
 // src/content/info.ts
 export const stats = [
-  { label: "Interactive Learning Projects", value: "8+" },
-  { label: "Interactive Demos Available", value: "4+" },
-  { label: "Content Processing Workflows", value: "50+" },
-  { label: "Organizations Served", value: "4+" }
+  { label: "Graduate-Level Projects", value: "8+" },
+  { label: "Learning Technologies Mastered", value: "10+" },
+  { label: "Professional Development Workflows", value: "25+" },
+  { label: "Organizations Served", value: "2" }
 ];
 
 // Instructional Design focused categories - aligned with actual project categories

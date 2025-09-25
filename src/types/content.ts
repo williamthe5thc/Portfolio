@@ -53,6 +53,79 @@ export interface ProjectBase {
   challenges?: string[];
   solutions?: string[];
   results?: string[];
+  
+  // Enhanced instructional design fields
+  businessContext?: string;
+  targetAudience?: string;
+  stakeholders?: string[];
+  learningTheoryApplied?: string[];
+  addieMethodology?: {
+    analysis?: {
+      process?: string;
+      findings?: string;
+      learnerCharacteristics?: string;
+      performanceGaps?: string;
+      needsAssessment?: string;
+      learnerAnalysis?: string;
+      contextAnalysis?: string;
+    };
+    design?: {
+      instructionalStrategy?: string;
+      assessmentStrategy?: string;
+      mediaSelection?: string;
+      accessibilityDesign?: string;
+      arcsApplication?: {
+        attention?: string;
+        relevance?: string;
+        confidence?: string;
+        satisfaction?: string;
+      };
+      universalDesign?: string;
+    };
+    development?: {
+      contentCreation?: string;
+      prototyping?: string;
+      qualityAssurance?: string;
+      accessibilityFeatures?: string;
+      interactivityDevelopment?: string;
+    };
+    implementation?: {
+      pilotTesting?: string;
+      changeManagement?: string;
+      supportSystems?: string;
+      launchStrategy?: string;
+    };
+    evaluation?: {
+      formativeAssessment?: string;
+      summativeAssessment?: string;
+      continuousImprovement?: string;
+      kirkpatrickModel?: {
+        reaction?: string;
+        learning?: string;
+        behavior?: string;
+        results?: string;
+      };
+    };
+  };
+  designProcess?: {
+    researchPhase?: string;
+    stakeholderCollaboration?: string;
+    iterativeDesign?: string;
+    evidenceBasedDecisions?: string;
+    challengesAndSolutions?: {
+      [key: string]: string;
+    };
+    innovativeSolutions?: string[];
+  };
+  professionalImpact?: {
+    businessValue?: string;
+    scalabilityConsiderations?: string;
+    industryContribution?: string;
+    continuingEducation?: string;
+    instructionalInnovation?: string;
+    communityImpact?: string;
+    scalabilityModel?: string;
+  };
 }
 
 export type ProjectStatus = 'in-progress' | 'completed' | 'planned';

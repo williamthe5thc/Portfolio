@@ -4,10 +4,10 @@ import { ProjectBase } from '@/types/content';
 const aiLawCourse: ProjectBase = {
   detailPage: true,
   id: 'ai-law-course',
-  title: 'AI & Law Graduate Course - Quinney School of Law',
-  description: 'Comprehensive 10-module graduate curriculum preparing Master of Legal Studies students for AI integration in legal practice through evidence-based instructional design',
-  longDescription: `Designed and developed a comprehensive graduate-level course for the University of Utah's Quinney School of Law, translating complex artificial intelligence concepts into accessible learning experiences for Master of Legal Studies students. Applied competency-based instructional design principles to create a 40+ hour curriculum covering AI foundations, prompt engineering, legal applications, and professional ethics. Collaborated extensively with legal and technical subject matter experts to ensure accuracy and practical relevance. The course features progressive complexity design, interactive learning activities, and real-world application exercises that prepare future lawyers for AI integration in legal practice.`,
-  image: "/images/thumbnails/coming_soon.png",
+  title: 'Graduate Curriculum Design Project - AI & Law Course',
+  description: 'Academic project developing a comprehensive 10-module graduate course on AI and law, demonstrating complex content translation abilities and advanced curriculum design skills through collaboration with university faculty',
+  longDescription: `Academic project completed as part of my M.Ed. program, designing a comprehensive graduate-level course for the University of Utah's Quinney School of Law. This challenging project required translating complex artificial intelligence concepts into accessible learning experiences for Master of Legal Studies students, demonstrating my ability to work with complex content and diverse subject matter experts. Applied competency-based instructional design principles learned in graduate coursework to create a 40+ hour curriculum covering AI foundations, prompt engineering, legal applications, and professional ethics. The project involved extensive collaboration with legal and technical faculty, providing valuable experience in SME coordination and academic curriculum development. This project showcases my ability to handle complex instructional design challenges and apply systematic methodology to real-world educational needs.`,
+  image: "/images/thumbnails/ai-law-course.png",
   category: 'id',
   tags: [
     'Graduate Curriculum Design',
@@ -33,7 +33,7 @@ const aiLawCourse: ProjectBase = {
     'Competency Mapping Tools'
   ],
   
-  methodology: 'ADDIE Framework with Universal Design for Learning principles, emphasizing scaffolded learning progression and practical application',
+  methodology: 'ADDIE Framework with Universal Design for Learning principles, applying cognitive load theory for complex content translation, scaffolding strategies for progressive competency development, and andragogy-based adult learning approaches',
   
   // Business Context
   businessContext: 'Law schools need to prepare graduates for AI integration in legal practice. Students require foundational AI knowledge, practical skills, and ethical frameworks to navigate the intersection of technology and law professionally.',
@@ -81,6 +81,16 @@ const aiLawCourse: ProjectBase = {
   ],
   
   lessonsLearned: 'This project reinforced the importance of extensive SME collaboration when designing courses that bridge multiple expert domains. The success came from creating clear learning progressions that build confidence while maintaining academic rigor, and from focusing on practical application rather than just theoretical understanding.',
+  
+  // Learning Theory Application
+  learningTheoryApplied: [
+    'Cognitive Load Theory (Sweller) - managing complexity in technical AI concepts',
+    'Scaffolding (Vygotsky) - Zone of Proximal Development for progressive learning',
+    'Constructivist Learning Theory - active knowledge building through practice',
+    'Andragogy (Knowles) - adult learning principles for graduate-level instruction',
+    'Multimedia Learning Principles (Mayer) - optimizing information processing',
+    'Social Learning Theory (Bandura) - collaborative learning and peer modeling'
+  ],
   
   // Features that showcase ID expertise
   features: [

@@ -4,26 +4,25 @@ import { Methodology } from '@/types/content';
 // src/content/professional/methodology.ts
 
 export const methodology = {
-  title: "Evidence-Based Learning Solutions That Drive Results",
-  summary: "As a Learning Technology Specialist completing my M.Ed. in Instructional Design (May 2025), I combine behavioral psychology research with innovative technology to create scalable learning solutions. My approach delivers measurable business outcomes through data-driven design and strategic automation.",
+  title: "Cognitive Science-Based Instructional Design",
+  summary: "University of Utah M.Ed. graduate (2025) specializing in cognitive science-based instructional design with andragogy and evidence-based learning theory expertise. Trained in systematic ADDIE methodology, cognitive load theory application, and Universal Design for Learning principles. Ready to contribute research-backed design solutions combining behavioral psychology foundation, adult learning theory expertise, and technical competency to corporate instructional design teams.",
 
   corePrinciples: [
     {
-      title: "Business Impact Focus", 
-      description: "Creating learning solutions that deliver measurable organizational outcomes and drive performance improvements"
+      title: "Andragogy-Centered Adult Learning", 
+      description: "Applying Knowles' adult learning principles, self-directed learning strategies, and ARCS motivation model to design engaging professional development experiences"
     },
     {
-      title: "Learning Technology Innovation",
-      description: "Leveraging automation and advanced tools to scale learning delivery and optimize organizational workflows"
-    },
-   
-    {
-      title: "Evidence-Based Design",
-      description: "Applying behavioral psychology research and proven instructional design principles to ensure learning effectiveness"
+      title: "Cognitive Load Theory Application",
+      description: "Trained in Sweller's cognitive load theory, Mayer's multimedia learning principles, and evidence-based instructional design through University of Utah's cognitive science-focused IDET program"
     },
     {
-      title: "SME Collaboration Excellence",  
-      description: "Partnering with subject matter experts to preserve content quality while streamlining development processes"
+      title: "Universal Design for Learning (UDL)",
+      description: "Implementing multiple means of representation, engagement, and action/expression to create accessible and inclusive learning experiences for diverse adult learners"
+    },
+    {
+      title: "Systematic ADDIE Methodology",  
+      description: "Comprehensive training in systematic instructional design process including learner analysis, scaffolding strategies, formative evaluation, and Kirkpatrick model assessment frameworks"
     }
   ],
 
@@ -102,26 +101,34 @@ export const methodology = {
 
   skills: {
     instructionalDesign: [
-      "Learning needs analysis",
-      "Course design & development",
-      "Assessment planning",
-      "Learning objectives development",
-      "Content strategy",
-      "Educational UX research"
+      "ADDIE Framework & SAM Model Implementation",
+      "Learner Analysis using Andragogy Principles",
+      "Cognitive Load Theory Application",
+      "Bloom's Taxonomy for Learning Objectives",
+      "ARCS Motivation Model Integration",
+      "Scaffolding & Zone of Proximal Development",
+      "Universal Design for Learning (UDL)",
+      "Kirkpatrick Model Evaluation Framework"
     ],
-    technicalDesign: [
-      "Multimedia content creation",
-      "Web development fundamentals",
-      "Interface prototyping",
-      "Digital accessibility",
-      "Responsive design principles"
+    learningTheory: [
+      "Adult Learning Theory (Andragogy)",
+      "Constructivist Learning Approaches",
+      "Social Cognitive Theory Application",
+      "Multimedia Learning Principles (Mayer)",
+      "Authentic Assessment Design",
+      "Formative & Summative Evaluation",
+      "Transfer Theory & Application",
+      "Cognitive Psychology Foundations"
     ],
-    research: [
-      "User interviews",
-      "Usability testing",
-      "Cognitive walkthroughs",
-      "Learning analytics",
-      "Educational research methods"
+    technicalCompetencies: [
+      "Articulate Storyline 360 & Rise 360",
+      "Canvas LMS Administration",
+      "SCORM Packaging & Compliance",
+      "Python Automation for Learning Systems",
+      "Accessibility Standards (WCAG 2.1)",
+      "Learning Analytics & Data Visualization",
+      "Responsive eLearning Development",
+      "Multimedia Content Creation"
     ]
   },
 
@@ -164,11 +171,11 @@ export const methodology = {
     ],
     learning: [
       {
-        name: "Financial Wellness",
+        name: "Professional Certification Support",
         applications: [
-          "Professional Development - Continuing education design",
-          "Compliance Training - Certification requirement management",
-          "Adult Learning - Evidence-based curriculum development"
+          "FiCEP Curriculum Redesign - Exam preparation optimization for financial counselors",
+          "Adult Learning Design - Evidence-based curriculum development for professional certifications",
+          "Assessment Alignment - Learning objectives matched to certification requirements"
         ]
       },
       {

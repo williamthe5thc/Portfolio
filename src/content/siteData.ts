@@ -4,9 +4,9 @@ import { SiteConfig } from '@/types/content';
 export const siteConfig: SiteConfig = {
   title: "Jordan Charles - Learning Technology Specialist",
   author: "W. Jordan Charles Portfolio",
-  description: "Financial Wellness Instructional Designer & Learning Technology Specialist",
-  slogan: "Evidence-Based Learning Solutions That Drive Business Results",
-  tagline: "Combining behavioral psychology research with innovative learning technology to create scalable financial wellness programs that measurably improve lives and organizational outcomes.",
+  description: "Learning Technology Specialist | Corporate Training Solutions with Research Foundation",
+  slogan: "Data-Driven Learning Solutions",
+  tagline: "University of Utah M.Ed. graduate (2025) specializing in cognitive science-based instructional design and adult learning theory. Combines systematic ADDIE methodology with evidence-based learning science to deliver measurable training outcomes for corporate environments. Ready to contribute andragogy expertise and research-backed design solutions to instructional design teams.",
   siteUrl: "https://williamthe5thc.github.io/Portfolio",
   defaultImage: "/path/to/default-og-image.jpg",
   social: {

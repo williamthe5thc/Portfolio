@@ -23,16 +23,27 @@ import { Education } from '@/types/content';
 export const education: Education = {
   degrees: [
     {
-      degree: "Master of Education",
-      field: "Instructional Design",
+      degree: "Master of Education (M.Ed.)",
+      field: "Instructional Design and Educational Technology (IDET)",
       institution: "University of Utah",
       location: "Salt Lake City, Utah",
-      period: "2023 - 2025 (expected)",
+      period: "2023 - 2025 (Completed May 2025)",
       gpa: "4.0",
       relevantCourses: [
-        "Learning Theory",
-        "Instructional Design Models",
-        "E-Learning Development"
+        "Cognitive Foundations of Learning and Instruction",
+        "Multimedia Learning and Cognitive Load Theory",
+        "Assessment and Evaluation in Educational Technology",
+        "Human-Computer Interaction for Learning",
+        "Research Methods in Educational Technology",
+        "Learning Analytics and Data-Driven Design",
+        "Accessibility and Universal Design for Learning"
+      ],
+      highlights: [
+        "Specialized in cognitive science-based instructional design with andragogy expertise",
+        "Completed capstone project (EDPS 6750) applying systematic ADDIE methodology",
+        "Trained in evidence-based learning theory, cognitive load theory, and Universal Design for Learning",
+        "Intensive small cohort collaborative learning environment (6 students total)",
+        "Ready to contribute research-backed design solutions to corporate instructional design teams"
       ]
     },
     {
@@ -41,6 +52,11 @@ export const education: Education = {
       institution: "Brigham Young University - Idaho",
       location: "Rexburg, ID",
       period: "2012 - 2018",
+      highlights: [
+        "Earned Bachelor's degree in Psychology",
+        "Strong foundation in research methodology and statistical analysis",
+        "Behavioral psychology background supports adult learning theory application"
+      ],
       relevantCourses: [
         "Research Methods",
         "Statistical Analysis",

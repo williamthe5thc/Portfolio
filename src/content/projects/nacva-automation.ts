@@ -4,10 +4,10 @@ import { ProjectBase } from '@/types/content';
 const nacvaAutomation: ProjectBase = {
   detailPage: true,
   id: 'nacva-automation',
-  title: 'Learning Content Migration & System Optimization - NACVA',
-  description: 'Optimized continuing education content delivery workflow by converting legacy video content and streamlining backend processing systems, reducing course deployment time from weeks to days for NACVA\'s professional development member base',
-  longDescription: `Contributed to NACVA's comprehensive learning technology modernization initiative by converting legacy educational videos to updated formats and optimizing backend processing systems. Focused specifically on accelerating content delivery workflows through technical improvements and systematic content migration. Applied efficient content processing techniques to transform existing professional development materials while maintaining quality standards for certification requirements. This technical optimization work enabled faster deployment of continuing education courses for NACVA's extensive membership of certified valuators and analysts nationwide.`,
-  image: "/images/thumbnails/coming_soon.png",
+  title: 'Internship Learning Technology Experience - NACVA',
+  description: 'Professional internship experience optimizing continuing education content delivery through learning technology solutions, demonstrating technical problem-solving abilities and workflow improvement skills',
+  longDescription: `Professional internship experience with the National Association of Certified Valuators and Analysts (NACVA), where I contributed to their learning technology modernization initiative. This valuable hands-on experience taught me how learning organizations optimize content delivery workflows and manage professional development at scale. Working under supervision, I helped convert legacy educational videos to updated formats and supported backend processing system improvements. This internship provided crucial real-world experience in learning technology implementation, quality assurance processes, and the practical challenges of maintaining professional development programs for certification requirements. The experience demonstrated my ability to apply technical skills to instructional design challenges while working within professional organizational contexts.`,
+  image: "/images/thumbnails/nacva-automation.png",
   category: 'id',
   tags: [
     'Learning Technology',
