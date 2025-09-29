@@ -10,14 +10,14 @@ const aiLawCourse: ProjectBase = {
   image: "/images/thumbnails/ai-law-course.png",
   category: 'id',
   tags: [
-    'Graduate Curriculum Design',
-    'Legal Education',
-    'Complex Content Translation',
-    'ADDIE Framework',
-    'Competency-Based Design',
+    'Curriculum Development',
+    'Graduate Course Design', 
     'SME Collaboration',
+    'ADDIE Methodology',
+    'Competency-Based Design',
     'Adult Learning Theory',
-    'Assessment Strategy'
+    'Assessment Design',
+    'Technology-Based Instruction'
   ],
   status: 'completed',
   date: '2024',

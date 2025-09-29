@@ -7,7 +7,7 @@ const chartwayFicepEnhanced: ProjectBase = {
   title: 'Financial Wellness Internship - FiCEP Curriculum Needs Analysis',
   description: 'Internship conducting systematic needs analysis for Chartway Credit Union\'s Financial Counseling Examination Preparation (FiCEP) program, applying ADDIE methodology and evidence-based research to identify performance gaps and provide curriculum enhancement recommendations',
   longDescription: `Conducted comprehensive needs analysis for Chartway Credit Union's Financial Information Counseling and Education Program (FiCEP) certification preparation program under professional supervision. Applied systematic ADDIE methodology including semi-structured interviews with 5 program participants and survey distribution yielding 21 responses to identify performance barriers following ACU's sixth edition material update. Analysis revealed key findings: Management Needs to Set Apart More Time (23 mentions - highest priority), Study Guide was Helpful (17 mentions), Personalized per organization Content (16 mentions), Need Better Practice Exam (12 mentions). Delivered evidence-based curriculum enhancement recommendations addressing organizational support structures, assessment alignment gaps, and contextual learning approaches to help restore examination pass rates and improve learner experience.`,
-  image: "/images/thumbnails/chartway-ficep.png",
+  image: "/images/thumbnails/chartway-ficep-enhanced.png",
   category: 'id',
   tags: [
     'Financial Wellness',

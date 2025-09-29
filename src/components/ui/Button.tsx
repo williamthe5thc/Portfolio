@@ -40,7 +40,7 @@ import { Loader2 } from 'lucide-react';
 import { useAnalytics } from '@/hooks/useAnalytics';
 
 export interface ButtonProps {
-  variant?: 'primary' | 'secondary' | 'outline' | 'ghost' | 'danger';
+  variant?: 'primary' | 'secondary' | 'outline' | 'ghost' | 'danger' | 'custom';
   size?: 'sm' | 'md' | 'lg';
   icon?: LucideIcon;
   isLoading?: boolean;
@@ -78,7 +78,8 @@ export const Button: React.FC<ButtonProps> = ({
     secondary: 'bg-secondary-600 hover:bg-secondary-700 text-white focus:ring-secondary-500',
     outline: 'border-2 border-primary-600 text-primary-600 hover:bg-primary-50 focus:ring-primary-500',
     ghost: 'text-primary-600 hover:bg-primary-50 focus:ring-primary-500',
-    danger: 'bg-red-600 hover:bg-red-700 text-white focus:ring-red-500'
+    danger: 'bg-red-600 hover:bg-red-700 text-white focus:ring-red-500',
+    custom: '' // No default styles for custom variant
   };
 
   const sizes = {

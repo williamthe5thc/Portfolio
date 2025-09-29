@@ -153,7 +153,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
             <motion.img
               src={project.image}
               alt={project.title}
-              className="w-full h-full object-cover"
+              className="w-full h-full object-contain bg-gray-50"
               animate={{ scale: isHovered ? 1.05 : 1 }}
               transition={{ duration: 0.3 }}
             />

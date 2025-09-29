@@ -1,5 +1,8 @@
 // src/content/featured.ts
 import { ProjectBase } from '@/types/content';
+import professionalCommunicationTraining from './projects/professional-communication-training';
+import chartwayFicepEnhanced from './projects/chartway-ficep-enhanced';
+import aiLawCourse from './projects/ai-law-course';
 
 export interface FeaturedProject extends ProjectBase {
   featured: true;
@@ -14,19 +17,33 @@ export interface FeaturedProject extends ProjectBase {
 
 export const featuredProjects: FeaturedProject[] = [
   {
-    .../* nacvaAutomation project data */,
+    ...professionalCommunicationTraining,
     featured: true,
     businessImpact: [
-      "Reduced course deployment time from 3+ weeks to 2-3 days",
-      "Enabled 5,000+ members to access timely professional development",
-      "Improved SME productivity by 75% for content creation tasks",
-      "Created scalable system supporting organizational growth"
-    ],
-    clientTestimonial: {
-      quote: "Jordan's learning technology solutions transformed our entire content delivery process. The automation he created allowed our subject matter experts to focus on what they do best - creating quality educational content.",
-      author: "Sarah Johnson", // Example - replace with real testimonial if available
-      title: "Training Director",
-      company: "NACVA"
-    }
+      "Demonstrated mastery of advanced Articulate Storyline 360 authoring capabilities",
+      "Created 278-slide interactive experience with 15+ branching decision points",
+      "Applied behavioral psychology principles to scenario-based learning design",
+      "Showcased ID competencies transferable to corporate soft skills training"
+    ]
+  },
+  {
+    ...chartwayFicepEnhanced,
+    featured: true,
+    businessImpact: [
+      "Identified critical organizational barriers affecting certification pass rates",
+      "Delivered evidence-based recommendations addressing 23 time allocation challenges",
+      "Created systematic approach to professional development program improvement",
+      "Applied ADDIE methodology to real-world corporate training challenges"
+    ]
+  },
+  {
+    ...aiLawCourse,
+    featured: true,
+    businessImpact: [
+      "Successfully translated complex AI concepts for legal professionals",
+      "Created 10-module graduate-level curriculum with systematic progression",
+      "Applied competency-based design principles for professional education",
+      "Demonstrated ability to collaborate with university faculty and SMEs"
+    ]
   }
 ];

@@ -24,12 +24,12 @@ import objectTracking from './projects/object-tracking';
 import jeopardyGame from './projects/jeopardy-game';
 
 // Strategically curated portfolio optimized for corporate instructional design positions
-// Reordered based on portfolio audit: Graduate Curriculum → Learning Technology → Financial Wellness → Articulate Demo → Innovation → Traditional ID → Assessment → Engagement
+// Reordered based on portfolio audit: Graduate Curriculum → Professional Communication → Financial Wellness → Learning Technology → Innovation → Traditional ID → Assessment → Engagement
 export const projects: ProjectBase[] = [
   aiLawCourse,                       // FLAGSHIP: Graduate curriculum design + interactive navigation (no content conflicts)
-  nacvaAutomation,                   // LEARNING TECH: Learning technology optimization for professional development
+  professionalCommunicationTraining, // ARTICULATE DEMO: Advanced Storyline 360 capabilities (corporate training focus)
   chartwayFicepEnhanced,            // CURRENT: Financial wellness curriculum modernization - target market alignment
-  professionalCommunicationTraining, // ARTICULATE DEMO: Advanced Storyline 360 capabilities (now accurately positioned)
+  nacvaAutomation,                   // LEARNING TECH: Learning technology optimization for professional development
   variableTimer,                     // INNOVATION: Spaced learning & behavioral psychology application
   waltzCourse,                       // FOUNDATION: Comprehensive Canvas LMS course design showing traditional ID skills
   objectTracking,                    // ASSESSMENT: Performance evaluation technology for skills-based learning
@@ -52,20 +52,20 @@ export const featuredProjects = projects.slice(0, 3);
 export const projectTiers = {
   // Top 3 projects for immediate hiring manager impact
   featured: [
-    aiLawCourse,           // Graduate curriculum design excellence
-    nacvaAutomation,       // Learning technology optimization
-    chartwayFicepEnhanced  // Current financial wellness work
+    aiLawCourse,                      // Graduate curriculum design excellence
+    professionalCommunicationTraining, // Advanced Articulate Storyline 360 mastery
+    chartwayFicepEnhanced            // Current financial wellness work
   ],
   
   // Supporting projects demonstrating technical capabilities
   learningTechnology: [
+    nacvaAutomation,   // Learning technology optimization for professional development
     variableTimer,     // Behavioral psychology + mobile learning
     objectTracking     // Performance assessment innovation
   ],
   
   // Additional ID methodology demonstrations
   curriculumDesign: [
-    professionalCommunicationTraining, // Articulate Storyline 360 mastery
     waltzCourse,                      // Traditional Canvas LMS design
     jeopardyGame                      // Gamification & engagement
   ]

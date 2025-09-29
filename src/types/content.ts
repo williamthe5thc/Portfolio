@@ -69,6 +69,25 @@ export interface ProjectBase {
       learnerAnalysis?: string;
       contextAnalysis?: string;
     };
+  samMethodology?: {
+    preparation?: {
+      informationGathering?: string;
+      brainstorming?: string;
+      collaboration?: string;
+    };
+    iterativeDesign?: {
+      prototype?: string;
+      alphaDevelopment?: string;
+      reviewCycles?: string;
+      rapidIteration?: string;
+    };
+    iterativeDevelopment?: {
+      betaVersion?: string;
+      pilotTesting?: string;
+      stakeholderFeedback?: string;
+      finalRefinement?: string;
+    };
+  };
     design?: {
       instructionalStrategy?: string;
       assessmentStrategy?: string;

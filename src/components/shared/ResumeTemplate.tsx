@@ -1,5 +1,6 @@
 // src/components/templates/ResumeTemplate.tsx
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Download, ExternalLink } from 'lucide-react';
 import { Button, BaseCard } from '@/components/ui';
@@ -111,14 +112,23 @@ const ResumeTemplate: React.FC<ResumeTemplateProps> = ({
                     <div className="flex items-start justify-between">
                       <h3 className="text-xl font-semibold">{project.title}</h3>
                       {project.url && (
-                        <a 
-                          href={project.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-primary-600 hover:text-primary-700"
-                        >
-                          <ExternalLink className="w-5 h-5" />
-                        </a>
+                        project.url.startsWith('/') ? (
+                          <Link 
+                            to={project.url}
+                            className="text-primary-600 hover:text-primary-700"
+                          >
+                            <ExternalLink className="w-5 h-5" />
+                          </Link>
+                        ) : (
+                          <a 
+                            href={project.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-primary-600 hover:text-primary-700"
+                          >
+                            <ExternalLink className="w-5 h-5" />
+                          </a>
+                        )
                       )}
                     </div>
                     <p className="text-text-secondary">{project.description}</p>

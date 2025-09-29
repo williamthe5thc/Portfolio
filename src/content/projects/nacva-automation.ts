@@ -4,18 +4,23 @@ import { ProjectBase } from '@/types/content';
 const nacvaAutomation: ProjectBase = {
   detailPage: true,
   id: 'nacva-automation',
-  title: 'Internship Learning Technology Experience - NACVA',
-  description: 'Professional internship experience optimizing continuing education content delivery through learning technology solutions, demonstrating technical problem-solving abilities and workflow improvement skills',
-  longDescription: `Professional internship experience with the National Association of Certified Valuators and Analysts (NACVA), where I contributed to their learning technology modernization initiative. This valuable hands-on experience taught me how learning organizations optimize content delivery workflows and manage professional development at scale. Working under supervision, I helped convert legacy educational videos to updated formats and supported backend processing system improvements. This internship provided crucial real-world experience in learning technology implementation, quality assurance processes, and the practical challenges of maintaining professional development programs for certification requirements. The experience demonstrated my ability to apply technical skills to instructional design challenges while working within professional organizational contexts.`,
+  title: 'Learning Technology Internship - NACVA Continuing Education',
+  description: 'Professional internship supporting continuing education technology workflows, where I gained hands-on experience in learning content management, SME collaboration, and process improvement for professional development programs',
+  longDescription: `Valuable professional internship with the National Association of Certified Valuators and Analysts (NACVA), where I learned how professional organizations manage technology-based instruction at scale. Working closely with experienced team members, I supported content migration projects and helped modernize legacy educational video delivery systems.
+
+This hands-on experience taught me about learning content management systems, quality assurance processes, and the practical challenges of maintaining professional development programs for certification requirements. I collaborated with subject matter experts to ensure content accuracy during technical transitions and gained insight into how automation can support learning technology workflows.
+
+The internship was instrumental in helping me understand the business side of learning and development, including stakeholder collaboration, project timelines, and the importance of scalable learning technology solutions for professional continuing education.`,
   image: "/images/thumbnails/nacva-automation.png",
   category: 'id',
   tags: [
     'Learning Technology',
-    'Workflow Optimization',
     'SME Collaboration',
-    'Content Management',
+    'Content Management Systems',
+    'Technology-Based Instruction',
     'Professional Development',
-    'Process Automation'
+    'Process Improvement',
+    'Learning Content Migration'
   ],
   status: 'completed',
   date: 'Apr 2023 - Aug 2023',
@@ -26,34 +31,35 @@ const nacvaAutomation: ProjectBase = {
   tools: [
     'Learning Management Systems',
     'Content Development Workflows',
-    'Automation Technology',
-    'Quality Assurance Systems',
+    'Video Processing Technology',
+    'Quality Assurance Processes',
     'SME Collaboration Tools'
   ],
-  methodology: 'Agile Learning Technology Implementation',
+  methodology: 'Systematic Technology Implementation with ADDIE Framework',
   learningObjectives: [
-    'Accelerate professional development content delivery to finance professionals',
-    'Optimize SME collaboration workflows for efficient content creation',
-    'Implement scalable learning technology solutions for continuing education',
-    'Ensure quality standards for professional certification requirements'
+    'Support efficient content delivery to finance professionals pursuing continuing education',
+    'Collaborate with subject matter experts to maintain content quality during technical transitions',
+    'Contribute to scalable learning technology solutions for professional development programs',
+    'Apply process improvement principles to learning content management workflows'
   ],
   challenges: [
-    'Legacy video content in outdated formats hindering delivery to modern learning platforms',
-    'Manual content processing workflows creating weeks-long delays for course deployment',
-    'Backend system inefficiencies preventing timely access to continuing education',
-    'Maintaining content quality during technical conversion and migration processes'
+    'Legacy video content requiring format updates for modern learning delivery platforms',
+    'Manual processing workflows that delayed course deployment for busy professionals',
+    'Need to maintain content accuracy and quality during technical migration processes',
+    'Coordinating with multiple stakeholders while learning organizational procedures'
   ],
   solutions: [
-    'Applied systematic video conversion techniques ensuring compatibility with updated delivery systems',
-    'Developed efficient content processing workflows reducing manual handling time',
-    'Implemented backend system optimizations to accelerate course deployment workflows',
-    'Maintained quality assurance standards throughout technical migration process'
+    'Supported systematic video format conversion ensuring compatibility with updated delivery systems',
+    'Contributed to workflow improvements that reduced manual processing time',
+    'Assisted in quality assurance processes to maintain content accuracy during migration',
+    'Collaborated with team members to develop efficient content management procedures'
   ],
   results: [
-    'Successfully converted 50+ legacy educational videos to modern formats for improved accessibility',
-    'Reduced course deployment time from 3+ weeks to 2-3 days through workflow optimization',
-    'Enabled seamless delivery of continuing education content to NACVA\'s professional development member base',
-    'Created scalable learning technology infrastructure supporting organizational growth and efficiency'
+    'Supported the successful conversion of 50+ professional development videos to modern formats',
+    'Contributed to workflow improvements that reduced course deployment time from weeks to days',
+    'Gained valuable experience in learning technology implementation and stakeholder collaboration',
+    'Developed understanding of how technical skills support professional development goals',
+    'Built foundation for career in learning technology and instructional design'
   ]
 };
 

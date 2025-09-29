@@ -20,43 +20,49 @@
  * ))}
  * ```
  */
-import { CoreCompetency } from '@/types/content';
+import { Competency } from '@/types/content';
 
-export const competencies: CoreCompetency[] = [
+export const competencies: Competency[] = [
   {
-    icon: "BookOpen",
-    title: "Instructional Design",
-    description: "Creating engaging learning experiences using ADDIE and SAM models, with focus on learner-centered design",
-    color: "text-blue-600"
+    icon: "Brain",
+    title: "Cognitive Psychology & Learning Science",
+    description: "Apply cognitive load theory, information processing theory, and adult learning principles to instructional design decisions based on University of Utah IDET training",
+    color: "text-blue-600",
+    skills: ['Cognitive Load Theory', 'Adult Learning Theory', 'Learning Science Research', 'Evidence-Based Design']
   },
   {
-    icon: "Code",
-    title: "E-Learning Development",
-    description: "Proficient in Articulate Storyline, Camtasia, Canvas LMS, and various authoring tools",
-    color: "text-purple-600"
-  },
-  {
-    icon: "Layout",
-    title: "LMS Implementation",
-    description: "Experience with Canvas LMS setup, configuration, and content development",
-    color: "text-green-600"
-  },
-  {
-    icon: "PenTool",
-    title: "Content Creation",
-    description: "Development of engaging educational content, storyboards, and assessments",
-    color: "text-orange-600"
-  },
-  {
-    icon: "Target",
-    title: "Performance Analysis",
-    description: "Data-driven approach to identifying learning needs and measuring effectiveness",
-    color: "text-red-600"
+    icon: "Monitor",
+    title: "Technology-Based Instruction",
+    description: "Design and develop engaging e-learning experiences using multimedia learning principles and modern authoring tools",
+    color: "text-purple-600",
+    skills: ['E-Learning Development', 'Articulate Storyline', 'Learning Management Systems', 'Multimedia Learning']
   },
   {
     icon: "Users",
-    title: "Collaboration",
-    description: "Effective work with SMEs, stakeholders, and cross-functional teams",
-    color: "text-teal-600"
+    title: "Human-Computer Interaction",
+    description: "Create intuitive learning interfaces that optimize user experience and support effective learning outcomes",
+    color: "text-green-600",
+    skills: ['User Experience Design', 'Interface Design', 'Accessibility Design', 'Usability Testing']
+  },
+  {
+    icon: "Target",
+    title: "Systematic Instructional Design",
+    description: "Apply ADDIE and SAM methodologies to analyze learning needs and develop effective educational solutions",
+    color: "text-orange-600",
+    skills: ['ADDIE Methodology', 'SAM Model', 'Needs Analysis', 'Assessment Design', 'Curriculum Development']
+  },
+  {
+    icon: "BarChart",
+    title: "Learning Assessment & Analytics",
+    description: "Design formative and summative assessments that measure learning outcomes and inform instructional improvements",
+    color: "text-red-600",
+    skills: ['Assessment Design', 'Learning Analytics', 'Kirkpatrick Model', 'Data-Driven Decision Making']
+  },
+  {
+    icon: "Lightbulb",
+    title: "SME Collaboration & Project Management",
+    description: "Work effectively with subject matter experts and stakeholders to manage instructional design projects",
+    color: "text-teal-600",
+    skills: ['SME Collaboration', 'Stakeholder Management', 'Project Management', 'Cross-Functional Teamwork']
   }
 ];

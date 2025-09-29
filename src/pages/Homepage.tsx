@@ -6,7 +6,7 @@ import { ScrollToSection } from '@/components/shared/ScrollToSection';
 import { motion } from 'framer-motion';
 import { GraduationCap, Award } from 'lucide-react';
 import {RouteTransition} from '@/components/layout/RouteTransition';
-import { ProjectCarousel, QuickLinks, PageTransition } from '@/components/shared';
+import { ProjectCarousel, PageTransition } from '@/components/shared';
 import { Button, BaseCard, JourneyCard, StatsGrid, CoreCompetency } from '@/components/ui';
 import { fadeInUp, staggerContainer } from '@/lib/animations';
 import { siteConfig, projects, stats, education, competencies } from '@/content';
@@ -32,25 +32,42 @@ const HomePage: React.FC = () => {
               Learning Experiences That Work
             </h1>
             <p className="text-lg text-text-secondary mb-2">
-              Evidence-Based Instructional Designer | Adult Learning Specialist
+              <b>Evidence-Based Instructional Designer | Adult Learning Specialist</b>
             </p>
             <p className="text-xl text-text-secondary mb-8">
-              I create learning experiences that work. With an M.Ed. from the University of Utah and hands-on experience in financial wellness training, I apply andragogy principles and evidence-based instructional design to solve complex learning challenges through systematic ADDIE methodology. Whether it's helping employees pass certification exams or building graduate-level curricula, I focus on what adult learners need to succeed.
+              Evidence-based instructional designer who turns complex learning challenges into effective solutions. 
+ M.Ed. graduate ready to help your organization develop training that drives results.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button 
                 href="/portfolio" 
-                variant="primary" 
+                variant="custom"
                 size="lg"
-                className="bg-primary-600 hover:bg-primary-700 text-white font-semibold"
+                className="bg-blue-500 hover:bg-blue-600 text-white font-semibold shadow-lg rounded-lg px-6 py-3 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
               >
                 View Portfolio
               </Button>
               <Button 
-                href="/contact" 
-                variant="outline" 
+                href="/resume" 
+                variant="custom"
                 size="lg"
-                className="border-2 border-white text-white hover:bg-white hover:text-primary-600 font-semibold"
+                className="bg-green-500 hover:bg-green-600 text-white font-semibold shadow-lg rounded-lg px-6 py-3 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
+              >
+                Resume
+              </Button>
+              <Button 
+                href="/about#Professional-practice" 
+                variant="custom"
+                size="lg"
+                className="bg-purple-500 hover:bg-purple-600 text-white font-semibold shadow-lg rounded-lg px-6 py-3 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500"
+              >
+                Design Process
+              </Button>
+              <Button 
+                href="/contact" 
+                variant="custom"
+                size="lg"
+                className="bg-orange-500 hover:bg-orange-600 text-white font-semibold shadow-lg rounded-lg px-6 py-3 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500"
               >
                 Get In Touch
               </Button>
@@ -59,26 +76,20 @@ const HomePage: React.FC = () => {
         </div>
       </section>
 
-      {/* Featured Projects - Moved Higher */}
+      {/* Featured Projects */}
       <section id="featured-projects" className="py-20 bg-background">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold mb-4">Featured Projects</h2>
           </div>
-          <div className="grid lg:grid-cols-3 gap-8">
-            <div className="lg:col-span-2">
-              <ProjectCarousel projects={featuredProjects} />
-            </div>
-            <div className="lg:col-span-1">
-              <h3 className="text-2xl font-bold mb-6">Quick Access</h3>
-              <QuickLinks />
-            </div>
+          <div className="max-w-5xl mx-auto">
+            <ProjectCarousel projects={featuredProjects} />
           </div>
         </div>
       </section>
 
       {/* Academic & Professional Growth */}
-      <section id="impact" className="py-16 bg-primary-50">
+      <section id="impact" className="py-20 bg-primary-50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold mb-4">Academic & Professional Preparation</h2>

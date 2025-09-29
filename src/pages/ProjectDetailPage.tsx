@@ -149,6 +149,144 @@ const ProjectDetailPage: React.FC = () => {
                   </>
                 )}
 
+                {/* ADDIE Methodology Section */}
+                {currentProject.addieMethodology && (
+                  <>
+                    <h3>ADDIE Methodology</h3>
+                    <div className="space-y-4">
+                      {currentProject.addieMethodology.analysis && (
+                        <div className="border-l-4 border-primary-500 pl-4">
+                          <h4 className="font-semibold text-lg mb-2">Analysis</h4>
+                          {Object.entries(currentProject.addieMethodology.analysis)
+                            .filter(([_, value]) => value)
+                            .map(([key, value]) => (
+                              <div key={key} className="mb-3">
+                                <p className="font-medium text-text-primary capitalize">
+                                  {key.replace(/([A-Z])/g, ' $1').trim()}:
+                                </p>
+                                <p className="text-text-secondary">{value}</p>
+                              </div>
+                            ))}
+                        </div>
+                      )}
+                      {currentProject.addieMethodology.design && (
+                        <div className="border-l-4 border-primary-500 pl-4">
+                          <h4 className="font-semibold text-lg mb-2">Design</h4>
+                          {Object.entries(currentProject.addieMethodology.design)
+                            .filter(([_, value]) => value && typeof value === 'string')
+                            .map(([key, value]) => (
+                              <div key={key} className="mb-3">
+                                <p className="font-medium text-text-primary capitalize">
+                                  {key.replace(/([A-Z])/g, ' $1').trim()}:
+                                </p>
+                                <p className="text-text-secondary">{value as string}</p>
+                              </div>
+                            ))}
+                        </div>
+                      )}
+                      {currentProject.addieMethodology.development && (
+                        <div className="border-l-4 border-primary-500 pl-4">
+                          <h4 className="font-semibold text-lg mb-2">Development</h4>
+                          {Object.entries(currentProject.addieMethodology.development)
+                            .filter(([_, value]) => value)
+                            .map(([key, value]) => (
+                              <div key={key} className="mb-3">
+                                <p className="font-medium text-text-primary capitalize">
+                                  {key.replace(/([A-Z])/g, ' $1').trim()}:
+                                </p>
+                                <p className="text-text-secondary">{value}</p>
+                              </div>
+                            ))}
+                        </div>
+                      )}
+                      {currentProject.addieMethodology.implementation && (
+                        <div className="border-l-4 border-primary-500 pl-4">
+                          <h4 className="font-semibold text-lg mb-2">Implementation</h4>
+                          {Object.entries(currentProject.addieMethodology.implementation)
+                            .filter(([_, value]) => value)
+                            .map(([key, value]) => (
+                              <div key={key} className="mb-3">
+                                <p className="font-medium text-text-primary capitalize">
+                                  {key.replace(/([A-Z])/g, ' $1').trim()}:
+                                </p>
+                                <p className="text-text-secondary">{value}</p>
+                              </div>
+                            ))}
+                        </div>
+                      )}
+                      {currentProject.addieMethodology.evaluation && (
+                        <div className="border-l-4 border-primary-500 pl-4">
+                          <h4 className="font-semibold text-lg mb-2">Evaluation</h4>
+                          {Object.entries(currentProject.addieMethodology.evaluation)
+                            .filter(([_, value]) => value && typeof value === 'string')
+                            .map(([key, value]) => (
+                              <div key={key} className="mb-3">
+                                <p className="font-medium text-text-primary capitalize">
+                                  {key.replace(/([A-Z])/g, ' $1').trim()}:
+                                </p>
+                                <p className="text-text-secondary">{value as string}</p>
+                              </div>
+                            ))}
+                        </div>
+                      )}
+                    </div>
+                  </>
+                )}
+
+                {/* SAM Methodology Section */}
+                {currentProject.samMethodology && (
+                  <>
+                    <h3>SAM (Successive Approximation Model) Methodology</h3>
+                    <div className="space-y-4">
+                      {currentProject.samMethodology.preparation && (
+                        <div className="border-l-4 border-secondary-500 pl-4">
+                          <h4 className="font-semibold text-lg mb-2">Preparation Phase</h4>
+                          {Object.entries(currentProject.samMethodology.preparation)
+                            .filter(([_, value]) => value)
+                            .map(([key, value]) => (
+                              <div key={key} className="mb-3">
+                                <p className="font-medium text-text-primary capitalize">
+                                  {key.replace(/([A-Z])/g, ' $1').trim()}:
+                                </p>
+                                <p className="text-text-secondary">{value}</p>
+                              </div>
+                            ))}
+                        </div>
+                      )}
+                      {currentProject.samMethodology.iterativeDesign && (
+                        <div className="border-l-4 border-secondary-500 pl-4">
+                          <h4 className="font-semibold text-lg mb-2">Iterative Design</h4>
+                          {Object.entries(currentProject.samMethodology.iterativeDesign)
+                            .filter(([_, value]) => value)
+                            .map(([key, value]) => (
+                              <div key={key} className="mb-3">
+                                <p className="font-medium text-text-primary capitalize">
+                                  {key.replace(/([A-Z])/g, ' $1').trim()}:
+                                </p>
+                                <p className="text-text-secondary">{value}</p>
+                              </div>
+                            ))}
+                        </div>
+                      )}
+                      {currentProject.samMethodology.iterativeDevelopment && (
+                        <div className="border-l-4 border-secondary-500 pl-4">
+                          <h4 className="font-semibold text-lg mb-2">Iterative Development</h4>
+                          {Object.entries(currentProject.samMethodology.iterativeDevelopment)
+                            .filter(([_, value]) => value)
+                            .map(([key, value]) => (
+                              <div key={key} className="mb-3">
+                                <p className="font-medium text-text-primary capitalize">
+                                  {key.replace(/([A-Z])/g, ' $1').trim()}:
+                                </p>
+                                <p className="text-text-secondary">{value}</p>
+                              </div>
+                            ))}
+                        </div>
+                      )}
+                    </div>
+                  </>
+                )}
+
                 {currentProject.solutions && (
                   <>
                     <h3>Solutions</h3>

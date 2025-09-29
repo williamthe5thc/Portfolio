@@ -2,6 +2,12 @@
 import React from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 
+interface ScrollToSectionProps {
+  to: string;
+  children: React.ReactNode;
+  className?: string;
+}
+
 export const ScrollToSection: React.FC<ScrollToSectionProps> = ({ 
   to, 
   children,
