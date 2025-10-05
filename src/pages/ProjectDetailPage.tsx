@@ -83,8 +83,13 @@ const ProjectDetailPage: React.FC = () => {
   const handleBackClick = useCallback((e: React.MouseEvent) => {
     e.preventDefault();
     console.log('Back button clicked, navigating to portfolio');
-    navigate('/portfolio');
-  }, [navigate]);
+    // Preserve the last active filter if it exists in location state
+    const previousFilter = (location.state as any)?.from || 'featured';
+    navigate('/portfolio', { 
+      replace: true,
+      state: { preserveFilter: previousFilter }
+    });
+  }, [navigate, location]);
 
   // Don't render anything if we don't have a project
   if (!currentProject) {

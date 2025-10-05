@@ -27,7 +27,7 @@ export const experience: Experience[] = [
     location: "South Jordan, UT", 
     period: "May 2025 - July 2025",
     highlights: [
-      "Applied evidence-based ADDIE framework to redesign FiCEP curriculum helping financial counselors pass American First Credit Union professional examinations",
+      "Applied evidence-based ADDIE framework to redesign FiCEP curriculum helping financial counselors pass America's Credit Unions (ACU) professional examinations",
       "Conducted systematic needs analysis through learner interviews and stakeholder consultations to improve exam preparation effectiveness",
       "Applied adult learning theory and UX design principles to create accessible financial education experiences for diverse learner populations",
       "Collaborated with financial wellness team and subject matter experts to ensure curriculum alignment with certification requirements",

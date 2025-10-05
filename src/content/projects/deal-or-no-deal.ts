@@ -8,7 +8,7 @@ const dealOrNoDeal: ProjectBase = {   detailPage: true,
   longDescription: `Developed an interactive Deal or No Deal game using Adobe Flash and ActionScript to demonstrate 
   programming capabilities and inspire students. The game was created as an educational tool for teachers to show 
   practical applications of programming concepts while engaging students through familiar game mechanics.`,
-  image: "./images/thumbnails/coming_soon.png", // Awaiting actual image
+  image: "/images/thumbnails/coming_soon.png",
   category: 'development',
   tags: [
     'Game Development',

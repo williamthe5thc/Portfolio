@@ -18,8 +18,11 @@ const chartwayFicepEnhanced: ProjectBase = {
     'Behavior Change Design',
     'Accessibility Compliance'
   ],
-  status: 'in-progress',
+  status: 'completed',
   date: 'May 2025 - July 2025',
+  
+  // Case Study Documentation
+  projectUrl: '/case-studies/ficep-needs-analysis.pdf',
   tools: [
     'ADDIE Framework',
     'Learner Interview Protocols',
@@ -53,7 +56,7 @@ const chartwayFicepEnhanced: ProjectBase = {
     'Created implementation roadmap with leadership training, enhanced practice exams, and feedback systems'
   ],
   results: [
-    'Delivered comprehensive needs analysis report identifying management time allocation as primary barrier (23 mentions)',
+    'Delivered comprehensive needs analysis report identifying management time allocation as primary barrier (23 mentions) - [View Complete Needs Analysis Report](/case-studies/ficep-needs-analysis.pdf)',
     'Provided evidence-based training enhancement recommendations addressing organizational support, practice exams, and content personalization',
     'Created systematic research findings documenting learner preferences and institutional challenges affecting certification success',
     'Developed implementation roadmap including leadership training, enhanced practice examinations, and organizational content customization',

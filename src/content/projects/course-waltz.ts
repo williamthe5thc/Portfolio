@@ -7,11 +7,14 @@ const waltzCourse: ProjectBase = {
   title: "Teaching the Waltz Online Course",
   description: "Evidence-based online dance education course applying ADDIE methodology and ARCS motivation model to transform physical dance instruction into engaging digital learning experience",
   longDescription: "Systematic instructional design project creating comprehensive online waltz education for The Social Dance Effect community. Applied complete ADDIE methodology including learner analysis, competency-based objectives, and multi-modal instruction design. Integrated ARCS motivation model to maintain engagement in virtual dance learning environment. Featured Universal Design for Learning principles ensuring accessibility across diverse learner populations. Course structure accommodates both visual and kinesthetic learning preferences through innovative online-to-physical skill transfer methodologies.",
-  image: "/images/thumbnails/waltz-course.png",
+  image: "/images/thumbnails/how-to-waltz.jpg",
   category: "id",
   tags: ["Instructional Design", "Online Learning", "Dance Education", "Canvas LMS", "Curriculum Development"],
   status: "completed",
   date: "2023",
+  
+  // Case Study Documentation
+  projectUrl: '/case-studies/waltz-formative-evaluation.pdf',
   tools: ["Canvas LMS", "Adobe Premier Pro", "Educational Design Tools"],
   methodology: "Comprehensive ADDIE Framework with ARCS Motivation Model Integration and Universal Design for Learning Implementation",
   learningObjectives: [
@@ -120,7 +123,7 @@ const waltzCourse: ProjectBase = {
     "Designed rubric-based video assessment submissions"
   ],
   results: [
-    "Small group formative evaluation (4 participants) validated course effectiveness and identified specific enhancement opportunities",
+    "Small group formative evaluation (4 participants) validated course effectiveness and identified specific enhancement opportunities - [View Complete Formative Evaluation Report](/case-studies/waltz-formative-evaluation.pdf)",
     "Systematic feedback collection revealed consensus on module organization, clarity, and learning objective alignment",
     "Multi-modal instructional approach successfully addressed diverse learning preferences (visual, kinesthetic, auditory learners)",
     "Evidence-based revision plan developed addressing video content, visual aids, and accessibility improvements",

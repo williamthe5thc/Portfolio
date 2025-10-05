@@ -8,7 +8,7 @@ const vegasEdit: ProjectBase = {   detailPage: true,
   longDescription: `Designed a humorous photo manipulation project placing subjects in a Las Vegas setting for April Fools Day. 
   The edit was intentionally crafted to be obviously altered while maintaining enough realism to be entertaining. This project 
   demonstrates both technical Photoshop skills and creative decision-making in creating engaging social content.`,
-  image: "./images/thumbnails/coming_soon.png", // Awaiting actual image
+  image: "/images/thumbnails/coming_soon.png",
   category: 'photoshop',
   tags: [
     'Adobe Photoshop',

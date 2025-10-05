@@ -54,6 +54,23 @@ const AcademicResume: React.FC = () => {
         citation: "Research presented at BYU-Idaho Research Conference (2013)",
         url: "/portfolio/ego-depletion"
       }
+    ],
+    projects: [
+      {
+        title: "Ego Depletion Research - Evidence-Based Learning Foundation",
+        description: "Psychological experiment based educational intervention designed to reduce bias and enhance empathy. Research presented at BYU-Idaho Research and Creative Works Conference, earning 1st place recognition.",
+        url: "/portfolio/ego-depletion"
+      },
+      {
+        title: "Empathy & Socioeconomic Research - Diversity Foundation",
+        description: "Conducted behavioral research examining how economic contexts influence empathy and prosocial behaviors, providing evidence-based foundation for diversity education program design.",
+        url: "/portfolio/empathy-research"
+      },
+      {
+        title: "Applied Psychology for Bias Reduction Education",
+        description: "Psychology experiment based educational intervention designed for bias reduction and empathy enhancement in learning environments.",
+        url: "/portfolio/bias-reduction-psychology"
+      }
     ]
   };
 

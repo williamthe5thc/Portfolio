@@ -9,7 +9,7 @@ const sacramentMacro: ProjectBase = {   detailPage: true,
   to streamline the creation of weekly meeting programs for bulletin board specialists. The macro 
   automated the process of generating formatted programs for meetings with over one hundred attendees, 
   significantly reducing manual effort and ensuring consistency.`,
-  image: "./images/thumbnails/coming_soon.png", // Awaiting actual image
+  image: "/images/thumbnails/coming_soon.png",
   category: 'development',
   tags: [
     'VBA',

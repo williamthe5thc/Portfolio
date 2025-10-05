@@ -38,7 +38,7 @@
  */
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { ExternalLink, ArrowRight, X, ZoomIn } from 'lucide-react';
 import { ProjectBase } from '@/types/content';
 import { cardHover, modalContent, modalBackdrop } from '@/lib/animations';
@@ -106,6 +106,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
   className = ''
 }) => {
   const navigate = useNavigate();
+  const location = useLocation();
   const [isHovered, setIsHovered] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -113,12 +114,21 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
     console.log('Project clicked:', project);
     console.log('Project ID:', project.id);
     console.log('Detail Page:', project.detailPage);
+    
     if (project.projectUrl) {
       console.log("Opening external url");
       window.open(project.projectUrl, '_blank');
     } else if (project.detailPage) {
       console.log("Opening internal details url");
-      navigate(`/portfolio/${project.id}`);
+      // Get current filter from URL or default to featured
+      const searchParams = new URLSearchParams(location.search);
+      const currentFilter = searchParams.get('category') || 'featured';
+      
+      // Navigate and scroll to top
+      navigate(`/portfolio/${project.id}`, {
+        state: { from: currentFilter }
+      });
+      window.scrollTo(0, 0);
     }
     else {
       console.log('No action - missing projectUrl or detailPage flag');
@@ -206,22 +216,35 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
                 View Demo
               </button>
             )}
-            <button
-              onClick={handleClick}
-              className="px-4 py-2 border border-primary-500 text-primary-500 rounded-lg hover:bg-primary-50 transition-colors flex items-center gap-2"
-            >
-              {project.projectUrl ? (
-                <>
-                  <ExternalLink className="w-4 h-4" />
-                  View Project
-                </>
-              ) : (
-                <>
-                  <ArrowRight className="w-4 h-4" />
-                  Learn More
-                </>
-              )}
-            </button>
+            {project.projectUrl && (
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  window.open(project.projectUrl, '_blank');
+                }}
+                className="px-4 py-2 bg-primary-500 text-white rounded-lg hover:bg-primary-600 transition-colors flex items-center gap-2"
+              >
+                <ExternalLink className="w-4 h-4" />
+                View Project
+              </button>
+            )}
+            {project.detailPage && (
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  const searchParams = new URLSearchParams(location.search);
+                  const currentFilter = searchParams.get('category') || 'featured';
+                  navigate(`/portfolio/${project.id}`, {
+                    state: { from: currentFilter }
+                  });
+                  window.scrollTo(0, 0);
+                }}
+                className="px-4 py-2 border border-primary-500 text-primary-500 rounded-lg hover:bg-primary-50 transition-colors flex items-center gap-2"
+              >
+                <ArrowRight className="w-4 h-4" />
+                Learn More
+              </button>
+            )}
           </div>
           
           <div className="flex flex-wrap gap-2">

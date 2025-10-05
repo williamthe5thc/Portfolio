@@ -277,11 +277,20 @@ export interface Framework {
   phases?: FrameworkStep[];
 }
 
+export interface ProcessExample {
+  title: string;
+  description: string;
+  document: string;
+  project: string;
+  highlights: string[];
+}
+
 export interface Methodology {
   title: string;
   summary: string;
   corePrinciples: MethodologyPrinciple[];
   process: ProcessPhase[];
+  processExamples?: ProcessExample[];
   frameworks: {
     addie: Framework;
     sam: Framework;

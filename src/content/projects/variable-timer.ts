@@ -4,18 +4,20 @@ import { ProjectBase } from '@/types/content';
 const variableTimer: ProjectBase = {
   detailPage: true,
   id: 'variable-timer',
-  title: 'Spaced Learning & Habit Formation Mobile App',
-  description: 'Developed a mobile learning reinforcement tool that applies spaced repetition principles to support habit formation and microlearning delivery in corporate training environments',
-  longDescription: `Created an innovative mobile application that leverages behavioral psychology principles to support learning retention and habit formation. The app generates scientifically-optimized variable intervals based on spaced repetition research, helping users develop consistent learning behaviors and reinforcing key concepts over time. Originally developed to address a specific client need, this solution demonstrates the application of learning science to create practical tools that support ongoing professional development and skill reinforcement.`,
-  image: "/images/thumbnails/variable-timer.png",
-  category: 'id',
+  title: 'Behavioral Learning Technology for ABA Therapy',
+  description: 'Developed mobile learning reinforcement tool for Registered Behavior Technicians (RBTs) to optimize timing of behavioral interventions in ABA therapy sessions',
+  longDescription: `Developed specialized mobile learning technology for Registered Behavior Technicians (RBTs) working in Applied Behavior Analysis (ABA) therapy. The application provides variable interval timing to support evidence-based behavioral reinforcement strategies, helping RBTs optimize the timing of interventions during therapy sessions with children.
+
+This tool applies behavioral psychology principles and learning science research to create practical technology that enhances therapeutic outcomes. The variable timing functionality is based on established ABA methodology for reinforcement scheduling, demonstrating the application of learning technology to support professional practice in behavioral health settings.`,
+  image: "/images/projects/variable_timer.png",
+  category: 'learning-tech',
   tags: [
-    'Spaced Learning',
-    'Behavioral Psychology',
-    'Mobile Learning',
-    'Habit Formation',
-    'Microlearning',
-    'Learning Reinforcement'
+    'ABA Therapy',
+    'Behavioral Technology',
+    'RBT Tools',
+    'Variable Interval Reinforcement',
+    'Mobile Learning Technology',
+    'Behavioral Psychology'
   ],
   status: 'completed',
   date: 'May 2019 - Aug 2019',

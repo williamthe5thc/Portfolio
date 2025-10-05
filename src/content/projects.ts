@@ -1,81 +1,123 @@
 // src/content/projects.ts
 /**
  * @file projects.ts
- * @description Curated instructional design portfolio - Strategic selection of 6 high-impact projects
+ * @description Strategic 3-category instructional design portfolio
  * @module content
  * 
- * Based on 2024 ID portfolio research:
- * - Hiring managers review maximum 3-6 projects
- * - Focus on adult learning and corporate applications  
- * - Emphasize problem-solving and business impact
- * - Remove non-ID projects that dilute focus
+ * Based on Jordan's positioning strategy:
+ * - CATEGORY 1 (Lead): Instructional Design - pure ID work
+ * - CATEGORY 2: Learning Technology - ID + technical skills combined
+ * - CATEGORY 3: Technical Projects - pure coding demonstrations
  */
 
 import { ProjectBase } from '@/types/content';
 
-// Import only the strongest instructional design projects
-import nacvaAutomation from './projects/nacva-automation';
-import chartwayFicepEnhanced from './projects/chartway-ficep-enhanced';
+// ========================================
+// CATEGORY 1: INSTRUCTIONAL DESIGN
+// ========================================
 import aiLawCourse from './projects/ai-law-course';
 import professionalCommunicationTraining from './projects/professional-communication-training';
-import variableTimer from './projects/variable-timer';
+import chartwayFicepEnhanced from './projects/chartway-ficep-enhanced';
 import waltzCourse from './projects/course-waltz';
+import howToVideos from './projects/how-to-videos';
+import egoDepletion from './projects/ego-depletion';
+import empathyResearch from './projects/empathy-research';
+
+// ========================================
+// CATEGORY 2: LEARNING TECHNOLOGY
+// ========================================
+import biasReductionPsychology from './projects/bias-reduction-psychology';
+import variableTimer from './projects/variable-timer';
+import gamificationStemEducation from './projects/gamification-stem-education';
+import stakeholderDigitalEngagement from './projects/stakeholder-digital-engagement';
+
+// ========================================
+// CATEGORY 3: TECHNICAL PROJECTS
+// ========================================
+import nacvaAutomation from './projects/nacva-automation';
 import objectTracking from './projects/object-tracking';
 import jeopardyGame from './projects/jeopardy-game';
+import yahtzeeGame from './projects/yahtzee-game';
 
-// Strategically curated portfolio optimized for corporate instructional design positions
-// Reordered based on portfolio audit: Graduate Curriculum → Professional Communication → Financial Wellness → Learning Technology → Innovation → Traditional ID → Assessment → Engagement
+/**
+ * All projects organized by strategic categories
+ * Order matters - this is the sequence hiring managers see
+ */
 export const projects: ProjectBase[] = [
-  aiLawCourse,                       // FLAGSHIP: Graduate curriculum design + interactive navigation (no content conflicts)
-  professionalCommunicationTraining, // ARTICULATE DEMO: Advanced Storyline 360 capabilities (corporate training focus)
-  chartwayFicepEnhanced,            // CURRENT: Financial wellness curriculum modernization - target market alignment
-  nacvaAutomation,                   // LEARNING TECH: Learning technology optimization for professional development
-  variableTimer,                     // INNOVATION: Spaced learning & behavioral psychology application
-  waltzCourse,                       // FOUNDATION: Comprehensive Canvas LMS course design showing traditional ID skills
-  objectTracking,                    // ASSESSMENT: Performance evaluation technology for skills-based learning
-  jeopardyGame                       // ENGAGEMENT: Gamification & motivation theory application
+  // CATEGORY 1: Instructional Design (Lead with these)
+  aiLawCourse,                         // Graduate curriculum design
+  professionalCommunicationTraining,   // Articulate Storyline 360 mastery
+  chartwayFicepEnhanced,              // Current financial wellness internship
+  waltzCourse,                         // Canvas LMS comprehensive course
+  howToVideos,                         // AI-enhanced video development
+  egoDepletion,                        // Research methodology foundation
+  empathyResearch,                     // DEI training research foundation
+  
+  // CATEGORY 2: Learning Technology (Bridge ID + Tech)
+  biasReductionPsychology,            // Psychology experiment for education
+  variableTimer,                       // Behavioral learning technology for ABA
+  gamificationStemEducation,           // Deal or No Deal for STEM engagement
+  stakeholderDigitalEngagement,        // Chili cookoff voting platform
+  
+  // CATEGORY 3: Technical Projects (Pure coding)
+  nacvaAutomation,                     // Backend automation for LMS
+  objectTracking,                      // Computer vision project
+  jeopardyGame,                        // Cultural learning game
+  yahtzeeGame                          // Command line game development
 ];
 
 // Export project IDs for type safety
 export type ProjectId = typeof projects[number]['id'];
 
 /**
- * Featured project showcase for homepage
- * Top 3 projects that best represent Jordan's learning technology expertise
+ * Featured projects for homepage - Top 3 that best represent capabilities
  */
-export const featuredProjects = projects.slice(0, 3);
+export const featuredProjects: ProjectBase[] = [
+  aiLawCourse,                         // Graduate curriculum design excellence
+  professionalCommunicationTraining,   // Advanced Articulate Storyline 360
+  chartwayFicepEnhanced               // Current financial wellness internship
+];
 
 /**
- * Tiered project organization optimized for hiring manager review
- * Based on 2024 research: hiring managers review maximum 3-6 projects
+ * Projects organized by strategic categories
  */
-export const projectTiers = {
-  // Top 3 projects for immediate hiring manager impact
-  featured: [
-    aiLawCourse,                      // Graduate curriculum design excellence
-    professionalCommunicationTraining, // Advanced Articulate Storyline 360 mastery
-    chartwayFicepEnhanced            // Current financial wellness work
+export const projectsByCategory = {
+  'id': [
+    aiLawCourse,
+    professionalCommunicationTraining,
+    chartwayFicepEnhanced,
+    waltzCourse,
+    howToVideos,
+    egoDepletion,
+    empathyResearch
   ],
-  
-  // Supporting projects demonstrating technical capabilities
-  learningTechnology: [
-    nacvaAutomation,   // Learning technology optimization for professional development
-    variableTimer,     // Behavioral psychology + mobile learning
-    objectTracking     // Performance assessment innovation
+  'learning-tech': [
+    biasReductionPsychology,
+    variableTimer,
+    gamificationStemEducation,
+    stakeholderDigitalEngagement
   ],
-  
-  // Additional ID methodology demonstrations
-  curriculumDesign: [
-    waltzCourse,                      // Traditional Canvas LMS design
-    jeopardyGame                      // Gamification & engagement
+  'technical': [
+    nacvaAutomation,
+    objectTracking,
+    jeopardyGame,
+    yahtzeeGame
   ]
 };
 
 /**
- * Legacy category structure for backward compatibility
+ * Tiered project organization for progressive disclosure
  */
-export const projectsByCategory = {
-  'learning-technology': [nacvaAutomation, variableTimer, objectTracking],
-  'curriculum-design': [chartwayFicepEnhanced, aiLawCourse, professionalCommunicationTraining, waltzCourse],
-  'engagement-design': [jeopardyGame]
+export const projectTiers = {
+  // Top 3 for immediate hiring manager impact
+  featured: featuredProjects,
+  
+  // Core instructional design work
+  instructionalDesign: projectsByCategory['id'],
+  
+  // Learning technology bridge
+  learningTechnology: projectsByCategory['learning-tech'],
+  
+  // Technical demonstrations
+  technical: projectsByCategory['technical']
 };

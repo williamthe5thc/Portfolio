@@ -49,27 +49,46 @@ export const ProjectCarousel: React.FC<ProjectCarouselProps> = ({
           transition={{ duration: 0.5 }}
           className="absolute inset-0"
         >
-          <img
-            src={currentProject.image || "/api/placeholder/800/400"}
-            alt={currentProject.title}
-            className="w-full h-3/5 object-cover"
-          />
-          <div className="p-6">
-            <h3 className="text-2xl font-bold mb-2">{currentProject.title}</h3>
-            <p className="text-gray-600 mb-4 line-clamp-2">{currentProject.description}</p>
-            <div className="flex flex-wrap gap-2 mb-4">
-              {currentProject.tags.slice(0, 3).map((tag) => (
-                <span key={tag} className="px-3 py-1 bg-primary-100 text-primary-600 rounded-full text-sm">
-                  {tag}
-                </span>
-              ))}
-            </div>
-            {currentProject.detailPage && (
-              <Link to={`/portfolio/${currentProject.id}`}>
-                <Button variant="outline" size="sm">View Details</Button>
-              </Link>
-            )}
-          </div>
+          {currentProject.detailPage ? (
+            <Link to={`/portfolio/${currentProject.id}`} className="block h-full">
+              <img
+                src={currentProject.image || "/api/placeholder/800/400"}
+                alt={currentProject.title}
+                className="w-full h-3/5 object-cover cursor-pointer hover:opacity-90 transition-opacity"
+              />
+              <div className="p-6">
+                <h3 className="text-2xl font-bold mb-2 hover:text-primary-600 transition-colors">{currentProject.title}</h3>
+                <p className="text-gray-600 mb-4 line-clamp-2">{currentProject.description}</p>
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {currentProject.tags.slice(0, 3).map((tag) => (
+                    <span key={tag} className="px-3 py-1 bg-primary-100 text-primary-600 rounded-full text-sm">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+                <Button variant="outline" size="sm" className="w-auto">View Details</Button>
+              </div>
+            </Link>
+          ) : (
+            <>
+              <img
+                src={currentProject.image || "/api/placeholder/800/400"}
+                alt={currentProject.title}
+                className="w-full h-3/5 object-cover"
+              />
+              <div className="p-6">
+                <h3 className="text-2xl font-bold mb-2">{currentProject.title}</h3>
+                <p className="text-gray-600 mb-4 line-clamp-2">{currentProject.description}</p>
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {currentProject.tags.slice(0, 3).map((tag) => (
+                    <span key={tag} className="px-3 py-1 bg-primary-100 text-primary-600 rounded-full text-sm">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </>
+          )}
         </motion.div>
       </AnimatePresence>
 

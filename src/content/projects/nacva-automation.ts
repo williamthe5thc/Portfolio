@@ -4,15 +4,15 @@ import { ProjectBase } from '@/types/content';
 const nacvaAutomation: ProjectBase = {
   detailPage: true,
   id: 'nacva-automation',
-  title: 'Learning Technology Internship - NACVA Continuing Education',
-  description: 'Professional internship supporting continuing education technology workflows, where I gained hands-on experience in learning content management, SME collaboration, and process improvement for professional development programs',
-  longDescription: `Valuable professional internship with the National Association of Certified Valuators and Analysts (NACVA), where I learned how professional organizations manage technology-based instruction at scale. Working closely with experienced team members, I supported content migration projects and helped modernize legacy educational video delivery systems.
+  title: 'Learning Technology Contractor - NACVA Professional Certification Systems',
+  description: 'Professional contractor role supporting continuing education technology for the National Association of Certified Valuators and Analysts (NACVA), automating content delivery workflows for financial professionals pursuing CVA and MAFF certifications',
+  longDescription: `Professional contractor role with the National Association of Certified Valuators and Analysts (NACVA), a leading organization that trains and certifies over 7,000 financial professionals in business valuation and financial litigation services. Supported their continuing education technology infrastructure by converting training videos and developing Python automation scripts to streamline backend data management for their prestigious CVA (Certified Valuation Analyst) and MAFF (Master Analyst in Financial Forensics) certification programs.
 
-This hands-on experience taught me about learning content management systems, quality assurance processes, and the practical challenges of maintaining professional development programs for certification requirements. I collaborated with subject matter experts to ensure content accuracy during technical transitions and gained insight into how automation can support learning technology workflows.
+CVA and MAFF are highly respected, nationally accredited credentials for CPAs, business valuators, and financial litigation consultants. My work focused on modernizing their learning content delivery systems and eliminating time-consuming manual data entry processes that delayed course deployment for busy professionals seeking these certifications.
 
-The internship was instrumental in helping me understand the business side of learning and development, including stakeholder collaboration, project timelines, and the importance of scalable learning technology solutions for professional continuing education.`,
-  image: "/images/thumbnails/nacva-automation.png",
-  category: 'id',
+This contractor role provided valuable experience in learning technology optimization for professional development organizations, demonstrating how technical automation can significantly improve educational content delivery for specialized professional audiences.`,
+  image: "/images/thumbnails/Presentation - NACVA Professional Certification Technology.png",
+  category: 'technical',
   tags: [
     'Learning Technology',
     'SME Collaboration',

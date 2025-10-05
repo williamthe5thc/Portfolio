@@ -1,28 +1,37 @@
 import React, { useState, useEffect } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useSearchParams, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ProjectGrid } from '@/components/features/portfolio/ProjectGrid';
 import {PageTransition } from '@/components/shared';
-import { BaseCard } from '@/components/ui';
 import {RouteTransition } from '@/components/layout/RouteTransition';
 import { SectionContainer } from '@/components/layout';
 import { fadeInUp } from '@/lib/animations';
-import { siteConfig, projects, featuredProjects } from '@/content';
+import { siteConfig, projects, featuredProjects, projectCategories } from '@/content';
 import BasePage from './BasePage';
 
 const PortfolioPage = () => {
   const [searchParams] = useSearchParams();
-  const [activeCategory, setActiveCategory] = useState('featured'); // Start with featured projects for hiring managers
+  const location = useLocation();
+  const [activeCategory, setActiveCategory] = useState('featured');
 
   useEffect(() => {
-    // Only support 'all' and 'featured' categories now
-    const type = searchParams.get('type');
-    if (type === 'all') {
-      setActiveCategory('all');
+    // Check if we're preserving a filter from navigation state
+    const preservedFilter = (location.state as any)?.preserveFilter;
+    if (preservedFilter) {
+      setActiveCategory(preservedFilter);
+      // Clean up state
+      window.history.replaceState({}, document.title);
+      return;
+    }
+
+    // Otherwise check URL params
+    const category = searchParams.get('category');
+    if (category && ['featured', 'all', 'id', 'learning-tech', 'technical'].includes(category)) {
+      setActiveCategory(category);
     } else {
       setActiveCategory('featured');
     }
-  }, [searchParams]);
+  }, [searchParams, location]);
 
   const filterProjects = (category: string) => {
     if (category === 'all') return projects;
@@ -60,6 +69,22 @@ const PortfolioPage = () => {
       >
         All Projects
       </button>
+      
+      {/* Strategic Category Filters */}
+      {projectCategories.map((cat) => (
+        <button
+          key={cat.id}
+          onClick={() => setActiveCategory(cat.id)}
+          className={`
+            px-6 py-3 rounded-full text-sm font-medium transition-all
+            ${activeCategory === cat.id
+              ? 'bg-primary-600 text-white shadow-md'
+              : 'bg-gray-100 text-gray-700 hover:bg-gray-200'}
+          `}
+        >
+          {cat.label}
+        </button>
+      ))}
     </motion.div>
   );
 

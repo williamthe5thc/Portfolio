@@ -92,9 +92,9 @@ const HomePage: React.FC = () => {
       <section id="impact" className="py-20 bg-primary-50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">Academic & Professional Preparation</h2>
+            <h2 className="text-3xl font-bold mb-4">Research-Backed Design Expertise</h2>
             <p className="text-xl text-text-secondary">
-              Building strong instructional design foundations through education and hands-on experience
+              Graduate-level competencies and real-world experience creating effective learning solutions
             </p>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
@@ -226,14 +226,13 @@ const HomePage: React.FC = () => {
         <div className="mt-12 text-center">
           <motion.div variants={fadeInUp}>
   <div className="mt-12 text-center">
-    <ScrollToSection to="/about#Professional-practice">
-      <Button 
-        variant="outline"
-        className="hover:bg-primary-50"
-      >
-        Learn More About My Approach
-      </Button>
-    </ScrollToSection>
+    <Button 
+      href="/about#Professional-practice"
+      variant="outline"
+      className="hover:bg-primary-50"
+    >
+      Learn More About My Approach
+    </Button>
   </div>
 </motion.div>
         </div>
@@ -248,8 +247,8 @@ const HomePage: React.FC = () => {
     <div className="max-w-3xl mx-auto">
       <h2 className="text-3xl font-bold mb-6 drop-shadow-sm">Let's Work Together</h2>
       <p className="text-xl mb-8 opacity-95 drop-shadow-sm">
-        I'm actively seeking entry-level instructional design opportunities where I can contribute evidence-based design expertise, 
-        fresh perspectives, and passion for creating learning experiences that work. Let's discuss how I can support your organization's goals.
+        Ready to bring evidence-based design expertise and fresh perspectives to your learning initiatives. 
+        Let's discuss how I can contribute to creating training that drives measurable results for your organization.
       </p>
       <div className="flex flex-col sm:flex-row gap-4 justify-center">
         <Button 

@@ -6,8 +6,8 @@ const jeopardyGame: ProjectBase = {   detailPage: true,
   title: 'Gamification & Engagement Design - Cultural Learning Platform',
   description: 'Applied gamification principles and motivation theory to create engaging cultural competency training, demonstrating game-based learning design for diversity and inclusion programs',
   longDescription: `Designed and developed an interactive game-based learning platform that applies proven gamification principles to deliver culturally responsive training content. This project demonstrates the strategic use of competition, immediate feedback, and progressive disclosure to enhance learner engagement and knowledge retention in diversity training contexts. The solution addresses the critical challenge of creating meaningful cultural competency learning experiences that drive both engagement and behavior change in organizational settings.`,
-  image: "./images/thumbnails/coming_soon.png", // Awaiting actual image
-  category: 'id',
+  image: "/images/thumbnails/Presentation - Gamification & Cultural Learning.png",
+  category: 'technical',
   tags: [
     'Gamification Design',
     'Engagement Theory',

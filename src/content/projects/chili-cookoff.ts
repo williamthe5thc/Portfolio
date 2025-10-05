@@ -7,7 +7,7 @@ const chiliCookoff: ProjectBase = {
   title: "Ward Chili Cook-off Digital Voting System",
   description: "A web-based voting application for managing and tallying votes at a community chili cook-off event",
   longDescription: "Digital solution for streamlining the voting process at a ward chili cook-off, featuring QR code access, real-time vote counting, and administrative controls",
-  image: "./images/thumbnails/Voting.png", // Awaiting actual image
+  image: "/images/thumbnails/Voting.png",
   category: "Web Development",
   tags: ["Web Development", "Database Design", "QR Code", "Real-time Voting", "Community Event"],
   status: "Completed",

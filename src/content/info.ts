@@ -12,5 +12,15 @@ export const projectCategories = [
     id: 'id',
     label: 'Instructional Design',
     description: 'Comprehensive learning solutions, curriculum design, and educational strategy'
+  },
+  {
+    id: 'learning-tech',
+    label: 'Learning Technology',
+    description: 'Technology-enhanced learning solutions combining instructional design with technical development'
+  },
+  {
+    id: 'technical',
+    label: 'Technical Projects',
+    description: 'Pure programming and development work demonstrating technical proficiency'
   }
 ];

@@ -8,7 +8,7 @@ const napkinDesign: ProjectBase = {   detailPage: true,
   longDescription: `Developed a custom napkin design for a wedding event using Adobe Illustrator. This draft project 
   involved creating elegant vector graphics suitable for print production on napkins. The project demonstrated skills in 
   vector design, typography, and preparing designs for specialty printing requirements.`,
-  image: "./images/thumbnails/coming_soon.png", // Awaiting actual image
+  image: "/images/thumbnails/coming_soon.png",
   category: 'id',
   tags: [
     'Adobe Illustrator',

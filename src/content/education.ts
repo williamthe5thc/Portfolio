@@ -27,7 +27,7 @@ export const education: Education = {
       field: "Instructional Design and Educational Technology (IDET)",
       institution: "University of Utah",
       location: "Salt Lake City, Utah",
-      period: "2023 - 2025 (Completed May 2025)",
+      period: "August 2023 - May 2025",
       gpa: "4.0",
       relevantCourses: [
         "Cognitive Foundations of Learning and Instruction",
