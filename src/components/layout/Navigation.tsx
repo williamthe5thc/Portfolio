@@ -49,7 +49,10 @@ interface NavigationProps {
 const defaultNavItems: NavItem[] = [
   { path: "/", label: "Home", icon: "Home", end: true },
   { path: "/about", label: "About", icon: "User" },
-  { path: "/portfolio?type=instructional", label: "Portfolio", icon: "Briefcase" },
+  // No query param: PortfolioPage reads `category`, never `type`, so the old
+  // ?type=instructional was silently ignored. The page defaults to Featured,
+  // which is the right landing view anyway.
+  { path: "/portfolio", label: "Portfolio", icon: "Briefcase" },
   { path: "/contact", label: "Contact", icon: "Mail" }
 ];
 

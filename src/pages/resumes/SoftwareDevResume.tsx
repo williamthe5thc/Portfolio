@@ -12,6 +12,16 @@ const SoftwareDevResume: React.FC = () => {
     downloadUrl: getImagePath('/documents/Coding_Resume.pdf'),
     experience: [
       {
+        title: "Instructional Designer",
+        company: "WeYouth (501(c)(3) nonprofit)",
+        period: "March 2026 - Present",
+        highlights: [
+          "Evaluated learning management systems against organizational requirements and delivered the platform recommendation the nonprofit adopted and runs on",
+          "Implemented SME-authored curriculum into the LMS: course and module architecture, assessment configuration, and cohort enrollment across three learner tracks",
+          "Own technical support for the platform, from administrator onboarding to resolving learner and coach access issues"
+        ]
+      },
+      {
         title: "Instructional Design Intern",
         company: "Chartway Federal Credit Union",
         period: "May 2025 - July 2025",
@@ -24,7 +34,7 @@ const SoftwareDevResume: React.FC = () => {
       {
         title: "Instructional Designer - Contractor",
         company: "National Association of Certified Valuators and Analysts (NACVA)",
-        period: "Mar. 2023 - Aug. 2023",
+        period: "April 2023 - Aug. 2023",
         highlights: [
           "Wrote Python automation to streamline backend data management for the CVA and MAFF certification programs",
           "Converted and processed training video content for continuing-education delivery",

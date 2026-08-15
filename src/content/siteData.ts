@@ -17,6 +17,7 @@ export const siteConfig: SiteConfig = {
     email: "williamthe5thc@gmail.com",
     phone: "208.779.2406",
     linkedin: "linkedin.com/in/jordan-charles",
-    location: "Provo, Utah"
+    // Matches LinkedIn. Recruiters cross-reference the two.
+    location: "Salt Lake City, Utah"
   }
 };

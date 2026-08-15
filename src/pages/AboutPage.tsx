@@ -19,6 +19,30 @@ import {
 } from '@/content';
 import BasePage from './BasePage';
 
+const MONTH_INDEX: Record<string, number> = {
+  jan: 0, feb: 1, mar: 2, apr: 3, may: 4, jun: 5,
+  jul: 6, aug: 7, sep: 8, oct: 9, nov: 10, dec: 11
+};
+
+/**
+ * Turn a display period into a sortable number based on when it started.
+ * "March 2026 - Present" -> 2026*12 + 2. Year-only periods like "2012 - 2018"
+ * fall back to January of that year, which keeps them correctly ordered
+ * against month-qualified entries.
+ */
+const periodStartRank = (period: string): number => {
+  const start = period.split('-')[0].trim();
+  const withMonth = start.match(/([A-Za-z]+)\.?\s+(\d{4})/);
+
+  if (withMonth) {
+    const month = MONTH_INDEX[withMonth[1].slice(0, 3).toLowerCase()] ?? 0;
+    return Number(withMonth[2]) * 12 + month;
+  }
+
+  const yearOnly = start.match(/\d{4}/);
+  return yearOnly ? Number(yearOnly[0]) * 12 : 0;
+};
+
 const AboutPage: React.FC = () => {
 const location = useLocation();
   const initialRender = useRef(true);
@@ -42,7 +66,13 @@ const location = useLocation();
       window.history.replaceState({}, document.title);
     }
   }, [location]);
-  // Convert experience and education items for Timeline component
+  /*
+    These periods are display strings ("March 2026 - Present", "2012 - 2018"),
+    so they have to be parsed before they can be ordered. Sorting them with
+    localeCompare - as this did - compares them alphabetically, which sorts by
+    month *name*: "May 2025" lands above "March 2026" and the current role gets
+    buried under a finished internship.
+  */
   const timelineItems = React.useMemo(() => {
     const educationItems = education.degrees.map(deg => ({
       title: deg.degree,
@@ -60,11 +90,10 @@ const location = useLocation();
       type: 'experience' as const
     }));
     
-    // Combine and sort by date (most recent first)
-    return [...educationItems, ...experienceItems].sort((a, b) => {
-      // Simple date comparison - adjust as needed for your date format
-      return b.date.localeCompare(a.date);
-    });
+    // Combine and sort by start date, most recent first.
+    return [...educationItems, ...experienceItems].sort(
+      (a, b) => periodStartRank(b.date) - periodStartRank(a.date)
+    );
   }, []);
 
   return (

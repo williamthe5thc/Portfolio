@@ -133,8 +133,17 @@ export const Button: React.FC<ButtonProps> = ({
     ${className}
   `;
 
-  // Internal link using React Router
-  if (href?.startsWith('/')) {
+  // Internal link using React Router.
+  //
+  // A leading slash alone is not enough to identify an in-app route. Asset
+  // paths are absolute too - getImagePath() returns "/Portfolio-Staging/
+  // documents/Coding_Resume.pdf" - and handing one of those to <Link> under
+  // HashRouter turns a PDF download into "#/Portfolio-Staging/documents/
+  // Coding_Resume.pdf", a route that matches nothing and renders the 404 page.
+  // A trailing file extension is what separates a file from a route.
+  const isFileLink = /\.[a-z0-9]{2,5}(?:$|[?#])/i.test(href ?? '');
+
+  if (href?.startsWith('/') && !isFileLink) {
     return (
       <Link
         to={href}
@@ -143,6 +152,20 @@ export const Button: React.FC<ButtonProps> = ({
       >
         {buttonContent}
       </Link>
+    );
+  }
+
+  // Absolute path to a real file (PDF, demo page): plain anchor, same tab
+  // semantics as any other download link.
+  if (href?.startsWith('/') && isFileLink) {
+    return (
+      <a
+        href={href}
+        className={commonClassNames}
+        onClick={() => handleInteraction('link')}
+      >
+        {buttonContent}
+      </a>
     );
   }
 

@@ -20,6 +20,7 @@ import { ProjectBase } from '@/types/content';
 // ========================================
 // CATEGORY 1: INSTRUCTIONAL DESIGN
 // ========================================
+import weyouthMpcc from './projects/weyouth-mpcc';
 import chartwayFicepEnhanced from './projects/chartway-ficep-enhanced';
 import professionalCommunicationTraining from './projects/professional-communication-training';
 import aiLawCourse from './projects/ai-law-course';
@@ -40,8 +41,13 @@ import nacvaAutomation from './projects/nacva-automation';
  * Order matters - this is the sequence hiring managers see
  */
 export const projects: ProjectBase[] = [
-  // CATEGORY 1: Instructional Design (Lead with these)
-  chartwayFicepEnhanced,               // FLAGSHIP - real client, real data
+  // FLAGSHIP first regardless of category - current, ongoing, real client.
+  // Categorised learning-tech because the work is platform selection and
+  // implementation; WeYouth's SMEs authored the curriculum content.
+  weyouthMpcc,
+
+  // CATEGORY 1: Instructional Design
+  chartwayFicepEnhanced,               // Real client with a measured outcome
   professionalCommunicationTraining,   // Articulate Storyline 360 - the baseline screen
   aiLawCourse,                         // Graduate curriculum design + AI subject matter
   waltzCourse,                         // Canvas LMS comprehensive course
@@ -62,9 +68,9 @@ export type ProjectId = typeof projects[number]['id'];
  * flagship nobody sees.
  */
 export const featuredProjects: ProjectBase[] = [
-  chartwayFicepEnhanced,               // Real client engagement with quantified findings
-  professionalCommunicationTraining,   // Advanced Articulate Storyline 360
-  aiLawCourse                          // Graduate curriculum design excellence
+  weyouthMpcc,                         // Current nonprofit role - ongoing, real stakes
+  chartwayFicepEnhanced,               // Real client engagement with a measured outcome
+  professionalCommunicationTraining    // Advanced Articulate Storyline 360
 ];
 
 /**
@@ -78,6 +84,7 @@ export const projectsByCategory = {
     waltzCourse
   ],
   'learning-tech': [
+    weyouthMpcc,
     variableTimer
   ],
   'technical': [

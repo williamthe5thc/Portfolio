@@ -27,7 +27,7 @@ export const faqs: FAQ[] = [
   },
   {
     question: "What kind of internship opportunities are you seeking?",
-    answer: "I'm looking for entry-level instructional design internships where I can apply my graduate-level competencies in ADDIE methodology, learning theory, and technical development while learning from experienced professionals. I'm particularly interested in organizations that value research-based design and systematic evaluation."
+    answer: "I'm looking for instructional design, learning experience design, and learning technology roles where evidence-based design and measurable outcomes matter. I currently design and run the LMS for a youth nonprofit, and I've delivered a curriculum needs analysis for a credit union that measurably improved certification pass rates. I'm drawn to organizations that treat evaluation as part of the work rather than an afterthought."
   },
   {
     question: "What tools and technologies have you mastered?",

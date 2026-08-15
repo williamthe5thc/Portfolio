@@ -22,9 +22,9 @@ const chartwayFicepEnhanced: ProjectBase = {
   status: 'completed',
   date: 'May 2025 - July 2025',
   metrics: [
+    { value: '2', label: 'Exam failures since Chartway implemented the redesigned program' },
     { value: '21', label: 'Survey responses analyzed' },
-    { value: '5', label: 'Semi-structured participant interviews' },
-    { value: '23', label: 'Mentions of limited study time — the top barrier found' }
+    { value: '5', label: 'Semi-structured participant interviews' }
   ],
 
   // Case Study Documentation
@@ -62,6 +62,7 @@ const chartwayFicepEnhanced: ProjectBase = {
     'Created implementation roadmap with leadership training, enhanced practice exams, and feedback systems'
   ],
   results: [
+    'Chartway reports only two candidates have failed the FiCEP examination since the redesigned program was implemented, reversing the decline that followed the sixth-edition rollout',
     'Delivered comprehensive needs analysis report identifying management time allocation as primary barrier (23 mentions) - [View Complete Needs Analysis Report](/case-studies/ficep-needs-analysis.pdf)',
     'Provided evidence-based training enhancement recommendations addressing organizational support, practice exams, and content personalization',
     'Created systematic research findings documenting learner preferences and institutional challenges affecting certification success',

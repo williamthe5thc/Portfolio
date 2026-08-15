@@ -22,6 +22,19 @@ import { Experience } from '@/types/content';
 
 export const experience: Experience[] = [
   {
+    title: "Instructional Designer",
+    company: "WeYouth",
+    location: "North Salt Lake, UT",
+    period: "March 2026 - Present",
+    highlights: [
+      "Conducted market research on learning management systems scored against the organization's specific constraints, and delivered the platform recommendation the nonprofit adopted and runs on today",
+      "Implemented SME-authored curriculum into the LMS as enrollable, self-paced courses: module architecture, self-assessments, evaluation surveys, and cohort enrollment",
+      "Built separate learner tracks for athletes, coaches, and captains supporting Mental Performance Connection Coaching, the organization's primary program",
+      "Collaborate with subject matter experts - founders, a licensed clinician, and coaching staff - on restructuring written curriculum to work without a live facilitator",
+      "Serve as the technical support function for the platform, onboarding administrators and maintaining the system as cohorts move through it"
+    ]
+  },
+  {
     title: "Financial Wellness Intern",
     company: "Chartway Federal Credit Union",
     location: "South Jordan, UT", 
@@ -39,7 +52,7 @@ export const experience: Experience[] = [
     title: "Learning Technology Specialist (Contract)",
     company: "National Association of Certified Valuators and Analysts (NACVA)",
     location: "Sandy, UT",
-    period: "Mar 2023 - Aug 2023",
+    period: "April 2023 - Aug 2023",
     highlights: [
       "Optimized continuing education content delivery workflows by converting legacy video content and streamlining backend processing systems",
       "Applied technical skills to reduce course deployment time from weeks to days for professional development member base",

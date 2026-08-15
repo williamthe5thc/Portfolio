@@ -28,6 +28,7 @@ import emailjs from '@emailjs/browser';
 import { Mail, AlertTriangle, CheckCircle, RefreshCw } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useAnalytics } from '@/hooks/useAnalytics';
+import { siteConfig } from '@/content';
 
 interface FormData {
   name: string;
@@ -41,7 +42,14 @@ interface FormErrors {
   message?: string;
 }
 
-type FormStatus = 'idle' | 'sending' | 'success' | 'error' | 'rate-limited';
+type FormStatus =
+  | 'idle'
+  | 'sending'
+  | 'success'
+  | 'error'
+  | 'rate-limited'
+  /** Direct send was unavailable, so the visitor's mail client was opened instead. */
+  | 'mail-client';
 
 interface RateLimitConfig {
   maxAttempts: number;
@@ -144,16 +152,43 @@ const [formData, setFormData] = useState<FormData>({
     setAttempts(prev => prev + 1);
     setLastSubmitTime(Date.now());
 
+    /*
+      EmailJS credentials come from build-time env vars. When they are absent
+      Vite compiles the call to emailjs.send(undefined, undefined, ..., undefined),
+      which fails on every submission - so an unconfigured deploy silently
+      swallows every message a visitor sends. Rather than fail, hand the message
+      to the visitor's own mail client with everything pre-filled. Nothing is
+      lost either way.
+    */
+    const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+    const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+    const openMailClientFallback = () => {
+      const subject = `Portfolio enquiry from ${formData.name}`;
+      const body = `${formData.message}\n\n---\nFrom: ${formData.name}\nReply to: ${formData.email}`;
+      window.location.href =
+        `mailto:${siteConfig.contactInfo.email}` +
+        `?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      setStatus('mail-client');
+      setTimeout(() => setStatus('idle'), 8000);
+    };
+
+    if (!serviceId || !templateId || !publicKey) {
+      openMailClientFallback();
+      return;
+    }
+
     try {
       const result = await emailjs.send(
-        import.meta.env.VITE_EMAILJS_SERVICE_ID,
-        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        serviceId,
+        templateId,
         {
           from_name: formData.name,
           reply_to: formData.email,
           message: formData.message,
         },
-        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+        publicKey
       );
 
       if (result.status === 200) {
@@ -165,7 +200,7 @@ const [formData, setFormData] = useState<FormData>({
       }
     } catch (error) {
       console.error('EmailJS error:', error);
-      setStatus('error');
+      openMailClientFallback();
     }
   } catch (error) {
       trackFormSubmission('contact_form', 'error', error.message);
@@ -192,8 +227,44 @@ const [formData, setFormData] = useState<FormData>({
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
           >
-            <AlertTriangle className="w-5 h-5" />
-            <span>Failed to send message. Please try again.</span>
+            <AlertTriangle className="w-5 h-5 flex-shrink-0" />
+            {/*
+              A retry prompt alone loses the message when sending is broken at
+              the config level rather than transiently - the visitor retries,
+              fails again, and leaves. Surfacing the address means the contact
+              still reaches its destination.
+            */}
+            <span>
+              Failed to send message. Please email me directly at{' '}
+              <a
+                className="underline font-medium"
+                href={`mailto:${siteConfig.contactInfo.email}`}
+              >
+                {siteConfig.contactInfo.email}
+              </a>
+              .
+            </span>
+          </motion.div>
+        );
+      case 'mail-client':
+        return (
+          <motion.div
+            className="flex items-start gap-2 p-4 bg-blue-50 text-blue-700 rounded-lg"
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+          >
+            <Mail className="w-5 h-5 flex-shrink-0 mt-0.5" />
+            <span>
+              Your email app should have opened with this message ready to send.
+              If it did not, reach me directly at{' '}
+              <a
+                className="underline font-medium"
+                href={`mailto:${siteConfig.contactInfo.email}`}
+              >
+                {siteConfig.contactInfo.email}
+              </a>
+              .
+            </span>
           </motion.div>
         );
       case 'rate-limited':

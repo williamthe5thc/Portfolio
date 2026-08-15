@@ -39,7 +39,68 @@ import { Button, BaseCard } from '@/components/ui';
 import { fadeInUp } from '@/lib/animations';
 import { projects } from '@/content';
 import type { ProjectId, ProjectBase } from '@/types/content';
+import { getImagePath } from '@/utils';
 import BasePage from './BasePage';
+
+/**
+ * Some content entries embed markdown links, e.g.
+ * "...report - [View Complete Needs Analysis Report](/case-studies/x.pdf)".
+ * Rendered as plain text these show the raw brackets and parentheses to the
+ * visitor, so parse them into real anchors. Absolute paths go through
+ * getImagePath so they survive the staging and production base paths.
+ */
+const MARKDOWN_LINK = /\[([^\]]+)\]\(([^)]+)\)/g;
+
+const RichText: React.FC<{ children: string }> = ({ children }) => {
+  const parts: React.ReactNode[] = [];
+  let cursor = 0;
+  let match: RegExpExecArray | null;
+
+  MARKDOWN_LINK.lastIndex = 0;
+  while ((match = MARKDOWN_LINK.exec(children)) !== null) {
+    if (match.index > cursor) parts.push(children.slice(cursor, match.index));
+
+    const [, label, rawHref] = match;
+    const href = rawHref.startsWith('/') ? getImagePath(rawHref) : rawHref;
+
+    parts.push(
+      <a
+        key={`${match.index}-${label}`}
+        href={href}
+        className="text-primary-600 underline hover:text-primary-700"
+        {...(rawHref.startsWith('http')
+          ? { target: '_blank', rel: 'noopener noreferrer' }
+          : {})}
+      >
+        {label}
+      </a>
+    );
+    cursor = match.index + match[0].length;
+  }
+
+  if (cursor < children.length) parts.push(children.slice(cursor));
+  return <>{parts}</>;
+};
+
+/**
+ * One beat of the project narrative. Numbered so the four read as a sequence
+ * rather than four unrelated headings a reader can drop into anywhere.
+ */
+const StoryBeat: React.FC<{
+  step: string;
+  title: string;
+  children: React.ReactNode;
+}> = ({ step, title, children }) => (
+  <section className="border-l-4 border-primary-500 pl-5">
+    <div className="flex items-baseline gap-3 mb-2">
+      <span className="text-sm font-bold text-primary-500 tracking-widest">
+        {step}
+      </span>
+      <h2 className="text-2xl font-bold text-text-primary">{title}</h2>
+    </div>
+    {children}
+  </section>
+);
 
 const ProjectDetailPage: React.FC = () => {
   const { projectId } = useParams<{ projectId: ProjectId }>();
@@ -132,11 +193,17 @@ const ProjectDetailPage: React.FC = () => {
             className="md:col-span-2"
           >
             <BaseCard>
+              {/*
+                Capped height with object-contain. Plain w-full/h-auto renders a
+                square asset (a logo, for instance) at the full column width, so
+                the hero image alone ran ~500px tall and pushed the metrics and
+                the whole story arc below the fold.
+              */}
               {currentProject.image && (
-                <img 
-                  src={currentProject.image} 
+                <img
+                  src={currentProject.image}
                   alt={currentProject.title}
-                  className="w-full h-auto rounded-lg mb-6"
+                  className="w-full max-h-72 object-contain bg-gray-50 rounded-lg mb-6"
                 />
               )}
               {currentProject.metrics && currentProject.metrics.length > 0 && (
@@ -157,20 +224,70 @@ const ProjectDetailPage: React.FC = () => {
                 </div>
               )}
 
+              {/*
+                The story arc, before any methodology detail.
+
+                Hiring managers want a narrative - "here was the problem, here
+                was my analysis, here's what I designed, and here's what
+                happened" - not a features dump. Every beat below reuses data
+                the project files already carried; it was just ordered as
+                description-then-challenges-then-ADDIE, which reads as a spec
+                sheet. The exhaustive ADDIE/SAM breakdown still follows, as
+                supporting evidence rather than as the pitch.
+              */}
+              <div className="space-y-8 mb-10">
+                {currentProject.businessContext && (
+                  <StoryBeat step="01" title="The problem">
+                    <p className="text-text-secondary">{currentProject.businessContext}</p>
+                    {currentProject.challenges && (
+                      <ul className="mt-3 space-y-1 list-disc list-inside text-text-secondary">
+                        {currentProject.challenges.map((challenge, index) => (
+                          <li key={index}>{challenge}</li>
+                        ))}
+                      </ul>
+                    )}
+                  </StoryBeat>
+                )}
+
+                {currentProject.addieMethodology?.analysis && (
+                  <StoryBeat step="02" title="What I found">
+                    {currentProject.addieMethodology.analysis.findings && (
+                      <p className="text-text-secondary mb-3">
+                        {currentProject.addieMethodology.analysis.findings}
+                      </p>
+                    )}
+                    {currentProject.addieMethodology.analysis.performanceGaps && (
+                      <p className="text-text-secondary">
+                        {currentProject.addieMethodology.analysis.performanceGaps}
+                      </p>
+                    )}
+                  </StoryBeat>
+                )}
+
+                {currentProject.solutions && (
+                  <StoryBeat step="03" title="What I designed">
+                    <ul className="space-y-1 list-disc list-inside text-text-secondary">
+                      {currentProject.solutions.map((solution, index) => (
+                        <li key={index}><RichText>{solution}</RichText></li>
+                      ))}
+                    </ul>
+                  </StoryBeat>
+                )}
+
+                {currentProject.results && (
+                  <StoryBeat step="04" title="What happened">
+                    <ul className="space-y-1 list-disc list-inside text-text-secondary">
+                      {currentProject.results.map((result, index) => (
+                        <li key={index}><RichText>{result}</RichText></li>
+                      ))}
+                    </ul>
+                  </StoryBeat>
+                )}
+              </div>
+
               <div className="prose max-w-none">
                 <h2>About this Project</h2>
                 <p>{currentProject.longDescription}</p>
-
-                {currentProject.challenges && (
-                  <>
-                    <h3>Challenges</h3>
-                    <ul>
-                      {currentProject.challenges.map((challenge, index) => (
-                        <li key={index}>{challenge}</li>
-                      ))}
-                    </ul>
-                  </>
-                )}
 
                 {/* ADDIE Methodology Section */}
                 {currentProject.addieMethodology && (
@@ -310,16 +427,11 @@ const ProjectDetailPage: React.FC = () => {
                   </>
                 )}
 
-                {currentProject.solutions && (
-                  <>
-                    <h3>Solutions</h3>
-                    <ul>
-                      {currentProject.solutions.map((solution, index) => (
-                        <li key={index}>{solution}</li>
-                      ))}
-                    </ul>
-                  </>
-                )}
+                {/*
+                  `solutions` is rendered above as the "What I designed" beat.
+                  Repeating it here under a second heading made the same list
+                  appear twice on every project page.
+                */}
               </div>
             </BaseCard>
           </motion.div>

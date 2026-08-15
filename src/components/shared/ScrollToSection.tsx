@@ -42,8 +42,15 @@ export const ScrollToSection: React.FC<ScrollToSectionProps> = ({
     }
   };
 
+  /*
+    The onClick handles normal clicks, but the href is still the real link for
+    middle-click, ctrl+click, "open in new tab", "copy link address", and
+    crawlers. Under HashRouter a bare "/about" resolves against the origin
+    rather than the app - on GitHub Pages that is a 404 - so the fallback has
+    to carry the hash.
+  */
   return (
-    <a href={to} onClick={handleClick} className={className}>
+    <a href={`#${to}`} onClick={handleClick} className={className}>
       {children}
     </a>
   );

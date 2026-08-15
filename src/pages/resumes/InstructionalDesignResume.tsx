@@ -12,6 +12,18 @@ const InstructionalDesignResume: React.FC = () => {
     downloadUrl: getImagePath('/documents/Instructional_Design_Resume.pdf'),
     experience: [
       {
+        title: "Instructional Designer",
+        company: "WeYouth (501(c)(3) nonprofit)",
+        period: "March 2026 - Present",
+        highlights: [
+          "Ran LMS market research against the organization's constraints and delivered the platform recommendation the nonprofit adopted",
+          "Implemented SME-authored curriculum into the LMS as enrollable self-paced courses with module architecture, self-assessments, and evaluation surveys",
+          "Built separate athlete, coach, and captain tracks for Mental Performance Connection Coaching, serving young people ages 12-24",
+          "Collaborate with founders, a licensed clinician, and coaching staff as SMEs on restructuring curriculum for self-paced online delivery",
+          "Act as the technical support function for the platform and its administrators"
+        ]
+      },
+      {
         title: "Financial Wellness Intern",
         company: "Chartway Federal Credit Union",
         period: "May 2025 - July 2025",
@@ -27,7 +39,7 @@ const InstructionalDesignResume: React.FC = () => {
       {
         title: "Learning Technology Specialist (Contract)",
         company: "National Association of Certified Valuators and Analysts (NACVA)",
-        period: "Mar 2023 - Aug 2023",
+        period: "April 2023 - Aug 2023",
         highlights: [
           "Optimized continuing education content delivery workflows by converting legacy video content and streamlining backend processing systems",
           "Applied technical skills to reduce course deployment time from weeks to days for professional development member base",

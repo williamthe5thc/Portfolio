@@ -32,12 +32,21 @@ const HomePage: React.FC = () => {
             <h1 className="text-5xl font-bold text-text-primary mb-6">
               Learning Experiences That Work
             </h1>
+            {/*
+              Deliberately does not open with the degree. Hiring advice in this
+              field is consistent that the credential is table stakes and the
+              work is the differentiator, so the lede is what I can do for an
+              organization. The role list is broad on purpose - the same skills
+              are hired under several different titles.
+            */}
             <p className="text-lg text-text-secondary mb-2">
-              <b>Evidence-Based Instructional Designer | Adult Learning Specialist</b>
+              <b>Instructional Design &middot; Learning Experience Design &middot; Learning Technology</b>
             </p>
             <p className="text-xl text-text-secondary mb-8">
-              Evidence-based instructional designer who turns complex learning challenges into effective solutions. 
- M.Ed. graduate ready to help your organization develop training that drives results.
+              I turn learning problems into programs that work &mdash; needs analysis to find
+              what is actually broken, evidence-based design to fix it, and the technical
+              build to ship it. Currently designing connection curriculum for a youth
+              nonprofit; previously certification training for a credit union.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button 
@@ -83,7 +92,8 @@ const HomePage: React.FC = () => {
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold mb-4">Featured Projects</h2>
             <p className="text-xl text-text-secondary">
-              A real client engagement, an Articulate Storyline 360 build, and a graduate curriculum
+              A nonprofit LMS selection and build, a credit union engagement with a
+              measured outcome, and an Articulate Storyline 360 course
             </p>
           </div>
           {/*
