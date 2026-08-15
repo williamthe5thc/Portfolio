@@ -1,5 +1,6 @@
 // src/content/projects/ai-law-course.ts
 import { ProjectBase } from '@/types/content';
+import { getImagePath } from '@/utils';
 
 const aiLawCourse: ProjectBase = {
   detailPage: true,
@@ -7,7 +8,7 @@ const aiLawCourse: ProjectBase = {
   title: 'Graduate Curriculum Design Project - AI & Law Course',
   description: 'I developed this comprehensive 10-module graduate course on AI and law, demonstrating my ability to translate complex technical concepts for legal professionals. This project involved extensive collaboration with university faculty and showcased my advanced curriculum design skills.',
   longDescription: `Academic project completed as part of my M.Ed. program, designing a comprehensive graduate-level course for the University of Utah's S.J. Quinney College of Law. This challenging project required translating complex artificial intelligence concepts into accessible learning experiences for Master of Legal Studies students, demonstrating my ability to work with complex content and diverse subject matter experts. Applied competency-based instructional design principles learned in graduate coursework to create a 40+ hour curriculum covering AI foundations, prompt engineering, legal applications, and professional ethics. The project involved extensive collaboration with legal and technical faculty, providing valuable experience in SME coordination and academic curriculum development. This project showcases my ability to handle complex instructional design challenges and apply systematic methodology to real-world educational needs.`,
-  image: "/images/thumbnails/ai-law-course.png",
+  image: getImagePath('/images/thumbnails/ai-law-course.png'),
   category: 'id',
   tags: [
     'Curriculum Development',
@@ -21,9 +22,13 @@ const aiLawCourse: ProjectBase = {
   ],
   status: 'completed',
   date: '2024',
+  metrics: [
+    { value: '10', label: 'Graduate modules designed' },
+    { value: '40+ hrs', label: 'Of curriculum delivered' }
+  ],
   
   // Demo URL for interactive preview
-  demoUrl: '/demos/ai-law-course/index.html',
+  demoUrl: getImagePath('/demos/ai-law-course/index.html'),
   
   tools: [
     'Canvas LMS',

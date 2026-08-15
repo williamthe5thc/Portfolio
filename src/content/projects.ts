@@ -1,11 +1,16 @@
 // src/content/projects.ts
 /**
  * @file projects.ts
- * @description Strategic 3-category instructional design portfolio
+ * @description Curated 6-project instructional design portfolio
  * @module content
- * 
- * Based on Jordan's positioning strategy:
- * - CATEGORY 1 (Lead): Instructional Design - pure ID work
+ *
+ * Sizing rationale (see ./projects/archived/README.md):
+ * ID hiring managers review 3-6 projects and judge by the best piece, not the
+ * total. A curated set outperforms a catalog, so everything else lives in
+ * archived/ rather than shipping.
+ *
+ * Ordering is deliberate:
+ * - CATEGORY 1 (Lead): Instructional Design - pure ID work, flagship first
  * - CATEGORY 2: Learning Technology - ID + technical skills combined
  * - CATEGORY 3: Technical Projects - pure coding demonstrations
  */
@@ -15,29 +20,20 @@ import { ProjectBase } from '@/types/content';
 // ========================================
 // CATEGORY 1: INSTRUCTIONAL DESIGN
 // ========================================
-import aiLawCourse from './projects/ai-law-course';
-import professionalCommunicationTraining from './projects/professional-communication-training';
 import chartwayFicepEnhanced from './projects/chartway-ficep-enhanced';
+import professionalCommunicationTraining from './projects/professional-communication-training';
+import aiLawCourse from './projects/ai-law-course';
 import waltzCourse from './projects/course-waltz';
-import howToVideos from './projects/how-to-videos';
-import egoDepletion from './projects/ego-depletion';
-import empathyResearch from './projects/empathy-research';
 
 // ========================================
 // CATEGORY 2: LEARNING TECHNOLOGY
 // ========================================
-import biasReductionPsychology from './projects/bias-reduction-psychology';
 import variableTimer from './projects/variable-timer';
-import gamificationStemEducation from './projects/gamification-stem-education';
-import stakeholderDigitalEngagement from './projects/stakeholder-digital-engagement';
 
 // ========================================
 // CATEGORY 3: TECHNICAL PROJECTS
 // ========================================
 import nacvaAutomation from './projects/nacva-automation';
-import objectTracking from './projects/object-tracking';
-import jeopardyGame from './projects/jeopardy-game';
-import yahtzeeGame from './projects/yahtzee-game';
 
 /**
  * All projects organized by strategic categories
@@ -45,37 +41,30 @@ import yahtzeeGame from './projects/yahtzee-game';
  */
 export const projects: ProjectBase[] = [
   // CATEGORY 1: Instructional Design (Lead with these)
-  aiLawCourse,                         // Graduate curriculum design
-  professionalCommunicationTraining,   // Articulate Storyline 360 mastery
-  chartwayFicepEnhanced,              // Current financial wellness internship
+  chartwayFicepEnhanced,               // FLAGSHIP - real client, real data
+  professionalCommunicationTraining,   // Articulate Storyline 360 - the baseline screen
+  aiLawCourse,                         // Graduate curriculum design + AI subject matter
   waltzCourse,                         // Canvas LMS comprehensive course
-  howToVideos,                         // AI-enhanced video development
-  egoDepletion,                        // Research methodology foundation
-  empathyResearch,                     // DEI training research foundation
-  
+
   // CATEGORY 2: Learning Technology (Bridge ID + Tech)
-  biasReductionPsychology,            // Psychology experiment for education
   variableTimer,                       // Behavioral learning technology for ABA
-  gamificationStemEducation,           // Deal or No Deal for STEM engagement
-  stakeholderDigitalEngagement,        // Chili cookoff voting platform
-  
+
   // CATEGORY 3: Technical Projects (Pure coding)
-  nacvaAutomation,                     // Backend automation for LMS
-  objectTracking,                      // Computer vision project
-  jeopardyGame,                        // Cultural learning game
-  yahtzeeGame                          // Command line game development
+  nacvaAutomation                      // Backend automation for LMS
 ];
 
 // Export project IDs for type safety
 export type ProjectId = typeof projects[number]['id'];
 
 /**
- * Featured projects for homepage - Top 3 that best represent capabilities
+ * Featured projects for homepage - the three that carry the most hiring weight.
+ * Rendered as a visible grid, not a carousel: a flagship behind a click is a
+ * flagship nobody sees.
  */
 export const featuredProjects: ProjectBase[] = [
-  aiLawCourse,                         // Graduate curriculum design excellence
+  chartwayFicepEnhanced,               // Real client engagement with quantified findings
   professionalCommunicationTraining,   // Advanced Articulate Storyline 360
-  chartwayFicepEnhanced               // Current financial wellness internship
+  aiLawCourse                          // Graduate curriculum design excellence
 ];
 
 /**
@@ -83,25 +72,16 @@ export const featuredProjects: ProjectBase[] = [
  */
 export const projectsByCategory = {
   'id': [
-    aiLawCourse,
-    professionalCommunicationTraining,
     chartwayFicepEnhanced,
-    waltzCourse,
-    howToVideos,
-    egoDepletion,
-    empathyResearch
+    professionalCommunicationTraining,
+    aiLawCourse,
+    waltzCourse
   ],
   'learning-tech': [
-    biasReductionPsychology,
-    variableTimer,
-    gamificationStemEducation,
-    stakeholderDigitalEngagement
+    variableTimer
   ],
   'technical': [
-    nacvaAutomation,
-    objectTracking,
-    jeopardyGame,
-    yahtzeeGame
+    nacvaAutomation
   ]
 };
 
@@ -111,13 +91,13 @@ export const projectsByCategory = {
 export const projectTiers = {
   // Top 3 for immediate hiring manager impact
   featured: featuredProjects,
-  
+
   // Core instructional design work
   instructionalDesign: projectsByCategory['id'],
-  
+
   // Learning technology bridge
   learningTechnology: projectsByCategory['learning-tech'],
-  
+
   // Technical demonstrations
   technical: projectsByCategory['technical']
 };

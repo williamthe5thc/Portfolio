@@ -6,7 +6,8 @@ import { ScrollToSection } from '@/components/shared/ScrollToSection';
 import { motion } from 'framer-motion';
 import { GraduationCap, Award } from 'lucide-react';
 import {RouteTransition} from '@/components/layout/RouteTransition';
-import { ProjectCarousel, PageTransition } from '@/components/shared';
+import { PageTransition } from '@/components/shared';
+import { ProjectGrid } from '@/components/features/portfolio/ProjectGrid';
 import { Button, BaseCard, JourneyCard, StatsGrid, CoreCompetency } from '@/components/ui';
 import { fadeInUp, staggerContainer } from '@/lib/animations';
 import { siteConfig, projects, stats, education, competencies } from '@/content';
@@ -81,10 +82,19 @@ const HomePage: React.FC = () => {
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold mb-4">Featured Projects</h2>
+            <p className="text-xl text-text-secondary">
+              A real client engagement, an Articulate Storyline 360 build, and a graduate curriculum
+            </p>
           </div>
-          <div className="max-w-5xl mx-auto">
-            <ProjectCarousel projects={featuredProjects} />
-          </div>
+          {/*
+            Shown as a grid rather than a carousel: hiring managers skim, and a
+            flagship parked on slide two is a flagship nobody sees.
+          */}
+          <ProjectGrid
+            projects={featuredProjects}
+            showFilters={false}
+            className="max-w-6xl mx-auto"
+          />
         </div>
       </section>
 

@@ -1,9 +1,18 @@
 // src/content/info.ts
+/**
+ * Site-level proof points.
+ *
+ * Every figure here traces to a specific project file - 278 and 26 min from
+ * professional-communication-training, 40+ hrs from ai-law-course, 21 from the
+ * Chartway needs analysis. Counts of things produced ("workflows", "tools
+ * mastered") were removed: they measure activity rather than outcome, and
+ * "Organizations Served: 2" advertised inexperience.
+ */
 export const stats = [
-  { label: "Graduate-Level Projects", value: "8+" },
-  { label: "Learning Technologies Mastered", value: "10+" },
-  { label: "Professional Development Workflows", value: "25+" },
-  { label: "Organizations Served", value: "2" }
+  { label: "Storyline 360 slides authored", value: "278" },
+  { label: "Hours of graduate curriculum designed", value: "40+" },
+  { label: "Learners surveyed in a live needs analysis", value: "21" },
+  { label: "Instructional Design, University of Utah", value: "M.Ed." }
 ];
 
 // Instructional Design focused categories - aligned with actual project categories

@@ -42,12 +42,21 @@ export interface ProjectBase {
   image: string;
   projectUrl?: string;
   demoUrl?: string;
-  detailPage?: boolean;
   category: ProjectCategory;
   tags: string[];
   status: ProjectStatus;
   date: string;
   tools?: string[];
+
+  /**
+   * Quantified outcomes surfaced as scannable tiles on the detail page.
+   * Hiring managers skim for numbers before they read prose, so keep these
+   * to figures that came from real project data.
+   */
+  metrics?: Array<{
+    value: string;
+    label: string;
+  }>;
   methodology?: string;
   learningObjectives?: string[];
   challenges?: string[];
@@ -149,10 +158,15 @@ export interface ProjectBase {
 
 export type ProjectStatus = 'in-progress' | 'completed' | 'planned';
 
-export type ProjectCategory = 
+/**
+ * Must stay in sync with `projectCategories` in src/content/info.ts - those ids
+ * drive the portfolio filter buttons, and a value here that has no entry there
+ * produces a category nothing can filter to.
+ */
+export type ProjectCategory =
   | 'id'
-  | 'learning-technology'
-  | 'assessment';
+  | 'learning-tech'
+  | 'technical';
 
 export interface ProjectCategoryInfo {
   id: ProjectCategory;

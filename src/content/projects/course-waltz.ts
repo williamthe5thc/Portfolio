@@ -1,20 +1,24 @@
 // src/content/projects/waltz-course.ts
 import { ProjectBase } from '@/types/content';
+import { getImagePath } from '@/utils';
 
 const waltzCourse: ProjectBase = {
   detailPage: true,
   id: "teaching-waltz",
   title: "Teaching the Waltz Online Course",
-  description: "Evidence-based online dance education course applying ADDIE methodology and ARCS motivation model to transform physical dance instruction into engaging digital learning experience",
+  description: "I created this online dance education course for teaching waltz to beginners. This project involved applying ADDIE methodology and ARCS motivation model to transform physical dance instruction into an engaging digital learning experience.",
   longDescription: "Systematic instructional design project creating comprehensive online waltz education for The Social Dance Effect community. Applied complete ADDIE methodology including learner analysis, competency-based objectives, and multi-modal instruction design. Integrated ARCS motivation model to maintain engagement in virtual dance learning environment. Featured Universal Design for Learning principles ensuring accessibility across diverse learner populations. Course structure accommodates both visual and kinesthetic learning preferences through innovative online-to-physical skill transfer methodologies.",
-  image: "/images/thumbnails/how-to-waltz.jpg",
+  image: getImagePath('/images/thumbnails/how-to-waltz.jpg'),
   category: "id",
   tags: ["Instructional Design", "Online Learning", "Dance Education", "Canvas LMS", "Curriculum Development"],
   status: "completed",
   date: "2023",
+  metrics: [
+    { value: '4', label: 'Participants in small-group formative evaluation' }
+  ],
   
   // Case Study Documentation
-  projectUrl: '/case-studies/waltz-formative-evaluation.pdf',
+  projectUrl: getImagePath('/case-studies/waltz-formative-evaluation.pdf'),
   tools: ["Canvas LMS", "Adobe Premier Pro", "Educational Design Tools"],
   methodology: "Comprehensive ADDIE Framework with ARCS Motivation Model Integration and Universal Design for Learning Implementation",
   learningObjectives: [

@@ -1,5 +1,6 @@
 // src/content/projects/kathario.ts
 import { ProjectBase } from '@/types/content';
+import { getImagePath } from '@/utils';
 
 const kathario: ProjectBase = {
   detailPage: true,
@@ -9,7 +10,7 @@ const kathario: ProjectBase = {
   longDescription: `Developed an innovative educational intervention based on psychology research principles, designed to reduce unconscious biases and discrimination through interactive engagement. This project applied evidence-based psychology methodologies to create a learning experience that addresses implicit bias reduction through systematic exposure and cognitive engagement.
 
 The intervention was grounded in established psychological research on bias reduction and implemented through interactive technology to create a scalable educational tool. The project demonstrates the application of learning science principles to address critical social learning objectives in bias reduction and inclusive behavior development.`,
-  image: "/images/thumbnails/Presentation - Applied Psychology for Bias Reduction.png",
+  image: getImagePath('/images/thumbnails/Presentation - Applied Psychology for Bias Reduction.png'),
   category: 'learning-tech',
   tags: [
     'Psychology Research',

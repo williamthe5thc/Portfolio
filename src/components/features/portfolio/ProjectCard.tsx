@@ -115,11 +115,9 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
     console.log('Project ID:', project.id);
     console.log('Detail Page:', project.detailPage);
     
-    if (project.projectUrl) {
-      console.log("Opening external url");
-      window.open(project.projectUrl, '_blank');
-    } else if (project.detailPage) {
-      console.log("Opening internal details url");
+    // Always navigate to detail page if available (user preference)
+    if (project.detailPage) {
+      console.log("Opening internal details page");
       // Get current filter from URL or default to featured
       const searchParams = new URLSearchParams(location.search);
       const currentFilter = searchParams.get('category') || 'featured';
@@ -129,8 +127,10 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
         state: { from: currentFilter }
       });
       window.scrollTo(0, 0);
-    }
-    else {
+    } else if (project.projectUrl) {
+      console.log("Opening external url (no detail page available)");
+      window.open(project.projectUrl, '_blank');
+    } else {
       console.log('No action - missing projectUrl or detailPage flag');
     }
   };

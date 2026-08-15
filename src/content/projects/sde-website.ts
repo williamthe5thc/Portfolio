@@ -1,5 +1,6 @@
 // src/content/projects/sde-website.ts
 import { ProjectBase } from '@/types/content';
+import { getImagePath } from '@/utils';
 
 const sdeWebsite: ProjectBase = {   detailPage: true,
   id: 'sde-website',
@@ -9,7 +10,7 @@ const sdeWebsite: ProjectBase = {   detailPage: true,
   learning and community organization in Utah's Salt Lake Valley. The platform integrates dance instruction, event 
   management, and community features to create an engaging hub for dance enthusiasts. The website serves as a central 
   point for learning resources, event coordination, and community engagement.`,
-  image: "/images/thumbnails/coming_soon.png",
+  image: getImagePath('/images/thumbnails/coming_soon.png'),
   category: 'development',
   tags: [
     'Web Development',

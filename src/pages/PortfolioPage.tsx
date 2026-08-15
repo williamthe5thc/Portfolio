@@ -9,14 +9,20 @@ import { fadeInUp } from '@/lib/animations';
 import { siteConfig, projects, featuredProjects, projectCategories } from '@/content';
 import BasePage from './BasePage';
 
+const VALID_CATEGORIES = ['featured', 'all', 'id', 'learning-tech', 'technical'];
+
 const PortfolioPage = () => {
   const [searchParams] = useSearchParams();
   const location = useLocation();
   const [activeCategory, setActiveCategory] = useState('featured');
 
+  // Read the primitives, not the objects: useSearchParams/useLocation hand back
+  // fresh instances each render, so depending on them made this effect re-fire
+  // constantly and reset activeCategory - which silently ate every filter click.
+  const categoryParam = searchParams.get('category');
+  const preservedFilter = (location.state as any)?.preserveFilter as string | undefined;
+
   useEffect(() => {
-    // Check if we're preserving a filter from navigation state
-    const preservedFilter = (location.state as any)?.preserveFilter;
     if (preservedFilter) {
       setActiveCategory(preservedFilter);
       // Clean up state
@@ -24,14 +30,12 @@ const PortfolioPage = () => {
       return;
     }
 
-    // Otherwise check URL params
-    const category = searchParams.get('category');
-    if (category && ['featured', 'all', 'id', 'learning-tech', 'technical'].includes(category)) {
-      setActiveCategory(category);
-    } else {
-      setActiveCategory('featured');
+    // Only honour an explicit URL category. Falling back to 'featured' here
+    // would overwrite whatever the user just clicked.
+    if (categoryParam && VALID_CATEGORIES.includes(categoryParam)) {
+      setActiveCategory(categoryParam);
     }
-  }, [searchParams, location]);
+  }, [categoryParam, preservedFilter]);
 
   const filterProjects = (category: string) => {
     if (category === 'all') return projects;
@@ -102,8 +106,11 @@ const PortfolioPage = () => {
     >
       <div className="py-20">
         <CategoryFilters />
-        <ProjectGrid 
+        {/* showFilters=false: this page already renders CategoryFilters above,
+            and the grid's own filter row was a second, conflicting control. */}
+        <ProjectGrid
           projects={filteredProjects}
+          showFilters={false}
           className="mb-20"
         />
       </div>

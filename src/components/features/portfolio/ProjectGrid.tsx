@@ -35,7 +35,7 @@
  */
 
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { ProjectCard } from './ProjectCard';
 import { fadeInUp, staggerContainer } from '@/lib/animations';
 import { ProjectBase, ProjectCategory } from '@/types/content';
@@ -118,25 +118,32 @@ export const ProjectGrid: React.FC<ProjectGridProps> = ({
         </motion.div>
       )}
       
-      {/* Projects Grid */}
-      <motion.div 
+      {/*
+        Projects Grid.
+
+        No AnimatePresence here, deliberately. It previously wrapped this list
+        with mode="wait" - a single-child API - which starved incoming cards so
+        each category rendered one unrelated project. Switching to sync mode
+        traded that for the opposite failure: combined with `layout`, exiting
+        cards never unmounted and filters only ever added, so "Technical
+        Projects" displayed all six. A filtered list needs the DOM to match the
+        filter; the exit flourish is not worth showing the wrong projects.
+        Cards still animate in on mount.
+      */}
+      <motion.div
         className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
         variants={staggerContainer}
       >
-        <AnimatePresence mode="wait">
-          {filteredProjects.map(project => (
-            <motion.div
-              key={project.id}
-              layout
-              variants={fadeInUp}
-              initial="initial"
-              animate="animate"
-              exit="exit"
-            >
-              <ProjectCard project={project} />
-            </motion.div>
-          ))}
-        </AnimatePresence>
+        {filteredProjects.map(project => (
+          <motion.div
+            key={project.id}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.2 }}
+          >
+            <ProjectCard project={project} />
+          </motion.div>
+        ))}
       </motion.div>
       
       {/* Empty State */}

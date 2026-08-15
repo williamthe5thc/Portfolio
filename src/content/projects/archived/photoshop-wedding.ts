@@ -1,5 +1,6 @@
 // src/content/projects/photoshop-wedding.ts
 import { ProjectBase } from '@/types/content';
+import { getImagePath } from '@/utils';
 
 const weddingEdit: ProjectBase = {   detailPage: true,
   id: "wedding-photo-edit",

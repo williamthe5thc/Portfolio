@@ -1,12 +1,13 @@
 // src/content/projects/object-tracking.ts
 import { ProjectBase } from '@/types/content';
+import { getImagePath } from '@/utils';
 
 const objectTracking: ProjectBase = {   detailPage: true,
   id: 'object-tracking-assessment',
   title: 'Performance Assessment Technology - Video Analysis',
   description: 'Developed video-based performance tracking technology for objective skills assessment, enabling data-driven evaluation of hands-on learning outcomes',
   longDescription: `Pioneered innovative video analysis technology for objective performance assessment in hands-on learning environments. Created sophisticated tracking systems capable of monitoring precise movements, tool usage, and procedural compliance during practical skills demonstrations. This technology addresses the critical challenge of objective assessment in simulation-based training and skills certification programs, providing data-driven insights into learner performance that traditional observation methods cannot capture.`,
-  image: "/images/thumbnails/Object Tracking.png",
+  image: getImagePath('/images/thumbnails/Object Tracking.png'),
   category: 'technical',
   tags: [
     'Performance Assessment',

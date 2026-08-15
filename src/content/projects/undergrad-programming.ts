@@ -1,5 +1,6 @@
 // src/content/projects/undergrad-programming.ts
 import { ProjectBase } from '@/types/content';
+import { getImagePath } from '@/utils';
 
 const undergradProgramming: ProjectBase = {   detailPage: true,
   id: 'undergrad-programming',
@@ -8,7 +9,7 @@ const undergradProgramming: ProjectBase = {   detailPage: true,
   longDescription: `Participated in a team-based programming project during undergraduate studies that focused on developing 
   software solutions through collaborative effort. The project emphasized version control, team coordination, and software 
   development best practices while delivering functional solutions to real-world problems.`,
-  image: "/images/thumbnails/coming_soon.png",
+  image: getImagePath('/images/thumbnails/coming_soon.png'),
   category: 'development',
   tags: [
     'Team Development',

@@ -1,5 +1,6 @@
 // src/content/projects/nacva-automation.ts
 import { ProjectBase } from '@/types/content';
+import { getImagePath } from '@/utils';
 
 const nacvaAutomation: ProjectBase = {
   detailPage: true,
@@ -11,7 +12,7 @@ const nacvaAutomation: ProjectBase = {
 CVA and MAFF are highly respected, nationally accredited credentials for CPAs, business valuators, and financial litigation consultants. My work focused on modernizing their learning content delivery systems and eliminating time-consuming manual data entry processes that delayed course deployment for busy professionals seeking these certifications.
 
 This contractor role provided valuable experience in learning technology optimization for professional development organizations, demonstrating how technical automation can significantly improve educational content delivery for specialized professional audiences.`,
-  image: "/images/thumbnails/Presentation - NACVA Professional Certification Technology.png",
+  image: getImagePath('/images/thumbnails/Presentation - NACVA Professional Certification Technology.png'),
   category: 'technical',
   tags: [
     'Learning Technology',
@@ -26,7 +27,7 @@ This contractor role provided valuable experience in learning technology optimiz
   date: 'Apr 2023 - Aug 2023',
   
   // Interactive demo URL
-  demoUrl: '/demos/nacva-automation/index.html',
+  demoUrl: getImagePath('/demos/nacva-automation/index.html'),
   
   tools: [
     'Learning Management Systems',

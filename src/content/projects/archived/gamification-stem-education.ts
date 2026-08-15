@@ -1,5 +1,6 @@
 // src/content/projects/deal-or-no-deal.ts
 import { ProjectBase } from '@/types/content';
+import { getImagePath } from '@/utils';
 
 const dealOrNoDeal: ProjectBase = {
   detailPage: true,
@@ -9,7 +10,7 @@ const dealOrNoDeal: ProjectBase = {
   longDescription: `Developed an interactive Deal or No Deal game using Adobe Flash and ActionScript specifically as an educational tool to inspire students and demonstrate practical programming applications. The game was designed to engage students through familiar game mechanics while showcasing programming capabilities and encouraging interest in STEM careers.
 
 This project applied gamification principles to create an engaging learning experience that bridges entertainment and education. By recreating a popular game show format, the project demonstrated how programming concepts can be applied to create interactive experiences, serving as both a learning tool and inspiration for students considering programming careers.`,
-  image: "/images/thumbnails/DOND.png",
+  image: getImagePath('/images/thumbnails/DOND.png'),
   category: 'learning-tech',
   tags: [
     'Gamification',

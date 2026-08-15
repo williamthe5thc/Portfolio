@@ -1,5 +1,6 @@
 // src/content/projects/sacrament-macro.ts
 import { ProjectBase } from '@/types/content';
+import { getImagePath } from '@/utils';
 
 const sacramentMacro: ProjectBase = {   detailPage: true,
   id: 'sacrament-macro',
@@ -9,7 +10,7 @@ const sacramentMacro: ProjectBase = {   detailPage: true,
   to streamline the creation of weekly meeting programs for bulletin board specialists. The macro 
   automated the process of generating formatted programs for meetings with over one hundred attendees, 
   significantly reducing manual effort and ensuring consistency.`,
-  image: "/images/thumbnails/coming_soon.png",
+  image: getImagePath('/images/thumbnails/coming_soon.png'),
   category: 'development',
   tags: [
     'VBA',

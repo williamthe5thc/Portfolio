@@ -1,5 +1,6 @@
 // src/content/projects/chartway-ficep.ts
 import { ProjectBase } from '@/types/content';
+import { getImagePath } from '@/utils';
 
 const chartwayFicep: ProjectBase = {
   detailPage: true,

@@ -2,13 +2,14 @@
 import React from 'react';
 import BasePage from '../BasePage';
 import ResumeTemplate from '@/components/shared/ResumeTemplate';
+import { getImagePath } from '@/utils';
 
 const InstructionalDesignResume: React.FC = () => {
   const resumeData = {
     title: "Instructional Design Resume",
     subtitle: "Learning Experience Designer & Educational Technology Specialist",
     summary: `Innovative instructional designer with a focus on creating engaging, effective learning experiences. Skilled in educational technology and curriculum development.`,
-    downloadUrl: "/documents/Instructional-Design-Resume.pdf",
+    downloadUrl: getImagePath('/documents/Instructional_Design_Resume.pdf'),
     experience: [
       {
         title: "Financial Wellness Intern",

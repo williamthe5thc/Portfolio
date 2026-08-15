@@ -139,6 +139,24 @@ const ProjectDetailPage: React.FC = () => {
                   className="w-full h-auto rounded-lg mb-6"
                 />
               )}
+              {currentProject.metrics && currentProject.metrics.length > 0 && (
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
+                  {currentProject.metrics.map((metric) => (
+                    <div
+                      key={metric.label}
+                      className="text-center bg-primary-50 rounded-lg p-4"
+                    >
+                      <div className="text-3xl font-bold text-primary-600 mb-1">
+                        {metric.value}
+                      </div>
+                      <div className="text-sm text-text-secondary">
+                        {metric.label}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+
               <div className="prose max-w-none">
                 <h2>About this Project</h2>
                 <p>{currentProject.longDescription}</p>

@@ -14,7 +14,7 @@ const resumeTypes = [
     icon: BookOpen,
     color: 'bg-primary-500',
     path: '/resume/instructional',
-    downloadPath: '/resumes/instructional-design-resume.pdf'
+    downloadPath: 'documents/Instructional_Design_Resume.pdf'
   },
   {
     id: 'software',
@@ -23,7 +23,7 @@ const resumeTypes = [
     icon: Code,
     color: 'bg-blue-500',
     path: '/resume/software',
-    downloadPath: '/resumes/software-dev-resume.pdf'
+    downloadPath: 'documents/Coding_Resume.pdf'
   },
   {
     id: 'academic',
@@ -32,7 +32,7 @@ const resumeTypes = [
     icon: GraduationCap,
     color: 'bg-purple-500',
     path: '/resume/academic',
-    downloadPath: '/resumes/academic-resume.pdf'
+    downloadPath: 'documents/Academic_Resume.pdf'
   }
 ];
 

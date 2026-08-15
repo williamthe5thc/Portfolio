@@ -1,5 +1,6 @@
 // src/content/projects/variable-timer.ts
 import { ProjectBase } from '@/types/content';
+import { getImagePath } from '@/utils';
 
 const variableTimer: ProjectBase = {
   detailPage: true,
@@ -9,7 +10,7 @@ const variableTimer: ProjectBase = {
   longDescription: `Developed specialized mobile learning technology for Registered Behavior Technicians (RBTs) working in Applied Behavior Analysis (ABA) therapy. The application provides variable interval timing to support evidence-based behavioral reinforcement strategies, helping RBTs optimize the timing of interventions during therapy sessions with children.
 
 This tool applies behavioral psychology principles and learning science research to create practical technology that enhances therapeutic outcomes. The variable timing functionality is based on established ABA methodology for reinforcement scheduling, demonstrating the application of learning technology to support professional practice in behavioral health settings.`,
-  image: "/images/projects/variable_timer.png",
+  image: getImagePath('/images/projects/variable_timer.png'),
   category: 'learning-tech',
   tags: [
     'ABA Therapy',

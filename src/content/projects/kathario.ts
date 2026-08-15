@@ -1,5 +1,6 @@
 // src/content/projects/kathario.ts
 import { ProjectBase } from '@/types/content';
+import { getImagePath } from '@/utils';
 
 const kathario: ProjectBase = {
   detailPage: true,
@@ -9,7 +10,7 @@ const kathario: ProjectBase = {
   longDescription: `Collaborated with a team to develop Kathario, an educational crossword puzzle application 
   designed to increase users' knowledge of dancing. The project was created for a client to make learning dance 
   terminology more engaging and interactive.`,
-  image: "/images/thumbnails/coming_soon.png",
+  image: getImagePath('/images/thumbnails/coming_soon.png'),
   category: 'development',
   tags: [
     'Team Development',

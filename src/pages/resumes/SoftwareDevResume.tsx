@@ -2,55 +2,73 @@
 import React from 'react';
 import BasePage from '../BasePage';
 import ResumeTemplate from '@/components/shared/ResumeTemplate';
+import { getImagePath } from '@/utils';
 
 const SoftwareDevResume: React.FC = () => {
   const resumeData = {
     title: "Software Development Resume",
-    subtitle: "Full-Stack Developer & Technical Problem Solver",
-    summary: `Results-driven software developer with expertise in React, Python, and full-stack development. Passionate about creating efficient, user-friendly solutions and automating complex processes.`,
-    downloadUrl: "/documents/Software-Dev-Resume.pdf",
+    subtitle: "Learning Engineer & Technical Problem Solver",
+    summary: `Developer who builds the technical layer of learning programs - Python automation for LMS backends, React and TypeScript front ends, and the tooling that connects instructional design teams to engineering. Psychology and instructional design background means I can talk to both sides.`,
+    downloadUrl: getImagePath('/documents/Coding_Resume.pdf'),
+    experience: [
+      {
+        title: "Instructional Design Intern",
+        company: "Chartway Federal Credit Union",
+        period: "May 2025 - July 2025",
+        highlights: [
+          "Ran a mixed-methods needs analysis for the FiCEP certification program: 5 semi-structured interviews and a survey returning 21 responses",
+          "Applied thematic analysis to identify the top barrier to certification (limited protected study time, 23 mentions)",
+          "Delivered an evidence-based recommendation set covering organizational support, practice-exam alignment, and content personalization"
+        ]
+      },
+      {
+        title: "Instructional Designer - Contractor",
+        company: "National Association of Certified Valuators and Analysts (NACVA)",
+        period: "Mar. 2023 - Aug. 2023",
+        highlights: [
+          "Wrote Python automation to streamline backend data management for the CVA and MAFF certification programs",
+          "Converted and processed training video content for continuing-education delivery",
+          "Migrated instructional content off legacy platforms"
+        ]
+      }
+    ],
     projects: [
       {
         title: "NACVA Course Processing Automation",
-        description: "Developed Python scripts to automate course processing and data entry, significantly improving workflow efficiency. Reduced processing time by 75% for professional development content delivery.",
+        description: "Python scripts that automate course processing and backend data entry for professional certification programs, replacing manual repetitive work in the content delivery pipeline.",
         url: "/portfolio/nacva-automation"
       },
       {
-        title: "Object Tracking - Computer Vision",
-        description: "Developed fully functional command line implementation of the classic Yahtzee dice game in C++, demonstrating advanced programming fundamentals and attention to user experience.",
-        url: "/portfolio/object-tracking"
-      },
-      {
-        title: "Command Line Yahtzee Game",
-        description: "Created command line Yahtzee game in C++ showcasing strong programming fundamentals, game logic implementation, and user interaction design.",
-        url: "/portfolio/yahtzee-command-line"
-      },
-      {
-        title: "Gamification & Cultural Learning",
-        description: "Designed and implemented Jeopardy-style game for gamification and cultural learning using web technologies.",
-        url: "/portfolio/jeopardy-game"
-      },
-      {
         title: "Variable Interval Timer",
-        description: "Built behavioral learning technology tool for ABA therapy applications using modern web development frameworks.",
+        description: "Behavioral learning technology tool built for ABA therapy applications, applying spaced-interval reinforcement principles in a modern web front end.",
         url: "/portfolio/variable-timer"
       },
       {
-        title: "Stakeholder Digital Engagement Platform",
-        description: "Developed chili cookoff voting platform demonstrating full-stack development capabilities and user engagement design.",
-        url: "/portfolio/stakeholder-digital-engagement"
+        title: "This Portfolio Site",
+        description: "React 18 + TypeScript + Vite + Tailwind, with a typed content layer, dual staging/production deploy pipeline, and Vitest coverage."
       }
     ],
     education: [
+      {
+        degree: "Master of Education",
+        field: "Instructional Design & Educational Technology",
+        institution: "University of Utah",
+        period: "2023 - 2025",
+        relevantCourses: [
+          "Learning Analytics",
+          "Educational Technology",
+          "Instructional Systems Design"
+        ]
+      },
       {
         degree: "Bachelor of Science",
         field: "Psychology",
         institution: "Brigham Young University - Idaho",
         period: "2012 - 2018",
         relevantCourses: [
+          "Certificate in Programming",
           "Data Structures",
-          "Algorithms",
-          "Web Development"
+          "Statistical Analysis"
         ]
       }
     ],
@@ -67,14 +85,7 @@ const SoftwareDevResume: React.FC = () => {
         category: "Tools & Platforms",
         skills: ["Git", "VS Code", "AWS", "Docker"]
       }
-    ],
-    projects: [
-      {
-        title: "NACVA Course Processing Automation",
-        description: "Developed Python scripts to automate course processing and data entry, significantly improving workflow efficiency.",
-        url: "https://github.com/yourusername/nacva-automation"
-      }
-    ]
+      ]
   };
 
   return (

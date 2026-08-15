@@ -1,5 +1,6 @@
 // src/content/projects/art-commission-1.ts
 import { ProjectBase } from '@/types/content';
+import { getImagePath } from '@/utils';
 
 const artCommission1: ProjectBase = {
   detailPage: true,
