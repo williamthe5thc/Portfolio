@@ -41,6 +41,38 @@ const aiLawCourse: ProjectBase = {
 
   // Demo URL for interactive preview
   demoUrl: getImagePath('/demos/ai-law-course/index.html'),
+  // The course lives in Canvas and cannot be linked publicly, so this opens
+  // the design record. Calling that an "interactive demo" would oversell it.
+  demoLabel: 'View Design Record',
+
+  /*
+    Coursework artifacts, converted to web pages and redacted. The faculty
+    sponsor's name and contact details and both teammates' names are removed;
+    the syllabus and collaboration plan are not published at all because they
+    carry personal phone numbers and email addresses.
+  */
+  artifacts: [
+    {
+      label: 'Client Interview',
+      href: '/case-studies/ai-law/client-interview.html',
+      description: 'The scoping conversation with the faculty sponsor that set what the course had to do'
+    },
+    {
+      label: 'HCI Cognitive Walkthrough',
+      href: '/case-studies/ai-law/cognitive-walkthrough.html',
+      description: 'A usability walkthrough run against our own course build - the step most course design skips'
+    },
+    {
+      label: 'Instructional Strategies',
+      href: '/case-studies/ai-law/instructional-strategies.html',
+      description: 'The instructional approach chosen for each part of the course, with the reasoning behind it'
+    },
+    {
+      label: 'Media Selection',
+      href: '/case-studies/ai-law/media-selection.html',
+      description: 'Why each medium was chosen for each kind of content, rather than defaulting to video throughout'
+    }
+  ],
   
   tools: [
     'Canvas LMS',

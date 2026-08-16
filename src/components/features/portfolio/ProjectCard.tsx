@@ -213,7 +213,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
                 className="px-4 py-2 bg-primary-500 text-white rounded-lg hover:bg-primary-600 transition-colors flex items-center gap-2"
               >
                 <ExternalLink className="w-4 h-4" />
-                View Demo
+                {project.demoLabel ?? 'View Demo'}
               </button>
             )}
             {project.projectUrl && (

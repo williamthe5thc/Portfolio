@@ -503,7 +503,7 @@ const ProjectDetailPage: React.FC = () => {
                       icon={ExternalLink}
                       target="_blank"
                     >
-                      View Interactive Demo
+                      {currentProject.demoLabel ?? 'View Interactive Demo'}
                     </Button>
                   )}
                   {currentProject.projectUrl && (

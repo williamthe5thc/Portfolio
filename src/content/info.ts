@@ -9,7 +9,11 @@
  * "Organizations Served: 2" advertised inexperience.
  */
 export const stats = [
-  { label: "Storyline 360 slides authored", value: "278" },
+  // Leads with an outcome rather than output. "278 Storyline slides authored"
+  // was true but measured effort - a reader cannot tell from a slide count
+  // whether the course worked. Exam failures after the redesign can only move
+  // in one direction if the design did its job.
+  { label: "Exam failures since my certification redesign launched", value: "2" },
   // Was "40+ hours of graduate curriculum". That figure came from a mock-up
   // rather than the course itself - the real syllabus never mentions hours.
   // Weekly modules are countable from the schedule.

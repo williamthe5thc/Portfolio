@@ -42,6 +42,12 @@ export interface ProjectBase {
   image: string;
   projectUrl?: string;
   demoUrl?: string;
+  /**
+   * Button text for demoUrl. Defaults to "View Interactive Demo", which is
+   * only honest when the link actually opens something interactive - a
+   * write-up behind that label reads as a bait and switch.
+   */
+  demoLabel?: string;
   category: ProjectCategory;
   tags: string[];
   status: ProjectStatus;
