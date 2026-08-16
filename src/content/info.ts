@@ -9,15 +9,17 @@
  * "Organizations Served: 2" advertised inexperience.
  */
 export const stats = [
-  // Leads with an outcome rather than output. "278 Storyline slides authored"
-  // was true but measured effort - a reader cannot tell from a slide count
-  // whether the course worked. Exam failures after the redesign can only move
-  // in one direction if the design did its job.
-  { label: "Exam failures since my certification redesign launched", value: "2" },
-  // Was "40+ hours of graduate curriculum". That figure came from a mock-up
-  // rather than the course itself - the real syllabus never mentions hours.
-  // Weekly modules are countable from the schedule.
-  { label: "Weekly modules in a graduate law curriculum", value: "10" },
+  /*
+    Each tile has to make sense on its own. A homepage visitor has no story
+    yet, so a number that needs a paragraph to land - "2 exam failures" - reads
+    as a puzzle rather than a credential. That outcome lives on the Chartway
+    project page, where the problem it answers is right above it.
+
+    These four are self-explanatory cold, and together they say: real clients,
+    can build, works from evidence, formally trained.
+  */
+  { label: "Organizations I've designed learning for", value: "4" },
+  { label: "Storyline 360 slides in one branching course", value: "278" },
   { label: "Learners surveyed in a live needs analysis", value: "21" },
   { label: "Instructional Design, University of Utah", value: "M.Ed." }
 ];
