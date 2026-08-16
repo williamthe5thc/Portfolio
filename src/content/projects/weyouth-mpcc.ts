@@ -10,9 +10,15 @@ import { getImagePath } from '@/utils';
  * implementation, and the ongoing technical operation. Claiming the content
  * authorship would not survive an interview, and the actual role - evaluating
  * and standing up a learning platform, then getting SME material into it as
- * something students can enrol in - is the harder thing to hire for anyway.
+ * something learners can enrol in - is the harder thing to hire for anyway.
  *
  * Categorised as learning-tech rather than id for the same reason.
+ *
+ * NO CLIENT OPERATING DATA. Enrollment counts, course totals, and named
+ * partner organizations are the employer's business information, not mine to
+ * publish on a personal site. The story stands on the decisions and the
+ * craft; every figure that would have described WeYouth's operations has been
+ * deliberately left out.
  */
 const weyouthMpcc: ProjectBase = {
   detailPage: true,
@@ -43,11 +49,8 @@ This is the difference between an organization that has good material and an org
   ],
   status: 'in-progress',
   date: 'March 2026 - Present',
-  metrics: [
-    { value: '24', label: 'Courses standing in the LMS I selected and administer' },
-    { value: '46', label: 'Athletes enrolled in the primary MPCC course' },
-    { value: '3', label: 'Learner tracks configured: athletes, coaches, captains' }
-  ],
+  // No metrics tiles here by design - see the note above. The numbers that
+  // exist describe the client's operations rather than my work.
   tools: [
     'LearnWorlds LMS',
     'LMS Vendor Evaluation',
@@ -88,11 +91,12 @@ This is the difference between an organization that has good material and an org
   ],
   results: [
     'Platform recommendation adopted - the organization delivers its programs on the LMS I evaluated and selected',
-    '24 courses standing in the school across athlete, coach, and captain tracks, including team-specific cohort builds',
-    '46 athletes and 13 coaches enrolled across the primary MPCC courses, with further cohorts staged in draft for upcoming seasons',
-    'WeYouth can now enroll students and run a season without a founder personally delivering every session',
-    'Per-module evaluation surveys are collecting formative data during delivery, so weak modules surface while cohorts are still running',
-    'Programme effectiveness data is not yet available - cohorts are still in training. The enrollment figures above describe reach, not outcomes, and this project will be updated when evaluation results are in.'
+    'Separate learner tracks live in the platform, each with its own sequence of modules, self-assessments, and evaluation instruments',
+    'The organization can now enroll learners and run a full season without a founder personally delivering every session - the constraint that capped delivery before',
+    'Cohort-based enrollment configured so partner organizations onboard as groups rather than individual signups',
+    'Per-module evaluation surveys collect formative data during delivery, so weak modules surface while cohorts are still running',
+    'Programme effectiveness data is not yet available - cohorts are still in training, and measurement is scheduled once current seasons complete',
+    'Enrollment figures, course counts, and partner names are the organization\'s operating data and are deliberately not published here'
   ],
   stakeholders: [
     'WeYouth founders and science director (SMEs and curriculum authors)',
@@ -140,7 +144,7 @@ This is the difference between an organization that has good material and an org
     },
     implementation: {
       pilotTesting:
-        'Rolled out progressively by cohort and audience, with athlete courses live before the coach track completed, and team-specific cohorts staged in draft ahead of their seasons.',
+        'Rolled out progressively by cohort and audience rather than all at once, with earlier tracks live while later ones were still being built, and partner-specific cohorts staged ahead of their seasons.',
       changeManagement:
         'Hybrid model configured so the platform carries the content load while live team sessions and check-ins carry the relationship load, reducing what any individual coach must prepare.',
       supportSystems:
@@ -171,7 +175,7 @@ This is the difference between an organization that has good material and an org
     businessValue:
       'The platform is what converts WeYouth from an organization that sells a founder\'s calendar into one that can sell a team contract. Enrollment, delivery, and measurement all became possible at the point the LMS went live.',
     scalabilityConsiderations:
-      'Track-per-audience architecture means new teams reuse existing content with cohort-specific courses layered on top, as with the team-specific build already staged.',
+      'Track-per-audience architecture means new partners reuse existing content with cohort-specific courses layered on top rather than duplicating the curriculum each time.',
     industryContribution:
       'A worked example of the unglamorous problem that stops many small organizations: strong subject matter expertise with no delivery infrastructure, and the platform evaluation and implementation work required to close that gap.',
     continuingEducation:

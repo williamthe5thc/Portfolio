@@ -5,7 +5,7 @@ import { Methodology } from '@/types/content';
 
 export const methodology = {
   title: "Cognitive Science-Based Instructional Design",
-  summary: "University of Utah M.Ed. graduate (2025) specializing in cognitive science-based instructional design with andragogy and evidence-based learning theory expertise. Trained in systematic ADDIE methodology, cognitive load theory application, and Universal Design for Learning principles. Ready to contribute research-backed design solutions combining behavioral psychology foundation, adult learning theory expertise, and technical competency to corporate instructional design teams.",
+  summary: "I design learning programs the way the research says they should be built - systematic needs analysis first, cognitive load and adult learning theory driving the structure, and evaluation instruments built in from the start rather than added at the end. A psychology research background means I read the evidence directly, and enough technical depth means I can stand up the platform the program runs on instead of handing it off. M.Ed., University of Utah.",
 
   corePrinciples: [
     {

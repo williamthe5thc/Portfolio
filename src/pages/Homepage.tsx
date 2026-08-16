@@ -114,7 +114,7 @@ const HomePage: React.FC = () => {
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold mb-4">Research-Backed Design Expertise</h2>
             <p className="text-xl text-text-secondary">
-              Graduate-level competencies and real-world experience creating effective learning solutions
+              Built in industry-standard tools, grounded in learning science, delivered to real learners
             </p>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
@@ -267,7 +267,7 @@ const HomePage: React.FC = () => {
     <div className="max-w-3xl mx-auto">
       <h2 className="text-3xl font-bold mb-6 drop-shadow-sm">Let's Work Together</h2>
       <p className="text-xl mb-8 opacity-95 drop-shadow-sm">
-        Ready to bring evidence-based design expertise and fresh perspectives to your learning initiatives. 
+        I take learning programs from analysis through delivery, and I measure whether they worked. 
         Let's discuss how I can contribute to creating training that drives measurable results for your organization.
       </p>
       <div className="flex flex-col sm:flex-row gap-4 justify-center">
