@@ -57,6 +57,23 @@ export interface ProjectBase {
     value: string;
     label: string;
   }>;
+
+  /**
+   * Openable evidence from the design process - storyboards, needs analyses,
+   * assessment plans, evaluation reports. Hiring guidance is consistent that a
+   * portfolio should show stages of the work, not just a finished description,
+   * and these are the documents that do that.
+   *
+   * Anything listed here is published. Check each file for client data,
+   * personal emails, and credentials before adding it.
+   */
+  artifacts?: Array<{
+    label: string;
+    /** Absolute public path; wrapped in getImagePath() at the content layer. */
+    href: string;
+    /** What a reader will actually find inside, e.g. "17-page module blueprint". */
+    description?: string;
+  }>;
   methodology?: string;
   learningObjectives?: string[];
   challenges?: string[];

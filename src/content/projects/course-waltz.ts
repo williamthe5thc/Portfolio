@@ -19,6 +19,20 @@ const waltzCourse: ProjectBase = {
   
   // Case Study Documentation
   projectUrl: getImagePath('/case-studies/waltz-formative-evaluation.pdf'),
+  artifacts: [
+    {
+      label: 'Module Blueprint & Storyboard',
+      href: '/case-studies/waltz-blueprint-storyboard.pdf',
+      description:
+        '17-page curriculum map: instructional goals mapped to learning objectives, assessments, and learning experiences, module by module'
+    },
+    {
+      label: 'Assessment & Evaluation Plan',
+      href: '/case-studies/waltz-formative-evaluation.pdf',
+      description:
+        'Assessment design and the small-group formative evaluation that validated the course with four participants'
+    }
+  ],
   tools: ["Canvas LMS", "Adobe Premier Pro", "Educational Design Tools"],
   methodology: "Comprehensive ADDIE Framework with ARCS Motivation Model Integration and Universal Design for Learning Implementation",
   learningObjectives: [

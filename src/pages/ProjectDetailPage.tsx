@@ -34,7 +34,7 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowLeft, ExternalLink } from 'lucide-react';
+import { ArrowLeft, ExternalLink, FileText } from 'lucide-react';
 import { Button, BaseCard } from '@/components/ui';
 import { fadeInUp } from '@/lib/animations';
 import { projects } from '@/content';
@@ -279,6 +279,32 @@ const ProjectDetailPage: React.FC = () => {
                     <ul className="space-y-1 list-disc list-inside text-text-secondary">
                       {currentProject.results.map((result, index) => (
                         <li key={index}><RichText>{result}</RichText></li>
+                      ))}
+                    </ul>
+                  </StoryBeat>
+                )}
+
+                {currentProject.artifacts && currentProject.artifacts.length > 0 && (
+                  <StoryBeat step="05" title="See the work">
+                    <p className="text-text-secondary mb-4">
+                      The actual design documents, not a description of them.
+                    </p>
+                    <ul className="space-y-3">
+                      {currentProject.artifacts.map((artifact) => (
+                        <li key={artifact.href}>
+                          <a
+                            href={getImagePath(artifact.href)}
+                            className="inline-flex items-center gap-2 font-medium text-primary-600 hover:text-primary-700 underline"
+                          >
+                            <FileText className="w-4 h-4 flex-shrink-0" />
+                            {artifact.label}
+                          </a>
+                          {artifact.description && (
+                            <p className="text-sm text-text-secondary mt-1">
+                              {artifact.description}
+                            </p>
+                          )}
+                        </li>
                       ))}
                     </ul>
                   </StoryBeat>
