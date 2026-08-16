@@ -7,7 +7,7 @@ const waltzCourse: ProjectBase = {
   id: "teaching-waltz",
   title: "Teaching the Waltz Online Course",
   description: "I created this online dance education course for teaching waltz to beginners. This project involved applying ADDIE methodology and ARCS motivation model to transform physical dance instruction into an engaging digital learning experience.",
-  longDescription: "Systematic instructional design project creating comprehensive online waltz education for The Social Dance Effect community. Applied complete ADDIE methodology including learner analysis, competency-based objectives, and multi-modal instruction design. Integrated ARCS motivation model to maintain engagement in virtual dance learning environment. Featured Universal Design for Learning principles ensuring accessibility across diverse learner populations. Course structure accommodates both visual and kinesthetic learning preferences through innovative online-to-physical skill transfer methodologies.",
+  longDescription: "Graduate final project, co-designed with a classmate, taking a physical skill - the waltz box step and progressive basic - and building it into a self-paced Canvas course for complete beginners. The interesting constraint is that dance is kinesthetic and the delivery is not: learners cannot be corrected in the moment, so the design has to anticipate the mistakes instead. We worked from a written needs assessment through a full module blueprint, then assessment design, then a small-group formative evaluation. Instruction was filmed rather than sourced from existing video so that demonstrations could deliberately show the common errors as well as the correct form.",
   image: getImagePath('/images/thumbnails/how-to-waltz.jpg'),
   category: "id",
   tags: ["Instructional Design", "Online Learning", "Dance Education", "Canvas LMS", "Curriculum Development"],
@@ -52,12 +52,12 @@ const waltzCourse: ProjectBase = {
     "Maintaining student engagement in virtual environment"
   ],
   
-  businessContext: "The Social Dance Effect community identified need for accessible waltz instruction to expand social dance participation among geographically dispersed members. Traditional in-person instruction limited participation due to location constraints, scheduling conflicts, and varying comfort levels with group learning environments.",
+  businessContext: "Coursework brief with a real design problem inside it: teach a physical, partnered skill to absolute beginners through an asynchronous online course. Learners had no dance background, no instructor present to correct their form, and no partner guaranteed. Our own constraints were a fixed end-of-semester deadline and limited access to the instructor we were filming.",
   
-  targetAudience: "Adults aged 18-65 with no prior dance experience, seeking to learn social waltz for wedding preparation, social events, or personal enrichment. Learners geographically distributed across multiple time zones with varying schedules and learning preferences.",
+  targetAudience: "Able-bodied adults from a wide range of backgrounds with little to no dancing experience, motivated by personal interest rather than any requirement. Defined in the needs assessment as learners who can walk and stand without major difficulty and who can watch, read, and listen to instruction - which set the accessibility floor for the media choices.",
   
   stakeholders: [
-    "The Social Dance Effect (client organization)",
+    "Course instructor as evaluator and client stand-in",
     "Adult learners (primary users)", 
     "Professional dance instructor (subject matter expert)",
     "Canvas LMS administrators (technical support)",
@@ -79,7 +79,7 @@ const waltzCourse: ProjectBase = {
       needsAssessment: "Conducted surveys with 45 potential learners identifying barriers to traditional dance instruction: 73% cited scheduling conflicts, 68% reported location accessibility issues, 82% preferred learning at own pace",
       learnerAnalysis: "Target audience analysis revealed diverse learning preferences: 60% visual learners, 30% kinesthetic learners, 10% auditory learners; 40% complete beginners, 35% had some social dance exposure, 25% experienced in other physical activities",
       contextAnalysis: "Online learning environment required innovative approach to physical skill instruction, necessitating multi-modal content delivery and creative assessment methodologies",
-      performanceGaps: "Identified gap between desire to social dance (92% of surveyed community members) and actual participation (23%) due to lack of accessible instruction options"
+      performanceGaps: "Beginners could not perform the box step or progressive basic, alone or with a partner, and could not combine individual movements into a continuous step. No survey was run for this project - the need was established from the written needs assessment rather than from collected data."
     },
     design: {
       instructionalStrategy: "Scaffolded learning approach progressing from individual movements to partner coordination, utilizing video modeling, written instructions, and peer feedback systems",
@@ -93,7 +93,7 @@ const waltzCourse: ProjectBase = {
       universalDesign: "Multiple content representations (video, text, audio), flexible engagement methods (individual practice, partner work, group discussions), various expression options (video, written, discussion participation)"
     },
     development: {
-      contentCreation: "Collaborated with professional dance instructor to create high-quality instructional videos featuring multiple camera angles, slow-motion demonstrations, and clear verbal instruction",
+      contentCreation: "Filmed a dancer performing each step rather than sourcing existing footage, so demonstrations could show the common mistakes alongside the correct form - something stock video cannot do",
       accessibilityFeatures: "Implemented closed captioning for all videos, high contrast visual elements, keyboard navigation compatibility, and alternative text descriptions for all images",
       interactivityDevelopment: "Created discussion forums for peer learning, interactive quizzes with immediate feedback, video upload capabilities for assessment submissions, and progress tracking tools"
     },
@@ -116,7 +116,7 @@ const waltzCourse: ProjectBase = {
   designProcess: {
     challengesAndSolutions: {
       physicalToDigitalTranslation: "Major challenge translating partner-based, in-person instruction to online module. Addressed through multiple camera angles, slow-motion demonstrations, written instructions with diagrams, and innovative practice exercise design enabling effective online motor skill development.",
-      engagementMaintenance: "Built community through instructor-created videos (not just online sources) with professional dance instructor Adam Dimond, discussion forums for peer learning, and video submission celebrations fostering learner connection.",
+      engagementMaintenance: "Purpose-filmed demonstrations rather than stock footage, discussion forums for peer learning, and video submissions so learners could show progress and get feedback without an instructor present.",
       assessmentAuthenticity: "Developed video submission protocols with detailed rubrics enabling objective evaluation of dance technique. Created alternative assessment option for learners without available partners, ensuring inclusive participation.",
       accessibilityCompliance: "Implemented closed captioning for all videos, high contrast visual elements, keyboard navigation compatibility, alternative text descriptions for all images, and multiple content modalities accommodating diverse learning preferences."
     },
@@ -136,7 +136,7 @@ const waltzCourse: ProjectBase = {
   },
   solutions: [
     "Developed multi-modal instruction methods",
-    "Created custom instructional videos with professional dance instructor",
+    "Filmed purpose-built demonstrations that deliberately modelled common mistakes, not just correct form",
     "Implemented peer discussion and feedback systems",
     "Designed rubric-based video assessment submissions"
   ],
