@@ -112,25 +112,30 @@ const HomePage: React.FC = () => {
       <section id="impact" className="py-20 bg-primary-50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">Research-Backed Design Expertise</h2>
+            <h2 className="text-3xl font-bold mb-4">What I Bring</h2>
             <p className="text-xl text-text-secondary">
-              Built in industry-standard tools, grounded in learning science, delivered to real learners
+              The capabilities behind the projects, and where each one is demonstrated
             </p>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          {/*
+            Capability cards, not a scoreboard. Left-aligned and given room to
+            breathe because each one carries a sentence of evidence - centred
+            numeric tiles cannot hold that, and the evidence is the point.
+          */}
+          <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
             {stats.map((stat, index) => (
               <motion.div
-                key={stat.label}
+                key={stat.value}
                 variants={fadeInUp}
                 initial="initial"
                 animate="animate"
-                transition={{ delay: index * 0.1 }}
-                className="text-center"
+                transition={{ delay: index * 0.08 }}
+                className="bg-white rounded-lg p-6 border-l-4 border-primary-500 shadow-sm"
               >
-                <div className="text-3xl font-bold text-primary-600 mb-2">
+                <div className="text-lg font-bold text-primary-700 mb-2">
                   {stat.value}
                 </div>
-                <div className="text-sm text-text-secondary">
+                <div className="text-text-secondary leading-relaxed">
                   {stat.label}
                 </div>
               </motion.div>

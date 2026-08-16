@@ -1,27 +1,35 @@
 // src/content/info.ts
 /**
- * Site-level proof points.
+ * Capability cards for the homepage and about page.
  *
- * Every figure here traces to a specific project file - 278 and 26 min from
- * professional-communication-training, 40+ hrs from ai-law-course, 21 from the
- * Chartway needs analysis. Counts of things produced ("workflows", "tools
- * mastered") were removed: they measure activity rather than outcome, and
- * "Organizations Served: 2" advertised inexperience.
+ * These replaced a row of numbers. Survey data on what hiring managers screen
+ * for is fairly blunt - roughly half rate LMS skill as important and about a
+ * third specifically prefer candidates who use AI tools - and none of that is
+ * conveyed by a slide count. The field is also described as shifting from
+ * content creator to learning architect, which is a claim about scope of
+ * responsibility rather than volume of output.
+ *
+ * So each card names a capability a job description would actually list, then
+ * gives the specific evidence underneath it. `value` is the headline claim,
+ * `label` is the proof. Every proof traces to a shipped project on this site.
  */
 export const stats = [
-  /*
-    Each tile has to make sense on its own. A homepage visitor has no story
-    yet, so a number that needs a paragraph to land - "2 exam failures" - reads
-    as a puzzle rather than a credential. That outcome lives on the Chartway
-    project page, where the problem it answers is right above it.
-
-    These four are self-explanatory cold, and together they say: real clients,
-    can build, works from evidence, formally trained.
-  */
-  { label: "Organizations I've designed learning for", value: "4" },
-  { label: "Storyline 360 slides in one branching course", value: "278" },
-  { label: "Learners surveyed in a live needs analysis", value: "21" },
-  { label: "Instructional Design, University of Utah", value: "M.Ed." }
+  {
+    value: "LMS selection & administration",
+    label: "Ran the platform evaluation for a nonprofit, made the recommendation they adopted, and administer it today. Also built and delivered in Canvas."
+  },
+  {
+    value: "Articulate Storyline 360",
+    label: "A 278-slide branching course with scenario-based decision points, published and playable from this site."
+  },
+  {
+    value: "AI, designed rather than bolted on",
+    label: "Ten-week AI curriculum for law students, plus assessment design for an advanced prompting module."
+  },
+  {
+    value: "Evidence before design",
+    label: "Interviews and a 21-response survey to locate the real barrier, and a cognitive walkthrough run against my own build."
+  }
 ];
 
 // Instructional Design focused categories - aligned with actual project categories

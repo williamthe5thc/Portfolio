@@ -183,18 +183,24 @@ export const PhilosophyCard: React.FC<PhilosophyCardProps> = ({
   </BaseCard>
 );
 
+/**
+ * Now renders capability claims rather than a numeric scoreboard: `value` is a
+ * short headline, `label` is a sentence of supporting evidence. The old
+ * centred text-4xl treatment assumed `value` was a figure like "278" and
+ * wrapped a phrase into an unreadable stack.
+ */
 export const StatsGrid: React.FC<StatsGridProps> = ({ stats }) => (
-  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+  <div className="grid md:grid-cols-2 gap-6">
     {stats.map((stat) => (
       <motion.div
-        key={stat.label}
+        key={stat.value}
         variants={fadeInUp}
       >
-        <BaseCard className="text-center">
-          <h4 className="text-4xl font-bold text-primary-600 mb-2">
+        <BaseCard className="h-full border-l-4 border-primary-500">
+          <h4 className="text-lg font-bold text-primary-700 mb-2">
             {stat.value}
           </h4>
-          <p className="text-text-secondary">{stat.label}</p>
+          <p className="text-text-secondary leading-relaxed">{stat.label}</p>
         </BaseCard>
       </motion.div>
     ))}
