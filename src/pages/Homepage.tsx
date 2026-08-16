@@ -92,8 +92,8 @@ const HomePage: React.FC = () => {
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold mb-4">Featured Projects</h2>
             <p className="text-xl text-text-secondary">
-              A nonprofit LMS selection and build, a credit union engagement with a
-              measured outcome, and an Articulate Storyline 360 course
+              A credit union engagement with a measured outcome, a nonprofit LMS
+              selection and build, and an Articulate Storyline 360 course
             </p>
           </div>
           {/*

@@ -41,13 +41,17 @@ import nacvaAutomation from './projects/nacva-automation';
  * Order matters - this is the sequence hiring managers see
  */
 export const projects: ProjectBase[] = [
-  // FLAGSHIP first regardless of category - current, ongoing, real client.
-  // Categorised learning-tech because the work is platform selection and
-  // implementation; WeYouth's SMEs authored the curriculum content.
+  // FLAGSHIP. Chartway leads because it is the only project that closes the
+  // loop: a real client problem, a documented analysis a reader can open, and
+  // a measured result afterwards. WeYouth is more current and arguably harder
+  // work, but its numbers are the client's to publish, not mine - which leaves
+  // it without the outcome or the artifact that make a flagship persuasive.
+  chartwayFicepEnhanced,
+
+  // Current role - platform selection and implementation. Categorised
+  // learning-tech; WeYouth's SMEs authored the curriculum content.
   weyouthMpcc,
 
-  // CATEGORY 1: Instructional Design
-  chartwayFicepEnhanced,               // Real client with a measured outcome
   professionalCommunicationTraining,   // Articulate Storyline 360 - the baseline screen
   aiLawCourse,                         // Graduate curriculum design + AI subject matter
   waltzCourse,                         // Canvas LMS comprehensive course
@@ -68,8 +72,8 @@ export type ProjectId = typeof projects[number]['id'];
  * flagship nobody sees.
  */
 export const featuredProjects: ProjectBase[] = [
+  chartwayFicepEnhanced,               // FLAGSHIP - measured outcome plus an openable artifact
   weyouthMpcc,                         // Current nonprofit role - ongoing, real stakes
-  chartwayFicepEnhanced,               // Real client engagement with a measured outcome
   professionalCommunicationTraining    // Advanced Articulate Storyline 360
 ];
 
