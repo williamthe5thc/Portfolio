@@ -3,32 +3,58 @@
  * Capability cards for the homepage and about page.
  *
  * These replaced a row of numbers. Survey data on what hiring managers screen
- * for is fairly blunt - roughly half rate LMS skill as important and about a
- * third specifically prefer candidates who use AI tools - and none of that is
- * conveyed by a slide count. The field is also described as shifting from
- * content creator to learning architect, which is a claim about scope of
- * responsibility rather than volume of output.
+ * for is blunt - roughly half rate LMS skill as important and about a third
+ * specifically prefer candidates who use AI tools - and none of that is
+ * conveyed by a slide count.
  *
- * So each card names a capability a job description would actually list, then
- * gives the specific evidence underneath it. `value` is the headline claim,
- * `label` is the proof. Every proof traces to a shipped project on this site.
+ * Each card is a thing I can do, with the specific work underneath it. Kept as
+ * short bullets rather than prose so the whole section is skimmable, and split
+ * finely enough that no bullet implies credit for a neighbouring project:
+ * choosing an LMS and building a Canvas course are separate pieces of work for
+ * separate clients, and were previously run together in one sentence.
  */
 export const stats = [
   {
-    value: "LMS selection & administration",
-    label: "Ran the platform evaluation for a nonprofit, made the recommendation they adopted, and administer it today. Also built and delivered in Canvas."
+    value: "Choose and run an LMS",
+    points: [
+      "Evaluated platforms against a nonprofit's real constraints and recommended the one they adopted",
+      "Administer that platform day to day, including its technical support"
+    ]
   },
   {
-    value: "Articulate Storyline 360",
-    label: "A 278-slide branching course with scenario-based decision points, published and playable from this site."
+    value: "Build and deliver courses in Canvas",
+    points: [
+      "A ten-week graduate law curriculum, delivered asynchronously to a live cohort",
+      "A self-paced skills course assessed by learner-submitted video"
+    ]
   },
   {
-    value: "AI, designed rather than bolted on",
-    label: "Ten-week AI curriculum for law students, plus assessment design for an advanced prompting module."
+    value: "Build interactive e-learning in Storyline 360",
+    points: [
+      "Branching scenarios with consequential decision points",
+      "Published and playable from this site, not screenshots"
+    ]
   },
   {
-    value: "Evidence before design",
-    label: "Interviews and a 21-response survey to locate the real barrier, and a cognitive walkthrough run against my own build."
+    value: "Design AI learning that is not a tool demo",
+    points: [
+      "Ten weeks of AI curriculum for legal professionals with no technical background",
+      "Assessment design for an advanced prompting module"
+    ]
+  },
+  {
+    value: "Find the real problem before designing",
+    points: [
+      "Interviews and a survey to locate the actual barrier rather than assuming it",
+      "A cognitive walkthrough run against my own build, which found what I was too close to see"
+    ]
+  },
+  {
+    value: "Automate the parts that should not be manual",
+    points: [
+      "Python scripts for course processing and backend data entry at a certification body",
+      "React and TypeScript front ends, including this site"
+    ]
   }
 ];
 

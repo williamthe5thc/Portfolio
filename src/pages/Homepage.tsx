@@ -125,19 +125,24 @@ const HomePage: React.FC = () => {
           <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
             {stats.map((stat, index) => (
               <motion.div
-                key={stat.value}
+                key={String(stat.value)}
                 variants={fadeInUp}
                 initial="initial"
                 animate="animate"
-                transition={{ delay: index * 0.08 }}
+                transition={{ delay: index * 0.06 }}
                 className="bg-white rounded-lg p-6 border-l-4 border-primary-500 shadow-sm"
               >
-                <div className="text-lg font-bold text-primary-700 mb-2">
+                <div className="text-lg font-bold text-primary-700 mb-3">
                   {stat.value}
                 </div>
-                <div className="text-text-secondary leading-relaxed">
-                  {stat.label}
-                </div>
+                <ul className="space-y-2">
+                  {stat.points?.map((point) => (
+                    <li key={point} className="text-text-secondary leading-relaxed flex gap-2">
+                      <span className="text-primary-500 flex-shrink-0">&bull;</span>
+                      <span>{point}</span>
+                    </li>
+                  ))}
+                </ul>
               </motion.div>
             ))}
           </div>

@@ -72,8 +72,12 @@ export interface PhilosophyCardProps {
 }
 
 export interface StatsItemProps {
-  label: string;
+  /** Headline capability, e.g. "Choose and run an LMS". */
   value: string | number;
+  /** Short supporting bullets - the specific work behind the claim. */
+  points?: string[];
+  /** Legacy single-line form, still supported. */
+  label?: string;
 }
 
 export interface StatsGridProps {
@@ -192,15 +196,23 @@ export const PhilosophyCard: React.FC<PhilosophyCardProps> = ({
 export const StatsGrid: React.FC<StatsGridProps> = ({ stats }) => (
   <div className="grid md:grid-cols-2 gap-6">
     {stats.map((stat) => (
-      <motion.div
-        key={stat.value}
-        variants={fadeInUp}
-      >
+      <motion.div key={String(stat.value)} variants={fadeInUp}>
         <BaseCard className="h-full border-l-4 border-primary-500">
-          <h4 className="text-lg font-bold text-primary-700 mb-2">
+          <h4 className="text-lg font-bold text-primary-700 mb-3">
             {stat.value}
           </h4>
-          <p className="text-text-secondary leading-relaxed">{stat.label}</p>
+          {stat.points ? (
+            <ul className="space-y-2">
+              {stat.points.map((point) => (
+                <li key={point} className="text-text-secondary leading-relaxed flex gap-2">
+                  <span className="text-primary-500 flex-shrink-0">&bull;</span>
+                  <span>{point}</span>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p className="text-text-secondary leading-relaxed">{stat.label}</p>
+          )}
         </BaseCard>
       </motion.div>
     ))}
