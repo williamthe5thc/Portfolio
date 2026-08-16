@@ -6,8 +6,8 @@ const aiLawCourse: ProjectBase = {
   detailPage: true,
   id: 'ai-law-course',
   title: 'Graduate Curriculum Design Project - AI & Law Course',
-  description: 'I developed this comprehensive 10-module graduate course on AI and law, demonstrating my ability to translate complex technical concepts for legal professionals. This project involved extensive collaboration with university faculty and showcased my advanced curriculum design skills.',
-  longDescription: `Academic project completed as part of my M.Ed. program, designing a comprehensive graduate-level course for the University of Utah's S.J. Quinney College of Law. This challenging project required translating complex artificial intelligence concepts into accessible learning experiences for Master of Legal Studies students, demonstrating my ability to work with complex content and diverse subject matter experts. Applied competency-based instructional design principles learned in graduate coursework to create a 40+ hour curriculum covering AI foundations, prompt engineering, legal applications, and professional ethics. The project involved extensive collaboration with legal and technical faculty, providing valuable experience in SME coordination and academic curriculum development. This project showcases my ability to handle complex instructional design challenges and apply systematic methodology to real-world educational needs.`,
+  description: 'A three-person graduate capstone team designed and built this ten-week AI and Law course for Master of Legal Studies students, delivered in Canvas. We ran a client interview with the faculty sponsor, developed personas, ran a cognitive walkthrough on our own design, and validated it with a stakeholder review before handover.',
+  longDescription: `Graduate capstone, built by a team of three for the University of Utah's S.J. Quinney College of Law. This challenging project required translating complex artificial intelligence concepts into accessible learning experiences for Master of Legal Studies students, demonstrating my ability to work with complex content and diverse subject matter experts. Applied competency-based instructional design principles to build a ten-module weekly curriculum covering AI foundations, prompt engineering, legal research applications, media, and professional ethics, assessed through five quizzes, four applied assignments, and five discussion cycles. The project involved extensive collaboration with legal and technical faculty, providing valuable experience in SME coordination and academic curriculum development. This project showcases my ability to handle complex instructional design challenges and apply systematic methodology to real-world educational needs.`,
   image: getImagePath('/images/thumbnails/ai-law-course.png'),
   category: 'id',
   tags: [
@@ -24,9 +24,21 @@ const aiLawCourse: ProjectBase = {
   date: '2024',
   metrics: [
     { value: '10', label: 'Graduate modules designed' },
-    { value: '40+ hrs', label: 'Of curriculum delivered' }
+    { value: '14', label: 'Graded assessments designed across the semester' }
   ],
   
+  /*
+    Team attribution is deliberate. This was a three-person capstone and we
+    did not log individual ownership as we went, so the honest description is
+    "we built it" - with the one specific I can stand behind, that I did most
+    of the Canvas construction.
+  */
+  stakeholders: [
+    'Faculty sponsor at the college of law (client and subject matter expert)',
+    'Master of Legal Studies students (end learners)',
+    'Two graduate capstone teammates'
+  ],
+
   // Demo URL for interactive preview
   demoUrl: getImagePath('/demos/ai-law-course/index.html'),
   
@@ -77,15 +89,15 @@ const aiLawCourse: ProjectBase = {
   
   // Learning Design Innovation
   results: [
-    'Successfully created 10-module comprehensive graduate curriculum totaling 40+ hours',
-    'Developed 25+ interactive learning activities with practical legal applications',
-    'Implemented 15 competency-based assessments measuring both knowledge and application',
+    'Built a ten-module weekly curriculum delivered asynchronously in Canvas for the Spring 2025 MLS cohort',
+    'Designed the assessment mix as five quizzes, four applied assignments, and five discussion cycles across the semester',
+    'Ran a cognitive walkthrough against our own build and revised the navigation and instructions from what it surfaced',
     'Created scalable course structure adaptable for continuing legal education',
     'Established framework for ongoing curriculum updates as AI technology evolves',
     'Prepared future lawyers with essential AI literacy for professional practice'
   ],
   
-  lessonsLearned: 'This project reinforced the importance of extensive SME collaboration when designing courses that bridge multiple expert domains. The success came from creating clear learning progressions that build confidence while maintaining academic rigor, and from focusing on practical application rather than just theoretical understanding.',
+  lessonsLearned: 'Two things stuck. First, running a cognitive walkthrough on our own course was uncomfortable and worth it - we found navigation and instruction problems that we were too close to the design to see. Second, this was genuinely a team build and we did not track who did what at the time; I did most of the Canvas construction and worked closely with one teammate on the bulk of the design, but the course is a group product and describing it any other way would be inaccurate.',
   
   // Learning Theory Application
   learningTheoryApplied: [
@@ -99,7 +111,7 @@ const aiLawCourse: ProjectBase = {
   
   // Features that showcase ID expertise
   features: [
-    'Interactive Course Navigation: 10-module structure with detailed learning pathways',
+    'Weekly module structure: Diving In, Basic Prompting, History of AI, How AI Works, Advanced Prompting, Legal Research, Fine-Tuning, AI Media, AI in the Legal Profession, Future of AI',
     'Progressive Complexity Design: Scaffolded learning from foundations to advanced applications', 
     'Competency-Based Assessment: Portfolio approach demonstrating practical AI integration skills',
     'SME Collaboration Framework: Extensive validation with legal and technical experts',

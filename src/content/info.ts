@@ -10,7 +10,10 @@
  */
 export const stats = [
   { label: "Storyline 360 slides authored", value: "278" },
-  { label: "Hours of graduate curriculum designed", value: "40+" },
+  // Was "40+ hours of graduate curriculum". That figure came from a mock-up
+  // rather than the course itself - the real syllabus never mentions hours.
+  // Weekly modules are countable from the schedule.
+  { label: "Weekly modules in a graduate law curriculum", value: "10" },
   { label: "Learners surveyed in a live needs analysis", value: "21" },
   { label: "Instructional Design, University of Utah", value: "M.Ed." }
 ];

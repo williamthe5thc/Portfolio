@@ -93,7 +93,7 @@ const waltzCourse: ProjectBase = {
       universalDesign: "Multiple content representations (video, text, audio), flexible engagement methods (individual practice, partner work, group discussions), various expression options (video, written, discussion participation)"
     },
     development: {
-      contentCreation: "Filmed a dancer performing each step rather than sourcing existing footage, so demonstrations could show the common mistakes alongside the correct form - something stock video cannot do",
+      contentCreation: "Filmed a dancer who volunteered his time, rather than sourcing existing footage, so demonstrations could show the common mistakes alongside the correct form - something stock video cannot do. Scheduling around his availability was one of the real production constraints on the project",
       accessibilityFeatures: "Implemented closed captioning for all videos, high contrast visual elements, keyboard navigation compatibility, and alternative text descriptions for all images",
       interactivityDevelopment: "Created discussion forums for peer learning, interactive quizzes with immediate feedback, video upload capabilities for assessment submissions, and progress tracking tools"
     },
