@@ -17,7 +17,7 @@ export const stats = [
   {
     value: "Choose and run an LMS",
     points: [
-      "Evaluated platforms against a nonprofit's real constraints and recommended the one they adopted",
+      "Evaluated platforms against a nonprofit's real constraints and recommended the one they now run on",
       "Administer that platform day to day, including its technical support"
     ]
   },
@@ -25,35 +25,35 @@ export const stats = [
     value: "Build and deliver courses in Canvas",
     points: [
       "A ten-week graduate law curriculum, delivered asynchronously to a live cohort",
-      "A self-paced skills course assessed by learner-submitted video"
+      "A self-paced skills course assessed by video the learners submitted themselves"
     ]
   },
   {
     value: "Build interactive e-learning in Storyline 360",
     points: [
-      "Branching scenarios with consequential decision points",
-      "Published and playable from this site, not screenshots"
+      "Branching scenarios where the learner's choices change what happens next",
+      "Published and playable here, not shown as screenshots"
     ]
   },
   {
-    value: "Design AI learning that is not a tool demo",
+    value: "Design AI learning that goes past the tool demo",
     points: [
       "Ten weeks of AI curriculum for legal professionals with no technical background",
-      "Assessment design for an advanced prompting module"
+      "Assessment design that grades the prompting, not the output the AI produced"
     ]
   },
   {
     value: "Find the real problem before designing",
     points: [
-      "Interviews and a survey to locate the actual barrier rather than assuming it",
-      "A cognitive walkthrough run against my own build, which found what I was too close to see"
+      "Interviews and a survey to locate the actual barrier instead of assuming it",
+      "A usability walkthrough of my own build, which caught what I was too close to see"
     ]
   },
   {
-    value: "Automate the parts that should not be manual",
+    value: "Automate what should not be manual",
     points: [
-      "Python scripts for course processing and backend data entry at a certification body",
-      "React and TypeScript front ends, including this site"
+      "Python scripts replacing hand-entry of course data at a certification body",
+      "React and TypeScript front ends, this site among them"
     ]
   }
 ];

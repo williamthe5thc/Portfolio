@@ -164,21 +164,22 @@ const HomePage: React.FC = () => {
           Learning Design Philosophy
         </h2>
         <p className="text-xl text-text-secondary">
-          Creating impactful learning experiences through proven methodologies and innovative approaches
+          Three things I hold to, and what each one costs when you skip it
         </p>
       </motion.div>
 
       {/* Core Principles */}
-      <div className="grid md:grid-cols-2 gap-8 mb-12">
+      <div className="grid md:grid-cols-3 gap-6 mb-12">
         <motion.div variants={fadeInUp}>
           <BaseCard className="h-full">
             <h3 className="text-xl font-semibold text-text-primary mb-4">
-              Learner-Centered Design
+              Find the real barrier first
             </h3>
             <p className="text-text-secondary">
-              Every solution starts with understanding the learner's needs, 
-              context, and goals. By putting the learner first, we create 
-              engaging experiences that drive real results.
+              The stated problem is rarely the actual one. A credit union thought its
+              certification materials needed rewriting; the analysis found the binding
+              constraint was that nobody had protected study time. Design aimed at the
+              wrong barrier is expensive and it does not work.
             </p>
           </BaseCard>
         </motion.div>
@@ -186,10 +187,26 @@ const HomePage: React.FC = () => {
         <motion.div variants={fadeInUp}>
           <BaseCard className="h-full">
             <h3 className="text-xl font-semibold text-text-primary mb-4">
-              Evidence-Based Approach
+              Let the evidence pick the format
             </h3>
             <p className="text-text-secondary">
-              Grounding design decisions in learning science research and cognitive psychology principles. I apply Mayer's multimedia learning principles, constructivist learning theory, and Universal Design for Learning (UDL) to create solutions that are both theoretically sound and practically effective.
+              Cognitive load theory, Mayer's multimedia principles and Universal Design for
+              Learning are useful because they settle arguments about format with something
+              other than taste. Short modules, one idea at a time, and more than one way in
+              are design decisions with reasons behind them, not preferences.
+            </p>
+          </BaseCard>
+        </motion.div>
+        <motion.div variants={fadeInUp}>
+          <BaseCard className="h-full">
+            <h3 className="text-xl font-semibold text-text-primary mb-4">
+              Build the measurement in
+            </h3>
+            <p className="text-text-secondary">
+              Evaluation added at the end tells you what happened after it is too late to
+              act. Instruments built into the modules produce data while a cohort is still
+              running, which is the difference between finding out a module is weak and
+              being able to fix it.
             </p>
           </BaseCard>
         </motion.div>
