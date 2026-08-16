@@ -71,6 +71,11 @@ const aiLawCourse: ProjectBase = {
       label: 'Media Selection',
       href: '/case-studies/ai-law/media-selection.html',
       description: 'Why each medium was chosen for each kind of content, rather than defaulting to video throughout'
+    },
+    {
+      label: 'Assessment Design, Week 5 module',
+      href: '/case-studies/advanced-prompting-assessment-design.pdf',
+      description: 'My own assessment plan for the advanced prompting week - a table of specifications mapped to cognitive levels, rubrics, an AI usage policy built on disclosure rather than prohibition, and item difficulty and discrimination indices for reviewing the questions afterwards'
     }
   ],
   
@@ -124,6 +129,7 @@ const aiLawCourse: ProjectBase = {
     'Built a ten-module weekly curriculum delivered asynchronously in Canvas for the Spring 2025 MLS cohort',
     'Designed the assessment mix as five quizzes, four applied assignments, and five discussion cycles across the semester',
     'Ran a cognitive walkthrough against our own build and revised the navigation and instructions from what it surfaced',
+    'Wrote the assessment design for the advanced prompting week myself, including an AI usage policy that required learners to disclose the tool and submit the prompt rather than banning its use',
     'Created scalable course structure adaptable for continuing legal education',
     'Established framework for ongoing curriculum updates as AI technology evolves',
     'Prepared future lawyers with essential AI literacy for professional practice'

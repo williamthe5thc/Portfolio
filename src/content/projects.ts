@@ -24,7 +24,6 @@ import weyouthMpcc from './projects/weyouth-mpcc';
 import chartwayFicepEnhanced from './projects/chartway-ficep-enhanced';
 import professionalCommunicationTraining from './projects/professional-communication-training';
 import aiLawCourse from './projects/ai-law-course';
-import advancedPromptingAssessment from './projects/advanced-prompting-assessment';
 import waltzCourse from './projects/course-waltz';
 
 // ========================================
@@ -55,7 +54,6 @@ export const projects: ProjectBase[] = [
 
   professionalCommunicationTraining,   // Articulate Storyline 360 - the baseline screen
   aiLawCourse,                         // Graduate curriculum design + AI subject matter
-  advancedPromptingAssessment,         // Solo assessment design on one module of that course
   waltzCourse,                         // Canvas LMS comprehensive course
 
   // CATEGORY 2: Learning Technology (Bridge ID + Tech)
@@ -87,7 +85,6 @@ export const projectsByCategory = {
     chartwayFicepEnhanced,
     professionalCommunicationTraining,
     aiLawCourse,
-    advancedPromptingAssessment,
     waltzCourse
   ],
   'learning-tech': [

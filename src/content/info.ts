@@ -14,11 +14,19 @@
  * separate clients, and were previously run together in one sentence.
  */
 export const stats = [
+  /*
+    Bullets are all noun phrases. They previously mixed past verbs
+    ("Evaluated platforms"), present verbs ("Administer that platform") and
+    bare noun phrases ("Ten weeks of AI curriculum") inside the same list,
+    which reads as unedited. Naming the deliverable rather than conjugating a
+    verb also sidesteps the tense question entirely: the headline already
+    says what I can do, so each bullet just has to name the evidence.
+  */
   {
     value: "Choose and run an LMS",
     points: [
-      "Evaluated platforms against a nonprofit's real constraints and recommended the one they now run on",
-      "Administer that platform day to day, including its technical support"
+      "A platform evaluation against a nonprofit's real constraints, and the recommendation they now run on",
+      "Day-to-day administration of that platform, including its technical support"
     ]
   },
   {
@@ -31,22 +39,22 @@ export const stats = [
   {
     value: "Build interactive e-learning in Storyline 360",
     points: [
-      "Branching scenarios where the learner's choices change what happens next",
-      "Published and playable here, not shown as screenshots"
+      "Branching scenarios where a learner's choices change what happens next",
+      "A published course, playable here rather than shown as screenshots"
     ]
   },
   {
     value: "Design AI learning that goes past the tool demo",
     points: [
       "Ten weeks of AI curriculum for legal professionals with no technical background",
-      "Assessment design that grades the prompting, not the output the AI produced"
+      "An assessment design that grades the prompting, not the output the AI produced"
     ]
   },
   {
     value: "Find the real problem before designing",
     points: [
       "Interviews and a survey to locate the actual barrier instead of assuming it",
-      "A usability walkthrough of my own build, which caught what I was too close to see"
+      "A usability walkthrough of my own build, catching what I was too close to see"
     ]
   },
   {
