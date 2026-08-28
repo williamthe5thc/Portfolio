@@ -11,8 +11,8 @@
     "preview": "vite preview",
     "preview:staging": "vite preview --mode staging",
     "deploy:staging": "npm run build:staging && npm run deploy:staging:manual",
-    "deploy:staging:manual": "cd dist && git init && git add . && git commit -m \"Deploy staging\" && git remote add origin https://github.com/williamthe5thc/Portfolio-Staging.git && git push -f origin main:gh-pages && cd ..",
-    "deploy:production": "npm run build && gh-pages -d dist -b gh-pages --repo https://github.com/williamthe5thc/Portfolio.git",
+    "deploy:staging:manual": "cd dist && git init -q && git add . && git commit -q -m \"Deploy staging\" && git push -f -q https://github.com/williamthe5thc/Portfolio-Staging.git main:gh-pages && cd ..",
+    "deploy:production": "npm run build && npm run deploy:production:manual",
     "fix-images": "node scripts/update-image-paths.js",
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "format": "prettier --write \"src/**/*.{ts,tsx,css,md}\"",
@@ -34,7 +34,8 @@
     "lighthouse": "lhci autorun",
     "analyze": "vite-bundle-analyzer",
     "monitor": "web-vitals-reporter",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "deploy:production:manual": "cd dist && git init -q && git add . && git commit -q -m \"Deploy production\" && git push -f -q https://github.com/williamthe5thc/Portfolio.git main:gh-pages && cd .."
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
