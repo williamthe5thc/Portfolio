@@ -92,8 +92,15 @@ const SoftwareDevResume: React.FC = () => {
         skills: ["React", "Node.js", "Express", "Tailwind CSS"]
       },
       {
-        category: "Tools & Platforms",
-        skills: ["Git", "VS Code", "AWS", "Docker"]
+        // AWS and Docker were listed here without any project on this site
+        // using either. Removed rather than left as an interview trap - easy
+        // to add back if they are genuinely part of the toolkit.
+        category: "Learning Platforms",
+        skills: ["LearnWorlds", "Canvas LMS", "Articulate Storyline 360", "SCORM"]
+      },
+      {
+        category: "Tools",
+        skills: ["Git", "VS Code", "Vite", "Camtasia"]
       }
       ]
   };

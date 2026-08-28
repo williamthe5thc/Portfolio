@@ -52,9 +52,9 @@ const InstructionalDesignResume: React.FC = () => {
     education: [
       {
         degree: "Master of Education",
-        field: "Instructional Design",
+        field: "Instructional Design & Educational Technology",
         institution: "University of Utah",
-        period: "2023 - 2025 (expected)",
+        period: "August 2023 - May 2025",
         relevantCourses: [
           "Learning Theory",
           "Instructional Design Models",
