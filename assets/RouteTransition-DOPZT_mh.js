@@ -1,0 +1,1 @@
+import{j as t}from"./ui-vendor-DTGTxZJg.js";import{u as r,r as a}from"./react-vendor-OYBOM-2Z.js";const i=({children:s})=>{const o=r();return a.useEffect(()=>{o.hash||window.scrollTo(0,0)},[o.pathname]),t.jsx(t.Fragment,{children:s})};export{i as R};

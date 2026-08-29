@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI &amp; Law — Design Record | W. Jordan Charles</title>
+<style>
+  :root{
+    --ink:#12203a; --muted:#5a6b85; --line:#dfe5ee;
+    --bg:#f6f8fb; --card:#fff; --accent:#1d4ed8; --accent-soft:#eef3ff;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+  .wrap{max-width:900px;margin:0 auto;padding:40px 20px 72px}
+  header{border-bottom:1px solid var(--line);padding-bottom:28px;margin-bottom:36px}
+  h1{font-size:2rem;margin:0 0 6px}
+  .sub{color:var(--muted);margin:0 0 18px}
+  .note{background:#fff8e6;border:1px solid #f0dca8;border-radius:8px;
+    padding:14px 16px;font-size:.92rem;color:#6b5620}
+  h2{font-size:1.15rem;margin:38px 0 14px;padding-bottom:8px;border-bottom:1px solid var(--line)}
+  .grid{display:grid;gap:12px;grid-template-columns:repeat(auto-fill,minmax(215px,1fr))}
+  .mod{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:13px 15px}
+  .mod b{display:block;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--accent);margin-bottom:3px}
+  table{width:100%;border-collapse:collapse;background:var(--card);
+    border:1px solid var(--line);border-radius:8px;overflow:hidden}
+  th,td{padding:10px 14px;text-align:left;border-bottom:1px solid var(--line);font-size:.94rem}
+  th{background:var(--accent-soft);font-size:.76rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+  tr:last-child td{border-bottom:0}
+  ul{padding-left:20px} li{margin-bottom:7px}
+  footer{margin-top:46px;padding-top:20px;border-top:1px solid var(--line);
+    color:var(--muted);font-size:.88rem}
+  a{color:var(--accent)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>AI &amp; Law — Design Record</h1>
+  <p class="sub">Graduate capstone · S.J. Quinney College of Law, University of Utah · Spring 2025</p>
+  <div class="note">
+    <strong>What this page is.</strong> The course itself was built and delivered in Canvas
+    and is not publicly accessible, so this is a record of the design work rather than a
+    copy of the course. It was designed and built by a three-person capstone team; I did
+    most of the Canvas construction. Content reflects the AI landscape as of early 2025 —
+    the models have moved on since, but the instructional design decisions are what this
+    documents.
+  </div>
+</header>
+
+<h2>The course</h2>
+<p>
+  Ten weekly modules for Master of Legal Studies students, delivered asynchronously.
+  Learners arrived with legal backgrounds and no technical training, so the sequence
+  moves from what the tools are, through how to direct them, into the professional and
+  ethical questions that come with using them in practice.
+</p>
+
+<div class="grid">
+  <div class="mod"><b>Week 1</b>Diving In</div>
+  <div class="mod"><b>Week 2</b>Basic Prompting</div>
+  <div class="mod"><b>Week 3</b>History of AI</div>
+  <div class="mod"><b>Week 4</b>How AI Works</div>
+  <div class="mod"><b>Week 5</b>Advanced Prompting</div>
+  <div class="mod"><b>Week 7</b>Legal Research</div>
+  <div class="mod"><b>Week 8</b>Fine-Tuning a Model</div>
+  <div class="mod"><b>Week 9</b>AI Media</div>
+  <div class="mod"><b>Week 10</b>AI in the Legal Profession</div>
+  <div class="mod"><b>Week 12</b>Future of AI</div>
+</div>
+
+<h2>Assessment design</h2>
+<table>
+  <tr><th>Instrument</th><th>Count</th><th>Purpose</th></tr>
+  <tr><td>Quizzes</td><td>5</td><td>Knowledge checks on foundations and mechanics</td></tr>
+  <tr><td>Applied assignments</td><td>4</td><td>Produce something usable with the tools</td></tr>
+  <tr><td>Discussion cycles</td><td>5</td><td>Post-then-reply, for the questions without settled answers</td></tr>
+</table>
+<p style="color:var(--muted);font-size:.9rem;margin-top:10px">
+  Fourteen graded touchpoints across the semester, weighted toward application rather
+  than recall — a legal audience needs to use these tools, not describe them.
+</p>
+
+<h2>How it was designed — read the documents</h2>
+<p>
+  These are the actual working documents, converted to web pages. Names and contact
+  details of the faculty sponsor and teammates have been removed.
+</p>
+<ul>
+  <li>
+    <a href="../../case-studies/ai-law/client-interview.html"><strong>Client interview</strong></a>
+    — the scoping conversation with the faculty sponsor. His steer shaped the whole build:
+    teach strategies, not platforms, and do not make learners create a dozen accounts.
+  </li>
+  <li>
+    <a href="../../case-studies/ai-law/cognitive-walkthrough.html"><strong>HCI cognitive walkthrough</strong></a>
+    — a usability walkthrough run against our own course, working from a persona of a
+    part-time MLS student with medium-to-low technical confidence. This is the step most
+    course design skips, and it surfaced navigation and instruction problems we were too
+    close to the design to notice.
+  </li>
+  <li>
+    <a href="../../case-studies/ai-law/instructional-strategies.html"><strong>Instructional strategies</strong></a>
+    — the approach chosen for each part of the course, with the reasoning written down.
+  </li>
+  <li>
+    <a href="../../case-studies/ai-law/media-selection.html"><strong>Media selection</strong></a>
+    — why each medium suited each kind of content, rather than defaulting to video throughout.
+  </li>
+</ul>
+<p style="color:var(--muted);font-size:.9rem">
+  Also part of the process but not published here: the syllabus, the team collaboration
+  plan, and the stakeholder review, all of which carry personal contact details.
+</p>
+
+<h2>What I would change</h2>
+<p>
+  The AI content dated faster than the design did. Anything naming specific model
+  capabilities needed revision within months, while the module sequence, the assessment
+  mix, and the scaffolding held up. If I rebuilt it, I would separate volatile
+  tool-specific material from the durable conceptual spine so the course could be
+  updated without redesigning it.
+</p>
+
+<footer>
+  W. Jordan Charles · Instructional Design · Learning Experience Design · Learning Technology
+</footer>
+
+</div>
+</body>
+</html>

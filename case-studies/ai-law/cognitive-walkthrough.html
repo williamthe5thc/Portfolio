@@ -1,0 +1,94 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>HCI Cognitive Walkthrough — AI &amp; Law Design Record</title><style>
+:root{--ink:#12203a;--muted:#5a6b85;--line:#dfe5ee;--bg:#f6f8fb;--accent:#1d4ed8}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);
+font:16px/1.7 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+.wrap{max-width:820px;margin:0 auto;padding:40px 20px 70px}
+.crumb{font-size:.86rem;color:var(--muted);margin-bottom:14px}
+.crumb a{color:var(--accent)}
+h1{font-size:1.7rem;margin:0 0 6px}
+.sub{color:var(--muted);margin:0 0 20px}
+.note{background:#fff8e6;border:1px solid #f0dca8;border-radius:8px;padding:12px 15px;
+font-size:.88rem;color:#6b5620;margin-bottom:28px}
+.doc{background:#fff;border:1px solid var(--line);border-radius:10px;padding:28px 32px}
+.doc table{width:100%;border-collapse:collapse;margin:16px 0}
+.doc th,.doc td{border:1px solid var(--line);padding:8px 11px;text-align:left;font-size:.93rem;vertical-align:top}
+.doc th{background:#eef3ff}
+.doc h1,.doc h2,.doc h3{font-size:1.05rem;margin:22px 0 8px}
+.doc img{max-width:100%;height:auto}
+footer{margin-top:34px;color:var(--muted);font-size:.85rem}
+</style></head><body><div class="wrap">
+<div class="crumb"><a href="./../../demos/ai-law-course/index.html">AI &amp; Law — Design Record</a> / HCI Cognitive Walkthrough</div>
+<h1>HCI Cognitive Walkthrough</h1><p class="sub">A usability walkthrough run against our own course build, and what it surfaced.</p>
+<div class="note">Coursework artifact from a three-person graduate capstone, Spring 2025.
+Names and contact details of the faculty sponsor and teammates have been removed.</div>
+<div class="doc"><h2 id="persona-morgan-reeves"><strong>Persona: Morgan Reeves</strong><div style="border:1px dashed #c9d3e2;border-radius:8px;padding:18px 20px;background:#f8fafc;color:#5a6b85;font-size:.9rem;margin:14px 0"><strong>Image removed.</strong> The persona illustration used here was a stock portrait and is not reproduced. The persona profile below is the substance of it.</div></h2>
+<h3 id="demographics"><strong>Demographics</strong></h3>
+<ul>
+<li><p><strong>Age:</strong> 42</p></li>
+<li><p><strong>Gender:</strong> Male (He/Him)</p></li>
+<li><p><strong>Location:</strong> Salt Lake City, Utah</p></li>
+<li><p><strong>Education:</strong> Bachelor's in Communications (completed 15 years ago); currently enrolled in Masters of Legal Studies program (part-time, evening)</p></li>
+<li><p><strong>Occupation:</strong> Risk Management Specialist at a mid-sized healthcare organization</p></li>
+</ul>
+<h3 id="technology-proficiency"><strong>Technology Proficiency</strong></h3>
+<ul>
+<li><p><strong>Overall Level:</strong> Medium to low</p></li>
+<li><p><strong>Comfort with Basic Tools:</strong> Proficient with email, word processing, spreadsheets for basic functions</p></li>
+<li><p><strong>Digital Challenges:</strong> Struggles with learning new interfaces, gets overwhelmed by multiple steps or complex navigation</p></li>
+<li><p><strong>Tech Adoption Pattern:</strong> Cautious adopter who needs to see clear personal benefit before investing time in learning new tools</p></li>
+<li><p><strong>Learning Style:</strong> Prefers step-by-step written instructions with screenshots; benefits from guided practice sessions</p></li>
+</ul>
+<h3 id="professional-background"><strong>Professional Background</strong></h3>
+<p>Morgan has worked in healthcare administration for 18 years, gradually moving into risk management. Their role involves identifying potential compliance issues, developing mitigation strategies, and ensuring organizational policies align with healthcare regulations. They interact frequently with legal counsel but aren't directly in a legal role themselves.</p>
+<h3 id="ai-interest-and-knowledge"><strong>AI Interest and Knowledge</strong></h3>
+<ul>
+<li><p><strong>Current Understanding:</strong> Basic awareness of AI as a concept; has read news articles about ChatGPT and seen AI features appearing in software they use</p></li>
+<li><p><strong>Motivation for Learning:</strong> Believes AI tools could help streamline compliance monitoring and policy review processes</p></li>
+<li><p><strong>Specific Goals:</strong></p>
+<ol type="1">
+<li><p>Understand how AI systems analyze legal and policy documents</p></li>
+<li><p>Learn to evaluate potential ethical and compliance risks of AI tools</p></li>
+<li><p>Develop skills to effectively prompt AI systems to assist with policy analysis</p></li>
+</ol></li>
+<li><p><strong>Concerns:</strong> Worried about data privacy implications, accuracy of AI outputs, and potential for unintentional compliance violations</p></li>
+</ul>
+<h3 id="personal-attributes"><strong>Personal Attributes</strong></h3>
+<ul>
+<li><p><strong>Learning Style:</strong> Methodical and thorough; prefers to understand underlying concepts before applying them</p></li>
+<li><p><strong>Strengths:</strong> Detail-oriented, strong critical thinking skills, good at connecting theory to practical applications</p></li>
+<li><p><strong>Challenges:</strong> Experiences mild anxiety when facing new technology; sometimes struggles with technical terminology</p></li>
+<li><p><strong>Motivations:</strong> Driven by desire to remain relevant in evolving workplace; interested in becoming the "AI resource person" for their department</p></li>
+</ul>
+<h3 id="typical-day"><strong>Typical Day</strong></h3>
+<p>Morgan typically juggles multiple responsibilities: reviewing incident reports, meeting with department heads about compliance concerns, updating policies, and coordinating with legal counsel. They check email frequently throughout the day and use their organization's document management system regularly. Twice a week, they attend evening classes for their Masters program, often completing readings and assignments during lunch breaks or on weekends.</p>
+<h3 id="for-hci-cognitive-walkthrough"><strong>For HCI Cognitive Walkthrough</strong></h3>
+<ul>
+<li><p><strong>Primary Tasks:</strong> Policy analysis, compliance review, risk assessment documentation</p></li>
+<li><p><strong>Existing Tools:</strong> Microsoft Office suite, proprietary compliance tracking software, email, organization's intranet</p></li>
+<li><p><strong>Context of Use:</strong> Often multitasking in a busy office environment; sometimes working remotely in the evenings</p></li>
+<li><p><strong>Pain Points:</strong> Finding relevant information quickly, managing large volumes of regulatory documents, staying current with changing requirements</p></li>
+<li><p><strong>Success Metrics:</strong> Time saved on routine tasks, improved accuracy in compliance assessments, reduced anxiety when learning new systems</p></li>
+</ul>
+<p>Morgan approaches new technology with a mix of interest and hesitation. They need clear value demonstration, straightforward instructions, and assurance about privacy and security before fully engaging with new tools.</p>
+<h2 id="scenario-context"><strong>Scenario Context</strong></h2>
+<p>Morgan Reeves, a 42-year-old Risk Management Specialist at a healthcare organization in Salt Lake City, is working on a module in his Masters of Legal Studies program that explores AI legal tools. As someone with medium-to-low technology proficiency who experiences mild anxiety with new interfaces, Morgan approaches this assignment with both interest and hesitation, recognizing the potential benefits for his compliance work while being cautious about learning new systems.</p>
+<h2 id="keypath-walkthrough"><strong>Keypath Walkthrough</strong></h2>
+<ol type="1">
+<li><p><strong>Welcome Page Navigation</strong>: Morgan logs into Canvas after his workday ends at 6:30 PM. He navigates to his AI and the Law course and sees the new module titled "AI Legal Research Tools." He reads the welcome page carefully, noting the learning objectives and module structure. The page mentions tools that could help streamline his compliance work, which increases his interest despite his technology hesitation. He clicks the "Next" button at the bottom of the page after thoroughly reading all instructions.</p></li>
+<li><p><strong>Activity Page 1 Exploration</strong>: Morgan arrives at Activity 1, which presents a list of legal AI tools with brief descriptions. He reads each description methodically, taking notes on which ones might apply to healthcare compliance. He struggles briefly when the page requires clicking on external links to explore some tools, as he's unsure if he'll be able to navigate back easily. After exploring three tools that seem relevant to his work (focusing on those that analyze regulatory documents), he spends extra time reviewing the user interfaces of websites, trying to assess how difficult they might be to learn.</p></li>
+<li><p><strong>Tool Selection Process</strong>: Following instructions, Morgan selects three tools from the provided list that seem most applicable to healthcare compliance: an AI contract analysis platform and a regulatory change tracking system. He hesitates when required to register for free trials, worrying about data privacy. After carefully reading the privacy policies, he proceeds but opts not to upload any actual work documents, instead using sample files provided in the course.</p></li>
+<li><p><strong>Activity 2 Navigation and Comparison Assignment</strong>: After completing Activity 1, Morgan clicks "Next" and reaches Activity 2. Here, he finds the "AI Legal Research Tools Comparison" template. He downloads the document and saves it to his "MLS Coursework" folder on his desktop. Morgan methodically works through the template, filling in his professional role and explaining how AI tools could help identify regulatory updates affecting healthcare policies. He spends significant time on the comparison table, referring back to his notes and the tool websites to ensure accuracy.</p></li>
+<li><p><strong>Comparison Table Completion</strong>: Morgan completes the comparison table row by row, entering detailed notes about each tool's capabilities for policy analysis. He's particularly thorough in the "Strengths" and "Use cases" columns, relating these directly to healthcare compliance scenarios. He struggles with capturing screenshots of the interfaces and spends extra time figuring out how to insert them into the document. After completing the table, he reviews it several times for accuracy before saving and uploading it to Canvas.</p></li>
+<li><p><strong>Navigating to Presentation Assignment</strong>: After submitting the comparison document, Morgan clicks "Next" and arrives at instructions for creating a presentation. He reads that he needs to highlight the tools and compare productivity gains. The page provides a Google Slides template link. When clicking on it, he momentarily becomes confused when a new browser tab opens, unsure if he should close the Canvas tab. He decides to keep both open, switching between them as needed.</p></li>
+<li><p><strong>Working with Google Slides Template</strong>: Morgan opens the provided Google Slides template and sees it has placeholder text. He works methodically through each slide, replacing the placeholders with content from his comparison document. He appreciates the template structure but spends extra time figuring out how to change colors and formatting. He adds specific examples of how these tools could reduce time spent reviewing regulatory updates—calculating that one tool might save him 4-5 hours weekly on compliance monitoring.</p></li>
+<li><p><strong>Navigating to Storyline Learning</strong>: After saving his presentation and submitting the link in Canvas, Morgan clicks "Next" and encounters an embedded Storyline learning module. He reads the instructions carefully, noting it contains videos with interactive quizzes. He adjusts his computer volume and ensures his headphones are connected before starting. The interactive nature of the content requires him to click through scenarios about using AI for legal research, which causes some navigation confusion when he's unsure if he should click specific areas of the screen.</p></li>
+<li><p><strong>Completing Interactive Quizzes</strong>: Throughout the Storyline module, Morgan encounters embedded quizzes after short instructional videos. He watches each video fully before attempting the questions. When he answers incorrectly on one quiz about AI limitations in legal research, he carefully reads the feedback, makes notes on the correct answer, and continues. He finds the interactive format challenging but appreciates how it reinforces the concepts about ethical use of AI in legal contexts.</p></li>
+<li><p><strong>Navigating to Discussion Page</strong>: After completing the Storyline module, Morgan clicks "Next" and arrives at the discussion page. He reads the instructions thoroughly, noting he needs to address his experience with the AI tools, examples of combining AI with traditional research, challenges encountered, and practical tips. He also sees he must respond to two classmates' posts. Since he's one of the first to complete the module, he bookmarks the page to return later for the response requirement.</p></li>
+<li><p><strong>Creating Discussion Post</strong>: Morgan drafts his discussion post in a Word document first, describing how he tested the regulatory tracking AI on a recent healthcare policy change. He includes specific examples of when the AI tools complemented traditional research methods, particularly for finding relevant case precedents. He describes challenges with understanding confidence scores in AI outputs and shares practical tips about using specific prompts for healthcare compliance queries. After careful proofreading, he copies this content into the discussion forum and submits his post.</p></li>
+<li><p><strong>Returning to Respond to Classmates</strong>: Two days later, Morgan returns to the discussion board and sees several classmates have posted. He reads through five posts before selecting two that relate most closely to healthcare contexts. He crafts thoughtful responses that build on their experiences, sharing additional insight about how one tool they mentioned could be applied to HIPAA compliance monitoring. He submits these responses, completing all module requirements.</p></li>
+</ol>
+</div>
+<footer>W. Jordan Charles · Instructional Design &middot; Learning Experience Design &middot; Learning Technology</footer>
+</div></body></html>
