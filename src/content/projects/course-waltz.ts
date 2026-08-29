@@ -76,8 +76,8 @@ const waltzCourse: ProjectBase = {
   // COMPREHENSIVE ADDIE METHODOLOGY DOCUMENTATION
   addieMethodology: {
     analysis: {
-      needsAssessment: "Conducted surveys with 45 potential learners identifying barriers to traditional dance instruction: 73% cited scheduling conflicts, 68% reported location accessibility issues, 82% preferred learning at own pace",
-      learnerAnalysis: "Target audience analysis revealed diverse learning preferences: 60% visual learners, 30% kinesthetic learners, 10% auditory learners; 40% complete beginners, 35% had some social dance exposure, 25% experienced in other physical activities",
+      needsAssessment: "Worked from a written needs assessment rather than collected data. No survey of prospective learners was run for this project - the instructional need was established by defining the target learner and the skill gap directly.",
+      learnerAnalysis: "Learners were defined in the needs assessment as able-bodied adults from a wide range of backgrounds with little to no dancing experience, able to watch, read, and listen to instruction. That last condition set the accessibility floor for media choices, since a purely visual demonstration would have excluded part of the intended audience.",
       contextAnalysis: "Online learning environment required innovative approach to physical skill instruction, necessitating multi-modal content delivery and creative assessment methodologies",
       performanceGaps: "Beginners could not perform the box step or progressive basic, alone or with a partner, and could not combine individual movements into a continuous step. No survey was run for this project - the need was established from the written needs assessment rather than from collected data."
     },
@@ -87,7 +87,7 @@ const waltzCourse: ProjectBase = {
         attention: "Engaging video introductions featuring professional dancers, historical context storytelling, and interactive timeline of waltz evolution",
         relevance: "Real-world scenarios including wedding preparation, social event confidence, and cultural literacy components connecting to learner goals",
         confidence: "Progressive skill building with immediate feedback, self-paced learning modules, and multiple practice opportunities before assessment",
-        satisfaction: "Community recognition through discussion forums, video submission celebrations, and skill achievement badges"
+        satisfaction: "Discussion forums for peer feedback and video submissions so learners could see their own progress"
       },
       assessmentStrategy: "Competency-based video submissions with rubric evaluation, peer feedback exercises, historical knowledge quizzes with immediate feedback, and self-reflection journals tracking progress",
       universalDesign: "Multiple content representations (video, text, audio), flexible engagement methods (individual practice, partner work, group discussions), various expression options (video, written, discussion participation)"
@@ -98,7 +98,7 @@ const waltzCourse: ProjectBase = {
       interactivityDevelopment: "Created discussion forums for peer learning, interactive quizzes with immediate feedback, video upload capabilities for assessment submissions, and progress tracking tools"
     },
     implementation: {
-      pilotTesting: "Conducted small group pilot with 8 learners to validate instructional effectiveness and identify technical issues before full course launch",
+      pilotTesting: "Ran a small-group formative evaluation with four participants to validate course organization and clarity before wider use",
       launchStrategy: "Phased enrollment approach with instructor presence for first cohort to address questions and refine content based on real-time learner feedback",
       supportSystems: "Established weekly office hours, peer mentoring program, and comprehensive FAQ resources based on pilot testing insights"
     },

@@ -37,7 +37,7 @@ import { motion } from 'framer-motion';
 import { ArrowLeft, ExternalLink, FileText } from 'lucide-react';
 import { Button, BaseCard } from '@/components/ui';
 import { fadeInUp } from '@/lib/animations';
-import { projects } from '@/content';
+import { projects, projectCategories } from '@/content';
 import type { ProjectId, ProjectBase } from '@/types/content';
 import { getImagePath } from '@/utils';
 import BasePage from './BasePage';
@@ -112,24 +112,15 @@ const ProjectDetailPage: React.FC = () => {
   // Store project in state to prevent re-fetching
   const [currentProject, setCurrentProject] = useState<ProjectBase | null>(() => {
     const found = projects.find(p => p.id === projectId);
-    console.log('Initial project lookup:', { projectId, found: !!found });
     return found || null;
   });
 
   useEffect(() => {
-    console.log('ProjectDetailPage effect running', {
-      projectId,
-      currentProject: !!currentProject,
-      initialRender: initialRender.current,
-      pathname: location.pathname
-    });
-
     // Only run on initial render
     if (initialRender.current) {
       initialRender.current = false;
 
       if (!currentProject && !navigationAttempted.current) {
-        console.log('No project found on initial render, navigating to portfolio');
         navigationAttempted.current = true;
         navigate('/portfolio', { replace: true });
       }
@@ -137,13 +128,11 @@ const ProjectDetailPage: React.FC = () => {
 
     // Cleanup
     return () => {
-      console.log('ProjectDetailPage cleanup', { pathname: location.pathname });
     };
   }, [projectId, currentProject, navigate, location]);
 
   const handleBackClick = useCallback((e: React.MouseEvent) => {
     e.preventDefault();
-    console.log('Back button clicked, navigating to portfolio');
     // Preserve the last active filter if it exists in location state
     const previousFilter = (location.state as any)?.from || 'featured';
     navigate('/portfolio', { 
@@ -154,16 +143,8 @@ const ProjectDetailPage: React.FC = () => {
 
   // Don't render anything if we don't have a project
   if (!currentProject) {
-    console.log('No current project, rendering null');
     return null;
   }
-
-  console.log('Rendering ProjectDetailPage', { 
-    projectId, 
-    currentProject: currentProject.title,
-    pathname: location.pathname 
-  });
-
   return (
     <BasePage
       seo={{
@@ -476,7 +457,15 @@ const ProjectDetailPage: React.FC = () => {
                 </div>
                 <div>
                   <dt className="text-text-secondary">Category</dt>
-                  <dd className="font-medium">{currentProject.category}</dd>
+                  {/*
+                    Look the label up rather than printing the raw category id.
+                    This rendered "id" and "learning-tech" to visitors, which
+                    reads as a bug on a page whose whole job is credibility.
+                  */}
+                  <dd className="font-medium">
+                    {projectCategories.find(c => c.id === currentProject.category)?.label
+                      ?? currentProject.category}
+                  </dd>
                 </div>
               </dl>
 

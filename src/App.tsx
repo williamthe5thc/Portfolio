@@ -180,8 +180,18 @@ const App: React.FC = () => {
         <GoogleAnalytics />
         <Navigation />
         <main className="flex-grow">
-          <AnimatePresence mode="wait">
-            <Routes location={location} key={location.pathname}>
+          {/*
+              No AnimatePresence here. It previously wrapped <Routes> with
+              mode="wait", which holds the incoming page until the outgoing one
+              reports its exit animation finished. <Routes> is not a motion
+              component, so that report never arrives: the URL and document
+              title update while the visible content stays frozen on the
+              previous page, sometimes indefinitely. Combined with
+              RouteTransition and PageTransition both fading opacity, partial
+              values multiplied and pages arrived washed out. Each page still
+              fades in via PageTransition.
+            */}
+<Routes location={location} key={location.pathname}>
               <Route path="/" element={renderWithLoadingState(HomePage)} />
   <Route path="/about" element={renderWithLoadingState(AboutPage)} />
   <Route path="/portfolio" element={renderWithLoadingState(PortfolioPage)} />
@@ -193,7 +203,6 @@ const App: React.FC = () => {
   <Route path="/resume/academic" element={renderWithLoadingState(AcademicResume)} />
   <Route path="*" element={renderWithLoadingState(NotFoundPage)} />
             </Routes>
-          </AnimatePresence>
         </main>
         <Footer />
         <BackToTop />

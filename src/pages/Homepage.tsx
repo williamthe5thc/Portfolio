@@ -66,7 +66,7 @@ const HomePage: React.FC = () => {
                 Resume
               </Button>
               <Button 
-                href="/about#Professional-practice" 
+                href="/about" 
                 variant="custom"
                 size="lg"
                 className="bg-purple-500 hover:bg-purple-600 text-white font-semibold shadow-lg rounded-lg px-6 py-3 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500"
@@ -274,7 +274,7 @@ const HomePage: React.FC = () => {
           <motion.div variants={fadeInUp}>
   <div className="mt-12 text-center">
     <Button 
-      href="/about#Professional-practice"
+      href="/about"
       variant="outline"
       className="hover:bg-primary-50"
     >

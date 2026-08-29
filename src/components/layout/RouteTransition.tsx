@@ -18,13 +18,13 @@ export const RouteTransition: React.FC<RouteTransitionProps> = ({ children }) =>
   }, [location.pathname]);
 
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0.15 }}
-    >
-      {children}
-    </motion.div>
+    /*
+      Plain fragment, not a fading motion.div. Every page also wraps itself in
+      PageTransition, which fades opacity 0 -> 1. Two nested fades multiply, so
+      mid-flight the page rendered at the product of both - around a quarter
+      opacity - and read as washed out or blank. One fade is enough; this
+      component still exists for the scroll-to-top behaviour above.
+    */
+    <>{children}</>
   );
 };
