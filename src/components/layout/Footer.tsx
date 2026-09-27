@@ -50,7 +50,7 @@ interface FooterSection {
   links: FooterLink[];
 }
 
-interface FooterProps {
+export interface FooterProps {
   className?: string;
 }
 
@@ -61,6 +61,7 @@ const footerSections: FooterSection[] = [
       { label: 'Home', href: '/' },
       { label: 'About', href: '/about' },
       { label: 'Portfolio', href: '/portfolio' },
+      { label: 'Resume', href: '/resume' },
       { label: 'Contact', href: '/contact' }
     ]
   },
@@ -84,11 +85,11 @@ const footerSections: FooterSection[] = [
 const SocialIcon: React.FC<{ name: string }> = ({ name }) => {
   switch (name.toLowerCase()) {
     case 'github':
-      return <Github className="w-5 h-5" />;
+      return <Github className="w-5 h-5" aria-hidden="true" />;
     case 'linkedin':
-      return <Linkedin className="w-5 h-5" />;
+      return <Linkedin className="w-5 h-5" aria-hidden="true" />;
     case 'email':
-      return <Mail className="w-5 h-5" />;
+      return <Mail className="w-5 h-5" aria-hidden="true" />;
     default:
       return null;
   }
@@ -110,7 +111,7 @@ export const Footer: React.FC<FooterProps> = ({ className = '' }) => {
               {siteConfig.description}
             </p>
             <div className="flex items-center text-text-secondary">
-              <MapPin className="w-5 h-5 mr-2" />
+              <MapPin className="w-5 h-5 mr-2" aria-hidden="true" />
               {siteConfig.contactInfo.location}
             </div>
           </div>

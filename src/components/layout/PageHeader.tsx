@@ -4,13 +4,11 @@
  * @description Consistent page header component with breadcrumbs and animations
  * @module components/layout
  * 
- * @requires framer-motion - For entrance animations
  * @requires lucide-react - For breadcrumb icons
  * 
  * Features:
  * - Title and subtitle support
  * - Optional breadcrumb navigation
- * - Animated entrance
  * - Responsive design
  * - Custom background support
  * 
@@ -34,7 +32,6 @@
  */
 
 import React from 'react';
-import { motion } from 'framer-motion';
 import { ScrollToSection } from '@/components/shared';
 import { ChevronRight } from 'lucide-react';
 import { Container } from './Container';
@@ -44,7 +41,7 @@ interface Breadcrumb {
   href: string;
 }
 
-interface PageHeaderProps {
+export interface PageHeaderProps {
   title: string;
   subtitle?: string;
   breadcrumbs?: Breadcrumb[];
@@ -65,36 +62,42 @@ export const PageHeader: React.FC<PageHeaderProps> = ({
         <div className="max-w-4xl">
           {/* Breadcrumbs */}
           {breadcrumbs && breadcrumbs.length > 0 && (
-            <nav className="mb-4">
-              <ol className="flex items-center space-x-2 text-sm">
-                {breadcrumbs.map((crumb, index) => (
-                  <li key={index} className="flex items-center">
-                    {index > 0 && (
-                      <ChevronRight className="w-4 h-4 mx-2 text-text-light" />
-                    )}
-                    <ScrollToSection
-                      to={crumb.href}
-                      className={`hover:text-primary-600 transition-colors ${
-                        index === breadcrumbs.length - 1
-                          ? 'text-text-primary font-medium'
-                          : 'text-text-secondary'
-                      }`}
-                    >
-                      {crumb.label}
-                    </ScrollToSection>
-                  </li>
-                ))}
+            <nav aria-label="Breadcrumb" className="mb-4">
+              <ol className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm">
+                {breadcrumbs.map((crumb, index) => {
+                  const isCurrent = index === breadcrumbs.length - 1;
+                  return (
+                    <li key={index} className="flex items-center">
+                      {index > 0 && (
+                        <ChevronRight className="w-4 h-4 mx-2 text-text-light" aria-hidden="true" />
+                      )}
+                      {isCurrent ? (
+                        <span aria-current="page" className="text-text-primary font-medium">
+                          {crumb.label}
+                        </span>
+                      ) : (
+                        <ScrollToSection
+                          to={crumb.href}
+                          className="hover:text-primary-600 transition-colors text-text-secondary"
+                        >
+                          {crumb.label}
+                        </ScrollToSection>
+                      )}
+                    </li>
+                  );
+                })}
               </ol>
             </nav>
           )}
 
-          {/* Title and Subtitle */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-          >
-            <h1 className="text-4xl font-bold text-text-primary mb-4">
+          {/*
+            Title and Subtitle. No entrance fade of its own: App's
+            PageTransition already fades the page in, and a second fade here
+            multiplied with it. Smaller on phones so single long words
+            ("Implementation") don't overflow a 320px screen.
+          */}
+          <div>
+            <h1 className="text-3xl sm:text-4xl font-bold text-text-primary mb-4 break-words">
               {title}
             </h1>
             {subtitle && (
@@ -102,7 +105,7 @@ export const PageHeader: React.FC<PageHeaderProps> = ({
                 {subtitle}
               </p>
             )}
-          </motion.div>
+          </div>
 
           {/* Optional additional content */}
           {children && (
