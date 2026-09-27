@@ -24,13 +24,13 @@ const waltzCourse: ProjectBase = {
       label: 'Module Blueprint & Storyboard',
       href: '/case-studies/waltz-blueprint-storyboard.pdf',
       description:
-        '17-page curriculum map: instructional goals mapped to learning objectives, assessments, and learning experiences, module by module'
+        '17-page curriculum map: instructional goals mapped to learning objectives, assessments, and learning experiences, module by module.'
     },
     {
       label: 'Assessment & Evaluation Plan',
       href: '/case-studies/waltz-formative-evaluation.pdf',
       description:
-        'Assessment design and the small-group formative evaluation that validated the course with four participants'
+        'Assessment design and the small-group formative evaluation that validated the course with four participants.'
     }
   ],
   tools: ["Canvas LMS", "Adobe Premier Pro", "Educational Design Tools"],
@@ -78,29 +78,29 @@ const waltzCourse: ProjectBase = {
     analysis: {
       needsAssessment: "Worked from a written needs assessment rather than collected data. No survey of prospective learners was run for this project - the instructional need was established by defining the target learner and the skill gap directly.",
       learnerAnalysis: "Learners were defined in the needs assessment as able-bodied adults from a wide range of backgrounds with little to no dancing experience, able to watch, read, and listen to instruction. That last condition set the accessibility floor for media choices, since a purely visual demonstration would have excluded part of the intended audience.",
-      contextAnalysis: "Online learning environment required innovative approach to physical skill instruction, necessitating multi-modal content delivery and creative assessment methodologies",
+      contextAnalysis: "Online learning environment required innovative approach to physical skill instruction, necessitating multi-modal content delivery and creative assessment methodologies.",
       performanceGaps: "Beginners could not perform the box step or progressive basic, alone or with a partner, and could not combine individual movements into a continuous step. No survey was run for this project - the need was established from the written needs assessment rather than from collected data."
     },
     design: {
-      instructionalStrategy: "Scaffolded learning approach progressing from individual movements to partner coordination, utilizing video modeling, written instructions, and peer feedback systems",
+      instructionalStrategy: "Scaffolded learning approach progressing from individual movements to partner coordination, utilizing video modeling, written instructions, and peer feedback systems.",
       arcsApplication: {
         attention: "Engaging video introductions featuring professional dancers, historical context storytelling, and interactive timeline of waltz evolution",
         relevance: "Real-world scenarios including wedding preparation, social event confidence, and cultural literacy components connecting to learner goals",
         confidence: "Progressive skill building with immediate feedback, self-paced learning modules, and multiple practice opportunities before assessment",
         satisfaction: "Discussion forums for peer feedback and video submissions so learners could see their own progress"
       },
-      assessmentStrategy: "Competency-based video submissions with rubric evaluation, peer feedback exercises, historical knowledge quizzes with immediate feedback, and self-reflection journals tracking progress",
+      assessmentStrategy: "Competency-based video submissions with rubric evaluation, peer feedback exercises, historical knowledge quizzes with immediate feedback, and self-reflection journals tracking progress.",
       universalDesign: "Multiple content representations (video, text, audio), flexible engagement methods (individual practice, partner work, group discussions), various expression options (video, written, discussion participation)"
     },
     development: {
-      contentCreation: "Filmed a dancer who volunteered his time, rather than sourcing existing footage, so demonstrations could show the common mistakes alongside the correct form - something stock video cannot do. Scheduling around his availability was one of the real production constraints on the project",
-      accessibilityFeatures: "Implemented closed captioning for all videos, high contrast visual elements, keyboard navigation compatibility, and alternative text descriptions for all images",
-      interactivityDevelopment: "Created discussion forums for peer learning, interactive quizzes with immediate feedback, video upload capabilities for assessment submissions, and progress tracking tools"
+      contentCreation: "Filmed a dancer who volunteered his time, rather than sourcing existing footage, so demonstrations could show the common mistakes alongside the correct form - something stock video cannot do. Scheduling around his availability was one of the real production constraints on the project.",
+      accessibilityFeatures: "Implemented closed captioning for all videos, high contrast visual elements, keyboard navigation compatibility, and alternative text descriptions for all images.",
+      interactivityDevelopment: "Created discussion forums for peer learning, interactive quizzes with immediate feedback, video upload capabilities for assessment submissions, and progress tracking tools."
     },
     implementation: {
-      pilotTesting: "Ran a small-group formative evaluation with four participants to validate course organization and clarity before wider use",
-      launchStrategy: "Phased enrollment approach with instructor presence for first cohort to address questions and refine content based on real-time learner feedback",
-      supportSystems: "Established weekly office hours, peer mentoring program, and comprehensive FAQ resources based on pilot testing insights"
+      pilotTesting: "Ran a small-group formative evaluation with four participants to validate course organization and clarity before wider use.",
+      launchStrategy: "Phased enrollment approach with instructor presence for first cohort to address questions and refine content based on real-time learner feedback.",
+      supportSystems: "Established weekly office hours, peer mentoring program, and comprehensive FAQ resources based on pilot testing insights."
     },
     evaluation: {
       kirkpatrickModel: {
@@ -109,7 +109,7 @@ const waltzCourse: ProjectBase = {
         behavior: "Feedback revealed successful online-to-physical skill transfer, with participants able to identify common mistakes and execute dance steps. Survey comments indicated improved learner comprehension through multi-modal instruction approach.",
         results: "Course design validation through systematic user testing identified specific improvement areas: video content enhancement, diagram clarification, and accessibility optimization. Feedback-driven iteration demonstrates responsive instructional design methodology."
       },
-      continuousImprovement: "Implemented systematic feedback collection and quarterly course updates based on learner suggestions and emerging best practices in online physical skill instruction"
+      continuousImprovement: "Implemented systematic feedback collection and quarterly course updates based on learner suggestions and emerging best practices in online physical skill instruction."
     }
   },
   
@@ -136,7 +136,7 @@ const waltzCourse: ProjectBase = {
   },
   solutions: [
     "Developed multi-modal instruction methods",
-    "Filmed purpose-built demonstrations that deliberately modelled common mistakes, not just correct form",
+    "Filmed purpose-built demonstrations that deliberately modeled common mistakes, not just correct form",
     "Implemented peer discussion and feedback systems",
     "Designed rubric-based video assessment submissions"
   ],

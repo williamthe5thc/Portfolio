@@ -6,7 +6,7 @@ const variableTimer: ProjectBase = {
   detailPage: true,
   id: 'variable-timer',
   title: 'Behavioral Learning Technology for ABA Therapy',
-  description: 'Developed mobile learning reinforcement tool for Registered Behavior Technicians (RBTs) to optimize timing of behavioral interventions in ABA therapy sessions',
+  description: 'Developed mobile learning reinforcement tool for Registered Behavior Technicians (RBTs) to optimize timing of behavioral interventions in ABA therapy sessions.',
   longDescription: `Developed specialized mobile learning technology for Registered Behavior Technicians (RBTs) working in Applied Behavior Analysis (ABA) therapy. The application provides variable interval timing to support evidence-based behavioral reinforcement strategies, helping RBTs optimize the timing of interventions during therapy sessions with children.
 
 This tool applies behavioral psychology principles and learning science research to create practical technology that enhances therapeutic outcomes. The variable timing functionality is based on established ABA methodology for reinforcement scheduling, demonstrating the application of learning technology to support professional practice in behavioral health settings.`,

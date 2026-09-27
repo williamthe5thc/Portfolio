@@ -15,7 +15,7 @@ const professionalCommunicationTraining: ProjectBase = {
   date: "2025",
   metrics: [
     { value: '278', label: 'Slides built in Articulate Storyline 360' },
-    { value: '26 min', label: 'Of scenario-based branching content' }
+    { value: '26 min', label: 'Scenario-based branching content' }
   ],
   tools: ["Articulate Storyline 360", "Interactive Design", "Behavioral Psychology", "Professional Development Strategy"],
   methodology: "Evidence-based instructional design combining behavioral psychology principles with professional networking best practices, delivered through interactive business scenarios and decision-making activities",

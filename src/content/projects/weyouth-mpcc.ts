@@ -85,7 +85,7 @@ This is the difference between an organization that has good material and an org
     'Delivered a platform recommendation the organization adopted and still runs on',
     'Stood up the LMS and built the course architecture: separate athlete, coach, and captain tracks sharing an underlying model',
     'Implemented SME curriculum as sequential modules with a consistent internal pattern, so learners and administrators both learn the format once',
-    'Configured self-assessments for learner reflection and separate short evaluation surveys for programme feedback, kept as distinct instruments',
+    'Configured self-assessments for learner reflection and separate short evaluation surveys for program feedback, kept as distinct instruments',
     'Set up cohort and team-based enrollment so partner organizations onboard as groups, including team-specific course builds',
     'Serve as the ongoing technical support function for the platform and its users'
   ],
@@ -95,7 +95,7 @@ This is the difference between an organization that has good material and an org
     'The organization can now enroll learners and run a full season without a founder personally delivering every session - the constraint that capped delivery before',
     'Cohort-based enrollment configured so partner organizations onboard as groups rather than individual signups',
     'Per-module evaluation surveys collect formative data during delivery, so weak modules surface while cohorts are still running',
-    'Programme effectiveness data is not yet available - cohorts are still in training, and measurement is scheduled once current seasons complete',
+    'Program effectiveness data is not yet available - cohorts are still in training, and measurement is scheduled once current seasons complete',
     'Enrollment figures, course counts, and partner names are the organization\'s operating data and are deliberately not published here'
   ],
   stakeholders: [
@@ -122,13 +122,13 @@ This is the difference between an organization that has good material and an org
       learnerCharacteristics:
         'Coaches are busy adult professionals who must learn the model and then teach it. Athletes are 12-24 and reached through a sport they already care about. Captains are peer leaders with influence but no formal training. Each needed a different track.',
       performanceGaps:
-        'With no LMS, delivery could not scale beyond the founders. Students could not be enrolled, content could not reach anyone between live sessions, and there was no consistent instrument for measuring whether the programme worked.'
+        'With no LMS, delivery could not scale beyond the founders. Students could not be enrolled, content could not reach anyone between live sessions, and there was no consistent instrument for measuring whether the program worked.'
     },
     design: {
       instructionalStrategy:
         'Separate self-paced tracks per audience over a shared underlying model, with SME content restructured into short sequential modules that follow a consistent internal pattern.',
       assessmentStrategy:
-        'Self-assessment questions within modules for learner reflection, plus distinct short evaluation surveys capturing programme feedback - deliberately separate instruments serving different purposes.',
+        'Self-assessment questions within modules for learner reflection, plus distinct short evaluation surveys capturing program feedback - deliberately separate instruments serving different purposes.',
       mediaSelection:
         'Video modules for concept delivery, written activities for application, and printable discussion cards for captain-led sessions that happen away from screens.',
       accessibilityDesign:

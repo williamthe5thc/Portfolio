@@ -55,27 +55,27 @@ const aiLawCourse: ProjectBase = {
     {
       label: 'Client Interview',
       href: '/case-studies/ai-law/client-interview.html',
-      description: 'The scoping conversation with the faculty sponsor that set what the course had to do'
+      description: 'The scoping conversation with the faculty sponsor that set what the course had to do.'
     },
     {
       label: 'HCI Cognitive Walkthrough',
       href: '/case-studies/ai-law/cognitive-walkthrough.html',
-      description: 'A usability walkthrough run against our own course build - the step most course design skips'
+      description: 'A usability walkthrough run against our own course build - the step most course design skips.'
     },
     {
       label: 'Instructional Strategies',
       href: '/case-studies/ai-law/instructional-strategies.html',
-      description: 'The instructional approach chosen for each part of the course, with the reasoning behind it'
+      description: 'The instructional approach chosen for each part of the course, with the reasoning behind it.'
     },
     {
       label: 'Media Selection',
       href: '/case-studies/ai-law/media-selection.html',
-      description: 'Why each medium was chosen for each kind of content, rather than defaulting to video throughout'
+      description: 'Why each medium was chosen for each kind of content, rather than defaulting to video throughout.'
     },
     {
       label: 'Assessment Design, Week 5 module',
       href: '/case-studies/advanced-prompting-assessment-design.pdf',
-      description: 'My own assessment plan for the advanced prompting week - a table of specifications mapped to cognitive levels, rubrics, an AI usage policy built on disclosure rather than prohibition, and item difficulty and discrimination indices for reviewing the questions afterwards'
+      description: 'My own assessment plan for the advanced prompting week - a table of specifications mapped to cognitive levels, rubrics, an AI usage policy built on disclosure rather than prohibition, and item difficulty and discrimination indices for reviewing the questions afterwards.'
     }
   ],
   

@@ -6,7 +6,7 @@ const nacvaAutomation: ProjectBase = {
   detailPage: true,
   id: 'nacva-automation',
   title: 'Learning Technology Contractor - NACVA Professional Certification Systems',
-  description: 'Professional contractor role supporting continuing education technology for the National Association of Certified Valuators and Analysts (NACVA), automating content delivery workflows for financial professionals pursuing CVA and MAFF certifications',
+  description: 'Professional contractor role supporting continuing education technology for the National Association of Certified Valuators and Analysts (NACVA), automating content delivery workflows for financial professionals pursuing CVA and MAFF certifications.',
   longDescription: `Professional contractor role with the National Association of Certified Valuators and Analysts (NACVA), a leading organization that trains and certifies over 7,000 financial professionals in business valuation and financial litigation services. Supported their continuing education technology infrastructure by converting training videos and developing Python automation scripts to streamline backend data management for their prestigious CVA (Certified Valuation Analyst) and MAFF (Master Analyst in Financial Forensics) certification programs.
 
 CVA and MAFF are highly respected, nationally accredited credentials for CPAs, business valuators, and financial litigation consultants. My work focused on modernizing their learning content delivery systems and eliminating time-consuming manual data entry processes that delayed course deployment for busy professionals seeking these certifications.
