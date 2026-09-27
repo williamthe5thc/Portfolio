@@ -1,7 +1,4 @@
 // src/content/professional/methodology.ts
-import { Methodology } from '@/types/content';
-
-// src/content/professional/methodology.ts
 
 export const methodology = {
   title: "Cognitive Science-Based Instructional Design",
@@ -122,12 +119,13 @@ export const methodology = {
     ],
     technicalCompetencies: [
       "Articulate Storyline 360 & Rise 360",
+      "LearnWorlds LMS Selection, Implementation & Administration",
       "Canvas LMS Administration",
       "SCORM Packaging & Compliance",
       "Python Automation for Learning Systems",
       "Accessibility Standards (WCAG 2.1)",
       "Learning Analytics & Data Visualization",
-      "Responsive eLearning Development",
+      "Responsive E-learning Development",
       "Multimedia Content Creation"
     ]
   },
@@ -172,6 +170,7 @@ export const methodology = {
       {
         name: "Learning Technology",
         applications: [
+          "LearnWorlds - LMS selection, implementation & administration",
           "Canvas LMS - Course management & delivery",
           "Assessment Design - Competency-based evaluation",
           "Learning Analytics - Performance measurement"

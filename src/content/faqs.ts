@@ -31,7 +31,7 @@ export const faqs: FAQ[] = [
   },
   {
     question: "What tools and technologies have you mastered?",
-    answer: "I'm proficient in Articulate Storyline 360, Rise 360, Canvas LMS, Adobe Creative Suite, and Camtasia. My programming background includes Python for workflow automation and web development fundamentals. I also have training in accessibility compliance (WCAG standards) and learning analytics approaches."
+    answer: "I'm proficient in Articulate Storyline 360, Rise 360, LearnWorlds, Canvas LMS, Adobe Creative Suite, and Camtasia. My programming background includes Python for workflow automation and web development fundamentals. I also have training in accessibility compliance (WCAG standards) and learning analytics approaches."
   },
   {
     question: "How do you approach measuring learning effectiveness?",
