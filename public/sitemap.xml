@@ -1,27 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--
+  One URL on purpose. The site uses HashRouter, and crawlers drop everything
+  after "#", so /#/about and /#/portfolio were the same URL as the home page.
+  No <lastmod>: a hand-written date goes stale and misstates freshness.
+  robots.txt can't point here: crawlers only read it at the host root
+  (williamthe5thc.github.io/robots.txt), not under /Portfolio/, so submit this
+  file in Google Search Console instead.
+-->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://williamthe5thc.github.io/Portfolio/</loc>
-    <lastmod>2024-02-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>https://williamthe5thc.github.io/Portfolio/#/about</loc>
-    <lastmod>2024-02-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://williamthe5thc.github.io/Portfolio/#/portfolio</loc>
-    <lastmod>2024-02-20</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://williamthe5thc.github.io/Portfolio/#/contact</loc>
-    <lastmod>2024-02-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
   </url>
 </urlset>
