@@ -4,8 +4,11 @@
 
 /* Custom base styles */
 @layer base {
-  html {
-    scroll-behavior: smooth;
+  /* Smooth scrolling only for visitors who haven't asked their OS for less motion. */
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
   }
   
   body {
@@ -45,49 +48,31 @@
   }
 }
 
-/* Custom utility styles */
+/*
+  Colours are defined once, in tailwind.config.ts. Don't remap primary-*,
+  text-* or background-* classes here: an override only reaches the exact
+  class it names, so gradients, rings and hover variants silently keep the
+  config value and the palette splits in two.
+*/
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
-  
-  .bg-background {
-    @apply bg-slate-50;
-  }
-  
-  .bg-background-light {
-    @apply bg-white;
-  }
-  
-  .text-text-primary {
-    @apply text-slate-900;
-  }
-  
-  .text-text-secondary {
-    @apply text-slate-600;
-  }
-  
-  .text-primary-600 {
-    @apply text-blue-600;
-  }
-  
-  .bg-primary-600 {
-    @apply bg-blue-600;
-  }
-  
-  .bg-primary-700 {
-    @apply bg-blue-700;
-  }
-  
-  .bg-primary-50 {
-    @apply bg-blue-50;
-  }
-  
-  .bg-primary-100 {
-    @apply bg-blue-100;
-  }
-  
-  .border-primary-600 {
-    @apply border-blue-600;
+}
+
+/*
+  Honour the OS "reduce motion" setting for CSS animations and transitions
+  (spinners, pulses, hover transitions). framer-motion animations are JS and
+  are handled separately. 0.01ms rather than 0 so animationend/transitionend
+  still fire for code that waits on them.
+*/
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }
