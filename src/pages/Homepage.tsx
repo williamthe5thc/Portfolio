@@ -40,8 +40,8 @@ const HomePage: React.FC = () => {
             <p className="text-lg sm:text-xl text-text-secondary mb-6">
               I turn learning problems into programs that work &mdash; needs analysis to find
               what is actually broken, evidence-based design to fix it, and the technical
-              build to ship it. Currently running the LMS and curriculum implementation for
-              a youth nonprofit; previously certification training for a credit union.
+              build to ship it. Currently designing connection curriculum for a youth
+              nonprofit; previously certification training for a credit union.
             </p>
             {/*
               One solid primary action and outline buttons for the rest, the
