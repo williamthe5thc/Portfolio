@@ -52,7 +52,7 @@ const ErrorFallback = () => (
 // Preload all routes
 const preloadRoutes = () => {
   const routes = [
-    () => import('@/pages/HomePage'),
+    () => import('@/pages/Homepage'),
     () => import('@/pages/AboutPage'),
     () => import('@/pages/PortfolioPage'),
     () => import('@/pages/ContactPage'),
@@ -73,7 +73,7 @@ const preloadRoutes = () => {
 
 // Lazy load pages with better error handling and preloading
 const HomePage = React.lazy(() => 
-  import('@/pages/HomePage').catch(() => ({
+  import('@/pages/Homepage').catch(() => ({
     default: ErrorFallback
   }))
 );
@@ -191,7 +191,7 @@ const App: React.FC = () => {
               values multiplied and pages arrived washed out. Each page still
               fades in via PageTransition.
             */}
-<Routes location={location} key={location.pathname}>
+            <Routes location={location} key={location.pathname}>
               <Route path="/" element={renderWithLoadingState(HomePage)} />
   <Route path="/about" element={renderWithLoadingState(AboutPage)} />
   <Route path="/portfolio" element={renderWithLoadingState(PortfolioPage)} />
