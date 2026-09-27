@@ -1,35 +1,30 @@
 // src/pages/HomePage.tsx
-import React, { useState, useEffect } from 'react';
-
-import { ScrollToSection } from '@/components/shared/ScrollToSection';
-
+import React from 'react';
 import { motion } from 'framer-motion';
-import { GraduationCap, Award } from 'lucide-react';
-import {RouteTransition} from '@/components/layout/RouteTransition';
-import { PageTransition } from '@/components/shared';
+import { SEO } from '@/components/shared';
 import { ProjectGrid } from '@/components/features/portfolio/ProjectGrid';
-import { Button, BaseCard, JourneyCard, StatsGrid, CoreCompetency } from '@/components/ui';
+import { Button, BaseCard } from '@/components/ui';
 import { fadeInUp, staggerContainer } from '@/lib/animations';
-import { siteConfig, projects, stats, education, competencies } from '@/content';
-
-// Import the strategic project ordering
-import { featuredProjects } from '@/content';
+import { stats, featuredProjects } from '@/content';
 
 const HomePage: React.FC = () => {
 
   return (
-   <RouteTransition>
-      <PageTransition>
     <div className="min-h-screen bg-background-light">
-      {/* Hero Section */}
-      <section id="hero" className="relative py-20 bg-gradient-to-b from-background-light to-background">
+      <SEO title="Home" />
+      {/*
+        Hero padding is kept tight on purpose so the featured projects start
+        inside the first desktop screen: a first glance should show work, not
+        only a headline and buttons.
+      */}
+      <section id="hero" className="relative pt-10 pb-6 md:pt-14 md:pb-8 bg-gradient-to-b from-background-light to-background">
         <div className="container mx-auto px-4">
           <motion.div 
             className="max-w-4xl mx-auto text-center"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
           >
-            <h1 className="text-5xl font-bold text-text-primary mb-6">
+            <h1 className="text-4xl sm:text-5xl font-bold text-text-primary mb-4 break-words">
               Learning Experiences That Work
             </h1>
             {/*
@@ -42,42 +37,43 @@ const HomePage: React.FC = () => {
             <p className="text-lg text-text-secondary mb-2">
               <b>Instructional Design &middot; Learning Experience Design &middot; Learning Technology</b>
             </p>
-            <p className="text-xl text-text-secondary mb-8">
+            <p className="text-lg sm:text-xl text-text-secondary mb-6">
               I turn learning problems into programs that work &mdash; needs analysis to find
               what is actually broken, evidence-based design to fix it, and the technical
-              build to ship it. Currently designing connection curriculum for a youth
-              nonprofit; previously certification training for a credit union.
+              build to ship it. Currently running the LMS and curriculum implementation for
+              a youth nonprofit; previously certification training for a credit union.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button 
-                href="/portfolio" 
-                variant="custom"
-                size="lg"
-                className="bg-blue-500 hover:bg-blue-600 text-white font-semibold shadow-lg rounded-lg px-6 py-3 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+            {/*
+              One solid primary action and outline buttons for the rest, the
+              same variants every other page uses. The four previous one-off
+              colours read as unbranded, and all four failed contrast with white text.
+            */}
+            <div className="grid grid-cols-2 gap-3 sm:flex sm:flex-wrap sm:justify-center sm:gap-4">
+              <Button
+                href="/portfolio"
+                variant="primary"
+                className="sm:px-6 sm:py-3 sm:text-lg font-semibold"
               >
                 View Portfolio
               </Button>
-              <Button 
-                href="/resume" 
-                variant="custom"
-                size="lg"
-                className="bg-green-500 hover:bg-green-600 text-white font-semibold shadow-lg rounded-lg px-6 py-3 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
+              <Button
+                href="/resume"
+                variant="outline"
+                className="sm:px-6 sm:py-3 sm:text-lg font-semibold"
               >
                 Resume
               </Button>
-              <Button 
-                href="/about" 
-                variant="custom"
-                size="lg"
-                className="bg-purple-500 hover:bg-purple-600 text-white font-semibold shadow-lg rounded-lg px-6 py-3 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500"
+              <Button
+                href="/about#design-process"
+                variant="outline"
+                className="sm:px-6 sm:py-3 sm:text-lg font-semibold"
               >
                 Design Process
               </Button>
-              <Button 
-                href="/contact" 
-                variant="custom"
-                size="lg"
-                className="bg-orange-500 hover:bg-orange-600 text-white font-semibold shadow-lg rounded-lg px-6 py-3 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500"
+              <Button
+                href="/contact"
+                variant="outline"
+                className="sm:px-6 sm:py-3 sm:text-lg font-semibold"
               >
                 Get In Touch
               </Button>
@@ -87,11 +83,11 @@ const HomePage: React.FC = () => {
       </section>
 
       {/* Featured Projects */}
-      <section id="featured-projects" className="py-20 bg-background">
+      <section id="featured-projects" className="pt-6 pb-20 bg-background">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">Featured Projects</h2>
-            <p className="text-xl text-text-secondary">
+          <div className="text-center mb-6">
+            <h2 className="text-3xl font-bold mb-3">Featured Projects</h2>
+            <p className="text-lg text-text-secondary">
               A credit union engagement with a measured outcome, a nonprofit LMS
               selection and build, and an Articulate Storyline 360 course
             </p>
@@ -169,7 +165,7 @@ const HomePage: React.FC = () => {
       </motion.div>
 
       {/* Core Principles */}
-      <div className="grid md:grid-cols-3 gap-6 mb-12">
+      <div className="grid lg:grid-cols-3 gap-6 mb-12">
         <motion.div variants={fadeInUp}>
           <BaseCard className="h-full">
             <h3 className="text-xl font-semibold text-text-primary mb-4">
@@ -218,7 +214,7 @@ const HomePage: React.FC = () => {
           <h3 className="text-2xl font-bold text-text-primary mb-6 text-center">
             ADDIE Design Methodology
           </h3>
-          <div className="grid md:grid-cols-5 gap-6">
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
             <div className="text-center">
               <div className="w-12 h-12 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <span className="text-primary-600 font-bold">A</span>
@@ -269,27 +265,20 @@ const HomePage: React.FC = () => {
       </motion.div>
 
       {/* Results Focus */}
-      <motion.div variants={fadeInUp}>
-        <div className="mt-12 text-center">
-          <motion.div variants={fadeInUp}>
-  <div className="mt-12 text-center">
-    <Button 
-      href="/about"
-      variant="outline"
-      className="hover:bg-primary-50"
-    >
-      Learn More About My Approach
-    </Button>
-  </div>
-</motion.div>
-        </div>
+      <motion.div variants={fadeInUp} className="mt-12 text-center">
+        <Button 
+          href="/about#design-process"
+          variant="outline"
+        >
+          Learn More About My Approach
+        </Button>
       </motion.div>
     </motion.div>
   </div>
 </section>
 
 {/* Call to Action - WCAG AA Compliant Colors */}
-<section id="Contact Me" className="py-20 bg-gradient-to-r from-primary-600 to-primary-700 text-white">
+<section id="contact-cta" className="py-20 bg-gradient-to-r from-primary-600 to-primary-700 text-white">
   <div className="container mx-auto px-4 text-center">
     <div className="max-w-3xl mx-auto">
       <h2 className="text-3xl font-bold mb-6 drop-shadow-sm">Let's Work Together</h2>
@@ -319,8 +308,6 @@ const HomePage: React.FC = () => {
   </div>
 </section>
     </div>
-     </PageTransition>
-    </RouteTransition>
   );
 };
 
