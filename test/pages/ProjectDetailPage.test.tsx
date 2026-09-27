@@ -7,8 +7,8 @@ import ProjectDetailPage from '@/pages/ProjectDetailPage';
 import { projects } from '@/content';
 
 // Mock router hooks
-vi.mock('react-router-dom', () => ({
-  ...vi.importActual('react-router-dom'),
+vi.mock('react-router-dom', async () => ({
+  ...(await vi.importActual<typeof import('react-router-dom')>('react-router-dom')),
   useParams: vi.fn(),
   useNavigate: vi.fn(),
   useLocation: () => ({ pathname: '/portfolio/test-project' })

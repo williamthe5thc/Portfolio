@@ -8,8 +8,8 @@ import { ProjectGrid } from '@/components/features/portfolio/ProjectGrid';
 import { projects } from '@/content';
 
 // Mock react-router-dom
-vi.mock('react-router-dom', () => ({
-  ...vi.importActual('react-router-dom'),
+vi.mock('react-router-dom', async () => ({
+  ...(await vi.importActual<typeof import('react-router-dom')>('react-router-dom')),
   useSearchParams: vi.fn()
 }));
 

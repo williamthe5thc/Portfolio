@@ -6,8 +6,8 @@ import { MemoryRouter, useLocation } from 'react-router-dom';
 import { Navigation } from '@/components/layout/Navigation';
 
 // Mock useLocation
-vi.mock('react-router-dom', () => ({
-  ...vi.importActual('react-router-dom'),
+vi.mock('react-router-dom', async () => ({
+  ...(await vi.importActual<typeof import('react-router-dom')>('react-router-dom')),
   useLocation: vi.fn()
 }));
 

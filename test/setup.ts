@@ -72,6 +72,14 @@ console.error = (...args) => {
   originalError.apply(console, args);
 };
 
+// happy-dom has no FontFaceSet; the page-load hook waits on document.fonts.ready
+if (!('fonts' in document)) {
+  Object.defineProperty(document, 'fonts', {
+    configurable: true,
+    value: { ready: Promise.resolve() }
+  });
+}
+
 // Mock scroll functions
 Object.defineProperty(window, 'scrollTo', {
   value: vi.fn(),
@@ -85,26 +93,49 @@ Object.defineProperty(window, 'scrollY', {
 });
 
 // Mock Framer Motion
-vi.mock('framer-motion', () => {
-  const MockMotionComponent = (props: { children?: ReactNode } & Record<string, any>) => 
-    React.createElement('div', { ...props, 'data-testid': 'motion-component' }, props.children);
+// Every motion.<tag> renders the plain <tag> without animation props. The
+// caller's own props, including data-testid, win over the default test id:
+// the old mock rendered everything as a <div> and overwrote data-testid, so
+// every getByTestId() query in the suite failed. Hooks and helpers that are
+// not overridden here come from the real module.
+vi.mock('framer-motion', async importOriginal => {
+  const actual = await importOriginal<typeof import('framer-motion')>();
+  const MOTION_PROPS = new Set([
+    'initial', 'animate', 'exit', 'transition', 'variants', 'custom',
+    'whileHover', 'whileTap', 'whileFocus', 'whileInView', 'whileDrag',
+    'viewport', 'layout', 'layoutId', 'drag', 'dragConstraints',
+    'onAnimationStart', 'onAnimationComplete', 'onHoverStart', 'onHoverEnd'
+  ]);
+  const cache = new Map<string, React.ComponentType<any>>();
+  const mockMotion = (tag: string) => {
+    if (!cache.has(tag)) {
+      const MockMotionComponent = React.forwardRef<Element, Record<string, any>>(
+        ({ children, ...props }, ref) => {
+          const domProps = Object.fromEntries(
+            Object.entries(props).filter(([key]) => !MOTION_PROPS.has(key))
+          );
+          return React.createElement(
+            tag,
+            { 'data-testid': 'motion-component', ...domProps, ref },
+            children
+          );
+        }
+      );
+      MockMotionComponent.displayName = `motion.${tag}`;
+      cache.set(tag, MockMotionComponent);
+    }
+    return cache.get(tag);
+  };
 
   return {
-    motion: {
-      div: MockMotionComponent,
-      span: MockMotionComponent,
-      button: MockMotionComponent
-    },
-    AnimatePresence: ({ children }: { children: ReactNode }) => children,
+    ...actual,
+    motion: new Proxy({}, { get: (_target, tag: string) => mockMotion(tag) }),
+    AnimatePresence: ({ children }: { children: ReactNode }) =>
+      React.createElement(React.Fragment, null, children),
     useAnimation: () => ({
       start: vi.fn(),
       stop: vi.fn(),
       set: vi.fn()
-    }),
-    useInView: () => [null, false],
-    useScroll: () => ({
-      scrollY: { get: () => 0, onChange: vi.fn() },
-      scrollYProgress: { get: () => 0, onChange: vi.fn() }
     })
   };
 });

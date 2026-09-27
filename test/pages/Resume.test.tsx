@@ -6,8 +6,8 @@ import ResumePage from '@/pages/ResumePage';
 import { siteConfig } from '@/content';
 
 // Mock router hooks
-vi.mock('react-router-dom', () => ({
-  ...vi.importActual('react-router-dom'),
+vi.mock('react-router-dom', async () => ({
+  ...(await vi.importActual<typeof import('react-router-dom')>('react-router-dom')),
   useNavigate: vi.fn()
 }));
 

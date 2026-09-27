@@ -7,8 +7,8 @@ import { Link } from 'react-router-dom';
 import ResumePage from '@/pages/ResumePage';
 
 // Mock components
-vi.mock('react-router-dom', () => ({
-  ...vi.importActual('react-router-dom'),
+vi.mock('react-router-dom', async () => ({
+  ...(await vi.importActual<typeof import('react-router-dom')>('react-router-dom')),
   Link: vi.fn(({ to, children, className }) => (
     <a href={to} className={className}>{children}</a>
   ))
