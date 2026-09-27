@@ -136,7 +136,7 @@ export const ProjectGrid: React.FC<ProjectGridProps> = ({
         className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
         variants={staggerContainer}
       >
-        {filteredProjects.map(project => (
+        {filteredProjects.map((project, index) => (
           <motion.div
             key={project.id}
             className="h-full"
@@ -144,7 +144,8 @@ export const ProjectGrid: React.FC<ProjectGridProps> = ({
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.2 }}
           >
-            <ProjectCard project={project} className="h-full" />
+            {/* Only the first card's image is fetched up front; see imageLoading. */}
+            <ProjectCard project={project} className="h-full" priority={index === 0} />
           </motion.div>
         ))}
       </motion.div>

@@ -8,7 +8,7 @@ const waltzCourse: ProjectBase = {
   title: "Teaching the Waltz Online Course",
   description: "I created this online dance education course for teaching waltz to beginners. This project involved applying ADDIE methodology and ARCS motivation model to transform physical dance instruction into an engaging digital learning experience.",
   longDescription: "Graduate final project, co-designed with a classmate, taking a physical skill - the waltz box step and progressive basic - and building it into a self-paced Canvas course for complete beginners. The interesting constraint is that dance is kinesthetic and the delivery is not: learners cannot be corrected in the moment, so the design has to anticipate the mistakes instead. We worked from a written needs assessment through a full module blueprint, then assessment design, then a small-group formative evaluation. Instruction was filmed rather than sourced from existing video so that demonstrations could deliberately show the common errors as well as the correct form.",
-  image: getImagePath('/images/thumbnails/how-to-waltz.jpg'),
+  image: getImagePath('/images/thumbnails/how-to-waltz.webp'),
   category: "id",
   tags: ["Instructional Design", "Online Learning", "Dance Education", "Canvas LMS", "Curriculum Development"],
   status: "completed",

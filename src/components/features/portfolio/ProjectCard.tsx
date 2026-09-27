@@ -33,11 +33,16 @@ import { ExternalLink, ArrowRight } from 'lucide-react';
 import { ProjectBase } from '@/types/content';
 import { cardHover } from '@/lib/animations';
 import { Badge } from '@/components/ui';
-import { isPdf, documentHref } from '@/utils';
+import { isPdf, documentHref, imageLoading } from '@/utils';
 
 interface ProjectCardProps {
   project: ProjectBase;
   className?: string;
+  /**
+   * The first card on the page: its image is fetched eagerly at high
+   * priority. Every other card's image is lazy-loaded.
+   */
+  priority?: boolean;
 }
 
 const STATUS_LABELS: Record<string, string> = {
@@ -62,7 +67,8 @@ const outlineAction = `${actionBase} border-2 border-primary-600 text-primary-60
 
 export const ProjectCard: React.FC<ProjectCardProps> = ({
   project,
-  className = ''
+  className = '',
+  priority = false
 }) => {
   const location = useLocation();
   const [imageFit, setImageFit] = useState<'cover' | 'contain'>('contain');
@@ -95,6 +101,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
         <img
           src={project.image}
           alt={project.imageAlt ?? ''}
+          {...imageLoading(priority)}
           onLoad={handleImageLoad}
           className={`w-full h-full ${imageFit === 'cover' ? 'object-cover' : 'object-contain'} transition-transform duration-300 motion-safe:group-hover:scale-105`}
         />

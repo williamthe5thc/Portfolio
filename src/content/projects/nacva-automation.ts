@@ -12,7 +12,7 @@ const nacvaAutomation: ProjectBase = {
 CVA and MAFF are highly respected, nationally accredited credentials for CPAs, business valuators, and financial litigation consultants. My work focused on modernizing their learning content delivery systems and eliminating time-consuming manual data entry processes that delayed course deployment for busy professionals seeking these certifications.
 
 This contractor role provided valuable experience in learning technology optimization for professional development organizations, demonstrating how technical automation can significantly improve educational content delivery for specialized professional audiences.`,
-  image: getImagePath('/images/thumbnails/Presentation - NACVA Professional Certification Technology.png'),
+  image: getImagePath('/images/thumbnails/Presentation - NACVA Professional Certification Technology.webp'),
   imageAlt: 'Title graphic: NACVA Professional Certifications - Supporting financial professionals using automation solutions',
   category: 'technical',
   tags: [

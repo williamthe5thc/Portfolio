@@ -40,7 +40,7 @@ import { fadeInUp } from '@/lib/animations';
 import { projects, projectCategories } from '@/content';
 import type { ProjectId } from '@/content/projects';
 import type { ProjectBase, ProjectStatus } from '@/types/content';
-import { getImagePath, isPdf, documentHref } from '@/utils';
+import { getImagePath, isPdf, documentHref, imageLoading } from '@/utils';
 import BasePage from './BasePage';
 
 const NewTabHint = () => <span className="sr-only"> (opens in a new tab)</span>;
@@ -383,16 +383,26 @@ const ProjectDetailPage: React.FC = () => {
                 object-contain fixed the height but letterboxed every image in
                 grey bands, which read as an unfinished frame.
 
+                The fixed-height wrapper (192px on phones, 288px from sm up)
+                reserves the image's space before it loads. Without it the
+                img was 0px tall until its header arrived, and the metrics
+                and story jumped down by up to 288px as the reader started.
+                The image is the page's first visible one, so it is fetched
+                eagerly at high priority.
+
                 alt: the title is the h1 just above, so repeating it here only
                 made screen readers say it twice. imageAlt carries the text
                 baked into the graphic; purely pictorial images stay alt="".
               */}
               {currentProject.image && (
-                <img
-                  src={currentProject.image}
-                  alt={currentProject.imageAlt ?? ''}
-                  className="block mx-auto w-auto max-w-full max-h-72 rounded-lg mb-6"
-                />
+                <div className="flex h-48 sm:h-72 items-center justify-center mb-6">
+                  <img
+                    src={currentProject.image}
+                    alt={currentProject.imageAlt ?? ''}
+                    {...imageLoading(true)}
+                    className="block w-auto h-auto max-w-full max-h-full rounded-lg"
+                  />
+                </div>
               )}
 
               <ProjectLinks project={currentProject} className="md:hidden mb-6" />
