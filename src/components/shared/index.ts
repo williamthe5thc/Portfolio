@@ -7,10 +7,8 @@
 
 // Core Components
 export { ErrorBoundary } from './ErrorBoundary';
-export { LoadingScreen } from './LoadingScreen';
 export { SEO } from './SEO';
 export { Timeline } from './Timeline';
-export { ProjectCarousel } from './ProjectCarousel';
 export { default as PageTransition } from './PageTransition';
 export { default as GoogleAnalytics } from './GoogleAnalytics';
 
@@ -19,17 +17,8 @@ export * from '@/lib/animations';
 
 // Export component types
 export type { ErrorBoundaryProps } from './ErrorBoundary';
-export type { LoadingScreenProps } from './LoadingScreen';
 export type { SEOProps } from './SEO';
 export type { TimelineProps } from './Timeline';
 
-//Quick Links
-export { QuickLinks } from './QuickLinks';
-
-//Scrolling 
-export { ScrollLink } from './ScrollLink';
-export { ScrollProgress } from './ScrollProgress';
-export { ScrollReveal } from './ScrollReveal';
+// Scrolling
 export { ScrollToSection } from './ScrollToSection';
-export { ScrollToTopButton } from './ScrollToTopButton';
-export { navigateAndScroll, scrollToTop } from './scrollUtils';

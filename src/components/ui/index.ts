@@ -6,7 +6,7 @@
  * 
  * Exports:
  * - Core components (Button, Card, etc.)
- * - Form components (Input, TextArea, etc.)
+ * - Contact components (ContactMethod)
  * - Display components (Badge, Alert, etc.)
  * - Layout components (Container, Grid, etc.)
  * 
@@ -21,8 +21,7 @@
  * import { 
  *   Button,
  *   Card,
- *   Badge,
- *   Input
+ *   Badge
  * } from '@/components/ui';
  * 
  * // Import specific types
@@ -42,7 +41,7 @@ export { BackToTop } from './BackToTop';
 export { Badge } from './Badge';
 
 //export the cards
-export { BaseCard, CoreCompetency, JourneyCard, StatsGrid, PhilosophyCard } from './Card.jsx';
+export { BaseCard, CoreCompetency, JourneyCard, StatsGrid, PhilosophyCard } from './Card';
 export type {
   CoreCompetencyProps,
   JourneyItemProps,
@@ -50,21 +49,15 @@ export type {
   PhilosophyCardProps,
   StatsItemProps,
   StatsGridProps,
-} from './Card.tsx';
+} from './Card';
 
-// Form Components
-export { Input } from './Input';
-export { TextArea } from './TextArea';
-export { FormField } from './FormField';
+// Contact Components
 export { ContactMethod } from './ContactMethod';
 
 
 // Types
 export type { ButtonProps } from './Button';
 export type { CardProps } from './Card';
-export type { InputProps } from './Input';
-export type { TextAreaProps } from './TextArea';
-export type { FormFieldProps } from './FormField';
 export type { BackToTopProps } from './BackToTop';
 export type { BadgeProps } from './Badge';
 export type { ContactMethodProps } from './ContactMethod';

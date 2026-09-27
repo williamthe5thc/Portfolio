@@ -36,9 +36,8 @@ export const ScrollToSection: React.FC<ScrollToSectionProps> = ({
     } else {
       // Other page: navigate with the hash in the URL; App's scroll manager
       // scrolls to it once the page has rendered.
-      navigate(hash ? { pathname: path, hash: `#${hash}` } : path, {
-        state: { scrollTo: hash }
-      });
+      // The hash is all it needs; nothing reads a scrollTo router state.
+      navigate(hash ? { pathname: path, hash: `#${hash}` } : path);
     }
   };
 
