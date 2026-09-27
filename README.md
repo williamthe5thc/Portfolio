@@ -24,20 +24,55 @@ cd Portfolio
 
 2. **Install dependencies**
 ```bash
-npm install
+npm ci
+```
+Cypress is still a devDependency, and its install step downloads a large
+browser binary. The download fails on a restricted or offline network, and
+that failure fails the whole install. There is no `cypress.config.*`, so the
+specs in `test/cypress/` and the `cy:*` and `test:e2e*` scripts cannot run
+anyway. Skip the download:
+```bash
+CYPRESS_INSTALL_BINARY=0 npm ci              # macOS, Linux, Git Bash
+$env:CYPRESS_INSTALL_BINARY="0"; npm ci      # PowerShell
 ```
 
 3. **Start development server**
 ```bash
 npm run dev
 ```
+Serves http://localhost:3000/ on this computer only. To try the site on a
+phone on the same trusted network, run `npm run dev -- --host` for that
+session. The dev server used to listen on every network interface and serve
+files from the folder above the project, so anyone on the same Wi-Fi could
+read them.
 
-4. **Build for production**
+4. **Build**
 ```bash
-npm run build
+npm run build           # production, served from /Portfolio/
+npm run build:staging   # staging, served from /Portfolio-Staging/
 ```
+The staging build adds `<meta name="robots" content="noindex, nofollow">` so
+search engines don't index the copy. Neither build ships source maps.
 
-5. **Deploy**
+The contact form sends through EmailJS only if the build has the three
+`VITE_EMAILJS_*` variables. Copy `.env.example` to `.env.production` (and
+add the same keys to `.env.staging`) and fill them in. Without them the form
+opens the visitor's own email app instead. Vite reads these variables at
+build time, so rebuild and redeploy after changing them.
+
+5. **Check**
+```bash
+npx vitest run test/smoke   # renders every route; should always pass
+npx vitest run              # full suite: many older suites are stale
+npm run lint                # ESLint over src/
+npm run type-check          # tsc --noEmit
+npx prettier --check "src/**/*.{ts,tsx,css,md}"
+```
+`npm run format` rewrites files in place. So does `npm run format -- --check`,
+because the script already passes `--write`. Use the `npx prettier --check`
+line above to check without writing.
+
+6. **Deploy**
 
 There is no `npm run deploy`. Source and deploy target live in different
 repositories, so there are two separate commands:
@@ -45,20 +80,36 @@ repositories, so there are two separate commands:
 ```bash
 # Staging - williamthe5thc/Portfolio-Staging, gh-pages branch
 # Live at https://williamthe5thc.github.io/Portfolio-Staging/
-rm -rf dist && npm run deploy:staging
+npm run deploy:staging
 
 # Production - williamthe5thc/Portfolio, gh-pages branch
+# Live at https://williamthe5thc.github.io/Portfolio/
 npm run deploy:production
 ```
 
-**Delete `dist/` before every staging deploy.** `deploy:staging:manual` runs
-`git init` and `git remote add origin` inside `dist/`, and `remote add` fails
-if an origin already exists. That failure breaks the `&&` chain *before* the
-push, so the build succeeds, nothing deploys, and the command still looks
-like it worked. This is why the site once sat unchanged for ten months.
+Each command builds into `dist/`, runs `git init` inside `dist/`, commits
+everything there, and force-pushes that commit to the target repository's
+`gh-pages` branch. What the scripts do *not* handle yet:
 
-`deploy:production` uses the `gh-pages` npm package instead and does not have
-this problem.
+- **They build from your working tree, not from a commit.** Every file in
+  `public/` ships, including uncommitted and git-ignored ones. A Word lock
+  file (`~$ademic Resume .docx`) reached the live site this way after it had
+  been removed from git. Before deploying, commit your changes and check that
+  `git status --ignored public` lists nothing.
+- **Delete `dist/` before every deploy** (`rm -rf dist`, or
+  `rmdir /s /q dist` in cmd). Vite keeps `dist/.git` between builds. If a
+  push fails and you re-run with unchanged output, the commit step finds
+  nothing to commit and stops before the push, so it looks like it worked when
+  it didn't. And a staging deploy followed by a production deploy from the same
+  `dist/` carries the staging commit into production's history.
+- **They push `main:gh-pages`**, so `git init` has to create a branch called
+  `main`. If a deploy fails with `src refspec main does not match any`, run
+  `git config --global init.defaultBranch main`.
+
+GitHub Pages hosting notes: the app uses `HashRouter`, so every page lives
+under `#/`. `public/404.html` sends path-style links such as `/Portfolio/about`
+to `/Portfolio/#/about`. `public/.nojekyll` stops Pages running Jekyll, which
+would drop any file whose name starts with `_`.
 
 ## 💻 Tech Stack
 
@@ -78,7 +129,7 @@ Portfolio/
 │   ├── components/          # Reusable UI components
 │   │   ├── shared/         # Common components
 │   │   └── ui/             # Basic UI elements
-│   ├── data/               # Site content and configuration
+│   ├── content/            # Site content and configuration
 │   ├── hooks/              # Custom React hooks
 │   ├── pages/              # Page components
 │   └── styles/             # Global styles
@@ -91,9 +142,9 @@ Portfolio/
 
 The site can be customized through several configuration files:
 
-- `src/data/siteData.js`: Main content configuration
-- `tailwind.config.js`: Theme and styling customization
-- `vite.config.js`: Build and development settings
+- `src/content/siteData.ts`: Main content configuration
+- `tailwind.config.ts`: Theme and styling customization
+- `vite.config.ts`: Build and development settings
 
 ## 📱 Responsive Design
 
@@ -149,7 +200,7 @@ To update the portfolio content:
      a plaintext password on page one.
 
 4. **Deployment**
-   - See the deploy commands above. Note the `dist/` caveat for staging.
+   - See the deploy commands above, and the caveats under them.
 
 ## 👤 Contact
 
