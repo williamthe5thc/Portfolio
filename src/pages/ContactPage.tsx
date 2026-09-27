@@ -1,7 +1,7 @@
 // src/pages/ContactPage.tsx
 import { motion } from 'framer-motion';
 import { ContactForm } from '@/components/features/contact/ContactForm';
-import { ContactMethod, Button, BaseCard } from '@/components/ui';
+import { ContactMethod, BaseCard } from '@/components/ui';
 import {SectionContainer} from '@/components/layout';
 import { fadeInUp, staggerContainer } from '@/lib/animations';
 import { siteConfig, faqs } from '@/content';
@@ -11,25 +11,7 @@ import { PageTransition } from '@/components/shared';
 
 import {RouteTransition } from '@/components/layout/RouteTransition';
 
-interface ContactFormData {
-  name: string;
-  email: string;
-  message: string;
-}
-
 const ContactPage: React.FC = () => {
-  const handleSubmit = async (formData: ContactFormData): Promise<boolean> => {
-    try {
-      // Implement form submission logic
-      console.log('Form submitted:', formData);
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      return true;
-    } catch (error) {
-      console.error('Form submission error:', error);
-      return false;
-    }
-  };
-
   // Contact Information Section
   const ContactInfoSection = () => (
     <motion.div
@@ -84,14 +66,14 @@ const ContactPage: React.FC = () => {
         <h2 className="text-2xl font-bold text-text-primary mb-6">
           Send a Message
         </h2>
-        <ContactForm onSubmit={handleSubmit} />
+        <ContactForm />
       </BaseCard>
     </motion.div>
   );
 
   // FAQ Section
   const FAQSection = () => (
-    <SectionContainer className="py-20 bg-background">
+    <SectionContainer className="py-20" tinted>
       <motion.div
         className="max-w-4xl mx-auto"
         variants={staggerContainer}
