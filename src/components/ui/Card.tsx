@@ -42,6 +42,7 @@ export interface BaseCardProps extends HTMLMotionProps<'div'> {
   children: React.ReactNode;
   className?: string;
   animate?: boolean;
+  /** Lift on hover. Defaults to on only when the card has an onClick. */
   hover?: boolean;
 }
 
@@ -89,14 +90,20 @@ export const BaseCard: React.FC<BaseCardProps> = ({
   children,
   className = '',
   animate = true,
-  hover = true,
+  hover,
   onClick,
   ...props
 }) => {
   const baseClass = 'bg-white rounded-xl shadow-lg overflow-hidden p-6';
-  const hoverAnimation = hover ? {
-    whileHover: { y: -5, transition: { duration: 0.2 } },
-    whileTap: { y: 0 }
+  /*
+    No whileTap, and no hover lift on static cards. framer-motion gives any
+    element with a tap gesture tabindex=0, so every text-only card (FAQ
+    answers, skills, capabilities) became a silent keyboard focus stop - 27 of
+    43 on About - and a card that lifts under the pointer invites a click that
+    does nothing.
+  */
+  const hoverAnimation = (hover ?? Boolean(onClick)) ? {
+    whileHover: { y: -5, transition: { duration: 0.2 } }
   } : {};
 
   if (!animate) {
@@ -198,9 +205,10 @@ export const StatsGrid: React.FC<StatsGridProps> = ({ stats }) => (
     {stats.map((stat) => (
       <motion.div key={String(stat.value)} variants={fadeInUp}>
         <BaseCard className="h-full border-l-4 border-primary-500">
-          <h4 className="text-lg font-bold text-primary-700 mb-3">
+          {/* h2: StatsGrid sits directly under the About page's h1. */}
+          <h2 className="text-lg font-bold text-primary-700 mb-3">
             {stat.value}
-          </h4>
+          </h2>
           {stat.points ? (
             <ul className="space-y-2">
               {stat.points.map((point) => (

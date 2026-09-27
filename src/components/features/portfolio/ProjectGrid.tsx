@@ -59,7 +59,9 @@ const FilterButton: React.FC<FilterButtonProps> = ({
   children
 }) => (
   <motion.button
+    type="button"
     onClick={onClick}
+    aria-pressed={active}
     className={`
       px-4 py-2 rounded-full transition-colors
       ${active 
@@ -137,11 +139,12 @@ export const ProjectGrid: React.FC<ProjectGridProps> = ({
         {filteredProjects.map(project => (
           <motion.div
             key={project.id}
+            className="h-full"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.2 }}
           >
-            <ProjectCard project={project} />
+            <ProjectCard project={project} className="h-full" />
           </motion.div>
         ))}
       </motion.div>

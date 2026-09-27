@@ -1,269 +1,173 @@
 /**
  * @file ProjectCard.tsx
- * @description Interactive project display card with hover effects and modal preview
+ * @description Project summary card for the home and portfolio grids
  * @module components/features
- * 
- * @requires framer-motion - For card and modal animations
+ *
+ * @requires framer-motion - For the hover lift
  * @requires lucide-react - For action icons
- * @requires react-router-dom - For navigation handling
- * 
+ * @requires react-router-dom - For the link to the detail page
+ *
  * Features:
- * - Hover animations
- * - Image zoom effect
- * - Modal preview
- * - Status badge
+ * - Whole card links to the in-site detail page ("Learn more")
+ * - External demos and documents open only from their own labelled buttons,
+ *   in a new tab
+ * - Status shown as a readable label in the card body
  * - Tag display
- * - External/internal linking
- * 
+ *
  * @example
  * ```tsx
- * // Basic usage
- * <ProjectCard 
- *   project={projectData}
- *   showPreview={true}
- * />
- * 
- * // Without preview
- * <ProjectCard 
- *   project={projectData}
- *   showPreview={false}
- * />
+ * <ProjectCard project={projectData} />
  * ```
- * 
+ *
  * @accessibility
- * - Interactive elements are keyboard focusable
- * - Modal is screen reader friendly
- * - Images have descriptive alt text
- * - ARIA labels for buttons
+ * - One real link per destination, so middle-click, open-in-new-tab and
+ *   copy-link all work
+ * - The card itself is not a focus stop; its links are
+ * - New-tab links say so to screen readers
+ * - Decorative icons are hidden from assistive technology
  */
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { useNavigate, useLocation } from 'react-router-dom';
-import { ExternalLink, ArrowRight, X, ZoomIn } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { Link, useLocation } from 'react-router-dom';
+import { ExternalLink, ArrowRight } from 'lucide-react';
 import { ProjectBase } from '@/types/content';
-import { cardHover, modalContent, modalBackdrop } from '@/lib/animations';
+import { cardHover } from '@/lib/animations';
 import { Badge } from '@/components/ui';
 
 interface ProjectCardProps {
   project: ProjectBase;
-  showPreview?: boolean;
   className?: string;
 }
 
-interface ProjectModalProps {
-  project: ProjectBase;
-  isOpen: boolean;
-  onClose: () => void;
-}
+const STATUS_LABELS: Record<string, string> = {
+  completed: 'Completed',
+  'in-progress': 'In progress',
+  planned: 'Planned'
+};
 
-const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onClose }) => (
-  <AnimatePresence>
-    {isOpen && (
-      <motion.div
-        className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-75 p-4"
-        variants={modalBackdrop}
-        initial="initial"
-        animate="animate"
-        exit="exit"
-        onClick={onClose}
-      >
-        <motion.div
-          className="relative max-w-4xl w-full bg-white rounded-lg overflow-hidden"
-          variants={modalContent}
-          onClick={e => e.stopPropagation()}
-        >
-          <button 
-            className="absolute top-4 right-4 text-white hover:text-gray-300"
-            onClick={onClose}
-          >
-            <X className="w-6 h-6" />
-          </button>
-          {project.image && (
-            <img 
-              src={project.image} 
-              alt={project.title} 
-              className="w-full h-auto"
-            />
-          )}
-          <div className="p-6">
-            <h3 className="text-2xl font-bold mb-4">{project.title}</h3>
-            <p className="text-text-secondary mb-4">{project.description}</p>
-            {project.longDescription && (
-              <div className="prose prose-sm max-w-none">
-                {project.longDescription}
-              </div>
-            )}
-          </div>
-        </motion.div>
-      </motion.div>
-    )}
-  </AnimatePresence>
-);
+const statusLabel = (status: string) =>
+  STATUS_LABELS[status.toLowerCase()] ?? status.replace(/-/g, ' ');
 
-export const ProjectCard: React.FC<ProjectCardProps> = ({ 
+const isPdf = (url: string) => /\.pdf(?:$|[?#])/i.test(url);
+
+// Same look as the shared Button's primary and outline variants. These are
+// plain anchors because "Learn more" has to carry router state and the
+// external links have to open in a new tab.
+const actionBase =
+  'flex-1 inline-flex items-center justify-center gap-2 whitespace-nowrap px-4 py-2 rounded-lg text-sm font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-600 focus-visible:ring-offset-2';
+const primaryAction = `${actionBase} relative z-10 bg-primary-600 hover:bg-primary-700 text-white`;
+const outlineAction = `${actionBase} border-2 border-primary-600 text-primary-600 hover:bg-primary-50`;
+
+export const ProjectCard: React.FC<ProjectCardProps> = ({
   project,
-  showPreview = true,
   className = ''
 }) => {
-  const navigate = useNavigate();
   const location = useLocation();
-  const [isHovered, setIsHovered] = useState(false);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [imageFit, setImageFit] = useState<'cover' | 'contain'>('contain');
 
-  const handleClick = () => {
-    console.log('Project clicked:', project);
-    console.log('Project ID:', project.id);
-    console.log('Detail Page:', project.detailPage);
-    
-    // Always navigate to detail page if available (user preference)
-    if (project.detailPage) {
-      console.log("Opening internal details page");
-      // Get current filter from URL or default to featured
-      const searchParams = new URLSearchParams(location.search);
-      const currentFilter = searchParams.get('category') || 'featured';
-      
-      // Navigate and scroll to top
-      navigate(`/portfolio/${project.id}`, {
-        state: { from: currentFilter }
-      });
-      window.scrollTo(0, 0);
-    } else if (project.projectUrl) {
-      console.log("Opening external url (no detail page available)");
-      window.open(project.projectUrl, '_blank');
-    } else {
-      console.log('No action - missing projectUrl or detailPage flag');
-    }
-  };
-
-  const handleDemoClick = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    if (project.demoUrl) {
-      window.open(project.demoUrl, '_blank');
-    }
-  };
-
-  const handleZoomClick = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    setIsModalOpen(true);
+  // Photos and screenshots fill the 16:9 frame; square logos and icons are
+  // shown whole on white. Forcing everything to object-contain letterboxed
+  // the photos in grey bands and left the white WeYouth logo square sitting
+  // inside a grey box.
+  const handleImageLoad = (e: React.SyntheticEvent<HTMLImageElement>) => {
+    const { naturalWidth: w, naturalHeight: h } = e.currentTarget;
+    if (w && h && w / h >= 1.3) setImageFit('cover');
   };
 
   return (
-    <>
-      <motion.div
-        className={`bg-white rounded-xl shadow-lg overflow-hidden cursor-pointer ${className}`}
-        variants={cardHover}
-        whileHover="whileHover"
-        whileTap="whileTap"
-        onHoverStart={() => setIsHovered(true)}
-        onHoverEnd={() => setIsHovered(false)}
-        onClick={handleClick}
-      >
-        <div className="relative">
-          <div className="aspect-video bg-gray-100 relative overflow-hidden">
-            <motion.img
-              src={project.image}
-              alt={project.title}
-              className="w-full h-full object-contain bg-gray-50"
-              animate={{ scale: isHovered ? 1.05 : 1 }}
-              transition={{ duration: 0.3 }}
-            />
-            <motion.div
-              className="absolute inset-0 bg-black bg-opacity-0 flex items-center justify-center"
-              animate={{ 
-                backgroundColor: isHovered ? 'rgba(0,0,0,0.3)' : 'rgba(0,0,0,0)' 
-              }}
-              transition={{ duration: 0.3 }}
-            >
-              <motion.div
-                className="text-white opacity-0 flex items-center gap-2"
-                animate={{ opacity: isHovered ? 1 : 0 }}
-              >
-                {project.projectUrl ? (
-                  <ExternalLink className="w-6 h-6" />
-                ) : (
-                  <ArrowRight className="w-6 h-6" />
-                )}
-                <span>View {project.projectUrl ? 'Project' : 'Details'}</span>
-              </motion.div>
-            </motion.div>
-          </div>
+    <motion.div
+      className={`group relative flex flex-col bg-white rounded-xl shadow-lg ${className}`}
+      variants={cardHover}
+      /*
+        whileHover only. whileTap made framer-motion give this div
+        tabindex=0 - a focus stop that ignored Enter. The card is clickable
+        through the "Learn more" link below instead.
+      */
+      whileHover="whileHover"
+    >
+      {/*
+        No overlay text or status badge on the image: several thumbnails have
+        their own title baked in, and anything laid over them covered it.
+      */}
+      <div className="aspect-video overflow-hidden rounded-t-xl bg-white border-b border-gray-100">
+        <img
+          src={project.image}
+          alt={project.imageAlt ?? ''}
+          onLoad={handleImageLoad}
+          className={`w-full h-full ${imageFit === 'cover' ? 'object-cover' : 'object-contain'} transition-transform duration-300 motion-safe:group-hover:scale-105`}
+        />
+      </div>
 
-          {project.status && (
-            <motion.div
-              className="absolute top-4 right-4 bg-primary-500 text-white px-3 py-1 rounded-full text-sm"
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
+      <div className="flex flex-1 flex-col p-6">
+        <h3 className="text-xl font-semibold text-text-primary mb-2 break-words">
+          {project.title}
+        </h3>
+        {project.status && (
+          <div className="mb-3">
+            <Badge variant={project.status === 'in-progress' ? 'warning' : 'secondary'}>
+              {statusLabel(project.status)}
+            </Badge>
+          </div>
+        )}
+        <p className="text-text-secondary mb-4">{project.description}</p>
+
+        <div className="flex flex-wrap gap-2 mb-4">
+          {project.tags?.map((tag) => (
+            <Badge key={tag} variant="primary">
+              {tag}
+            </Badge>
+          ))}
+        </div>
+
+        {/*
+          mt-auto pins the actions to the bottom so they line up across a row;
+          flex-1 lets two buttons share a line when they fit and each take the
+          full width when they don't, instead of wrapping ragged.
+        */}
+        <div className="mt-auto flex flex-wrap gap-2">
+          {project.demoUrl && (
+            <a
+              href={project.demoUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={primaryAction}
             >
-              {project.status}
-            </motion.div>
+              <ExternalLink className="w-4 h-4" aria-hidden="true" />
+              {project.demoLabel ?? 'Open interactive demo'}
+              <span className="sr-only"> (opens in a new tab)</span>
+            </a>
+          )}
+          {project.projectUrl && (
+            <a
+              href={project.projectUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={primaryAction}
+            >
+              <ExternalLink className="w-4 h-4" aria-hidden="true" />
+              {project.projectLabel ??
+                (isPdf(project.projectUrl) ? 'View document (PDF)' : 'View project')}
+              <span className="sr-only"> (opens in a new tab)</span>
+            </a>
+          )}
+          {project.detailPage && (
+            /*
+              Stretched link: its ::after covers the whole card, so a click on
+              the picture or title is a click on this real link. The external
+              buttons above sit over it (relative z-10).
+            */
+            <Link
+              to={`/portfolio/${project.id}`}
+              state={{ from: location.pathname + location.search }}
+              className={`${outlineAction} after:absolute after:inset-0 after:rounded-xl after:content-['']`}
+            >
+              <ArrowRight className="w-4 h-4" aria-hidden="true" />
+              Learn more
+              <span className="sr-only"> about {project.title}</span>
+            </Link>
           )}
         </div>
-
-        <div className="p-6">
-          <h3 className="text-xl font-semibold text-text-primary mb-2">
-            {project.title}
-          </h3>
-          <p className="text-text-secondary mb-4">{project.description}</p>
-          
-          {/* Action Buttons */}
-          <div className="flex flex-wrap gap-2 mb-4">
-            {project.demoUrl && (
-              <button
-                onClick={handleDemoClick}
-                className="px-4 py-2 bg-primary-500 text-white rounded-lg hover:bg-primary-600 transition-colors flex items-center gap-2"
-              >
-                <ExternalLink className="w-4 h-4" />
-                {project.demoLabel ?? 'View Demo'}
-              </button>
-            )}
-            {project.projectUrl && (
-              <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  window.open(project.projectUrl, '_blank');
-                }}
-                className="px-4 py-2 bg-primary-500 text-white rounded-lg hover:bg-primary-600 transition-colors flex items-center gap-2"
-              >
-                <ExternalLink className="w-4 h-4" />
-                View Project
-              </button>
-            )}
-            {project.detailPage && (
-              <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  const searchParams = new URLSearchParams(location.search);
-                  const currentFilter = searchParams.get('category') || 'featured';
-                  navigate(`/portfolio/${project.id}`, {
-                    state: { from: currentFilter }
-                  });
-                  window.scrollTo(0, 0);
-                }}
-                className="px-4 py-2 border border-primary-500 text-primary-500 rounded-lg hover:bg-primary-50 transition-colors flex items-center gap-2"
-              >
-                <ArrowRight className="w-4 h-4" />
-                Learn More
-              </button>
-            )}
-          </div>
-          
-          <div className="flex flex-wrap gap-2">
-            {project.tags?.map((tag) => (
-              <Badge key={tag} variant="primary">
-                {tag}
-              </Badge>
-            ))}
-          </div>
-        </div>
-      </motion.div>
-
-      {showPreview && (
-        <ProjectModal
-          project={project}
-          isOpen={isModalOpen}
-          onClose={() => setIsModalOpen(false)}
-        />
-      )}
-    </>
+      </div>
+    </motion.div>
   );
 };
