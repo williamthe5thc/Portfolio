@@ -15,24 +15,15 @@
     "jsx": "react-jsx",
 
     /* Path Aliases */
-    "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"],
-      "@/components/*": ["src/components/*"],
-      "@/components/ui/*": ["src/components/ui/*"],
-      "@/components/shared/*": ["src/components/shared/*"],
-      "@/components/features/*": ["src/components/features/*"],
-      "@/components/layout/*": ["src/components/layout/*"],
-      "@/components/auth/*": ["src/components/auth/*"],
-      "@/content/*": ["src/content/*"],
-      "@/hooks/*": ["src/hooks/*"],
-      "@/lib/*": ["src/lib/*"],
-      "@/types/*": ["src/types/*"],
-      "@/utils/*": ["src/utils/*"],
-      "@/pages/*": ["src/pages/*"],
-      "@/providers/*": ["src/providers/*"],
-      "@/styles/*": ["src/styles/*"]
+      "@/*": ["./src/*"]
     },
+
+    /* Ambient types: import.meta.env from Vite, process and NodeJS for the
+       few node globals src uses, and the jest-dom matchers for the tests
+       under src. Listing them stops other @types packages loading
+       implicitly. */
+    "types": ["vite/client", "node", "@testing-library/jest-dom"],
 
     /* Type Checking */
     "strict": true,

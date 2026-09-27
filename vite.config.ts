@@ -1,61 +1,58 @@
 /**
  * @file vite.config.ts
- * @description Vite configuration for development and production builds
- * 
- * Features:
- * - Environment variable handling
- * - Path aliases configuration
- * - Build optimization
- * - Development server settings
- * - Plugin configuration
- * 
- * @build
- * - Output directory configuration
- * - Chunk splitting strategy
- * - Source map generation
- * - Asset handling
- * 
- * @development
- * - Hot module replacement
- * - Port configuration
- * - Proxy settings
- * - SSL configuration
- * 
+ * @description Vite configuration for development, staging and production builds
+ *
+ * The mode picks the base path: production deploys to
+ * williamthe5thc.github.io/Portfolio/, staging to /Portfolio-Staging/, and the
+ * dev server serves from /.
+ *
  * @example
  * ```bash
- * # Development
- * npm run dev
- * 
- * # Production build
- * npm run build
- * 
- * # Preview production build
- * npm run preview
+ * npm run dev            # dev server on localhost:3000
+ * npm run build          # production build into dist/
+ * npm run build:staging  # staging build into dist/
+ * npm run preview        # serve the last build locally
  * ```
  */
 
-import { defineConfig, loadEnv } from 'vite';
+import { defineConfig, type Plugin } from 'vite';
 import react from '@vitejs/plugin-react';
 import path from 'path';
 
+/**
+ * Staging is a public copy of the site at a different URL. Without this,
+ * search engines can index it as a duplicate of the live portfolio and send
+ * visitors to unreviewed changes. index.html is shared by both builds, so the
+ * tag is injected here, for the staging build only.
+ */
+const noindexStaging = (mode: string): Plugin => ({
+  name: 'noindex-staging',
+  transformIndexHtml: () =>
+    mode === 'staging'
+      ? [
+          {
+            tag: 'meta',
+            attrs: { name: 'robots', content: 'noindex, nofollow' },
+            injectTo: 'head'
+          }
+        ]
+      : []
+});
+
 export default defineConfig(({ mode }) => {
-  const env = loadEnv(mode, process.cwd(), '');
-  const base = mode === 'production' 
-    ? '/Portfolio/' 
-    : mode === 'staging' 
-      ? '/Portfolio-Staging/' 
+  const base = mode === 'production'
+    ? '/Portfolio/'
+    : mode === 'staging'
+      ? '/Portfolio-Staging/'
       : '/';
 
   return {
-    plugins: [react()],
+    plugins: [react(), noindexStaging(mode)],
     base,
-    define: {
-      __ENV__: JSON.stringify(mode),
-      __BASE_URL__: JSON.stringify(base)
-    },
     build: {
       outDir: 'dist',
-      sourcemap: mode !== 'production',
+      // Off for both public builds: staging is served publicly too.
+      sourcemap: mode === 'development',
       assetsDir: 'assets',
       rollupOptions: {
         output: {
@@ -72,26 +69,16 @@ export default defineConfig(({ mode }) => {
     },
     resolve: {
       alias: {
-        '@': path.resolve(__dirname, './src'),
-        '@/components': path.resolve(__dirname, './src/components'),
-        '@/content': path.resolve(__dirname, './src/content'),
-        '@/hooks': path.resolve(__dirname, './src/hooks'),
-        '@/lib': path.resolve(__dirname, './src/lib'),
-        '@/types': path.resolve(__dirname, './src/types'),
-        '@/utils': path.resolve(__dirname, './src/utils'),
-        '@/pages': path.resolve(__dirname, './src/pages'),
-        '@/providers': path.resolve(__dirname, './src/providers'),
-        '@/styles': path.resolve(__dirname, './src/styles')
+        '@': path.resolve(__dirname, './src')
       }
     },
     server: {
       port: mode === 'staging' ? 3001 : 3000,
-      open: true,
-      host: true,
-      fs: {
-        // Allow serving files from one level up from the project root
-        allow: ['..', '.'],
-      },
+      open: true
+      // No `host: true` and no `fs.allow: ['..']`. Together they let any
+      // device on the same network, or any web page open in the browser,
+      // read files in the folder *above* the project. Run `npm run dev --
+      // --host` for a one-off test on a phone.
     },
     publicDir: 'public'
   };

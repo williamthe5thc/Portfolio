@@ -1,4 +1,4 @@
-// .gitignore
+# .gitignore
 # Dependencies
 node_modules
 .pnp
@@ -12,6 +12,10 @@ coverage
 dist
 dist-ssr
 *.local
+*.tsbuildinfo
+# A stray root-level build and Vite's dependency cache were once committed
+/assets
+/.vite
 
 # Environment
 .env
@@ -43,8 +47,6 @@ lerna-debug.log*
 # System
 .DS_Store
 Thumbs.db
-/assets
-/assets
 
 # Word lock files
 ~$*

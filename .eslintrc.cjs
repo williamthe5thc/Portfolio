@@ -1,0 +1,39 @@
+// .eslintrc.cjs
+// CommonJS because package.json sets "type": "module"; ESLint 8 cannot load
+// a .js config as an ES module.
+module.exports = {
+  root: true,
+  env: {
+    browser: true,
+    es2020: true
+  },
+  extends: [
+    'eslint:recommended',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:react-hooks/recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime'
+  ],
+  ignorePatterns: ['dist'],
+  parser: '@typescript-eslint/parser',
+  parserOptions: {
+    ecmaVersion: 'latest',
+    sourceType: 'module',
+    project: ['./tsconfig.json'],
+    ecmaFeatures: {
+      jsx: true
+    }
+  },
+  plugins: ['@typescript-eslint', 'react'],
+  rules: {
+    'react/prop-types': 'off',
+    '@typescript-eslint/explicit-function-return-type': 'off',
+    '@typescript-eslint/no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
+    'no-console': ['warn', { allow: ['warn', 'error'] }]
+  },
+  settings: {
+    react: {
+      version: 'detect'
+    }
+  }
+};
