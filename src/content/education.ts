@@ -42,8 +42,7 @@ export const education: Education = {
         "Specialized in cognitive science-based instructional design with andragogy expertise",
         "Completed capstone project (EDPS 6750) applying systematic ADDIE methodology",
         "Trained in evidence-based learning theory, cognitive load theory, and Universal Design for Learning",
-        "Intensive small cohort collaborative learning environment (6 students total)",
-        "Ready to contribute research-backed design solutions to corporate instructional design teams"
+        "Intensive small cohort collaborative learning environment (6 students total)"
       ]
     },
     {
@@ -53,7 +52,6 @@ export const education: Education = {
       location: "Rexburg, ID",
       period: "2012 - 2018",
       highlights: [
-        "Earned Bachelor's degree in Psychology",
         "Strong foundation in research methodology and statistical analysis",
         "Behavioral psychology background supports adult learning theory application"
       ],

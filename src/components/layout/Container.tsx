@@ -80,7 +80,10 @@ export const Container: React.FC<ContainerProps> = ({
   
   if (!animate) {
     return (
-      <div className={`${baseClasses} ${className}`} {...props}>
+      <div
+        className={`${baseClasses} ${className}`}
+        {...(props as React.HTMLAttributes<HTMLDivElement>)}
+      >
         {children}
       </div>
     );
@@ -170,16 +173,39 @@ export const GridContainer: React.FC<GridContainerProps> = ({
 // Export a constant for container padding class
 export const containerPadding = 'px-4 sm:px-6 lg:px-8';
 
+export interface SectionContainerProps extends React.HTMLAttributes<HTMLElement> {
+  children: React.ReactNode;
+  className?: string;
+  /** Tinted band that runs out to the edges of the page container. */
+  tinted?: boolean;
+}
+
 /**
- * SectionContainer - A simple wrapper for full-width sections
- * This is a convenience component for basic section layouts
+ * SectionContainer - vertical spacing for a section of a page.
+ *
+ * Deliberately NOT a Container. Every page already sits inside BasePage's
+ * <Container>, so making this one too (and pages then adding a third inside
+ * it) stacked the max-width and side padding: on a 390px phone the About
+ * page's text started 48px in instead of 16px. It adds vertical padding only;
+ * `py-12` is the default, and a `py-*` in className replaces it rather than
+ * competing with it. `tinted` pulls the background out over the container's
+ * side padding (and pads the content back in), so the band has a margin
+ * around the text without indenting it past the rest of the page.
  */
-export const SectionContainer: React.FC<ContainerProps> = ({ 
-  children, 
+export const SectionContainer: React.FC<SectionContainerProps> = ({
+  children,
   className = '',
-  ...props 
-}) => (
-  <Container className={`py-12 ${className}`} {...props}>
-    {children}
-  </Container>
-);
+  tinted = false,
+  ...props
+}) => {
+  const paddingY = /(^|\s)py-/.test(className) ? '' : 'py-12';
+  const band = tinted
+    ? 'bg-background -mx-4 px-4 sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8'
+    : '';
+
+  return (
+    <section className={`${paddingY} ${band} ${className}`} {...props}>
+      {children}
+    </section>
+  );
+};

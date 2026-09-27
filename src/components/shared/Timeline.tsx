@@ -38,19 +38,27 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Calendar } from 'lucide-react';
 
-interface TimelineEvent {
+export interface TimelineEvent {
   title: string;
   subtitle: string;
   date?: string;
   description?: string;
+  /** Rendered as a bulleted list under the description. */
+  highlights?: string[];
 }
 
 interface TimelineProps {
   events: TimelineEvent[];
   className?: string;
+  /** Heading level for each event title, so the timeline fits the page outline. */
+  headingLevel?: 'h3' | 'h4';
 }
 
-export const Timeline: React.FC<TimelineProps> = ({ events, className = '' }) => {
+export const Timeline: React.FC<TimelineProps> = ({
+  events,
+  className = '',
+  headingLevel: Heading = 'h3'
+}) => {
   return (
     <div className={`relative space-y-8 before:absolute before:inset-0 before:ml-5 before:h-full before:w-0.5 before:bg-gray-200 ${className}`}>
       {events.map((event, index) => (
@@ -63,18 +71,26 @@ export const Timeline: React.FC<TimelineProps> = ({ events, className = '' }) =>
         >
           {/* Timeline dot */}
           <div className="absolute -left-[35px] flex h-7 w-7 items-center justify-center rounded-full bg-primary-100 ring-2 ring-white">
-            <Calendar className="h-4 w-4 text-primary-600" />
+            <Calendar className="h-4 w-4 text-primary-600" aria-hidden="true" />
           </div>
           
           {/* Content */}
           <div className="flex flex-col">
-            <h3 className="font-semibold text-text-primary">{event.title}</h3>
+            <Heading className="font-semibold text-text-primary">{event.title}</Heading>
             <p className="text-text-secondary">{event.subtitle}</p>
+            {/* text-text-light (#94a3b8) is 2.56:1 on white - too faint for dates readers check. */}
             {event.date && (
-              <span className="mt-1 text-sm text-text-light">{event.date}</span>
+              <span className="mt-1 text-sm text-text-secondary">{event.date}</span>
             )}
             {event.description && (
               <p className="mt-2 text-text-secondary">{event.description}</p>
+            )}
+            {event.highlights && event.highlights.length > 0 && (
+              <ul className="mt-2 space-y-1 list-disc pl-5 text-text-secondary">
+                {event.highlights.map((highlight) => (
+                  <li key={highlight}>{highlight}</li>
+                ))}
+              </ul>
             )}
           </div>
         </motion.div>
