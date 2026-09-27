@@ -19,6 +19,7 @@ const waltzCourse: ProjectBase = {
   
   // Case Study Documentation
   projectUrl: getImagePath('/case-studies/waltz-formative-evaluation.pdf'),
+  projectUrlDescription: 'The complete formative evaluation report, including the assessment design.',
   artifacts: [
     {
       label: 'Module Blueprint & Storyboard',

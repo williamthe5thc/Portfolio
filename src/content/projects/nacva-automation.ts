@@ -13,6 +13,7 @@ CVA and MAFF are highly respected, nationally accredited credentials for CPAs, b
 
 This contractor role provided valuable experience in learning technology optimization for professional development organizations, demonstrating how technical automation can significantly improve educational content delivery for specialized professional audiences.`,
   image: getImagePath('/images/thumbnails/Presentation - NACVA Professional Certification Technology.png'),
+  imageAlt: 'Title graphic: NACVA Professional Certifications - Supporting financial professionals using automation solutions',
   category: 'technical',
   tags: [
     'Learning Technology',
@@ -28,6 +29,7 @@ This contractor role provided valuable experience in learning technology optimiz
   
   // Interactive demo URL
   demoUrl: getImagePath('/demos/nacva-automation/index.html'),
+  demoDescription: 'A recreation of the automation tools, adapted for portfolio demonstration.',
   
   tools: [
     'Learning Management Systems',

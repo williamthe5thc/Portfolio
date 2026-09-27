@@ -36,6 +36,7 @@ From there the work has been implementation and operation. The SMEs write the co
 
 This is the difference between an organization that has good material and an organization that can deliver it to students.`,
   image: getImagePath('/images/thumbnails/weyouth-mpcc.svg'),
+  imageAlt: 'WeYouth logo',
   category: 'learning-tech',
   tags: [
     'LMS Selection',

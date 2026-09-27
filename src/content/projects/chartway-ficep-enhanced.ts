@@ -9,6 +9,7 @@ const chartwayFicepEnhanced: ProjectBase = {
   description: 'I conducted a systematic needs analysis for Chartway Credit Union\'s Financial Counseling Examination Preparation program. This project involved applying ADDIE methodology and evidence-based research to identify performance gaps and provide curriculum enhancement recommendations.',
   longDescription: `Conducted comprehensive needs analysis for Chartway Credit Union's Financial Information Counseling and Education Program (FiCEP) certification preparation program under professional supervision. Applied systematic ADDIE methodology including semi-structured interviews with 5 program participants and survey distribution yielding 21 responses to identify performance barriers following ACU's sixth edition material update. Analysis revealed key findings: Management Needs to Set Apart More Time (23 mentions - highest priority), Study Guide was Helpful (17 mentions), Personalized per organization Content (16 mentions), Need Better Practice Exam (12 mentions). Delivered evidence-based curriculum enhancement recommendations addressing organizational support structures, assessment alignment gaps, and contextual learning approaches to help restore examination pass rates and improve learner experience.`,
   image: getImagePath('/images/thumbnails/chartway-ficep-enhanced.png'),
+  imageAlt: 'Title graphic: Systematic Needs Analysis - FiCEP Curriculum Redesign for Corporate Training Improvement',
   category: 'id',
   tags: [
     'Financial Wellness',
@@ -29,6 +30,15 @@ const chartwayFicepEnhanced: ProjectBase = {
 
   // Case Study Documentation
   projectUrl: getImagePath('/case-studies/ficep-needs-analysis.pdf'),
+  projectUrlDescription: 'The complete needs analysis report, from the interviews and survey through to the training recommendations.',
+  artifacts: [
+    {
+      label: 'Needs Analysis Report',
+      href: '/case-studies/ficep-needs-analysis.pdf',
+      description:
+        '7-page report: data collection from 5 interviews and a 21-response survey, theme and audience analysis, and the proposed training materials.'
+    }
+  ],
   tools: [
     'ADDIE Framework',
     'Learner Interview Protocols',

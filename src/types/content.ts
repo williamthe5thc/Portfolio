@@ -31,8 +31,6 @@
  * ```
  */
 
-import type { LucideIcon } from 'lucide-react';
-
 export interface ProjectBase {
   detailPage?: boolean;
   id: string;
@@ -40,14 +38,35 @@ export interface ProjectBase {
   description: string;
   longDescription?: string;
   image: string;
+  /**
+   * Alt text for `image`, transcribing any words baked into the graphic
+   * (course titles, logos). Leave it out for purely pictorial images: the
+   * image then renders with alt="", because the project title is already the
+   * heading right beside it and repeating it made screen readers say it twice.
+   */
+  imageAlt?: string;
   projectUrl?: string;
+  /**
+   * Button text for projectUrl. Defaults to "View document (PDF)" for a PDF
+   * and "View project" otherwise - never "View Live Project", which promised a
+   * live site and opened a Word export.
+   */
+  projectLabel?: string;
+  /**
+   * One line shown above the projectUrl button saying what the file is, so a
+   * visitor knows what they are opening before they open it. Use wording the
+   * project content already supports; this is not a place for new claims.
+   */
+  projectUrlDescription?: string;
   demoUrl?: string;
   /**
-   * Button text for demoUrl. Defaults to "View Interactive Demo", which is
+   * Button text for demoUrl. Defaults to "Open interactive demo", which is
    * only honest when the link actually opens something interactive - a
    * write-up behind that label reads as a bait and switch.
    */
   demoLabel?: string;
+  /** Same as projectUrlDescription, for the demoUrl button. */
+  demoDescription?: string;
   category: ProjectCategory;
   tags: string[];
   status: ProjectStatus;
@@ -85,7 +104,17 @@ export interface ProjectBase {
   challenges?: string[];
   solutions?: string[];
   results?: string[];
-  
+
+  /*
+    Authored but deliberately not rendered on the detail page (nor are
+    tools, methodology, targetAudience, stakeholders, learningTheoryApplied,
+    designProcess or professionalImpact). Some of this text predates the
+    fact-checks of the project pages, so have the owner review it before
+    adding it to the page.
+  */
+  lessonsLearned?: string;
+  features?: string[];
+
   // Enhanced instructional design fields
   businessContext?: string;
   targetAudience?: string;
@@ -101,25 +130,6 @@ export interface ProjectBase {
       learnerAnalysis?: string;
       contextAnalysis?: string;
     };
-  samMethodology?: {
-    preparation?: {
-      informationGathering?: string;
-      brainstorming?: string;
-      collaboration?: string;
-    };
-    iterativeDesign?: {
-      prototype?: string;
-      alphaDevelopment?: string;
-      reviewCycles?: string;
-      rapidIteration?: string;
-    };
-    iterativeDevelopment?: {
-      betaVersion?: string;
-      pilotTesting?: string;
-      stakeholderFeedback?: string;
-      finalRefinement?: string;
-    };
-  };
     design?: {
       instructionalStrategy?: string;
       assessmentStrategy?: string;
@@ -158,6 +168,25 @@ export interface ProjectBase {
       };
     };
   };
+  samMethodology?: {
+    preparation?: {
+      informationGathering?: string;
+      brainstorming?: string;
+      collaboration?: string;
+    };
+    iterativeDesign?: {
+      prototype?: string;
+      alphaDevelopment?: string;
+      reviewCycles?: string;
+      rapidIteration?: string;
+    };
+    iterativeDevelopment?: {
+      betaVersion?: string;
+      pilotTesting?: string;
+      stakeholderFeedback?: string;
+      finalRefinement?: string;
+    };
+  };
   designProcess?: {
     researchPhase?: string;
     stakeholderCollaboration?: string;
@@ -174,6 +203,7 @@ export interface ProjectBase {
     industryContribution?: string;
     continuingEducation?: string;
     instructionalInnovation?: string;
+    evidenceBasedRevision?: string;
     communityImpact?: string;
     scalabilityModel?: string;
   };

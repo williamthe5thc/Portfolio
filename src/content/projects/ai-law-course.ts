@@ -9,6 +9,7 @@ const aiLawCourse: ProjectBase = {
   description: 'A three-person graduate capstone team designed and built this ten-week AI and Law course for Master of Legal Studies students, delivered in Canvas. We ran a client interview with the faculty sponsor, developed personas, ran a cognitive walkthrough on our own design, and validated it with a stakeholder review before handover.',
   longDescription: `Graduate capstone, built by a team of three for the University of Utah's S.J. Quinney College of Law. This challenging project required translating complex artificial intelligence concepts into accessible learning experiences for Master of Legal Studies students, demonstrating my ability to work with complex content and diverse subject matter experts. Applied competency-based instructional design principles to build a ten-module weekly curriculum covering AI foundations, prompt engineering, legal research applications, media, and professional ethics, assessed through five quizzes, four applied assignments, and five discussion cycles. The project involved extensive collaboration with legal and technical faculty, providing valuable experience in SME coordination and academic curriculum development. This project showcases my ability to handle complex instructional design challenges and apply systematic methodology to real-world educational needs.`,
   image: getImagePath('/images/thumbnails/ai-law-course.png'),
+  imageAlt: 'Title graphic: Graduate Course Overview - AI & Law: Bridging Technology and Legal Expertise',
   category: 'id',
   tags: [
     'Curriculum Development',
@@ -43,7 +44,8 @@ const aiLawCourse: ProjectBase = {
   demoUrl: getImagePath('/demos/ai-law-course/index.html'),
   // The course lives in Canvas and cannot be linked publicly, so this opens
   // the design record. Calling that an "interactive demo" would oversell it.
-  demoLabel: 'View Design Record',
+  demoLabel: 'View design record',
+  demoDescription: 'The course lives in Canvas and cannot be linked publicly, so this opens the design record instead.',
 
   /*
     Coursework artifacts, converted to web pages and redacted. The faculty

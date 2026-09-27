@@ -9,6 +9,7 @@ const professionalCommunicationTraining: ProjectBase = {
   description: "I created a 278-slide interactive e-learning course using Articulate Storyline 360. This project showcases advanced branching scenarios, behavioral psychology application, and sophisticated interactive design techniques.",
   longDescription: "Originally developed as an academic project focused on interpersonal communication and dating relationships, this comprehensive interactive e-learning experience showcases advanced Articulate Storyline 360 development capabilities and evidence-based instructional design methodology. While the content addresses personal relationship dynamics, the underlying instructional design framework, branching scenarios, and behavioral psychology applications demonstrate transferable skills highly relevant to professional communication training, team building workshops, and workplace relationship development programs. The project exemplifies systematic ADDIE implementation, interactive scenario design, and assessment integration that could be readily adapted for corporate soft skills training, customer service communication, or leadership development initiatives.",
   image: getImagePath('/images/projects/professional-communication-training.jpg'),
+  imageAlt: "Title graphic: How to Date More Effectively - From First Swipe to First Date",
   category: "id",
   tags: ["Articulate Storyline 360", "Interactive Design", "Scenario-Based Learning", "Behavioral Psychology", "Academic Project", "Advanced Features", "E-learning Development"],
   status: "completed",
@@ -64,6 +65,7 @@ const professionalCommunicationTraining: ProjectBase = {
   
   // Technical specifications for demos
   demoUrl: getImagePath('/demos/professional-communication-training/story.html'),
+  demoDescription: "The 278-slide interactive e-learning course, built in Articulate Storyline 360.",
   
   // Features that showcase ID expertise
   features: [

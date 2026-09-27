@@ -3,7 +3,7 @@
  * @file ProjectDetailPage.tsx
  * @description Dynamic project detail page component with rich content display
  * @module pages
- * 
+ *
  * Features:
  * - Dynamic routing
  * - Image gallery
@@ -11,19 +11,19 @@
  * - Related projects
  * - Technology stack display
  * - Navigation between projects
- * 
+ *
  * @example
  * ```tsx
  * // In router configuration
- * <Route 
- *   path="/portfolio/:projectId" 
- *   element={<ProjectDetailPage />} 
+ * <Route
+ *   path="/portfolio/:projectId"
+ *   element={<ProjectDetailPage />}
  * />
- * 
+ *
  * // Navigation to project
  * navigate(`/portfolio/${project.id}`);
  * ```
- * 
+ *
  * @accessibility
  * - Semantic HTML structure
  * - Image descriptions
@@ -38,9 +38,33 @@ import { ArrowLeft, ExternalLink, FileText } from 'lucide-react';
 import { Button, BaseCard } from '@/components/ui';
 import { fadeInUp } from '@/lib/animations';
 import { projects, projectCategories } from '@/content';
-import type { ProjectId, ProjectBase } from '@/types/content';
+import type { ProjectId } from '@/content/projects';
+import type { ProjectBase, ProjectStatus } from '@/types/content';
 import { getImagePath } from '@/utils';
 import BasePage from './BasePage';
+
+const isPdf = (href: string) => /\.pdf$/i.test(href.split(/[?#]/)[0]);
+
+/**
+ * PDFs open fitted to the window width, with the thumbnail sidebar closed,
+ * so the text is readable on the first click (review feedback: "make the
+ * text on the documents bigger upon first click"). In Chrome this took the
+ * needs analysis from 100% to 155%. Chrome and Edge read view/navpanes,
+ * Firefox's viewer reads zoom/pagemode; each ignores the other's parameters,
+ * and viewers that support none of them just open the file normally.
+ */
+const PDF_OPEN_PARAMS = '#view=FitH&navpanes=0&pagemode=none&zoom=page-width';
+
+const documentHref = (href: string) =>
+  isPdf(href) && !href.includes('#') ? `${href}${PDF_OPEN_PARAMS}` : href;
+
+const NewTabHint = () => <span className="sr-only"> (opens in a new tab)</span>;
+
+const STATUS_LABELS: Record<ProjectStatus, string> = {
+  completed: 'Completed',
+  'in-progress': 'In progress',
+  planned: 'Planned',
+};
 
 /**
  * Some content entries embed markdown links, e.g.
@@ -48,6 +72,8 @@ import BasePage from './BasePage';
  * Rendered as plain text these show the raw brackets and parentheses to the
  * visitor, so parse them into real anchors. Absolute paths go through
  * getImagePath so they survive the staging and production base paths.
+ * Every such link points at a document or an external site, so it opens in a
+ * new tab rather than replacing the portfolio.
  */
 const MARKDOWN_LINK = /\[([^\]]+)\]\(([^)]+)\)/g;
 
@@ -61,18 +87,19 @@ const RichText: React.FC<{ children: string }> = ({ children }) => {
     if (match.index > cursor) parts.push(children.slice(cursor, match.index));
 
     const [, label, rawHref] = match;
-    const href = rawHref.startsWith('/') ? getImagePath(rawHref) : rawHref;
+    const href = documentHref(rawHref.startsWith('/') ? getImagePath(rawHref) : rawHref);
 
     parts.push(
       <a
         key={`${match.index}-${label}`}
         href={href}
         className="text-primary-600 underline hover:text-primary-700"
-        {...(rawHref.startsWith('http')
-          ? { target: '_blank', rel: 'noopener noreferrer' }
-          : {})}
+        target="_blank"
+        rel="noopener noreferrer"
       >
         {label}
+        {isPdf(rawHref) && !/\(PDF\)/i.test(label) ? ' (PDF)' : ''}
+        <NewTabHint />
       </a>
     );
     cursor = match.index + match[0].length;
@@ -83,8 +110,8 @@ const RichText: React.FC<{ children: string }> = ({ children }) => {
 };
 
 /**
- * One beat of the project narrative. Numbered so the four read as a sequence
- * rather than four unrelated headings a reader can drop into anywhere.
+ * One beat of the project narrative. Numbered so the beats read as a
+ * sequence rather than unrelated headings a reader can drop into anywhere.
  */
 const StoryBeat: React.FC<{
   step: string;
@@ -93,7 +120,7 @@ const StoryBeat: React.FC<{
 }> = ({ step, title, children }) => (
   <section className="border-l-4 border-primary-500 pl-5">
     <div className="flex items-baseline gap-3 mb-2">
-      <span className="text-sm font-bold text-primary-500 tracking-widest">
+      <span className="text-sm font-bold text-primary-700 tracking-widest">
         {step}
       </span>
       <h2 className="text-2xl font-bold text-text-primary">{title}</h2>
@@ -101,6 +128,59 @@ const StoryBeat: React.FC<{
     {children}
   </section>
 );
+
+/**
+ * The demo and document buttons, each with a line saying what it opens.
+ * Rendered twice: in the sidebar, and on phones directly under the hero
+ * image, because the sidebar stacks below the whole story on small screens
+ * and left the playable demo or the report 4,000-10,000px down the page.
+ */
+const ProjectLinks: React.FC<{ project: ProjectBase; className?: string }> = ({
+  project,
+  className = '',
+}) => {
+  if (!project.demoUrl && !project.projectUrl) return null;
+
+  return (
+    <div className={`space-y-4 ${className}`}>
+      {project.demoUrl && (
+        <div>
+          {project.demoDescription && (
+            <p className="text-sm text-text-secondary mb-2">{project.demoDescription}</p>
+          )}
+          <Button
+            href={documentHref(project.demoUrl)}
+            className="w-full"
+            icon={ExternalLink}
+            target="_blank"
+          >
+            {project.demoLabel ?? 'Open interactive demo'}
+          </Button>
+        </div>
+      )}
+      {project.projectUrl && (
+        <div>
+          {project.projectUrlDescription && (
+            <p className="text-sm text-text-secondary mb-2">{project.projectUrlDescription}</p>
+          )}
+          <Button
+            href={documentHref(project.projectUrl)}
+            className="w-full"
+            variant={project.demoUrl ? 'outline' : 'primary'}
+            icon={ExternalLink}
+            target="_blank"
+          >
+            {project.projectLabel ??
+              (isPdf(project.projectUrl) ? 'View document (PDF)' : 'View project')}
+          </Button>
+        </div>
+      )}
+    </div>
+  );
+};
+
+/** "learnerCharacteristics" -> "learner Characteristics", capitalised by CSS. */
+const fieldLabel = (key: string) => key.replace(/([A-Z])/g, ' $1').trim();
 
 const ProjectDetailPage: React.FC = () => {
   const { projectId } = useParams<{ projectId: ProjectId }>();
@@ -110,7 +190,7 @@ const ProjectDetailPage: React.FC = () => {
   const navigationAttempted = useRef(false);
 
   // Store project in state to prevent re-fetching
-  const [currentProject, setCurrentProject] = useState<ProjectBase | null>(() => {
+  const [currentProject] = useState<ProjectBase | null>(() => {
     const found = projects.find(p => p.id === projectId);
     return found || null;
   });
@@ -131,20 +211,156 @@ const ProjectDetailPage: React.FC = () => {
     };
   }, [projectId, currentProject, navigate, location]);
 
+  /*
+    Portfolio cards pass { from: pathname + search } in router state. When
+    the visitor came from the portfolio, step back through history: that
+    returns them to the filter they had open (it lives in ?category=) at the
+    scroll position they left, and leaves no duplicate entry behind. The old
+    navigate('/portfolio', { replace: true }) reset the filter to Featured
+    and replaced this page's entry, so the next browser Back seemed dead.
+    Anything else (a card on Home, a resume link, a shared URL) has no
+    portfolio entry to return to, so push a fresh one instead.
+  */
   const handleBackClick = useCallback((e: React.MouseEvent) => {
     e.preventDefault();
-    // Preserve the last active filter if it exists in location state
-    const previousFilter = (location.state as any)?.from || 'featured';
-    navigate('/portfolio', { 
-      replace: true,
-      state: { preserveFilter: previousFilter }
-    });
+    const from = (location.state as { from?: unknown } | null)?.from;
+    if (typeof from === 'string' && from.startsWith('/portfolio')) {
+      navigate(-1);
+    } else {
+      navigate('/portfolio');
+    }
   }, [navigate, location]);
 
   // Don't render anything if we don't have a project
   if (!currentProject) {
     return null;
   }
+
+  const analysis = currentProject.addieMethodology?.analysis;
+
+  /*
+    The story arc, before any methodology detail.
+
+    Hiring managers want a narrative - "here was the problem, here was my
+    analysis, here's what I designed, and here's what happened" - not a
+    features dump. Every beat below reuses data the project files already
+    carried; it was just ordered as description-then-challenges-then-ADDIE,
+    which reads as a spec sheet. The exhaustive ADDIE/SAM breakdown still
+    follows, as supporting evidence rather than as the pitch.
+
+    Beats are numbered by position among the ones this project actually has.
+    Most projects lack at least one, and fixed per-beat numbers showed up as
+    "01, 03, 04" or pages that opened on "03".
+  */
+  const beats: Array<{ title: string; body: React.ReactNode }> = [];
+
+  if (currentProject.businessContext) {
+    beats.push({
+      title: 'The problem',
+      body: (
+        <>
+          <p className="text-text-secondary">{currentProject.businessContext}</p>
+          {currentProject.challenges && (
+            <ul className="mt-3 space-y-1 list-disc list-inside text-text-secondary">
+              {currentProject.challenges.map((challenge, index) => (
+                <li key={index}>{challenge}</li>
+              ))}
+            </ul>
+          )}
+        </>
+      ),
+    });
+  }
+
+  if (analysis?.findings || analysis?.performanceGaps) {
+    beats.push({
+      title: 'What I found',
+      body: (
+        <>
+          {analysis.findings && (
+            <p className="text-text-secondary mb-3">{analysis.findings}</p>
+          )}
+          {analysis.performanceGaps && (
+            <p className="text-text-secondary">{analysis.performanceGaps}</p>
+          )}
+        </>
+      ),
+    });
+  }
+
+  if (currentProject.solutions) {
+    beats.push({
+      title: 'What I designed',
+      body: (
+        <ul className="space-y-1 list-disc list-inside text-text-secondary">
+          {currentProject.solutions.map((solution, index) => (
+            <li key={index}><RichText>{solution}</RichText></li>
+          ))}
+        </ul>
+      ),
+    });
+  }
+
+  if (currentProject.results) {
+    beats.push({
+      title: 'What happened',
+      body: (
+        <ul className="space-y-1 list-disc list-inside text-text-secondary">
+          {currentProject.results.map((result, index) => (
+            <li key={index}><RichText>{result}</RichText></li>
+          ))}
+        </ul>
+      ),
+    });
+  }
+
+  if (currentProject.artifacts && currentProject.artifacts.length > 0) {
+    beats.push({
+      title: 'See the work',
+      body: (
+        <>
+          <p className="text-text-secondary mb-4">
+            The actual design documents, not a description of them.
+          </p>
+          {/* Say what each document is before the link that opens it. */}
+          <ul className="space-y-5">
+            {currentProject.artifacts.map((artifact) => (
+              <li key={artifact.href}>
+                <p className="font-medium text-text-primary">{artifact.label}</p>
+                {artifact.description && (
+                  <p className="text-sm text-text-secondary mt-1">
+                    {artifact.description}
+                  </p>
+                )}
+                <a
+                  href={documentHref(getImagePath(artifact.href))}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-2 inline-flex items-center gap-2 font-medium text-primary-600 hover:text-primary-700 underline"
+                >
+                  <FileText aria-hidden="true" className="w-4 h-4 flex-shrink-0" />
+                  {isPdf(artifact.href) ? 'View document (PDF)' : 'View document'}
+                  <span className="sr-only">: {artifact.label}</span>
+                  <NewTabHint />
+                </a>
+              </li>
+            ))}
+          </ul>
+        </>
+      ),
+    });
+  }
+
+  /*
+    findings and performanceGaps are the "What I found" beat above; listing
+    them again under ADDIE > Analysis printed the same paragraphs twice.
+  */
+  const analysisDetails = analysis
+    ? Object.entries(analysis).filter(
+        ([key, value]) => value && key !== 'findings' && key !== 'performanceGaps'
+      )
+    : [];
+
   return (
     <BasePage
       seo={{
@@ -158,35 +374,44 @@ const ProjectDetailPage: React.FC = () => {
         { label: currentProject.title, href: `/portfolio/${currentProject.id}` }
       ]}
     >
-      <div className="py-12">
-        <Button 
+      <div className="py-8 md:py-12">
+        <Button
           onClick={handleBackClick}
           variant="ghost"
-          className="mb-8"
+          className="mb-6 md:mb-8"
           icon={ArrowLeft}
         >
           Back to Portfolio
         </Button>
 
         <div className="grid md:grid-cols-3 gap-8">
-          <motion.div 
+          <motion.div
             variants={fadeInUp}
             className="md:col-span-2"
           >
             <BaseCard>
               {/*
-                Capped height with object-contain. Plain w-full/h-auto renders a
-                square asset (a logo, for instance) at the full column width, so
-                the hero image alone ran ~500px tall and pushed the metrics and
-                the whole story arc below the fold.
+                Capped height, natural width, centred. Plain w-full/h-auto
+                renders a square asset (a logo, for instance) at the full
+                column width, so the hero alone ran ~500px tall and pushed the
+                metrics and the story arc below the fold. A full-width box with
+                object-contain fixed the height but letterboxed every image in
+                grey bands, which read as an unfinished frame.
+
+                alt: the title is the h1 just above, so repeating it here only
+                made screen readers say it twice. imageAlt carries the text
+                baked into the graphic; purely pictorial images stay alt="".
               */}
               {currentProject.image && (
                 <img
                   src={currentProject.image}
-                  alt={currentProject.title}
-                  className="w-full max-h-72 object-contain bg-gray-50 rounded-lg mb-6"
+                  alt={currentProject.imageAlt ?? ''}
+                  className="block mx-auto w-auto max-w-full max-h-72 rounded-lg mb-6"
                 />
               )}
+
+              <ProjectLinks project={currentProject} className="md:hidden mb-6" />
+
               {currentProject.metrics && currentProject.metrics.length > 0 && (
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
                   {currentProject.metrics.map((metric) => (
@@ -205,115 +430,45 @@ const ProjectDetailPage: React.FC = () => {
                 </div>
               )}
 
-              {/*
-                The story arc, before any methodology detail.
-
-                Hiring managers want a narrative - "here was the problem, here
-                was my analysis, here's what I designed, and here's what
-                happened" - not a features dump. Every beat below reuses data
-                the project files already carried; it was just ordered as
-                description-then-challenges-then-ADDIE, which reads as a spec
-                sheet. The exhaustive ADDIE/SAM breakdown still follows, as
-                supporting evidence rather than as the pitch.
-              */}
               <div className="space-y-8 mb-10">
-                {currentProject.businessContext && (
-                  <StoryBeat step="01" title="The problem">
-                    <p className="text-text-secondary">{currentProject.businessContext}</p>
-                    {currentProject.challenges && (
-                      <ul className="mt-3 space-y-1 list-disc list-inside text-text-secondary">
-                        {currentProject.challenges.map((challenge, index) => (
-                          <li key={index}>{challenge}</li>
-                        ))}
-                      </ul>
-                    )}
+                {beats.map((beat, index) => (
+                  <StoryBeat
+                    key={beat.title}
+                    step={String(index + 1).padStart(2, '0')}
+                    title={beat.title}
+                  >
+                    {beat.body}
                   </StoryBeat>
-                )}
-
-                {currentProject.addieMethodology?.analysis && (
-                  <StoryBeat step="02" title="What I found">
-                    {currentProject.addieMethodology.analysis.findings && (
-                      <p className="text-text-secondary mb-3">
-                        {currentProject.addieMethodology.analysis.findings}
-                      </p>
-                    )}
-                    {currentProject.addieMethodology.analysis.performanceGaps && (
-                      <p className="text-text-secondary">
-                        {currentProject.addieMethodology.analysis.performanceGaps}
-                      </p>
-                    )}
-                  </StoryBeat>
-                )}
-
-                {currentProject.solutions && (
-                  <StoryBeat step="03" title="What I designed">
-                    <ul className="space-y-1 list-disc list-inside text-text-secondary">
-                      {currentProject.solutions.map((solution, index) => (
-                        <li key={index}><RichText>{solution}</RichText></li>
-                      ))}
-                    </ul>
-                  </StoryBeat>
-                )}
-
-                {currentProject.results && (
-                  <StoryBeat step="04" title="What happened">
-                    <ul className="space-y-1 list-disc list-inside text-text-secondary">
-                      {currentProject.results.map((result, index) => (
-                        <li key={index}><RichText>{result}</RichText></li>
-                      ))}
-                    </ul>
-                  </StoryBeat>
-                )}
-
-                {currentProject.artifacts && currentProject.artifacts.length > 0 && (
-                  <StoryBeat step="05" title="See the work">
-                    <p className="text-text-secondary mb-4">
-                      The actual design documents, not a description of them.
-                    </p>
-                    <ul className="space-y-3">
-                      {currentProject.artifacts.map((artifact) => (
-                        <li key={artifact.href}>
-                          <a
-                            href={getImagePath(artifact.href)}
-                            className="inline-flex items-center gap-2 font-medium text-primary-600 hover:text-primary-700 underline"
-                          >
-                            <FileText className="w-4 h-4 flex-shrink-0" />
-                            {artifact.label}
-                          </a>
-                          {artifact.description && (
-                            <p className="text-sm text-text-secondary mt-1">
-                              {artifact.description}
-                            </p>
-                          )}
-                        </li>
-                      ))}
-                    </ul>
-                  </StoryBeat>
-                )}
+                ))}
               </div>
 
               <div className="prose max-w-none">
                 <h2>About this Project</h2>
                 <p>{currentProject.longDescription}</p>
 
-                {/* ADDIE Methodology Section */}
+                {/*
+                  ADDIE Methodology Section.
+
+                  Design and Evaluation skip nested objects on purpose (Waltz's
+                  arcsApplication and kirkpatrickModel). Their text has not been
+                  fact-checked against the project documents the way the rest of
+                  the page has, so do not render them until the owner has.
+                */}
                 {currentProject.addieMethodology && (
                   <>
                     <h3>ADDIE Methodology</h3>
                     <div className="space-y-4">
-                      {currentProject.addieMethodology.analysis && (
+                      {analysisDetails.length > 0 && (
                         <div className="border-l-4 border-primary-500 pl-4">
                           <h4 className="font-semibold text-lg mb-2">Analysis</h4>
-                          {Object.entries(currentProject.addieMethodology.analysis)
-                            .filter(([_, value]) => value)
-                            .map(([key, value]) => (
-                              <div key={key} className="mb-3">
-                                <p className="font-medium text-text-primary capitalize">
-                                  {key.replace(/([A-Z])/g, ' $1').trim()}:
-                                </p>
-                                <p className="text-text-secondary">{value}</p>
-                              </div>
-                            ))}
+                          {analysisDetails.map(([key, value]) => (
+                            <div key={key} className="mb-3">
+                              <p className="font-medium text-text-primary capitalize">
+                                {fieldLabel(key)}:
+                              </p>
+                              <p className="text-text-secondary">{value}</p>
+                            </div>
+                          ))}
                         </div>
                       )}
                       {currentProject.addieMethodology.design && (
@@ -324,7 +479,7 @@ const ProjectDetailPage: React.FC = () => {
                             .map(([key, value]) => (
                               <div key={key} className="mb-3">
                                 <p className="font-medium text-text-primary capitalize">
-                                  {key.replace(/([A-Z])/g, ' $1').trim()}:
+                                  {fieldLabel(key)}:
                                 </p>
                                 <p className="text-text-secondary">{value as string}</p>
                               </div>
@@ -339,7 +494,7 @@ const ProjectDetailPage: React.FC = () => {
                             .map(([key, value]) => (
                               <div key={key} className="mb-3">
                                 <p className="font-medium text-text-primary capitalize">
-                                  {key.replace(/([A-Z])/g, ' $1').trim()}:
+                                  {fieldLabel(key)}:
                                 </p>
                                 <p className="text-text-secondary">{value}</p>
                               </div>
@@ -354,7 +509,7 @@ const ProjectDetailPage: React.FC = () => {
                             .map(([key, value]) => (
                               <div key={key} className="mb-3">
                                 <p className="font-medium text-text-primary capitalize">
-                                  {key.replace(/([A-Z])/g, ' $1').trim()}:
+                                  {fieldLabel(key)}:
                                 </p>
                                 <p className="text-text-secondary">{value}</p>
                               </div>
@@ -369,7 +524,7 @@ const ProjectDetailPage: React.FC = () => {
                             .map(([key, value]) => (
                               <div key={key} className="mb-3">
                                 <p className="font-medium text-text-primary capitalize">
-                                  {key.replace(/([A-Z])/g, ' $1').trim()}:
+                                  {fieldLabel(key)}:
                                 </p>
                                 <p className="text-text-secondary">{value as string}</p>
                               </div>
@@ -393,7 +548,7 @@ const ProjectDetailPage: React.FC = () => {
                             .map(([key, value]) => (
                               <div key={key} className="mb-3">
                                 <p className="font-medium text-text-primary capitalize">
-                                  {key.replace(/([A-Z])/g, ' $1').trim()}:
+                                  {fieldLabel(key)}:
                                 </p>
                                 <p className="text-text-secondary">{value}</p>
                               </div>
@@ -408,7 +563,7 @@ const ProjectDetailPage: React.FC = () => {
                             .map(([key, value]) => (
                               <div key={key} className="mb-3">
                                 <p className="font-medium text-text-primary capitalize">
-                                  {key.replace(/([A-Z])/g, ' $1').trim()}:
+                                  {fieldLabel(key)}:
                                 </p>
                                 <p className="text-text-secondary">{value}</p>
                               </div>
@@ -423,7 +578,7 @@ const ProjectDetailPage: React.FC = () => {
                             .map(([key, value]) => (
                               <div key={key} className="mb-3">
                                 <p className="font-medium text-text-primary capitalize">
-                                  {key.replace(/([A-Z])/g, ' $1').trim()}:
+                                  {fieldLabel(key)}:
                                 </p>
                                 <p className="text-text-secondary">{value}</p>
                               </div>
@@ -449,7 +604,9 @@ const ProjectDetailPage: React.FC = () => {
               <dl className="space-y-3">
                 <div>
                   <dt className="text-text-secondary">Status</dt>
-                  <dd className="font-medium">{currentProject.status}</dd>
+                  <dd className="font-medium">
+                    {STATUS_LABELS[currentProject.status] ?? currentProject.status}
+                  </dd>
                 </div>
                 <div>
                   <dt className="text-text-secondary">Date</dt>
@@ -470,12 +627,13 @@ const ProjectDetailPage: React.FC = () => {
               </dl>
 
               <div className="mt-6">
-                <h4 className="font-medium mb-2">Technologies</h4>
+                {/* Not "Technologies": the tags are mostly skills and topics. */}
+                <h4 className="font-medium mb-2">Skills &amp; Topics</h4>
                 <div className="flex flex-wrap gap-2">
                   {currentProject.tags.map(tag => (
-                    <span 
+                    <span
                       key={tag}
-                      className="px-3 py-1 bg-primary-100 text-primary-600 rounded-full text-sm"
+                      className="px-3 py-1 bg-primary-100 text-primary-700 rounded-full text-sm"
                     >
                       {tag}
                     </span>
@@ -483,31 +641,7 @@ const ProjectDetailPage: React.FC = () => {
                 </div>
               </div>
 
-              {(currentProject.demoUrl || currentProject.projectUrl) && (
-                <div className="mt-6 space-y-3">
-                  {currentProject.demoUrl && (
-                    <Button
-                      href={currentProject.demoUrl}
-                      className="w-full"
-                      icon={ExternalLink}
-                      target="_blank"
-                    >
-                      {currentProject.demoLabel ?? 'View Interactive Demo'}
-                    </Button>
-                  )}
-                  {currentProject.projectUrl && (
-                    <Button
-                      href={currentProject.projectUrl}
-                      className="w-full"
-                      variant="outline"
-                      icon={ExternalLink}
-                      target="_blank"
-                    >
-                      View Live Project
-                    </Button>
-                  )}
-                </div>
-              )}
+              <ProjectLinks project={currentProject} className="mt-6" />
             </BaseCard>
           </motion.div>
         </div>
