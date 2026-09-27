@@ -69,7 +69,7 @@ const InstructionalDesignResume: React.FC = () => {
       },
       {
         category: "LMS Platforms",
-        skills: ["Canvas", "Moodle", "Blackboard"]
+        skills: ["LearnWorlds", "Canvas", "Moodle", "Blackboard"]
       },
       {
         category: "Methodologies",
@@ -106,6 +106,12 @@ const InstructionalDesignResume: React.FC = () => {
         title: "Instructional Design Resume",
         description: "My experience in instructional design and e-learning"
       }}
+      title={resumeData.title}
+      subtitle={resumeData.subtitle}
+      breadcrumbs={[
+        { label: 'Resumes', href: '/resume' },
+        { label: resumeData.title, href: '/resume/instructional' }
+      ]}
     >
       <ResumeTemplate {...resumeData} />
     </BasePage>

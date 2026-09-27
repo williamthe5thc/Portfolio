@@ -1,9 +1,8 @@
-import React from 'react';
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
 import { Code, BookOpen, GraduationCap, Download } from 'lucide-react';
 import { Button, BaseCard } from '@/components/ui';
 import { fadeInUp } from '@/lib/animations';
+import { getImagePath } from '@/utils';
 import BasePage from './BasePage';
 
 const resumeTypes = [
@@ -47,7 +46,7 @@ const ResumePage = () => {
       subtitle="Explore my specialized resumes for different roles and industries"
       className="bg-background-light"
     >
-      <div className="py-12 container mx-auto px-4">
+      <div className="py-12">
         <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
           {resumeTypes.map((resumeType) => {
             const Icon = resumeType.icon;
@@ -59,40 +58,41 @@ const ResumePage = () => {
                 className="flex flex-col"
               >
                 <BaseCard className="flex-1 flex flex-col">
-                  <div className={`${resumeType.color} text-white p-4 rounded-t-xl`}>
-                    <Icon className="w-8 h-8" />
+                  {/* Negative margins cancel BaseCard's p-6 so the strip runs edge to edge */}
+                  <div className={`${resumeType.color} text-white p-4 -mx-6 -mt-6 mb-6`}>
+                    <Icon className="w-8 h-8" aria-hidden="true" />
                   </div>
-                  <div className="p-6 flex-1 flex flex-col">
+                  <div className="flex-1 flex flex-col">
                     <h2 className="text-xl font-bold mb-2">{resumeType.title}</h2>
                     <p className="text-text-secondary mb-6 flex-1">
                       {resumeType.description}
                     </p>
+                    {/*
+                      Button renders the link itself. Wrapping a Button in
+                      <Link>/<a> nested a <button> inside an anchor: two tab
+                      stops per action and invalid interactive content.
+                    */}
                     <div className="space-y-3">
-                      <Link 
-                        to={resumeType.path}
-                        className="block w-full"
+                      <Button
+                        href={resumeType.path}
+                        variant="primary"
+                        className="w-full"
+                        analyticsLabel={`View Online: ${resumeType.title}`}
                       >
-                        <Button
-                          variant="primary"
-                          className="w-full"
-                        >
-                          View Online
-                        </Button>
-                      </Link>
-                      <a 
-                        href={resumeType.downloadPath}
+                        View Online
+                        <span className="sr-only">: {resumeType.title}</span>
+                      </Button>
+                      <Button
+                        href={getImagePath('/' + resumeType.downloadPath)}
                         target="_blank"
-                        rel="noopener noreferrer"
-                        className="block w-full"
+                        variant="outline"
+                        className="w-full"
+                        icon={Download}
+                        analyticsLabel={`Download PDF: ${resumeType.title}`}
                       >
-                        <Button
-                          variant="outline"
-                          className="w-full"
-                          icon={Download}
-                        >
-                          Download PDF
-                        </Button>
-                      </a>
+                        Download PDF
+                        <span className="sr-only">: {resumeType.title} (opens in a new tab)</span>
+                      </Button>
                     </div>
                   </div>
                 </BaseCard>

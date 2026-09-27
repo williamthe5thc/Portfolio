@@ -73,7 +73,9 @@ const AcademicResume: React.FC = () => {
       },
       {
         title: "Ego Depletion Research - Evidence-Based Learning Foundation",
-        description: "Psychological experiment based educational intervention designed to reduce bias and enhance empathy. Research presented at BYU-Idaho Research and Creative Works Conference, earning 1st place recognition."
+        // Uses the study's own description (content/projects/archived/ego-depletion.ts).
+        // This line previously carried the bias-reduction project's description.
+        description: "Undergraduate research investigating cognitive fatigue effects on academic performance, demonstrating research methodology skills and evidence-based approach to learning design. Presented at BYU-Idaho Research and Creative Works Conference."
       },
       {
         title: "Empathy & Socioeconomic Research - Diversity Foundation",
@@ -88,6 +90,12 @@ const AcademicResume: React.FC = () => {
         title: "Academic Resume",
         description: "My academic background and research experience"
       }}
+      title={resumeData.title}
+      subtitle={resumeData.subtitle}
+      breadcrumbs={[
+        { label: 'Resumes', href: '/resume' },
+        { label: resumeData.title, href: '/resume/academic' }
+      ]}
     >
       <ResumeTemplate {...resumeData} />
     </BasePage>

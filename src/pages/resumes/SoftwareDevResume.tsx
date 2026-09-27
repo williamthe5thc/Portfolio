@@ -111,6 +111,12 @@ const SoftwareDevResume: React.FC = () => {
         title: "Software Development Resume",
         description: "My experience and skills in software development"
       }}
+      title={resumeData.title}
+      subtitle={resumeData.subtitle}
+      breadcrumbs={[
+        { label: 'Resumes', href: '/resume' },
+        { label: resumeData.title, href: '/resume/software' }
+      ]}
     >
       <ResumeTemplate {...resumeData} />
     </BasePage>
