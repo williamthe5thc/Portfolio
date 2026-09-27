@@ -7,10 +7,6 @@ import { fadeInUp, staggerContainer } from '@/lib/animations';
 import { siteConfig, faqs } from '@/content';
 import BasePage from './BasePage';
 
-import { PageTransition } from '@/components/shared';
-
-import {RouteTransition } from '@/components/layout/RouteTransition';
-
 const ContactPage: React.FC = () => {
   // Contact Information Section
   const ContactInfoSection = () => (
@@ -105,9 +101,8 @@ const ContactPage: React.FC = () => {
     </SectionContainer>
   );
 
+  // App wraps every route in the one PageTransition that animates.
   return (
-   <RouteTransition>
-      <PageTransition>
     <BasePage
       seo={{
         title: "Contact",
@@ -125,8 +120,6 @@ const ContactPage: React.FC = () => {
       </div>
       <FAQSection />
     </BasePage>
-      </PageTransition>
-    </RouteTransition>
   );
 };
 

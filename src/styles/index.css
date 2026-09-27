@@ -11,6 +11,15 @@
     }
   }
   
+  /*
+    Keeps anything scrolled into view by the browser (Tab focus, in-page
+    anchors) clear of the 64px sticky header. useScrollManager does its own
+    offset for route hashes and is not affected.
+  */
+  html {
+    scroll-padding-top: 5rem;
+  }
+
   body {
     @apply bg-background text-text-primary;
   }

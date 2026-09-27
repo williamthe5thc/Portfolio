@@ -2,10 +2,9 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Timeline, PageTransition } from '@/components/shared';
+import { Timeline } from '@/components/shared';
 import type { TimelineEvent } from '@/components/shared/Timeline';
 import { SectionContainer } from '@/components/layout';
-import {RouteTransition } from '@/components/layout/RouteTransition';
 import { BaseCard, StatsGrid } from '@/components/ui';
 import { fadeInUp, staggerContainer } from '@/lib/animations';
 import { 
@@ -84,9 +83,9 @@ const experienceItems: TimelineEvent[] = experience
   content to mount. A second, page-level handler only raced it.
 */
 const AboutPage: React.FC = () => {
+  // App wraps every route in the one PageTransition that animates, so this
+  // page needs no transition wrapper of its own.
   return (
-   <RouteTransition>
-      <PageTransition>
     <BasePage
       seo={{
         title: "About",
@@ -103,9 +102,6 @@ const AboutPage: React.FC = () => {
       <BackgroundSection />
       <FAQSection />
     </BasePage>
-     </PageTransition>
-     </RouteTransition>
-      
   );
 };
 
@@ -156,10 +152,10 @@ const ProfessionalPracticeSection = () => (
       {/*
         Design Process - the target of the home page's "Design Process" links
         (/about#design-process). The id sits on a plain wrapper, not on the
-        animated div: that one starts 20px low, and a scroll measured while it
-        is still moving lands short.
+        animated div: that one starts 20px low. No scroll-mt here: the scroll
+        manager already leaves the sticky header plus 16px above the target.
       */}
-      <div id="design-process" className="scroll-mt-24">
+      <div id="design-process">
         <motion.div variants={fadeInUp}>
           <h3 className="text-2xl font-bold text-text-primary mb-6 text-center">
             Design Process

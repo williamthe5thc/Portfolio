@@ -263,6 +263,7 @@ export interface EducationDegree {
   period: string;
   gpa?: string;
   relevantCourses?: string[];
+  highlights?: string[];
 }
 
 export interface Certification {

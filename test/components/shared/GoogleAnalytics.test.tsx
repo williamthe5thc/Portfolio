@@ -1,167 +1,148 @@
-import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { render, waitFor } from '@testing-library/react';
-import { MemoryRouter, useLocation } from 'react-router-dom';
+import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
+import { render, act } from '@testing-library/react';
+import { MemoryRouter, useNavigate, type NavigateFunction } from 'react-router-dom';
 import GoogleAnalytics from '@/components/shared/GoogleAnalytics';
 
-// Mock window.gtag
-const mockGtag = vi.fn();
-window.gtag = mockGtag;
+/*
+  GoogleAnalytics is the only thing that sends page views: exactly one
+  ('event', 'page_view') per pathname change, and never gtag('config'),
+  which GA4 counts as another page view. The old expectations (a config call
+  per route, a console warning when gtag is missing) encoded the
+  double-counting behaviour that was fixed.
+*/
 
-// Mock react-router-dom
-vi.mock('react-router-dom', async () => ({
-  ...(await vi.importActual<typeof import('react-router-dom')>('react-router-dom')),
-  useLocation: vi.fn()
-}));
+const mockGtag = vi.fn();
+
+let navigate: NavigateFunction;
+const NavigateHandle = () => {
+  navigate = useNavigate();
+  return null;
+};
+
+const renderAt = (entry = '/') =>
+  render(
+    <MemoryRouter initialEntries={[entry]}>
+      <GoogleAnalytics />
+      <NavigateHandle />
+    </MemoryRouter>
+  );
+
+const pageViews = () =>
+  mockGtag.mock.calls.filter(([command, name]) => command === 'event' && name === 'page_view');
+
+const go = (to: string) => {
+  act(() => {
+    navigate(to);
+  });
+};
+
+const flush = () => {
+  act(() => {
+    vi.advanceTimersByTime(300);
+  });
+};
 
 describe('GoogleAnalytics', () => {
   beforeEach(() => {
-    vi.clearAllMocks();
-    (useLocation as jest.Mock).mockReturnValue({
-      pathname: '/',
-      search: '',
-      hash: ''
-    });
+    vi.useFakeTimers();
+    mockGtag.mockReset();
+    window.gtag = mockGtag;
+  });
+
+  afterEach(() => {
+    vi.useRealTimers();
   });
 
   describe('Page View Tracking', () => {
-    it('tracks initial page view', async () => {
-      render(
-        <MemoryRouter>
-          <GoogleAnalytics />
-        </MemoryRouter>
-      );
+    it('sends one page view for the first page', () => {
+      renderAt('/');
+      flush();
 
-      await waitFor(() => {
-        expect(mockGtag).toHaveBeenCalledWith('event', 'page_view', expect.objectContaining({
+      expect(pageViews()).toHaveLength(1);
+      expect(mockGtag).toHaveBeenCalledWith(
+        'event',
+        'page_view',
+        expect.objectContaining({
           page_path: '/',
-          page_title: expect.any(String)
-        }));
-      });
+          page_title: expect.any(String),
+          page_location: expect.stringMatching(/\/$/)
+        })
+      );
     });
 
-    it('tracks route changes', async () => {
-      const { rerender } = render(
-        <MemoryRouter>
-          <GoogleAnalytics />
-        </MemoryRouter>
+    it('sends exactly one page view per route change', () => {
+      renderAt('/');
+      flush();
+      go('/about');
+      flush();
+
+      expect(pageViews()).toHaveLength(2);
+      expect(pageViews()[1][2]).toEqual(
+        expect.objectContaining({
+          page_path: '/about',
+          page_location: expect.stringContaining('/about')
+        })
       );
-
-      // Simulate route change
-      (useLocation as jest.Mock).mockReturnValue({
-        pathname: '/about',
-        search: '',
-        hash: ''
-      });
-
-      rerender(
-        <MemoryRouter>
-          <GoogleAnalytics />
-        </MemoryRouter>
-      );
-
-      await waitFor(() => {
-        expect(mockGtag).toHaveBeenCalledWith('event', 'page_view', expect.objectContaining({
-          page_path: '/about'
-        }));
-      });
     });
 
-    it('handles query parameters', async () => {
-      (useLocation as jest.Mock).mockReturnValue({
-        pathname: '/portfolio',
-        search: '?type=development',
-        hash: ''
-      });
+    it('reports the query string in page_location', () => {
+      renderAt('/portfolio?category=all');
+      flush();
 
-      render(
-        <MemoryRouter>
-          <GoogleAnalytics />
-        </MemoryRouter>
-      );
-
-      await waitFor(() => {
-        expect(mockGtag).toHaveBeenCalledWith('event', 'page_view', expect.objectContaining({
+      expect(pageViews()).toHaveLength(1);
+      expect(pageViews()[0][2]).toEqual(
+        expect.objectContaining({
           page_path: '/portfolio',
-          page_location: expect.stringContaining('?type=development')
-        }));
-      });
+          page_location: expect.stringContaining('/portfolio?category=all')
+        })
+      );
+    });
+
+    it('does not count a query-only change (portfolio filter) as a new page', () => {
+      renderAt('/portfolio');
+      flush();
+      go('/portfolio?category=all');
+      flush();
+
+      expect(pageViews()).toHaveLength(1);
     });
   });
 
-  describe('Config Updates', () => {
-    it('updates GA config on route change', async () => {
-      const { rerender } = render(
-        <MemoryRouter>
-          <GoogleAnalytics />
-        </MemoryRouter>
-      );
+  describe('No double counting', () => {
+    it('never calls gtag config', () => {
+      renderAt('/');
+      flush();
+      go('/contact');
+      flush();
 
-      (useLocation as jest.Mock).mockReturnValue({
-        pathname: '/contact',
-        search: '',
-        hash: ''
-      });
+      expect(mockGtag.mock.calls.some(([command]) => command === 'config')).toBe(false);
+    });
 
-      rerender(
-        <MemoryRouter>
-          <GoogleAnalytics />
-        </MemoryRouter>
-      );
+    it('sends each page of a rapid sequence exactly once', () => {
+      renderAt('/');
+      ['about', 'portfolio', 'contact'].forEach(path => go(`/${path}`));
+      flush();
 
-      await waitFor(() => {
-        expect(mockGtag).toHaveBeenCalledWith('config', expect.any(String), {
-          page_path: '/contact'
-        });
-      });
+      expect(pageViews().map(([, , params]) => params.page_path)).toEqual([
+        '/',
+        '/about',
+        '/portfolio',
+        '/contact'
+      ]);
     });
   });
 
   describe('Error Handling', () => {
-    it('handles missing gtag gracefully', async () => {
-      const consoleSpy = vi.spyOn(console, 'warn').mockImplementation(() => {});
-      delete window.gtag;
+    it('does nothing when gtag has not loaded', () => {
+      delete (window as { gtag?: unknown }).gtag;
 
-      render(
-        <MemoryRouter>
-          <GoogleAnalytics />
-        </MemoryRouter>
-      );
-
-      await waitFor(() => {
-        expect(consoleSpy).toHaveBeenCalledWith(expect.stringContaining('Google Analytics not loaded'));
-      });
-
-      consoleSpy.mockRestore();
-      window.gtag = mockGtag;
-    });
-  });
-
-  describe('Performance', () => {
-    it('debounces multiple rapid route changes', async () => {
-      const { rerender } = render(
-        <MemoryRouter>
-          <GoogleAnalytics />
-        </MemoryRouter>
-      );
-
-      // Simulate multiple rapid route changes
-      ['about', 'portfolio', 'contact'].forEach(path => {
-        (useLocation as jest.Mock).mockReturnValue({
-          pathname: `/${path}`,
-          search: '',
-          hash: ''
-        });
-
-        rerender(
-          <MemoryRouter>
-            <GoogleAnalytics />
-          </MemoryRouter>
-        );
-      });
-
-      await waitFor(() => {
-        expect(mockGtag).toHaveBeenCalledTimes(2); // Initial + last change
-      });
+      expect(() => {
+        renderAt('/');
+        flush();
+        go('/about');
+        flush();
+      }).not.toThrow();
+      expect(mockGtag).not.toHaveBeenCalled();
     });
   });
 });

@@ -13,7 +13,7 @@
  *   setSearchParams with replace): leave the scroll position alone.
  *
  * Pages must not scroll the window on mount themselves. Before this existed,
- * only the pages wrapped in RouteTransition reset scroll, so a project opened
+ * only the pages wrapped in the old RouteTransition reset scroll, so a project opened
  * from far down a resume page kept the resume's scroll offset and landed in
  * the middle of the case study.
  */
