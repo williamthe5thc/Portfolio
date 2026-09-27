@@ -17,6 +17,7 @@
  * Providers:
  * - HashRouter for GitHub Pages compatibility
  * - HelmetProvider for meta tags
+ * - MotionConfig so animations honour prefers-reduced-motion
  * - ErrorBoundary for global error handling
  * 
  * @notes
@@ -30,6 +31,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { HashRouter } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
+import { MotionConfig } from 'framer-motion';
 import { ErrorBoundary } from '@/components/shared';
 import App from './App';
 import './styles/index.css';
@@ -53,9 +55,16 @@ root.render(
     <ErrorBoundary>
       <HelmetProvider>
         <HashRouter>
-          <React.Suspense fallback={<LoadingFallback />}>
-            <App />
-          </React.Suspense>
+          {/*
+            reducedMotion="user": when the visitor's OS asks for reduced
+            motion, framer-motion drops transform animations (slides, lifts,
+            zooms, the spinner) site-wide and keeps only opacity fades.
+          */}
+          <MotionConfig reducedMotion="user">
+            <React.Suspense fallback={<LoadingFallback />}>
+              <App />
+            </React.Suspense>
+          </MotionConfig>
         </HashRouter>
       </HelmetProvider>
     </ErrorBoundary>

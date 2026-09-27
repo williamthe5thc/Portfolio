@@ -1,6 +1,7 @@
 // src/components/shared/ScrollToSection.tsx
 import React from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
+import { scrollToElement, scrollWindowTo } from '@/hooks/useScrollManager';
 
 interface ScrollToSectionProps {
   to: string;
@@ -16,28 +17,27 @@ export const ScrollToSection: React.FC<ScrollToSectionProps> = ({
   const navigate = useNavigate();
   const location = useLocation();
 
-  const handleClick = (e: React.MouseEvent) => {
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    // Let the browser handle ctrl/cmd/shift/middle clicks via the real href.
+    if (e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
     e.preventDefault();
-    const [path, hash] = to.split('#');
-    
-    const performScroll = () => {
-      if (hash) {
-        const element = document.getElementById(hash);
-        if (element) {
-          element.scrollIntoView({ behavior: 'smooth' });
-        }
-      } else {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      }
-    };
+    const [rawPath, hash] = to.split('#');
+    const path = rawPath || '/';
 
-    if (location.pathname === path || (!path && location.pathname === '/')) {
-      performScroll();
+    if (location.pathname === path) {
+      // Same page: nothing to navigate, just scroll (instant when the
+      // visitor prefers reduced motion).
+      const element = hash ? document.getElementById(hash) : null;
+      if (element) {
+        scrollToElement(element);
+      } else if (!hash) {
+        scrollWindowTo(0, true);
+      }
     } else {
-      // For cross-page navigation
-      navigate(path, {
-        state: { scrollTo: hash },
-        replace: false
+      // Other page: navigate with the hash in the URL; App's scroll manager
+      // scrolls to it once the page has rendered.
+      navigate(hash ? { pathname: path, hash: `#${hash}` } : path, {
+        state: { scrollTo: hash }
       });
     }
   };

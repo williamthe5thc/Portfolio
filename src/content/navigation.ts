@@ -15,7 +15,7 @@ export const quickLinks: QuickLink[] = [
     description: "Professional experience & credentials"
   },
   {
-    href: "/about",
+    href: "/about#design-process",
     title: "Design Process",
     bgColor: "bg-purple-500",
     description: "ADDIE methodology & learning theory"

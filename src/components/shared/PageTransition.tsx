@@ -6,9 +6,7 @@
  * 
  * Features:
  * - Smooth page transitions
- * - Exit animations
- * - Scroll restoration
- * - Route-based animations
+ * - Only the outermost instance animates
  * 
  * @example
  * ```tsx
@@ -22,11 +20,10 @@
  * 
  * @notes
  * - Uses framer-motion for animations
- * - Handles scroll position
- * - Supports route-based transitions
+ * - Scroll position is handled by useScrollManager, not here
  */
 // src/components/shared/PageTransition.tsx
-import React from 'react';
+import React, { createContext, useContext } from 'react';
 import { motion } from 'framer-motion';
 
 const pageVariants = {
@@ -52,20 +49,36 @@ const pageVariants = {
   }
 };
 
+/*
+  Only the outermost PageTransition animates. App wraps every route in one,
+  and several pages wrap themselves in another; nested fades multiply, so
+  mid-transition the page rendered at the product of both opacities and read
+  as washed out. An inner PageTransition renders its children unchanged.
+*/
+const InsidePageTransition = createContext(false);
+
 interface PageTransitionProps {
   children: React.ReactNode;
 }
 
 const PageTransition: React.FC<PageTransitionProps> = ({ children }) => {
+  const isNested = useContext(InsidePageTransition);
+
+  if (isNested) {
+    return <>{children}</>;
+  }
+
   return (
-    <motion.div
-      variants={pageVariants}
-      initial="initial"
-      animate="animate"
-      exit="exit"
-    >
-      {children}
-    </motion.div>
+    <InsidePageTransition.Provider value={true}>
+      <motion.div
+        variants={pageVariants}
+        initial="initial"
+        animate="animate"
+        exit="exit"
+      >
+        {children}
+      </motion.div>
+    </InsidePageTransition.Provider>
   );
 };
 

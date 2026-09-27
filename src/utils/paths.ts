@@ -5,9 +5,9 @@
  */
 
 /**
- * Get the base URL for the application
+ * Get the base URL for the application (vite.config.ts `base`)
+ * In production: /Portfolio/
  * In staging: /Portfolio-Staging/
- * In production: /
  * In development: /
  */
 export const getBaseUrl = (): string => {
@@ -20,10 +20,13 @@ export const getBaseUrl = (): string => {
  * @returns Full path including base URL
  * 
  * @example
+ * // In production
+ * getImagePath('/images/logo.png') // => '/Portfolio/images/logo.png'
+ *
  * // In staging
  * getImagePath('/images/logo.png') // => '/Portfolio-Staging/images/logo.png'
  * 
- * // In production/dev
+ * // In dev
  * getImagePath('/images/logo.png') // => '/images/logo.png'
  */
 export const getImagePath = (path: string): string => {

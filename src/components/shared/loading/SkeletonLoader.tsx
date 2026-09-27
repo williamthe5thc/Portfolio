@@ -2,7 +2,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { usePageLoad } from './usePageLoad';
-console.log("preloading..")
 const textVariants = {
   animate: {
     opacity: [0.5, 1, 0.5],

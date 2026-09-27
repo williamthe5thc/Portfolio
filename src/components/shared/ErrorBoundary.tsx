@@ -27,11 +27,12 @@
  * </ErrorBoundary>
  * ```
  */
-import React, { Component, ErrorInfo, ReactNode } from 'react';
+import { Component, ErrorInfo, ReactNode } from 'react';
 import { AlertTriangle, RefreshCw, Home } from 'lucide-react';
 import { Button } from '@/components/ui';
+import { getBaseUrl } from '@/utils/paths';
 
-interface Props {
+export interface ErrorBoundaryProps {
   children: ReactNode;
   fallback?: ReactNode;
   onError?: (error: Error, errorInfo: ErrorInfo) => void;
@@ -43,7 +44,7 @@ interface State {
   errorInfo: ErrorInfo | null;
 }
 
-export class ErrorBoundary extends Component<Props, State> {
+export class ErrorBoundary extends Component<ErrorBoundaryProps, State> {
   public state: State = {
     hasError: false,
     error: null,
@@ -77,8 +78,10 @@ export class ErrorBoundary extends Component<Props, State> {
     window.location.reload();
   };
 
+  // The deploy base, not a hard-coded '/Portfolio/index.html', which sent
+  // staging visitors to the production site and 404'd on the dev server.
   private handleGoHome = (): void => {
-    window.location.href = '/Portfolio/index.html';
+    window.location.href = getBaseUrl();
   };
 
   public render(): ReactNode {

@@ -9,7 +9,7 @@
  * 
  * Features:
  * - SEO management
- * - Page transitions
+ * - Optional content animation (none by default)
  * - Header handling
  * - Breadcrumb support
  * - Container layout
@@ -33,8 +33,9 @@
  * ```
  */
 
-import React, {useEffect}  from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
+import type { MotionProps } from 'framer-motion';
 import { SEO } from '@/components/shared';
 import { Container, PageHeader } from '@/components/layout';
 import type { SEOProps } from '@/components/shared';
@@ -47,11 +48,12 @@ interface BasePageProps {
   breadcrumbs?: Array<{ label: string; href: string; }>;
   className?: string;
   headerContent?: React.ReactNode;
+  /** Optional extra entrance animation for the content area. Off by default. */
   animation?: {
-    initial?: object;
-    animate?: object;
-    exit?: object;
-    transition?: object;
+    initial?: MotionProps['initial'];
+    animate?: MotionProps['animate'];
+    exit?: MotionProps['exit'];
+    transition?: MotionProps['transition'];
   };
   containerClassName?: string;
 }
@@ -64,13 +66,17 @@ const BasePage: React.FC<BasePageProps> = ({
   breadcrumbs,
   className = '',
   headerContent,
-  animation = {
-    initial: { opacity: 0, y: 20 },
-    animate: { opacity: 1, y: 0 },
-    transition: { duration: 0.3 }
-  },
+  animation,
   containerClassName = ''
 }) => {
+  /*
+    A <div>, not a <main>: App already renders the page's single <main>, and
+    a second one nested inside it gave screen readers two "main" landmarks.
+    No default animation either: App's PageTransition already fades each page
+    in, and a second fade here multiplied with it.
+  */
+  const content = <Container>{children}</Container>;
+
   return (
     <>
       <SEO {...seo} />
@@ -85,17 +91,21 @@ const BasePage: React.FC<BasePageProps> = ({
           </PageHeader>
         )}
         
-        <motion.main
-          initial={animation.initial}
-          animate={animation.animate}
-          exit={animation.exit}
-          transition={animation.transition}
-          className={`flex-grow ${containerClassName}`}
-        >
-          <Container>
-            {children}
-          </Container>
-        </motion.main>
+        {animation ? (
+          <motion.div
+            initial={animation.initial}
+            animate={animation.animate}
+            exit={animation.exit}
+            transition={animation.transition}
+            className={`flex-grow ${containerClassName}`}
+          >
+            {content}
+          </motion.div>
+        ) : (
+          <div className={`flex-grow ${containerClassName}`}>
+            {content}
+          </div>
+        )}
       </div>
     </>
   );
