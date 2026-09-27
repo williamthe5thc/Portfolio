@@ -1,13 +1,28 @@
 // src/pages/NotFoundPage.tsx
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Home, ArrowLeft } from 'lucide-react';
-import { RouteTransition } from '@/components/layout/RouteTransition';
+import { SEO } from '@/components/shared';
 import { Button } from '@/components/ui';
 
 const NotFoundPage: React.FC = () => {
+  const navigate = useNavigate();
+
+  // React Router numbers its history entries. At idx 0 this 404 is the first
+  // page of the visit (a stale shared link), so "back" would leave the site:
+  // go home instead.
+  const goBack = () => {
+    const idx = (window.history.state as { idx?: number } | null)?.idx ?? 0;
+    if (idx > 0) {
+      navigate(-1);
+    } else {
+      navigate('/');
+    }
+  };
+
   return (
-    <RouteTransition>
+    <>
+      <SEO title="Page not found" noindex />
       <div className="min-h-screen bg-background-light flex items-center justify-center px-4">
         <div className="max-w-md w-full text-center">
           {/* Large 404 */}
@@ -23,22 +38,24 @@ const NotFoundPage: React.FC = () => {
 
           {/* Navigation buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button 
-              as={Link} 
-              to="/" 
-              variant="primary" 
-              className="inline-flex items-center gap-2"
+            {/*
+              href, not as={Link} to="/": Button has no `as`/`to` props, so
+              that rendered a plain <button> with no handler. An internal href
+              makes Button render a router <Link>.
+            */}
+            <Button
+              href="/"
+              variant="primary"
+              icon={Home}
             >
-              <Home size={20} />
               Go Home
             </Button>
-            
-            <Button 
-              onClick={() => window.history.back()} 
+
+            <Button
+              onClick={goBack}
               variant="outline"
-              className="inline-flex items-center gap-2"
+              icon={ArrowLeft}
             >
-              <ArrowLeft size={20} />
               Go Back
             </Button>
           </div>
@@ -49,20 +66,26 @@ const NotFoundPage: React.FC = () => {
               Looking for something specific?
             </p>
             <div className="flex flex-wrap justify-center gap-4 text-sm">
-              <Link 
-                to="/portfolio" 
+              <Link
+                to="/portfolio"
                 className="text-primary-600 hover:text-primary-700 transition-colors"
               >
                 View Portfolio
               </Link>
-              <Link 
-                to="/about" 
+              <Link
+                to="/about"
                 className="text-primary-600 hover:text-primary-700 transition-colors"
               >
                 About Me
               </Link>
-              <Link 
-                to="/contact" 
+              <Link
+                to="/resume"
+                className="text-primary-600 hover:text-primary-700 transition-colors"
+              >
+                Resume
+              </Link>
+              <Link
+                to="/contact"
                 className="text-primary-600 hover:text-primary-700 transition-colors"
               >
                 Contact
@@ -71,7 +94,7 @@ const NotFoundPage: React.FC = () => {
           </div>
         </div>
       </div>
-    </RouteTransition>
+    </>
   );
 };
 

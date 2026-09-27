@@ -5,7 +5,6 @@
  * @module hooks
  * 
  * Features:
- * - Automatic page view tracking
  * - Event tracking
  * - User engagement tracking
  * - Form submission tracking
@@ -25,19 +24,18 @@
  * // Track form submission
  * trackFormSubmission('contact_form', 'success');
  * ```
+ *
+ * @notes
+ * - Sends no page views. Every Button calls this hook, and a page_view
+ *   effect here fired once per Button on every navigation. Page views come
+ *   only from GoogleAnalytics.tsx.
  */
-import { useEffect, useCallback } from 'react';
+import { useCallback } from 'react';
 import { useLocation } from 'react-router-dom';
 
 export const GA_TRACKING_ID = import.meta.env.VITE_GA_TRACKING_ID;
 
-// Type definition for gtag
-declare global {
-  interface Window {
-    gtag?: (...args: any[]) => void;
-    dataLayer?: any[];
-  }
-}
+// window.gtag / window.dataLayer are typed in src/types/gtag.d.ts.
 
 const isGtagLoaded = () => {
   return typeof window.gtag !== 'undefined';
@@ -46,29 +44,11 @@ const isGtagLoaded = () => {
 const safeGtag = (...args: any[]) => {
   if (isGtagLoaded()) {
     window.gtag?.(...args);
-  } else {
-    console.debug('Google Analytics not loaded yet', ...args);
   }
 };
 
 export const useAnalytics = () => {
   const location = useLocation();
-
-  // Track page views
-  useEffect(() => {
-    const trackPageview = () => {
-      try {
-        safeGtag('event', 'page_view', {
-          page_path: location.pathname + location.search + location.hash,
-          page_title: document.title,
-        });
-      } catch (error) {
-        console.debug('Error tracking pageview:', error);
-      }
-    };
-
-    trackPageview();
-  }, [location]);
 
   // Track events
   const trackEvent = useCallback((
