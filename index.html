@@ -17,6 +17,14 @@
     <link rel="manifest" href="./site.webmanifest" />
     <meta name="theme-color" content="#ffffff" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--
+      Send only the origin to other sites (LinkedIn, GitHub, EmailJS), never
+      the full URL, and nothing on a downgrade to http. This is the browser
+      default today; stating it keeps it if the default ever changes. No
+      Content-Security-Policy: the inline Google Analytics snippet below
+      would need 'unsafe-inline' or a hash kept in step with it.
+    -->
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
 
     <title>W. Jordan Charles - Learning Technology Specialist</title>
 

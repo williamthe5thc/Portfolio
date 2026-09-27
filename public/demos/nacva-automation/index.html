@@ -587,6 +587,13 @@ Correct answer: b`;
             document.getElementById('course-credits').value = '8';
         }
         
+        // Appends text (as a text node, so it is never parsed as HTML)
+        // followed by a line break.
+        function addTextLine(parent, text) {
+            parent.appendChild(document.createTextNode(text));
+            parent.appendChild(document.createElement('br'));
+        }
+        
         function processQuestions() {
             const button = document.getElementById('converter-text');
             const output = document.getElementById('converter-output');
@@ -631,26 +638,34 @@ Correct answer: b`;
                 // Process the actual input
                 const result = parseQuestions(input);
                 
+                // The visitor's questions and answers go in as text nodes,
+                // never as HTML: they are typed or uploaded, and this page
+                // shares the portfolio's origin. The sample rows are built
+                // inside their white box; appending '<div>' and '</div>' to
+                // innerHTML separately closed the box at once and left the
+                // rows below it.
                 output.innerHTML = `<strong>Conversion Results:</strong><br><br>`;
-                output.innerHTML += `Questions processed: ${result.questions.length}<br>`;
-                output.innerHTML += `Format: LMS-ready CSV<br>`;
-                output.innerHTML += `Processing accuracy: 100%<br><br>`;
+                addTextLine(output, `Questions processed: ${result.questions.length}`);
+                addTextLine(output, `Format: LMS-ready CSV`);
+                addTextLine(output, `Processing accuracy: 100%`);
+                output.appendChild(document.createElement('br'));
                 
-                output.innerHTML += `<strong>Sample CSV Output:</strong><br>`;
-                output.innerHTML += `<div style="background: white; padding: 10px; border-radius: 5px; margin: 10px 0; font-size: 0.8em; overflow-x: auto; white-space: nowrap;">`;
-                output.innerHTML += `ID,Question,AnswerA,AnswerB,AnswerC,AnswerD,Correct<br>`;
+                output.insertAdjacentHTML('beforeend', `<strong>Sample CSV Output:</strong><br>`);
+                const sample = document.createElement('div');
+                sample.style.cssText = 'background: white; padding: 10px; border-radius: 5px; margin: 10px 0; font-size: 0.8em; overflow-x: auto; white-space: nowrap;';
+                addTextLine(sample, `ID,Question,AnswerA,AnswerB,AnswerC,AnswerD,Correct`);
                 
                 result.questions.slice(0, 3).forEach((q, i) => {
                     const truncatedQuestion = q.question.length > 40 ? q.question.substring(0, 40) + '...' : q.question;
-                    output.innerHTML += `Q${i+1},"${truncatedQuestion}","${q.answers[0]}","${q.answers[1]}","${q.answers[2]}","${q.answers[3]}","${q.correct}"<br>`;
+                    addTextLine(sample, `Q${i+1},"${truncatedQuestion}","${q.answers[0]}","${q.answers[1]}","${q.answers[2]}","${q.answers[3]}","${q.correct}"`);
                 });
                 
                 if (result.questions.length > 3) {
-                    output.innerHTML += `... and ${result.questions.length - 3} more questions<br>`;
+                    addTextLine(sample, `... and ${result.questions.length - 3} more questions`);
                 }
                 
-                output.innerHTML += `</div>`;
-                output.innerHTML += `<a href="#" class="download-button" onclick="downloadCSV()">📥 Download Complete CSV File</a>`;
+                output.appendChild(sample);
+                output.insertAdjacentHTML('beforeend', `<a href="#" class="download-button" onclick="downloadCSV()">📥 Download Complete CSV File</a>`);
                 
                 output.classList.add('active');
                 button.innerHTML = 'Convert to LMS Format';
@@ -763,31 +778,36 @@ Correct answer: b`;
                 steps.children[3].style.color = '#1e7e34';
                 steps.children[3].children[0].textContent = '✅';
                 
+                // Typed values (title, price, credits) go in as text, never
+                // as HTML; only the fixed labels below are markup.
                 output.innerHTML = `<strong>Professional Development Processing Results:</strong><br><br>`;
                 
                 if (title) {
-                    output.innerHTML += `<strong>Course Updated:</strong><br>`;
-                    output.innerHTML += `Title: ${title}<br>`;
-                    output.innerHTML += `Price: $${price}<br>`;
-                    output.innerHTML += `CPE Credits: ${credits} hours<br>`;
-                    output.innerHTML += `Status: ✅ Active across all learning platforms<br><br>`;
+                    output.insertAdjacentHTML('beforeend', `<strong>Course Updated:</strong><br>`);
+                    addTextLine(output, `Title: ${title}`);
+                    addTextLine(output, `Price: $${price}`);
+                    addTextLine(output, `CPE Credits: ${credits} hours`);
+                    addTextLine(output, `Status: ✅ Active across all learning platforms`);
+                    output.appendChild(document.createElement('br'));
                 } else {
                     const lines = bulkData.split('\n');
                     const courseCount = lines.length - 1; // Subtract header row
-                    output.innerHTML += `<strong>Bulk Processing Complete:</strong><br>`;
-                    output.innerHTML += `Courses processed: ${courseCount}<br>`;
-                    output.innerHTML += `Status: ✅ All courses active<br><br>`;
+                    output.insertAdjacentHTML('beforeend', `<strong>Bulk Processing Complete:</strong><br>`);
+                    addTextLine(output, `Courses processed: ${courseCount}`);
+                    addTextLine(output, `Status: ✅ All courses active`);
+                    output.appendChild(document.createElement('br'));
                 }
                 
-                output.innerHTML += `<strong>Learning Technology Automation Summary:</strong><br>`;
-                output.innerHTML += `✅ Course metadata validated and standardized<br>`;
-                output.innerHTML += `✅ Pricing synchronized across 3 LMS platforms<br>`;
-                output.innerHTML += `✅ CPE credit allocation verified<br>`;
-                output.innerHTML += `✅ Professional certification compliance confirmed<br>`;
-                output.innerHTML += `✅ Enrollment systems updated<br>`;
-                output.innerHTML += `✅ Quality assurance documentation generated<br><br>`;
-                
-                output.innerHTML += `<span style="color: #1e7e34; font-weight: bold;">Processing completed! SME time saved: 3.5 hours per course</span>`;
+                output.insertAdjacentHTML('beforeend',
+                    `<strong>Learning Technology Automation Summary:</strong><br>` +
+                    `✅ Course metadata validated and standardized<br>` +
+                    `✅ Pricing synchronized across 3 LMS platforms<br>` +
+                    `✅ CPE credit allocation verified<br>` +
+                    `✅ Professional certification compliance confirmed<br>` +
+                    `✅ Enrollment systems updated<br>` +
+                    `✅ Quality assurance documentation generated<br><br>` +
+                    `<span style="color: #1e7e34; font-weight: bold;">Processing completed! SME time saved: 3.5 hours per course</span>`
+                );
                 
                 output.classList.add('active');
                 button.innerHTML = 'Process Course Data';
