@@ -1,9 +1,7 @@
 // src/test/components/animations.test.tsx
-import React from 'react';
 import { render, screen } from '@testing-library/react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { fadeInUp, staggerContainer } from '@/lib/animations';
-import userEvent from '@testing-library/user-event';
 
 // Test component that uses our animation variants
 const TestAnimatedComponent = ({ isVisible = true, variant }: { isVisible?: boolean; variant: any }) => (
@@ -37,7 +35,7 @@ describe('Animation Variants', () => {
   test('staggerContainer has correct stagger configuration', () => {
     expect(staggerContainer).toHaveProperty('animate');
     expect(staggerContainer.animate).toHaveProperty('transition');
-    expect(staggerContainer.animate.transition).toHaveProperty('staggerChildren');
+    expect((staggerContainer.animate as { transition?: object }).transition).toHaveProperty('staggerChildren');
   });
 });
 
@@ -72,16 +70,9 @@ describe('Animation Components', () => {
   });
 });
 
-// Helper function to ensure animation class is applied
-const hasAnimationClass = (element: HTMLElement): boolean => {
-  const style = window.getComputedStyle(element);
-  return style.transform !== 'none' || style.opacity !== '1';
-};
-
 describe('Animation Integration', () => {
   test('components receive animation classes', () => {
     render(<StaggerTestComponent />);
-    const container = screen.getByTestId('stagger-container');
     const items = screen.getAllByTestId(/stagger-item/);
     
     expect(items).toHaveLength(3);

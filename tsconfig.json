@@ -32,5 +32,28 @@
     "noFallthroughCasesInSwitch": true
   },
   "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.d.ts"],
-  "exclude": ["node_modules", "dist", "vite.config.ts"]
+  /* Not part of the site, so not checked on their own:
+     - archived/ and the top-level project files that projects.ts does not
+       import. They predate the current ProjectBase type (old categories
+       such as "development", fields such as researchImpact). Which of them
+       come back is the owner's call; a file imported by projects.ts is
+       type-checked again automatically, excluded or not.
+     - src/test/userFlows.test.tsx, a stale copy of
+       test/integration/userFlows.test.tsx that imports a missing
+       ../test/utils helper (also excluded in vitest.config.ts). */
+  "exclude": [
+    "node_modules",
+    "dist",
+    "vite.config.ts",
+    "src/content/projects/archived",
+    "src/content/projects/chili-cookoff.ts",
+    "src/content/projects/deal-or-no-deal.ts",
+    "src/content/projects/kathario.ts",
+    "src/content/projects/napkin-design.ts",
+    "src/content/projects/sacrament-macro.ts",
+    "src/content/projects/sde-website.ts",
+    "src/content/projects/undergrad-programming.ts",
+    "src/content/projects/vegas-edit.ts",
+    "src/test/userFlows.test.tsx"
+  ]
 }

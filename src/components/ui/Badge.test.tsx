@@ -1,5 +1,5 @@
 // src/components/ui/Badge.test.tsx
-import { describe, it, expect, vi } from 'vitest';
+import { describe, it, expect } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import { Badge } from './Badge';
 
@@ -36,7 +36,7 @@ describe('Badge', () => {
 
   describe('Animation', () => {
     it('has animation classes', () => {
-      const { container } = render(<Badge>Animated Badge</Badge>);
+      render(<Badge>Animated Badge</Badge>);
       const badge = screen.getByText('Animated Badge');
 
       // Check if Framer Motion attributes are applied

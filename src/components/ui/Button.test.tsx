@@ -1,8 +1,7 @@
 // src/components/ui/Button/Button.test.tsx
 import { describe, it, expect, vi } from 'vitest';
-import { render, screen, waitFor } from '../../../test/utils/test-utils';
+import { render, screen } from '../../../test/utils/test-utils';
 import userEvent from '@testing-library/user-event';
-import { ArrowRight } from 'lucide-react';
 import { Button } from './Button';
 
 describe('Button', () => {

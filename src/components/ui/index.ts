@@ -27,7 +27,7 @@
  * // Import specific types
  * import type { 
  *   ButtonProps,
- *   CardProps 
+ *   BaseCardProps
  * } from '@/components/ui';
  * ```
  * 
@@ -57,7 +57,7 @@ export { ContactMethod } from './ContactMethod';
 
 // Types
 export type { ButtonProps } from './Button';
-export type { CardProps } from './Card';
+export type { BaseCardProps } from './Card';
 export type { BackToTopProps } from './BackToTop';
 export type { BadgeProps } from './Badge';
 export type { ContactMethodProps } from './ContactMethod';

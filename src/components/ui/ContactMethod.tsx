@@ -39,7 +39,7 @@ import { motion } from 'framer-motion';
 import { Mail, Phone, Linkedin, MapPin } from 'lucide-react';
 import { fadeInUp } from '@/lib/animations';
 
-interface ContactMethodProps {
+export interface ContactMethodProps {
   icon: 'Mail' | 'Phone' | 'Linkedin' | 'MapPin';
   title: string;
   content: string;

@@ -47,7 +47,7 @@ export interface TimelineEvent {
   highlights?: string[];
 }
 
-interface TimelineProps {
+export interface TimelineProps {
   events: TimelineEvent[];
   className?: string;
   /** Heading level for each event title, so the timeline fits the page outline. */
