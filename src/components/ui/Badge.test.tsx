@@ -35,12 +35,14 @@ describe('Badge', () => {
   });
 
   describe('Animation', () => {
-    it('has animation classes', () => {
+    it('renders through framer-motion', () => {
       render(<Badge>Animated Badge</Badge>);
       const badge = screen.getByText('Animated Badge');
 
-      // Check if Framer Motion attributes are applied
-      expect(badge).toHaveAttribute('data-motion');
+      // test/setup.ts renders every motion.<tag> as the plain tag with this
+      // test id, so this checks the badge is a motion.span.
+      expect(badge.tagName).toBe('SPAN');
+      expect(badge).toHaveAttribute('data-testid', 'motion-component');
     });
   });
 
@@ -58,9 +60,9 @@ describe('Badge', () => {
 
   describe('Edge Cases', () => {
     it('handles empty children', () => {
-      render(<Badge>{''}</Badge>);
-      const badge = screen.getByRole('status');
-      expect(badge).toBeEmptyDOMElement();
+      // A badge is plain text, not a live region, so it has no role to query.
+      const { container } = render(<Badge>{''}</Badge>);
+      expect(container.firstChild).toBeEmptyDOMElement();
     });
 
     it('handles long text content', () => {

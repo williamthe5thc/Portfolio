@@ -1,4 +1,6 @@
 //tests/components/layout/Container.test.tsx
+// Text passed straight to a container is that container's own text node, so
+// getByText('Content') returns the container element itself (not a child).
 
 import { describe, it, expect } from 'vitest';
 import { render, screen } from '@testing-library/react';
@@ -19,22 +21,23 @@ describe('Container Components', () => {
     it('applies base container classes', () => {
       render(<Container>Content</Container>);
       
-      const container = screen.getByText('Content').parentElement;
+      const container = screen.getByText('Content');
       expect(container).toHaveClass('max-w-7xl', 'mx-auto', 'px-4', 'sm:px-6', 'lg:px-8');
     });
 
     it('accepts custom className', () => {
       render(<Container className="custom-class">Content</Container>);
       
-      const container = screen.getByText('Content').parentElement;
+      const container = screen.getByText('Content');
       expect(container).toHaveClass('custom-class');
     });
 
     it('animates content when animate prop is true', () => {
       render(<Container animate>Content</Container>);
       
-      const container = screen.getByText('Content').parentElement;
-      expect(container).toHaveAttribute('data-animate');
+      // A motion.div (tagged by the setup's framer-motion mock).
+      const container = screen.getByText('Content');
+      expect(container).toHaveAttribute('data-testid', 'motion-component');
     });
   });
 
@@ -64,9 +67,11 @@ describe('Container Components', () => {
     it('combines container classes with section styles', () => {
       render(<Section className="custom-class">Content</Section>);
       
+      // className goes on the inner Container; the section keeps the
+      // background and vertical padding.
       const section = screen.getByText('Content').closest('section');
-      expect(section).toHaveClass('custom-class');
-      expect(section?.firstElementChild).toHaveClass('max-w-7xl', 'mx-auto');
+      expect(section).toHaveClass('py-16');
+      expect(section?.firstElementChild).toHaveClass('custom-class', 'max-w-7xl', 'mx-auto');
     });
   });
 
@@ -74,7 +79,7 @@ describe('Container Components', () => {
     it('renders grid with default columns', () => {
       render(<GridContainer>Content</GridContainer>);
       
-      const grid = screen.getByText('Content').parentElement;
+      const grid = screen.getByText('Content');
       expect(grid).toHaveClass('grid');
       expect(grid).toHaveClass('grid-cols-1', 'md:grid-cols-2', 'lg:grid-cols-3');
     });
@@ -93,7 +98,7 @@ describe('Container Components', () => {
         </GridContainer>
       );
       
-      const grid = screen.getByText('Content').parentElement;
+      const grid = screen.getByText('Content');
       expect(grid).toHaveClass(
         'grid-cols-2',
         'md:grid-cols-3',
@@ -104,13 +109,13 @@ describe('Container Components', () => {
 
     it('handles different gap sizes', () => {
       const { rerender } = render(<GridContainer gap="sm">Content</GridContainer>);
-      expect(screen.getByText('Content').parentElement).toHaveClass('gap-4');
+      expect(screen.getByText('Content')).toHaveClass('gap-4');
 
       rerender(<GridContainer gap="md">Content</GridContainer>);
-      expect(screen.getByText('Content').parentElement).toHaveClass('gap-6');
+      expect(screen.getByText('Content')).toHaveClass('gap-6');
 
       rerender(<GridContainer gap="lg">Content</GridContainer>);
-      expect(screen.getByText('Content').parentElement).toHaveClass('gap-8');
+      expect(screen.getByText('Content')).toHaveClass('gap-8');
     });
   });
 
@@ -118,14 +123,14 @@ describe('Container Components', () => {
     it('applies default padding', () => {
       render(<SectionContainer>Content</SectionContainer>);
       
-      const container = screen.getByText('Content').parentElement;
+      const container = screen.getByText('Content');
       expect(container).toHaveClass('py-12');
     });
 
     it('combines with custom classes', () => {
       render(<SectionContainer className="custom-class">Content</SectionContainer>);
       
-      const container = screen.getByText('Content').parentElement;
+      const container = screen.getByText('Content');
       expect(container).toHaveClass('custom-class', 'py-12');
     });
   });
@@ -150,7 +155,7 @@ describe('Container Components', () => {
     it('maintains content width on different screens', () => {
       render(<Container>Content</Container>);
       
-      const container = screen.getByText('Content').parentElement;
+      const container = screen.getByText('Content');
       expect(container).toHaveClass('px-4', 'sm:px-6', 'lg:px-8');
     });
   });

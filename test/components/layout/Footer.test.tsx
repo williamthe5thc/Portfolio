@@ -3,12 +3,14 @@
 
 import { describe, it, expect } from 'vitest';
 import { render, screen } from '@testing-library/react';
+import { MemoryRouter } from 'react-router-dom';
 import { Footer } from '@/components/layout/Footer';
 import { siteConfig } from '@/content';
 
 describe('Footer', () => {
   beforeEach(() => {
-    render(<Footer />);
+    // Its in-site links are router links, so it renders inside a router as in App.
+    render(<Footer />, { wrapper: MemoryRouter });
   });
 
   describe('Brand Section', () => {
@@ -67,8 +69,11 @@ describe('Footer', () => {
 
   describe('Accessibility', () => {
     it('uses semantic HTML structure', () => {
-      expect(document.querySelector('footer')).toBeInTheDocument();
-      expect(screen.getAllByRole('navigation')).toHaveLength(2); // Main nav and social links
+      // A contentinfo landmark with its link groups as lists (the page's
+      // Primary nav is the only navigation landmark).
+      expect(screen.getByRole('contentinfo')).toBeInTheDocument();
+      expect(screen.queryAllByRole('navigation')).toHaveLength(0);
+      expect(screen.getAllByRole('list').length).toBeGreaterThanOrEqual(2);
     });
 
     it('has accessible link text', () => {

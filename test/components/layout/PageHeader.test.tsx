@@ -57,13 +57,24 @@ describe('PageHeader', () => {
     });
 
     it('shows separator between breadcrumbs', () => {
-      renderHeader({
+      const { container } = renderHeader({
         title: 'Test',
         breadcrumbs
       });
       
-      const separators = screen.getAllByTestId('breadcrumb-separator');
+      // Chevron icons, hidden from assistive technology.
+      const separators = container.querySelectorAll('nav svg[aria-hidden="true"]');
       expect(separators).toHaveLength(breadcrumbs.length - 1);
+    });
+
+    it('marks the last crumb as the current page', () => {
+      renderHeader({
+        title: 'Test',
+        breadcrumbs
+      });
+
+      expect(screen.getByText('Current')).toHaveAttribute('aria-current', 'page');
+      expect(screen.queryByRole('link', { name: 'Current' })).not.toBeInTheDocument();
     });
 
     it('styles current page differently', () => {
@@ -84,8 +95,8 @@ describe('PageHeader', () => {
         children: <div>Extra content</div>
       });
       
-      expect(screen.getByText('Extra content').closest('div'))
-        .toHaveClass('max-w-4xl');
+      expect(screen.getByText('Extra content').closest('.max-w-4xl'))
+        .not.toBeNull();
     });
 
     it('renders additional content', () => {
@@ -99,26 +110,16 @@ describe('PageHeader', () => {
   });
 
   describe('Animation', () => {
-    it('animates title on mount', () => {
-      renderHeader({ title: 'Test' });
-      
-      const titleContainer = screen.getByText('Test').parentElement;
-      expect(titleContainer).toHaveAttribute('data-animate');
-    });
-
-    it('uses stagger effect for multiple elements', () => {
-      renderHeader({
+    // App's PageTransition fades each page in. A second fade here multiplied
+    // with it and left the header washed out, so PageHeader has none.
+    it('does not animate the title on its own', () => {
+      const { container } = renderHeader({
         title: 'Test',
         subtitle: 'Subtitle',
         breadcrumbs: [{ label: 'Home', href: '/' }]
       });
-      
-      const animatedElements = screen.getAllByTestId(/animate/);
-      animatedElements.forEach((el, index) => {
-        expect(el).toHaveStyle({
-          '--motion-delay': `${index * 0.1}s`
-        });
-      });
+
+      expect(container.querySelector('[data-testid="motion-component"]')).toBeNull();
     });
   });
 
@@ -142,12 +143,18 @@ describe('PageHeader', () => {
     it('makes breadcrumbs keyboard navigable', () => {
       renderHeader({
         title: 'Test',
-        breadcrumbs: [{ label: 'Home', href: '/' }]
+        breadcrumbs: [
+          { label: 'Home', href: '/' },
+          { label: 'Current', href: '/current' }
+        ]
       });
       
+      // Real links with an href are in the tab order without a tabindex.
       const links = screen.getAllByRole('link');
+      expect(links).toHaveLength(1);
       links.forEach(link => {
-        expect(link).toHaveAttribute('tabindex', '0');
+        expect(link).toHaveAttribute('href');
+        expect(link).not.toHaveAttribute('tabindex', '-1');
       });
     });
   });
@@ -156,7 +163,7 @@ describe('PageHeader', () => {
     it('adjusts padding on different screens', () => {
       const { container } = renderHeader({ title: 'Test' });
       
-      expect(container.firstChild).toHaveClass('py-8', 'md:py-12', 'lg:py-16');
+      expect(container.firstChild).toHaveClass('py-12');
     });
 
     it('maintains readable text sizes', () => {
@@ -168,8 +175,9 @@ describe('PageHeader', () => {
       const title = screen.getByText('Test');
       const subtitle = screen.getByText('Subtitle');
       
-      expect(title).toHaveClass('text-3xl', 'md:text-4xl');
-      expect(subtitle).toHaveClass('text-lg', 'md:text-xl');
+      // Smaller on phones so long single words fit a 320px screen.
+      expect(title).toHaveClass('text-3xl', 'sm:text-4xl', 'break-words');
+      expect(subtitle).toHaveClass('text-xl');
     });
   });
 });

@@ -1,9 +1,14 @@
 //tests/components/shared/ErrorBoundary.test.tsx
 
 import { describe, it, expect, vi } from 'vitest';
-import { render, screen } from '@testing-library/react';
+import { render as rtlRender, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { MemoryRouter } from 'react-router-dom';
 import { ErrorBoundary } from '@/components/shared/ErrorBoundary';
+
+// The fallback's Buttons track clicks through useAnalytics, which reads the
+// router location, so the boundary is rendered inside a router as in App.
+const render = (ui: React.ReactElement) => rtlRender(ui, { wrapper: MemoryRouter });
 
 // Component that throws an error
 const ThrowError = ({ shouldThrow = false }) => {
@@ -117,7 +122,9 @@ describe('ErrorBoundary', () => {
       const homeButton = screen.getByRole('button', { name: /go home/i });
       await user.click(homeButton);
       
-      expect(hrefSpy).toHaveBeenCalledWith('/Portfolio/index.html');
+      // The deploy base (BASE_URL), '/' under test, not a hard-coded
+      // production path.
+      expect(hrefSpy).toHaveBeenCalledWith('/');
     });
   });
 
@@ -192,7 +199,7 @@ describe('ErrorBoundary', () => {
         </ErrorBoundary>
       );
       
-      const errorContainer = screen.getByRole('alert');
+      const errorContainer = screen.getByText(/something went wrong/i).closest('.min-h-screen');
       expect(errorContainer).toHaveClass('min-h-screen', 'flex', 'items-center', 'justify-center');
     });
 
@@ -207,7 +214,8 @@ describe('ErrorBoundary', () => {
       const homeButton = screen.getByRole('button', { name: /go home/i });
       
       expect(reloadButton).toHaveClass('bg-primary-600');
-      expect(homeButton).toHaveClass('variant-outline');
+      expect(homeButton).toHaveClass('border-primary-600', 'text-primary-600');
+      expect(homeButton).not.toHaveClass('bg-primary-600');
     });
   });
 });

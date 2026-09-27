@@ -52,7 +52,8 @@ describe('SEO', () => {
       renderWithHelmet(<SEO {...customProps} />);
 
       await waitFor(() => {
-        expect(document.title).toBe(`${customProps.title} | ${siteConfig.title}`);
+        // Page titles take a short "| <name>" suffix, not the full site title.
+        expect(document.title).toBe(`${customProps.title} | ${siteConfig.author}`);
         expect(document.querySelector('meta[name="description"]')?.getAttribute('content'))
           .toBe(customProps.description);
       });
@@ -78,8 +79,9 @@ describe('SEO', () => {
           .toBe(siteConfig.title);
         expect(document.querySelector('meta[property="og:type"]')?.getAttribute('content'))
           .toBe('website');
+        // HashRouter: the shareable URL carries the route after #.
         expect(document.querySelector('meta[property="og:url"]')?.getAttribute('content'))
-          .toBe(`${siteConfig.siteUrl}${mockLocation.pathname}`);
+          .toBe(`${siteConfig.siteUrl}/#${mockLocation.pathname}`);
       });
     });
 
@@ -114,13 +116,23 @@ describe('SEO', () => {
 
   describe('Twitter Cards', () => {
     it('sets default Twitter card tags', async () => {
+      // The default image is the square site icon, so the small card.
       renderWithHelmet(<SEO />);
 
       await waitFor(() => {
         expect(document.querySelector('meta[name="twitter:card"]')?.getAttribute('content'))
-          .toBe('summary_large_image');
+          .toBe('summary');
         expect(document.querySelector('meta[name="twitter:title"]')?.getAttribute('content'))
           .toBe(siteConfig.title);
+      });
+    });
+
+    it('uses the large card when a page passes its own image', async () => {
+      renderWithHelmet(<SEO image="/images/example.png" />);
+
+      await waitFor(() => {
+        expect(document.querySelector('meta[name="twitter:card"]')?.getAttribute('content'))
+          .toBe('summary_large_image');
       });
     });
 
@@ -164,14 +176,15 @@ describe('SEO', () => {
   });
 
   describe('Canonical Links', () => {
-    it('sets canonical URL', async () => {
+    it('does not emit a per-route canonical', async () => {
+      // Crawlers drop the #/ fragment, and siteUrl + pathname URLs 404 on
+      // GitHub Pages; index.html carries the one static canonical.
       renderWithHelmet(<SEO />);
 
       await waitFor(() => {
-        const canonicalLink = document.querySelector('link[rel="canonical"]');
-        expect(canonicalLink?.getAttribute('href'))
-          .toBe(`${siteConfig.siteUrl}${mockLocation.pathname}`);
+        expect(document.title).toBe(siteConfig.title);
       });
+      expect(document.querySelector('link[rel="canonical"]')).toBeNull();
     });
   });
 
@@ -180,8 +193,11 @@ describe('SEO', () => {
       renderWithHelmet(<SEO image="" />);
 
       await waitFor(() => {
+        // Falls back to the default image, as an absolute URL (share
+        // scrapers do not resolve relative ones).
         const ogImage = document.querySelector('meta[property="og:image"]');
-        expect(ogImage?.getAttribute('content')).toBe(siteConfig.defaultImage);
+        expect(ogImage?.getAttribute('content'))
+          .toBe(`${siteConfig.siteUrl}/${siteConfig.defaultImage.replace(/^\/+/, '')}`);
       });
     });
 

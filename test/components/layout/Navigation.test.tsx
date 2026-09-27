@@ -2,12 +2,13 @@
 import { describe, it, expect, beforeEach } from 'vitest';
 import { render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { MemoryRouter } from 'react-router-dom';
 import { Navigation } from '@/components/layout/Navigation';
 import { siteConfig } from '@/content';
 
 describe('Navigation', () => {
   beforeEach(() => {
-    render(<Navigation />);
+    render(<Navigation />, { wrapper: MemoryRouter });
   });
 
   it('displays site author/brand', () => {
@@ -47,11 +48,17 @@ describe('Navigation', () => {
       const user = userEvent.setup();
       const menuButton = screen.getByLabelText(/toggle menu/i);
 
-      await user.click(menuButton);
-      expect(screen.getByRole('navigation')).toHaveClass('md:hidden');
+      // The mobile menu is rendered only while open, so its links are never
+      // tabbable while hidden.
+      expect(document.getElementById('mobile-menu')).toBeNull();
 
       await user.click(menuButton);
-      expect(screen.getByRole('navigation')).not.toHaveClass('md:hidden');
+      expect(menuButton).toHaveAttribute('aria-expanded', 'true');
+      expect(document.getElementById('mobile-menu')).toBeInTheDocument();
+
+      await user.click(menuButton);
+      expect(menuButton).toHaveAttribute('aria-expanded', 'false');
+      expect(document.getElementById('mobile-menu')).toBeNull();
     });
 
     it('closes menu when link is clicked', async () => {
@@ -59,9 +66,11 @@ describe('Navigation', () => {
       const menuButton = screen.getByLabelText(/toggle menu/i);
       
       await user.click(menuButton);
-      await user.click(screen.getByText(/about/i));
+      const mobileMenu = document.getElementById('mobile-menu')!;
+      await user.click(within(mobileMenu).getByText(/about/i));
       
-      expect(screen.getByRole('navigation')).not.toHaveClass('md:hidden');
+      expect(document.getElementById('mobile-menu')).toBeNull();
+      expect(menuButton).toHaveAttribute('aria-expanded', 'false');
     });
   });
 
@@ -70,6 +79,10 @@ describe('Navigation', () => {
       const user = userEvent.setup();
       const nav = screen.getByRole('navigation');
       
+      // The name links home first, then the page links in order.
+      await user.tab();
+      expect(within(nav).getByText(siteConfig.author)).toHaveFocus();
+
       await user.tab();
       expect(within(nav).getByText(/home/i)).toHaveFocus();
       

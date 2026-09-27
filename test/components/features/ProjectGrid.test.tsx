@@ -1,8 +1,9 @@
 //tests/components/features/ProjectGrid.test.tsx
 
 import { describe, it, expect, beforeEach } from 'vitest';
-import { render, screen } from '@testing-library/react';
+import { render, screen, cleanup } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { MemoryRouter } from 'react-router-dom';
 import { ProjectGrid } from '@/components/features/portfolio/ProjectGrid';
 
 const mockProjects = [
@@ -28,9 +29,19 @@ const mockProjects = [
   }
 ];
 
+// Cards link to their detail pages with router links, so the grid renders
+// inside a router as it does in the app.
+const renderGrid = (props: Partial<React.ComponentProps<typeof ProjectGrid>> = {}) =>
+  render(<ProjectGrid projects={mockProjects} showFilters={true} {...props} />, {
+    wrapper: MemoryRouter
+  });
+
+// The layout grid is a plain <div class="grid ...">, not an ARIA grid.
+const layoutGrid = () => document.querySelector('.grid') as HTMLElement;
+
 describe('ProjectGrid', () => {
   beforeEach(() => {
-    render(<ProjectGrid projects={mockProjects} showFilters={true} />);
+    renderGrid();
   });
 
   describe('Grid Layout', () => {
@@ -42,16 +53,28 @@ describe('ProjectGrid', () => {
     });
 
     it('displays projects in grid format', () => {
-      const grid = screen.getByRole('grid');
-      expect(grid).toHaveClass('grid');
+      expect(layoutGrid()).toBeInTheDocument();
+      expect(layoutGrid().children).toHaveLength(mockProjects.length);
     });
   });
 
   describe('Filtering', () => {
     it('shows filter buttons when enabled', () => {
-      expect(screen.getByText(/all projects/i)).toBeInTheDocument();
-      expect(screen.getByText(/development/i)).toBeInTheDocument();
-      expect(screen.getByText(/e-learning/i)).toBeInTheDocument();
+      // One button per category present in the projects, labelled with the
+      // category id.
+      expect(screen.getByRole('button', { name: /all projects/i })).toBeInTheDocument();
+      expect(screen.getByRole('button', { name: 'development' })).toBeInTheDocument();
+      expect(screen.getByRole('button', { name: 'elearning' })).toBeInTheDocument();
+    });
+
+    it('marks the active filter with aria-pressed', async () => {
+      const user = userEvent.setup();
+      expect(screen.getByRole('button', { name: /all projects/i })).toHaveAttribute('aria-pressed', 'true');
+
+      await user.click(screen.getByRole('button', { name: 'development' }));
+
+      expect(screen.getByRole('button', { name: 'development' })).toHaveAttribute('aria-pressed', 'true');
+      expect(screen.getByRole('button', { name: /all projects/i })).toHaveAttribute('aria-pressed', 'false');
     });
 
     it('filters projects by category', async () => {
@@ -64,11 +87,11 @@ describe('ProjectGrid', () => {
       expect(screen.queryByText('Project 2')).not.toBeInTheDocument();
     });
 
-    it('shows "no projects" message when filter returns no results', async () => {
-      const user = userEvent.setup();
-      const emptyFilter = screen.getByText(/research/i);
-
-      await user.click(emptyFilter);
+    it('shows "no projects" message when filter returns no results', () => {
+      // Buttons exist only for categories that have projects, so an empty
+      // result can only come from the initial filter prop.
+      cleanup();
+      renderGrid({ filter: 'research', showFilters: false });
 
       expect(screen.getByText(/no projects found/i)).toBeInTheDocument();
     });
@@ -84,9 +107,8 @@ describe('ProjectGrid', () => {
     });
 
     it('shows project status badges', () => {
-      mockProjects.forEach(project => {
-        expect(screen.getByText(project.status)).toBeInTheDocument();
-      });
+      // The status slug is shown as a readable label.
+      expect(screen.getAllByText('Completed')).toHaveLength(mockProjects.length);
     });
   });
 
@@ -97,8 +119,10 @@ describe('ProjectGrid', () => {
 
       await user.click(filter);
 
-      const projectCard = screen.getByText('Project 1').closest('div');
-      expect(projectCard).toHaveAttribute('data-animate');
+      // Each card sits in a motion.div (tagged by the setup's framer-motion mock).
+      const projectCard = screen.getByText('Project 1').closest('.grid > div');
+      expect(projectCard).toHaveAttribute('data-testid', 'motion-component');
+      expect(screen.queryByText('Project 2')).not.toBeInTheDocument();
     });
   });
 
@@ -121,8 +145,7 @@ describe('ProjectGrid', () => {
 
   describe('Responsive Behavior', () => {
     it('adjusts grid columns based on screen size', () => {
-      const grid = screen.getByRole('grid');
-      expect(grid).toHaveClass('grid-cols-1', 'md:grid-cols-2', 'lg:grid-cols-3');
+      expect(layoutGrid()).toHaveClass('grid-cols-1', 'md:grid-cols-2', 'lg:grid-cols-3');
     });
   });
 });

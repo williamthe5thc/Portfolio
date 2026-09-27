@@ -75,8 +75,11 @@ describe('BackToTop', () => {
       const button = screen.getByRole('button');
       fireEvent.click(button);
       
+      // scrollWindowTo passes left and an explicit behavior; smooth here
+      // because the setup's matchMedia reports no reduced-motion preference.
       expect(window.scrollTo).toHaveBeenCalledWith({
         top: 0,
+        left: 0,
         behavior: 'smooth'
       });
     });
@@ -133,8 +136,10 @@ describe('BackToTop', () => {
       Object.defineProperty(window, 'scrollY', { value: 200 });
       fireEvent.scroll(window);
       
+      // Rendered as a motion.button (the setup's framer-motion mock tags
+      // every motion element with this test id).
       const button = screen.getByRole('button');
-      expect(button).toHaveAttribute('data-animate');
+      expect(button).toHaveAttribute('data-testid', 'motion-component');
     });
 
     it('animates on disappearance', () => {

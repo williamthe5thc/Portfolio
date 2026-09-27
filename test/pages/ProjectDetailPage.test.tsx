@@ -1,10 +1,24 @@
 //tests/pages/ProjectDetailPage.test.tsx
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { render, screen, waitFor } from '@testing-library/react';
+import { render as rtlRender, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { HelmetProvider } from 'react-helmet-async';
 import { MemoryRouter, useParams, useNavigate } from 'react-router-dom';
 import ProjectDetailPage from '@/pages/ProjectDetailPage';
-import { projects } from '@/content';
+import { projects, projectCategories } from '@/content';
+import { documentHref } from '@/utils';
+
+/*
+  The page reads its project from the content by id, so tests use the real
+  projects. Cases that edited a copy of a project (and so never reached the
+  page) are it.todo below. The page's <SEO> needs a HelmetProvider, as in
+  main.tsx; App, not the page, renders <main>.
+*/
+const render = (ui: React.ReactElement) =>
+  rtlRender(<HelmetProvider>{ui}</HelmetProvider>);
+
+// The hero is the first image in the story card.
+const heroImage = () => document.querySelector('img') as HTMLImageElement;
 
 // Mock router hooks
 vi.mock('react-router-dom', async () => ({
@@ -32,9 +46,12 @@ describe('ProjectDetailPage', () => {
         </MemoryRouter>
       );
 
-      expect(screen.getByText(mockProject.title)).toBeInTheDocument();
+      expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent(mockProject.title);
       expect(screen.getByText(mockProject.description)).toBeInTheDocument();
-      expect(screen.getByAltText(mockProject.title)).toHaveAttribute('src', mockProject.image);
+      // alt is imageAlt (the text baked into the graphic), not the title,
+      // which the h1 already says.
+      expect(heroImage()).toHaveAttribute('src', mockProject.image);
+      expect(heroImage()).toHaveAttribute('alt', mockProject.imageAlt ?? '');
     });
 
     it('redirects to portfolio on invalid project ID', () => {
@@ -49,22 +66,7 @@ describe('ProjectDetailPage', () => {
       expect(mockNavigate).toHaveBeenCalledWith('/portfolio', { replace: true });
     });
 
-    it('handles missing project data gracefully', () => {
-      const incompleteProject = { ...mockProject };
-      delete incompleteProject.longDescription;
-      delete incompleteProject.challenges;
-      
-      (useParams as any).mockReturnValue({ projectId: incompleteProject.id });
-
-      render(
-        <MemoryRouter>
-          <ProjectDetailPage />
-        </MemoryRouter>
-      );
-
-      expect(screen.getByText(incompleteProject.title)).toBeInTheDocument();
-      expect(screen.queryByText(/challenges/i)).not.toBeInTheDocument();
-    });
+    it.todo('handles missing project data gracefully (needs a fixture project the page can load)');
   });
 
   describe('Project Content Display', () => {
@@ -75,9 +77,13 @@ describe('ProjectDetailPage', () => {
         </MemoryRouter>
       );
 
-      expect(screen.getByText(mockProject.category)).toBeInTheDocument();
-      expect(screen.getByText(mockProject.date)).toBeInTheDocument();
-      expect(screen.getByText(mockProject.status)).toBeInTheDocument();
+      // Category and status are shown as labels, not raw ids.
+      const label = projectCategories.find(c => c.id === mockProject.category)?.label;
+      const details = screen.getByText('Project Details').parentElement!;
+      expect(within(details).getByText(label!)).toBeInTheDocument();
+      expect(within(details).getByText(mockProject.date)).toBeInTheDocument();
+      expect(within(details).getByText('Completed')).toBeInTheDocument();
+      expect(within(details).queryByText(mockProject.category)).not.toBeInTheDocument();
     });
 
     it('renders project challenges and solutions', () => {
@@ -91,8 +97,11 @@ describe('ProjectDetailPage', () => {
         expect(screen.getByText(challenge)).toBeInTheDocument();
       });
       
+      // Markdown links in a solution render as anchors, so match the text
+      // before any link.
       mockProject.solutions?.forEach(solution => {
-        expect(screen.getByText(solution)).toBeInTheDocument();
+        const plain = solution.split('[')[0].trim();
+        expect(screen.getAllByText(text => text.includes(plain)).length).toBeGreaterThan(0);
       });
     });
 
@@ -118,28 +127,28 @@ describe('ProjectDetailPage', () => {
         </MemoryRouter>
       );
 
-      const backButton = screen.getByText(/back to portfolio/i);
+      // Arrived without a portfolio entry in router state (a shared link):
+      // push a fresh /portfolio rather than going back out of the site.
+      const backButton = screen.getByRole('button', { name: /back to portfolio/i });
       await user.click(backButton);
 
       expect(mockNavigate).toHaveBeenCalledWith('/portfolio');
     });
 
-    it('displays external project link when available', () => {
-      const projectWithUrl = {
-        ...mockProject,
-        projectUrl: 'https://example.com'
-      };
-
-      (useParams as any).mockReturnValue({ projectId: projectWithUrl.id });
-
+    it('displays the project document link when available', () => {
       render(
         <MemoryRouter>
           <ProjectDetailPage />
         </MemoryRouter>
       );
 
-      const link = screen.getByText(/view live project/i);
-      expect(link).toHaveAttribute('href', projectWithUrl.projectUrl);
+      // Rendered twice (under the hero on phones, in the sidebar from md
+      // up). A PDF says so, opens fitted to the page width, and announces
+      // the new tab.
+      const links = screen.getAllByRole('link', { name: /^view document \(pdf\) \(opens in a new tab\)$/i });
+      expect(links.length).toBeGreaterThanOrEqual(2);
+      const link = links[0];
+      expect(link).toHaveAttribute('href', documentHref(mockProject.projectUrl!));
       expect(link).toHaveAttribute('target', '_blank');
       expect(link).toHaveAttribute('rel', 'noopener noreferrer');
     });
@@ -153,7 +162,7 @@ describe('ProjectDetailPage', () => {
         </MemoryRouter>
       );
 
-      const grid = screen.getByRole('main').firstChild;
+      const grid = document.querySelector('.grid.md\\:grid-cols-3');
       expect(grid).toHaveClass('grid', 'md:grid-cols-3', 'gap-8');
     });
 
@@ -164,95 +173,61 @@ describe('ProjectDetailPage', () => {
         </MemoryRouter>
       );
 
-      const image = screen.getByAltText(mockProject.title);
-      expect(image).toHaveClass('w-full', 'h-auto', 'rounded-lg');
+      // Natural size capped by a fixed-height box, which reserves the space
+      // before the image loads.
+      const image = heroImage();
+      expect(image).toHaveClass('max-w-full', 'max-h-full', 'rounded-lg');
+      expect(image.parentElement).toHaveClass('h-48', 'sm:h-72');
     });
 
-    it('handles long content gracefully', () => {
-      const projectWithLongContent = {
-        ...mockProject,
-        description: 'a'.repeat(1000),
-        longDescription: 'b'.repeat(2000)
-      };
-
-      (useParams as any).mockReturnValue({ projectId: projectWithLongContent.id });
-
-      render(
-        <MemoryRouter>
-          <ProjectDetailPage />
-        </MemoryRouter>
-      );
-
-      expect(screen.getByText('a'.repeat(1000))).toBeInTheDocument();
-      expect(screen.getByText('b'.repeat(2000))).toBeInTheDocument();
-    });
+    it.todo('handles long content gracefully (needs a fixture project the page can load)');
   });
 
   describe('Performance Optimizations', () => {
-    it('lazy loads images', () => {
+    it('fetches the hero image first', () => {
       render(
         <MemoryRouter>
           <ProjectDetailPage />
         </MemoryRouter>
       );
 
-      const image = screen.getByAltText(mockProject.title);
-      expect(image).toHaveAttribute('loading', 'lazy');
+      // The hero is the page's first visible image (its LCP candidate), so
+      // it is eager and high priority rather than lazy.
+      const image = heroImage();
+      expect(image).toHaveAttribute('loading', 'eager');
+      expect(image).toHaveAttribute('fetchpriority', 'high');
+      expect(image).toHaveAttribute('decoding', 'async');
     });
 
     it('memoizes content to prevent unnecessary rerenders', async () => {
-      const { rerender } = render(
+      const { container, rerender } = render(
         <MemoryRouter>
           <ProjectDetailPage />
         </MemoryRouter>
       );
 
-      const initialContent = screen.getByRole('main').innerHTML;
+      const initialContent = container.innerHTML;
 
       rerender(
-        <MemoryRouter>
-          <ProjectDetailPage />
-        </MemoryRouter>
+        <HelmetProvider>
+          <MemoryRouter>
+            <ProjectDetailPage />
+          </MemoryRouter>
+        </HelmetProvider>
       );
 
-      expect(screen.getByRole('main').innerHTML).toBe(initialContent);
+      expect(container.innerHTML).toBe(initialContent);
     });
   });
 
   describe('Error Handling', () => {
-    it('handles navigation errors gracefully', async () => {
-      const mockNavigateError = vi.fn(() => {
-        throw new Error('Navigation failed');
-      });
-      (useNavigate as any).mockReturnValue(mockNavigateError);
+    // The page has no error alert of its own; a throw reaches the route's
+    // ErrorBoundary in App.
+    it.todo('handles navigation errors gracefully');
 
-      const consoleError = vi.spyOn(console, 'error').mockImplementation(() => {});
-      
-      render(
-        <MemoryRouter>
-          <ProjectDetailPage />
-        </MemoryRouter>
-      );
-
-      expect(screen.getByRole('alert')).toBeInTheDocument();
-      expect(consoleError).toHaveBeenCalled();
-      
-      consoleError.mockRestore();
-    });
-
-    it('handles missing images', () => {
-      const projectWithoutImage = { ...mockProject, image: undefined };
-      (useParams as any).mockReturnValue({ projectId: projectWithoutImage.id });
-
-      render(
-        <MemoryRouter>
-          <ProjectDetailPage />
-        </MemoryRouter>
-      );
-
-      const fallbackImage = screen.getByRole('img');
-      expect(fallbackImage).toHaveAttribute('src', '/api/placeholder/800/600');
-    });
+    // Every active project has an image; a project without one renders no
+    // hero at all (there is no placeholder image).
+    it.todo('handles missing images (needs a fixture project the page can load)');
   });
 
   describe('Accessibility', () => {
@@ -277,8 +252,9 @@ describe('ProjectDetailPage', () => {
         </MemoryRouter>
       );
 
-      expect(screen.getByRole('main')).toBeInTheDocument();
-      expect(screen.getByRole('navigation')).toBeInTheDocument();
+      // App renders the one <main>; the page adds only the breadcrumb nav.
+      expect(screen.queryByRole('main')).not.toBeInTheDocument();
+      expect(screen.getByRole('navigation', { name: /breadcrumb/i })).toBeInTheDocument();
     });
 
     it('ensures images have alt text', () => {

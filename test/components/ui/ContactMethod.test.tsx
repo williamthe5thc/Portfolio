@@ -35,13 +35,15 @@ describe('ContactMethod', () => {
 
     it('applies custom color', () => {
       render(<ContactMethod {...defaultProps} color="text-red-600" />);
+      // The colour class sits on the icon itself.
       const icon = document.querySelector('svg');
-      expect(icon?.parentElement).toHaveClass('text-red-600');
+      expect(icon).toHaveClass('text-red-600');
     });
 
     it('applies custom className', () => {
-      render(<ContactMethod {...defaultProps} className="custom-class" />);
-      expect(screen.getByText('Email').closest('div')).toHaveClass('custom-class');
+      const { container } = render(<ContactMethod {...defaultProps} className="custom-class" />);
+      // className goes on the outer wrapper, not the title's own div.
+      expect(container.firstChild).toHaveClass('custom-class');
     });
   });
 
@@ -89,14 +91,16 @@ describe('ContactMethod', () => {
         />
       );
       
-      const link = screen.getByRole('link');
-      expect(link).toHaveClass('hover:opacity-80');
+      // The hover fade is on the linked text inside the link.
+      expect(screen.getByRole('link')).toBeInTheDocument();
+      expect(screen.getByText('test@example.com')).toHaveClass('hover:opacity-80');
     });
 
     it('includes fade-in animation', () => {
       render(<ContactMethod {...defaultProps} />);
+      // The wrapper is a motion.div (tagged by the setup's framer-motion mock).
       const container = screen.getByText('Email').closest('.flex');
-      expect(container).toHaveAttribute('data-animate');
+      expect(container).toHaveAttribute('data-testid', 'motion-component');
     });
   });
 
@@ -173,7 +177,7 @@ describe('ContactMethod', () => {
       render(<ContactMethod {...defaultProps} />);
       
       const icon = document.querySelector('svg');
-      expect(icon?.parentElement).toHaveClass('mt-1');
+      expect(icon).toHaveClass('mt-1');
     });
   });
 });
