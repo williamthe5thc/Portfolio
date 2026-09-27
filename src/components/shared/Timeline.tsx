@@ -78,7 +78,7 @@ export const Timeline: React.FC<TimelineProps> = ({
           <div className="flex flex-col">
             <Heading className="font-semibold text-text-primary">{event.title}</Heading>
             <p className="text-text-secondary">{event.subtitle}</p>
-            {/* text-text-light (#94a3b8) is 2.56:1 on white - too faint for dates readers check. */}
+            {/* Dates use text-secondary (7.6:1), the same as the JourneyCard dates. */}
             {event.date && (
               <span className="mt-1 text-sm text-text-secondary">{event.date}</span>
             )}

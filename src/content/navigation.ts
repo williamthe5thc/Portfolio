@@ -5,25 +5,25 @@ export const quickLinks: QuickLink[] = [
   {
     href: "/portfolio",
     title: "Portfolio",
-    bgColor: "bg-primary-500",
+    bgColor: "bg-primary-600",
     description: "Interactive demos & case studies"
   },
   {
     href: "/resume",
     title: "Resume",
-    bgColor: "bg-green-500",
+    bgColor: "bg-primary-600",
     description: "Professional experience & credentials"
   },
   {
     href: "/about#design-process",
     title: "Design Process",
-    bgColor: "bg-purple-500",
+    bgColor: "bg-primary-600",
     description: "ADDIE methodology & learning theory"
   },
   {
     href: "/contact",
     title: "Get In Touch",
-    bgColor: "bg-orange-500",
+    bgColor: "bg-primary-600",
     description: "Let's discuss your training needs"
   }
 ];

@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import { ArrowRight, Download, ExternalLink } from 'lucide-react';
 import { Button, BaseCard } from '@/components/ui';
 import { fadeInUp } from '@/lib/animations';
+import { documentHref } from '@/utils';
 
 export interface ResumeTemplateProps {
   /** Shown by the page's BasePage header, not by this template. */
@@ -92,7 +93,7 @@ const ResumeTemplate: React.FC<ResumeTemplateProps> = ({
       >
         <p className="text-text-secondary max-w-3xl mx-auto mb-8">{summary}</p>
         <Button
-          href={downloadUrl}
+          href={documentHref(downloadUrl)}
           target="_blank"
           icon={Download}
           variant="primary"
@@ -100,7 +101,6 @@ const ResumeTemplate: React.FC<ResumeTemplateProps> = ({
           analyticsLabel="Download PDF Version"
         >
           Download PDF Version
-          <span className="sr-only"> (opens in a new tab)</span>
         </Button>
       </motion.div>
 

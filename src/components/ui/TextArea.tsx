@@ -60,8 +60,8 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
               w-full rounded-lg border focus:ring-2 focus:ring-offset-2
               px-4 py-2 min-h-[100px] resize-y
               ${error 
-                ? 'border-accent-red focus:border-accent-red focus:ring-accent-red/50' 
-                : 'border-gray-300 focus:border-primary-500 focus:ring-primary-500/50'
+                ? 'border-red-500 focus:border-red-500 focus:ring-red-500/50' 
+                : 'border-gray-500 focus:border-primary-500 focus:ring-primary-500/50'
               }
               ${props.disabled ? 'bg-gray-100 cursor-not-allowed' : 'bg-white'}
               ${className}
@@ -71,13 +71,13 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
           
           {error && (
             <div className="absolute top-2 right-2">
-              <AlertCircle className="h-5 w-5 text-accent-red" />
+              <AlertCircle className="h-5 w-5 text-red-600" />
             </div>
           )}
         </div>
         
         {(error || hint) && (
-          <p className={`text-sm ${error ? 'text-accent-red' : 'text-text-secondary'}`}>
+          <p className={`text-sm ${error ? 'text-red-600' : 'text-text-secondary'}`}>
             {error || hint}
           </p>
         )}

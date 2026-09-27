@@ -165,6 +165,16 @@ export const Button: React.FC<ButtonProps> = ({
   const relFor = (linkTarget?: string) =>
     rel ?? (linkTarget === '_blank' ? 'noopener noreferrer' : undefined);
 
+  // A link that opens a new tab says so in its accessible name; sighted
+  // visitors get the external-link icon callers pass. Callers must not add
+  // their own "(opens in a new tab)" text.
+  const linkContent = (linkTarget?: string) => (
+    <>
+      {buttonContent}
+      {linkTarget === '_blank' && <span className="sr-only"> (opens in a new tab)</span>}
+    </>
+  );
+
   if (href?.startsWith('/') && !isFileLink) {
     return (
       <Link
@@ -174,7 +184,7 @@ export const Button: React.FC<ButtonProps> = ({
         className={commonClassNames}
         onClick={() => handleInteraction('link')}
       >
-        {buttonContent}
+        {linkContent(target)}
       </Link>
     );
   }
@@ -191,7 +201,7 @@ export const Button: React.FC<ButtonProps> = ({
         className={commonClassNames}
         onClick={() => handleInteraction('link')}
       >
-        {buttonContent}
+        {linkContent(target)}
       </a>
     );
   }
@@ -207,7 +217,7 @@ export const Button: React.FC<ButtonProps> = ({
         className={commonClassNames}
         onClick={() => handleInteraction('link')}
       >
-        {buttonContent}
+        {linkContent(externalTarget)}
       </a>
     );
   }

@@ -121,7 +121,7 @@ export const FormField: React.FC<FormFieldProps> = ({
       {label && (
         <label className="block text-sm font-medium text-text-primary">
           {label}
-          {required && <span className="text-accent-red ml-1">*</span>}
+          {required && <span className="text-red-600 ml-1">*</span>}
         </label>
       )}
       <div className="relative">
@@ -131,7 +131,7 @@ export const FormField: React.FC<FormFieldProps> = ({
         <motion.p 
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-sm text-accent-red"
+          className="text-sm text-red-600"
         >
           {error}
         </motion.p>
@@ -159,8 +159,8 @@ export const FormInput: React.FC<FormInputProps> = ({
           w-full rounded-lg border px-4 py-2
           ${icon ? 'pl-10' : ''}
           ${error 
-            ? 'border-accent-red focus:border-accent-red focus:ring-accent-red/50' 
-            : 'border-gray-300 focus:border-primary-500 focus:ring-primary-500/50'
+            ? 'border-red-500 focus:border-red-500 focus:ring-red-500/50' 
+            : 'border-gray-500 focus:border-primary-500 focus:ring-primary-500/50'
           }
           ${className}
         `}
@@ -183,8 +183,8 @@ export const FormTextArea: React.FC<FormTextAreaProps> = ({
       className={`
         w-full rounded-lg border px-4 py-2
         ${error 
-          ? 'border-accent-red focus:border-accent-red focus:ring-accent-red/50' 
-          : 'border-gray-300 focus:border-primary-500 focus:ring-primary-500/50'
+          ? 'border-red-500 focus:border-red-500 focus:ring-red-500/50' 
+          : 'border-gray-500 focus:border-primary-500 focus:ring-primary-500/50'
         }
         ${className}
       `}

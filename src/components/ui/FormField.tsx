@@ -75,7 +75,7 @@ export const FormField: React.FC<FormFieldProps> = ({
             animate={{ opacity: 1, scale: 1 }}
             className="absolute inset-y-0 right-0 flex items-center pr-3"
           >
-            <AlertCircle className="h-5 w-5 text-accent-red" />
+            <AlertCircle className="h-5 w-5 text-red-600" />
           </motion.div>
         )}
       </div>
@@ -83,7 +83,7 @@ export const FormField: React.FC<FormFieldProps> = ({
         <motion.p 
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-sm text-accent-red"
+          className="text-sm text-red-600"
         >
           {error}
         </motion.p>

@@ -96,7 +96,7 @@ export class ErrorBoundary extends Component<ErrorBoundaryProps, State> {
         <div className="min-h-screen flex items-center justify-center p-4 bg-background-light">
           <div className="max-w-md w-full bg-white rounded-lg shadow-lg p-6">
             <div className="text-center">
-              <AlertTriangle className="w-16 h-16 text-accent-red mx-auto mb-4" />
+              <AlertTriangle className="w-16 h-16 text-red-600 mx-auto mb-4" />
               <h1 className="text-2xl font-bold text-text-primary mb-2">
                 Something went wrong
               </h1>

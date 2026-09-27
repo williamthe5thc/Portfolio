@@ -112,7 +112,7 @@ const validateForm = (values: FormData): FormErrors => {
 const fieldClasses = (hasError: boolean) =>
   `w-full min-h-[44px] rounded-lg border bg-white px-3 py-2 text-text-primary ${
     hasError ? 'border-red-500' : 'border-gray-500'
-  } focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500`;
+  } focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500`;
 
 export const ContactForm: React.FC<ContactFormProps> = ({ className = '' }) => {
   const { trackFormSubmission } = useAnalytics();
@@ -302,7 +302,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({ className = '' }) => {
       case 'mail-client':
         return (
           <motion.div
-            className="mt-6 flex items-start gap-2 p-4 bg-blue-50 text-blue-700 rounded-lg"
+            className="mt-6 flex items-start gap-2 p-4 bg-primary-50 text-primary-600 rounded-lg"
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
           >
@@ -431,7 +431,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({ className = '' }) => {
             This opens a pre-filled email in your email app for you to send. Using
             webmail or a shared computer? Email me directly at{' '}
             <a
-              className="underline font-medium text-blue-700"
+              className="underline font-medium text-primary-600"
               href={`mailto:${siteConfig.contactInfo.email}`}
             >
               {siteConfig.contactInfo.email}
@@ -444,7 +444,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({ className = '' }) => {
           type="submit"
           disabled={status === 'sending' || status === 'rate-limited'}
           aria-describedby={canSendDirectly ? undefined : 'contact-form-delivery'}
-          className="w-full min-h-[44px] flex items-center justify-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed"
+          className="w-full min-h-[44px] flex items-center justify-center gap-2 px-4 py-2 border-2 border-transparent bg-primary-600 text-white font-medium rounded-lg hover:bg-primary-700 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-primary-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white disabled:opacity-50 disabled:cursor-not-allowed"
         >
           {status === 'sending' ? (
             <>

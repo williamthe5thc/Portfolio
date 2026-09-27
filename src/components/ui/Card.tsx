@@ -174,7 +174,7 @@ export const JourneyCard: React.FC<JourneyCardProps> = ({
           <p className="font-medium text-text-primary">{item.title}</p>
           <p className="text-text-secondary">{item.subtitle}</p>
           {item.date && (
-            <p className="text-text-light text-sm">{item.date}</p>
+            <p className="text-text-secondary text-sm">{item.date}</p>
           )}
         </motion.div>
       ))}

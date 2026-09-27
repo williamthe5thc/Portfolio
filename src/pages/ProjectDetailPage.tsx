@@ -40,23 +40,8 @@ import { fadeInUp } from '@/lib/animations';
 import { projects, projectCategories } from '@/content';
 import type { ProjectId } from '@/content/projects';
 import type { ProjectBase, ProjectStatus } from '@/types/content';
-import { getImagePath } from '@/utils';
+import { getImagePath, isPdf, documentHref } from '@/utils';
 import BasePage from './BasePage';
-
-const isPdf = (href: string) => /\.pdf$/i.test(href.split(/[?#]/)[0]);
-
-/**
- * PDFs open fitted to the window width, with the thumbnail sidebar closed,
- * so the text is readable on the first click (review feedback: "make the
- * text on the documents bigger upon first click"). In Chrome this took the
- * needs analysis from 100% to 155%. Chrome and Edge read view/navpanes,
- * Firefox's viewer reads zoom/pagemode; each ignores the other's parameters,
- * and viewers that support none of them just open the file normally.
- */
-const PDF_OPEN_PARAMS = '#view=FitH&navpanes=0&pagemode=none&zoom=page-width';
-
-const documentHref = (href: string) =>
-  isPdf(href) && !href.includes('#') ? `${href}${PDF_OPEN_PARAMS}` : href;
 
 const NewTabHint = () => <span className="sr-only"> (opens in a new tab)</span>;
 
@@ -541,7 +526,7 @@ const ProjectDetailPage: React.FC = () => {
                     <h3>SAM (Successive Approximation Model) Methodology</h3>
                     <div className="space-y-4">
                       {currentProject.samMethodology.preparation && (
-                        <div className="border-l-4 border-secondary-500 pl-4">
+                        <div className="border-l-4 border-primary-300 pl-4">
                           <h4 className="font-semibold text-lg mb-2">Preparation Phase</h4>
                           {Object.entries(currentProject.samMethodology.preparation)
                             .filter(([_, value]) => value)
@@ -556,7 +541,7 @@ const ProjectDetailPage: React.FC = () => {
                         </div>
                       )}
                       {currentProject.samMethodology.iterativeDesign && (
-                        <div className="border-l-4 border-secondary-500 pl-4">
+                        <div className="border-l-4 border-primary-300 pl-4">
                           <h4 className="font-semibold text-lg mb-2">Iterative Design</h4>
                           {Object.entries(currentProject.samMethodology.iterativeDesign)
                             .filter(([_, value]) => value)
@@ -571,7 +556,7 @@ const ProjectDetailPage: React.FC = () => {
                         </div>
                       )}
                       {currentProject.samMethodology.iterativeDevelopment && (
-                        <div className="border-l-4 border-secondary-500 pl-4">
+                        <div className="border-l-4 border-primary-300 pl-4">
                           <h4 className="font-semibold text-lg mb-2">Iterative Development</h4>
                           {Object.entries(currentProject.samMethodology.iterativeDevelopment)
                             .filter(([_, value]) => value)

@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import { Code, BookOpen, GraduationCap, Download } from 'lucide-react';
 import { Button, BaseCard } from '@/components/ui';
 import { fadeInUp } from '@/lib/animations';
-import { getImagePath } from '@/utils';
+import { getImagePath, documentHref } from '@/utils';
 import BasePage from './BasePage';
 
 const resumeTypes = [
@@ -11,7 +11,7 @@ const resumeTypes = [
     title: 'Instructional Design Resume',
     description: 'Highlighting learning design experience, educational technology, and course development',
     icon: BookOpen,
-    color: 'bg-primary-500',
+    color: 'bg-primary-600',
     path: '/resume/instructional',
     downloadPath: 'documents/Instructional_Design_Resume.pdf'
   },
@@ -20,7 +20,7 @@ const resumeTypes = [
     title: 'Software Development Resume',
     description: 'Focused on programming skills, software projects, and technical expertise',
     icon: Code,
-    color: 'bg-blue-500',
+    color: 'bg-primary-600',
     path: '/resume/software',
     downloadPath: 'documents/Coding_Resume.pdf'
   },
@@ -29,7 +29,7 @@ const resumeTypes = [
     title: 'Academic Resume',
     description: 'Detailing research experience, publications, and academic achievements',
     icon: GraduationCap,
-    color: 'bg-purple-500',
+    color: 'bg-primary-600',
     path: '/resume/academic',
     downloadPath: 'documents/Academic_Resume.pdf'
   }
@@ -83,7 +83,7 @@ const ResumePage = () => {
                         <span className="sr-only">: {resumeType.title}</span>
                       </Button>
                       <Button
-                        href={getImagePath('/' + resumeType.downloadPath)}
+                        href={documentHref(getImagePath('/' + resumeType.downloadPath))}
                         target="_blank"
                         variant="outline"
                         className="w-full"
@@ -91,7 +91,7 @@ const ResumePage = () => {
                         analyticsLabel={`Download PDF: ${resumeType.title}`}
                       >
                         Download PDF
-                        <span className="sr-only">: {resumeType.title} (opens in a new tab)</span>
+                        <span className="sr-only">: {resumeType.title}</span>
                       </Button>
                     </div>
                   </div>

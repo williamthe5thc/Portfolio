@@ -33,6 +33,7 @@ import { ExternalLink, ArrowRight } from 'lucide-react';
 import { ProjectBase } from '@/types/content';
 import { cardHover } from '@/lib/animations';
 import { Badge } from '@/components/ui';
+import { isPdf, documentHref } from '@/utils';
 
 interface ProjectCardProps {
   project: ProjectBase;
@@ -48,14 +49,15 @@ const STATUS_LABELS: Record<string, string> = {
 const statusLabel = (status: string) =>
   STATUS_LABELS[status.toLowerCase()] ?? status.replace(/-/g, ' ');
 
-const isPdf = (url: string) => /\.pdf(?:$|[?#])/i.test(url);
-
 // Same look as the shared Button's primary and outline variants. These are
 // plain anchors because "Learn more" has to carry router state and the
 // external links have to open in a new tab.
+// Both have a 2px border (transparent when filled) so a filled action and
+// the outline "Learn more" next to it are the same height, and the same
+// white-outlined focus ring as Button.
 const actionBase =
-  'flex-1 inline-flex items-center justify-center gap-2 whitespace-nowrap px-4 py-2 rounded-lg text-sm font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-600 focus-visible:ring-offset-2';
-const primaryAction = `${actionBase} relative z-10 bg-primary-600 hover:bg-primary-700 text-white`;
+  'flex-1 inline-flex items-center justify-center gap-2 whitespace-nowrap px-4 py-2 rounded-lg text-sm font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-600 focus-visible:ring-offset-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white';
+const primaryAction = `${actionBase} relative z-10 border-2 border-transparent bg-primary-600 hover:bg-primary-700 text-white`;
 const outlineAction = `${actionBase} border-2 border-primary-600 text-primary-600 hover:bg-primary-50`;
 
 export const ProjectCard: React.FC<ProjectCardProps> = ({
@@ -127,7 +129,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
         <div className="mt-auto flex flex-wrap gap-2">
           {project.demoUrl && (
             <a
-              href={project.demoUrl}
+              href={documentHref(project.demoUrl)}
               target="_blank"
               rel="noopener noreferrer"
               className={primaryAction}
@@ -139,7 +141,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
           )}
           {project.projectUrl && (
             <a
-              href={project.projectUrl}
+              href={documentHref(project.projectUrl)}
               target="_blank"
               rel="noopener noreferrer"
               className={primaryAction}

@@ -65,8 +65,8 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
               w-full rounded-lg border focus:ring-2 focus:ring-offset-2
               ${icon ? 'pl-10' : 'px-4'} py-2
               ${error 
-                ? 'border-accent-red focus:border-accent-red focus:ring-accent-red/50' 
-                : 'border-gray-300 focus:border-primary-500 focus:ring-primary-500/50'
+                ? 'border-red-500 focus:border-red-500 focus:ring-red-500/50' 
+                : 'border-gray-500 focus:border-primary-500 focus:ring-primary-500/50'
               }
               ${props.disabled ? 'bg-gray-100 cursor-not-allowed' : 'bg-white'}
               ${className}
@@ -76,13 +76,13 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
           
           {error && (
             <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
-              <AlertCircle className="h-5 w-5 text-accent-red" />
+              <AlertCircle className="h-5 w-5 text-red-600" />
             </div>
           )}
         </div>
         
         {(error || hint) && (
-          <p className={`text-sm ${error ? 'text-accent-red' : 'text-text-secondary'}`}>
+          <p className={`text-sm ${error ? 'text-red-600' : 'text-text-secondary'}`}>
             {error || hint}
           </p>
         )}
