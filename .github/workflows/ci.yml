@@ -1,0 +1,45 @@
+# Checks every push and pull request on a case-sensitive Linux runner:
+# type-check, production build, unit tests. It only reads the repository.
+# It does not deploy, publish or push anything; deploying stays a manual
+# step (see README).
+name: CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      # Cypress's postinstall downloads a ~500 MB binary nothing here uses,
+      # and husky's prepare script would try to install git hooks.
+      CYPRESS_INSTALL_BINARY: '0'
+      HUSKY: '0'
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Type-check
+        run: npx tsc --noEmit
+
+      - name: Build
+        run: npx vite build
+
+      - name: Unit tests
+        run: npx vitest run
