@@ -31,7 +31,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { HashRouter } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
-import { MotionConfig } from 'framer-motion';
+import { MotionConfig, MotionGlobalConfig } from 'framer-motion';
 import { ErrorBoundary } from '@/components/shared';
 import App from './App';
 import './styles/index.css';
@@ -45,6 +45,21 @@ const LoadingFallback = () => (
     </div>
   </div>
 );
+
+/*
+  MotionConfig reducedMotion="user" only drops transform animations: opacity
+  fades and the mobile menu's height animation still ran. For visitors who
+  ask for reduced motion, skip every framer-motion animation so elements
+  render in their final state, and follow the setting if it changes.
+*/
+if (typeof window.matchMedia === 'function') {
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const applyMotionPreference = () => {
+    MotionGlobalConfig.skipAnimations = reducedMotion.matches;
+  };
+  applyMotionPreference();
+  reducedMotion.addEventListener?.('change', applyMotionPreference);
+}
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement

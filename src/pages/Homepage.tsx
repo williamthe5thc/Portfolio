@@ -48,32 +48,32 @@ const HomePage: React.FC = () => {
               same variants every other page uses. The four previous one-off
               colours read as unbranded, and all four failed contrast with white text.
             */}
-            <div className="grid grid-cols-2 gap-3 sm:flex sm:flex-wrap sm:justify-center sm:gap-4">
+            <div className="grid grid-cols-1 min-[360px]:grid-cols-2 gap-3 sm:flex sm:flex-wrap sm:justify-center sm:gap-4">
               <Button
                 href="/portfolio"
                 variant="primary"
-                className="sm:px-6 sm:py-3 sm:text-lg font-semibold"
+                className="whitespace-nowrap px-3 sm:px-6 sm:py-3 sm:text-lg font-semibold"
               >
                 View Portfolio
               </Button>
               <Button
                 href="/resume"
                 variant="outline"
-                className="sm:px-6 sm:py-3 sm:text-lg font-semibold"
+                className="whitespace-nowrap px-3 sm:px-6 sm:py-3 sm:text-lg font-semibold"
               >
                 Resume
               </Button>
               <Button
                 href="/about#design-process"
                 variant="outline"
-                className="sm:px-6 sm:py-3 sm:text-lg font-semibold"
+                className="whitespace-nowrap px-3 sm:px-6 sm:py-3 sm:text-lg font-semibold"
               >
                 Design Process
               </Button>
               <Button
                 href="/contact"
                 variant="outline"
-                className="sm:px-6 sm:py-3 sm:text-lg font-semibold"
+                className="whitespace-nowrap px-3 sm:px-6 sm:py-3 sm:text-lg font-semibold"
               >
                 Get In Touch
               </Button>

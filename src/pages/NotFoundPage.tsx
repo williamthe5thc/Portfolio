@@ -10,10 +10,11 @@ const NotFoundPage: React.FC = () => {
 
   // React Router numbers its history entries. At idx 0 this 404 is the first
   // page of the visit (a stale shared link), so "back" would leave the site:
-  // go home instead.
+  // go home instead. A typed or edited URL arrives with no router state (no
+  // idx) but can still have a previous page in this tab.
   const goBack = () => {
-    const idx = (window.history.state as { idx?: number } | null)?.idx ?? 0;
-    if (idx > 0) {
+    const idx = (window.history.state as { idx?: number } | null)?.idx;
+    if (idx !== undefined ? idx > 0 : window.history.length > 1) {
       navigate(-1);
     } else {
       navigate('/');

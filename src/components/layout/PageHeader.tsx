@@ -63,13 +63,19 @@ export const PageHeader: React.FC<PageHeaderProps> = ({
           {/* Breadcrumbs */}
           {breadcrumbs && breadcrumbs.length > 0 && (
             <nav aria-label="Breadcrumb" className="mb-4">
-              <ol className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm">
+              <ol className="flex flex-wrap items-start gap-x-2 gap-y-1 text-sm">
                 {breadcrumbs.map((crumb, index) => {
                   const isCurrent = index === breadcrumbs.length - 1;
                   return (
-                    <li key={index} className="flex items-center">
+                    // The current page's label can be long (project titles):
+                    // let it take the rest of the line and wrap there, rather
+                    // than dropping the whole item and its chevron to a new line.
+                    <li
+                      key={index}
+                      className={isCurrent ? 'flex items-start flex-1 min-w-[8rem]' : 'flex items-center'}
+                    >
                       {index > 0 && (
-                        <ChevronRight className="w-4 h-4 mx-2 text-text-light" aria-hidden="true" />
+                        <ChevronRight className="w-4 h-4 mx-2 mt-0.5 shrink-0 text-text-light" aria-hidden="true" />
                       )}
                       {isCurrent ? (
                         <span aria-current="page" className="text-text-primary font-medium">
