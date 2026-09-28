@@ -69,11 +69,20 @@ export const BackToTop: React.FC<BackToTopProps> = ({
     their links. When keyboard focus lands on something underneath it, hide
     the button (visibility only, so it keeps its box for the next check)
     until focus moves elsewhere, so the focused element is never covered.
+    Programmatic focus targets (tabindex="-1", such as <main> after a route
+    change or an anchored section) are containers, not controls: they would
+    always "overlap" the button, so they don't count.
   */
   const checkFocus = useCallback(() => {
     const button = buttonRef.current;
     const focused = document.activeElement;
-    if (!button || !focused || focused === button || focused === document.body) {
+    if (
+      !button ||
+      !focused ||
+      focused === button ||
+      focused === document.body ||
+      focused.getAttribute('tabindex') === '-1'
+    ) {
       setCoversFocus(false);
       return;
     }

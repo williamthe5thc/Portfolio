@@ -6,8 +6,10 @@
  *
  * Rules, applied on every location change:
  * - URL has a hash (#/about#design-process -> location.hash "#design-process"):
- *   scroll to the element with that id, retrying while lazy content mounts.
- * - Back/forward (POP): restore the position the visitor left that entry at.
+ *   scroll to the element with that id once it mounts (the page chunk may
+ *   still be downloading).
+ * - Back/forward (POP): restore the position the visitor left that entry at,
+ *   or the top if they never scrolled it.
  * - PUSH/REPLACE to a different page: jump to the top.
  * - Same page, only the query changed (portfolio filters use
  *   setSearchParams with replace): leave the scroll position alone.
@@ -21,7 +23,11 @@ import { useEffect, useLayoutEffect, useRef } from 'react';
 import { useLocation, useNavigationType } from 'react-router-dom';
 
 const RETRY_MS = 1500;
+// How long a #section link waits for its target. The clock starts before the
+// lazy page chunk has downloaded, which on a slow connection takes seconds.
+const HASH_WAIT_MS = 10000;
 const STORAGE_KEY = 'scroll-positions';
+const USER_EVENTS = ['wheel', 'touchstart', 'keydown', 'mousedown'] as const;
 
 export const prefersReducedMotion = (): boolean =>
   typeof window !== 'undefined' &&
@@ -97,16 +103,15 @@ const savePositions = (positions: Record<string, number>) => {
  * passes, or the visitor starts scrolling themselves. Returns a cancel function.
  */
 const retryUntil = (attempt: () => boolean): (() => void) => {
-  const userEvents = ['wheel', 'touchstart', 'keydown', 'mousedown'] as const;
   const started = performance.now();
   let frame = 0;
   let cancelled = false;
   const stop = () => {
     cancelled = true;
     cancelAnimationFrame(frame);
-    userEvents.forEach(type => window.removeEventListener(type, stop));
+    USER_EVENTS.forEach(type => window.removeEventListener(type, stop));
   };
-  userEvents.forEach(type => window.addEventListener(type, stop, { passive: true }));
+  USER_EVENTS.forEach(type => window.addEventListener(type, stop, { passive: true }));
 
   const tick = () => {
     if (cancelled) return;
@@ -120,6 +125,45 @@ const retryUntil = (attempt: () => boolean): (() => void) => {
   return stop;
 };
 
+/**
+ * Calls `found` once an element with this id is in the document, watching
+ * DOM mutations for up to HASH_WAIT_MS. Gives up early if the visitor starts
+ * scrolling themselves. Returns a cancel function.
+ */
+const waitForElement = (id: string, found: (element: HTMLElement) => void): (() => void) => {
+  let done = false;
+  let timer = 0;
+  const observer = new MutationObserver(() => check());
+  const stop = () => {
+    if (done) return;
+    done = true;
+    observer.disconnect();
+    window.clearTimeout(timer);
+    USER_EVENTS.forEach(type => window.removeEventListener(type, stop));
+  };
+  const check = () => {
+    const element = document.getElementById(id);
+    if (!element) return false;
+    stop();
+    found(element);
+    return true;
+  };
+  if (check()) return stop;
+  observer.observe(document.body, { childList: true, subtree: true });
+  timer = window.setTimeout(stop, HASH_WAIT_MS);
+  USER_EVENTS.forEach(type => window.addEventListener(type, stop, { passive: true }));
+  return stop;
+};
+
+/**
+ * Where a history entry's scroll position is stored. Entries without router
+ * state (the first page of a visit, an edited URL, a plain href="#/..." link)
+ * all share the key "default", so the path is part of the id; otherwise
+ * returning to one page could restore another page's offset.
+ */
+const entryId = (location: { key: string; pathname: string; search: string }) =>
+  `${location.key}|${location.pathname}${location.search}`;
+
 export const useScrollManager = () => {
   const location = useLocation();
   const navigationType = useNavigationType();
@@ -130,7 +174,7 @@ export const useScrollManager = () => {
   // dispatch another scroll event, so the scroll caused by swapping pages
   // (or by scrolling the new page to the top) is never recorded against the
   // entry being left.
-  const currentKey = useRef(location.key);
+  const currentKey = useRef(entryId(location));
 
   useEffect(() => {
     // The browser's own restoration runs before React has rendered the page
@@ -153,7 +197,7 @@ export const useScrollManager = () => {
   useLayoutEffect(() => {
     const prev = previous.current;
     previous.current = { pathname: location.pathname, search: location.search };
-    currentKey.current = location.key;
+    currentKey.current = entryId(location);
     savePositions(positions.current);
 
     if (location.hash) {
@@ -168,24 +212,22 @@ export const useScrollManager = () => {
       if (navigationType !== 'POP' && prev !== null && prev.pathname !== location.pathname) {
         scrollWindowTo(0);
       }
-      return retryUntil(() => {
-        const target = document.getElementById(id);
-        if (!target) return false;
+      return waitForElement(id, target => {
         scrollToElement(target);
         // Move keyboard focus with the view, so Tab continues from the
         // section rather than from the link that was activated. Not on a
         // fresh load, where focus should start at the top of the document.
         if (prev !== null) {
           if (!target.hasAttribute('tabindex')) target.setAttribute('tabindex', '-1');
-          (target as HTMLElement).focus({ preventScroll: true });
+          target.focus({ preventScroll: true });
         }
-        return true;
       });
     }
 
     if (navigationType === 'POP') {
-      const saved = positions.current[location.key];
-      if (saved === undefined) return;
+      // A page the visitor never scrolled has no saved position: that means
+      // the top, not wherever the page being left happened to be.
+      const saved = positions.current[entryId(location)] ?? 0;
       return retryUntil(() => {
         scrollWindowTo(saved);
         return Math.abs(window.scrollY - saved) < 2;
