@@ -127,10 +127,33 @@ const renderWithLoadingState = (Component: React.ComponentType) => (
   </Suspense>
 );
 
+/*
+  Announces the new page title to screen readers after a route change. Kept
+  in its own component so the delayed state update re-renders only this
+  live region, not App and every page under it.
+*/
+const RouteAnnouncer: React.FC<{ pathname: string }> = ({ pathname }) => {
+  const [announcement, setAnnouncement] = useState('');
+  const first = useRef(true);
+  useEffect(() => {
+    if (first.current) {
+      first.current = false;
+      return;
+    }
+    // Page titles are applied by Helmet after the page mounts.
+    const timer = window.setTimeout(() => setAnnouncement(document.title), 500);
+    return () => window.clearTimeout(timer);
+  }, [pathname]);
+  return (
+    <div className="sr-only" aria-live="polite" aria-atomic="true">
+      {announcement}
+    </div>
+  );
+};
+
 const App: React.FC = () => {
   const location = useLocation();
   const mainRef = useRef<HTMLElement>(null);
-  const [announcement, setAnnouncement] = useState('');
   const lastPathname = useRef(location.pathname);
 
   useScrollManager();
@@ -162,9 +185,6 @@ const App: React.FC = () => {
     if (!location.hash) {
       mainRef.current?.focus({ preventScroll: true });
     }
-    // Page titles are applied by Helmet after the page mounts.
-    const timer = window.setTimeout(() => setAnnouncement(document.title), 500);
-    return () => window.clearTimeout(timer);
   }, [location.pathname]);
 
   const skipToContent = (event: React.MouseEvent<HTMLAnchorElement>) => {
@@ -224,9 +244,7 @@ const App: React.FC = () => {
       </main>
       <Footer />
       <BackToTop />
-      <div className="sr-only" aria-live="polite" aria-atomic="true">
-        {announcement}
-      </div>
+      <RouteAnnouncer pathname={location.pathname} />
     </div>
   );
 };
