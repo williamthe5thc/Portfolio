@@ -293,13 +293,6 @@ export interface FAQ {
   category?: string;
 }
 
-export interface QuickLink {
-  href: string;
-  title: string;
-  bgColor: string;
-  description: string;
-}
-
 export interface HomePageContent {
   hero: {
     title: string;

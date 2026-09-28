@@ -74,8 +74,9 @@ line above to check without writing.
 
 6. **Deploy**
 
-There is no `npm run deploy`. Source and deploy target live in different
-repositories, so there are two separate commands:
+There is no `npm run deploy`. Staging and production publish to different
+repositories (production goes to this repository's own `gh-pages` branch),
+so there are two separate commands:
 
 ```bash
 # Staging - williamthe5thc/Portfolio-Staging, gh-pages branch
@@ -155,23 +156,28 @@ The portfolio is fully responsive across devices:
 
 ## 🎨 Color Scheme
 
+All colours live in `tailwind.config.ts`; the comment there explains the
+scale. Every shade from `primary-500` up passes WCAG AA as text on white.
+
 ```javascript
-// Primary Colors
+// Primary Colors: Tailwind blue, shifted one step darker from 400 up
 primary: {
-  600: '#0284c7', // Main brand color
-  700: '#0369a1', // Hover states
+  500: '#2563eb', // 5.17:1 on white
+  600: '#1d4ed8', // Main brand color, 6.70:1 on white
+  700: '#1e40af', // Hover states, 8.72:1 on white
 }
 
 // Background
 background: {
-  light: '#f8fafc',
-  DEFAULT: '#f1f5f9',
+  light: '#ffffff',
+  DEFAULT: '#f8fafc',
 }
 
 // Text Colors
 text: {
-  primary: '#1e293b',
-  secondary: '#64748b',
+  primary: '#0f172a',
+  secondary: '#475569',
+  light: '#64748b', // lowest-contrast text colour allowed, 4.76:1 on white
 }
 ```
 

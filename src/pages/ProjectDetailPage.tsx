@@ -39,17 +39,11 @@ import { Button, BaseCard } from '@/components/ui';
 import { fadeInUp } from '@/lib/animations';
 import { projects, projectCategories } from '@/content';
 import type { ProjectId } from '@/content/projects';
-import type { ProjectBase, ProjectStatus } from '@/types/content';
-import { getImagePath, isPdf, documentHref, imageLoading } from '@/utils';
+import type { ProjectBase } from '@/types/content';
+import { getImagePath, isPdf, documentHref, imageLoading, statusLabel } from '@/utils';
 import BasePage from './BasePage';
 
 const NewTabHint = () => <span className="sr-only"> (opens in a new tab)</span>;
-
-const STATUS_LABELS: Record<ProjectStatus, string> = {
-  completed: 'Completed',
-  'in-progress': 'In progress',
-  planned: 'Planned',
-};
 
 /**
  * Some content entries embed markdown links, e.g.
@@ -600,7 +594,7 @@ const ProjectDetailPage: React.FC = () => {
                 <div>
                   <dt className="text-text-secondary">Status</dt>
                   <dd className="font-medium">
-                    {STATUS_LABELS[currentProject.status] ?? currentProject.status}
+                    {statusLabel(currentProject.status)}
                   </dd>
                 </div>
                 <div>

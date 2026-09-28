@@ -7,3 +7,4 @@
 export { getBaseUrl, getImagePath, getAssetPath } from './paths';
 export { isPdf, documentHref, PDF_OPEN_PARAMS } from './documents';
 export { imageLoading } from './images';
+export { statusLabel } from './status';

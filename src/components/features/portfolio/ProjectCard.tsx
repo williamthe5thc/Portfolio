@@ -33,7 +33,7 @@ import { ExternalLink, ArrowRight } from 'lucide-react';
 import { ProjectBase } from '@/types/content';
 import { cardHover } from '@/lib/animations';
 import { Badge } from '@/components/ui';
-import { isPdf, documentHref, imageLoading } from '@/utils';
+import { isPdf, documentHref, imageLoading, statusLabel } from '@/utils';
 
 interface ProjectCardProps {
   project: ProjectBase;
@@ -44,15 +44,6 @@ interface ProjectCardProps {
    */
   priority?: boolean;
 }
-
-const STATUS_LABELS: Record<string, string> = {
-  completed: 'Completed',
-  'in-progress': 'In progress',
-  planned: 'Planned'
-};
-
-const statusLabel = (status: string) =>
-  STATUS_LABELS[status.toLowerCase()] ?? status.replace(/-/g, ' ');
 
 // Same look as the shared Button's primary and outline variants. These are
 // plain anchors because "Learn more" has to carry router state and the
