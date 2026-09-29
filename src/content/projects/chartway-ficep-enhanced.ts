@@ -7,7 +7,7 @@ const chartwayFicepEnhanced: ProjectBase = {
   id: 'chartway-ficep-enhanced',
   title: 'Financial Wellness Internship - FiCEP Curriculum Needs Analysis',
   description: 'I conducted a systematic needs analysis for Chartway Credit Union\'s Financial Counseling Examination Preparation program. This project involved applying ADDIE methodology and evidence-based research to identify performance gaps and provide curriculum enhancement recommendations.',
-  longDescription: `Conducted comprehensive needs analysis for Chartway Credit Union's Financial Information Counseling and Education Program (FiCEP) certification preparation program under professional supervision. Applied systematic ADDIE methodology including semi-structured interviews with 5 program participants and survey distribution yielding 21 responses to identify performance barriers following ACU's sixth edition material update. Analysis revealed key findings: Management Needs to Set Apart More Time (23 mentions - highest priority), Study Guide was Helpful (17 mentions), Personalized per organization Content (16 mentions), Need Better Practice Exam (12 mentions). Delivered evidence-based curriculum enhancement recommendations addressing organizational support structures, assessment alignment gaps, and contextual learning approaches to help restore examination pass rates and improve learner experience.`,
+  longDescription: `Conducted comprehensive needs analysis for Chartway Credit Union's Financial Counseling Examination Preparation (FiCEP) certification preparation program under professional supervision. Applied systematic ADDIE methodology including semi-structured interviews with 5 program participants and survey distribution yielding 21 responses to identify performance barriers following ACU's sixth edition material update. Analysis revealed key findings: Management Needs to Set Apart More Time (23 mentions - highest priority), Study Guide was Helpful (17 mentions), Personalized per organization Content (16 mentions), Need Better Practice Exam (12 mentions). Delivered evidence-based curriculum enhancement recommendations addressing organizational support structures, assessment alignment gaps, and contextual learning approaches to help restore examination pass rates and improve learner experience.`,
   image: getImagePath('/images/thumbnails/chartway-ficep-enhanced.webp'),
   imageAlt: 'Title graphic: Systematic Needs Analysis - FiCEP Curriculum Redesign for Corporate Training Improvement',
   category: 'id',
@@ -23,7 +23,6 @@ const chartwayFicepEnhanced: ProjectBase = {
   status: 'completed',
   date: 'May 2025 - July 2025',
   metrics: [
-    { value: '2', label: 'Exam failures since Chartway implemented the redesigned program' },
     { value: '21', label: 'Survey responses analyzed' },
     { value: '5', label: 'Semi-structured participant interviews' }
   ],
@@ -72,7 +71,7 @@ const chartwayFicepEnhanced: ProjectBase = {
     'Created implementation roadmap with leadership training, enhanced practice exams, and feedback systems'
   ],
   results: [
-    'Chartway reports only two candidates have failed the FiCEP examination since the redesigned program was implemented, reversing the decline that followed the sixth-edition rollout',
+    'Chartway implemented the redesigned program and reported improved examination results. Specific pass rates and cohort figures are not shared here to protect employee privacy.',
     'Delivered comprehensive needs analysis report identifying management time allocation as primary barrier (23 mentions) - [View Complete Needs Analysis Report](/case-studies/ficep-needs-analysis.pdf)',
     'Provided evidence-based training enhancement recommendations addressing organizational support, practice exams, and content personalization',
     'Created systematic research findings documenting learner preferences and institutional challenges affecting certification success',
