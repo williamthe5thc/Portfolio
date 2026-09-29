@@ -28,7 +28,7 @@ export const education: Education = {
       institution: "University of Utah",
       location: "Salt Lake City, Utah",
       period: "August 2023 - May 2025",
-      gpa: "4.0",
+      gpa: "3.9",
       relevantCourses: [
         "Cognitive Foundations of Learning and Instruction",
         "Multimedia Learning and Cognitive Load Theory",
@@ -39,6 +39,8 @@ export const education: Education = {
         "Accessibility and Universal Design for Learning"
       ],
       highlights: [
+        "30 credit hours across five semesters (two academic years and a summer)",
+        "Combines instructional design (identifying learner needs and goals, then building instruction to meet them) with educational technology (technology-based learning environments that support those needs)",
         "Specialized in cognitive science-based instructional design with andragogy expertise",
         "Completed capstone project (EDPS 6750) applying systematic ADDIE methodology",
         "Trained in evidence-based learning theory, cognitive load theory, and Universal Design for Learning",

@@ -52,7 +52,7 @@ export const experience: Experience[] = [
     title: "Learning Technology Specialist (Contract)",
     company: "National Association of Certified Valuators and Analysts (NACVA)",
     location: "Sandy, UT",
-    period: "April 2023 - Aug 2023",
+    period: "April 2023 - August 2023",
     highlights: [
       "Optimized continuing education content delivery workflows by converting legacy video content and streamlining backend processing systems",
       "Applied technical skills to reduce course deployment time from weeks to days for professional development member base",
