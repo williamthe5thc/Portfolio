@@ -30,7 +30,7 @@
  * - Scroll position is owned by useScrollManager; pages must not scroll on mount
  */
 import React, { useEffect, useRef, useState, Suspense } from 'react';
-import { Routes, Route, useLocation } from 'react-router-dom';
+import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { Navigation, Footer } from '@/components/layout';
 import { BackToTop } from '@/components/ui';
 import { ErrorBoundary, PageTransition, SEO } from '@/components/shared';
@@ -56,8 +56,7 @@ const pageImports = {
   notFound: () => import('@/pages/NotFoundPage'),
   resume: () => import('@/pages/ResumePage'),
   instructionalResume: () => import('@/pages/resumes/InstructionalDesignResume'),
-  academicResume: () => import('@/pages/resumes/AcademicResume'),
-  softwareResume: () => import('@/pages/resumes/SoftwareDevResume')
+  technologyResume: () => import('@/pages/resumes/LearningTechnologyResume')
 };
 
 // Warm the cache for every route once the first page is up, so later
@@ -104,8 +103,7 @@ const ProjectDetailPage = lazyPage(pageImports.projectDetail);
 const NotFoundPage = lazyPage(pageImports.notFound);
 const ResumePage = lazyPage(pageImports.resume);
 const InstructionalDesignResume = lazyPage(pageImports.instructionalResume);
-const AcademicResume = lazyPage(pageImports.academicResume);
-const SoftwareDevResume = lazyPage(pageImports.softwareResume);
+const LearningTechnologyResume = lazyPage(pageImports.technologyResume);
 
 /*
   Suspense fallback for the first visit to a route. It sits inside <main>
@@ -235,9 +233,11 @@ const App: React.FC = () => {
             <Route path="/portfolio/:projectId" element={renderWithLoadingState(ProjectDetailPage)} />
             <Route path="/contact" element={renderWithLoadingState(ContactPage)} />
             <Route path="/resume" element={renderWithLoadingState(ResumePage)} />
-            <Route path="/resume/software" element={renderWithLoadingState(SoftwareDevResume)} />
             <Route path="/resume/instructional" element={renderWithLoadingState(InstructionalDesignResume)} />
-            <Route path="/resume/academic" element={renderWithLoadingState(AcademicResume)} />
+            <Route path="/resume/technology" element={renderWithLoadingState(LearningTechnologyResume)} />
+            {/* The software and academic resumes were merged into these two; old links still land somewhere useful. */}
+            <Route path="/resume/software" element={<Navigate to="/resume/technology" replace />} />
+            <Route path="/resume/academic" element={<Navigate to="/resume/instructional" replace />} />
             <Route path="*" element={renderWithLoadingState(NotFoundPage)} />
           </Routes>
         </ErrorBoundary>

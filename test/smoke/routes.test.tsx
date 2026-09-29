@@ -21,9 +21,8 @@ const routes = [
   '/portfolio',
   '/contact',
   '/resume',
-  '/resume/software',
   '/resume/instructional',
-  '/resume/academic',
+  '/resume/technology',
   '/this-route-does-not-exist',
   ...projects.map(project => `/portfolio/${project.id}`)
 ];

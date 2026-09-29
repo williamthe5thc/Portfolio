@@ -1,53 +1,36 @@
 import { motion } from 'framer-motion';
-import { Code, BookOpen, GraduationCap, Download } from 'lucide-react';
+import { Code, BookOpen, Download } from 'lucide-react';
 import { Button, BaseCard } from '@/components/ui';
 import { fadeInUp } from '@/lib/animations';
 import { getImagePath, documentHref } from '@/utils';
+import { resumes } from '@/content/resumes';
 import BasePage from './BasePage';
 
-const resumeTypes = [
-  {
-    id: 'instructional',
-    title: 'Instructional Design Resume',
-    description: 'Highlighting learning design experience, educational technology, and course development',
-    icon: BookOpen,
-    color: 'bg-primary-600',
-    path: '/resume/instructional',
-    downloadPath: 'documents/Instructional_Design_Resume.pdf'
-  },
-  {
-    id: 'software',
-    title: 'Software Development Resume',
-    description: 'Focused on programming skills, software projects, and technical expertise',
-    icon: Code,
-    color: 'bg-primary-600',
-    path: '/resume/software',
-    downloadPath: 'documents/Coding_Resume.pdf'
-  },
-  {
-    id: 'academic',
-    title: 'Academic Resume',
-    description: 'Detailing research experience, publications, and academic achievements',
-    icon: GraduationCap,
-    color: 'bg-primary-600',
-    path: '/resume/academic',
-    downloadPath: 'documents/Academic_Resume.pdf'
-  }
-];
+// One card per resume in src/content/resumes.ts.
+const RESUME_ICONS: Record<string, typeof BookOpen> = { instructional: BookOpen, technology: Code };
+const resumeTypes = resumes.map(resume => ({
+  id: resume.slug,
+  title: resume.title,
+  description: resume.blurb,
+  icon: RESUME_ICONS[resume.slug] ?? BookOpen,
+  color: 'bg-primary-600',
+  path: `/resume/${resume.slug}`,
+  downloadPath: `documents/${resume.pdf}`
+}));
 
 const ResumePage = () => {
   return (
     <BasePage
       seo={{
         title: "Resumes",
-        description: "View my specialized resumes for different professional roles"
+        description: "Instructional design and learning technology resumes for W. Jordan Charles"
       }}
       title="Professional Resumes"
-      subtitle="Explore my specialized resumes for different roles and industries"
+      subtitle="A full instructional design resume, and a version focused on learning technology"
       className="bg-background-light"
     >
       <div className="py-12">
-        <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
           {resumeTypes.map((resumeType) => {
             const Icon = resumeType.icon;
             

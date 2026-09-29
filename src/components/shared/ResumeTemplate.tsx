@@ -1,46 +1,15 @@
-// src/components/templates/ResumeTemplate.tsx
+// src/components/shared/ResumeTemplate.tsx
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowRight, Download, ExternalLink } from 'lucide-react';
 import { Button, BaseCard } from '@/components/ui';
 import { fadeInUp } from '@/lib/animations';
-import { documentHref } from '@/utils';
+import { documentHref, getImagePath } from '@/utils';
+import type { ResumeData, ResumeEntry } from '@/content/resumes';
 
 export interface ResumeTemplateProps {
-  /** Shown by the page's BasePage header, not by this template. */
-  title: string;
-  /** Shown by the page's BasePage header, not by this template. */
-  subtitle: string;
-  summary: string;
-  downloadUrl: string;
-  experience?: Array<{
-    title: string;
-    company: string;
-    period: string;
-    highlights: string[];
-  }>;
-  education?: Array<{
-    degree: string;
-    field: string;
-    institution: string;
-    period: string;
-    relevantCourses?: string[];
-  }>;
-  skills: Array<{
-    category: string;
-    skills: string[];
-  }>;
-  projects?: Array<{
-    title: string;
-    description: string;
-    url?: string;
-  }>;
-  publications?: Array<{
-    title: string;
-    citation: string;
-    url?: string;
-  }>;
+  resume: ResumeData;
 }
 
 /*
@@ -74,31 +43,51 @@ const EntryTitle: React.FC<{ title: string; url?: string }> = ({ title, url }) =
   );
 };
 
-const ResumeTemplate: React.FC<ResumeTemplateProps> = ({
-  summary,
-  downloadUrl,
-  experience,
-  education,
-  skills,
-  projects,
-  publications
-}) => {
+const EntryList: React.FC<{ heading: string; entries: ResumeEntry[] }> = ({ heading, entries }) => (
+  <BaseCard>
+    <h2 className="text-2xl font-bold mb-6">{heading}</h2>
+    <div className="space-y-6">
+      {entries.map(entry => (
+        <motion.div
+          key={`${entry.title}-${entry.org}`}
+          variants={fadeInUp}
+          className="border-b border-gray-200 last:border-0 pb-6 last:pb-0"
+        >
+          <h3 className="text-xl font-semibold">{entry.title}</h3>
+          <p className="text-text-secondary mb-2">
+            {entry.org}
+            {entry.location ? `, ${entry.location}` : ''} | {entry.period}
+          </p>
+          <ul className="list-disc list-inside space-y-2">
+            {entry.bullets.map(bullet => (
+              <li key={bullet} className="text-text-secondary">{bullet}</li>
+            ))}
+          </ul>
+        </motion.div>
+      ))}
+    </div>
+  </BaseCard>
+);
+
+const ResumeTemplate: React.FC<ResumeTemplateProps> = ({ resume }) => {
+  const { summary, pdf, experience, research, education, projectsHeading, projects, skills, presentations, honors } = resume;
+
   return (
     // BasePage already wraps this in a Container, so no second container here.
     <div className="py-12">
-      {/* Summary - the title and subtitle are in the page header above */}
-      <motion.div 
+      {/* Summary - the title and headline are in the page header above */}
+      <motion.div
         variants={fadeInUp}
         className="text-center mb-12"
       >
         <p className="text-text-secondary max-w-3xl mx-auto mb-8">{summary}</p>
         <Button
-          href={documentHref(downloadUrl)}
+          href={documentHref(getImagePath(`/documents/${pdf}`))}
           target="_blank"
           icon={Download}
           variant="primary"
           className="mx-auto"
-          analyticsLabel="Download PDF Version"
+          analyticsLabel={`Download PDF: ${resume.title}`}
         >
           Download PDF Version
         </Button>
@@ -107,38 +96,19 @@ const ResumeTemplate: React.FC<ResumeTemplateProps> = ({
       <div className="grid md:grid-cols-3 gap-8">
         {/* Main Content */}
         <div className="md:col-span-2 space-y-8">
-          {/* Experience */}
-          {experience && experience.length > 0 && (
-            <BaseCard>
-              <h2 className="text-2xl font-bold mb-6">Professional Experience</h2>
-              <div className="space-y-6">
-                {experience.map((exp, index) => (
-                  <motion.div
-                    key={index}
-                    variants={fadeInUp}
-                    className="border-b border-gray-200 last:border-0 pb-6 last:pb-0"
-                  >
-                    <h3 className="text-xl font-semibold">{exp.title}</h3>
-                    <p className="text-text-secondary mb-2">{exp.company} | {exp.period}</p>
-                    <ul className="list-disc list-inside space-y-2">
-                      {exp.highlights.map((highlight, idx) => (
-                        <li key={idx} className="text-text-secondary">{highlight}</li>
-                      ))}
-                    </ul>
-                  </motion.div>
-                ))}
-              </div>
-            </BaseCard>
+          <EntryList heading="Professional Experience" entries={experience} />
+
+          {research && research.length > 0 && (
+            <EntryList heading="Research Experience" entries={research} />
           )}
 
-          {/* Projects */}
-          {projects && projects.length > 0 && (
+          {projects.length > 0 && (
             <BaseCard>
-              <h2 className="text-2xl font-bold mb-6">Featured Projects</h2>
+              <h2 className="text-2xl font-bold mb-6">{projectsHeading}</h2>
               <div className="space-y-6">
-                {projects.map((project, index) => (
+                {projects.map(project => (
                   <motion.div
-                    key={index}
+                    key={project.title}
                     variants={fadeInUp}
                     className="border-b border-gray-200 last:border-0 pb-6 last:pb-0"
                   >
@@ -152,24 +122,14 @@ const ResumeTemplate: React.FC<ResumeTemplateProps> = ({
             </BaseCard>
           )}
 
-          {/* Publications */}
-          {publications && publications.length > 0 && (
+          {presentations && presentations.length > 0 && (
             <BaseCard>
-              <h2 className="text-2xl font-bold mb-6">Publications</h2>
-              <div className="space-y-6">
-                {publications.map((pub, index) => (
-                  <motion.div
-                    key={index}
-                    variants={fadeInUp}
-                    className="border-b border-gray-200 last:border-0 pb-6 last:pb-0"
-                  >
-                    <h3 className="text-xl font-semibold mb-1">
-                      <EntryTitle title={pub.title} url={pub.url} />
-                    </h3>
-                    <p className="text-text-secondary">{pub.citation}</p>
-                  </motion.div>
+              <h2 className="text-2xl font-bold mb-6">Presentations</h2>
+              <ul className="space-y-4">
+                {presentations.map(item => (
+                  <li key={item} className="text-text-secondary">{item}</li>
                 ))}
-              </div>
+              </ul>
             </BaseCard>
           )}
         </div>
@@ -177,50 +137,40 @@ const ResumeTemplate: React.FC<ResumeTemplateProps> = ({
         {/* Sidebar */}
         <div className="space-y-8">
           {/* Education first: the reviewer asked for the M.Ed. to be moved up */}
-          {education && education.length > 0 && (
-            <BaseCard>
-              <h2 className="text-2xl font-bold mb-6">Education</h2>
-              <div className="space-y-6">
-                {education.map((edu, index) => (
-                  <motion.div
-                    key={index}
-                    variants={fadeInUp}
-                    className="border-b border-gray-200 last:border-0 pb-6 last:pb-0"
-                  >
-                    <h3 className="text-lg font-semibold">{edu.degree}</h3>
-                    <p className="text-text-secondary mb-1">{edu.field}</p>
-                    <p className="text-text-secondary">{edu.institution} | {edu.period}</p>
-                    {edu.relevantCourses && (
-                      <div className="mt-2">
-                        <p className="text-sm font-medium">Relevant Coursework:</p>
-                        <p className="text-sm text-text-secondary">
-                          {edu.relevantCourses.join(', ')}
-                        </p>
-                      </div>
-                    )}
-                  </motion.div>
-                ))}
-              </div>
-            </BaseCard>
-          )}
+          <BaseCard>
+            <h2 className="text-2xl font-bold mb-6">Education</h2>
+            <div className="space-y-6">
+              {education.map(edu => (
+                <motion.div
+                  key={edu.degree}
+                  variants={fadeInUp}
+                  className="border-b border-gray-200 last:border-0 pb-6 last:pb-0"
+                >
+                  <h3 className="text-lg font-semibold">{edu.degree}</h3>
+                  <p className="text-text-secondary mb-1">{edu.field}</p>
+                  <p className="text-text-secondary">{edu.school} | {edu.period}</p>
+                  {edu.details && <p className="text-sm text-text-secondary mt-2">{edu.details}</p>}
+                </motion.div>
+              ))}
+            </div>
+          </BaseCard>
 
-          {/* Skills */}
           <BaseCard>
             <h2 className="text-2xl font-bold mb-6">Skills & Expertise</h2>
             <div className="space-y-6">
-              {skills.map((skillGroup, index) => (
+              {skills.map(group => (
                 <motion.div
-                  key={index}
+                  key={group.label}
                   variants={fadeInUp}
                 >
-                  <h3 className="font-semibold mb-2">{skillGroup.category}</h3>
+                  <h3 className="font-semibold mb-2">{group.label}</h3>
                   <div className="flex flex-wrap gap-2">
-                    {skillGroup.skills.map((skill, idx) => (
+                    {group.items.map(item => (
                       <span
-                        key={idx}
+                        key={item}
                         className="px-3 py-1 bg-primary-50 text-primary-700 rounded-full text-sm"
                       >
-                        {skill}
+                        {item}
                       </span>
                     ))}
                   </div>
@@ -228,6 +178,17 @@ const ResumeTemplate: React.FC<ResumeTemplateProps> = ({
               ))}
             </div>
           </BaseCard>
+
+          {honors && honors.length > 0 && (
+            <BaseCard>
+              <h2 className="text-2xl font-bold mb-6">Honors</h2>
+              <ul className="space-y-3">
+                {honors.map(item => (
+                  <li key={item} className="text-text-secondary">{item}</li>
+                ))}
+              </ul>
+            </BaseCard>
+          )}
         </div>
       </div>
     </div>
