@@ -5,15 +5,14 @@ import { motion } from 'framer-motion';
 import { Timeline } from '@/components/shared';
 import type { TimelineEvent } from '@/components/shared/Timeline';
 import { SectionContainer } from '@/components/layout';
-import { BaseCard, StatsGrid } from '@/components/ui';
+import { BaseCard, Button, StatsGrid } from '@/components/ui';
 import { fadeInUp, staggerContainer } from '@/lib/animations';
 import { 
   siteConfig,
   education, 
   experience,
   stats,
-  methodology,
-  faqs 
+  methodology
 } from '@/content';
 import BasePage from './BasePage';
 
@@ -100,7 +99,7 @@ const AboutPage: React.FC = () => {
       <SkillsSection />
       <ToolsSection />
       <BackgroundSection />
-      <FAQSection />
+      <LookingForSection />
     </BasePage>
   );
 };
@@ -270,38 +269,26 @@ const BackgroundSection: React.FC = () => (
   </SectionContainer>
 );
 
-// FAQ Section
-const FAQSection = () => (
+/*
+  The FAQ is on the Contact page only: the same block on two pages read as
+  padding. The one answer this page didn't already give (the roles I'm
+  looking for) closes it instead, next to the way to act on it.
+*/
+const LookingForSection = () => (
   <SectionContainer className="py-20" tinted>
-    <motion.div
-      className="max-w-4xl mx-auto"
-      variants={staggerContainer}
-      initial="initial"
-      animate="animate"
-    >
-      <motion.h2 
-        className="text-3xl font-bold text-text-primary mb-12 text-center"
-        variants={fadeInUp}
-      >
-        Frequently Asked Questions
-      </motion.h2>
-      <div className="grid gap-8">
-        {faqs.map((faq, index) => (
-          <motion.div
-            key={index}
-            variants={fadeInUp}
-          >
-            <BaseCard>
-              <h3 className="font-semibold text-text-primary mb-2 text-xl">
-                {faq.question}
-              </h3>
-              <p className="text-text-secondary">
-                {faq.answer}
-              </p>
-            </BaseCard>
-          </motion.div>
-        ))}
-      </div>
+    <motion.div variants={fadeInUp} className="max-w-3xl mx-auto text-center">
+      <h2 className="text-3xl font-bold text-text-primary mb-4">
+        What I&apos;m looking for
+      </h2>
+      <p className="text-lg text-text-secondary mb-8">
+        Instructional design, learning experience design and learning technology
+        roles where evidence-based design and measurable outcomes matter.
+        I&apos;m drawn to teams that treat evaluation as part of the work rather
+        than an afterthought.
+      </p>
+      <Button href="/contact" variant="primary">
+        Get in touch
+      </Button>
     </motion.div>
   </SectionContainer>
 );
