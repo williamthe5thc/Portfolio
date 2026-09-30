@@ -92,8 +92,7 @@ const aiLawCourse: ProjectBase = {
     'Created interactive module navigation with hands-on learning activities',
     'Implemented competency-based assessment strategy with real-world scenarios',
     'Validated content and design with the faculty sponsor, from the client interview through a stakeholder review before handover',
-    'Applied Universal Design for Learning principles for accessibility',
-    'Built comprehensive portfolio-based final assessment demonstrating practical competency'
+    'Applied Universal Design for Learning principles for accessibility'
   ],
 
   results: [
