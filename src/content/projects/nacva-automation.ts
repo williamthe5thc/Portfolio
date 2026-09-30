@@ -8,19 +8,18 @@ const nacvaAutomation: ProjectBase = {
   title: 'Learning Technology Contractor - NACVA Professional Certification Systems',
   cardTitle: 'NACVA Course Automation',
   description: 'A contract role supporting continuing education technology at the National Association of Certified Valuators and Analysts (NACVA). I automated content delivery work for the CVA and MAFF certification programs.',
-  longDescription: `A contract role with the National Association of Certified Valuators and Analysts (NACVA), which trains and certifies over 7,000 financial professionals in business valuation and financial litigation. I converted training videos and wrote Python scripts to automate backend data entry for its CVA (Certified Valuation Analyst) and MAFF (Master Analyst in Financial Forensics) certification programs, which are nationally accredited credentials for CPAs, business valuators and financial litigation consultants.
-
-The work was about updating how course content was delivered, and removing the manual data entry that had been delaying course deployment.`,
+  longDescription: `A contract role with the National Association of Certified Valuators and Analysts (NACVA), which has over 7,000 members and certificants in business valuation, financial litigation and forensic accounting. I turned recorded webinars into on-demand continuing-education courses, and wrote Python scripts to automate setting each course up in NACVA's learning platform and its online store. NACVA's CVA (Certified Valuation Analyst) and MAFF (Master Analyst in Financial Forensics) certifications are nationally accredited credentials for CPAs, business valuators and financial litigation consultants.`,
   image: getImagePath('/images/thumbnails/Presentation - NACVA Professional Certification Technology.webp'),
   imageAlt: 'Title graphic: NACVA Professional Certifications - Supporting financial professionals using automation solutions',
   category: 'technical',
   tags: [
     'Learning Technology',
-    'SME Collaboration',
-    'Content Management Systems',
-    'Technology-Based Instruction',
-    'Professional Development',
-    'Process Improvement',
+    'Python',
+    'Selenium',
+    'Camtasia',
+    'Articulate Presenter',
+    'SCORM',
+    'Process Automation',
     'Learning Content Migration'
   ],
   status: 'completed',
@@ -32,20 +31,20 @@ The work was about updating how course content was delivered, and removing the m
   
   challenges: [
     'Older training videos needed converting to formats current delivery platforms could use',
-    'Manual data entry was delaying course deployment',
+    'Manual data entry was delaying course deployment: each course took about 80 clicks and entries by hand across two systems',
     'Content had to stay accurate through the migration',
     'Working with several stakeholders while learning how the organization ran'
   ],
   solutions: [
-    'Wrote Python scripts to automate backend data entry',
-    'Helped convert videos to formats the updated delivery systems could use',
-    'Helped improve workflows to cut manual processing time',
-    'Helped check content for accuracy during the migration',
-    'Worked with the team on content management procedures'
+    'Edited recorded webinars in Camtasia into on-demand courses, and published them as SCORM packages with Articulate Presenter',
+    'Wrote Python scripts (using Selenium) that set up each course in the learning platform and the online store',
+    'Wrote a converter that turned each exam\'s Word document into the platform\'s question-import format',
+    'Checked each course\'s exam, title and settings before it went live'
   ],
   results: [
-    'Helped convert 50+ professional development videos to current formats',
-    'Helped improve workflows that cut course deployment time from weeks to days'
+    'Turned 50+ recorded webinars into on-demand continuing-education courses, each with its exam',
+    'Automated about 80 clicks and entries per course that had been done by hand',
+    'Exam questions were imported from Word instead of retyped'
   ]
 };
 
