@@ -11,7 +11,7 @@
  * - Whole card links to the in-site detail page ("Learn more")
  * - External demos and documents open only from their own labelled buttons,
  *   in a new tab
- * - Status shown as a readable label in the card body
+ * - An "In progress" label for current work (finished work has none)
  * - Tag display
  *
  * @example
@@ -104,11 +104,15 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
         <h3 className="text-xl font-semibold text-text-primary mb-2 break-words">
           {title}
         </h3>
-        {project.status && (
+        {/*
+          Only "In progress" is shown. Portfolio work reads as finished by
+          default, so "Completed" on nearly every card said nothing and cost
+          each card a line; the one current project stands out instead. The
+          project page still lists every status.
+        */}
+        {project.status === 'in-progress' && (
           <div className="mb-3">
-            <Badge variant={project.status === 'in-progress' ? 'warning' : 'secondary'}>
-              {statusLabel(project.status)}
-            </Badge>
+            <Badge variant="warning">{statusLabel(project.status)}</Badge>
           </div>
         )}
         <p className="text-text-secondary mb-4">{project.description}</p>

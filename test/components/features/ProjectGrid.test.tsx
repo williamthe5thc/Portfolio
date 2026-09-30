@@ -106,9 +106,12 @@ describe('ProjectGrid', () => {
       });
     });
 
-    it('shows project status badges', () => {
-      // The status slug is shown as a readable label.
-      expect(screen.getAllByText('Completed')).toHaveLength(mockProjects.length);
+    it('labels only work in progress', () => {
+      // Finished work carries no label; the grid above renders two completed projects.
+      expect(screen.queryByText('Completed')).not.toBeInTheDocument();
+      cleanup();
+      renderGrid({ projects: [{ ...mockProjects[0], status: 'in-progress' as const }, mockProjects[1]] });
+      expect(screen.getAllByText('In progress')).toHaveLength(1);
     });
   });
 
