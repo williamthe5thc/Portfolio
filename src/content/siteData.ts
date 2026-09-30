@@ -13,7 +13,7 @@ export const siteConfig: SiteConfig = {
   // the headline when the projects are the stronger claim.
   description: "Instructional Design · Learning Experience Design · Learning Technology",
   slogan: "Research-Informed Learning Solutions",
-  tagline: "Instructional designer who takes learning programs from analysis through delivery: needs analysis to find what is actually broken, evidence-based design to fix it, and the platform work to get it in front of learners. Currently running the LMS and curriculum implementation for a youth nonprofit; previously redesigned certification training for a credit union, where pass rates recovered after the changes went in. Psychology research background, M.Ed. from the University of Utah.",
+  tagline: "Instructional designer who takes learning programs from analysis through delivery: needs analysis to find what is actually broken, evidence-based design to fix it, and the platform work to get it in front of learners. Currently implementing a youth nonprofit's curriculum on the learning platform I selected for them; previously a needs analysis and redesign recommendations for a credit union's certification training. Psychology research background, M.Ed. from the University of Utah.",
   siteUrl: "https://williamthe5thc.github.io/Portfolio",
   // Share-preview image. The 512px site icon until a dedicated 1200x630
   // image exists; "/path/to/default-og-image.jpg" was a placeholder that

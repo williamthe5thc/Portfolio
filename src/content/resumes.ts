@@ -76,8 +76,9 @@ const WEYOUTH = {
   period: 'March 2026 - Present',
 };
 const CHARTWAY = {
-  title: 'Financial Wellness Intern',
-  org: 'Chartway Federal Credit Union',
+  // Title as on the offer letter; the internship sat in the Financial Wellness team.
+  title: 'Instructional Design Intern',
+  org: 'Chartway Credit Union (Financial Wellness team)',
   location: 'South Jordan, UT',
   period: 'May 2025 - July 2025',
 };

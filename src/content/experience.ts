@@ -35,8 +35,8 @@ export const experience: Experience[] = [
     ]
   },
   {
-    title: "Financial Wellness Intern",
-    company: "Chartway Federal Credit Union",
+    title: "Instructional Design Intern",
+    company: "Chartway Credit Union",
     location: "South Jordan, UT", 
     period: "May 2025 - July 2025",
     highlights: [
