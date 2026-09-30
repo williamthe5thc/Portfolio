@@ -27,14 +27,10 @@ import aiLawCourse from './projects/ai-law-course';
 import waltzCourse from './projects/course-waltz';
 
 // ========================================
-// CATEGORY 2: LEARNING TECHNOLOGY
-// ========================================
-import variableTimer from './projects/variable-timer';
-
-// ========================================
 // CATEGORY 3: TECHNICAL PROJECTS
 // ========================================
 import nacvaAutomation from './projects/nacva-automation';
+import variableTimer from './projects/variable-timer';
 
 /**
  * All projects organized by strategic categories
@@ -56,11 +52,9 @@ export const projects: ProjectBase[] = [
   aiLawCourse,                         // Graduate curriculum design + AI subject matter
   waltzCourse,                         // Canvas LMS comprehensive course
 
-  // CATEGORY 2: Learning Technology (Bridge ID + Tech)
-  variableTimer,                       // Behavioral learning technology for ABA
-
   // CATEGORY 3: Technical Projects (Pure coding)
-  nacvaAutomation                      // Backend automation for LMS
+  nacvaAutomation,                     // Backend automation for LMS
+  variableTimer                        // Android app for ABA reinforcement timing
 ];
 
 // Export project IDs for type safety
@@ -88,11 +82,11 @@ export const projectsByCategory = {
     waltzCourse
   ],
   'learning-tech': [
-    weyouthMpcc,
-    variableTimer
+    weyouthMpcc
   ],
   'technical': [
-    nacvaAutomation
+    nacvaAutomation,
+    variableTimer
   ]
 };
 

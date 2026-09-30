@@ -16,7 +16,7 @@ const variableTimer: ProjectBase = {
   description: 'An Android app I built for a client that times variable-interval reinforcement for Registered Behavior Technicians (RBTs) during ABA therapy sessions.',
   longDescription: 'I built the app in Java with Android Studio between May and August 2019.',
   image: getImagePath('/images/projects/variable_timer.png'),
-  category: 'learning-tech',
+  category: 'technical',
   tags: [
     'ABA Therapy',
     'Variable-Interval Reinforcement',
