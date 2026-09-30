@@ -1,22 +1,28 @@
-// src/content/projects/waltz-course.ts
+// src/content/projects/course-waltz.ts
 import { ProjectBase } from '@/types/content';
 import { getImagePath } from '@/utils';
 
+/*
+  Every claim here comes from the two documents this page links:
+  public/case-studies/waltz-formative-evaluation.pdf and
+  waltz-blueprint-storyboard.pdf. Check any new line against them first.
+*/
 const waltzCourse: ProjectBase = {
   detailPage: true,
   id: "teaching-waltz",
   title: "Teaching the Waltz Online Course",
-  description: "I co-designed this online dance education course for teaching waltz to beginners. This project involved applying ADDIE methodology and ARCS motivation model to transform physical dance instruction into an engaging digital learning experience.",
-  longDescription: "Graduate final project, co-designed with a classmate, taking a physical skill - the waltz box step and progressive basic - and building it into a self-paced Canvas course for complete beginners. The interesting constraint is that dance is kinesthetic and the delivery is not: learners cannot be corrected in the moment, so the design has to anticipate the mistakes instead. We worked from a written needs assessment through a full module blueprint, then assessment design, then a small-group formative evaluation. Instruction was filmed rather than sourced from existing video so that demonstrations could deliberately show the common errors as well as the correct form.",
+  description: "A classmate and I designed a self-paced Canvas course that teaches complete beginners to dance the waltz. I filmed the lessons with a dancer, showing common mistakes next to the correct form, and we tested the course with a small group of four learners.",
+  longDescription: "Graduate final project at the University of Utah, co-designed with a classmate. The course has two modules. The first teaches the box step, the progressive basic and the underarm turn; the second covers the dance's history, its health benefits and its place in social life. Dance is learned by doing, and an online course can't correct anyone in the moment, so the design plans for mistakes instead: the lesson videos show common errors next to the correct form, and learners send in a video of their own dancing for instructor feedback. My part was the video and the subject matter expert. I coordinated with the dancer who taught in our videos, filmed the lessons with him, and turned the footage into course videos with transcripts and optional captions. I also proofed the finished course. My co-designer built the Canvas pages, assessments and rubrics.",
   image: getImagePath('/images/thumbnails/how-to-waltz.webp'),
   category: "id",
-  tags: ["Instructional Design", "Online Learning", "Dance Education", "Canvas LMS", "Curriculum Development"],
+  tags: ["Instructional Design", "Online Learning", "Dance Education", "Canvas LMS", "Video Production", "Formative Evaluation"],
   status: "completed",
   date: "2023",
   metrics: [
-    { value: '4', label: 'Participants in small-group formative evaluation' }
+    { value: '4', label: 'Participants in small-group formative evaluation' },
+    { value: '2', label: 'Modules tested' }
   ],
-  
+
   // Case Study Documentation
   projectUrl: getImagePath('/case-studies/waltz-formative-evaluation.pdf'),
   projectUrlDescription: 'The complete formative evaluation report, including the assessment design.',
@@ -25,65 +31,59 @@ const waltzCourse: ProjectBase = {
       label: 'Module Blueprint & Storyboard',
       href: '/case-studies/waltz-blueprint-storyboard.pdf',
       description:
-        '17-page curriculum map: instructional goals mapped to learning objectives, assessments, and learning experiences, module by module.'
+        'The 17-page build plan for both modules: objectives, assessments and learning activities, then the page-by-page content, rubrics and quiz.'
     },
     {
       label: 'Assessment & Evaluation Plan',
       href: '/case-studies/waltz-formative-evaluation.pdf',
       description:
-        'A one-page summary, then the assessment design and the small-group formative evaluation that validated the course with four participants.'
+        'A one-page summary, then the assessment design, the evaluation plan, and the results of testing the course with four participants.'
     }
   ],
   challenges: [
-    "Translating physical instruction to online format",
-    "Creating effective video demonstrations",
-    "Designing appropriate assessment methods",
-    "Maintaining student engagement in virtual environment"
+    "Teaching a physical, partnered skill through a self-paced online course, with no instructor in the room to correct form",
+    "Showing learners what common mistakes look like, and asking them to spot those mistakes",
+    "Including learners who don't have a partner, or who can't dance themselves",
+    "Keeping learners part of a dancing community while they study on their own"
   ],
-  
-  businessContext: "Coursework brief with a real design problem inside it: teach a physical, partnered skill to absolute beginners through an asynchronous online course. Learners had no dance background, no instructor present to correct their form, and no partner guaranteed. Our own constraints were a fixed end-of-semester deadline and limited access to the instructor we were filming.",
 
-  // COMPREHENSIVE ADDIE METHODOLOGY DOCUMENTATION
+  businessContext: "The course was for adults who want to learn the waltz but don't have the time or access for in-person classes. They are complete beginners, may not have a partner, and have no instructor there to correct their form. The project was also our chance to run the whole instructional design process, from course goals through evaluation. Our own constraints were a fixed end-of-semester deadline and limited access to the dancer we were filming.",
+
   addieMethodology: {
     analysis: {
-      needsAssessment: "Worked from a written needs assessment rather than collected data. No survey of prospective learners was run for this project - the instructional need was established by defining the target learner and the skill gap directly.",
-      learnerAnalysis: "Learners were defined in the needs assessment as able-bodied adults from a wide range of backgrounds with little to no dancing experience, able to watch, read, and listen to instruction. That last condition set the accessibility floor for media choices, since a purely visual demonstration would have excluded part of the intended audience.",
-      contextAnalysis: "Online learning environment required innovative approach to physical skill instruction, necessitating multi-modal content delivery and creative assessment methodologies.",
-      performanceGaps: "Beginners could not perform the box step or progressive basic, alone or with a partner, and could not combine individual movements into a continuous step. No survey was run for this project - the need was established from the written needs assessment rather than from collected data."
+      needsAssessment: "We worked from a written needs assessment. No survey of prospective learners was run; the need was set by defining the target learner and the skill gap directly.",
+      learnerAnalysis: "Able-bodied adults of any age and background, with a computer and an internet connection and little or no dance experience. We wrote personas for them and kept referring back to them while designing.",
+      contextAnalysis: "A self-paced course in Canvas. Learners practice at home, alone or with a partner, and send in video for feedback.",
+      performanceGaps: "The gap was the skill itself: beginners who can't yet dance the box step, the progressive basic or the underarm turn. The two course outcomes follow from that: perform the basic steps, and explain the waltz's historical, social and physical context."
     },
     design: {
-      instructionalStrategy: "Scaffolded learning approach progressing from individual movements to partner coordination, utilizing video modeling, written instructions, and peer feedback systems.",
-      assessmentStrategy: "Competency-based video submissions with rubric evaluation, peer feedback exercises, historical knowledge quizzes with immediate feedback, and self-reflection journals tracking progress.",
-      universalDesign: "Multiple content representations (video, text, audio), flexible engagement methods (individual practice, partner work, group discussions), various expression options (video, written, discussion participation)"
+      instructionalStrategy: "Module 1 builds from the box step to the progressive basic to the underarm turn with a partner, and ends with a video submission. Each step has a video and written instructions for the lead and the follow. The motivation plan follows the ARCS model: physical activity and varied lessons for attention, dancing in real settings for relevance, instructor feedback for confidence, and clear rubrics for satisfaction.",
+      assessmentStrategy: "Module 1 has a video of the learner dancing all three steps, graded by rubric with instructor feedback; an assignment to spot mistakes in a dance video; a four-question quiz with two attempts that points to the page to review after a wrong answer; and a discussion on challenges and successes. Module 2 has a 500 to 1,000 word essay on the history of the waltz, a concept map on the health benefits of dancing, and a discussion where learners share a waltz from a film, a piece of music or social life.",
+      universalDesign: "Captions and transcripts on every video, written instructions next to the videos, alt text on images, sans-serif type, good contrast and no tables. Learners who can't dance can instead film themselves talking another person through the steps."
     },
     development: {
-      contentCreation: "Filmed a dancer who volunteered his time, rather than sourcing existing footage, so demonstrations could show the common mistakes alongside the correct form - something stock video cannot do. Scheduling around his availability was one of the real production constraints on the project.",
-      accessibilityFeatures: "Implemented closed captioning for all videos, high contrast visual elements, keyboard navigation compatibility, and alternative text descriptions for all images.",
-      interactivityDevelopment: "Created discussion forums for peer learning, interactive quizzes with immediate feedback, video upload capabilities for assessment submissions, and progress tracking tools."
+      contentCreation: "I filmed a dancer, a friend who agreed to be our instructor, instead of using existing footage, so the videos could show common mistakes next to the correct form. I cut the footage into a separate video for each step and one for the mistakes, and wrote a transcript for each."
     },
     implementation: {
-      pilotTesting: "Ran a small-group formative evaluation with four participants to validate course organization and clarity before wider use.",
-      launchStrategy: "Phased enrollment approach with instructor presence for first cohort to address questions and refine content based on real-time learner feedback.",
-      supportSystems: "Established weekly office hours, peer mentoring program, and comprehensive FAQ resources based on pilot testing insights."
+      pilotTesting: "We tested both modules with a small group of four participants, using a feedback survey and interviews."
     },
     evaluation: {
-      continuousImprovement: "Implemented systematic feedback collection and quarterly course updates based on learner suggestions and emerging best practices in online physical skill instruction."
+      formativeAssessment: "Participants took 5 to 30 minutes per module, with averages of 10.75 minutes for the first and 14.75 for the second. They felt at least somewhat competent afterwards. Opinions were split on whether there were enough visual aids, and the common suggestion was more step diagrams.",
+      continuousImprovement: "The revisions we planned from the results: fix the title slides on the common-mistakes video, correct the captions and let learners turn them off, split the videos into lead and follow, add diagrams for the progressive basic and the underarm turn, and use \"lead\" and \"follow\" throughout instead of gendered terms. We decided not to re-film for better audio, because it didn't get in the way of understanding."
     }
   },
 
   solutions: [
-    "Developed multi-modal instruction methods",
-    "Filmed purpose-built demonstrations that deliberately modeled common mistakes, not just correct form",
-    "Implemented peer discussion and feedback systems",
-    "Designed rubric-based video assessment submissions"
+    "Lesson videos alongside written lead and follow instructions, so learners can use whichever helps them",
+    "Videos filmed for the course that show common mistakes next to the correct form",
+    "Discussions where learners share challenges and successes and reply to each other",
+    "A video submission graded by rubric, with an alternative for learners who can't dance"
   ],
   results: [
-    "Small group formative evaluation (4 participants) validated course effectiveness and identified specific enhancement opportunities - [View Complete Formative Evaluation Report](/case-studies/waltz-formative-evaluation.pdf)",
-    "Systematic feedback collection revealed consensus on module organization, clarity, and learning objective alignment",
-    "Multi-modal instructional approach successfully addressed diverse learning preferences (visual, kinesthetic, auditory learners)",
-    "Evidence-based revision plan developed addressing video content, visual aids, and accessibility improvements",
-    "Course design demonstrates scalable methodology for online physical skill instruction across diverse populations",
-    "Innovative solutions including 'practice partner' simulation and rhythm training modules validated through user testing"
+    "Tested with a small group of four participants, who agreed the modules were well organized, clear and easy to get to. [View the evaluation report](/case-studies/waltz-formative-evaluation.pdf)",
+    "Interviews found the assessments matched the learning objectives and the grading criteria were clear",
+    "Every participant said they wanted more video, especially of the whole dance",
+    "The results led to a revision plan for the videos, captions, diagrams and wording"
   ]
 };
 
