@@ -83,8 +83,11 @@ const CHARTWAY = {
   period: 'May 2025 - July 2025',
 };
 const NACVA = {
+  // Placed through Robert Half, whose records say Data Entry Clerk: the job
+  // changed to this work in the first days. Naming the agency means a
+  // background check that comes back "Robert Half" matches this line.
   title: 'Learning Technology Specialist (Contract)',
-  org: 'National Association of Certified Valuators and Analysts (NACVA)',
+  org: 'National Association of Certified Valuators and Analysts (NACVA), via Robert Half',
   location: 'Sandy, UT',
   period: 'April 2023 - August 2023',
 };

@@ -39,26 +39,27 @@ export const experience: Experience[] = [
     company: "Chartway Credit Union",
     location: "South Jordan, UT", 
     period: "May 2025 - July 2025",
+    // Same facts as the resumes (src/content/resumes.ts). This was a needs
+    // analysis with recommendations; Chartway ran the redesign.
     highlights: [
-      "Applied evidence-based ADDIE framework to redesign FiCEP curriculum helping financial counselors pass America's Credit Unions (ACU) professional examinations",
-      "Conducted systematic needs analysis through learner interviews and stakeholder consultations to improve exam preparation effectiveness",
-      "Applied adult learning theory and UX design principles to create accessible financial education experiences for diverse learner populations",
-      "Collaborated with financial wellness team and subject matter experts to ensure curriculum alignment with certification requirements",
-      "Implemented WCAG 2.1 AA compliance standards for inclusive curriculum design and accessibility",
-      "Gained hands-on experience in professional instructional design implementation and evaluation frameworks"
+      "Conducted a mixed-methods needs analysis for the FiCEP certification program, which prepares employees for America's Credit Unions (ACU) financial counseling exam: five semi-structured interviews and a survey returning 21 responses",
+      "Applied thematic analysis to identify limited protected study time as the top barrier to certification (23 mentions)",
+      "Applied the ADDIE framework and adult learning theory to deliver evidence-based curriculum recommendations",
+      "Worked with the Financial Wellness manager, the program's subject matter expert, to keep the recommendations aligned with certification requirements",
+      "Implemented WCAG 2.1 AA accessibility standards in curriculum design",
+      "Chartway implemented the redesigned program and reported improved exam results (figures withheld to protect employee privacy)"
     ]
   },
   {
     title: "Learning Technology Specialist (Contract)",
-    company: "National Association of Certified Valuators and Analysts (NACVA)",
+    company: "National Association of Certified Valuators and Analysts (NACVA), via Robert Half",
     location: "Sandy, UT",
     period: "April 2023 - August 2023",
+    // Same facts as the resumes (src/content/resumes.ts).
     highlights: [
-      "Optimized continuing education content delivery workflows by converting legacy video content and streamlining backend processing systems",
-      "Applied technical skills to reduce course deployment time from weeks to days for professional development member base",
-      "Collaborated with subject matter experts to maintain content quality while implementing scalable learning technology solutions",
-      "Developed understanding of professional certification compliance requirements and continuing education standards",
-      "Contributed to learning technology infrastructure supporting organizational growth and efficiency improvements"
+      "Converted legacy video content and streamlined backend processing for continuing education delivery",
+      "Built Python automation replacing manual data entry across the course publishing workflow",
+      "Collaborated with subject matter experts to maintain content quality while scaling delivery"
     ]
   }
 ];
