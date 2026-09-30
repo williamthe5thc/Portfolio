@@ -101,8 +101,9 @@ const HomePage: React.FC = () => {
           <div className="text-center mb-4 sm:mb-6">
             <h2 className="text-3xl font-bold sm:mb-3">Featured Projects</h2>
             <p className="hidden sm:block text-lg text-text-secondary">
-              A credit union engagement with a measured outcome, a nonprofit LMS
-              selection and build, and an Articulate Storyline 360 course
+              A credit union needs analysis with a measured outcome, a graduate
+              AI and law course built in Canvas, and an Articulate Storyline 360
+              course
             </p>
           </div>
           {/*
