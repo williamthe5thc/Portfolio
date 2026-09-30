@@ -17,14 +17,18 @@ const HomePage: React.FC = () => {
         inside the first desktop screen: a first glance should show work, not
         only a headline and buttons.
       */}
-      <section id="hero" className="relative pt-10 pb-6 md:pt-14 md:pb-8 bg-gradient-to-b from-background-light to-background">
+      <section id="hero" className="relative pt-6 pb-4 sm:pt-10 sm:pb-6 md:pt-14 md:pb-8 bg-gradient-to-b from-background-light to-background">
         <div className="container mx-auto px-4">
           <motion.div 
             className="max-w-4xl mx-auto text-center"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
           >
-            <h1 className="text-4xl sm:text-5xl font-bold text-text-primary mb-4 break-words">
+            {/* The name was only in the nav bar, easy to miss on a first visit. */}
+            <p className="text-sm sm:text-lg font-semibold sm:tracking-wide text-primary-700 mb-2">
+              W. Jordan Charles, Instructional Designer
+            </p>
+            <h1 className="text-3xl sm:text-5xl font-bold text-text-primary mb-3 sm:mb-4 break-words">
               Learning Experiences That Work
             </h1>
             {/*
@@ -34,15 +38,23 @@ const HomePage: React.FC = () => {
               organization. The role list is broad on purpose - the same skills
               are hired under several different titles.
             */}
-            <p className="text-lg text-text-secondary mb-2">
+            <p className="hidden sm:block text-lg text-text-secondary mb-2">
               <b>Instructional Design &middot; Learning Experience Design &middot; Learning Technology</b>
             </p>
-            <p className="text-lg sm:text-xl text-text-secondary mb-6">
+            {/*
+              Phones get a shorter hero (first sentence only, no role line,
+              two buttons; Design Process and Contact are in the menu) so the
+              first project card is on the first screen, not below it.
+            */}
+            <p className="text-base sm:text-xl text-text-secondary mb-5 sm:mb-6">
               I turn learning problems into programs that work &mdash; needs analysis to find
               what is actually broken, evidence-based design to fix it, and the technical
-              build to ship it. Currently implementing a youth nonprofit's curriculum on
-              the learning platform I selected for them; previously certification
-              training for a credit union.
+              build to ship it.
+              <span className="hidden sm:inline">
+                {' '}Currently implementing a youth nonprofit's curriculum on
+                the learning platform I selected for them; previously certification
+                training for a credit union.
+              </span>
             </p>
             {/*
               One solid primary action and outline buttons for the rest, the
@@ -67,14 +79,14 @@ const HomePage: React.FC = () => {
               <Button
                 href="/about#design-process"
                 variant="outline"
-                className="whitespace-nowrap px-3 sm:px-6 sm:py-3 sm:text-lg font-semibold"
+                className="hidden sm:inline-flex whitespace-nowrap px-3 sm:px-6 sm:py-3 sm:text-lg font-semibold"
               >
                 Design Process
               </Button>
               <Button
                 href="/contact"
                 variant="outline"
-                className="whitespace-nowrap px-3 sm:px-6 sm:py-3 sm:text-lg font-semibold"
+                className="hidden sm:inline-flex whitespace-nowrap px-3 sm:px-6 sm:py-3 sm:text-lg font-semibold"
               >
                 Get In Touch
               </Button>
@@ -86,9 +98,9 @@ const HomePage: React.FC = () => {
       {/* Featured Projects */}
       <section id="featured-projects" className="pt-6 pb-20 bg-background">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-6">
-            <h2 className="text-3xl font-bold mb-3">Featured Projects</h2>
-            <p className="text-lg text-text-secondary">
+          <div className="text-center mb-4 sm:mb-6">
+            <h2 className="text-3xl font-bold sm:mb-3">Featured Projects</h2>
+            <p className="hidden sm:block text-lg text-text-secondary">
               A credit union engagement with a measured outcome, a nonprofit LMS
               selection and build, and an Articulate Storyline 360 course
             </p>
