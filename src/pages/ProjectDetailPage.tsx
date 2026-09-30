@@ -438,10 +438,9 @@ const ProjectDetailPage: React.FC = () => {
                 {/*
                   ADDIE Methodology Section.
 
-                  Design and Evaluation skip nested objects on purpose (Waltz's
-                  arcsApplication and kirkpatrickModel). Their text has not been
-                  fact-checked against the project documents the way the rest of
-                  the page has, so do not render them until the owner has.
+                  Design and Evaluation print string fields only; the nested
+                  arcsApplication and kirkpatrickModel shapes in the type are
+                  never shown, so don't put text in them.
                 */}
                 {currentProject.addieMethodology && (
                   <>

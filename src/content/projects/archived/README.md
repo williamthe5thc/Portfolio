@@ -20,6 +20,13 @@ affected ones — the richer `../` versions won and the stubs here were replaced
 If you archive something in future, **move** the file and delete its import from
 `src/content/projects.ts`. A file in this folder that is still imported is still live.
 
+## Images
+Images used only by archived projects are in `archive/public-images/` at the
+repository root, with the same sub-paths they had under `public/images/`. They
+are kept but not deployed: everything in `public/` ships with the site, and
+these added 7 MB that no page showed. To bring a project back, move its images
+back to `public/images/` too.
+
 ## Current Strategic Portfolio (6 Projects)
 Defined in `src/content/projects.ts`, ordered as hiring managers see them:
 
@@ -41,8 +48,8 @@ Personal creative work does not demonstrate instructional design thinking.
 `ego-depletion.ts`, `empathy-research.ts`, `bias-reduction-psychology.ts`
 
 Strong research foundation, but too far from applied ID practice to lead with.
-Still cited on the Academic resume as credentials — without portfolio links,
-since these pages no longer exist.
+The research is still on the Instructional Design resume (Research Experience
+and Presentations), without portfolio links, since these pages no longer exist.
 
 ### Technical / Non-ID Projects
 `yahtzee-game.ts`, `object-tracking.ts`, `jeopardy-game.ts`,

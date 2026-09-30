@@ -6,6 +6,7 @@ const professionalCommunicationTraining: ProjectBase = {
   detailPage: true,
   id: "professional-communication-training",
   title: "Articulate Storyline 360 Demonstration - Interactive E-learning Course",
+  cardTitle: "Branching Storyline Course",
   description: "I created a 278-slide interactive e-learning course using Articulate Storyline 360. This project showcases advanced branching scenarios, behavioral psychology application, and sophisticated interactive design techniques.",
   longDescription: "Originally developed as an academic project focused on interpersonal communication and dating relationships, this comprehensive interactive e-learning experience showcases advanced Articulate Storyline 360 development capabilities and evidence-based instructional design methodology. While the content addresses personal relationship dynamics, the underlying instructional design framework, branching scenarios, and behavioral psychology applications demonstrate transferable skills highly relevant to professional communication training, team building workshops, and workplace relationship development programs. The project exemplifies systematic ADDIE implementation, interactive scenario design, and assessment integration that could be readily adapted for corporate soft skills training, customer service communication, or leadership development initiatives.",
   image: getImagePath('/images/projects/professional-communication-training.jpg'),
@@ -18,23 +19,10 @@ const professionalCommunicationTraining: ProjectBase = {
     { value: '278', label: 'Slides built in Articulate Storyline 360' },
     { value: '26 min', label: 'Scenario-based branching content' }
   ],
-  tools: ["Articulate Storyline 360", "Interactive Design", "Behavioral Psychology", "Professional Development Strategy"],
-  methodology: "Evidence-based instructional design combining behavioral psychology principles with professional networking best practices, delivered through interactive business scenarios and decision-making activities",
   
   // Business Context
   businessContext: "Academic project demonstrating mastery of advanced Articulate Storyline 360 authoring techniques and instructional design methodology. While the specific content focuses on interpersonal communication and dating dynamics, the underlying ID framework, interactive design patterns, and behavioral psychology applications showcase capabilities directly transferable to corporate soft skills training, customer service excellence, team dynamics, and professional relationship building programs.",
-  
-  targetAudience: "Academic demonstration project. Content designed for individuals seeking interpersonal communication skill development. Methodology and interactive design patterns applicable to corporate learners in professional communication, customer service, team collaboration, and leadership development contexts",
-  
-  learningObjectives: [
-    "Demonstrate advanced Articulate Storyline 360 authoring capabilities including complex branching scenarios",
-    "Apply behavioral psychology principles to interactive learning design", 
-    "Create engaging scenario-based learning experiences with multiple decision points",
-    "Implement evidence-based instructional design methodology in interactive e-learning",
-    "Design assessment integration and feedback systems for behavior change",
-    "Showcase transferable ID competencies applicable to professional soft skills training contexts"
-  ],
-  
+
   // Instructional Design Process
   challenges: [
     "Creating complex branching scenarios with meaningful consequences in Articulate Storyline 360",
@@ -60,22 +48,10 @@ const professionalCommunicationTraining: ProjectBase = {
     "Demonstrated mastery of advanced Articulate Storyline 360 features including variables, triggers, and states",
     "Created reusable instructional design framework applicable to corporate soft skills training development"
   ],
-  
-  lessonsLearned: "This project demonstrated the value of complex interactive design in maintaining learner engagement across extensive content. The integration of behavioral psychology principles with branching scenarios created a sophisticated learning experience that showcases advanced Articulate Storyline 360 capabilities and evidence-based instructional design methodology.",
-  
+
   // Technical specifications for demos
   demoUrl: getImagePath('/demos/professional-communication-training/story.html'),
-  demoDescription: "The 278-slide interactive e-learning course, built in Articulate Storyline 360.",
-  
-  // Features that showcase ID expertise
-  features: [
-    "Advanced Branching Scenarios: 15+ decision points with meaningful consequences and multiple learning pathways",
-    "Behavioral Psychology Integration: Evidence-based principles applied to interactive scenario design and feedback", 
-    "Complex Articulate Development: Sophisticated use of variables, triggers, states, and navigation controls",
-    "Comprehensive Content Architecture: 278 slides organized into logical learning modules with clear progression",
-    "Interactive Assessment Design: Multiple assessment types including reflection activities and behavioral self-evaluation",
-    "Accessibility Implementation: Universal design principles ensuring inclusive learning experiences"
-  ]
+  demoDescription: "The 278-slide interactive e-learning course, built in Articulate Storyline 360."
 };
 
 export default professionalCommunicationTraining;

@@ -24,6 +24,7 @@ const weyouthMpcc: ProjectBase = {
   detailPage: true,
   id: 'weyouth-mpcc',
   title: 'LMS Selection & Implementation - Nonprofit Youth Coaching Program',
+  cardTitle: 'Nonprofit LMS Selection & Build',
   description:
     'WeYouth had curriculum and no way to deliver it. I ran the market research on learning platforms against their specific constraints, recommended the one they adopted, then implemented their SMEs\' curriculum into it as enrollable courses. I run the platform and its technical support.',
   longDescription: `WeYouth is a 501(c)(3) addressing youth disconnection through Connection Coaching for young people ages 12-24. Its primary program, Mental Performance Connection Coaching (MPCC), reaches athletes through a "whole-team" model that trains coaches, equips captains, and gives athletes and parents shared language.
@@ -52,27 +53,8 @@ This is the difference between an organization that has good material and an org
   date: 'March 2026 - Present',
   // No metrics tiles here by design - see the note above. The numbers that
   // exist describe the client's operations rather than my work.
-  tools: [
-    'LearnWorlds LMS',
-    'LMS Vendor Evaluation',
-    'Course & Module Architecture',
-    'Assessment and Survey Configuration',
-    'Enrollment & Cohort Management',
-    'Camtasia'
-  ],
-  methodology:
-    'Requirements-driven platform evaluation against organizational constraints, followed by iterative implementation with SMEs - modules published, evaluation instruments attached, and revisions made from live feedback rather than held for an annual release',
   businessContext:
     'WeYouth had spent 7+ years developing an evidence-based coaching methodology and its subject matter experts had written the curriculum, but the organization had no learning platform. Without one, there was no mechanism to enroll a student, no way to deliver content between live sessions, and no path to running a season without a founder in the room. Delivery capacity was capped at the founders\' personal calendar, which is not a model a nonprofit can scale or sell team contracts against.',
-  targetAudience:
-    'Three distinct audiences requiring separate tracks in the platform: sports coaches (adult professionals with minimal spare time who must both learn the model and deliver it), athletes ages 12-24 (the end learners), and team captains (peer leaders running discussion-based sessions). Secondary audience: the small internal team who administer the system.',
-  learningObjectives: [
-    'Select a learning platform that fits a nonprofit\'s budget, team size, and seasonal delivery model',
-    'Establish a course architecture that serves three different audiences without duplicating content management',
-    'Convert SME-authored curriculum into self-paced sequential modules that hold up without an instructor present',
-    'Build assessment and evaluation instruments into the delivery system rather than bolting them on later',
-    'Enable team-based enrollment so partner clubs and schools can be onboarded as cohorts'
-  ],
   challenges: [
     'No existing platform, so the first problem was a procurement decision rather than a design one',
     'Nonprofit budget constraints ruled out most enterprise LMS options',
@@ -98,20 +80,6 @@ This is the difference between an organization that has good material and an org
     'Per-module evaluation surveys collect formative data during delivery, so weak modules surface while cohorts are still running',
     'Program effectiveness data is not yet available - cohorts are still in training, and measurement is scheduled once current seasons complete',
     'Enrollment figures, course counts, and partner names are the organization\'s operating data and are deliberately not published here'
-  ],
-  stakeholders: [
-    'WeYouth founders and science director (SMEs and curriculum authors)',
-    'Licensed clinician and coaching staff (content SMEs)',
-    'Fellow curriculum designers on the internal team',
-    'Sports coaches and team captains (delivery layer and platform users)',
-    'Athletes ages 12-24 (end learners)',
-    'Partner clubs, schools, and athletic directors (cohort customers)'
-  ],
-  learningTheoryApplied: [
-    'Cognitive Load Theory (Sweller) - drove short single-concept modules when restructuring SME content for self-paced delivery',
-    'Andragogy (Knowles) - self-directed, self-paced structure for time-constrained adult coaches',
-    'Formative evaluation (Scriven) - per-module survey instruments built into the platform from the start',
-    'Social Cognitive Theory (Bandura) - underpins the organization\'s near-peer mentor model, which the track structure had to support'
   ],
 
   addieMethodology: {
@@ -159,28 +127,6 @@ This is the difference between an organization that has good material and an org
       continuousImprovement:
         'Courses are revised in place as survey data arrives and pushed to live cohorts rather than held for an annual release.'
     }
-  },
-
-  designProcess: {
-    researchPhase:
-      'Market research across learning platforms, scored against WeYouth\'s specific operating constraints rather than a generic feature comparison.',
-    stakeholderCollaboration:
-      'Continuous work with founders, a licensed clinician, coaches, and fellow curriculum designers - SMEs supply the domain content, I supply the delivery system and the structural decisions that make it work online.',
-    iterativeDesign:
-      'Modules are implemented, tested in private courses, published, then revised against live survey feedback. Iteration continues after launch rather than stopping at it.',
-    evidenceBasedDecisions:
-      'Platform choice traced to documented organizational requirements; module structuring decisions traced to cognitive load and adult learning principles rather than preference.'
-  },
-
-  professionalImpact: {
-    businessValue:
-      'The platform is what converts WeYouth from an organization that sells a founder\'s calendar into one that can sell a team contract. Enrollment, delivery, and measurement all became possible at the point the LMS went live.',
-    scalabilityConsiderations:
-      'Track-per-audience architecture means new partners reuse existing content with cohort-specific courses layered on top rather than duplicating the curriculum each time.',
-    industryContribution:
-      'A worked example of the unglamorous problem that stops many small organizations: strong subject matter expertise with no delivery infrastructure, and the platform evaluation and implementation work required to close that gap.',
-    continuingEducation:
-      'Direct experience in LMS vendor evaluation, platform administration, course architecture across multiple audiences, and SME collaboration under real deadlines.'
   }
 };
 

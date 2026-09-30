@@ -31,21 +31,9 @@ const waltzCourse: ProjectBase = {
       label: 'Assessment & Evaluation Plan',
       href: '/case-studies/waltz-formative-evaluation.pdf',
       description:
-        'Assessment design and the small-group formative evaluation that validated the course with four participants.'
+        'A one-page summary, then the assessment design and the small-group formative evaluation that validated the course with four participants.'
     }
   ],
-  tools: ["Canvas LMS", "Adobe Premier Pro", "Educational Design Tools"],
-  methodology: "Comprehensive ADDIE Framework with ARCS Motivation Model Integration and Universal Design for Learning Implementation",
-  learningObjectives: [
-  "Identify and execute the motions of the basic box step",
-  "Identify and execute the motions of the basic progressive step",
-  "Execute the underarm turn with a partner",
-  "Describe the origin and history of the waltz",
-  "Discuss the historical impact of the waltz on modern dance",
-  "Identify the physical health benefits of dancing based on scientific research",
-  "Identify mental health benefits of dancing based on scientific research",
-  "Recognize the modern social context of the waltz"
-],
   challenges: [
     "Translating physical instruction to online format",
     "Creating effective video demonstrations",
@@ -54,26 +42,7 @@ const waltzCourse: ProjectBase = {
   ],
   
   businessContext: "Coursework brief with a real design problem inside it: teach a physical, partnered skill to absolute beginners through an asynchronous online course. Learners had no dance background, no instructor present to correct their form, and no partner guaranteed. Our own constraints were a fixed end-of-semester deadline and limited access to the instructor we were filming.",
-  
-  targetAudience: "Able-bodied adults from a wide range of backgrounds with little to no dancing experience, motivated by personal interest rather than any requirement. Defined in the needs assessment as learners who can walk and stand without major difficulty and who can watch, read, and listen to instruction - which set the accessibility floor for the media choices.",
-  
-  stakeholders: [
-    "Course instructor as evaluator and client stand-in",
-    "Adult learners (primary users)", 
-    "Professional dance instructor (subject matter expert)",
-    "Canvas LMS administrators (technical support)",
-    "Community moderators (ongoing support)"
-  ],
-  
-  learningTheoryApplied: [
-    "ARCS Model (Attention, Relevance, Confidence, Satisfaction)",
-    "Cognitive Load Theory for skill acquisition",
-    "Social Learning Theory for peer interaction",
-    "Constructivist Learning for knowledge building",
-    "Universal Design for Learning (UDL)",
-    "Adult Learning Theory (Andragogy)"
-  ],
-  
+
   // COMPREHENSIVE ADDIE METHODOLOGY DOCUMENTATION
   addieMethodology: {
     analysis: {
@@ -84,12 +53,6 @@ const waltzCourse: ProjectBase = {
     },
     design: {
       instructionalStrategy: "Scaffolded learning approach progressing from individual movements to partner coordination, utilizing video modeling, written instructions, and peer feedback systems.",
-      arcsApplication: {
-        attention: "Engaging video introductions featuring professional dancers, historical context storytelling, and interactive timeline of waltz evolution",
-        relevance: "Real-world scenarios including wedding preparation, social event confidence, and cultural literacy components connecting to learner goals",
-        confidence: "Progressive skill building with immediate feedback, self-paced learning modules, and multiple practice opportunities before assessment",
-        satisfaction: "Discussion forums for peer feedback and video submissions so learners could see their own progress"
-      },
       assessmentStrategy: "Competency-based video submissions with rubric evaluation, peer feedback exercises, historical knowledge quizzes with immediate feedback, and self-reflection journals tracking progress.",
       universalDesign: "Multiple content representations (video, text, audio), flexible engagement methods (individual practice, partner work, group discussions), various expression options (video, written, discussion participation)"
     },
@@ -104,37 +67,10 @@ const waltzCourse: ProjectBase = {
       supportSystems: "Established weekly office hours, peer mentoring program, and comprehensive FAQ resources based on pilot testing insights."
     },
     evaluation: {
-      kirkpatrickModel: {
-        reaction: "Small group evaluation with 4 participants showed positive response to course organization, clarity, and accessibility. Participants agreed modules were well organized, clear, sufficient for learning objectives, and easy to access (responses ranging from somewhat agree to completely agree).",
-        learning: "Participants reported feeling at least somewhat competent in topics after modules. Module completion times ranged 5-30 minutes (first module average: 10.75 minutes, second module average: 14.75 minutes), indicating appropriate cognitive load management.",
-        behavior: "Feedback revealed successful online-to-physical skill transfer, with participants able to identify common mistakes and execute dance steps. Survey comments indicated improved learner comprehension through multi-modal instruction approach.",
-        results: "Course design validation through systematic user testing identified specific improvement areas: video content enhancement, diagram clarification, and accessibility optimization. Feedback-driven iteration demonstrates responsive instructional design methodology."
-      },
       continuousImprovement: "Implemented systematic feedback collection and quarterly course updates based on learner suggestions and emerging best practices in online physical skill instruction."
     }
   },
-  
-  designProcess: {
-    challengesAndSolutions: {
-      physicalToDigitalTranslation: "Major challenge translating partner-based, in-person instruction to online module. Addressed through multiple camera angles, slow-motion demonstrations, written instructions with diagrams, and innovative practice exercise design enabling effective online motor skill development.",
-      engagementMaintenance: "Purpose-filmed demonstrations rather than stock footage, discussion forums for peer learning, and video submissions so learners could show progress and get feedback without an instructor present.",
-      assessmentAuthenticity: "Developed video submission protocols with detailed rubrics enabling objective evaluation of dance technique. Created alternative assessment option for learners without available partners, ensuring inclusive participation.",
-      accessibilityCompliance: "Implemented closed captioning for all videos, high contrast visual elements, keyboard navigation compatibility, alternative text descriptions for all images, and multiple content modalities accommodating diverse learning preferences."
-    },
-    innovativeSolutions: [
-      "Created 'practice partner' simulation exercises for individual skill development before partner work",
-      "Developed rhythm training modules using visual metronome and counting systems",
-      "Implemented peer review system enabling collaborative learning in virtual environment",
-      "Designed historical context integration connecting cultural significance to technical instruction"
-    ]
-  },
-  
-  professionalImpact: {
-    instructionalInnovation: "Developed systematic approach to online physical skill instruction that addresses fundamental challenge of kinesthetic learning in virtual environments. Created replicable methodology for translating partner-based, hands-on instruction to accessible digital format.",
-    evidenceBasedRevision: "Formative evaluation identified specific enhancement priorities: video content improvements, diagram clarification with highlighted starting positions, and accessibility optimization. Systematic feedback collection drives continuous improvement cycle.",
-    scalabilityModel: "Framework applicable to various physical skills training including corporate team-building programs, therapeutic movement instruction, and cultural education initiatives. Design accommodates geographic distribution, scheduling flexibility, and diverse comfort levels.",
-    industryContribution: "Demonstrates effective online-to-physical skill transfer methodology valuable for corporate training environments requiring hands-on skill development in virtual or hybrid delivery models."
-  },
+
   solutions: [
     "Developed multi-modal instruction methods",
     "Filmed purpose-built demonstrations that deliberately modeled common mistakes, not just correct form",

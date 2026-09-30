@@ -2,56 +2,45 @@
 import { ProjectBase } from '@/types/content';
 import { getImagePath } from '@/utils';
 
+/*
+  Written from the original 2019 project notes (a client's request, random
+  intervals, notifications, a Play Store release) and what the app was for:
+  timing variable-interval reinforcement in ABA sessions. An earlier version
+  of this page described a spaced-repetition study app, which it never was.
+*/
 const variableTimer: ProjectBase = {
   detailPage: true,
   id: 'variable-timer',
-  title: 'Behavioral Learning Technology for ABA Therapy',
-  description: 'Developed mobile learning reinforcement tool for Registered Behavior Technicians (RBTs) to optimize timing of behavioral interventions in ABA therapy sessions.',
-  longDescription: `Developed specialized mobile learning technology for Registered Behavior Technicians (RBTs) working in Applied Behavior Analysis (ABA) therapy. The application provides variable interval timing to support evidence-based behavioral reinforcement strategies, helping RBTs optimize the timing of interventions during therapy sessions with children.
-
-This tool applies behavioral psychology principles and learning science research to create practical technology that enhances therapeutic outcomes. The variable timing functionality is based on established ABA methodology for reinforcement scheduling, demonstrating the application of learning technology to support professional practice in behavioral health settings.`,
+  title: 'Variable-Interval Timer for ABA Therapy',
+  cardTitle: 'ABA Reinforcement Timer',
+  description: 'An Android app I built for a client that times variable-interval reinforcement for Registered Behavior Technicians (RBTs) during ABA therapy sessions.',
+  longDescription: 'I built the app in Java with Android Studio between May and August 2019.',
   image: getImagePath('/images/projects/variable_timer.png'),
   category: 'learning-tech',
   tags: [
     'ABA Therapy',
-    'Behavioral Technology',
-    'RBT Tools',
-    'Variable Interval Reinforcement',
-    'Mobile Learning Technology',
-    'Behavioral Psychology'
+    'Variable-Interval Reinforcement',
+    'Behavioral Psychology',
+    'Android',
+    'Java'
   ],
   status: 'completed',
   date: 'May 2019 - Aug 2019',
-  tools: [
-    'Android Studio',
-    'Java',
-    'Android SDK',
-    'Git'
-  ],
-  methodology: 'Learning Science Application & Agile Development',
-  learningObjectives: [
-    'Apply spaced repetition principles to support long-term retention',
-    'Create habit formation tools based on behavioral psychology research',
-    'Develop mobile learning solutions for just-in-time training delivery',
-    'Enable consistent learning behavior reinforcement for busy professionals'
-  ],
+  businessContext: 'In Applied Behavior Analysis (ABA) therapy, some behavior plans use a variable-interval schedule of reinforcement. After a stretch of time passes, the next target behavior is reinforced, and the length of that stretch changes every time around a set average so the learner can\'t predict it. Run by hand, that means the technician has to make up unpredictable times and keep checking a clock while running the session. My client wanted an app to handle the timing, and there wasn\'t one on the Google Play Store.',
   challenges: [
-    'Translating spaced repetition research into practical mobile application',
-    'Creating optimal interval algorithms that support learning retention without overwhelming users',
-    'Designing intuitive user experience for habit formation and learning reinforcement',
-    'Balancing learning science principles with technical implementation constraints'
+    'The intervals had to be genuinely random. If they fall into a pattern, the schedule is no longer variable.',
+    'The timer had to keep running, and the alert had to arrive on time, with the phone locked or another app open.',
+    'It couldn\'t drain the battery while running in the background.'
   ],
   solutions: [
-    'Applied evidence-based spaced repetition algorithms from cognitive psychology research',
-    'Implemented adaptive interval generation that responds to user behavior patterns',
-    'Created user-centered design focused on habit formation and sustained engagement',
-    'Developed efficient background processing to support consistent learning reinforcement'
+    'Generated the intervals with hardware-based random number generation.',
+    'Ran the timer as a background service, so it kept counting with the screen off.',
+    'Sent a notification as each interval ended.',
+    'Kept the background work light to save battery.'
   ],
   results: [
-    'Successfully deployed mobile learning tool supporting spaced repetition for professional development',
-    'Created practical application of learning science principles for habit formation',
-    'Demonstrated ability to bridge instructional design theory with technical implementation',
-    'Provided scalable solution for microlearning and just-in-time training delivery'
+    'Released on the Google Play Store.',
+    'Met the client\'s requirements, and the feedback from users was positive.'
   ]
 };
 

@@ -6,6 +6,7 @@ const nacvaAutomation: ProjectBase = {
   detailPage: true,
   id: 'nacva-automation',
   title: 'Learning Technology Contractor - NACVA Professional Certification Systems',
+  cardTitle: 'NACVA Course Automation',
   description: 'Professional contractor role supporting continuing education technology for the National Association of Certified Valuators and Analysts (NACVA), automating content delivery workflows for financial professionals pursuing CVA and MAFF certifications.',
   longDescription: `Professional contractor role with the National Association of Certified Valuators and Analysts (NACVA), a leading organization that trains and certifies over 7,000 financial professionals in business valuation and financial litigation services. Supported their continuing education technology infrastructure by converting training videos and developing Python automation scripts to streamline backend data management for their prestigious CVA (Certified Valuation Analyst) and MAFF (Master Analyst in Financial Forensics) certification programs.
 
@@ -29,22 +30,8 @@ This contractor role provided valuable experience in learning technology optimiz
   
   // Interactive demo URL
   demoUrl: getImagePath('/demos/nacva-automation/index.html'),
-  demoDescription: 'A recreation of the automation tools, adapted for portfolio demonstration.',
+  demoDescription: 'Simplified browser versions of the scripts, running on sample data.',
   
-  tools: [
-    'Learning Management Systems',
-    'Content Development Workflows',
-    'Video Processing Technology',
-    'Quality Assurance Processes',
-    'SME Collaboration Tools'
-  ],
-  methodology: 'Systematic Technology Implementation with ADDIE Framework',
-  learningObjectives: [
-    'Support efficient content delivery to finance professionals pursuing continuing education',
-    'Collaborate with subject matter experts to maintain content quality during technical transitions',
-    'Contribute to scalable learning technology solutions for professional development programs',
-    'Apply process improvement principles to learning content management workflows'
-  ],
   challenges: [
     'Legacy video content requiring format updates for modern learning delivery platforms',
     'Manual processing workflows that delayed course deployment for busy professionals',
