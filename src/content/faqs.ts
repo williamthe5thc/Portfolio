@@ -26,8 +26,8 @@ export const faqs: FAQ[] = [
     answer: "I bring a research-based foundation from the University of Utah's IDET program, specializing in cognitive science applications, evidence-based practice, and systematic evaluation methodologies. This combination of learning theory expertise and technical skills enables me to create learning solutions grounded in how people actually learn and process information."
   },
   {
-    question: "What kind of internship opportunities are you seeking?",
-    answer: "I'm looking for instructional design, learning experience design, and learning technology roles where evidence-based design and measurable outcomes matter. I currently design and run the LMS for a youth nonprofit, and I've delivered a curriculum needs analysis for a credit union that measurably improved certification pass rates. I'm drawn to organizations that treat evaluation as part of the work rather than an afterthought."
+    question: "What roles are you looking for?",
+    answer: "I'm looking for instructional design, learning experience design, and learning technology roles where evidence-based design and measurable outcomes matter. I selected and now run the LMS for a youth nonprofit. During my internship at a credit union, I ran a needs analysis for their certification-prep program; they implemented the recommendations and reported better exam results afterward, though the figures stay confidential to protect employee privacy. I'm drawn to organizations that treat evaluation as part of the work rather than an afterthought."
   },
   {
     question: "What tools and technologies have you mastered?",
