@@ -227,7 +227,7 @@ To update the portfolio content:
 ## 👤 Contact
 
 Jordan Charles
-- 📧 Email: williamthe5thc@gmail.com
+- 📧 Email: williamthe5thc@yahoo.com
 - 🔗 LinkedIn: [jordan-charles](https://linkedin.com/in/jordan-charles)
 - 📍 Location: Salt Lake City, Utah
 

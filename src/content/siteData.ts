@@ -24,7 +24,7 @@ export const siteConfig: SiteConfig = {
     github: "https://github.com/williamthe5thc"
   },
   contactInfo: {
-    email: "williamthe5thc@gmail.com",
+    email: "williamthe5thc@yahoo.com",
     phone: "208.779.2406",
     linkedin: "linkedin.com/in/jordan-charles",
     // Matches LinkedIn. Recruiters cross-reference the two.
