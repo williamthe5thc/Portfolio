@@ -34,7 +34,13 @@
 export interface ProjectBase {
   detailPage?: boolean;
   id: string;
+  /** Full title, used on the project page. */
   title: string;
+  /**
+   * Short name for the home and portfolio cards, where a full title ran to
+   * three or four lines. Falls back to `title`.
+   */
+  cardTitle?: string;
   description: string;
   longDescription?: string;
   image: string;
@@ -106,11 +112,11 @@ export interface ProjectBase {
   results?: string[];
 
   /*
-    Authored but deliberately not rendered on the detail page (nor are
-    tools, methodology, targetAudience, stakeholders, learningTheoryApplied,
-    designProcess or professionalImpact). Some of this text predates the
-    fact-checks of the project pages, so have the owner review it before
-    adding it to the page.
+    Not rendered anywhere, and neither are tools, methodology,
+    targetAudience, stakeholders, learningTheoryApplied, designProcess or
+    professionalImpact. The listed projects no longer carry them: text the
+    page never showed still shipped in the site's JavaScript, where anyone
+    could read it. Render a field before filling it in.
   */
   lessonsLearned?: string;
   features?: string[];

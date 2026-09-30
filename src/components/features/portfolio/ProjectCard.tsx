@@ -63,6 +63,8 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
 }) => {
   const location = useLocation();
   const [imageFit, setImageFit] = useState<'cover' | 'contain'>('contain');
+  // Short name on the card; the full title stays on the project page.
+  const title = project.cardTitle ?? project.title;
 
   // Photos and screenshots fill the 16:9 frame; square logos and icons are
   // shown whole on white. Forcing everything to object-contain letterboxed
@@ -100,7 +102,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
 
       <div className="flex flex-1 flex-col p-6">
         <h3 className="text-xl font-semibold text-text-primary mb-2 break-words">
-          {project.title}
+          {title}
         </h3>
         {project.status && (
           <div className="mb-3">
@@ -163,7 +165,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
             >
               <ArrowRight className="w-4 h-4" aria-hidden="true" />
               Learn more
-              <span className="sr-only"> about {project.title}</span>
+              <span className="sr-only"> about {title}</span>
             </Link>
           )}
         </div>
