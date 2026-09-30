@@ -50,3 +50,7 @@ Thumbs.db
 
 # Word lock files
 ~$*
+
+# Private notes stay out of this public repository. Keep them in notes/.
+notes/
+.portfolio-dev.md
