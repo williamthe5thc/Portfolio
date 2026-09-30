@@ -53,6 +53,10 @@ export interface SEOProps {
   twitter?: Partial<Twitter>;
 }
 
+/** Words on the default share image (public/og-image.jpg). */
+const DEFAULT_IMAGE_ALT =
+  'W. Jordan Charles, Instructional Designer. Needs analysis, course design, LMS implementation. M.Ed., University of Utah.';
+
 /**
  * Absolute URL for a public asset. Accepts a full URL, a path relative to the
  * public folder ("/images/x.png"), or a getImagePath() result that already
@@ -112,16 +116,16 @@ export const SEO: React.FC<SEOProps> = ({
     ...openGraph
   };
 
+  // The default share image is a 1200x630 card, so every page gets the large
+  // preview. No twitter:creator: the X account is deliberately not linked.
   const twitterData: Twitter = {
-    // The default image is the square site icon, which suits the small card;
-    // a page that passes its own image gets the large one.
-    card: image ? 'summary_large_image' : 'summary',
+    card: 'summary_large_image',
     title: seo.title,
     description: seo.description,
     image: seo.image,
-    creator: '@williamthe5thc',
     ...twitter
   };
+  const usesDefaultImage = !image && !openGraph?.image;
 
   /*
     No <link rel="canonical"> here. Crawlers drop the #/ fragment, so every
@@ -144,10 +148,11 @@ export const SEO: React.FC<SEOProps> = ({
         { property: 'og:title', content: openGraphData.title },
         { property: 'og:description', content: openGraphData.description },
         { property: 'og:image', content: openGraphData.image },
-        // Dimensions are known only for the default image (the 512px icon).
-        ...(!image && !openGraph?.image ? [
-          { property: 'og:image:width', content: '512' },
-          { property: 'og:image:height', content: '512' }
+        // Size and alt text are known only for the default image.
+        ...(usesDefaultImage ? [
+          { property: 'og:image:width', content: '1200' },
+          { property: 'og:image:height', content: '630' },
+          { property: 'og:image:alt', content: DEFAULT_IMAGE_ALT }
         ] : []),
         { property: 'og:type', content: openGraphData.type },
         { property: 'og:site_name', content: openGraphData.siteName },
@@ -157,7 +162,8 @@ export const SEO: React.FC<SEOProps> = ({
         { name: 'twitter:title', content: twitterData.title },
         { name: 'twitter:description', content: twitterData.description },
         { name: 'twitter:image', content: twitterData.image },
-        { name: 'twitter:creator', content: twitterData.creator },
+        ...(usesDefaultImage ? [{ name: 'twitter:image:alt', content: DEFAULT_IMAGE_ALT }] : []),
+        ...(twitterData.creator ? [{ name: 'twitter:creator', content: twitterData.creator }] : []),
         
         // Additional meta
         ...(noindex ? [

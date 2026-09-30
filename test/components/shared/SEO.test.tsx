@@ -116,24 +116,33 @@ describe('SEO', () => {
 
   describe('Twitter Cards', () => {
     it('sets default Twitter card tags', async () => {
-      // The default image is the square site icon, so the small card.
+      // The default image is a 1200x630 share card, so the large card, with
+      // its size and alt text, and no X handle.
       renderWithHelmet(<SEO />);
 
       await waitFor(() => {
         expect(document.querySelector('meta[name="twitter:card"]')?.getAttribute('content'))
-          .toBe('summary');
+          .toBe('summary_large_image');
         expect(document.querySelector('meta[name="twitter:title"]')?.getAttribute('content'))
           .toBe(siteConfig.title);
+        expect(document.querySelector('meta[property="og:image:width"]')?.getAttribute('content'))
+          .toBe('1200');
+        expect(document.querySelector('meta[property="og:image:height"]')?.getAttribute('content'))
+          .toBe('630');
+        expect(document.querySelector('meta[property="og:image:alt"]')?.getAttribute('content'))
+          .toContain('Instructional Designer');
       });
+      expect(document.querySelector('meta[name="twitter:creator"]')).toBeNull();
     });
 
-    it('uses the large card when a page passes its own image', async () => {
+    it('uses the large card when a page passes its own image, without the default size', async () => {
       renderWithHelmet(<SEO image="/images/example.png" />);
 
       await waitFor(() => {
         expect(document.querySelector('meta[name="twitter:card"]')?.getAttribute('content'))
           .toBe('summary_large_image');
       });
+      expect(document.querySelector('meta[property="og:image:width"]')).toBeNull();
     });
 
     it('handles custom Twitter data', async () => {
