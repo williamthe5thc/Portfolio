@@ -88,24 +88,26 @@ npm run deploy:staging
 npm run deploy:production
 ```
 
-Each command builds into `dist/`, runs `git init` inside `dist/`, commits
-everything there, and force-pushes that commit to the target repository's
-`gh-pages` branch. What the scripts do *not* handle yet:
+Both run `scripts/deploy.mjs`, which:
 
-- **They build from your working tree, not from a commit.** Every file in
-  `public/` ships, including uncommitted and git-ignored ones. A Word lock
-  file (`~$ademic Resume .docx`) reached the live site this way after it had
-  been removed from git. Before deploying, commit your changes and check that
-  `git status --ignored public` lists nothing.
-- **Delete `dist/` before every deploy** (`rm -rf dist`, or
-  `rmdir /s /q dist` in cmd). Vite keeps `dist/.git` between builds. If a
-  push fails and you re-run with unchanged output, the commit step finds
-  nothing to commit and stops before the push, so it looks like it worked when
-  it didn't. And a staging deploy followed by a production deploy from the same
-  `dist/` carries the staging commit into production's history.
-- **They push `main:gh-pages`**, so `git init` has to create a branch called
-  `main`. If a deploy fails with `src refspec main does not match any`, run
-  `git config --global init.defaultBranch main`.
+- **Refuses to run unless the folder is clean.** The build copies every file
+  in `public/`, including uncommitted and git-ignored ones. A Word lock file
+  (`~$ademic Resume .docx`) once reached the live site this way after it had
+  been removed from git. So the script stops if `git status` shows anything,
+  or if `public/` holds a git-ignored file, and lists what it found.
+- **Leaves out operating-system clutter.** `.DS_Store` (Finder),
+  `Thumbs.db` and `desktop.ini` (Windows) reappear whenever a folder is
+  opened, so they are dropped from the published copy rather than blocking
+  the deploy.
+- **Starts from an empty `dist/`** every time, builds, commits `dist/` on
+  its own, and force-pushes that commit to the target's `gh-pages` branch.
+  The commit is signed with GitHub's no-reply address, whatever the
+  computer's git settings are.
+
+To check everything except the push:
+```bash
+node scripts/deploy.mjs production --dry-run
+```
 
 GitHub Pages hosting notes: the app uses `HashRouter`, so every page lives
 under `#/`. `public/404.html` sends path-style links such as `/Portfolio/about`
