@@ -13,8 +13,8 @@ const aiLawCourse: ProjectBase = {
   id: 'ai-law-course',
   title: 'Graduate Curriculum Design Project - AI & Law Course',
   cardTitle: 'AI & Law Graduate Course',
-  description: 'A three-person graduate capstone team designed and built this ten-week AI and Law course for Master of Legal Studies students, delivered in Canvas. We ran a client interview with the faculty sponsor, developed personas, ran a cognitive walkthrough on our own design, and validated it with a stakeholder review before handover.',
-  longDescription: `A graduate capstone, built by a team of three for the University of Utah's S.J. Quinney College of Law. The job was to teach artificial intelligence to Master of Legal Studies students without technical backgrounds, working with a faculty sponsor who was both our client and our subject matter expert. We used a competency-based design to build a ten-module course, one module a week, covering AI foundations, prompt engineering, legal research, media, and professional ethics. Students were assessed through five quizzes, four applied assignments and five discussion cycles.`,
+  description: 'A three-person graduate capstone team designed and built this ten-module AI and Law course for Master of Legal Studies students, delivered in Canvas. We ran a client interview with the faculty sponsor, developed personas, ran a cognitive walkthrough on our own design, and validated it with a stakeholder review before handover.',
+  longDescription: `A graduate capstone, built by a team of three for the University of Utah's S.J. Quinney College of Law. The job was to teach artificial intelligence to Master of Legal Studies students without technical backgrounds, working with a faculty sponsor who was both our client and our subject matter expert. We used a competency-based design to build ten modules for a 13-week online course, covering AI foundations, prompt engineering, legal research, media, and professional ethics. Students were assessed through five quizzes, five discussions, four assignments, a midterm project and a final project. My part included most of the Canvas build and the assessment design for the advanced prompting week.`,
   image: getImagePath('/images/thumbnails/ai-law-course.webp'),
   imageAlt: 'Title graphic: Graduate Course Overview - AI & Law: Bridging Technology and Legal Expertise',
   category: 'id',
@@ -32,7 +32,7 @@ const aiLawCourse: ProjectBase = {
   date: 'Fall 2024 - Spring 2025',
   metrics: [
     { value: '10', label: 'Graduate modules designed' },
-    { value: '14', label: 'Graded assessments designed across the semester' }
+    { value: '16', label: 'Graded assessments across the semester' }
   ],
 
   // Demo URL for interactive preview
@@ -97,13 +97,11 @@ const aiLawCourse: ProjectBase = {
   ],
 
   results: [
-    'Built a ten-module weekly curriculum delivered asynchronously in Canvas for the Spring 2025 MLS cohort',
-    'Designed the assessment mix as five quizzes, four applied assignments, and five discussion cycles across the semester',
-    'Ran a cognitive walkthrough against our own build and revised the navigation and instructions from what it surfaced',
+    'Built ten modules in Canvas for the Spring 2025 online, asynchronous MLS course',
+    'Designed the assessment mix: five quizzes, five discussions, four assignments, a midterm project and a final project',
+    'Tested the prototype with a cognitive walkthrough, a think-aloud session and a 10-question usability survey, then built four high-priority recommendations into the revision plan',
     'Wrote the assessment design for the advanced prompting week myself, including an AI usage policy that required learners to disclose the tool and submit the prompt rather than banning its use',
-    'Structured the course so it could be adapted for continuing legal education',
-    'Set up a way to update the curriculum as AI changes',
-    'Taught Master of Legal Studies students the AI basics they need for professional practice'
+    'At the final stakeholder review, the faculty sponsor said the course covered the learning goals and liked the layout. Their suggestions: fewer overlapping quizzes, more scholarly readings, quicker feedback than essays allow, and a more readable banner font'
   ]
 };
 

@@ -32,7 +32,7 @@ export const stats = [
   {
     value: "Build and deliver courses in Canvas",
     points: [
-      "A ten-week graduate law curriculum, delivered asynchronously to a live cohort",
+      "A ten-module graduate law course, delivered online to a live cohort",
       "A self-paced skills course assessed by video the learners submitted themselves"
     ]
   },
@@ -46,7 +46,7 @@ export const stats = [
   {
     value: "Design AI learning that goes past the tool demo",
     points: [
-      "Ten weeks of AI curriculum for legal professionals with no technical background",
+      "Ten modules of AI curriculum for legal professionals with no technical background",
       "An assessment design that grades the prompting, not the output the AI produced"
     ]
   },
