@@ -3,9 +3,10 @@ import { ProjectBase } from '@/types/content';
 import { getImagePath } from '@/utils';
 
 /*
-  Every claim here comes from the two documents this page links:
-  public/case-studies/waltz-formative-evaluation.pdf and
-  waltz-blueprint-storyboard.pdf. Check any new line against them first.
+  Every claim here comes from the two documents this page links
+  (public/case-studies/waltz-formative-evaluation.pdf and
+  waltz-blueprint-storyboard.pdf) or from Jordan's needs assessment for the
+  course, which is not published. Check any new line against them first.
 */
 const waltzCourse: ProjectBase = {
   detailPage: true,
@@ -47,14 +48,14 @@ const waltzCourse: ProjectBase = {
     "Keeping learners part of a dancing community while they study on their own"
   ],
 
-  businessContext: "The course was for adults who want to learn the waltz but don't have the time or access for in-person classes. They are complete beginners, may not have a partner, and have no instructor there to correct their form. The project was also our chance to run the whole instructional design process, from course goals through evaluation. Our own constraints were a fixed end-of-semester deadline and limited access to the dancer we were filming.",
+  businessContext: "The course was for adults who want to learn the waltz but don't have the time or access for in-person classes. They are complete beginners, may not have a partner, and have no instructor there to correct their form. The project was also our chance to run the whole instructional design process, from course goals through evaluation. Our own constraint was the end-of-semester deadline.",
 
   addieMethodology: {
     analysis: {
-      needsAssessment: "We worked from a written needs assessment. No survey of prospective learners was run; the need was set by defining the target learner and the skill gap directly.",
-      learnerAnalysis: "Able-bodied adults of any age and background, with a computer and an internet connection and little or no dance experience. We wrote personas for them and kept referring back to them while designing.",
+      needsAssessment: "We worked from a written needs assessment. The evidence for the need came from my own experience: at dances, the people I asked to dance often didn't know the waltz, and I ended up teaching them. No survey of prospective learners was run.",
+      learnerAnalysis: "Able-bodied adults of any age and background who want to learn a ballroom dance, with little or no dance experience, a computer and an internet connection. They can watch, read or listen to instruction. We wrote personas for them and kept referring back to them while designing.",
       contextAnalysis: "A self-paced course in Canvas. Learners practice at home, alone or with a partner, and send in video for feedback.",
-      performanceGaps: "The gap was the skill itself: beginners who can't yet dance the box step, the progressive basic or the underarm turn. The two course outcomes follow from that: perform the basic steps, and explain the waltz's historical, social and physical context."
+      performanceGaps: "The gap was the skill itself: beginners who can't yet dance the box step, the progressive basic or the underarm turn. The two course outcomes follow from that: perform the basic steps, and explain the waltz's historical, social and physical context. The needs assessment also named motivation as a cause, since ballroom dancing isn't a skill most people need, so the design builds in contact with other learners and regular feedback from the instructor."
     },
     design: {
       instructionalStrategy: "Module 1 builds from the box step to the progressive basic to the underarm turn with a partner, and ends with a video submission. Each step has a video and written instructions for the lead and the follow. The motivation plan follows the ARCS model: physical activity and varied lessons for attention, dancing in real settings for relevance, instructor feedback for confidence, and clear rubrics for satisfaction.",
