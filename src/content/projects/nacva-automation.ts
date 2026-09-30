@@ -7,12 +7,10 @@ const nacvaAutomation: ProjectBase = {
   id: 'nacva-automation',
   title: 'Learning Technology Contractor - NACVA Professional Certification Systems',
   cardTitle: 'NACVA Course Automation',
-  description: 'Professional contractor role supporting continuing education technology for the National Association of Certified Valuators and Analysts (NACVA), automating content delivery workflows for financial professionals pursuing CVA and MAFF certifications.',
-  longDescription: `Professional contractor role with the National Association of Certified Valuators and Analysts (NACVA), a leading organization that trains and certifies over 7,000 financial professionals in business valuation and financial litigation services. Supported their continuing education technology infrastructure by converting training videos and developing Python automation scripts to streamline backend data management for their prestigious CVA (Certified Valuation Analyst) and MAFF (Master Analyst in Financial Forensics) certification programs.
+  description: 'A contract role supporting continuing education technology at the National Association of Certified Valuators and Analysts (NACVA). I automated content delivery work for the CVA and MAFF certification programs.',
+  longDescription: `A contract role with the National Association of Certified Valuators and Analysts (NACVA), which trains and certifies over 7,000 financial professionals in business valuation and financial litigation. I converted training videos and wrote Python scripts to automate backend data entry for its CVA (Certified Valuation Analyst) and MAFF (Master Analyst in Financial Forensics) certification programs, which are nationally accredited credentials for CPAs, business valuators and financial litigation consultants.
 
-CVA and MAFF are highly respected, nationally accredited credentials for CPAs, business valuators, and financial litigation consultants. My work focused on modernizing their learning content delivery systems and eliminating time-consuming manual data entry processes that delayed course deployment for busy professionals seeking these certifications.
-
-This contractor role provided valuable experience in learning technology optimization for professional development organizations, demonstrating how technical automation can significantly improve educational content delivery for specialized professional audiences.`,
+The work was about updating how course content was delivered, and removing the manual data entry that had been delaying course deployment.`,
   image: getImagePath('/images/thumbnails/Presentation - NACVA Professional Certification Technology.webp'),
   imageAlt: 'Title graphic: NACVA Professional Certifications - Supporting financial professionals using automation solutions',
   category: 'technical',
@@ -33,23 +31,21 @@ This contractor role provided valuable experience in learning technology optimiz
   demoDescription: 'Simplified browser versions of the scripts, running on sample data.',
   
   challenges: [
-    'Legacy video content requiring format updates for modern learning delivery platforms',
-    'Manual processing workflows that delayed course deployment for busy professionals',
-    'Need to maintain content accuracy and quality during technical migration processes',
-    'Coordinating with multiple stakeholders while learning organizational procedures'
+    'Older training videos needed converting to formats current delivery platforms could use',
+    'Manual data entry was delaying course deployment',
+    'Content had to stay accurate through the migration',
+    'Working with several stakeholders while learning how the organization ran'
   ],
   solutions: [
-    'Supported systematic video format conversion ensuring compatibility with updated delivery systems',
-    'Contributed to workflow improvements that reduced manual processing time',
-    'Assisted in quality assurance processes to maintain content accuracy during migration',
-    'Collaborated with team members to develop efficient content management procedures'
+    'Wrote Python scripts to automate backend data entry',
+    'Helped convert videos to formats the updated delivery systems could use',
+    'Helped improve workflows to cut manual processing time',
+    'Helped check content for accuracy during the migration',
+    'Worked with the team on content management procedures'
   ],
   results: [
-    'Supported the successful conversion of 50+ professional development videos to modern formats',
-    'Contributed to workflow improvements that reduced course deployment time from weeks to days',
-    'Gained valuable experience in learning technology implementation and stakeholder collaboration',
-    'Developed understanding of how technical skills support professional development goals',
-    'Built foundation for career in learning technology and instructional design'
+    'Helped convert 50+ professional development videos to current formats',
+    'Helped improve workflows that cut course deployment time from weeks to days'
   ]
 };
 

@@ -14,7 +14,7 @@ const aiLawCourse: ProjectBase = {
   title: 'Graduate Curriculum Design Project - AI & Law Course',
   cardTitle: 'AI & Law Graduate Course',
   description: 'A three-person graduate capstone team designed and built this ten-week AI and Law course for Master of Legal Studies students, delivered in Canvas. We ran a client interview with the faculty sponsor, developed personas, ran a cognitive walkthrough on our own design, and validated it with a stakeholder review before handover.',
-  longDescription: `Graduate capstone, built by a team of three for the University of Utah's S.J. Quinney College of Law. The challenge was translating artificial intelligence concepts into accessible learning experiences for Master of Legal Studies students, working with a faculty sponsor who was both our client and our subject matter expert. Applied competency-based instructional design principles to build a ten-module weekly curriculum covering AI foundations, prompt engineering, legal research applications, media, and professional ethics, assessed through five quizzes, four applied assignments, and five discussion cycles.`,
+  longDescription: `A graduate capstone, built by a team of three for the University of Utah's S.J. Quinney College of Law. The job was to teach artificial intelligence to Master of Legal Studies students without technical backgrounds, working with a faculty sponsor who was both our client and our subject matter expert. We used a competency-based design to build a ten-module course, one module a week, covering AI foundations, prompt engineering, legal research, media, and professional ethics. Students were assessed through five quizzes, four applied assignments and five discussion cycles.`,
   image: getImagePath('/images/thumbnails/ai-law-course.webp'),
   imageAlt: 'Title graphic: Graduate Course Overview - AI & Law: Bridging Technology and Legal Expertise',
   category: 'id',
@@ -57,7 +57,7 @@ const aiLawCourse: ProjectBase = {
     {
       label: 'HCI Cognitive Walkthrough',
       href: '/case-studies/ai-law/cognitive-walkthrough.html',
-      description: 'A usability walkthrough run against our own course build - the step most course design skips.'
+      description: 'A usability walkthrough of our own course build, a step most course design skips.'
     },
     {
       label: 'Instructional Strategies',
@@ -67,32 +67,32 @@ const aiLawCourse: ProjectBase = {
     {
       label: 'Media Selection',
       href: '/case-studies/ai-law/media-selection.html',
-      description: 'Why each medium was chosen for each kind of content, rather than defaulting to video throughout.'
+      description: 'Why we chose each medium for each kind of content.'
     },
     {
       label: 'Assessment Design, Week 5 module',
       href: '/case-studies/advanced-prompting-assessment-design.pdf',
-      description: 'My own assessment plan for the advanced prompting week - a table of specifications mapped to cognitive levels, rubrics, an AI usage policy built on disclosure rather than prohibition, and item difficulty and discrimination indices for reviewing the questions afterwards.'
+      description: 'My own assessment plan for the advanced prompting week: a table of specifications mapped to cognitive levels, rubrics, an AI usage policy built on disclosure rather than prohibition, and item difficulty and discrimination indices for reviewing the questions afterwards.'
     }
   ],
 
-  businessContext: 'Law schools need to prepare graduates for AI integration in legal practice. Students require foundational AI knowledge, practical skills, and ethical frameworks to navigate the intersection of technology and law professionally.',
+  businessContext: 'Law schools need to prepare graduates to use AI in legal practice. Students need to understand how AI works, have practical skills with it, and have a way to think through the ethics.',
 
   challenges: [
-    'Translating highly technical AI concepts for legal professionals without technical backgrounds',
-    'Creating engaging learning experiences for complex theoretical content',
-    'Balancing foundational knowledge with practical application skills',
-    'Ensuring content accuracy across rapidly evolving AI and legal landscapes',
-    'Designing assessments that measure both understanding and practical competency',
-    'Accommodating diverse learning needs in graduate-level instruction'
+    'Explaining technical AI ideas to legal students without a technical background',
+    'Making dense, theoretical material engaging',
+    'Balancing the basics with hands-on practice',
+    'Keeping the content accurate while AI, and the law around it, change quickly',
+    'Assessing both understanding and practical skill',
+    'Meeting different learning needs in a graduate course'
   ],
 
   solutions: [
-    'Developed progressive scaffolding from basic concepts to advanced applications',
-    'Created interactive module navigation with hands-on learning activities',
-    'Implemented competency-based assessment strategy with real-world scenarios',
-    'Validated content and design with the faculty sponsor, from the client interview through a stakeholder review before handover',
-    'Applied Universal Design for Learning principles for accessibility'
+    'Sequenced the course from basic concepts to advanced uses',
+    'Hands-on learning activities, and module navigation built for the course',
+    'Competency-based assessments built on real-world scenarios',
+    'Checked the content and design with the faculty sponsor, from the client interview through a stakeholder review before handover',
+    'Applied Universal Design for Learning (UDL) principles for accessibility'
   ],
 
   results: [
@@ -100,9 +100,9 @@ const aiLawCourse: ProjectBase = {
     'Designed the assessment mix as five quizzes, four applied assignments, and five discussion cycles across the semester',
     'Ran a cognitive walkthrough against our own build and revised the navigation and instructions from what it surfaced',
     'Wrote the assessment design for the advanced prompting week myself, including an AI usage policy that required learners to disclose the tool and submit the prompt rather than banning its use',
-    'Created scalable course structure adaptable for continuing legal education',
-    'Established framework for ongoing curriculum updates as AI technology evolves',
-    'Prepared Master of Legal Studies students with essential AI literacy for professional practice'
+    'Structured the course so it could be adapted for continuing legal education',
+    'Set up a way to update the curriculum as AI changes',
+    'Taught Master of Legal Studies students the AI basics they need for professional practice'
   ]
 };
 

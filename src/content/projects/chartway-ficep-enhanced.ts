@@ -13,7 +13,7 @@ const chartwayFicepEnhanced: ProjectBase = {
   title: 'Instructional Design Internship - FiCEP Curriculum Needs Analysis',
   cardTitle: 'FiCEP Needs Analysis',
   description: 'As part of my internship with Chartway, I conducted a systematic needs analysis for the company\'s FiCEP program, which prepares employees for a financial counseling certification exam. The analysis showed what was holding learners back, and I recommended changes to the curriculum and to the support around it.',
-  longDescription: `Conducted comprehensive needs analysis for Chartway Credit Union's Financial Counseling Examination Preparation (FiCEP) certification preparation program under professional supervision. Applied systematic ADDIE methodology including semi-structured interviews with 5 program participants and survey distribution yielding 21 responses to identify performance barriers following ACU's sixth edition material update. Analysis revealed key findings: Management Needs to Set Apart More Time (23 mentions - highest priority), Study Guide was Helpful (17 mentions), Personalized per organization Content (16 mentions), Need Better Practice Exam (12 mentions). Delivered evidence-based curriculum enhancement recommendations addressing organizational support structures, assessment alignment gaps, and contextual learning approaches to help restore examination pass rates and improve learner experience.`,
+  longDescription: `A needs analysis for Chartway Credit Union's Financial Counseling Examination Preparation (FiCEP) program, done under professional supervision during my instructional design internship. Pass rates on the certification exam had dropped after America's Credit Unions (ACU) updated the materials to a sixth edition. I interviewed five program participants, surveyed recent participants (21 responses), and reviewed the ten-week program and the new materials. The most common theme was that managers need to set aside more study time (23 mentions). Others were that the study guide helped (17), that content should be tailored to the organization (16), and that the practice exam needed to be better (12). I recommended changes to the curriculum, the practice exam and the support learners get around it, to help bring pass rates back up and improve the experience for learners.`,
   image: getImagePath('/images/thumbnails/chartway-ficep-enhanced.webp'),
   imageAlt: 'Title graphic: Systematic Needs Analysis - FiCEP Curriculum Redesign for Corporate Training Improvement',
   category: 'id',
@@ -44,35 +44,32 @@ const chartwayFicepEnhanced: ProjectBase = {
         'Report with a one-page summary up front: data collection from 5 interviews and a 21-response survey, theme and audience analysis, and the proposed training materials.'
     }
   ],
-  businessContext: 'America\'s Credit Unions (ACU) recently released the sixth edition of their Financial Counseling Examination Preparation (FiCEP) materials, resulting in declining examination pass rates for Chartway Credit Union employees seeking professional certification. The existing ten-week preparation program required systematic analysis to identify instructional barriers and develop evidence-based enhancement recommendations for improved learner outcomes.',
+  businessContext: 'America\'s Credit Unions (ACU) released the sixth edition of the FiCEP materials, and pass rates fell for Chartway Credit Union employees taking the certification exam. The ten-week preparation program needed an analysis of what was holding learners back, and recommendations for what to change.',
   challenges: [
-    'Declining examination pass rates following implementation of 6th edition FiCEP materials',
-    'Limited protected study time for employees during work hours (10-12 hours unpaid study reported)',
-    'Practice examination inadequacy with discrepancies between materials and actual exam requirements',
-    'Need for organization-specific content examples to enhance practical application',
-    'Balancing comprehensive needs analysis with time constraints of working professionals'
+    'Pass rates fell after the sixth-edition materials came in',
+    'Little protected study time at work: participants reported 10 to 12 hours of unpaid study',
+    'The practice exam and materials didn\'t match what the real exam asked',
+    'Learners wanted examples from their own organization',
+    'Collecting enough data from working professionals who were already short on time'
   ],
   solutions: [
-    'Conducted mixed-methods research with 5 semi-structured interviews and 21-response survey',
-    'Applied systematic thematic analysis identifying organizational barriers and learner preferences',
-    'Developed evidence-based recommendations addressing time allocation, practice exams, and content customization',
-    'Proposed organizational support frameworks including leadership engagement and protected study time',
+    'Interviewed 5 participants and surveyed recent participants (21 responses)',
+    'Sorted the answers into themes to find the barriers and what learners preferred',
+    'Recommended changes to study time, the practice exam and tailored content',
+    'Proposed ways for leaders to support learners, including protected study time',
     'Wrote a training materials proposal: leadership support, mandatory success sessions, an organization-specific curriculum, better practice exams, and feedback surveys'
   ],
   results: [
     'Chartway implemented the redesigned program and reported improved examination results. Specific pass rates and cohort figures are not shared here to protect employee privacy.',
-    'Delivered comprehensive needs analysis report identifying management time allocation as primary barrier (23 mentions) - [View Complete Needs Analysis Report](/case-studies/ficep-needs-analysis.pdf)',
-    'Provided evidence-based training enhancement recommendations addressing organizational support, practice exams, and content personalization',
-    'Created systematic research findings documenting learner preferences and institutional challenges affecting certification success',
-    'Demonstrated application of ADDIE methodology and mixed-methods research approach for professional development program improvement'
+    'Delivered the needs analysis report. The top barrier was managers not setting aside study time (23 mentions). [View the needs analysis report](/case-studies/ficep-needs-analysis.pdf)'
   ],
 
   addieMethodology: {
     analysis: {
       process: 'Mixed-methods needs analysis: semi-structured interviews with five program participants, a survey of recent participants (21 responses), and a review of the existing ten-week program and the sixth-edition materials.',
-      findings: 'Conducted mixed-methods research including semi-structured interviews with 5 program participants and survey distribution yielding 21 responses. Analysis revealed consistent patterns: Management Needs to Set Apart More Time (23 mentions - highest priority), Study Guide was Helpful (17 mentions), Personalized per organization Content (16 mentions), I had Management Support (15 mentions), Need Better Practice Exam (12 mentions). Time constraints emerged as primary barrier with participants studying 10-12 hours of unpaid personal time for examination success.',
-      learnerCharacteristics: 'Chartway Credit Union employees across multiple departments (retail, call center, member services) with varying professional backgrounds and experience levels, all requiring FiCEP certification for financial counseling roles.',
-      performanceGaps: 'Following implementation of sixth edition materials, examination pass rates declined significantly from 2023 baseline, representing persistent underperformance across monthly cohorts rather than temporary adjustment difficulties. Progressive decline throughout 2024 indicates systematic instructional inadequacies requiring immediate programmatic intervention.'
+      findings: 'The five most common themes across the interviews and the survey: managers need to set aside more time (23 mentions), the study guide was helpful (17), content should be tailored to the organization (16), "I had management support" (15), and the practice exam needs to be better (12). Time was the main barrier. Participants reported studying 10 to 12 hours on their own unpaid time to pass.',
+      learnerCharacteristics: 'Chartway Credit Union employees from retail, the call center and member services, with different backgrounds and levels of experience. All of them need FiCEP certification for financial counseling roles.',
+      performanceGaps: 'After the sixth edition came in, pass rates fell well below the 2023 baseline and kept falling through 2024, across monthly cohorts. A drop that lasting pointed to problems in the program itself, and it needed fixing soon.'
     },
     design: {
       instructionalStrategy: 'Recommended turning the existing check-ins into mandatory "FiCEP Success Sessions" that teach each chapter through the credit union\'s own products, services and practices, with time for learners\' questions.',
