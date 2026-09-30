@@ -47,13 +47,13 @@ const HomePage: React.FC = () => {
               first project card is on the first screen, not below it.
             */}
             <p className="text-base sm:text-xl text-text-secondary mb-5 sm:mb-6">
-              I turn learning problems into programs that work &mdash; needs analysis to find
+              I turn learning problems into programs that work: needs analysis to find
               what is actually broken, evidence-based design to fix it, and the technical
               build to ship it.
               <span className="hidden sm:inline">
                 {' '}Currently implementing a youth nonprofit's curriculum on
-                the learning platform I selected for them; previously certification
-                training for a credit union.
+                the learning platform I selected for them; previously a needs analysis
+                for a credit union's certification program.
               </span>
             </p>
             {/*
