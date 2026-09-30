@@ -63,7 +63,7 @@ build time, so rebuild and redeploy after changing them.
 5. **Check**
 ```bash
 npx vitest run test/smoke   # renders every route; should always pass
-npx vitest run              # full suite: many older suites are stale
+npx vitest run              # full suite
 npm run lint                # ESLint over src/
 npm run type-check          # tsc --noEmit
 npx prettier --check "src/**/*.{ts,tsx,css,md}"
@@ -194,7 +194,11 @@ To update the portfolio content:
    - `src/content/resumes.ts` - both resumes (see below)
    - Archived projects live in `src/content/projects/archived/` and are not
      imported. Archiving means *moving* the file and removing its import; a
-     file left in `archived/` that is still imported is still live.
+     file left in `archived/` that is still imported is still live. Their
+     images are in `archive/public-images/`, outside `public/`, so they are
+     not deployed; move one back under `public/images/` to use it again.
+   - Every field in a project file is shipped in the site's JavaScript, even
+     one the page doesn't show. Only fill in fields the project page renders.
 
 2. **Resumes**
    - Both resumes (the full instructional design resume and the learning
