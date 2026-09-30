@@ -92,7 +92,8 @@ const aiLawCourse: ProjectBase = {
     'Hands-on learning activities, and module navigation built for the course',
     'Competency-based assessments built on real-world scenarios',
     'Checked the content and design with the faculty sponsor, from the client interview through a stakeholder review before handover',
-    'Applied Universal Design for Learning (UDL) principles for accessibility'
+    'Applied Universal Design for Learning (UDL) principles for accessibility',
+    'A final portfolio the students built across the semester, with assignments in Modules 4, 7, 8 and 9 feeding into it'
   ],
 
   results: [
