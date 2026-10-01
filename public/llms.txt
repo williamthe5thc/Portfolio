@@ -50,7 +50,7 @@ WeYouth had curriculum and no way to deliver it. I ran the market research on le
 A 278-slide interactive course I built in Articulate Storyline 360. Learners make choices in branching scenarios, and the scenarios and feedback draw on behavioral psychology research.
 
 - Role: Academic project. I built the course in Articulate Storyline 360
-- Dates: 2025
+- Dates: 2024
 - Status: Completed
 - Result: Built a 278-slide interactive course in Storyline 360
 - Result: 26 minutes of scenario-based content with branching

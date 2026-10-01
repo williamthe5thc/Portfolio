@@ -15,7 +15,7 @@ const professionalCommunicationTraining: ProjectBase = {
   category: "id",
   tags: ["Articulate Storyline 360", "Interactive Design", "Scenario-Based Learning", "Behavioral Psychology", "Academic Project", "Advanced Features", "E-learning Development"],
   status: "completed",
-  date: "2025",
+  date: "2024",
   metrics: [
     { value: '278', label: 'Slides built in Articulate Storyline 360' },
     { value: '26 min', label: 'Scenario-based branching content' }
