@@ -211,6 +211,10 @@ To update the portfolio content:
      npm i -D playwright && npx playwright install chromium   # once
      node --experimental-strip-types scripts/build-resume-pdfs.mjs
      ```
+     The layout is sized for Calibri. On a Mac the script embeds the free
+     Carlito font macOS already has (same letter widths); elsewhere, set
+     `RESUME_FONT_DIR` to a folder of `Carlito-*.ttf` files. Without either,
+     the PDFs fall back to a wider font and the one-page resume runs to two.
      This writes `public/documents/Instructional_Design_Resume.pdf` and
      `Learning_Technology_Resume.pdf`, plus copies under the old names
      (`Academic_Resume.pdf`, `Coding_Resume.pdf`) so links already sent out

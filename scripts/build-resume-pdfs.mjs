@@ -11,8 +11,11 @@
 // already sent out keep working. Output is tagged (accessible) PDF with a
 // document title and clickable links.
 //
-// Optional: RESUME_FONT_DIR=/path/with/Carlito-*.ttf embeds Carlito (a
-// Calibri-metric font) when Calibri is not installed.
+// Fonts: the layout is sized for Calibri's metrics. Without Calibri or Carlito
+// (a free font with the same metrics) Chromium falls back to Helvetica, which
+// runs wider and pushes the one-page resume onto a second page. So the script
+// embeds Carlito from RESUME_FONT_DIR=/path/with/Carlito-*.ttf if set, or else
+// from the copy macOS ships as a font collection (.ttc).
 
 import fs from 'node:fs';
 import path from 'node:path';
@@ -36,19 +39,68 @@ try {
 const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 const href = url => (url.startsWith('/') ? `${SITE}#${url}` : url);
 
+const MAC_CARLITO = '/System/Library/PrivateFrameworks/FontServices.framework/Versions/A/Resources/Fonts/ApplicationSupport/Carlito.ttc';
+
+// Splits a TrueType collection into standalone fonts, named by each font's full
+// name (name ID 4), because CSS can't pick one face out of a .ttc.
+function fontsFromCollection(file) {
+  const d = fs.readFileSync(file);
+  if (d.toString('latin1', 0, 4) !== 'ttcf') return [];
+  const count = d.readUInt32BE(8);
+  const fonts = [];
+  for (let f = 0; f < count; f++) {
+    const at = d.readUInt32BE(12 + 4 * f);
+    const numTables = d.readUInt16BE(at + 4);
+    const tables = [];
+    for (let i = 0; i < numTables; i++) {
+      const r = at + 12 + 16 * i;
+      tables.push({ tag: d.toString('latin1', r, r + 4), sum: d.readUInt32BE(r + 4), off: d.readUInt32BE(r + 8), len: d.readUInt32BE(r + 12) });
+    }
+    const parts = [Buffer.from(d.subarray(at, at + 12))];
+    const dir = Buffer.alloc(16 * numTables);
+    let pos = 12 + 16 * numTables;
+    tables.forEach((t, i) => {
+      dir.write(t.tag, 16 * i, 'latin1');
+      dir.writeUInt32BE(t.sum, 16 * i + 4);
+      dir.writeUInt32BE(pos, 16 * i + 8);
+      dir.writeUInt32BE(t.len, 16 * i + 12);
+      const padded = Buffer.alloc(Math.ceil(t.len / 4) * 4);
+      d.copy(padded, 0, t.off, t.off + t.len);
+      parts.push(padded);
+      pos += padded.length;
+    });
+    parts.splice(1, 0, dir);
+    const name = tables.find(t => t.tag === 'name');
+    let fullName = '';
+    const n = d.readUInt16BE(name.off + 2), strings = name.off + d.readUInt16BE(name.off + 4);
+    for (let i = 0; i < n; i++) {
+      const r = name.off + 6 + 12 * i;
+      if (d.readUInt16BE(r) === 3 && d.readUInt16BE(r + 6) === 4) {
+        fullName = d.subarray(strings + d.readUInt16BE(r + 10), strings + d.readUInt16BE(r + 10) + d.readUInt16BE(r + 8)).swap16().toString('utf16le');
+        break;
+      }
+    }
+    fonts.push({ name: fullName, data: Buffer.concat(parts) });
+  }
+  return fonts;
+}
+
 function fontFaces() {
   const dir = process.env.RESUME_FONT_DIR;
-  if (!dir) return '';
-  const faces = [];
-  for (const file of fs.readdirSync(dir).filter(f => f.endsWith('.ttf'))) {
-    const lower = file.toLowerCase();
+  let fonts = [];
+  if (dir) {
+    fonts = fs.readdirSync(dir).filter(f => f.endsWith('.ttf')).map(f => ({ name: f, data: fs.readFileSync(path.join(dir, f)) }));
+  } else if (fs.existsSync(MAC_CARLITO)) {
+    fonts = fontsFromCollection(MAC_CARLITO);
+  }
+  if (!fonts.length) console.warn('Carlito not found: the PDFs will use a wider fallback font and may run long.');
+  return fonts.map(({ name, data }) => {
+    const lower = name.toLowerCase();
     const weight = lower.includes('bold') ? 700 : 400;
     const style = lower.includes('italic') ? 'italic' : 'normal';
     // Inlined: a page built with setContent cannot load file:// fonts.
-    const data = fs.readFileSync(path.join(dir, file)).toString('base64');
-    faces.push(`@font-face{font-family:"Carlito";src:url(data:font/ttf;base64,${data}) format("truetype");font-weight:${weight};font-style:${style}}`);
-  }
-  return faces.join('\n');
+    return `@font-face{font-family:"Carlito";src:url(data:font/ttf;base64,${data.toString('base64')}) format("truetype");font-weight:${weight};font-style:${style}}`;
+  }).join('\n');
 }
 
 function entries(list) {
