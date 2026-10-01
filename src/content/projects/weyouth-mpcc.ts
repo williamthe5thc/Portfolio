@@ -48,7 +48,7 @@ Since then the work has been implementation and operation. The SMEs write the co
     'Course Architecture'
   ],
   status: 'in-progress',
-  date: 'March 2026 - Present',
+  date: 'February 2026 - Present',
   // No metrics tiles here by design - see the note above. The numbers that
   // exist describe the client's operations rather than my work.
   businessContext:

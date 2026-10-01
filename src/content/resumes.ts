@@ -64,7 +64,7 @@ export const resumeContact = {
   name: 'W. Jordan Charles',
   location: 'Salt Lake City, Utah',
   phone: '208.779.2406',
-  email: 'williamthe5thc@gmail.com',
+  email: 'williamthe5thc@yahoo.com',
   linkedin: 'linkedin.com/in/jordan-charles',
   portfolio: 'williamthe5thc.github.io/Portfolio',
 };
@@ -73,7 +73,7 @@ const WEYOUTH = {
   title: 'Instructional Designer',
   org: 'WeYouth (501(c)(3) nonprofit)',
   location: 'North Salt Lake, UT',
-  period: 'March 2026 - Present',
+  period: 'February 2026 - Present',
 };
 const CHARTWAY = {
   // Title as on the offer letter; the internship sat in the Financial Wellness team.
@@ -89,7 +89,7 @@ const NACVA = {
   title: 'Learning Technology Specialist (Contract)',
   org: 'National Association of Certified Valuators and Analysts (NACVA), via Robert Half',
   location: 'Sandy, UT',
-  period: 'April 2023 - August 2023',
+  period: 'March 2023 - August 2023',
 };
 const HELP_DESK = {
   title: 'Help Desk Specialist',
@@ -148,9 +148,9 @@ export const instructionalDesignResume: ResumeData = {
     {
       ...NACVA,
       bullets: [
-        'Converted legacy video content and streamlined backend processing for continuing education delivery',
-        'Built Python automation replacing manual data entry across the course publishing workflow',
-        'Collaborated with subject matter experts to maintain content quality while scaling delivery',
+        "Turned 50+ recorded webinars into on-demand continuing-education courses in Camtasia, published as SCORM packages with Articulate Presenter",
+        "Wrote Python and Selenium scripts that set up each course in the learning platform and online store, automating about 80 hand steps per course",
+        "Wrote a converter that imported each exam's questions from Word instead of retyping them",
       ],
     },
     HELP_DESK,
@@ -181,7 +181,7 @@ export const instructionalDesignResume: ResumeData = {
   projects: [
     {
       title: 'AI & Law, S.J. Quinney College of Law',
-      description: 'Ten-week graduate curriculum for Master of Legal Studies students, built and delivered in Canvas by a three-person capstone team',
+      description: 'Ten-module graduate course for Master of Legal Studies students, built in Canvas by a three-person capstone team',
       url: '/portfolio/ai-law-course',
     },
     {
@@ -241,9 +241,9 @@ export const learningTechnologyResume: ResumeData = {
     {
       ...NACVA,
       bullets: [
-        'Wrote Python automation replacing manual backend data entry for the CVA and MAFF certification programs',
-        'Converted and processed training video for continuing-education delivery',
-        'Migrated instructional content off legacy platforms',
+        'Automated about 80 hand steps per course in the LMS and online store with Python and Selenium',
+        'Wrote a converter that imported exam questions from Word instead of retyping them',
+        'Turned 50+ webinars into on-demand CE courses in Camtasia, published as SCORM via Articulate Presenter',
       ],
     },
     HELP_DESK,
@@ -258,12 +258,12 @@ export const learningTechnologyResume: ResumeData = {
     },
     {
       title: 'Course processing automation',
-      description: 'Python scripts replacing hand-entry of course data at a certification body',
+      description: 'Python and Selenium scripts that automated course setup at a certification body',
       url: '/portfolio/nacva-automation',
     },
     {
       title: 'Variable-interval timer',
-      description: 'Android app that times variable-interval reinforcement for Registered Behavior Technicians in ABA therapy sessions',
+      description: 'Android app that times variable-interval reinforcement in ABA therapy sessions',
       url: '/portfolio/variable-timer',
     },
     {

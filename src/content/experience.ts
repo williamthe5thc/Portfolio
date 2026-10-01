@@ -25,7 +25,7 @@ export const experience: Experience[] = [
     title: "Instructional Designer",
     company: "WeYouth",
     location: "North Salt Lake, UT",
-    period: "March 2026 - Present",
+    period: "February 2026 - Present",
     highlights: [
       "Conducted market research on learning management systems scored against the organization's specific constraints, and delivered the platform recommendation the nonprofit adopted and runs on today",
       "Implemented SME-authored curriculum into the LMS as enrollable, self-paced courses: module architecture, self-assessments, evaluation surveys, and cohort enrollment",
@@ -54,12 +54,12 @@ export const experience: Experience[] = [
     title: "Learning Technology Specialist (Contract)",
     company: "National Association of Certified Valuators and Analysts (NACVA), via Robert Half",
     location: "Sandy, UT",
-    period: "April 2023 - August 2023",
+    period: "March 2023 - August 2023",
     // Same facts as the resumes (src/content/resumes.ts).
     highlights: [
-      "Converted legacy video content and streamlined backend processing for continuing education delivery",
-      "Built Python automation replacing manual data entry across the course publishing workflow",
-      "Collaborated with subject matter experts to maintain content quality while scaling delivery"
+      "Turned 50+ recorded webinars into on-demand continuing-education courses in Camtasia, published as SCORM packages with Articulate Presenter",
+      "Wrote Python and Selenium scripts that set up each course in the learning platform and online store, automating about 80 hand steps per course",
+      "Wrote a converter that imported each exam's questions from Word instead of retyping them"
     ]
   }
 ];

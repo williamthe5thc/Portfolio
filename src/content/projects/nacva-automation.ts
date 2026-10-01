@@ -23,7 +23,7 @@ const nacvaAutomation: ProjectBase = {
     'Learning Content Migration'
   ],
   status: 'completed',
-  date: 'Apr 2023 - Aug 2023',
+  date: 'Mar 2023 - Aug 2023',
   
   // Interactive demo URL
   demoUrl: getImagePath('/demos/nacva-automation/index.html'),
