@@ -25,11 +25,12 @@ const weyouthMpcc: ProjectBase = {
   id: 'weyouth-mpcc',
   title: 'LMS Selection & Implementation - Nonprofit Youth Coaching Program',
   cardTitle: 'Nonprofit LMS Selection & Build',
+  role: 'Instructional designer. I chose the platform, build the courses in it and run it; WeYouth\'s subject matter experts write the content.',
   description:
     'WeYouth had curriculum and no way to deliver it. I ran the market research on learning platforms against their specific constraints, recommended the one they adopted, then implemented their SMEs\' curriculum into it as enrollable courses. I run the platform and its technical support.',
   longDescription: `WeYouth is a 501(c)(3) addressing youth disconnection through Connection Coaching for young people ages 12-24. Its primary program, Mental Performance Connection Coaching (MPCC), reaches athletes through a "whole-team" model that trains coaches, equips captains, and gives athletes and parents shared language.
 
-I joined when the organization had the hard part done and the delivery problem unsolved. Seven-plus years of research had produced a validated coaching methodology, and the subject matter experts (the founders, a licensed clinician and coaching staff) had written curriculum content. There was no system to deliver it: no LMS, no way to enroll a student, and no way to run a season without a founder personally present.
+I joined when the organization had its coaching method and curriculum but no way to deliver them. The subject matter experts (the founders, a licensed clinician and coaching staff) had written the curriculum content. There was no LMS, no way to enroll a student, and no way to run a season without a founder personally present.
 
 My first deliverable was a platform decision. I researched learning management systems against WeYouth's actual circumstances: a nonprofit budget, three audiences needing separate tracks, seasonal cohorts tied to sports calendars, team-based enrollment instead of individual signups, a hybrid model where the platform carries content and live sessions carry relationships, and a very small team who would have to run whatever was chosen. The organization runs on the platform I recommended.
 
@@ -52,7 +53,7 @@ Since then the work has been implementation and operation. The SMEs write the co
   // No metrics tiles here by design - see the note above. The numbers that
   // exist describe the client's operations rather than my work.
   businessContext:
-    'WeYouth had spent 7+ years developing an evidence-based coaching methodology and its subject matter experts had written the curriculum, but the organization had no learning platform. Without one, there was no mechanism to enroll a student, no way to deliver content between live sessions, and no path to running a season without a founder in the room. Delivery capacity was capped at the founders\' personal calendar, which is not a model a nonprofit can scale or sell team contracts against.',
+    'WeYouth\'s subject matter experts had written the curriculum, but the organization had no learning platform. Without one, there was no mechanism to enroll a student, no way to deliver content between live sessions, and no path to running a season without a founder in the room. Delivery capacity was capped at the founders\' personal calendar, which is not a model a nonprofit can scale or sell team contracts against.',
   challenges: [
     'There was no platform yet, so the first problem was choosing one',
     'Nonprofit budget constraints ruled out most enterprise LMS options',
@@ -73,7 +74,7 @@ Since then the work has been implementation and operation. The SMEs write the co
   results: [
     'Platform recommendation adopted: the organization delivers its programs on the LMS I evaluated and selected',
     'Separate learner tracks live in the platform, each with its own sequence of modules, self-assessments, and evaluation instruments',
-    'The organization can now enroll learners and run a full season without a founder personally delivering every session, which is what limited delivery before',
+    'The organization is set up to enroll learners and run a season without a founder personally delivering every session, which is what limited delivery before',
     'Cohort-based enrollment configured so partner organizations join as groups instead of signing up one by one',
     'Per-module evaluation surveys collect formative data during delivery, so weak modules surface while cohorts are still running',
     'Program effectiveness data isn\'t available yet: cohorts are still in training, and measurement is scheduled for when the current seasons end',
@@ -85,7 +86,7 @@ Since then the work has been implementation and operation. The SMEs write the co
       process:
         'Two analyses ran in sequence: a platform requirements analysis for the LMS selection, and an ongoing content analysis with SMEs on what restructuring their material needed to work self-paced.',
       findings:
-        'The constraint was infrastructure. The methodology was validated and the curriculum was written, but there was no system to deliver it. The platform evaluation showed the deciding requirements were multi-audience tracks, cohort-based enrollment, e-commerce for team contracts, and low administrative overhead for a very small team. That combination ruled out most candidates, however many features they had.',
+        'The constraint was infrastructure. The coaching method and the curriculum existed, but there was no system to deliver them. The platform evaluation showed the deciding requirements were multi-audience tracks, cohort-based enrollment, e-commerce for team contracts, and low administrative overhead for a very small team. That combination ruled out most candidates, however many features they had.',
       learnerCharacteristics:
         'Coaches are busy adult professionals who must learn the model and then teach it. Athletes are 12-24 and reached through a sport they already care about. Captains are peer leaders with influence but no formal training. Each needed a different track.',
       performanceGaps:

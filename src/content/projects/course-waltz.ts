@@ -13,7 +13,8 @@ const waltzCourse: ProjectBase = {
   id: "teaching-waltz",
   title: "Teaching the Waltz Online Course",
   description: "A classmate and I designed a self-paced Canvas course that teaches complete beginners to dance the waltz. I filmed the lessons with a dancer, showing common mistakes next to the correct form, and we tested the course with a small group of four learners.",
-  longDescription: "Graduate final project at the University of Utah, co-designed with a classmate. The course has two modules. The first teaches the box step, the progressive basic and the underarm turn; the second covers the dance's history, its health benefits and its place in social life. Dance is learned by doing, and an online course can't correct anyone in the moment, so the design plans for mistakes instead: the lesson videos show common errors next to the correct form, and learners send in a video of their own dancing for instructor feedback. My part was the video and the subject matter expert. I coordinated with the dancer who taught in our videos, filmed the lessons with him, and turned the footage into course videos with transcripts and optional captions. I also proofed the finished course. My co-designer built the Canvas pages, assessments and rubrics.",
+  longDescription: "Graduate final project at the University of Utah, co-designed with a classmate. The course has two modules. The first teaches the box step, the progressive basic and the underarm turn; the second covers the dance's history, its health benefits and its place in social life. Dance is learned by doing, and an online course can't correct anyone in the moment, so the design plans for mistakes instead: the lesson videos show common errors next to the correct form, and learners send in a video of their own dancing for instructor feedback.",
+  role: "Co-designer with a classmate. I handled the video and our subject matter expert: I coordinated with the dancer who taught in our videos, filmed the lessons with him, turned the footage into course videos with transcripts and optional captions, and proofed the finished course. My classmate built the Canvas pages, assessments and rubrics.",
   image: getImagePath('/images/thumbnails/how-to-waltz.webp'),
   category: "id",
   tags: ["Instructional Design", "Online Learning", "Dance Education", "Canvas LMS", "Video Production", "Formative Evaluation"],
@@ -85,7 +86,10 @@ const waltzCourse: ProjectBase = {
     "Interviews found the assessments matched the learning objectives and the grading criteria were clear",
     "Every participant said they wanted more video, especially of the whole dance",
     "The results led to a revision plan for the videos, captions, diagrams and wording"
-  ]
+  ],
+
+  lessonsLearned: "Next time I would give the dancer a script, so what he says in the videos lines up with the assignments, and film more of the dance with a partner. I would also record somewhere quiet: background noise was the one problem we chose not to fix, because it meant re-filming."
+
 };
 
 export default waltzCourse;

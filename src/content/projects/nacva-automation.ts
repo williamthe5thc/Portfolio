@@ -7,6 +7,7 @@ const nacvaAutomation: ProjectBase = {
   id: 'nacva-automation',
   title: 'Learning Technology Contractor - NACVA Professional Certification Systems',
   cardTitle: 'NACVA Course Automation',
+  role: 'Contractor at NACVA, placed through Robert Half. I wrote the automation scripts and turned recorded webinars into courses.',
   description: 'A contract role supporting continuing education technology at the National Association of Certified Valuators and Analysts (NACVA). I automated content delivery work for the CVA and MAFF certification programs.',
   longDescription: `A contract role with the National Association of Certified Valuators and Analysts (NACVA), which has over 7,000 members and certificants in business valuation, financial litigation and forensic accounting. I turned recorded webinars into on-demand continuing-education courses, and wrote Python scripts to automate setting each course up in NACVA's learning platform and its online store. NACVA's CVA (Certified Valuation Analyst) and MAFF (Master Analyst in Financial Forensics) certifications are nationally accredited credentials for CPAs, business valuators and financial litigation consultants.`,
   image: getImagePath('/images/thumbnails/Presentation - NACVA Professional Certification Technology.webp'),

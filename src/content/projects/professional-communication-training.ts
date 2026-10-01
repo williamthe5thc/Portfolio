@@ -7,6 +7,7 @@ const professionalCommunicationTraining: ProjectBase = {
   id: "professional-communication-training",
   title: "Articulate Storyline 360 Demonstration - Interactive E-learning Course",
   cardTitle: "Branching Storyline Course",
+  role: "Academic project. I built the course in Articulate Storyline 360.",
   description: "A 278-slide interactive course I built in Articulate Storyline 360. Learners make choices in branching scenarios, and the scenarios and feedback draw on behavioral psychology research.",
   longDescription: "I built this as an academic project on interpersonal communication in dating, from first swipe to first date. The subject is personal, but the techniques are the ones workplace soft-skills training uses: branching scenarios where each choice has consequences, feedback on decisions, and reflection activities. The same structure would work for customer service, team communication or leadership training.",
   image: getImagePath('/images/projects/professional-communication-training.jpg'),
