@@ -334,6 +334,14 @@ const ProjectDetailPage: React.FC = () => {
     });
   }
 
+  // Reflection last: what the project taught and what would change.
+  if (currentProject.lessonsLearned) {
+    beats.push({
+      title: "What I'd change",
+      body: <p className="text-text-secondary">{currentProject.lessonsLearned}</p>,
+    });
+  }
+
   /*
     findings and performanceGaps are the "What I found" beat above; listing
     them again under ADDIE > Analysis printed the same paragraphs twice.
@@ -404,6 +412,13 @@ const ProjectDetailPage: React.FC = () => {
               )}
 
               <ProjectLinks project={currentProject} className="md:hidden mb-6" />
+
+              {/* Who did what, before any claim about the work. */}
+              {currentProject.role && (
+                <p className="mb-6 rounded-lg border-l-4 border-primary-600 bg-primary-50 px-4 py-3 text-text-primary">
+                  <strong>My role:</strong> {currentProject.role}
+                </p>
+              )}
 
               {currentProject.metrics && currentProject.metrics.length > 0 && (
                 <div

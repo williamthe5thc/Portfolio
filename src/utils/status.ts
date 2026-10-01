@@ -5,6 +5,7 @@ const STATUS_LABELS: Record<ProjectStatus, string> = {
   completed: 'Completed',
   'in-progress': 'In progress',
   planned: 'Planned',
+  unfinished: 'Unfinished',
 };
 
 /** Human label for a project status slug, e.g. 'in-progress' -> 'In progress'. */

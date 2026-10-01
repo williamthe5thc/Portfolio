@@ -111,6 +111,17 @@ export interface ProjectBase {
   solutions?: string[];
   results?: string[];
 
+  /**
+   * One or two sentences on who did what, shown in a box near the top of the
+   * project page. Team and agency work especially.
+   */
+  role?: string;
+  /**
+   * Shown as the last section, "What I'd change". Only from the owner or
+   * the project's own documents.
+   */
+  lessonsLearned?: string;
+
   /*
     Not rendered anywhere, and neither are tools, methodology,
     targetAudience, stakeholders, learningTheoryApplied, designProcess or
@@ -118,7 +129,6 @@ export interface ProjectBase {
     page never showed still shipped in the site's JavaScript, where anyone
     could read it. Render a field before filling it in.
   */
-  lessonsLearned?: string;
   features?: string[];
 
   // Enhanced instructional design fields
@@ -215,7 +225,7 @@ export interface ProjectBase {
   };
 }
 
-export type ProjectStatus = 'in-progress' | 'completed' | 'planned';
+export type ProjectStatus = 'in-progress' | 'completed' | 'planned' | 'unfinished';
 
 /**
  * Must stay in sync with `projectCategories` in src/content/info.ts - those ids
