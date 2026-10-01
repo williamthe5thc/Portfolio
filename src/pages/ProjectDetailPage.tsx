@@ -233,12 +233,14 @@ const ProjectDetailPage: React.FC = () => {
   */
   const beats: Array<{ title: string; body: React.ReactNode }> = [];
 
-  if (currentProject.businessContext) {
+  if (currentProject.businessContext || currentProject.challenges?.length) {
     beats.push({
       title: 'The problem',
       body: (
         <>
-          <p className="text-text-secondary">{currentProject.businessContext}</p>
+          {currentProject.businessContext && (
+            <p className="text-text-secondary">{currentProject.businessContext}</p>
+          )}
           {currentProject.challenges && (
             <ul className="mt-3 space-y-1 list-disc list-inside text-text-secondary">
               {currentProject.challenges.map((challenge, index) => (
@@ -269,7 +271,9 @@ const ProjectDetailPage: React.FC = () => {
 
   if (currentProject.solutions) {
     beats.push({
-      title: 'What I designed',
+      // "What I did", not "What I designed": several projects were team
+      // work, and Chartway's was analysis rather than design.
+      title: 'What I did',
       body: (
         <ul className="space-y-1 list-disc list-inside text-text-secondary">
           {currentProject.solutions.map((solution, index) => (
@@ -402,7 +406,11 @@ const ProjectDetailPage: React.FC = () => {
               <ProjectLinks project={currentProject} className="md:hidden mb-6" />
 
               {currentProject.metrics && currentProject.metrics.length > 0 && (
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
+                <div
+                  className={`grid grid-cols-1 gap-4 mb-6 ${
+                    currentProject.metrics.length >= 3 ? 'sm:grid-cols-3' : currentProject.metrics.length === 2 ? 'sm:grid-cols-2' : ''
+                  }`}
+                >
                   {currentProject.metrics.map((metric) => (
                     <div
                       key={metric.label}
@@ -578,7 +586,7 @@ const ProjectDetailPage: React.FC = () => {
                 )}
 
                 {/*
-                  `solutions` is rendered above as the "What I designed" beat.
+                  `solutions` is rendered above as the "What I did" beat.
                   Repeating it here under a second heading made the same list
                   appear twice on every project page.
                 */}

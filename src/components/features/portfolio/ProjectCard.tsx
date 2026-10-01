@@ -117,8 +117,9 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
         )}
         <p className="text-text-secondary mb-4">{project.description}</p>
 
+        {/* The first four tags; the project page lists them all. */}
         <div className="flex flex-wrap gap-2 mb-4">
-          {project.tags?.map((tag) => (
+          {project.tags?.slice(0, 4).map((tag) => (
             <Badge key={tag} variant="primary">
               {tag}
             </Badge>
