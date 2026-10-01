@@ -102,9 +102,9 @@ const HomePage: React.FC = () => {
           <div className="text-center mb-4 sm:mb-6">
             <h2 className="text-3xl font-bold sm:mb-3">Featured Projects</h2>
             <p className="hidden sm:block text-lg text-text-secondary">
-              A credit union needs analysis with a measured outcome, a graduate
-              AI and law course built in Canvas, and an Articulate Storyline 360
-              course
+              A credit union needs analysis whose recommendations led to better
+              exam results, a graduate AI and law course built in Canvas, and an
+              Articulate Storyline 360 course
             </p>
           </div>
           {/*
@@ -187,10 +187,10 @@ const HomePage: React.FC = () => {
               Find the real barrier first
             </h3>
             <p className="text-text-secondary">
-              The stated problem is rarely the actual one. A credit union thought its
-              certification materials needed rewriting; the analysis found the binding
-              constraint was that nobody had protected study time. Design aimed at the
-              wrong barrier is expensive and it does not work.
+              The stated problem is rarely the actual one. A credit union's exam pass
+              rates fell after new certification materials came out, but the analysis
+              found the biggest barrier was study time: managers needed to set time
+              aside. Design aimed at the wrong barrier does not work.
             </p>
           </BaseCard>
         </motion.div>

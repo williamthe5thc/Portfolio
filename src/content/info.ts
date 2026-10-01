@@ -30,10 +30,10 @@ export const stats = [
     ]
   },
   {
-    value: "Build and deliver courses in Canvas",
+    value: "Build courses in Canvas",
     points: [
-      "A ten-module graduate law course, delivered online to a live cohort",
-      "A self-paced skills course assessed by video the learners submitted themselves"
+      "A ten-module graduate law course, built by a team of three for a live cohort",
+      "A self-paced skills course, co-designed with a classmate, assessed by video the learners submitted"
     ]
   },
   {
@@ -54,7 +54,7 @@ export const stats = [
     value: "Find the real problem before designing",
     points: [
       "Interviews and a survey to locate the actual barrier instead of assuming it",
-      "A usability walkthrough of my own build, catching what I was too close to see"
+      "A usability walkthrough of our own build, catching what we were too close to see"
     ]
   },
   {
