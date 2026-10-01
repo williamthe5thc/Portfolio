@@ -6,7 +6,7 @@
  * 
  * Exports:
  * - Site configuration
- * - Professional data (experience, education, competencies)
+ * - Professional data (experience, education)
  * - Project data
  * - Content types
  * 
@@ -41,7 +41,6 @@ export { siteConfig } from './siteData';
 export { stats, projectCategories } from './info';
 
 // Professional content
-export { competencies } from './competencies';
 export { education } from './education';
 export { experience } from './experience';
 

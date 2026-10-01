@@ -268,21 +268,11 @@ export interface EducationDegree {
   location: string;
   period: string;
   gpa?: string;
-  relevantCourses?: string[];
   highlights?: string[];
-}
-
-export interface Certification {
-  title: string;
-  issuer: string;
-  date: string;
-  expiryDate?: string;
-  credentialUrl?: string;
 }
 
 export interface Education {
   degrees: EducationDegree[];
-  certifications: Certification[];
 }
 
 export interface Competency {

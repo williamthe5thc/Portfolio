@@ -62,40 +62,6 @@ export const methodology = {
     }
   ],
 
-  frameworks: {
-    instructionalDesign: {
-      name: "ADDIE Model",
-      description: "Core framework studied in graduate coursework",
-      phases: [
-        { name: "Analysis", description: "Understanding learning context and needs" },
-        { name: "Design", description: "Planning the learning experience" },
-        { name: "Development", description: "Creating learning materials" },
-        { name: "Implementation", description: "Delivering the solution" },
-        { name: "Evaluation", description: "Assessing effectiveness" }
-      ]
-    },
-    cognitiveScience: {
-      name: "Cognitive Load Theory",
-      description: "Managing cognitive load in multimedia learning",
-      principles: [
-        "Split-attention principle",
-        "Modality principle", 
-        "Redundancy principle",
-        "Multimedia principle"
-      ]
-    },
-    hci: {
-      name: "User-Centered Design",
-      description: "HCI principles for learning interfaces",
-      methods: [
-        "User research",
-        "Usability testing",
-        "Iterative prototyping",
-        "Accessibility testing"
-      ]
-    }
-  },
-
   skills: {
     instructionalDesign: [
       "ADDIE Framework & SAM Model Implementation",
@@ -129,33 +95,6 @@ export const methodology = {
       "Multimedia Content Creation"
     ]
   },
-
-  processExamples: [
-    {
-      title: "Needs Analysis Documentation",
-      description: "Complete needs analysis report for FiCEP curriculum redesign project, demonstrating systematic research methodology, data collection, thematic analysis, and evidence-based recommendations",
-      document: "/case-studies/ficep-needs-analysis.pdf",
-      project: "chartway-ficep-enhanced",
-      highlights: [
-        "Mixed-methods research with 5 interviews and 21 survey responses",
-        "Systematic thematic analysis identifying 23 mentions of time barriers",
-        "Evidence-based recommendations with implementation roadmap",
-        "Demonstrates ADDIE Analysis phase in professional context"
-      ]
-    },
-    {
-      title: "Formative Evaluation Report",
-      description: "Comprehensive formative evaluation of online dance course showing systematic feedback collection, user testing methodology, and data-driven revision planning",
-      document: "/case-studies/waltz-formative-evaluation.pdf",
-      project: "teaching-waltz",
-      highlights: [
-        "Small group evaluation with 4 participants and systematic feedback",
-        "Multi-modal assessment approach (surveys, interviews, usability testing)",
-        "Data-driven revision plan addressing video, imagery, and accessibility",
-        "Demonstrates ADDIE Evaluation phase with Kirkpatrick model application"
-      ]
-    }
-  ],
 
   tools: {
     design: [

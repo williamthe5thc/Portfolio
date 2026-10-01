@@ -25,7 +25,7 @@ const variableTimer: ProjectBase = {
     'Java'
   ],
   status: 'completed',
-  date: 'May 2019 - Aug 2019',
+  date: 'May 2019 - August 2019',
   businessContext: 'In Applied Behavior Analysis (ABA) therapy, some behavior plans use a variable-interval schedule of reinforcement. After a stretch of time passes, the next target behavior is reinforced, and the length of that stretch changes every time around a set average so the learner can\'t predict it. Run by hand, that means the technician has to make up unpredictable times and keep checking a clock while running the session. My client wanted an app to handle the timing, and there wasn\'t one on the Google Play Store.',
   challenges: [
     'The intervals had to be genuinely random. If they fall into a pattern, the schedule is no longer variable.',

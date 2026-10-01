@@ -4,11 +4,8 @@
  * @description Educational background and certification data
  * @module content/career
  * 
- * Categories:
- * - Formal education
- * - Certifications
- * - Professional training
- * - Relevant coursework
+ * Degrees only: the About page shows degree, field, school, dates, GPA and
+ * highlights. Anything else here would ship without being shown.
  * 
  * @example
  * ```tsx
@@ -29,15 +26,6 @@ export const education: Education = {
       location: "Salt Lake City, Utah",
       period: "August 2023 - May 2025",
       gpa: "3.9",
-      relevantCourses: [
-        "Cognitive Foundations of Learning and Instruction",
-        "Multimedia Learning and Cognitive Load Theory",
-        "Assessment and Evaluation in Educational Technology",
-        "Human-Computer Interaction for Learning",
-        "Research Methods in Educational Technology",
-        "Learning Analytics and Data-Driven Design",
-        "Accessibility and Universal Design for Learning"
-      ],
       highlights: [
         "30 credit hours across five semesters (two academic years and a summer)",
         "Combines instructional design (identifying learner needs and goals, then building instruction to meet them) with educational technology (technology-based learning environments that support those needs)",
@@ -57,29 +45,6 @@ export const education: Education = {
         "Strong foundation in research methodology and statistical analysis",
         "Behavioral psychology background supports adult learning theory application"
       ],
-      relevantCourses: [
-        "Research Methods",
-        "Statistical Analysis",
-        "Cognitive Psychology"
-      ]
     }
-  ],
-  certifications: [
-    {
-      title: "Agile Instructional Design",
-      issuer: "LinkedIn",
-      date: "Mar 2023"
-    },
-    {
-      title: "Instructional Design Essentials: Models of ID",
-      issuer: "LinkedIn",
-      date: "Mar 2023"
-    },
-    {
-      title: "Elearning Essentials: Storyboarding",
-      issuer: "LinkedIn",
-      date: "Mar 2023"
-    }
-    // Add other certifications as needed
   ]
 };
