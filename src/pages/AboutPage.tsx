@@ -91,9 +91,10 @@ const AboutPage: React.FC = () => {
         description: `Learn about ${siteConfig.author}'s journey, expertise, and approach to instructional design`
       }}
       title="About Me"
-      subtitle="Exploring the intersection of learning theory, technology, and design"
+      subtitle="How I work, what I know, and what I'm looking for"
       className="bg-background-light"
     >
+      <BioSection />
       <StatsSection />
       <ProfessionalPracticeSection />
       <SkillsSection />
@@ -105,6 +106,14 @@ const AboutPage: React.FC = () => {
 };
 
 // Component Definitions
+const BioSection = () => (
+  <SectionContainer className="pt-12 pb-4">
+    <p className="max-w-3xl mx-auto text-lg text-text-secondary leading-relaxed">
+      {siteConfig.bio}
+    </p>
+  </SectionContainer>
+);
+
 const StatsSection = () => (
   <SectionContainer className="py-12">
     <StatsGrid stats={stats} />

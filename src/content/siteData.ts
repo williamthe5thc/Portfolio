@@ -13,6 +13,9 @@ export const siteConfig: SiteConfig = {
   // the headline when the projects are the stronger claim.
   description: "Instructional Design · Learning Experience Design · Learning Technology",
   slogan: "Research-Informed Learning Solutions",
+  // The About page opens with this. Facts only; each one is on a project
+  // page or the resumes.
+  bio: "I'm an instructional designer who works where learning design meets the technology that delivers it. At WeYouth, a youth nonprofit, I chose the learning platform and build and run its courses. Before that I ran a needs analysis for Chartway Credit Union's certification program, automated course setup at NACVA, and helped build a graduate AI and law course in Canvas. I have a psychology research background and an M.Ed. in Instructional Design and Educational Technology from the University of Utah.",
   tagline: "Instructional designer who takes learning programs from analysis through delivery: needs analysis to find what is actually broken, evidence-based design to fix it, and the platform work to get it in front of learners. Currently implementing a youth nonprofit's curriculum on the learning platform I selected for them; previously a needs analysis and redesign recommendations for a credit union's certification training. Psychology research background, M.Ed. from the University of Utah.",
   siteUrl: "https://williamthe5thc.github.io/Portfolio",
   // Share-preview image, 1200x630 (LinkedIn, Slack, iMessage). SEO.tsx and

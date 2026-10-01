@@ -248,6 +248,7 @@ export interface SiteConfig {
   author: string;
   description: string;
   slogan: string;
+  bio: string;
   tagline: string;
   siteUrl: string;
   defaultImage: string;
