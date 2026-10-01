@@ -46,12 +46,19 @@ export interface SEOProps {
   description?: string;
   image?: string;
   article?: boolean;
-  keywords?: string[];
   noindex?: boolean;
   language?: string;
   openGraph?: Partial<OpenGraph>;
   twitter?: Partial<Twitter>;
 }
+
+/**
+ * Search and share description for pages that don't set their own, the home
+ * page included. Same text as the static tag in index.html, which crawlers
+ * read before the app runs; change both together.
+ */
+const DEFAULT_DESCRIPTION =
+  'Portfolio of W. Jordan Charles: instructional design, learning experience design and learning technology. Case studies, interactive demos and resumes.';
 
 /** Words on the default share image (public/og-image.jpg). */
 const DEFAULT_IMAGE_ALT =
@@ -84,7 +91,6 @@ export const SEO: React.FC<SEOProps> = ({
   description, 
   image,
   article = false,
-  keywords = [],
   noindex = false,
   language = 'en',
   openGraph,
@@ -95,15 +101,9 @@ export const SEO: React.FC<SEOProps> = ({
     // Short suffix: the full site title after every page name pushed project
     // titles past 110 characters in tabs and search results.
     title: title ? `${title} | ${siteConfig.author}` : siteConfig.title,
-    description: description || siteConfig.description,
+    description: description || DEFAULT_DESCRIPTION,
     image: absoluteAssetUrl(image || siteConfig.defaultImage),
     url: shareUrl(pathname),
-    keywords: [
-      "instructional design",
-      "elearning development",
-      "learning solutions",
-      ...keywords
-    ].join(", ")
   };
 
   const openGraphData: OpenGraph = {
@@ -139,8 +139,6 @@ export const SEO: React.FC<SEOProps> = ({
       title={seo.title}
       meta={[
         { name: 'description', content: seo.description },
-        { name: 'keywords', content: seo.keywords },
-        { name: 'image', content: seo.image },
         { name: 'author', content: siteConfig.author },
         
         // OpenGraph

@@ -5,6 +5,13 @@ import { HelmetProvider } from 'react-helmet-async';
 import { useLocation } from 'react-router-dom';
 import { SEO } from '@/components/shared/SEO';
 import { siteConfig } from '@/content';
+import fs from 'node:fs';
+import path from 'node:path';
+
+// The static description crawlers read before the app runs.
+const indexHtmlDescription = fs
+  .readFileSync(path.resolve(__dirname, '../../../index.html'), 'utf8')
+  .match(/<meta[^>]*name="description" content="([^"]*)"/)?.[1];
 
 // Mock router
 vi.mock('react-router-dom', () => ({
@@ -38,8 +45,12 @@ describe('SEO', () => {
 
       await waitFor(() => {
         expect(document.title).toBe(siteConfig.title);
+        // Pages without their own description (the home page included) use
+        // the same text as index.html, so search results don't change once
+        // the app has run.
+        expect(indexHtmlDescription).toBeTruthy();
         expect(document.querySelector('meta[name="description"]')?.getAttribute('content'))
-          .toBe(siteConfig.description);
+          .toBe(indexHtmlDescription);
       });
     });
 
@@ -59,15 +70,6 @@ describe('SEO', () => {
       });
     });
 
-    it('handles keywords', async () => {
-      const keywords = ['test', 'seo', 'keywords'];
-      renderWithHelmet(<SEO keywords={keywords} />);
-
-      await waitFor(() => {
-        const metaKeywords = document.querySelector('meta[name="keywords"]');
-        expect(metaKeywords?.getAttribute('content')).toContain(keywords.join(', '));
-      });
-    });
   });
 
   describe('OpenGraph Tags', () => {

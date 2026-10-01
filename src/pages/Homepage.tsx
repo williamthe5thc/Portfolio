@@ -11,7 +11,8 @@ const HomePage: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-background-light">
-      <SEO title="Home" />
+      {/* No title: the home page uses the full site title. */}
+      <SEO />
       {/*
         Hero padding is kept tight on purpose so the featured projects start
         inside the first desktop screen: a first glance should show work, not
