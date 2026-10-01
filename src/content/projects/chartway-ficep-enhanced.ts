@@ -12,6 +12,7 @@ const chartwayFicepEnhanced: ProjectBase = {
   id: 'chartway-ficep-enhanced',
   title: 'Instructional Design Internship - FiCEP Curriculum Needs Analysis',
   cardTitle: 'FiCEP Needs Analysis',
+  role: 'Instructional design intern, working under professional supervision. I ran the needs analysis and wrote the recommendations; Chartway carried out the redesign.',
   description: 'As part of my internship with Chartway, I conducted a systematic needs analysis for the company\'s FiCEP program, which prepares employees for a financial counseling certification exam. The analysis showed what was holding learners back, and I recommended changes to the curriculum and to the support around it.',
   longDescription: `A needs analysis for Chartway Credit Union's Financial Counseling Examination Preparation (FiCEP) program, done under professional supervision during my instructional design internship. Pass rates on the certification exam had dropped after America's Credit Unions (ACU) updated the materials to a sixth edition. I interviewed five program participants, surveyed recent participants (21 responses), and reviewed the ten-week program and the new materials. The most common theme was that managers need to set aside more study time (23 mentions). Others were that the study guide helped (17), that content should be tailored to the organization (16), and that the practice exam needed to be better (12). I recommended changes to the curriculum, the practice exam and the support learners get around it, to help bring pass rates back up and improve the experience for learners.`,
   image: getImagePath('/images/thumbnails/chartway-ficep-enhanced.webp'),
@@ -75,7 +76,7 @@ const chartwayFicepEnhanced: ProjectBase = {
       instructionalStrategy: 'Recommended turning the existing check-ins into mandatory "FiCEP Success Sessions" that teach each chapter through the credit union\'s own products, services and practices, with time for learners\' questions.',
       assessmentStrategy: 'Recommended low-stakes knowledge checks throughout the course, building to a practice exam that matches the real exam\'s complexity and question formats: double negatives, similar answer choices and reading-comprehension items.',
       mediaSelection: 'Recommended a mix learners can choose from: Rise activities (matching exercises and choose-your-own-adventure branching scenarios), branded flash cards in print or in Anki for spaced repetition, and role plays.',
-      accessibilityDesign: 'WCAG 2.1 AA compliance including screen reader compatibility, color contrast ratios >4.5:1, keyboard navigation, closed captioning for all video content.'
+      accessibilityDesign: 'Recommended WCAG 2.1 AA compliance: screen reader compatibility, color contrast ratios above 4.5:1, keyboard navigation, and closed captioning for all video content.'
     },
     development: {
       contentCreation: 'Worked with the Financial Wellness manager, the program\'s primary subject matter expert.',

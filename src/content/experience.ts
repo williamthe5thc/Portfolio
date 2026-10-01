@@ -46,7 +46,7 @@ export const experience: Experience[] = [
       "Applied thematic analysis to identify limited protected study time as the top barrier to certification (23 mentions)",
       "Applied the ADDIE framework and adult learning theory to deliver evidence-based curriculum recommendations",
       "Worked with the Financial Wellness manager, the program's subject matter expert, to keep the recommendations aligned with certification requirements",
-      "Implemented WCAG 2.1 AA accessibility standards in curriculum design",
+      "Recommended WCAG 2.1 AA accessibility standards for the curriculum",
       "Chartway implemented the redesigned program and reported improved exam results (figures withheld to protect employee privacy)"
     ]
   },

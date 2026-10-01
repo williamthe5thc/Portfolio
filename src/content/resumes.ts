@@ -141,7 +141,7 @@ export const instructionalDesignResume: ResumeData = {
         'Conducted a mixed-methods needs analysis for the FiCEP certification program: five semi-structured interviews and a survey returning 21 responses',
         'Applied thematic analysis to identify limited protected study time as the top barrier to certification (23 mentions)',
         'Applied the ADDIE framework and adult learning theory to deliver evidence-based curriculum recommendations',
-        'Implemented WCAG 2.1 AA accessibility standards in curriculum design',
+        'Recommended WCAG 2.1 AA accessibility standards for the curriculum',
         'Chartway implemented the redesigned program and reported improved exam results (figures withheld to protect employee privacy)',
       ],
     },
@@ -263,7 +263,7 @@ export const learningTechnologyResume: ResumeData = {
     },
     {
       title: 'Variable-interval timer',
-      description: 'Android app that times variable-interval reinforcement in ABA therapy sessions',
+      description: 'Unfinished Android app for timing variable-interval reinforcement in ABA therapy',
       url: '/portfolio/variable-timer',
     },
     {
