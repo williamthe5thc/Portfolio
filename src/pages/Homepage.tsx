@@ -27,7 +27,7 @@ const HomePage: React.FC = () => {
           >
             {/* The name was only in the nav bar, easy to miss on a first visit. */}
             <p className="text-sm sm:text-lg font-semibold sm:tracking-wide text-primary-700 mb-2">
-              W. Jordan Charles, Instructional Designer
+              W. Jordan Charles, Instructional Designer &amp; Learning Technologist
             </p>
             <h1 className="text-3xl sm:text-5xl font-bold text-text-primary mb-3 sm:mb-4 break-words">
               Learning Experiences That Work

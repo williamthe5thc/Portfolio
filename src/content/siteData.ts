@@ -2,7 +2,7 @@
 import { SiteConfig } from '@/types/content';
 
 export const siteConfig: SiteConfig = {
-  title: "W. Jordan Charles - Instructional Designer",
+  title: "W. Jordan Charles - Instructional Designer & Learning Technologist",
   // The person's name, not a brand. It is interpolated as a name ("Learn
   // about ${author}'s journey", meta author, the copyright line), and the
   // old "W. Jordan Charles Portfolio" produced "W. Jordan Charles
