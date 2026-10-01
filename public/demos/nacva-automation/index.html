@@ -49,7 +49,7 @@
             border-left: 5px solid #667eea;
         }
         
-        .context-banner h3 {
+        .context-banner h2 {
             color: #4c51bf;
             margin-bottom: 10px;
             font-size: 1.2rem;
@@ -81,7 +81,7 @@
             box-shadow: 0 15px 40px rgba(0,0,0,0.15);
         }
         
-        .demo-card h3 {
+        .demo-card h2 {
             color: #4c51bf;
             margin-bottom: 15px;
             font-size: 1.4rem;
@@ -203,6 +203,10 @@
             font-size: 0.9rem;
         }
         
+        /* Keep the sizes the headings had before they moved up a level. */
+        .container h2 { font-size: 1.17em; }
+        .container h3 { font-size: 1em; }
+        
         .download-button {
             background: #117a8b;
             color: white;
@@ -214,6 +218,7 @@
             font-size: 0.9rem;
             text-decoration: none;
             display: inline-block;
+            font-family: inherit;
         }
         
         .loading {
@@ -282,7 +287,7 @@
             margin-bottom: 25px;
         }
         
-        .methodology-section h3 {
+        .methodology-section h2 {
             color: #4c51bf;
             margin-bottom: 15px;
             font-size: 1.3rem;
@@ -302,7 +307,7 @@
             border-left: 4px solid #667eea;
         }
         
-        .methodology-item h4 {
+        .methodology-item h3 {
             color: #4c51bf;
             margin-bottom: 8px;
             font-size: 1rem;
@@ -315,31 +320,31 @@
     </style>
 </head>
 <body>
-    <div class="container">
+    <div class="container" role="main">
         <div class="header">
             <h1>NACVA Course Automation Demo</h1>
             <p>Simplified browser versions of scripts I wrote at NACVA, running on sample data</p>
         </div>
         
         <div class="context-banner">
-            <h3>About this demo</h3>
+            <h2>About this demo</h2>
             <p>At NACVA, adding a course to the website meant typing its details in by hand. I wrote Python scripts that took over that data entry, checked the data for errors, and converted Word and Excel files into formats the site could use.</p>
             <p>The originals ran on NACVA's own files and systems, so they can't be shared. These two tools are simplified recreations of the idea that run in your browser. Nothing you type or upload leaves this page.</p>
         </div>
         
         <div class="methodology-section">
-            <h3>What the original scripts did</h3>
+            <h2>What the original scripts did</h2>
             <div class="methodology-grid">
                 <div class="methodology-item">
-                    <h4>Replaced manual entry</h4>
+                    <h3>Replaced manual entry</h3>
                     <p>Course details that staff used to key in by hand went in through a script instead.</p>
                 </div>
                 <div class="methodology-item">
-                    <h4>Checked the data</h4>
+                    <h3>Checked the data</h3>
                     <p>Each record was checked for missing or malformed values before it was entered.</p>
                 </div>
                 <div class="methodology-item">
-                    <h4>Converted files</h4>
+                    <h3>Converted files</h3>
                     <p>Word and Excel source files were converted into the formats the website needed.</p>
                 </div>
             </div>
@@ -348,7 +353,7 @@
         <div class="demo-grid">
             <!-- Question Format Converter -->
             <div class="demo-card">
-                <h3>Assessment Question Converter</h3>
+                <h2>Assessment Question Converter</h2>
                 <p>Paste multiple-choice questions in the usual numbered format and get a CSV file an LMS can import. It picks out <span class="highlight">each question, its answer choices and the correct answer</span>, and flags any question that is missing one.</p>
                 
                 <div class="tabs" role="tablist" aria-label="Question input">
@@ -392,19 +397,13 @@ Correct answer: b</textarea>
                     <span id="converter-text">Convert to LMS Format</span>
                 </button>
                 
-                <div id="converter-steps" class="processing-steps">
-                    <div class="step"><span class="step-icon">🔍</span> Analyzing question format...</div>
-                    <div class="step"><span class="step-icon">📝</span> Parsing questions and answers...</div>
-                    <div class="step"><span class="step-icon">✅</span> Identifying correct responses...</div>
-                    <div class="step"><span class="step-icon">📊</span> Generating CSV output...</div>
-                </div>
                 
-                <div id="converter-output" class="demo-output"></div>
+                <div id="converter-output" class="demo-output" aria-live="polite"></div>
             </div>
             
             <!-- Course Data Processor -->
             <div class="demo-card">
-                <h3>Course Data Processor</h3>
+                <h2>Course Data Processor</h2>
                 <p>Enter one course, or paste a spreadsheet of courses as CSV. It checks <span class="highlight">each title, price and CPE credit value</span> and returns clean rows ready to upload, or tells you which rows need fixing.</p>
                 
                 <div class="tabs" role="tablist" aria-label="Course data input">
@@ -434,14 +433,8 @@ Cash Flow Modeling Techniques,180,16,Advanced Finance</textarea>
                     <span id="processor-text">Process Course Data</span>
                 </button>
                 
-                <div id="processor-steps" class="processing-steps">
-                    <div class="step"><span class="step-icon">📋</span> Validating course information...</div>
-                    <div class="step"><span class="step-icon">💰</span> Checking prices...</div>
-                    <div class="step"><span class="step-icon">🏆</span> Checking CPE credits...</div>
-                    <div class="step"><span class="step-icon">📄</span> Preparing upload rows...</div>
-                </div>
                 
-                <div id="processor-output" class="demo-output"></div>
+                <div id="processor-output" class="demo-output" aria-live="polite"></div>
             </div>
         </div>
         
@@ -540,6 +533,13 @@ Correct answer: b`;
         
         // Appends text (as a text node, so it is never parsed as HTML)
         // followed by a line break.
+        // Shows a short message in the results area (announced to screen
+        // readers, which is why it is used instead of alert()).
+        function showMessage(output, text) {
+            output.textContent = text;
+            output.classList.add('active');
+        }
+        
         function addTextLine(parent, text) {
             parent.appendChild(document.createTextNode(text));
             parent.appendChild(document.createElement('br'));
@@ -548,43 +548,13 @@ Correct answer: b`;
         function processQuestions() {
             const button = document.getElementById('converter-text');
             const output = document.getElementById('converter-output');
-            const steps = document.getElementById('converter-steps');
             const input = document.getElementById('question-input').value;
             
             if (!input.trim()) {
-                alert('Please enter some questions to convert!');
+                showMessage(output, 'Paste some questions to convert first.');
                 return;
             }
             
-            button.innerHTML = '<span class="loading">⟳</span> Converting...';
-            steps.classList.add('active');
-            output.classList.remove('active');
-            
-            // Reset step colors
-            Array.from(steps.children).forEach(step => {
-                step.style.color = '#333';
-                step.children[0].textContent = step.children[0].textContent.replace('✅', '🔄');
-            });
-            
-            // Simulate processing steps
-            setTimeout(() => {
-                steps.children[0].style.color = '#1e7e34';
-                steps.children[0].children[0].textContent = '✅';
-            }, 500);
-            
-            setTimeout(() => {
-                steps.children[1].style.color = '#1e7e34';
-                steps.children[1].children[0].textContent = '✅';
-            }, 1200);
-            
-            setTimeout(() => {
-                steps.children[2].style.color = '#1e7e34';
-                steps.children[2].children[0].textContent = '✅';
-            }, 1800);
-            
-            setTimeout(() => {
-                steps.children[3].style.color = '#1e7e34';
-                steps.children[3].children[0].textContent = '✅';
                 
                 // Process the actual input
                 const result = parseQuestions(input);
@@ -621,14 +591,13 @@ Correct answer: b`;
                 }
                 
                 output.appendChild(sample);
-                output.insertAdjacentHTML('beforeend', `<a href="#" class="download-button" onclick="downloadCSV(); return false;">📥 Download Complete CSV File</a>`);
+                output.insertAdjacentHTML('beforeend', `<button type="button" class="download-button" onclick="downloadCSV()">Download the complete CSV file</button>`);
                 
                 output.classList.add('active');
                 button.innerHTML = 'Convert to LMS Format';
                 
                 // Store for download
                 processedData.csv = generateCSV(result.questions);
-            }, 2500);
         }
         
         function parseQuestions(text) {
@@ -691,7 +660,6 @@ Correct answer: b`;
         function processCourseData() {
             const button = document.getElementById('processor-text');
             const output = document.getElementById('processor-output');
-            const steps = document.getElementById('processor-steps');
             
             // Get data from inputs. The visible tab decides what is checked:
             // the manual fields are pre-filled, so testing them first meant
@@ -704,39 +672,10 @@ Correct answer: b`;
                 .split('\n').map(line => line.trim()).filter(Boolean);
             
             if (bulk ? bulkLines.length < 2 : !title) {
-                alert(bulk ? 'Paste at least one course row under the header row.' : 'Please enter a course title.');
+                showMessage(output, bulk ? 'Paste at least one course row under the header row.' : 'Enter a course title first.');
                 return;
             }
             
-            button.innerHTML = '<span class="loading">⟳</span> Processing...';
-            steps.classList.add('active');
-            output.classList.remove('active');
-            
-            // Reset step colors
-            Array.from(steps.children).forEach(step => {
-                step.style.color = '#333';
-                step.children[0].textContent = step.children[0].textContent.replace('✅', '🔄');
-            });
-            
-            // Simulate processing steps
-            setTimeout(() => {
-                steps.children[0].style.color = '#1e7e34';
-                steps.children[0].children[0].textContent = '✅';
-            }, 800);
-            
-            setTimeout(() => {
-                steps.children[1].style.color = '#1e7e34';
-                steps.children[1].children[0].textContent = '✅';
-            }, 1500);
-            
-            setTimeout(() => {
-                steps.children[2].style.color = '#1e7e34';
-                steps.children[2].children[0].textContent = '✅';
-            }, 2200);
-            
-            setTimeout(() => {
-                steps.children[3].style.color = '#1e7e34';
-                steps.children[3].children[0].textContent = '✅';
                 
                 const rows = bulk
                     ? bulkLines.slice(1).map(line => line.split(','))
@@ -776,7 +715,6 @@ Correct answer: b`;
                 
                 output.classList.add('active');
                 button.innerHTML = 'Process Course Data';
-            }, 3000);
         }
         
         function downloadCSV() {
