@@ -202,6 +202,11 @@ To update the portfolio content:
    - Every field in a project file is shipped in the site's JavaScript, even
      one the page doesn't show. Only fill in fields the project page renders.
 
+   - After changing anything in `src/content`, regenerate `public/llms.txt`
+     (the plain-text summary for AI assistants) with
+     `node scripts/build-llms-txt.mjs`. A test fails until you do. The bio
+     is also copied into the `<noscript>` block in `index.html`.
+
 2. **Resumes**
    - Both resumes (the full instructional design resume and the learning
      technology version) live in `src/content/resumes.ts`. The resume pages
