@@ -13,55 +13,65 @@
  * choosing an LMS and building a Canvas course are separate pieces of work for
  * separate clients, and were previously run together in one sentence.
  */
-export const stats = [
-  /*
-    Bullets are all noun phrases. They previously mixed past verbs
-    ("Evaluated platforms"), present verbs ("Administer that platform") and
-    bare noun phrases ("Ten weeks of AI curriculum") inside the same list,
-    which reads as unedited. Naming the deliverable rather than conjugating a
-    verb also sidesteps the tense question entirely: the headline already
-    says what I can do, so each bullet just has to name the evidence.
-  */
+/**
+ * The "What I Bring" cards on the home page. Each point is a fact from a
+ * project page or the resumes; `to` links to the page that backs it up.
+ * The order follows what the technologist and instructional design postings
+ * ask for most: platforms, support, accessibility, AI, automation, analysis.
+ */
+export interface CapabilityPoint {
+  text: string;
+  /** Internal route that backs the claim, e.g. "/portfolio/weyouth-mpcc". */
+  to?: string;
+}
+export interface Capability {
+  title: string;
+  points: CapabilityPoint[];
+}
+
+export const capabilities: Capability[] = [
   {
-    value: "Choose and run an LMS",
+    title: 'Learning platforms',
     points: [
-      "A platform evaluation against a nonprofit's real constraints, and the recommendation they now run on",
-      "Day-to-day administration of that platform, including its technical support"
+      { text: 'Chose LearnWorlds for a youth nonprofit and built its courses and learner tracks', to: '/portfolio/weyouth-mpcc' },
+      { text: 'Built ten Canvas modules for a graduate law course, on a team of three', to: '/portfolio/ai-law-course' },
+      { text: 'Installed and configured Moodle on my own computer to test courses' }
     ]
   },
   {
-    value: "Build courses in Canvas",
+    title: 'Support and troubleshooting',
     points: [
-      "A ten-module graduate law course, built by a team of three for a live cohort",
-      "A self-paced skills course, co-designed with a classmate, assessed by video the learners submitted"
+      { text: "Technical support for WeYouth's administrators, learners and coaches", to: '/portfolio/weyouth-mpcc' },
+      { text: 'Tested video, iFrames, JavaScript and an AI chatbot in a Canvas test module before learners saw them', to: '/portfolio/ai-law-course' },
+      { text: 'Three years on a help desk, explaining technical problems in plain language', to: '/resume/technology' }
     ]
   },
   {
-    value: "Build interactive e-learning in Storyline 360",
+    title: 'Accessibility',
     points: [
-      "Branching scenarios where a learner's choices change what happens next",
-      "A published course, playable here rather than shown as screenshots"
+      { text: "Recommended WCAG 2.1 AA changes for a credit union's certification program", to: '/portfolio/chartway-ficep-enhanced' },
+      { text: 'Captions, transcripts, alt text and an alternate assignment in a self-paced Canvas course', to: '/portfolio/teaching-waltz' }
     ]
   },
   {
-    value: "Design AI learning that goes past the tool demo",
+    title: 'AI in learning',
     points: [
-      "Ten modules of AI curriculum for legal professionals with no technical background",
-      "An assessment design that grades the prompting, not the output the AI produced"
+      { text: 'A graduate AI course where learners name the tool and submit their prompt instead of being told not to use AI', to: '/portfolio/ai-law-course' },
+      { text: 'A VR interview-practice simulator on a local AI model (in progress)' }
     ]
   },
   {
-    value: "Find the real problem before designing",
+    title: 'Automation and web development',
     points: [
-      "Interviews and a survey to locate the actual barrier instead of assuming it",
-      "A usability walkthrough of our own build, catching what we were too close to see"
+      { text: 'Python scripts that did about 80 manual steps per course at a certification body', to: '/portfolio/nacva-automation' },
+      { text: 'HTML for Canvas pages; React and TypeScript for this site' }
     ]
   },
   {
-    value: "Automate what should not be manual",
+    title: 'Needs analysis and evaluation',
     points: [
-      "Python scripts replacing hand-entry of course data at a certification body",
-      "React and TypeScript front ends, this site among them"
+      { text: 'Interviews and a survey that found the real barrier to a certification program: study time', to: '/portfolio/chartway-ficep-enhanced' },
+      { text: 'Usability testing on the law course; a four-person evaluation of the waltz course', to: '/portfolio/teaching-waltz' }
     ]
   }
 ];

@@ -5,13 +5,12 @@ import { motion } from 'framer-motion';
 import { Timeline } from '@/components/shared';
 import type { TimelineEvent } from '@/components/shared/Timeline';
 import { SectionContainer } from '@/components/layout';
-import { BaseCard, Button, StatsGrid } from '@/components/ui';
+import { BaseCard, Button } from '@/components/ui';
 import { fadeInUp, staggerContainer } from '@/lib/animations';
 import { 
   siteConfig,
   education, 
   experience,
-  stats,
   methodology
 } from '@/content';
 import BasePage from './BasePage';
@@ -95,7 +94,6 @@ const AboutPage: React.FC = () => {
       className="bg-background-light"
     >
       <BioSection />
-      <StatsSection />
       <ProfessionalPracticeSection />
       <SkillsSection />
       <ToolsSection />
@@ -111,12 +109,6 @@ const BioSection = () => (
     <p className="max-w-3xl mx-auto text-lg text-text-secondary leading-relaxed">
       {siteConfig.bio}
     </p>
-  </SectionContainer>
-);
-
-const StatsSection = () => (
-  <SectionContainer className="py-12">
-    <StatsGrid stats={stats} />
   </SectionContainer>
 );
 
@@ -291,9 +283,8 @@ const LookingForSection = () => (
       </h2>
       <p className="text-lg text-text-secondary mb-8">
         Instructional design, learning experience design and learning technology
-        roles where evidence-based design and measurable outcomes matter.
-        I&apos;m drawn to teams that treat evaluation as part of the work rather
-        than an afterthought.
+        roles. I&apos;m drawn to teams that treat evaluation as part of the work
+        rather than an afterthought.
       </p>
       <Button href="/contact" variant="primary">
         Get in touch

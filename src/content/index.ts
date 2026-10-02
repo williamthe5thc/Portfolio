@@ -38,7 +38,7 @@
  */
 // Site configuration and metadata
 export { siteConfig } from './siteData';  
-export { stats, projectCategories } from './info';
+export { capabilities, projectCategories } from './info';
 
 // Professional content
 export { education } from './education';

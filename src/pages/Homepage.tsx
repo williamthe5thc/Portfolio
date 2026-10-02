@@ -5,7 +5,8 @@ import { SEO } from '@/components/shared';
 import { ProjectGrid } from '@/components/features/portfolio/ProjectGrid';
 import { Button, BaseCard } from '@/components/ui';
 import { fadeInUp, staggerContainer } from '@/lib/animations';
-import { stats, featuredProjects } from '@/content';
+import { Link } from 'react-router-dom';
+import { capabilities, featuredProjects } from '@/content';
 
 const HomePage: React.FC = () => {
 
@@ -125,7 +126,7 @@ const HomePage: React.FC = () => {
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold mb-4">What I Bring</h2>
             <p className="text-xl text-text-secondary">
-              The capabilities behind the projects, and where each one is demonstrated
+              What I can do, with a link to the project behind each one
             </p>
           </div>
           {/*
@@ -134,23 +135,34 @@ const HomePage: React.FC = () => {
             numeric tiles cannot hold that, and the evidence is the point.
           */}
           <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
-            {stats.map((stat, index) => (
+            {capabilities.map((capability, index) => (
               <motion.div
-                key={String(stat.value)}
+                key={capability.title}
                 variants={fadeInUp}
                 initial="initial"
                 animate="animate"
                 transition={{ delay: index * 0.06 }}
                 className="bg-white rounded-lg p-6 border-l-4 border-primary-500 shadow-sm"
               >
-                <div className="text-lg font-bold text-primary-700 mb-3">
-                  {stat.value}
-                </div>
+                <h3 className="text-lg font-bold text-primary-700 mb-3">
+                  {capability.title}
+                </h3>
                 <ul className="space-y-2">
-                  {stat.points?.map((point) => (
-                    <li key={point} className="text-text-secondary leading-relaxed flex gap-2">
-                      <span className="text-primary-500 flex-shrink-0">&bull;</span>
-                      <span>{point}</span>
+                  {capability.points.map((point) => (
+                    <li key={point.text} className="text-text-secondary leading-relaxed flex gap-2">
+                      <span aria-hidden="true" className="text-primary-500 flex-shrink-0">&bull;</span>
+                      <span>
+                        {point.text}
+                        {point.to && (
+                          <>
+                            {' '}
+                            <Link to={point.to} className="font-medium text-primary-600 hover:text-primary-700 underline whitespace-nowrap">
+                              See the work
+                              <span className="sr-only">: {point.text}</span>
+                            </Link>
+                          </>
+                        )}
+                      </span>
                     </li>
                   ))}
                 </ul>
@@ -272,7 +284,7 @@ const HomePage: React.FC = () => {
               </div>
               <h4 className="font-semibold mb-2">Evaluate</h4>
               <p className="text-sm text-text-secondary">
-                Measure learning outcomes using Kirkpatrick model and implement continuous improvement cycles
+                Measure learning outcomes and improve the course from what the data shows
               </p>
             </div>
           </div>
@@ -299,7 +311,7 @@ const HomePage: React.FC = () => {
       <h2 className="text-3xl font-bold mb-6 drop-shadow-sm">Let's Work Together</h2>
       <p className="text-xl mb-8 opacity-95 drop-shadow-sm">
         I take learning programs from analysis through delivery, and I measure whether they worked. 
-        Let's discuss how I can contribute to creating training that drives measurable results for your organization.
+        Let's talk about what I can do for your team.
       </p>
       <div className="flex flex-col sm:flex-row gap-4 justify-center">
         <Button 
