@@ -29,8 +29,7 @@ export const education: Education = {
       highlights: [
         "30 credit hours across five semesters (two academic years and a summer)",
         "Combines instructional design (identifying learner needs and goals, then building instruction to meet them) with educational technology (technology-based learning environments that support those needs)",
-        "Specialized in cognitive science-based instructional design with andragogy expertise",
-        "Completed capstone project (EDPS 6750) applying systematic ADDIE methodology",
+        "Capstone: the AI & Law course for the S.J. Quinney College of Law, built in Canvas with a team of three",
         "Trained in evidence-based learning theory, cognitive load theory, and Universal Design for Learning",
         "Intensive small cohort collaborative learning environment (6 students total)"
       ]
@@ -42,8 +41,8 @@ export const education: Education = {
       location: "Rexburg, ID",
       period: "2012 - 2018",
       highlights: [
-        "Strong foundation in research methodology and statistical analysis",
-        "Behavioral psychology background supports adult learning theory application"
+        "Undergraduate research in research methods and statistics, presented at conferences",
+        "Certificate in Programming"
       ],
     }
   ]

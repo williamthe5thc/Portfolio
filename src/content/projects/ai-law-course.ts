@@ -13,7 +13,7 @@ const aiLawCourse: ProjectBase = {
   id: 'ai-law-course',
   title: 'Graduate Curriculum Design Project - AI & Law Course',
   cardTitle: 'AI & Law Graduate Course',
-  description: 'A three-person graduate capstone team designed and built this ten-module AI and Law course for Master of Legal Studies students, delivered in Canvas. We ran a client interview with the faculty sponsor, developed personas, ran a cognitive walkthrough on our own design, and validated it with a stakeholder review before handover.',
+  description: 'A three-person graduate capstone team designed and built this ten-module AI and Law course for Master of Legal Studies students, built in Canvas. We ran a client interview with the faculty sponsor, developed personas, ran a cognitive walkthrough on our own design, and validated it with a stakeholder review before handover.',
   longDescription: `A graduate capstone, built by a team of three for the University of Utah's S.J. Quinney College of Law. The job was to teach artificial intelligence to Master of Legal Studies students without technical backgrounds, working with a faculty sponsor who was both our client and our subject matter expert. We used a competency-based design to build ten modules for a 13-week online course, covering AI foundations, prompt engineering, legal research, media, and professional ethics. Students were assessed through five quizzes, five discussions, four assignments, a midterm project and a final project.`,
   image: getImagePath('/images/thumbnails/ai-law-course.webp'),
   imageAlt: 'Title graphic: Graduate Course Overview - AI & Law: Bridging Technology and Legal Expertise',
@@ -70,7 +70,7 @@ const aiLawCourse: ProjectBase = {
       description: 'Why we chose each medium for each kind of content.'
     },
     {
-      label: 'Assessment Design, Week 5 module',
+      label: 'Assessment design, advanced prompting week',
       href: '/case-studies/advanced-prompting-assessment-design.pdf',
       description: 'My own assessment plan for the advanced prompting week: a table of specifications mapped to cognitive levels, rubrics, an AI usage policy built on disclosure rather than prohibition, and item difficulty and discrimination indices for reviewing the questions afterwards.'
     }
@@ -97,7 +97,7 @@ const aiLawCourse: ProjectBase = {
   results: [
     'Built ten modules in Canvas for the Spring 2025 online, asynchronous MLS course',
     'Tested the prototype with a cognitive walkthrough, a think-aloud session and a 10-question usability survey, then built four high-priority recommendations into the revision plan',
-    'Wrote the assessment design for the advanced prompting week myself, including an AI usage policy that required learners to disclose the tool and submit the prompt rather than banning its use',
+    'Wrote the assessment design for the advanced prompting week myself: specifications by cognitive level, rubrics and item analysis (see the work below)',
     'At the final stakeholder review, the faculty sponsor said the course covered the learning goals and liked the layout. Their suggestions: fewer overlapping quizzes, more scholarly readings, quicker feedback than essays allow, and a more readable banner font'
   ],
 

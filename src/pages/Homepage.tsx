@@ -310,7 +310,7 @@ const HomePage: React.FC = () => {
     <div className="max-w-3xl mx-auto">
       <h2 className="text-3xl font-bold mb-6 drop-shadow-sm">Let's Work Together</h2>
       <p className="text-xl mb-8 opacity-95 drop-shadow-sm">
-        I take learning programs from analysis through delivery, and I measure whether they worked. 
+        I take learning programs from analysis through delivery, and I build in ways to tell whether they worked. 
         Let's talk about what I can do for your team.
       </p>
       <div className="flex flex-col sm:flex-row gap-4 justify-center">

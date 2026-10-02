@@ -20,12 +20,10 @@ const chartwayFicepEnhanced: ProjectBase = {
   category: 'id',
   tags: [
     'Financial Wellness',
-    'Curriculum Modernization',
     'ADDIE Framework',
     'Needs Analysis',
     'Adult Learning Theory',
-    'Behavior Change Design',
-    'Accessibility Compliance'
+    'Accessibility'
   ],
   status: 'completed',
   date: 'May 2025 - July 2025',

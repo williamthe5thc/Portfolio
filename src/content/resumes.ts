@@ -196,7 +196,7 @@ export const instructionalDesignResume: ResumeData = {
     },
     {
       title: 'Teaching the Waltz',
-      description: 'Self-paced Canvas course for a physical skill, co-designed with a classmate, assessed by learner-submitted video and validated by small-group formative evaluation',
+      description: 'Self-paced Canvas course for a physical skill, co-designed with a classmate, assessed by learner-submitted video and tested in a small-group formative evaluation',
       url: '/portfolio/teaching-waltz',
     },
   ],

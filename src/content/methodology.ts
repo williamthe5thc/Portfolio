@@ -2,7 +2,7 @@
 
 export const methodology = {
   title: "Cognitive Science-Based Instructional Design",
-  summary: "I design learning programs the way the research says they should be built - systematic needs analysis first, cognitive load and adult learning theory driving the structure, and evaluation instruments built in from the start rather than added at the end. A psychology research background means I read the evidence directly, and enough technical depth means I can stand up the platform the program runs on instead of handing it off. M.Ed., University of Utah.",
+  summary: "Needs analysis comes first, research on how people learn shapes the structure, and the checks that show whether a course works go in from the start. My psychology research background means I can read the evidence myself, and my technical side means I can set up the platform a course runs on instead of handing it off.",
 
   corePrinciples: [
     {
@@ -157,7 +157,6 @@ export const methodology = {
       {
         name: "Learning Measurement",
         applications: [
-          "Impact Assessment - Business outcome evaluation",
           "Data Analysis - Learning effectiveness measurement",
           "Stakeholder Reporting - Results communication"
         ]

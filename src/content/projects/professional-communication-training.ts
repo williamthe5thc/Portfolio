@@ -13,7 +13,7 @@ const professionalCommunicationTraining: ProjectBase = {
   image: getImagePath('/images/projects/professional-communication-training.jpg'),
   imageAlt: "Title graphic: How to Date More Effectively - From First Swipe to First Date",
   category: "id",
-  tags: ["Articulate Storyline 360", "Interactive Design", "Scenario-Based Learning", "Behavioral Psychology", "Academic Project", "Advanced Features", "E-learning Development"],
+  tags: ["Articulate Storyline 360", "Interactive Design", "Scenario-Based Learning", "Behavioral Psychology", "Academic Project", "E-learning Development"],
   status: "completed",
   date: "2024",
   metrics: [

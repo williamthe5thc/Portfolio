@@ -61,14 +61,14 @@ A 278-slide interactive course I built in Articulate Storyline 360. Learners mak
 
 ### Graduate Curriculum Design Project - AI & Law Course
 
-A three-person graduate capstone team designed and built this ten-module AI and Law course for Master of Legal Studies students, delivered in Canvas. We ran a client interview with the faculty sponsor, developed personas, ran a cognitive walkthrough on our own design, and validated it with a stakeholder review before handover.
+A three-person graduate capstone team designed and built this ten-module AI and Law course for Master of Legal Studies students, built in Canvas. We ran a client interview with the faculty sponsor, developed personas, ran a cognitive walkthrough on our own design, and validated it with a stakeholder review before handover.
 
 - Role: One of three designers on a graduate capstone team. I did most of the Canvas build and wrote the assessment design for the advanced prompting week
 - Dates: Fall 2024 - Spring 2025
 - Status: Completed
 - Result: Built ten modules in Canvas for the Spring 2025 online, asynchronous MLS course
 - Result: Tested the prototype with a cognitive walkthrough, a think-aloud session and a 10-question usability survey, then built four high-priority recommendations into the revision plan
-- Result: Wrote the assessment design for the advanced prompting week myself, including an AI usage policy that required learners to disclose the tool and submit the prompt rather than banning its use
+- Result: Wrote the assessment design for the advanced prompting week myself: specifications by cognitive level, rubrics and item analysis (see the work below)
 - Result: At the final stakeholder review, the faculty sponsor said the course covered the learning goals and liked the layout. Their suggestions: fewer overlapping quizzes, more scholarly readings, quicker feedback than essays allow, and a more readable banner font
 - Case study: https://williamthe5thc.github.io/Portfolio/#/portfolio/ai-law-course
 - View design record: https://williamthe5thc.github.io/Portfolio/demos/ai-law-course/index.html
@@ -76,7 +76,7 @@ A three-person graduate capstone team designed and built this ten-module AI and 
 - HCI Cognitive Walkthrough: https://williamthe5thc.github.io/Portfolio/case-studies/ai-law/cognitive-walkthrough.html
 - Instructional Strategies: https://williamthe5thc.github.io/Portfolio/case-studies/ai-law/instructional-strategies.html
 - Media Selection: https://williamthe5thc.github.io/Portfolio/case-studies/ai-law/media-selection.html
-- Assessment Design, Week 5 module: https://williamthe5thc.github.io/Portfolio/case-studies/advanced-prompting-assessment-design.pdf
+- Assessment design, advanced prompting week: https://williamthe5thc.github.io/Portfolio/case-studies/advanced-prompting-assessment-design.pdf
 
 ### Teaching the Waltz Online Course
 
@@ -95,7 +95,7 @@ A classmate and I designed a self-paced Canvas course that teaches complete begi
 
 ### Learning Technology Contractor - NACVA Professional Certification Systems
 
-A contract role supporting continuing education technology at the National Association of Certified Valuators and Analysts (NACVA). I automated content delivery work for the CVA and MAFF certification programs.
+A contract role at the National Association of Certified Valuators and Analysts (NACVA). I turned recorded webinars into on-demand continuing-education courses and wrote scripts that automated each course's setup.
 
 - Role: Contractor at NACVA, placed through Robert Half. I wrote the automation scripts and turned recorded webinars into courses
 - Dates: March 2023 - August 2023

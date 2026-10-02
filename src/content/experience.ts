@@ -30,7 +30,7 @@ export const experience: Experience[] = [
       "Conducted market research on learning management systems scored against the organization's specific constraints, and delivered the platform recommendation the nonprofit adopted and runs on today",
       "Implemented SME-authored curriculum into the LMS as enrollable, self-paced courses: module architecture, self-assessments, evaluation surveys, and cohort enrollment",
       "Built separate learner tracks for athletes, coaches, and captains supporting Mental Performance Connection Coaching, the organization's primary program",
-      "Collaborate with subject matter experts - founders, a licensed clinician, and coaching staff - on restructuring written curriculum to work without a live facilitator",
+      "Collaborate with subject matter experts (founders, a licensed clinician and coaching staff) on restructuring written curriculum to work without a live facilitator",
       "Serve as the technical support function for the platform, onboarding administrators and maintaining the system as cohorts move through it"
     ]
   },
