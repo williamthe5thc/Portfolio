@@ -35,7 +35,7 @@ export const capabilities: Capability[] = [
     points: [
       { text: 'Chose LearnWorlds for a youth nonprofit and built its courses and learner tracks', to: '/portfolio/weyouth-mpcc' },
       { text: 'Built ten Canvas modules for a graduate law course, on a team of three', to: '/portfolio/ai-law-course' },
-      { text: 'Installed and configured Moodle on my own computer to test courses' }
+      { text: 'Installed and configured Moodle on my own computer to learn it' }
     ]
   },
   {
