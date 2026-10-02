@@ -39,7 +39,7 @@ const PortfolioPage = () => {
         description: "Explore W. Jordan Charles's instructional design projects and learning solutions"
       }}
       title="Portfolio"
-      subtitle="Evidence-based instructional design: ADDIE methodology, learning theory application, and measurable business outcomes"
+      subtitle="Case studies, demos and design documents you can open"
       className="bg-background-light"
     >
       <div className="py-10 md:py-16">

@@ -19,7 +19,7 @@ export const methodology = {
     },
     {
       title: "Systematic ADDIE Methodology",  
-      description: "Comprehensive training in systematic instructional design process including learner analysis, scaffolding strategies, formative evaluation, and Kirkpatrick model assessment frameworks"
+      description: "Trained in the instructional design process, including learner analysis, scaffolding and formative evaluation; applied in the Waltz, FiCEP and AI & Law projects"
     }
   ],
 
@@ -71,7 +71,6 @@ export const methodology = {
       "ARCS Motivation Model Integration",
       "Scaffolding & Zone of Proximal Development",
       "Universal Design for Learning (UDL)",
-      "Kirkpatrick Model Evaluation Framework"
     ],
     learningTheory: [
       "Adult Learning Theory (Andragogy)",

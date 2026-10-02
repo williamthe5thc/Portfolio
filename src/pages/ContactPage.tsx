@@ -114,7 +114,7 @@ const ContactPage: React.FC = () => {
         description: `Get in touch with ${siteConfig.author} to discuss your instructional design needs`
       }}
       title="Let's Connect"
-      subtitle="Interested in discussing how I can contribute to your instructional design team? I'd love to learn more about your projects and share my passion for evidence-based learning design."
+      subtitle="Interested in discussing how I can contribute to your instructional design team? I'd like to hear about your projects."
       className="bg-background-light"
     >
       <div className="py-20">
