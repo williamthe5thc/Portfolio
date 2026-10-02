@@ -30,11 +30,7 @@ const weyouthMpcc: ProjectBase = {
     'WeYouth had curriculum and no way to deliver it. I ran the market research on learning platforms against their specific constraints, recommended the one they adopted, then implemented their SMEs\' curriculum into it as enrollable courses. I run the platform and its technical support.',
   longDescription: `WeYouth is a 501(c)(3) addressing youth disconnection through Connection Coaching for young people ages 12-24. Its primary program, Mental Performance Connection Coaching (MPCC), reaches athletes through a "whole-team" model that trains coaches, equips captains, and gives athletes and parents shared language.
 
-I joined when the organization had its coaching method and curriculum but no way to deliver them. The subject matter experts (the founders, a licensed clinician and coaching staff) had written the curriculum content. There was no LMS, no way to enroll a student, and no way to run a season without a founder personally present.
-
-My first deliverable was a platform decision. I researched learning management systems against WeYouth's actual circumstances: a nonprofit budget, three audiences needing separate tracks, seasonal cohorts tied to sports calendars, team-based enrollment instead of individual signups, a hybrid model where the platform carries content and live sessions carry relationships, and a very small team who would have to run whatever was chosen. The organization runs on the platform I recommended.
-
-Since then the work has been implementation and operation. The SMEs write the content. I build it into the platform as structured, sequential courses (module architecture, self-assessments, per-module evaluation surveys, enrollment and cohort setup), and I work with the SMEs on shaping the material for self-paced online use. I am also the platform's technical support.`,
+The SMEs write the content. I chose the platform, build their material into it as self-paced courses, and support everyone who uses it.`,
   image: getImagePath('/images/thumbnails/weyouth-mpcc.svg'),
   imageAlt: 'WeYouth logo',
   category: 'learning-tech',
@@ -64,7 +60,6 @@ Since then the work has been implementation and operation. The SMEs write the co
   ],
   solutions: [
     'Scored LMS options against WeYouth\'s constraints: budget, multi-audience tracks, cohort enrollment, e-commerce for team contracts, and administrative overhead',
-    'Delivered a platform recommendation the organization adopted and still runs on',
     'Stood up the LMS and built the course architecture: separate athlete, coach, and captain tracks sharing an underlying model',
     'Implemented SME curriculum as sequential modules with a consistent internal pattern, so learners and administrators both learn the format once',
     'Configured self-assessments for learner reflection and separate short evaluation surveys for program feedback, kept as distinct instruments',
@@ -73,12 +68,9 @@ Since then the work has been implementation and operation. The SMEs write the co
   ],
   results: [
     'Platform recommendation adopted: the organization delivers its programs on the LMS I evaluated and selected',
-    'Separate learner tracks live in the platform, each with its own sequence of modules, self-assessments, and evaluation instruments',
     'The organization is set up to enroll learners and run a season without a founder personally delivering every session, which is what limited delivery before',
-    'Cohort-based enrollment configured so partner organizations join as groups instead of signing up one by one',
-    'Per-module evaluation surveys collect formative data during delivery, so weak modules surface while cohorts are still running',
-    'Program effectiveness data isn\'t available yet: cohorts are still in training, and measurement is scheduled for when the current seasons end',
-    'Enrollment figures, course counts, and partner names are the organization\'s operating data and are deliberately not published here'
+    'Per-module surveys are collecting feedback while cohorts run; effectiveness data comes when the current seasons end',
+    'Enrollment figures, course counts and partner names are WeYouth\'s operating data, so they aren\'t published here'
   ],
 
   addieMethodology: {
@@ -99,8 +91,6 @@ Since then the work has been implementation and operation. The SMEs write the co
         'Self-assessment questions within modules for learner reflection, plus short evaluation surveys for program feedback, kept separate because they serve different purposes.',
       mediaSelection:
         'Video modules for concept delivery, written activities for application, and printable discussion cards for captain-led sessions that happen away from screens.',
-      accessibilityDesign:
-        'Short self-paced modules completable around training schedules and on a phone between practices.'
     },
     development: {
       contentCreation:

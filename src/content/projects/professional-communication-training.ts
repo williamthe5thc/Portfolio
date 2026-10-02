@@ -22,7 +22,7 @@ const professionalCommunicationTraining: ProjectBase = {
   ],
   
   // Business Context
-  businessContext: "An academic project in advanced Storyline 360 authoring and scenario design. The topic is dating and interpersonal communication, and the design patterns carry over to soft-skills training at work, such as customer service, teamwork and professional relationships.",
+  businessContext: "Dating apps get people matched, but many users stall between matching and actually meeting. I designed this course, as an academic project, to help people date more effectively, from the first message to the first date. I originally built it with a dating app company in mind, which passed on it. The design patterns carry over to soft-skills training at work, such as customer service, teamwork and professional relationships.",
 
   // Instructional Design Process
   challenges: [

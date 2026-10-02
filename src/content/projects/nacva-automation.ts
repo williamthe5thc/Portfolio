@@ -5,7 +5,7 @@ import { getImagePath } from '@/utils';
 const nacvaAutomation: ProjectBase = {
   detailPage: true,
   id: 'nacva-automation',
-  title: 'Learning Technology Contractor - NACVA Professional Certification Systems',
+  title: 'NACVA Course Automation',
   cardTitle: 'NACVA Course Automation',
   role: 'Contractor at NACVA, placed through Robert Half. I wrote the automation scripts and turned recorded webinars into courses.',
   description: 'A contract role at the National Association of Certified Valuators and Analysts (NACVA). I turned recorded webinars into on-demand continuing-education courses and wrote scripts that automated each course\'s setup.',

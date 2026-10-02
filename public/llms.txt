@@ -37,12 +37,9 @@ WeYouth had curriculum and no way to deliver it. I ran the market research on le
 - Dates: February 2026 - Present
 - Status: In progress
 - Result: Platform recommendation adopted: the organization delivers its programs on the LMS I evaluated and selected
-- Result: Separate learner tracks live in the platform, each with its own sequence of modules, self-assessments, and evaluation instruments
 - Result: The organization is set up to enroll learners and run a season without a founder personally delivering every session, which is what limited delivery before
-- Result: Cohort-based enrollment configured so partner organizations join as groups instead of signing up one by one
-- Result: Per-module evaluation surveys collect formative data during delivery, so weak modules surface while cohorts are still running
-- Result: Program effectiveness data isn't available yet: cohorts are still in training, and measurement is scheduled for when the current seasons end
-- Result: Enrollment figures, course counts, and partner names are the organization's operating data and are deliberately not published here
+- Result: Per-module surveys are collecting feedback while cohorts run; effectiveness data comes when the current seasons end
+- Result: Enrollment figures, course counts and partner names are WeYouth's operating data, so they aren't published here
 - Case study: https://williamthe5thc.github.io/Portfolio/#/portfolio/weyouth-mpcc
 
 ### Articulate Storyline 360 Demonstration - Interactive E-learning Course
@@ -93,7 +90,7 @@ A classmate and I designed a self-paced Canvas course that teaches complete begi
 - Assessment & Evaluation Plan: https://williamthe5thc.github.io/Portfolio/case-studies/waltz-formative-evaluation.pdf
 - Module Blueprint & Storyboard: https://williamthe5thc.github.io/Portfolio/case-studies/waltz-blueprint-storyboard.pdf
 
-### Learning Technology Contractor - NACVA Professional Certification Systems
+### NACVA Course Automation
 
 A contract role at the National Association of Certified Valuators and Analysts (NACVA). I turned recorded webinars into on-demand continuing-education courses and wrote scripts that automated each course's setup.
 
