@@ -5,8 +5,10 @@ import { getImagePath } from '@/utils';
 /*
   Every claim here comes from the two documents this page links
   (public/case-studies/waltz-formative-evaluation.pdf and
-  waltz-blueprint-storyboard.pdf) or from Jordan's needs assessment for the
-  course, which is not published. Check any new line against them first.
+  waltz-blueprint-storyboard.pdf), from Jordan's needs assessment for the
+  course, which is not published, or from the Canvas course itself (Jordan's
+  export, Oct 2026). Where the built course differs from the plan, say what
+  was built. Check any new line against them first.
 */
 const waltzCourse: ProjectBase = {
   detailPage: true,
@@ -23,6 +25,37 @@ const waltzCourse: ProjectBase = {
   metrics: [
     { value: '4', label: 'Participants in small-group formative evaluation' },
     { value: '2', label: 'Modules tested' }
+  ],
+
+  screenshots: [
+    {
+      src: '/images/projects/waltz-modules.jpg',
+      alt: 'Canvas modules page. Module 1, Dance the Waltz: an overview, four step pages (Basic Box Step, Basic Progressive Step, Underarm Turn, Common Mistakes), then the assessments: Performance of the waltz (9 points), Quiz: Basic Steps of the Waltz (15 points) and Discussion: Struggles and Successes (4 points). Module 2, Impact of the Waltz, begins below.',
+      caption: 'Module 1: step pages first, then the assessments that check them.',
+      width: 520,
+      height: 585
+    },
+    {
+      src: '/images/projects/waltz-box-step-page.jpg',
+      alt: 'The Basic Box Step page: an introduction, a note that the course uses lead and follow because either role can be danced by anyone, a numbered six-step list for the lead beside a footprint diagram, and a 17-second lesson video.',
+      caption: 'A step page: written lead and follow instructions, a diagram and the lesson video.',
+      width: 1332,
+      height: 565
+    },
+    {
+      src: '/images/projects/waltz-quiz-feedback.jpg',
+      alt: 'A quiz question in Canvas: "When dancing the basic box step, the follow should do which of the following first?" Each wrong answer shows the feedback "To review the basic box step, refer to the box step page," with a link.',
+      caption: 'Quiz feedback: every wrong answer links back to the page to review.',
+      width: 640,
+      height: 324
+    },
+    {
+      src: '/images/projects/waltz-essay-rubric.jpg',
+      alt: 'The essay rubric in Canvas. Criteria rows for content, organization and style, each with ratings from Exceeds Standard (3 points) to No Marks (0 points) and a description of each level.',
+      caption: 'The essay rubric, part of the 70% summative weight.',
+      width: 582,
+      height: 644
+    }
   ],
 
   // Case Study Documentation
@@ -60,7 +93,7 @@ const waltzCourse: ProjectBase = {
     },
     design: {
       instructionalStrategy: "Module 1 builds from the box step to the progressive basic to the underarm turn with a partner, and ends with a video submission. Each step has a video and written instructions for the lead and the follow. The motivation plan follows the ARCS model: physical activity and varied lessons for attention, dancing in real settings for relevance, instructor feedback for confidence, and clear rubrics for satisfaction.",
-      assessmentStrategy: "Module 1 has a video of the learner dancing all three steps, graded by rubric with instructor feedback; an assignment to spot mistakes in a dance video; a four-question quiz with two attempts that points to the page to review after a wrong answer; and a discussion on challenges and successes. Module 2 has a 500 to 1,000 word essay on the history of the waltz, a concept map on the health benefits of dancing, and a discussion where learners share a waltz from a film, a piece of music or social life.",
+      assessmentStrategy: "Module 1 has a video of the learner dancing all three steps, graded by rubric with instructor feedback; a Common Mistakes page with a video of typical errors (the plan's graded assignment to spot mistakes in a dance video wasn't built); a five-question quiz with two attempts and a 15-minute limit, where each wrong answer links to the page to review; and a discussion on challenges and successes. Module 2 has a 500 to 1,000 word essay on the history of the waltz, a concept map on the health benefits of dancing, and a discussion where learners share a waltz from a film, a piece of music or social life. Discussions and the concept map count for 30% of the grade, and the video, essay and quiz for 70%.",
       universalDesign: "Captions and transcripts on every video, written instructions next to the videos, alt text on images, sans-serif type, good contrast and no tables. Learners who can't dance can instead film themselves talking another person through the steps."
     },
     development: {

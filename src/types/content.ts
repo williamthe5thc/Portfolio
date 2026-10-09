@@ -105,6 +105,19 @@ export interface ProjectBase {
     /** What a reader will actually find inside, e.g. "17-page module blueprint". */
     description?: string;
   }>;
+  /**
+   * Screenshots of the finished work, shown as "Inside the course". Crop out
+   * other people's names, student data and LMS chrome (e.g. Canvas's Student
+   * View bar) before adding one.
+   */
+  screenshots?: Array<{
+    /** Absolute public path; wrapped in getImagePath() at render time. */
+    src: string;
+    alt: string;
+    caption: string;
+    width: number;
+    height: number;
+  }>;
   methodology?: string;
   learningObjectives?: string[];
   challenges?: string[];

@@ -297,6 +297,35 @@ const ProjectDetailPage: React.FC = () => {
     });
   }
 
+  if (currentProject.screenshots && currentProject.screenshots.length > 0) {
+    beats.push({
+      title: 'Inside the course',
+      body: (
+        <ul className="grid gap-6 sm:grid-cols-2">
+          {currentProject.screenshots.map((shot) => (
+            <li key={shot.src}>
+              <figure>
+                {/* Opens full size: the screenshots hold small LMS text. */}
+                <a href={getImagePath(shot.src)} target="_blank" rel="noopener noreferrer">
+                  <img
+                    src={getImagePath(shot.src)}
+                    alt={shot.alt}
+                    width={shot.width}
+                    height={shot.height}
+                    loading="lazy"
+                    className="w-full h-auto rounded-lg border border-gray-200"
+                  />
+                  <NewTabHint />
+                </a>
+                <figcaption className="mt-2 text-sm text-text-secondary">{shot.caption}</figcaption>
+              </figure>
+            </li>
+          ))}
+        </ul>
+      ),
+    });
+  }
+
   if (currentProject.artifacts && currentProject.artifacts.length > 0) {
     beats.push({
       title: 'See the work',
