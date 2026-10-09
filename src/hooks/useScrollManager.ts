@@ -5,7 +5,7 @@
  * @module hooks
  *
  * Rules, applied on every location change:
- * - URL has a hash (#/about#design-process -> location.hash "#design-process"):
+ * - URL has a hash (/about/#design-process -> location.hash "#design-process"):
  *   scroll to the element with that id once it mounts (the page chunk may
  *   still be downloading).
  * - Back/forward (POP): restore the position the visitor left that entry at,
@@ -157,7 +157,7 @@ const waitForElement = (id: string, found: (element: HTMLElement) => void): (() 
 
 /**
  * Where a history entry's scroll position is stored. Entries without router
- * state (the first page of a visit, an edited URL, a plain href="#/..." link)
+ * state (the first page of a visit, an edited URL, a plain href="#section" link)
  * all share the key "default", so the path is part of the id; otherwise
  * returning to one page could restore another page's offset.
  */
@@ -240,7 +240,7 @@ export const useScrollManager = () => {
       scrollWindowTo(0);
     }
     // pathname/search/hash as well as key: an edited URL or a plain
-    // href="#/..." link arrives with no history state, so every such entry
+    // href="#section" link arrives with no history state, so every such entry
     // shares the key "default" and a key-only dependency would miss it.
   }, [location.key, location.pathname, location.search, location.hash]); // eslint-disable-line react-hooks/exhaustive-deps
 };

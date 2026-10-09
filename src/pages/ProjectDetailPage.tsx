@@ -181,7 +181,7 @@ const ProjectDetailPage: React.FC = () => {
 
       if (!currentProject && !navigationAttempted.current) {
         navigationAttempted.current = true;
-        navigate('/portfolio', { replace: true });
+        navigate('/portfolio/', { replace: true });
       }
     }
 
@@ -206,7 +206,7 @@ const ProjectDetailPage: React.FC = () => {
     if (typeof from === 'string' && from.startsWith('/portfolio')) {
       navigate(-1);
     } else {
-      navigate('/portfolio');
+      navigate('/portfolio/');
     }
   }, [navigate, location]);
 

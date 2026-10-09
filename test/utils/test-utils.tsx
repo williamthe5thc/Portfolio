@@ -1,7 +1,7 @@
 // test/utils/test-utils.tsx
 import React from 'react';
 import { render as rtlRender } from '@testing-library/react';
-import { HashRouter } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 
 interface WrapperProps {
@@ -16,9 +16,9 @@ interface CustomRenderOptions {
 const AllTheProviders: React.FC<WrapperProps> = ({ children }) => {
   return (
     <HelmetProvider>
-      <HashRouter>
+      <BrowserRouter>
         {children}
-      </HashRouter>
+      </BrowserRouter>
     </HelmetProvider>
   );
 };

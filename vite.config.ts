@@ -4,7 +4,8 @@
  *
  * The mode picks the base path: production deploys to
  * williamthe5thc.github.io/Portfolio/, staging to /Portfolio-Staging/, and the
- * dev server serves from /.
+ * dev server serves from /. Builds also write a static copy of every page
+ * (prerenderPages below).
  *
  * @example
  * ```bash
@@ -15,8 +16,9 @@
  * ```
  */
 
-import { defineConfig, type Plugin } from 'vite';
+import { createServer, defineConfig, type Plugin } from 'vite';
 import react from '@vitejs/plugin-react';
+import fs from 'fs';
 import path from 'path';
 
 /**
@@ -39,6 +41,56 @@ const noindexStaging = (mode: string): Plugin => ({
       : []
 });
 
+/**
+ * After the build, writes a static copy of every page: dist/about/index.html,
+ * dist/portfolio/<id>/index.html and so on, plus dist/404.html. GitHub Pages
+ * serves these files at the page URLs, so crawlers and AI tools that don't run
+ * JavaScript get each page's own title, description, canonical URL and text.
+ * The page text comes from src/content via scripts/prerender.ts, loaded
+ * through Vite the same way scripts/build-llms-txt.mjs loads it.
+ */
+const prerenderPages = (mode: string): Plugin => {
+  let root = '';
+  let outDir = '';
+  return {
+    name: 'prerender-pages',
+    apply: 'build',
+    configResolved(config) {
+      root = config.root;
+      outDir = path.resolve(config.root, config.build.outDir);
+    },
+    async closeBundle() {
+      const shellFile = path.join(outDir, 'index.html');
+      // closeBundle also runs after a failed build.
+      if (!fs.existsSync(shellFile)) return;
+      const shell = fs.readFileSync(shellFile, 'utf8');
+      const server = await createServer({
+        root,
+        mode,
+        logLevel: 'error',
+        server: { middlewareMode: true, hmr: false },
+        appType: 'custom'
+      });
+      try {
+        const content = await server.ssrLoadModule('/src/content/index.ts');
+        const { resumes } = await server.ssrLoadModule('/src/content/resumes.ts');
+        const { buildPages, renderPage, renderNotFound } = await server.ssrLoadModule('/scripts/prerender.ts');
+        const base = server.config.base;
+        const pages = buildPages({ ...content, resumes }, base);
+        for (const page of pages) {
+          const file = path.join(outDir, page.route, 'index.html');
+          fs.mkdirSync(path.dirname(file), { recursive: true });
+          fs.writeFileSync(file, renderPage(shell, page, content.siteConfig.siteUrl));
+        }
+        fs.writeFileSync(path.join(outDir, '404.html'), renderNotFound(shell, content.siteConfig.author, base));
+        console.log(`prerendered ${pages.length} pages and 404.html`);
+      } finally {
+        await server.close();
+      }
+    }
+  };
+};
+
 export default defineConfig(({ mode }) => {
   const base = mode === 'production'
     ? '/Portfolio/'
@@ -47,7 +99,7 @@ export default defineConfig(({ mode }) => {
       : '/';
 
   return {
-    plugins: [react(), noindexStaging(mode)],
+    plugins: [react(), noindexStaging(mode), prerenderPages(mode)],
     base,
     build: {
       outDir: 'dist',

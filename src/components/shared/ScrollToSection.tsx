@@ -1,7 +1,8 @@
 // src/components/shared/ScrollToSection.tsx
 import React from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useHref, useNavigate, useLocation } from 'react-router-dom';
 import { scrollToElement, scrollWindowTo } from '@/hooks/useScrollManager';
+import { isSamePath, routePath } from '@/utils/paths';
 
 interface ScrollToSectionProps {
   to: string;
@@ -16,15 +17,17 @@ export const ScrollToSection: React.FC<ScrollToSectionProps> = ({
 }) => {
   const navigate = useNavigate();
   const location = useLocation();
+  const target = routePath(to);
+  const href = useHref(target);
 
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     // Let the browser handle ctrl/cmd/shift/middle clicks via the real href.
     if (e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
     e.preventDefault();
-    const [rawPath, hash] = to.split('#');
+    const [rawPath, hash] = target.split('#');
     const path = rawPath || '/';
 
-    if (location.pathname === path) {
+    if (isSamePath(location.pathname, path)) {
       // Same page: nothing to navigate, just scroll (instant when the
       // visitor prefers reduced motion).
       const element = hash ? document.getElementById(hash) : null;
@@ -44,12 +47,11 @@ export const ScrollToSection: React.FC<ScrollToSectionProps> = ({
   /*
     The onClick handles normal clicks, but the href is still the real link for
     middle-click, ctrl+click, "open in new tab", "copy link address", and
-    crawlers. Under HashRouter a bare "/about" resolves against the origin
-    rather than the app - on GitHub Pages that is a 404 - so the fallback has
-    to carry the hash.
+    crawlers. useHref adds the deploy base: a bare "/about/" would resolve
+    against the origin rather than the app, which on GitHub Pages is a 404.
   */
   return (
-    <a href={`#${to}`} onClick={handleClick} className={className}>
+    <a href={href} onClick={handleClick} className={className}>
       {children}
     </a>
   );

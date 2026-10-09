@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  The app is one URL: it uses HashRouter, and crawlers drop everything after
-  "#", so /#/about and /#/portfolio are the same URL as the home page. The
-  case-study pages, demos and documents under public/ are real files with
-  their own URLs, so they are listed. Resume PDFs are left out on purpose:
-  they carry a phone number, and search results don't need them.
+  Every page of the app, at the trailing-slash URL GitHub Pages serves it
+  from (the build writes each one as <route>/index.html), then the case-study
+  pages, demos and documents under public/. Resume PDFs are left out on
+  purpose: they carry a phone number, and search results don't need them.
+  test/content/prerender.test.tsx fails if a page is missing here.
   No <lastmod>: a hand-written date goes stale and misstates freshness.
   robots.txt can't point here: crawlers only read it at the host root
   (williamthe5thc.github.io/robots.txt), not under /Portfolio/, so submit this
@@ -13,6 +13,45 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://williamthe5thc.github.io/Portfolio/</loc>
+  </url>
+  <url>
+    <loc>https://williamthe5thc.github.io/Portfolio/about/</loc>
+  </url>
+  <url>
+    <loc>https://williamthe5thc.github.io/Portfolio/portfolio/</loc>
+  </url>
+  <url>
+    <loc>https://williamthe5thc.github.io/Portfolio/portfolio/chartway-ficep-enhanced/</loc>
+  </url>
+  <url>
+    <loc>https://williamthe5thc.github.io/Portfolio/portfolio/weyouth-mpcc/</loc>
+  </url>
+  <url>
+    <loc>https://williamthe5thc.github.io/Portfolio/portfolio/professional-communication-training/</loc>
+  </url>
+  <url>
+    <loc>https://williamthe5thc.github.io/Portfolio/portfolio/ai-law-course/</loc>
+  </url>
+  <url>
+    <loc>https://williamthe5thc.github.io/Portfolio/portfolio/teaching-waltz/</loc>
+  </url>
+  <url>
+    <loc>https://williamthe5thc.github.io/Portfolio/portfolio/nacva-automation/</loc>
+  </url>
+  <url>
+    <loc>https://williamthe5thc.github.io/Portfolio/portfolio/variable-timer/</loc>
+  </url>
+  <url>
+    <loc>https://williamthe5thc.github.io/Portfolio/resume/</loc>
+  </url>
+  <url>
+    <loc>https://williamthe5thc.github.io/Portfolio/resume/instructional/</loc>
+  </url>
+  <url>
+    <loc>https://williamthe5thc.github.io/Portfolio/resume/technology/</loc>
+  </url>
+  <url>
+    <loc>https://williamthe5thc.github.io/Portfolio/contact/</loc>
   </url>
   <url>
     <loc>https://williamthe5thc.github.io/Portfolio/case-studies/ai-law/client-interview.html</loc>

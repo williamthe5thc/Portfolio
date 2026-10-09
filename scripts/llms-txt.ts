@@ -1,9 +1,9 @@
 // scripts/llms-txt.ts
 //
 // Builds public/llms.txt: a plain-text summary of the portfolio for AI
-// assistants and search tools (https://llmstxt.org). Most of them don't run
-// JavaScript, and the app is a single page behind "#/" routes, so without
-// this they see little more than the page title.
+// assistants and search tools (https://llmstxt.org), all in one file. Each
+// page also has a static copy with its own text (scripts/prerender.ts), but
+// this is the quickest way for a tool to read the whole portfolio.
 //
 // Everything comes from src/content, so the file can't drift from the site.
 // Regenerate after changing content:
@@ -51,7 +51,7 @@ export function buildLlmsTxt({ siteConfig, projects, experience, education }: Co
   lines.push(`> ${siteConfig.title.replace(`${siteConfig.author} - `, '')}. ${siteConfig.bio}`, '');
   lines.push(
     'This file summarizes the portfolio at ' + SITE + ' for AI assistants and search tools. ' +
-      'Project pages on the site need JavaScript; the documents and demos linked below are plain files.',
+      'Every page linked below also reads without JavaScript, and the documents and demos are plain files.',
     ''
   );
 
@@ -71,7 +71,7 @@ export function buildLlmsTxt({ siteConfig, projects, experience, education }: Co
     if (p.date) lines.push(`- Dates: ${p.date}`);
     lines.push(`- Status: ${STATUS[p.status] ?? p.status}`);
     for (const r of p.results ?? []) lines.push(`- Result: ${plain(r)}`);
-    lines.push(`- Case study: ${SITE}#/portfolio/${p.id}`);
+    lines.push(`- Case study: ${SITE}portfolio/${p.id}/`);
     if (p.demoUrl) lines.push(`- ${p.demoLabel ?? 'Interactive demo'}: ${publicUrl(p.demoUrl)}`);
     const docs = new Map<string, string>();
     if (p.projectUrl) docs.set(publicUrl(p.projectUrl), 'Document');
@@ -82,9 +82,9 @@ export function buildLlmsTxt({ siteConfig, projects, experience, education }: Co
 
   lines.push('## Links', '');
   lines.push(`- [Portfolio](${SITE})`);
-  lines.push(`- [About](${SITE}#/about)`);
-  lines.push(`- [Resumes](${SITE}#/resume)`);
-  lines.push(`- [Contact](${SITE}#/contact)`);
+  lines.push(`- [About](${SITE}about/)`);
+  lines.push(`- [Resumes](${SITE}resume/)`);
+  lines.push(`- [Contact](${SITE}contact/)`);
   lines.push('- [LinkedIn](https://linkedin.com/in/jordan-charles)');
   lines.push('- [GitHub](https://github.com/williamthe5thc)');
   lines.push('');

@@ -63,7 +63,7 @@ describe('ProjectDetailPage', () => {
         </MemoryRouter>
       );
 
-      expect(mockNavigate).toHaveBeenCalledWith('/portfolio', { replace: true });
+      expect(mockNavigate).toHaveBeenCalledWith('/portfolio/', { replace: true });
     });
 
     it.todo('handles missing project data gracefully (needs a fixture project the page can load)');
@@ -132,7 +132,7 @@ describe('ProjectDetailPage', () => {
       const backButton = screen.getByRole('button', { name: /back to portfolio/i });
       await user.click(backButton);
 
-      expect(mockNavigate).toHaveBeenCalledWith('/portfolio');
+      expect(mockNavigate).toHaveBeenCalledWith('/portfolio/');
     });
 
     it('displays the project document link when available', () => {

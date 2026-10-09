@@ -5,7 +5,7 @@
  * 
  * Features:
  * - One page_view per route change (pathname), including the first page
- * - Virtual page URLs, so GA4 reports can tell routes apart
+ * - Each route reported under its own path, so GA4 reports can tell them apart
  * - Error handling for missing GA
  * 
  * @requires react-router-dom - For location tracking
@@ -24,10 +24,9 @@ import { getBaseUrl } from '@/utils/paths';
 const TRACKING_ID = 'G-LG6RT04XLW';
 
 /**
- * GA4 builds its page path from page_location and ignores the #fragment,
- * where HashRouter keeps the route, so every route reported as "/Portfolio/".
- * Send the route as a path instead (e.g. /Portfolio/portfolio/teaching-waltz).
- * The URL is only a label inside GA, not a link anyone follows.
+ * The page's own URL without its #fragment (e.g.
+ * /Portfolio/portfolio/teaching-waltz/), built from the router location so it
+ * is this page's even if the visitor has already moved on when it is sent.
  */
 const virtualPageLocation = (pathname: string, search: string) =>
   `${window.location.origin}${getBaseUrl().replace(/\/$/, '')}${pathname}${search}`;

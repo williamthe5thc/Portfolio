@@ -15,13 +15,15 @@
  * - Meta tag management
  * 
  * Providers:
- * - HashRouter for GitHub Pages compatibility
+ * - BrowserRouter under the deploy base (/Portfolio/, /Portfolio-Staging/, /)
  * - HelmetProvider for meta tags
  * - MotionConfig so animations honour prefers-reduced-motion
  * - ErrorBoundary for global error handling
  * 
  * @notes
- * - Uses HashRouter for static hosting compatibility
+ * - Every page has a real URL (/Portfolio/about/). The build writes a static
+ *   copy of each one (see vite.config.ts), and index.html sends old
+ *   /Portfolio/#/about links to the path URL before the app starts
  * - Implements Strict Mode for development best practices
  * - Provides global error handling
  */
@@ -29,7 +31,7 @@
 // src/main.tsx
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { HashRouter } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import { MotionConfig, MotionGlobalConfig } from 'framer-motion';
 import { ErrorBoundary } from '@/components/shared';
@@ -61,6 +63,15 @@ if (typeof window.matchMedia === 'function') {
   reducedMotion.addEventListener?.('change', applyMotionPreference);
 }
 
+/*
+  The deploy base with its trailing slash ("/Portfolio/"), not the usual
+  "/Portfolio": with the slash, a link to "/" renders as "/Portfolio/", the
+  URL GitHub Pages serves the home page at, instead of "/Portfolio", which it
+  only redirects. Routes still match with or without their own slash.
+*/
+const basename = import.meta.env.BASE_URL || '/';
+
+// render() replaces the static copy of the page the build put in #root.
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
@@ -69,7 +80,7 @@ root.render(
   <React.StrictMode>
     <ErrorBoundary>
       <HelmetProvider>
-        <HashRouter>
+        <BrowserRouter basename={basename}>
           {/*
             reducedMotion="user": when the visitor's OS asks for reduced
             motion, framer-motion drops transform animations (slides, lifts,
@@ -80,7 +91,7 @@ root.render(
               <App />
             </React.Suspense>
           </MotionConfig>
-        </HashRouter>
+        </BrowserRouter>
       </HelmetProvider>
     </ErrorBoundary>
   </React.StrictMode>

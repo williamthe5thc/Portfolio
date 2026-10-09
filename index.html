@@ -3,18 +3,61 @@
   <head>
     <meta charset="UTF-8" />
     <!--
-      Relative paths, not root-relative. Vite leaves "./" as written, and it
-      resolves against the page URL; with HashRouter the document is always
-      served from the deploy base, so these work under /Portfolio/ and
-      /Portfolio-Staging/ alike. The previous "/vite.svg" was the starter
-      template's icon: it had no base prefix and the file does not exist, so
-      it 404'd on both deployments.
+      Old links put the route after "#/" (/Portfolio/#/portfolio/teaching-waltz,
+      on resumes, LinkedIn and bookmarks). Send them to the page's real URL
+      (/Portfolio/portfolio/teaching-waltz/) before anything else loads. The
+      route in the fragment wins over the path, so this also works when an old
+      fragment lands on a page's static copy or on 404.html. A query inside the
+      fragment (#/portfolio?category=id) and a section after it
+      (#/about#design-process) move across with it. %BASE_URL% is the deploy
+      base, filled in by Vite.
     -->
-    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
-    <link rel="icon" type="image/png" sizes="96x96" href="./favicon-96x96.png" />
-    <link rel="shortcut icon" href="./favicon.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png" />
-    <link rel="manifest" href="./site.webmanifest" />
+    <script>
+      (function () {
+        var base = '%BASE_URL%';
+        var l = window.location;
+        if (l.hash.indexOf('#/') === 0) {
+          var route = l.hash.slice(2);
+          var hashAt = route.indexOf('#');
+          var hash = hashAt < 0 ? '' : route.slice(hashAt);
+          if (hashAt >= 0) route = route.slice(0, hashAt);
+          var queryAt = route.indexOf('?');
+          var search = queryAt < 0 ? l.search : route.slice(queryAt);
+          var path = queryAt < 0 ? route : route.slice(0, queryAt);
+          if (path && !/\/$/.test(path)) path += '/';
+          l.replace(base + path + search + hash);
+        } else if (l.pathname + '/' === base) {
+          // "/Portfolio" without the slash is outside the router's base.
+          l.replace(base + l.search + l.hash);
+        }
+      })();
+    </script>
+    <!--
+      The build puts a plain copy of each page's text in #root for crawlers
+      and tools that don't run JavaScript (see vite.config.ts). Where the app
+      will run, keep that copy hidden until React replaces it, so visitors
+      don't see unstyled text flash up first. If the app hasn't started after
+      4 seconds, show the copy after all.
+    -->
+    <style>.app-pending #root > [data-static-page] { visibility: hidden; }</style>
+    <script>
+      if ('noModule' in document.createElement('script')) {
+        document.documentElement.classList.add('app-pending');
+        setTimeout(function () {
+          document.documentElement.classList.remove('app-pending');
+        }, 4000);
+      }
+    </script>
+    <!--
+      Root-relative, so Vite adds the deploy base (/Portfolio/,
+      /Portfolio-Staging/). Relative "./" paths broke once pages had their
+      own URLs: on /Portfolio/about/ they pointed into /Portfolio/about/.
+    -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
     <meta name="theme-color" content="#ffffff" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!--
@@ -30,12 +73,11 @@
 
     <!--
       Static share metadata. LinkedIn, Slack, Teams and iMessage previews do
-      not run JavaScript, and the #/ route never reaches the server, so this
-      head is all they ever see for any link to the site. data-rh marks the
+      not run JavaScript, so this head is what they see. These are the home
+      page's values; the build gives each page's static copy its own title,
+      description, canonical and og:url (vite.config.ts). data-rh marks the
       tags as Helmet's: once the app runs, the SEO component replaces them
       with the current page's values instead of adding duplicates.
-      Canonical stays static (no data-rh): crawlers drop the fragment, so the
-      root is the canonical URL for every route.
     -->
     <meta data-rh="true" name="description" content="Portfolio of W. Jordan Charles: instructional design, learning experience design and learning technology. Case studies, interactive demos and resumes." />
     <meta data-rh="true" name="author" content="W. Jordan Charles" />
@@ -53,7 +95,7 @@
     <meta data-rh="true" name="twitter:description" content="Portfolio of W. Jordan Charles: instructional design, learning experience design and learning technology. Case studies, interactive demos and resumes." />
     <meta data-rh="true" name="twitter:image" content="https://williamthe5thc.github.io/Portfolio/og-image.jpg" />
     <meta data-rh="true" name="twitter:image:alt" content="W. Jordan Charles, Instructional Designer. Needs analysis, course design, LMS implementation. M.Ed., University of Utah." />
-    <link rel="canonical" href="https://williamthe5thc.github.io/Portfolio/" />
+    <link data-rh="true" rel="canonical" href="https://williamthe5thc.github.io/Portfolio/" />
 
     <!-- Built only from facts in src/content (siteData.ts, education.ts); keep in step with them. -->
     <script type="application/ld+json">
@@ -103,24 +145,7 @@
     </script>
   </head>
   <body>
-    <!--
-      For crawlers and AI tools that don't run JavaScript. The bio is a copy of
-      siteConfig.bio in src/content/siteData.ts; test/content/llms-txt.test.ts
-      fails if the two differ.
-    -->
-    <noscript>
-      <h1>W. Jordan Charles, Instructional Designer &amp; Learning Technologist</h1>
-      <p>I'm an instructional designer who works on both the learning design and the technology that delivers it. At WeYouth, a youth nonprofit, I chose the learning platform and build and run its courses. Before that I ran a needs analysis for Chartway Credit Union's certification program, automated course setup at NACVA, and helped build a graduate AI and law course in Canvas. I have a psychology research background and an M.Ed. in Instructional Design and Educational Technology from the University of Utah.</p>
-      <p>This site needs JavaScript. A plain-text summary of every project is at
-        <a href="./llms.txt">llms.txt</a>. Documents that open without JavaScript:
-        <a href="./case-studies/ficep-needs-analysis.pdf">FiCEP needs analysis</a>,
-        <a href="./demos/ai-law-course/index.html">AI &amp; Law design record</a>,
-        <a href="./case-studies/waltz-formative-evaluation.pdf">Waltz evaluation</a>,
-        <a href="./demos/professional-communication-training/story.html">Storyline course</a>,
-        <a href="./demos/nacva-automation/index.html">NACVA automation demo</a>.</p>
-      <p><a href="https://linkedin.com/in/jordan-charles">LinkedIn</a> &middot;
-        <a href="https://github.com/williamthe5thc">GitHub</a></p>
-    </noscript>
+    <!-- The build fills #root with a plain copy of the page's text. -->
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

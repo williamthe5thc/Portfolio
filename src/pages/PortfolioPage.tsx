@@ -19,7 +19,7 @@ const PortfolioPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
 
   /*
-    The active filter lives in the URL (#/portfolio?category=id), not in
+    The active filter lives in the URL (/portfolio/?category=id), not in
     component state. That is what lets "Back to Portfolio" and the browser's
     Back button return to the list the visitor was actually browsing, and
     makes a filtered view linkable. replace: true keeps filter clicks out of

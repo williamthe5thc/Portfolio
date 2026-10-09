@@ -164,7 +164,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
               buttons above sit over it (relative z-10).
             */
             <Link
-              to={`/portfolio/${project.id}`}
+              to={`/portfolio/${project.id}/`}
               state={{ from: location.pathname + location.search }}
               className={`${outlineAction} after:absolute after:inset-0 after:rounded-xl after:content-['']`}
             >

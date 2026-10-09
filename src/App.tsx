@@ -186,8 +186,8 @@ const App: React.FC = () => {
   }, [location.pathname]);
 
   const skipToContent = (event: React.MouseEvent<HTMLAnchorElement>) => {
-    // Under HashRouter a real "#main-content" navigation would be read as a
-    // route and render the 404 page, so the skip link only moves focus.
+    // Moving focus is all the skip link needs. Following "#main-content"
+    // would add a history entry for it and hand the scroll to the router.
     event.preventDefault();
     mainRef.current?.focus();
   };
@@ -236,8 +236,8 @@ const App: React.FC = () => {
             <Route path="/resume/instructional" element={renderWithLoadingState(InstructionalDesignResume)} />
             <Route path="/resume/technology" element={renderWithLoadingState(LearningTechnologyResume)} />
             {/* The software and academic resumes were merged into these two; old links still land somewhere useful. */}
-            <Route path="/resume/software" element={<Navigate to="/resume/technology" replace />} />
-            <Route path="/resume/academic" element={<Navigate to="/resume/instructional" replace />} />
+            <Route path="/resume/software" element={<Navigate to="/resume/technology/" replace />} />
+            <Route path="/resume/academic" element={<Navigate to="/resume/instructional/" replace />} />
             <Route path="*" element={renderWithLoadingState(NotFoundPage)} />
           </Routes>
         </ErrorBoundary>

@@ -38,6 +38,7 @@ import { motion } from 'framer-motion';
 import type { LucideIcon } from 'lucide-react';
 import { Loader2 } from 'lucide-react';
 import { useAnalytics } from '@/hooks/useAnalytics';
+import { routePath } from '@/utils/paths';
 
 export interface ButtonProps {
   variant?: 'primary' | 'secondary' | 'outline' | 'ghost' | 'danger' | 'custom';
@@ -155,10 +156,10 @@ export const Button: React.FC<ButtonProps> = ({
   //
   // A leading slash alone is not enough to identify an in-app route. Asset
   // paths are absolute too - getImagePath() returns "/Portfolio-Staging/
-  // documents/Coding_Resume.pdf" - and handing one of those to <Link> under
-  // HashRouter turns a PDF download into "#/Portfolio-Staging/documents/
-  // Coding_Resume.pdf", a route that matches nothing and renders the 404 page.
-  // A trailing file extension is what separates a file from a route.
+  // documents/Coding_Resume.pdf", which already carries the deploy base - and
+  // handing one of those to <Link> adds the base again and opens the app's
+  // 404 page instead of the PDF. A trailing file extension is what separates
+  // a file from a route.
   const isFileLink = /\.[a-z0-9]{2,5}(?:$|[?#])/i.test(href ?? '');
 
   // An explicit rel wins; otherwise a new tab always gets noopener noreferrer.
@@ -178,7 +179,7 @@ export const Button: React.FC<ButtonProps> = ({
   if (href?.startsWith('/') && !isFileLink) {
     return (
       <Link
-        to={href}
+        to={routePath(href)}
         target={target}
         rel={relFor(target)}
         className={commonClassNames}

@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import { ArrowRight, Download, ExternalLink } from 'lucide-react';
 import { Button, BaseCard } from '@/components/ui';
 import { fadeInUp } from '@/lib/animations';
-import { documentHref, getImagePath } from '@/utils';
+import { documentHref, getImagePath, routePath } from '@/utils';
 import type { ResumeData, ResumeEntry } from '@/content/resumes';
 
 export interface ResumeTemplateProps {
@@ -27,7 +27,7 @@ const EntryTitle: React.FC<{ title: string; url?: string }> = ({ title, url }) =
 
   if (url.startsWith('/')) {
     return (
-      <Link to={url} className={linkClass}>
+      <Link to={routePath(url)} className={linkClass}>
         {title}
         <ArrowRight className={iconClass} aria-hidden="true" />
       </Link>

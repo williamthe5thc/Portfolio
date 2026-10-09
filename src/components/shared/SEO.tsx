@@ -20,7 +20,7 @@ import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useLocation } from 'react-router-dom';
 import { siteConfig } from '@/content';
-import { getBaseUrl } from '@/utils/paths';
+import { getBaseUrl, routePath } from '@/utils/paths';
 
 interface OpenGraph {
   title: string;
@@ -80,11 +80,12 @@ const absoluteAssetUrl = (path: string): string => {
 };
 
 /**
- * Shareable URL for the current view. The site uses HashRouter, so the route
- * lives after "#/": a path URL such as /Portfolio/about is a GitHub Pages 404.
+ * Canonical and shareable URL for the current page, in the trailing-slash
+ * form GitHub Pages serves it at (siteUrl + "/about/"). The query and
+ * fragment are left out: a filtered portfolio is still the portfolio page.
+ * The build writes the same URL into each page's static copy.
  */
-const shareUrl = (pathname: string): string =>
-  pathname === '/' ? `${siteConfig.siteUrl}/` : `${siteConfig.siteUrl}/#${pathname}`;
+const pageUrl = (pathname: string): string => `${siteConfig.siteUrl}${routePath(pathname)}`;
 
 export const SEO: React.FC<SEOProps> = ({ 
   title, 
@@ -103,7 +104,7 @@ export const SEO: React.FC<SEOProps> = ({
     title: title ? `${title} | ${siteConfig.author}` : siteConfig.title,
     description: description || DEFAULT_DESCRIPTION,
     image: absoluteAssetUrl(image || siteConfig.defaultImage),
-    url: shareUrl(pathname),
+    url: pageUrl(pathname),
   };
 
   const openGraphData: OpenGraph = {
@@ -128,15 +129,14 @@ export const SEO: React.FC<SEOProps> = ({
   const usesDefaultImage = !image && !openGraph?.image;
 
   /*
-    No <link rel="canonical"> here. Crawlers drop the #/ fragment, so every
-    route is the same document to them, and the per-route canonical this used
-    to emit (siteUrl + pathname) pointed at path URLs that 404. index.html
-    carries a single static canonical for the site root.
+    The canonical tag in index.html and in each page's static copy carries
+    data-rh, so this one replaces it rather than adding a second.
   */
   return (
     <Helmet
       htmlAttributes={{ lang: language }}
       title={seo.title}
+      link={[{ rel: 'canonical', href: seo.url }]}
       meta={[
         { name: 'description', content: seo.description },
         { name: 'author', content: siteConfig.author },

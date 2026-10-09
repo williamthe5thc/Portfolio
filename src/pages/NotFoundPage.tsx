@@ -68,25 +68,25 @@ const NotFoundPage: React.FC = () => {
             </p>
             <div className="flex flex-wrap justify-center gap-4 text-sm">
               <Link
-                to="/portfolio"
+                to="/portfolio/"
                 className="text-primary-600 hover:text-primary-700 transition-colors"
               >
                 View Portfolio
               </Link>
               <Link
-                to="/about"
+                to="/about/"
                 className="text-primary-600 hover:text-primary-700 transition-colors"
               >
                 About Me
               </Link>
               <Link
-                to="/resume"
+                to="/resume/"
                 className="text-primary-600 hover:text-primary-700 transition-colors"
               >
                 Resume
               </Link>
               <Link
-                to="/contact"
+                to="/contact/"
                 className="text-primary-600 hover:text-primary-700 transition-colors"
               >
                 Contact

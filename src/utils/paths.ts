@@ -47,3 +47,27 @@ export const getImagePath = (path: string): string => {
 export const getAssetPath = (path: string): string => {
   return getImagePath(path);
 };
+
+/**
+ * An in-app route in the form every page URL takes: with a trailing slash.
+ * Each page is built as <route>/index.html, which GitHub Pages serves at
+ * "/Portfolio/about/" and reaches from "/Portfolio/about" only by a redirect,
+ * so links, canonical URLs and the sitemap all use the slash form. The router
+ * matches both.
+ *
+ * @example
+ * routePath('/about')                  // => '/about/'
+ * routePath('/about#design-process')   // => '/about/#design-process'
+ * routePath('/portfolio?category=id')  // => '/portfolio/?category=id'
+ * routePath('/')                       // => '/'
+ */
+export const routePath = (to: string): string => {
+  const [, path, rest] = /^([^?#]*)(.*)$/s.exec(to) ?? ['', to, ''];
+  // Leave alone: bare "?x"/"#x", paths that already end in "/", and files.
+  if (!path || path.endsWith('/') || /\.[a-z0-9]+$/i.test(path)) return to;
+  return `${path}/${rest}`;
+};
+
+/** True when two router paths name the same page, with or without the slash. */
+export const isSamePath = (a: string, b: string): boolean =>
+  a.replace(/\/+$/, '') === b.replace(/\/+$/, '');

@@ -109,10 +109,18 @@ To check everything except the push:
 node scripts/deploy.mjs production --dry-run
 ```
 
-GitHub Pages hosting notes: the app uses `HashRouter`, so every page lives
-under `#/`. `public/404.html` sends path-style links such as `/Portfolio/about`
-to `/Portfolio/#/about`. `public/.nojekyll` stops Pages running Jekyll, which
-would drop any file whose name starts with `_`.
+GitHub Pages hosting notes: every page has its own URL, such as
+`/Portfolio/about/` or `/Portfolio/portfolio/ai-law-course/`. The build writes
+a static copy of each page to `dist/<route>/index.html`, with the page's own
+title, description, canonical URL and text, so search engines and AI tools
+that don't run JavaScript can read it; the app replaces the text when it
+starts. The copies come from `src/content` through `scripts/prerender.ts`
+(the `prerender-pages` plugin in `vite.config.ts`). The build also writes
+`dist/404.html`, which Pages serves for any URL it has no file for: it starts
+the app, which shows its not-found page. Old links with the route after `#/`
+(`/Portfolio/#/portfolio/teaching-waltz`, on resumes and LinkedIn) are sent to
+the page URL by a script at the top of `index.html`. `public/.nojekyll` stops
+Pages running Jekyll, which would drop any file whose name starts with `_`.
 
 ## 💻 Tech Stack
 
@@ -204,8 +212,10 @@ To update the portfolio content:
 
    - After changing anything in `src/content`, regenerate `public/llms.txt`
      (the plain-text summary for AI assistants) with
-     `node scripts/build-llms-txt.mjs`. A test fails until you do. The bio
-     is also copied into the `<noscript>` block in `index.html`.
+     `node scripts/build-llms-txt.mjs`. A test fails until you do. Each
+     page's static copy is rebuilt from `src/content` on every build. If you
+     add a page or project, add its URL to `public/sitemap.xml` (a test
+     checks).
 
 2. **Resumes**
    - Both resumes (the full instructional design resume and the learning

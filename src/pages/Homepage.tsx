@@ -7,6 +7,7 @@ import { Button, BaseCard } from '@/components/ui';
 import { fadeInUp, staggerContainer } from '@/lib/animations';
 import { Link } from 'react-router-dom';
 import { capabilities, featuredProjects } from '@/content';
+import { routePath } from '@/utils';
 
 const HomePage: React.FC = () => {
 
@@ -156,7 +157,7 @@ const HomePage: React.FC = () => {
                         {point.to && (
                           <>
                             {' '}
-                            <Link to={point.to} className="font-medium text-primary-600 hover:text-primary-700 underline whitespace-nowrap">
+                            <Link to={routePath(point.to)} className="font-medium text-primary-600 hover:text-primary-700 underline whitespace-nowrap">
                               See the work
                               <span className="sr-only">: {point.text}</span>
                             </Link>

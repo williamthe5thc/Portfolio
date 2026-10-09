@@ -34,6 +34,7 @@ import { NavLink, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Home, User, Briefcase, FileText, Mail, Menu, X } from 'lucide-react';
 import { siteConfig } from '@/content';
+import { routePath } from '@/utils/paths';
 
 /*
   Named imports and a local map, not `import * as Icons` with Icons[name]:
@@ -131,7 +132,7 @@ export const Navigation: React.FC<NavigationProps> = ({
               return (
                 <NavLink
                   key={path}
-                  to={path}
+                  to={routePath(path)}
                   end={end}
                   className={({ isActive }) => `
                     px-2 lg:px-3 py-2 rounded-md flex items-center gap-2
@@ -193,7 +194,7 @@ export const Navigation: React.FC<NavigationProps> = ({
                   return (
                     <NavLink
                       key={path}
-                      to={path}
+                      to={routePath(path)}
                       end={end}
                       onClick={() => setIsMenuOpen(false)}
                       className={({ isActive }) => `

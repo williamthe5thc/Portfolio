@@ -37,7 +37,8 @@ try {
 }
 
 const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
-const href = url => (url.startsWith('/') ? `${SITE}#${url}` : url);
+// Site routes as page URLs: /portfolio/x -> <SITE>portfolio/x/.
+const href = url => (url.startsWith('/') ? `${SITE}${url.slice(1).replace(/\/?$/, '/')}` : url);
 
 const MAC_CARLITO = '/System/Library/PrivateFrameworks/FontServices.framework/Versions/A/Resources/Fonts/ApplicationSupport/Carlito.ttc';
 

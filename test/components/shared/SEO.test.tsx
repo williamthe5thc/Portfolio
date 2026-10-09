@@ -81,9 +81,9 @@ describe('SEO', () => {
           .toBe(siteConfig.title);
         expect(document.querySelector('meta[property="og:type"]')?.getAttribute('content'))
           .toBe('website');
-        // HashRouter: the shareable URL carries the route after #.
+        // The page's own URL, in the trailing-slash form Pages serves it at.
         expect(document.querySelector('meta[property="og:url"]')?.getAttribute('content'))
-          .toBe(`${siteConfig.siteUrl}/#${mockLocation.pathname}`);
+          .toBe(`${siteConfig.siteUrl}${mockLocation.pathname}/`);
       });
     });
 
@@ -187,15 +187,40 @@ describe('SEO', () => {
   });
 
   describe('Canonical Links', () => {
-    it('does not emit a per-route canonical', async () => {
-      // Crawlers drop the #/ fragment, and siteUrl + pathname URLs 404 on
-      // GitHub Pages; index.html carries the one static canonical.
+    it('points at the page URL with a trailing slash, without query or fragment', async () => {
+      (useLocation as jest.Mock).mockReturnValue({
+        ...mockLocation,
+        pathname: '/portfolio',
+        search: '?category=id',
+        hash: '#top'
+      });
       renderWithHelmet(<SEO />);
 
       await waitFor(() => {
-        expect(document.title).toBe(siteConfig.title);
+        expect(document.querySelectorAll('link[rel="canonical"]')).toHaveLength(1);
+        expect(document.querySelector('link[rel="canonical"]')?.getAttribute('href'))
+          .toBe(`${siteConfig.siteUrl}/portfolio/`);
       });
-      expect(document.querySelector('link[rel="canonical"]')).toBeNull();
+    });
+
+    it('uses the site root for the home page', async () => {
+      (useLocation as jest.Mock).mockReturnValue({ ...mockLocation, pathname: '/' });
+      renderWithHelmet(<SEO />);
+
+      await waitFor(() => {
+        expect(document.querySelector('link[rel="canonical"]')?.getAttribute('href'))
+          .toBe(`${siteConfig.siteUrl}/`);
+      });
+    });
+
+    it('keeps a path that already ends in a slash as it is', async () => {
+      (useLocation as jest.Mock).mockReturnValue({ ...mockLocation, pathname: '/about/' });
+      renderWithHelmet(<SEO />);
+
+      await waitFor(() => {
+        expect(document.querySelector('link[rel="canonical"]')?.getAttribute('href'))
+          .toBe(`${siteConfig.siteUrl}/about/`);
+      });
     });
   });
 
