@@ -69,7 +69,12 @@ const prerenderPages = (mode: string): Plugin => {
         mode,
         logLevel: 'error',
         server: { middlewareMode: true, hmr: false },
-        appType: 'custom'
+        appType: 'custom',
+        // ssrLoadModule needs no pre-bundled deps. Without this the server
+        // starts an esbuild dependency scan in the background that can still
+        // be running when the process exits, and esbuild then crashes with a
+        // "goroutine deadlock" dump in the terminal.
+        optimizeDeps: { noDiscovery: true, include: [] }
       });
       try {
         const content = await server.ssrLoadModule('/src/content/index.ts');

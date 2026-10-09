@@ -84,9 +84,22 @@ git(['init', '-q'], DIST);
 git(['add', '-A'], DIST);
 git([...AUTHOR, '-c', 'commit.gpgsign=false', 'commit', '-q', '-m', `Deploy ${mode}`], DIST);
 
+// dist/ is a repo of its own, so it doesn't see this repo's local git
+// settings. Pass on the GitHub credential settings, which pick the account
+// that owns the portfolio when this computer has more than one signed in.
+function credentialFlags() {
+  const flags = [];
+  for (const key of ['credential.https://github.com.helper', 'credential.https://github.com.username']) {
+    const result = spawnSync('git', ['config', '--local', '--get-all', key], { cwd: ROOT, encoding: 'utf8' });
+    if (result.status !== 0) continue;
+    for (const value of result.stdout.split('\n').slice(0, -1)) flags.push('-c', `${key}=${value}`);
+  }
+  return flags;
+}
+
 if (dryRun) {
   console.log(`\nDry run: built and committed in dist/, not pushed. Would publish to ${target.url}\n`);
 } else {
-  git(['push', '-f', '-q', target.repo, 'HEAD:gh-pages'], DIST);
+  git([...credentialFlags(), 'push', '-f', '-q', target.repo, 'HEAD:gh-pages'], DIST);
   console.log(`\nPublished to ${target.url} (GitHub Pages can take a minute or two to update).\n`);
 }
