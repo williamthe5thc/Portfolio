@@ -42,7 +42,7 @@ export const capabilities: Capability[] = [
     title: 'Support and troubleshooting',
     points: [
       { text: "Technical support for WeYouth's administrators, learners and coaches", to: '/portfolio/weyouth-mpcc' },
-      { text: 'Tested video, iFrames, JavaScript and an AI chatbot in a Canvas test module before learners saw them', to: '/portfolio/ai-law-course' },
+      { text: 'Tested video, iFrames, JavaScript and an AI chatbot in a Canvas test module before adding them to a course', to: '/portfolio/ai-law-course' },
       { text: 'Three years on a help desk, explaining technical problems in plain language', to: '/resume/technology' }
     ]
   },
@@ -56,7 +56,7 @@ export const capabilities: Capability[] = [
   {
     title: 'AI in learning',
     points: [
-      { text: 'A graduate AI course where learners name the tool and submit their prompt instead of being told not to use AI', to: '/portfolio/ai-law-course' },
+      { text: 'An assessment plan for a graduate AI course where learners name the tool and submit their prompt instead of being told not to use AI', to: '/portfolio/ai-law-course' },
       { text: 'A VR interview-practice simulator on a local AI model (in progress)' }
     ]
   },

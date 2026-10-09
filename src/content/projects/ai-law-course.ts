@@ -7,14 +7,20 @@ import { getImagePath } from '@/utils';
   not log individual ownership as we went, so the honest description is "we
   built it", plus the specifics I can stand behind (most of the Canvas build,
   and the Week 5 assessment design).
+
+  The course was designed and built but never taught while Jordan was in the
+  program (no students enrolled). Describe it as designed, not delivered: the
+  grading numbers come from the syllabus, not from a course that ran. People
+  (Jordan, Oct 2026): a law professor, a separate subject matter expert, a
+  two-person capstone committee, and three student designers. Don't name them.
 */
 const aiLawCourse: ProjectBase = {
   detailPage: true,
   id: 'ai-law-course',
   title: 'Graduate Curriculum Design Project - AI & Law Course',
   cardTitle: 'AI & Law Graduate Course',
-  description: 'A three-person graduate capstone team designed and built this ten-module AI and Law course for Master of Legal Studies students, built in Canvas. We ran a client interview with the faculty sponsor, developed personas, ran a cognitive walkthrough on our own design, and validated it with a stakeholder review before handover.',
-  longDescription: `A graduate capstone, built by a team of three for the University of Utah's S.J. Quinney College of Law. The job was to teach artificial intelligence to Master of Legal Studies students without technical backgrounds, working with a faculty sponsor who was both our client and our subject matter expert. We used a competency-based design to build ten modules for a 13-week online course, covering AI foundations, prompt engineering, legal research, media, and professional ethics. Students were assessed through five quizzes, five discussions, four assignments, a midterm project and a final project.`,
+  description: 'A three-person graduate capstone team designed and built this ten-module AI and Law course for Master of Legal Studies students, built in Canvas. We ran a client interview with the faculty sponsor, developed personas, ran a cognitive walkthrough on our own design, and validated it with a stakeholder review before handover. The course was not taught while I was in the program.',
+  longDescription: `A graduate capstone, built by a team of three for the University of Utah's S.J. Quinney College of Law. The job was to teach artificial intelligence to Master of Legal Studies students without technical backgrounds, working with a faculty sponsor as our client, a separate subject matter expert, and a two-person capstone committee. We used a competency-based design to build ten modules for a 13-week online course, covering AI foundations, prompt engineering, legal research, media, and professional ethics. The syllabus assesses learners through five quizzes, five discussions, four assignments, a midterm project and a final project. The course was built in Canvas but not taught while I was in the program.`,
   image: getImagePath('/images/thumbnails/ai-law-course.webp'),
   imageAlt: 'Title graphic: Graduate Course Overview - AI & Law: Bridging Technology and Legal Expertise',
   category: 'id',
@@ -32,7 +38,7 @@ const aiLawCourse: ProjectBase = {
   date: 'Fall 2024 - Spring 2025',
   metrics: [
     { value: '10', label: 'Graduate modules designed' },
-    { value: '16', label: 'Graded assessments across the semester' }
+    { value: '16', label: 'Graded pieces in the course syllabus' }
   ],
 
   // Demo URL for interactive preview
@@ -41,6 +47,38 @@ const aiLawCourse: ProjectBase = {
   // the design record. Calling that an "interactive demo" would oversell it.
   demoLabel: 'View design record',
   demoDescription: 'The course lives in Canvas and cannot be linked publicly, so this opens the design record instead.',
+
+  // From Student View in the Canvas course, Oct 2026; no names in any crop.
+  screenshots: [
+    {
+      src: '/images/projects/ai-law-module1-welcome.jpg',
+      alt: 'Module 1 Welcome Page in Canvas: a "Welcome to Module 1" banner, the heading "The Evolution of AI - Foundations and Fundamentals" and an introduction to the module.',
+      caption: 'Each module opens with a welcome page that sets out what it covers.',
+      width: 1016,
+      height: 466
+    },
+    {
+      src: '/images/projects/ai-law-module2-objectives.jpg',
+      alt: 'Module 2 page listing learning objectives for prompt engineering, such as creating zero-shot, one-shot and few-shot prompts, followed by the learning activities that meet them.',
+      caption: 'Objectives first, then the activities that meet them (Module 2, basic prompting).',
+      width: 1016,
+      height: 547
+    },
+    {
+      src: '/images/projects/ai-law-module-structure.jpg',
+      alt: 'Canvas modules list showing the end of Module 5, with Practice and Assess sections, and the start of Module 6, Advanced Prompting for Working Professionals, with a welcome page and a Learn section.',
+      caption: 'Every module follows the same Learn, Practice, Assess pattern.',
+      width: 738,
+      height: 636
+    },
+    {
+      src: '/images/projects/ai-law-rise-lesson.jpg',
+      alt: 'Opening screen of an interactive lesson: "After this learning, you will be able to: define advanced prompting strategies, identify when to use advanced prompting techniques, create advanced prompts for specific tasks."',
+      caption: 'An interactive lesson embedded in Canvas for the advanced prompting week.',
+      width: 880,
+      height: 240
+    }
+  ],
 
   /*
     Coursework artifacts, converted to web pages and redacted. The faculty
@@ -87,15 +125,15 @@ const aiLawCourse: ProjectBase = {
 
   solutions: [
     'Sequenced prompting from basic (Module 2) to advanced (Module 6), then applied it to ethics (Module 7) and legal tools (Modules 5 and 8)',
-    'An AI use policy that asks learners to name the tool and submit their prompt, instead of banning AI',
-    'Low-stakes quizzes about every other week with the lowest score dropped, so most of the grade (80%) rests on applied work: assignments, a midterm project and a final portfolio',
-    'A final portfolio the students built across the semester, with assignments in Modules 4, 7, 8 and 9 feeding into it',
-    'I set up a test module in Canvas to try embeds (video, iFrames, JavaScript, an AI chatbot) before they went in front of learners',
+    'In my assessment plan for the advanced prompting week, an AI use policy that asks learners to name the tool and submit their prompt, instead of banning AI',
+    'A syllabus with low-stakes quizzes about every other week and the lowest score dropped, so most of the grade (80%) rests on applied work: assignments, a midterm project and a final portfolio',
+    'A final portfolio learners build across the semester, with assignments in Modules 4, 7, 8 and 9 feeding into it',
+    'I set up a test module in Canvas to try embeds (video, iFrames, JavaScript, an AI chatbot) before adding them to the course',
     'Checked the content and design with the faculty sponsor, from the client interview through a stakeholder review before handover'
   ],
 
   results: [
-    'Built ten modules in Canvas for the Spring 2025 online, asynchronous MLS course',
+    'Built ten modules in Canvas for an online, asynchronous MLS course. It had not been taught by the time I finished the program',
     'Tested the prototype with a cognitive walkthrough, a think-aloud session and a 10-question usability survey, then built four high-priority recommendations into the revision plan',
     'Wrote the assessment design for the advanced prompting week myself: specifications by cognitive level, rubrics and item analysis (see the work below)',
     'At the final stakeholder review, the faculty sponsor said the course covered the learning goals and liked the layout. Their suggestions: fewer overlapping quizzes, more scholarly readings, quicker feedback than essays allow, and a more readable banner font'
