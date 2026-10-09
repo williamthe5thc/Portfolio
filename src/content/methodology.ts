@@ -2,20 +2,20 @@
 
 export const methodology = {
   title: "Cognitive Science-Based Instructional Design",
-  summary: "Needs analysis comes first, research on how people learn shapes the structure, and the checks that show whether a course works go in from the start. My psychology research background means I can read the evidence myself, and my technical side means I can set up the platform a course runs on instead of handing it off.",
+  summary: "I start with a needs analysis, structure the course around research on how people learn, and build in the checks that show whether it works from the beginning. My psychology research background means I can read the evidence myself, and my technical side means I can set up the platform a course runs on instead of handing it off.",
 
   corePrinciples: [
     {
       title: "Andragogy-Centered Adult Learning", 
-      description: "Applying Knowles' adult learning principles, self-directed learning strategies, and ARCS motivation model to design engaging professional development experiences"
+      description: "Using Knowles' adult learning principles, self-directed learning strategies and the ARCS motivation model to design professional development that keeps adult learners engaged"
     },
     {
       title: "Cognitive Load Theory Application",
-      description: "Trained in Sweller's cognitive load theory, Mayer's multimedia learning principles, and evidence-based instructional design through University of Utah's cognitive science-focused IDET program"
+      description: "Trained in Sweller's cognitive load theory, Mayer's multimedia learning principles and evidence-based instructional design in the University of Utah's IDET program, which focuses on cognitive science"
     },
     {
       title: "Universal Design for Learning (UDL)",
-      description: "Implementing multiple means of representation, engagement, and action/expression to create accessible and inclusive learning experiences for diverse adult learners"
+      description: "Offering multiple means of representation, engagement, and action and expression, so courses are accessible and inclusive for adult learners with different needs"
     },
     {
       title: "Systematic ADDIE Methodology",  
@@ -39,7 +39,7 @@ export const methodology = {
         "Create user-centered learning experiences",
         "Develop multimedia content using Adobe Creative Suite",
         "Apply UI/UX principles for engagement",
-        "Ensure accessibility standards"
+        "Meet accessibility standards"
       ]
     },
     {
@@ -121,8 +121,8 @@ export const methodology = {
         name: "Automation & Efficiency",
         applications: [
           "Python & Selenium - Course setup automation & data processing",
-          "Process Optimization - Content development streamlining",
-          "Quality Assurance - Validation system implementation"
+          "Process Optimization - Streamlining content development",
+          "Quality Assurance - Building validation checks"
         ]
       },
       {
@@ -154,8 +154,8 @@ export const methodology = {
       {
         name: "Learning Measurement",
         applications: [
-          "Data Analysis - Learning effectiveness measurement",
-          "Stakeholder Reporting - Results communication"
+          "Data Analysis - Measuring learning effectiveness",
+          "Stakeholder Reporting - Explaining results to stakeholders"
         ]
       }
     ]

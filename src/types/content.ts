@@ -260,9 +260,7 @@ export interface SiteConfig {
   title: string;
   author: string;
   description: string;
-  slogan: string;
   bio: string;
-  tagline: string;
   siteUrl: string;
   defaultImage: string;
   social: {

@@ -157,7 +157,7 @@ export const ProjectGrid: React.FC<ProjectGridProps> = ({
           variants={fadeInUp}
         >
           <p className="text-text-secondary">
-            No projects found matching the selected filter.
+            No projects match this filter.
           </p>
         </motion.div>
       )}

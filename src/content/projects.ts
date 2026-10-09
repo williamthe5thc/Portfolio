@@ -67,7 +67,7 @@ export type ProjectId = typeof projects[number]['id'];
  */
 export const featuredProjects: ProjectBase[] = [
   chartwayFicepEnhanced,               // FLAGSHIP - measured outcome plus an openable artifact
-  aiLawCourse,                         // Finished, used by a real cohort, five documents to open
+  aiLawCourse,                         // Built in Canvas (not taught), five documents to open
   professionalCommunicationTraining    // Advanced Articulate Storyline 360
 ];
 

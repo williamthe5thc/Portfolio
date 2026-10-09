@@ -101,7 +101,7 @@ export class ErrorBoundary extends Component<ErrorBoundaryProps, State> {
                 Something went wrong
               </h1>
               <p className="text-text-secondary mb-6">
-                We apologize for the inconvenience. Please try refreshing the page or return to the home page.
+                Try refreshing the page, or go back to the home page.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button

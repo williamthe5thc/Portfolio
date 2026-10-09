@@ -93,7 +93,7 @@ describe('ProjectGrid', () => {
       cleanup();
       renderGrid({ filter: 'research', showFilters: false });
 
-      expect(screen.getByText(/no projects found/i)).toBeInTheDocument();
+      expect(screen.getByText(/no projects match/i)).toBeInTheDocument();
     });
   });
 

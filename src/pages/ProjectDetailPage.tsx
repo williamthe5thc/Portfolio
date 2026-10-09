@@ -332,7 +332,7 @@ const ProjectDetailPage: React.FC = () => {
       body: (
         <>
           <p className="text-text-secondary mb-4">
-            The actual design documents, not a description of them.
+            Open the documents themselves.
           </p>
           {/* Say what each document is before the link that opens it. */}
           <ul className="space-y-5">

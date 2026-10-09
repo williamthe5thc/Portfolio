@@ -87,7 +87,7 @@ const AboutPage: React.FC = () => {
     <BasePage
       seo={{
         title: "About",
-        description: `Learn about ${siteConfig.author}'s journey, expertise, and approach to instructional design`
+        description: `${siteConfig.author}'s background, skills and approach to instructional design`
       }}
       title="About Me"
       subtitle="How I work, what I know, and what I'm looking for"

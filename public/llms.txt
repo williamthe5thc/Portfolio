@@ -1,6 +1,6 @@
 # W. Jordan Charles
 
-> Instructional Designer & Learning Technologist. I'm an instructional designer who works where learning design meets the technology that delivers it. At WeYouth, a youth nonprofit, I chose the learning platform and build and run its courses. Before that I ran a needs analysis for Chartway Credit Union's certification program, automated course setup at NACVA, and helped build a graduate AI and law course in Canvas. I have a psychology research background and an M.Ed. in Instructional Design and Educational Technology from the University of Utah.
+> Instructional Designer & Learning Technologist. I'm an instructional designer who works on both the learning design and the technology that delivers it. At WeYouth, a youth nonprofit, I chose the learning platform and build and run its courses. Before that I ran a needs analysis for Chartway Credit Union's certification program, automated course setup at NACVA, and helped build a graduate AI and law course in Canvas. I have a psychology research background and an M.Ed. in Instructional Design and Educational Technology from the University of Utah.
 
 This file summarizes the portfolio at https://williamthe5thc.github.io/Portfolio/ for AI assistants and search tools. Project pages on the site need JavaScript; the documents and demos linked below are plain files.
 
@@ -58,7 +58,7 @@ A 278-slide interactive course I built in Articulate Storyline 360. Learners mak
 
 ### Graduate Curriculum Design Project - AI & Law Course
 
-A three-person graduate capstone team designed and built this ten-module AI and Law course for Master of Legal Studies students, built in Canvas. We ran a client interview with the faculty sponsor, developed personas, ran a cognitive walkthrough on our own design, and validated it with a stakeholder review before handover. The course was not taught while I was in the program.
+A three-person graduate capstone team designed and built this ten-module AI and Law course in Canvas for Master of Legal Studies students. We ran a client interview with the faculty sponsor, developed personas, ran a cognitive walkthrough on our own design, and validated it with a stakeholder review before handover. The course was not taught while I was in the program.
 
 - Role: One of three designers on a graduate capstone team. I did most of the Canvas build and wrote the assessment design for the advanced prompting week
 - Dates: Fall 2024 - Spring 2025

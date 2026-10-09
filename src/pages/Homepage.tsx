@@ -49,9 +49,9 @@ const HomePage: React.FC = () => {
               first project card is on the first screen, not below it.
             */}
             <p className="text-base sm:text-xl text-text-secondary mb-5 sm:mb-6">
-              I turn learning problems into programs that work: needs analysis to find
-              what is actually broken, evidence-based design to fix it, and the technical
-              build to ship it.
+              I turn learning problems into programs that work, from the needs analysis
+              that finds the cause, through evidence-based design, to the technical build
+              that delivers them.
               <span className="hidden sm:inline">
                 {' '}Currently implementing a youth nonprofit's curriculum on
                 the learning platform I selected for them; previously a needs analysis
@@ -187,7 +187,7 @@ const HomePage: React.FC = () => {
           Learning Design Philosophy
         </h2>
         <p className="text-xl text-text-secondary">
-          Three things I hold to, and what each one costs when you skip it
+          Three principles I work by, and what goes wrong without each one
         </p>
       </motion.div>
 
@@ -199,10 +199,10 @@ const HomePage: React.FC = () => {
               Find the real barrier first
             </h3>
             <p className="text-text-secondary">
-              The stated problem is rarely the actual one. A credit union's exam pass
-              rates fell after new certification materials came out, but the analysis
-              found the biggest barrier was study time: managers needed to set time
-              aside. Design aimed at the wrong barrier does not work.
+              The stated problem is rarely the one that needs solving, and design aimed
+              at the wrong barrier does not work. When a credit union's exam pass rates
+              fell after new certification materials came out, the analysis found the
+              biggest barrier was study time: managers needed to set time aside.
             </p>
           </BaseCard>
         </motion.div>
@@ -214,9 +214,9 @@ const HomePage: React.FC = () => {
             </h3>
             <p className="text-text-secondary">
               Cognitive load theory, Mayer's multimedia principles and Universal Design for
-              Learning are useful because they settle arguments about format with something
-              other than taste. Short modules, one idea at a time, and more than one way in
-              are design decisions with reasons behind them, not preferences.
+              Learning settle arguments about format with evidence instead of taste. Short
+              modules, one idea at a time, and more than one way into the material each
+              have research behind them.
             </p>
           </BaseCard>
         </motion.div>
@@ -227,9 +227,8 @@ const HomePage: React.FC = () => {
             </h3>
             <p className="text-text-secondary">
               Evaluation added at the end tells you what happened after it is too late to
-              act. Instruments built into the modules produce data while a cohort is still
-              running, which is the difference between finding out a module is weak and
-              being able to fix it.
+              act. Checks built into the modules produce data while a cohort is still
+              running, so a weak module can be fixed before the cohort finishes.
             </p>
           </BaseCard>
         </motion.div>

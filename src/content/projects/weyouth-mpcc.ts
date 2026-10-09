@@ -49,7 +49,7 @@ The SMEs write the content. I chose the platform, build their material into it a
   // No metrics tiles here by design - see the note above. The numbers that
   // exist describe the client's operations rather than my work.
   businessContext:
-    'WeYouth\'s subject matter experts had written the curriculum, but the organization had no learning platform. Without one, there was no mechanism to enroll a student, no way to deliver content between live sessions, and no path to running a season without a founder in the room. Delivery capacity was capped at the founders\' personal calendar, which is not a model a nonprofit can scale or sell team contracts against.',
+    'WeYouth\'s subject matter experts had written the curriculum, but the organization had no learning platform. Without one, students couldn\'t be enrolled, content couldn\'t reach anyone between live sessions, and a season couldn\'t run without a founder in the room. Delivery was limited to the founders\' own calendars, and a nonprofit can\'t scale or sell team contracts on that basis.',
   challenges: [
     'There was no platform yet, so the first problem was choosing one',
     'Nonprofit budget constraints ruled out most enterprise LMS options',
@@ -64,7 +64,7 @@ The SMEs write the content. I chose the platform, build their material into it a
     'Implemented SME curriculum as sequential modules with a consistent internal pattern, so learners and administrators both learn the format once',
     'Configured self-assessments for learner reflection and separate short evaluation surveys for program feedback, kept as distinct instruments',
     'Set up cohort and team-based enrollment so partner organizations onboard as groups, including team-specific course builds',
-    'Serve as the ongoing technical support function for the platform and its users'
+    'Provide ongoing technical support for the platform and its users'
   ],
   results: [
     'Platform recommendation adopted: the organization delivers its programs on the LMS I evaluated and selected',
@@ -78,7 +78,7 @@ The SMEs write the content. I chose the platform, build their material into it a
       process:
         'Two analyses ran in sequence: a platform requirements analysis for the LMS selection, and an ongoing content analysis with SMEs on what restructuring their material needed to work self-paced.',
       findings:
-        'The constraint was infrastructure. The coaching method and the curriculum existed, but there was no system to deliver them. The platform evaluation showed the deciding requirements were multi-audience tracks, cohort-based enrollment, e-commerce for team contracts, and low administrative overhead for a very small team. That combination ruled out most candidates, however many features they had.',
+        'The coaching method and the curriculum already existed, but there was no system to deliver them. The platform evaluation showed the deciding requirements were multi-audience tracks, cohort-based enrollment, e-commerce for team contracts, and low administrative overhead for a very small team. That combination ruled out most candidates, however many features they had.',
       learnerCharacteristics:
         'Coaches are busy adult professionals who must learn the model and then teach it. Athletes are 12-24 and reached through a sport they already care about. Captains are peer leaders with influence but no formal training. Each needed a different track.',
       performanceGaps:
@@ -104,13 +104,13 @@ The SMEs write the content. I chose the platform, build their material into it a
       pilotTesting:
         'Rolled out cohort by cohort and audience by audience, with earlier tracks live while later ones were still being built, and partner-specific cohorts staged ahead of their seasons.',
       changeManagement:
-        'Hybrid model configured so the platform carries the content load while live team sessions and check-ins carry the relationship load, reducing what any individual coach must prepare.',
+        'A hybrid model: the platform carries the content, and live team sessions and check-ins carry the relationship work, so each coach has less to prepare.',
       supportSystems:
         'I am the platform\'s technical support: onboarding administrators, resolving learner and coach access issues, and maintaining the system as cohorts move through it.'
     },
     evaluation: {
       formativeAssessment:
-        'Per-module evaluation surveys and self-assessments collect data continuously during delivery, identifying weak modules while cohorts are still running.',
+        'Per-module evaluation surveys and self-assessments collect data throughout delivery, so weak modules show up while cohorts are still running.',
       summativeAssessment:
         'Pending. Cohorts are mid-training; effectiveness measurement is scheduled once current seasons complete.',
       continuousImprovement:

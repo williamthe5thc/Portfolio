@@ -122,7 +122,7 @@ export const instructionalDesignResume: ResumeData = {
   headline: 'Instructional Design | Learning Experience Design | Learning Technology',
   blurb: 'The full resume: design and delivery work, research background, education and skills.',
   summary:
-    'Instructional designer who takes learning programs from analysis through delivery: needs analysis to find what is actually broken, evidence-based design to fix it, and the platform work to get it in front of learners. Psychology research background; M.Ed. from the University of Utah.',
+    'Instructional designer who takes learning programs from needs analysis through evidence-based design to the platform work that gets them to learners. Psychology research background; M.Ed. from the University of Utah.',
   pdf: 'Instructional_Design_Resume.pdf',
   experience: [
     {
@@ -132,7 +132,7 @@ export const instructionalDesignResume: ResumeData = {
         'Implemented SME-authored curriculum into the LMS as enrollable self-paced courses with module architecture, self-assessments, and evaluation surveys',
         'Built separate learner tracks supporting Mental Performance Connection Coaching for young people ages 12-24',
         'Collaborate with founders, a licensed clinician, and coaching staff as subject matter experts on restructuring curriculum for self-paced online delivery',
-        'Serve as the technical support function for the platform and its administrators',
+        'Provide the technical support for the platform and its administrators',
       ],
     },
     {

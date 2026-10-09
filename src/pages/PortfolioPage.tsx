@@ -36,7 +36,7 @@ const PortfolioPage = () => {
     <BasePage
       seo={{
         title: "Portfolio",
-        description: "Explore W. Jordan Charles's instructional design projects and learning solutions"
+        description: "Instructional design and learning technology projects by W. Jordan Charles, with case studies, demos and design documents"
       }}
       title="Portfolio"
       subtitle="Case studies, demos and design documents you can open"
