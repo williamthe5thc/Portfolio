@@ -11,8 +11,10 @@ import { getImagePath } from '@/utils';
   The course was designed and built but never taught while Jordan was in the
   program (no students enrolled). Describe it as designed, not delivered: the
   grading numbers come from the syllabus, not from a course that ran. People
-  (Jordan, Oct 2026): a law professor, a separate subject matter expert, a
-  two-person capstone committee, and three student designers. Don't name them.
+  (Jordan, Oct 2026): the faculty sponsor was our client and subject matter
+  expert, and taught an AI and law course (maybe not this one); a separate
+  professor taught the capstone; a two-person capstone committee; three
+  student designers. Don't name them.
 */
 const aiLawCourse: ProjectBase = {
   detailPage: true,
@@ -20,7 +22,7 @@ const aiLawCourse: ProjectBase = {
   title: 'Graduate Curriculum Design Project - AI & Law Course',
   cardTitle: 'AI & Law Graduate Course',
   description: 'A three-person graduate capstone team designed and built this ten-module AI and Law course for Master of Legal Studies students, built in Canvas. We ran a client interview with the faculty sponsor, developed personas, ran a cognitive walkthrough on our own design, and validated it with a stakeholder review before handover. The course was not taught while I was in the program.',
-  longDescription: `A graduate capstone, built by a team of three for the University of Utah's S.J. Quinney College of Law. The job was to teach artificial intelligence to Master of Legal Studies students without technical backgrounds, working with a faculty sponsor as our client, a separate subject matter expert, and a two-person capstone committee. We used a competency-based design to build ten modules for a 13-week online course, covering AI foundations, prompt engineering, legal research, media, and professional ethics. The syllabus assesses learners through five quizzes, five discussions, four assignments, a midterm project and a final project. The course was built in Canvas but not taught while I was in the program.`,
+  longDescription: `A graduate capstone, built by a team of three for the University of Utah's S.J. Quinney College of Law. The job was to teach artificial intelligence to Master of Legal Studies students without technical backgrounds, working with a faculty sponsor who was both our client and our subject matter expert, and reviewed by a two-person capstone committee. We used a competency-based design to build ten modules for a 13-week online course, covering AI foundations, prompt engineering, legal research, media, and professional ethics. The syllabus assesses learners through five quizzes, five discussions, four assignments, a midterm project and a final project. The course was built in Canvas but not taught while I was in the program.`,
   image: getImagePath('/images/thumbnails/ai-law-course.webp'),
   imageAlt: 'Title graphic: Graduate Course Overview - AI & Law: Bridging Technology and Legal Expertise',
   category: 'id',
@@ -114,7 +116,7 @@ const aiLawCourse: ProjectBase = {
     }
   ],
 
-  businessContext: 'The faculty sponsor already taught this material to Master of Legal Studies students and wanted it as an online, asynchronous course in Canvas. The learners are legal professionals without technical training. At the client interview the sponsor\'s brief was plain: keep it simple and not too technical, teach strategies rather than platforms, use cheap or free tools, and don\'t make learners create accounts on a long list of AI sites.',
+  businessContext: 'The faculty sponsor taught a course on AI and law and wanted an online, asynchronous course in Canvas for Master of Legal Studies students. The learners are legal professionals without technical training. At the client interview the sponsor\'s brief was plain: keep it simple and not too technical, teach strategies rather than platforms, use cheap or free tools, and don\'t make learners create accounts on a long list of AI sites.',
 
   challenges: [
     'Learners with legal backgrounds and no technical training, who would lose interest if the course went too deep',
