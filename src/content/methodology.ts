@@ -64,7 +64,7 @@ export const methodology = {
 
   skills: {
     instructionalDesign: [
-      "ADDIE Framework & SAM Model Implementation",
+      "ADDIE Framework, with working knowledge of SAM",
       "Learner Analysis using Andragogy Principles",
       "Cognitive Load Theory Application",
       "Bloom's Taxonomy for Learning Objectives",
@@ -92,7 +92,6 @@ export const methodology = {
       "Web Development: HTML, CSS, JavaScript, TypeScript, React, Next.js",
       "VR Prototyping in Unity for Meta Quest",
       "Accessibility Standards (WCAG 2.1)",
-      "Learning Analytics & Data Visualization",
       "Responsive E-learning Development",
       "Multimedia Content Creation"
     ]
@@ -104,8 +103,7 @@ export const methodology = {
         name: "Articulate Suite",
         applications: [
           "Storyline 360 - Interactive e-learning development",
-          "Rise 360 - Responsive course creation",
-          "Review 360 - Stakeholder feedback management"
+          "Rise 360 - Responsive course creation"
         ]
       },
       {
@@ -114,8 +112,7 @@ export const methodology = {
           "LearnWorlds - LMS selection, implementation & administration",
           "Canvas LMS - Course management & delivery",
           "Moodle - Installation & configuration",
-          "Assessment Design - Competency-based evaluation",
-          "Learning Analytics - Performance measurement"
+          "Assessment Design - Competency-based evaluation"
         ]
       }
     ],
