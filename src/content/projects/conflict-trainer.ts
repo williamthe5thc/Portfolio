@@ -1,0 +1,76 @@
+// src/content/projects/conflict-trainer.ts
+import { ProjectBase } from '@/types/content';
+import { getImagePath } from '@/utils';
+
+/*
+  Written from the live site, the repo (github.com/williamthe5thc/ConflictGame,
+  files uploaded August 2025) and Jordan's reason for building it (Oct 2026):
+  to help people handle conflict better. Scenario names, levels, times and
+  choice counts come from the scenario JSON files. Not yet known, so not
+  claimed: whether anyone has used it, and how it was built (solo, with AI
+  help). Ask before adding either.
+*/
+const conflictTrainer: ProjectBase = {
+  detailPage: true,
+  id: 'conflict-trainer',
+  title: 'Conflict Resolution Trainer: Branching Workplace Scenarios',
+  cardTitle: 'Conflict Resolution Trainer',
+  description: 'A branching-scenario simulator for practicing workplace conflict. Learners choose how to respond, see how the choice plays out, and get feedback on the conflict strategy they used.',
+  longDescription: 'A web-based simulator with three workplace scenarios at beginner, intermediate and advanced levels. After each choice, it names the Thomas-Kilmann strategy the learner used, rates how well it worked, and explains why.',
+  image: getImagePath('/images/projects/conflict-trainer-scene.png'),
+  category: 'id',
+  tags: ['Branching Scenarios', 'Thomas-Kilmann Model', 'Conflict Resolution', 'Feedback Design', 'JavaScript'],
+  status: 'completed',
+  date: '2025',
+
+  demoUrl: 'https://williamthe5thc.github.io/ConflictGame/',
+  demoLabel: 'Try the simulator',
+  demoDescription: 'Opens the live simulator. All three scenarios are playable.',
+  projectUrl: 'https://github.com/williamthe5thc/ConflictGame',
+  projectLabel: 'View the code on GitHub',
+
+  businessContext: 'I want to help people handle conflict better. Conflict skills are hard to practice at work, because the first try is usually the real one. A simulation lets someone try an approach that would be risky with a colleague, see what happens, then go back and try another.',
+  challenges: [
+    'Making every choice teach something, with no single "right" path',
+    'Showing that each conflict strategy has a cost, and that the best one depends on the situation',
+    'Letting learners compare approaches without starting the whole scenario again'
+  ],
+  solutions: [
+    'Three scenarios that rise in difficulty: an email misunderstanding (beginner, 5-8 minutes), two projects competing for one designer (intermediate, 8-12 minutes) and a team member whose performance is slipping (advanced, 10-15 minutes)',
+    'Feedback after every choice built on the Thomas-Kilmann model: the strategy used (collaborating, compromising, competing, accommodating or avoiding), a rating of how well it worked, a short explanation, and the skills it shows',
+    'Each scenario branches, with 20 to 27 choices and several endings',
+    'A "Go Back" button, so learners can return to a decision and try a different strategy',
+    'Progress saves in the browser, so a scenario can be finished later',
+    'Each scenario is a separate data file, so a new one can be written without changing the code'
+  ],
+  results: [
+    'Live and playable on GitHub Pages, with all three scenarios',
+    'Includes screen-reader announcements for story changes, and turns animations off for people who ask their device for reduced motion'
+  ],
+  screenshotsTitle: 'Screenshots',
+  screenshots: [
+    {
+      src: '/images/projects/conflict-trainer-scene.png',
+      alt: 'A scenario screen: an illustrated office meeting room beside the story text, "You notice tension building in your team. Alex sent Jordan a brief email..." with four response choices below.',
+      caption: 'Each scene sets up the situation and offers several ways to respond.',
+      width: 1200,
+      height: 750
+    },
+    {
+      src: '/images/projects/conflict-trainer-feedback.png',
+      alt: 'Feedback card labelled COMPROMISING, rated three of five stars, Medium: "Email intervention shows good intentions but doesn\'t address the underlying communication style differences." Skills demonstrated: diplomatic communication, conflict de-escalation.',
+      caption: 'After each choice: the strategy used, how well it worked, and why.',
+      width: 680,
+      height: 285
+    },
+    {
+      src: '/images/projects/conflict-trainer-home.png',
+      alt: 'Home screen listing three scenarios: The Email Misunderstanding (beginner, 5-8 minutes), The Resource Competition (intermediate, 8-12 minutes) and The Performance Gap (advanced, 10-15 minutes).',
+      caption: 'Three scenarios, from beginner to advanced.',
+      width: 1200,
+      height: 750
+    }
+  ]
+};
+
+export default conflictTrainer;

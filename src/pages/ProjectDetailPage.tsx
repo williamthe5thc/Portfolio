@@ -299,7 +299,7 @@ const ProjectDetailPage: React.FC = () => {
 
   if (currentProject.screenshots && currentProject.screenshots.length > 0) {
     beats.push({
-      title: 'Inside the course',
+      title: currentProject.screenshotsTitle ?? 'Inside the course',
       body: (
         <ul className="grid gap-6 sm:grid-cols-2">
           {currentProject.screenshots.map((shot) => (

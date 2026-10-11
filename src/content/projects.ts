@@ -31,6 +31,8 @@ import waltzCourse from './projects/course-waltz';
 // ========================================
 import nacvaAutomation from './projects/nacva-automation';
 import variableTimer from './projects/variable-timer';
+import conflictTrainer from './projects/conflict-trainer';
+import vrInterviewSimulator from './projects/vr-interview-simulator';
 
 /**
  * All projects organized by strategic categories
@@ -51,6 +53,8 @@ export const projects: ProjectBase[] = [
   professionalCommunicationTraining,   // Articulate Storyline 360 - the baseline screen
   aiLawCourse,                         // Graduate curriculum design + AI subject matter
   waltzCourse,                         // Canvas LMS comprehensive course
+  conflictTrainer,                     // Branching scenarios, Thomas-Kilmann feedback
+  vrInterviewSimulator,                // In progress: VR interview practice on Quest
 
   // CATEGORY 3: Technical Projects (Pure coding)
   nacvaAutomation,                     // Backend automation for LMS
@@ -79,10 +83,12 @@ export const projectsByCategory = {
     chartwayFicepEnhanced,
     professionalCommunicationTraining,
     aiLawCourse,
-    waltzCourse
+    waltzCourse,
+    conflictTrainer
   ],
   'learning-tech': [
-    weyouthMpcc
+    weyouthMpcc,
+    vrInterviewSimulator
   ],
   'technical': [
     nacvaAutomation,

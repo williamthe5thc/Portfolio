@@ -90,6 +90,30 @@ A classmate and I designed a self-paced Canvas course that teaches complete begi
 - Assessment & Evaluation Plan: https://williamthe5thc.github.io/Portfolio/case-studies/waltz-formative-evaluation.pdf
 - Module Blueprint & Storyboard: https://williamthe5thc.github.io/Portfolio/case-studies/waltz-blueprint-storyboard.pdf
 
+### Conflict Resolution Trainer: Branching Workplace Scenarios
+
+A branching-scenario simulator for practicing workplace conflict. Learners choose how to respond, see how the choice plays out, and get feedback on the conflict strategy they used.
+
+- Dates: 2025
+- Status: Completed
+- Result: Live and playable on GitHub Pages, with all three scenarios
+- Result: Includes screen-reader announcements for story changes, and turns animations off for people who ask their device for reduced motion
+- Case study: https://williamthe5thc.github.io/Portfolio/portfolio/conflict-trainer/
+- Try the simulator: https://williamthe5thc.github.io/Portfolio/https://williamthe5thc.github.io/ConflictGame/
+- Document: https://williamthe5thc.github.io/Portfolio/https://github.com/williamthe5thc/ConflictGame
+
+### VR Interview Simulator for Meta Quest
+
+A virtual reality job-interview practice simulator. The learner sits in a virtual conference room, answers spoken questions from an AI interviewer, and gets feedback on each answer from an AI job coach.
+
+- Dates: 2025 - present
+- Status: In progress
+- Result: Working on a Meta Quest 1, checked in October 2026
+- Result: About 2 seconds from the end of an answer to the interviewer's first word
+- Result: In progress: bare-hand tracking with pinch input (works in a test build), a blind comparison of language models rated by people, and a prototype of a second scenario for parent-child conversation practice
+- Case study: https://williamthe5thc.github.io/Portfolio/portfolio/vr-interview-simulator/
+- Document: https://williamthe5thc.github.io/Portfolio/https://github.com/williamthe5thc/vr-interview-simulator
+
 ### NACVA Course Automation
 
 A contract role at the National Association of Certified Valuators and Analysts (NACVA). I turned recorded webinars into on-demand continuing-education courses and wrote scripts that automated each course's setup.

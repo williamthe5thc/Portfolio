@@ -110,6 +110,8 @@ export interface ProjectBase {
    * other people's names, student data and LMS chrome (e.g. Canvas's Student
    * View bar) before adding one.
    */
+  /** Heading for `screenshots`; defaults to "Inside the course". */
+  screenshotsTitle?: string;
   screenshots?: Array<{
     /** Absolute public path; wrapped in getImagePath() at render time. */
     src: string;
