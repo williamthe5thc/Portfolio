@@ -95,8 +95,8 @@ A classmate and I designed a self-paced Canvas course that teaches complete begi
 A branching-scenario simulator for practicing workplace conflict. Learners choose how to respond, see how the choice plays out, and get feedback on the conflict strategy they used.
 
 - Dates: 2025
-- Status: Completed
-- Result: Live and playable on GitHub Pages, with all three scenarios
+- Status: In progress
+- Result: Live on GitHub Pages, with the beginner scenario playable from start to finish
 - Result: Includes screen-reader announcements for story changes, and turns animations off for people who ask their device for reduced motion
 - Case study: https://williamthe5thc.github.io/Portfolio/portfolio/conflict-trainer/
 - Try the simulator: https://williamthe5thc.github.io/Portfolio/https://williamthe5thc.github.io/ConflictGame/
