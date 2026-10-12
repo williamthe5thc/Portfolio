@@ -42,6 +42,7 @@ const conflictTrainer: ProjectBase = {
     'Feedback after every choice built on the Thomas-Kilmann model: the strategy used (collaborating, compromising, competing, accommodating or avoiding), a rating of how well it worked, a short explanation, and the skills it shows',
     'Every scenario branches to several different endings: 14 in the beginner scenario, 14 in the intermediate and 11 in the advanced',
     'Each scene shows the people involved, with their names and roles',
+    'Each ending names the outcome (positive, mixed or difficult) and asks a reflection question, and learners can go back and try another choice',
     'A "Go Back" button, so learners can return to a decision and try a different strategy',
     'Progress saves in the browser, so a scenario can be finished later',
     'Each scenario is a separate data file, so a new one can be written without changing the code'
@@ -54,10 +55,10 @@ const conflictTrainer: ProjectBase = {
   screenshots: [
     {
       src: '/images/projects/conflict-trainer-scene.png',
-      alt: 'A scenario screen: an illustrated office meeting room with portraits of Alex (Senior Analyst) and Jordan (Project Coordinator) below it, beside the story text, "You notice tension building in your team. Alex sent Jordan a brief email..." and the first response choices.',
+      alt: 'A scenario screen: an illustrated meeting room with windows, a timeline board and a round table, with portraits of Alex (Senior Analyst) and Jordan (Project Coordinator) below it, beside the story text, "You notice tension building in your team. Alex sent Jordan a brief email..." and the first response choices.',
       caption: 'Each scene sets up the situation, shows who is involved, and offers several ways to respond.',
       width: 1200,
-      height: 750
+      height: 800
     },
     {
       src: '/images/projects/conflict-trainer-feedback.png',
@@ -67,11 +68,18 @@ const conflictTrainer: ProjectBase = {
       height: 285
     },
     {
+      src: '/images/projects/conflict-trainer-ending.png',
+      alt: 'Ending card: Ending reached, Positive outcome. "Communication Bridge Built: Alex and Jordan now have a better understanding of each other\'s communication styles, and the team is more cohesive." A Reflect box asks "How might you apply collaborative problem-solving to other workplace communication challenges?" Buttons: Go back and try another choice, Choose another scenario.',
+      caption: 'Every ending names the outcome and asks a reflection question.',
+      width: 1112,
+      height: 410
+    },
+    {
       src: '/images/projects/conflict-trainer-home.png',
       alt: 'Scenario menu: The Email Misunderstanding (beginner, 5-8 minutes), The Resource Competition (intermediate, 8-12 minutes) and The Performance Gap (advanced, 10-15 minutes).',
       caption: 'Three scenarios, from beginner to advanced.',
       width: 1200,
-      height: 750
+      height: 800
     }
   ]
 };
