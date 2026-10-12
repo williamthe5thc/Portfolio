@@ -24,6 +24,9 @@ const vrInterviewSimulator: ProjectBase = {
   status: 'in-progress',
   date: '2025 - present',
 
+  demoUrl: 'https://williamthe5thc.github.io/vr-interview-demo/',
+  demoLabel: 'Try the web demo',
+  demoDescription: 'A scripted browser version: no AI and no server. Type your answers (or opt in to the microphone) and get feedback from a rule-based coach. Best on desktop Chrome or Edge; about 20 MB to load.',
   projectUrl: 'https://github.com/williamthe5thc/vr-interview-simulator',
   projectLabel: 'View the code on GitHub',
   projectUrlDescription: 'The README covers how it works, with an architecture diagram.',
@@ -45,10 +48,18 @@ const vrInterviewSimulator: ProjectBase = {
   results: [
     'Working on a Meta Quest 1, checked in October 2026',
     'About 2 seconds from the end of an answer to the interviewer\'s first word',
+    'A scripted web demo anyone can try in a browser: pre-recorded interviewer lines with lip-sync, typed or spoken answers, and a rule-based coach, for two job types (software engineer and customer service)',
     'In progress: bare-hand tracking with pinch input (works in a test build), a blind comparison of language models rated by people, and a prototype of a second scenario for parent-child conversation practice'
   ],
   screenshotsTitle: 'Screenshots',
   screenshots: [
+    {
+      src: '/images/projects/vr-web-demo.jpg',
+      alt: 'The web demo in a browser: the interviewer seated in the conference room, a caption reading "To begin, tell me about yourself, and the kind of software work you\'ve done", a transcript panel on the right, and a typed-answer box with Send and End interview buttons. A banner at the top says it is a scripted demo and the full version uses a live AI interviewer on Meta Quest.',
+      caption: 'The scripted web demo, running in a browser.',
+      width: 960,
+      height: 600
+    },
     {
       src: '/images/projects/vr-editor_title_screen.jpg',
       alt: 'Start screen floating in the virtual conference room: "VR Interview Practice", seven job buttons (Software Engineer, Customer Service, Retail Associate, Restaurant Server, Registered Nurse, Speech Therapist, Teacher), and Start Interview and Job Coach Review buttons. Labelled editor capture.',
