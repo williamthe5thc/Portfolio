@@ -110,7 +110,7 @@ A virtual reality job-interview practice simulator. The learner sits in a virtua
 - Status: In progress
 - Result: Working on a Meta Quest 1, checked in October 2026
 - Result: About 2 seconds from the end of an answer to the interviewer's first word
-- Result: A scripted web demo anyone can try in a browser: pre-recorded interviewer lines with lip-sync, typed or spoken answers, and a rule-based coach, for two job types (software engineer and customer service)
+- Result: A scripted web demo anyone can try in a browser: pre-recorded interviewer lines with lip-sync, typed or spoken answers, and a rule-based coach, for two job types (software engineer and customer service). Scripting it means it needs no server or AI calls, so it can serve any number of visitors for free; the full version on the headset uses the live AI interviewer and coach
 - Result: In progress: bare-hand tracking with pinch input (works in a test build), a blind comparison of language models rated by people, and a prototype of a second scenario for parent-child conversation practice
 - Case study: https://williamthe5thc.github.io/Portfolio/portfolio/vr-interview-simulator/
 - Try the web demo: https://williamthe5thc.github.io/Portfolio/https://williamthe5thc.github.io/vr-interview-demo/

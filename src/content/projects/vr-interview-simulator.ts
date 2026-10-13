@@ -18,7 +18,7 @@ const vrInterviewSimulator: ProjectBase = {
   cardTitle: 'VR Interview Simulator',
   description: 'A virtual reality job-interview practice simulator. The learner sits in a virtual conference room, answers spoken questions from an AI interviewer, and gets feedback on each answer from an AI job coach.',
   longDescription: 'Interview answers are a spoken skill, and they improve with practice out loud. This simulator puts that practice in a realistic setting: a conference room, an interviewer who listens and replies, and a coach who reviews every answer afterwards. In progress since 2025.',
-  image: getImagePath('/images/projects/vr-editor_room_overview.jpg'),
+  image: getImagePath('/images/projects/vr-web-demo.jpg'),
   category: 'learning-tech',
   tags: ['Virtual Reality', 'Meta Quest', 'Unity', 'Conversational AI', 'Speech Recognition', 'Python'],
   status: 'in-progress',
@@ -26,7 +26,7 @@ const vrInterviewSimulator: ProjectBase = {
 
   demoUrl: 'https://williamthe5thc.github.io/vr-interview-demo/',
   demoLabel: 'Try the web demo',
-  demoDescription: 'A scripted browser version: no AI and no server. Type your answers (or opt in to the microphone) and get feedback from a rule-based coach. Best on desktop Chrome or Edge; about 20 MB to load.',
+  demoDescription: 'A scripted browser demo. It runs entirely in your browser with no AI and no server, so anyone can try it at no cost; the full version is powered by an AI interviewer and coach through the Anthropic API. Type your answers (or opt in to the microphone). Best on desktop Chrome or Edge; about 20 MB to load.',
   projectUrl: 'https://github.com/williamthe5thc/vr-interview-simulator',
   projectLabel: 'View the code on GitHub',
   projectUrlDescription: 'The README covers how it works, with an architecture diagram.',
@@ -48,7 +48,7 @@ const vrInterviewSimulator: ProjectBase = {
   results: [
     'Working on a Meta Quest 1, checked in October 2026',
     'About 2 seconds from the end of an answer to the interviewer\'s first word',
-    'A scripted web demo anyone can try in a browser: pre-recorded interviewer lines with lip-sync, typed or spoken answers, and a rule-based coach, for two job types (software engineer and customer service)',
+    'A scripted web demo anyone can try in a browser: pre-recorded interviewer lines with lip-sync, typed or spoken answers, and a rule-based coach, for two job types (software engineer and customer service). Scripting it means it needs no server or AI calls, so it can serve any number of visitors for free; the full version on the headset uses the live AI interviewer and coach',
     'In progress: bare-hand tracking with pinch input (works in a test build), a blind comparison of language models rated by people, and a prototype of a second scenario for parent-child conversation practice'
   ],
   screenshotsTitle: 'Screenshots',

@@ -104,9 +104,9 @@ const HomePage: React.FC = () => {
           <div className="text-center mb-4 sm:mb-6">
             <h2 className="text-3xl font-bold sm:mb-3">Featured Projects</h2>
             <p className="hidden sm:block text-lg text-text-secondary">
-              A credit union needs analysis whose recommendations led to better
-              exam results, a graduate AI and law course built in Canvas, and an
-              Articulate Storyline 360 course
+              A VR interview simulator you can try in your browser, a credit
+              union needs analysis whose recommendations led to better exam
+              results, and a graduate AI and law course built in Canvas
             </p>
           </div>
           {/*

@@ -70,9 +70,9 @@ export type ProjectId = typeof projects[number]['id'];
  * flagship nobody sees.
  */
 export const featuredProjects: ProjectBase[] = [
-  chartwayFicepEnhanced,               // FLAGSHIP - measured outcome plus an openable artifact
-  aiLawCourse,                         // Built in Canvas (not taught), five documents to open
-  professionalCommunicationTraining    // Advanced Articulate Storyline 360
+  vrInterviewSimulator,                // Playable in a browser; design and technology in one
+  chartwayFicepEnhanced,               // Real client, measured outcome, openable artifact
+  aiLawCourse                          // Built in Canvas (not taught), five documents to open
 ];
 
 /**
