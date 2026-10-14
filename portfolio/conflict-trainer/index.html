@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!--
+      Old links put the route after "#/" (/Portfolio/#/portfolio/teaching-waltz,
+      on resumes, LinkedIn and bookmarks). Send them to the page's real URL
+      (/Portfolio/portfolio/teaching-waltz/) before anything else loads. The
+      route in the fragment wins over the path, so this also works when an old
+      fragment lands on a page's static copy or on 404.html. A query inside the
+      fragment (#/portfolio?category=id) and a section after it
+      (#/about#design-process) move across with it. /Portfolio/ is the deploy
+      base, filled in by Vite.
+    -->
+    <script>
+      (function () {
+        var base = '/Portfolio/';
+        var l = window.location;
+        if (l.hash.indexOf('#/') === 0) {
+          var route = l.hash.slice(2);
+          var hashAt = route.indexOf('#');
+          var hash = hashAt < 0 ? '' : route.slice(hashAt);
+          if (hashAt >= 0) route = route.slice(0, hashAt);
+          var queryAt = route.indexOf('?');
+          var search = queryAt < 0 ? l.search : route.slice(queryAt);
+          var path = queryAt < 0 ? route : route.slice(0, queryAt);
+          if (path && !/\/$/.test(path)) path += '/';
+          l.replace(base + path + search + hash);
+        } else if (l.pathname + '/' === base) {
+          // "/Portfolio" without the slash is outside the router's base.
+          l.replace(base + l.search + l.hash);
+        }
+      })();
+    </script>
+    <!--
+      The build puts a plain copy of each page's text in #root for crawlers
+      and tools that don't run JavaScript (see vite.config.ts). Where the app
+      will run, keep that copy hidden until React replaces it, so visitors
+      don't see unstyled text flash up first. If the app hasn't started after
+      4 seconds, show the copy after all.
+    -->
+    <style>.app-pending #root > [data-static-page] { visibility: hidden; }</style>
+    <script>
+      if ('noModule' in document.createElement('script')) {
+        document.documentElement.classList.add('app-pending');
+        setTimeout(function () {
+          document.documentElement.classList.remove('app-pending');
+        }, 4000);
+      }
+    </script>
+    <!--
+      Root-relative, so Vite adds the deploy base (/Portfolio/,
+      /Portfolio-Staging/). Relative "./" paths broke once pages had their
+      own URLs: on /Portfolio/about/ they pointed into /Portfolio/about/.
+    -->
+    <link rel="icon" type="image/svg+xml" href="/Portfolio/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="96x96" href="/Portfolio/favicon-96x96.png" />
+    <link rel="shortcut icon" href="/Portfolio/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/Portfolio/apple-touch-icon.png" />
+    <link rel="manifest" href="/Portfolio/site.webmanifest" />
+    <meta name="theme-color" content="#ffffff" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--
+      Send only the origin to other sites (LinkedIn, GitHub, EmailJS), never
+      the full URL, and nothing on a downgrade to http. This is the browser
+      default today; stating it keeps it if the default ever changes. No
+      Content-Security-Policy: the inline Google Analytics snippet below
+      would need 'unsafe-inline' or a hash kept in step with it.
+    -->
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+
+    <title>Conflict Resolution Trainer: Branching Workplace Scenarios | W. Jordan Charles</title>
+
+    <!--
+      Static share metadata. LinkedIn, Slack, Teams and iMessage previews do
+      not run JavaScript, so this head is what they see. These are the home
+      page's values; the build gives each page's static copy its own title,
+      description, canonical and og:url (vite.config.ts). data-rh marks the
+      tags as Helmet's: once the app runs, the SEO component replaces them
+      with the current page's values instead of adding duplicates.
+    -->
+    <meta data-rh="true" name="description" content="A branching-scenario simulator for practicing workplace conflict. Learners choose how to respond, see how the choice plays out, and get feedback on the conflict strategy they used." />
+    <meta data-rh="true" name="author" content="W. Jordan Charles" />
+    <meta data-rh="true" property="og:type" content="website" />
+    <meta data-rh="true" property="og:site_name" content="W. Jordan Charles Portfolio" />
+    <meta data-rh="true" property="og:title" content="Conflict Resolution Trainer: Branching Workplace Scenarios | W. Jordan Charles" />
+    <meta data-rh="true" property="og:description" content="A branching-scenario simulator for practicing workplace conflict. Learners choose how to respond, see how the choice plays out, and get feedback on the conflict strategy they used." />
+    <meta data-rh="true" property="og:url" content="https://williamthe5thc.github.io/Portfolio/portfolio/conflict-trainer/" />
+    <meta data-rh="true" property="og:image" content="https://williamthe5thc.github.io/Portfolio/og-image.jpg" />
+    <meta data-rh="true" property="og:image:width" content="1200" />
+    <meta data-rh="true" property="og:image:height" content="630" />
+    <meta data-rh="true" property="og:image:alt" content="W. Jordan Charles, Instructional Designer. Needs analysis, course design, LMS implementation. M.Ed., University of Utah." />
+    <meta data-rh="true" name="twitter:card" content="summary_large_image" />
+    <meta data-rh="true" name="twitter:title" content="Conflict Resolution Trainer: Branching Workplace Scenarios | W. Jordan Charles" />
+    <meta data-rh="true" name="twitter:description" content="A branching-scenario simulator for practicing workplace conflict. Learners choose how to respond, see how the choice plays out, and get feedback on the conflict strategy they used." />
+    <meta data-rh="true" name="twitter:image" content="https://williamthe5thc.github.io/Portfolio/og-image.jpg" />
+    <meta data-rh="true" name="twitter:image:alt" content="W. Jordan Charles, Instructional Designer. Needs analysis, course design, LMS implementation. M.Ed., University of Utah." />
+    <link data-rh="true" rel="canonical" href="https://williamthe5thc.github.io/Portfolio/portfolio/conflict-trainer/" />
+
+    <!-- Built only from facts in src/content (siteData.ts, education.ts); keep in step with them. -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "W. Jordan Charles",
+        "jobTitle": "Instructional Designer",
+        "url": "https://williamthe5thc.github.io/Portfolio/",
+        "sameAs": [
+          "https://linkedin.com/in/jordan-charles",
+          "https://github.com/williamthe5thc"
+        ],
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Salt Lake City",
+          "addressRegion": "Utah",
+          "addressCountry": "US"
+        },
+        "alumniOf": [
+          { "@type": "CollegeOrUniversity", "name": "University of Utah" },
+          { "@type": "CollegeOrUniversity", "name": "Brigham Young University - Idaho" }
+        ],
+        "knowsAbout": [
+          "Instructional Design",
+          "Learning Experience Design",
+          "Learning Technology"
+        ]
+      }
+    </script>
+
+    <!--
+      Google tag (gtag.js). send_page_view: false because the app sends every
+      page view itself (GoogleAnalytics.tsx), including the first one, with
+      the route as the page path. Letting config send one as well counted the
+      landing page twice.
+    -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LG6RT04XLW"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-LG6RT04XLW', {
+        send_page_view: false,
+        cookie_domain: 'williamthe5thc.github.io'
+      });
+    </script>
+    <script type="module" crossorigin src="/Portfolio/assets/index-Bm1gQCrz.js"></script>
+    <link rel="modulepreload" crossorigin href="/Portfolio/assets/react-vendor-sK6oOukr.js">
+    <link rel="modulepreload" crossorigin href="/Portfolio/assets/ui-vendor-UMbqYK0l.js">
+    <link rel="stylesheet" crossorigin href="/Portfolio/assets/index-BM7zaPNg.css">
+  </head>
+  <body>
+    <!-- The build fills #root with a plain copy of the page's text. -->
+    <div id="root"><div data-static-page><header><nav aria-label="Primary"><ul><li><a href="/Portfolio/">Home</a></li><li><a href="/Portfolio/about/">About</a></li><li><a href="/Portfolio/portfolio/">Portfolio</a></li><li><a href="/Portfolio/resume/">Resume</a></li><li><a href="/Portfolio/contact/">Contact</a></li></ul></nav></header><main><nav aria-label="Breadcrumb"><ol><li><a href="/Portfolio/portfolio/">Portfolio</a></li><li aria-current="page">Conflict Resolution Trainer: Branching Workplace Scenarios</li></ol></nav><h1>Conflict Resolution Trainer: Branching Workplace Scenarios</h1><p>A branching-scenario simulator for practicing workplace conflict. Learners choose how to respond, see how the choice plays out, and get feedback on the conflict strategy they used.</p><p>Opens the live simulator. All three scenarios are playable.</p><p><a href="https://williamthe5thc.github.io/ConflictGame/">Try the simulator</a></p><p><a href="https://github.com/williamthe5thc/ConflictGame">View the code on GitHub</a></p><h2>The problem</h2><p>I want to help people handle conflict better. Conflict skills are hard to practice at work, because the first try is usually the real one. A simulation lets someone try an approach that would be risky with a colleague, see what happens, then go back and try another.</p><ul><li>Making every choice teach something, with no single &quot;right&quot; path</li><li>Showing that each conflict strategy has a cost, and that the best one depends on the situation</li><li>Letting learners compare approaches without starting the whole scenario again</li></ul><h2>What I did</h2><ul><li>Three scenarios that rise in difficulty: an email misunderstanding (beginner, 5-8 minutes), two projects competing for one designer (intermediate, 8-12 minutes) and a team member whose performance is slipping (advanced, 10-15 minutes)</li><li>Feedback after every choice built on the Thomas-Kilmann model: the strategy used (collaborating, compromising, competing, accommodating or avoiding), a rating of how well it worked, a short explanation, and the skills it shows</li><li>Every scenario branches to several different endings: 14 in the beginner scenario, 14 in the intermediate and 11 in the advanced</li><li>Each scene shows the people involved, with their names and roles</li><li>Each ending names the outcome (positive, mixed or difficult) and asks a reflection question, and learners can go back and try another choice</li><li>A &quot;Go Back&quot; button, so learners can return to a decision and try a different strategy</li><li>Progress saves in the browser, so a scenario can be finished later</li><li>Each scenario is a separate data file, so a new one can be written without changing the code</li></ul><h2>What happened</h2><ul><li>Live on GitHub Pages, with all three scenarios playable from start to finish</li><li>Includes screen-reader announcements for story changes, and turns animations off for people who ask their device for reduced motion</li></ul><h2>Inside the course</h2><ul><li><a href="/Portfolio/images/projects/conflict-trainer-scene.png">Each scene sets up the situation, shows who is involved, and offers several ways to respond.</a><p>A scenario screen: an illustrated meeting room with windows, a timeline board and a round table, with portraits of Alex (Senior Analyst) and Jordan (Project Coordinator) below it, beside the story text, &quot;You notice tension building in your team. Alex sent Jordan a brief email...&quot; and the first response choices.</p></li><li><a href="/Portfolio/images/projects/conflict-trainer-feedback.png">After each choice: the strategy used, how well it worked, and why.</a><p>Feedback card labelled COMPROMISING, rated three of five stars, Medium: &quot;Email intervention shows good intentions but doesn&#39;t address the underlying communication style differences.&quot; Skills demonstrated: diplomatic communication, conflict de-escalation.</p></li><li><a href="/Portfolio/images/projects/conflict-trainer-ending.png">Every ending names the outcome and asks a reflection question.</a><p>Ending card: Ending reached, Positive outcome. &quot;Communication Bridge Built: Alex and Jordan now have a better understanding of each other&#39;s communication styles, and the team is more cohesive.&quot; A Reflect box asks &quot;How might you apply collaborative problem-solving to other workplace communication challenges?&quot; Buttons: Go back and try another choice, Choose another scenario.</p></li><li><a href="/Portfolio/images/projects/conflict-trainer-home.png">Three scenarios, from beginner to advanced.</a><p>Scenario menu: The Email Misunderstanding (beginner, 5-8 minutes), The Resource Competition (intermediate, 8-12 minutes) and The Performance Gap (advanced, 10-15 minutes).</p></li></ul><h2>About this Project</h2><p>A web-based simulator built around workplace scenarios at beginner, intermediate and advanced levels. After each choice, it names the Thomas-Kilmann strategy the learner used, rates how well it worked, and explains why.</p><h3>Project Details</h3><dl><dt>Status</dt><dd>Completed</dd><dt>Date</dt><dd>2025</dd><dt>Category</dt><dd>Instructional Design</dd></dl><h4>Skills &amp; Topics</h4><ul><li>Branching Scenarios</li><li>Thomas-Kilmann Model</li><li>Conflict Resolution</li><li>Feedback Design</li><li>JavaScript</li></ul></main><footer><p><a href="https://linkedin.com/in/jordan-charles">LinkedIn</a> · <a href="https://github.com/williamthe5thc">GitHub</a> · <a href="/Portfolio/llms.txt">Plain-text summary (llms.txt)</a></p></footer></div></div>
+  </body>
+</html>

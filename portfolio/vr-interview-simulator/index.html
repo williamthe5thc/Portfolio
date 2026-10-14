@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!--
+      Old links put the route after "#/" (/Portfolio/#/portfolio/teaching-waltz,
+      on resumes, LinkedIn and bookmarks). Send them to the page's real URL
+      (/Portfolio/portfolio/teaching-waltz/) before anything else loads. The
+      route in the fragment wins over the path, so this also works when an old
+      fragment lands on a page's static copy or on 404.html. A query inside the
+      fragment (#/portfolio?category=id) and a section after it
+      (#/about#design-process) move across with it. /Portfolio/ is the deploy
+      base, filled in by Vite.
+    -->
+    <script>
+      (function () {
+        var base = '/Portfolio/';
+        var l = window.location;
+        if (l.hash.indexOf('#/') === 0) {
+          var route = l.hash.slice(2);
+          var hashAt = route.indexOf('#');
+          var hash = hashAt < 0 ? '' : route.slice(hashAt);
+          if (hashAt >= 0) route = route.slice(0, hashAt);
+          var queryAt = route.indexOf('?');
+          var search = queryAt < 0 ? l.search : route.slice(queryAt);
+          var path = queryAt < 0 ? route : route.slice(0, queryAt);
+          if (path && !/\/$/.test(path)) path += '/';
+          l.replace(base + path + search + hash);
+        } else if (l.pathname + '/' === base) {
+          // "/Portfolio" without the slash is outside the router's base.
+          l.replace(base + l.search + l.hash);
+        }
+      })();
+    </script>
+    <!--
+      The build puts a plain copy of each page's text in #root for crawlers
+      and tools that don't run JavaScript (see vite.config.ts). Where the app
+      will run, keep that copy hidden until React replaces it, so visitors
+      don't see unstyled text flash up first. If the app hasn't started after
+      4 seconds, show the copy after all.
+    -->
+    <style>.app-pending #root > [data-static-page] { visibility: hidden; }</style>
+    <script>
+      if ('noModule' in document.createElement('script')) {
+        document.documentElement.classList.add('app-pending');
+        setTimeout(function () {
+          document.documentElement.classList.remove('app-pending');
+        }, 4000);
+      }
+    </script>
+    <!--
+      Root-relative, so Vite adds the deploy base (/Portfolio/,
+      /Portfolio-Staging/). Relative "./" paths broke once pages had their
+      own URLs: on /Portfolio/about/ they pointed into /Portfolio/about/.
+    -->
+    <link rel="icon" type="image/svg+xml" href="/Portfolio/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="96x96" href="/Portfolio/favicon-96x96.png" />
+    <link rel="shortcut icon" href="/Portfolio/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/Portfolio/apple-touch-icon.png" />
+    <link rel="manifest" href="/Portfolio/site.webmanifest" />
+    <meta name="theme-color" content="#ffffff" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--
+      Send only the origin to other sites (LinkedIn, GitHub, EmailJS), never
+      the full URL, and nothing on a downgrade to http. This is the browser
+      default today; stating it keeps it if the default ever changes. No
+      Content-Security-Policy: the inline Google Analytics snippet below
+      would need 'unsafe-inline' or a hash kept in step with it.
+    -->
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+
+    <title>VR Interview Simulator for Meta Quest | W. Jordan Charles</title>
+
+    <!--
+      Static share metadata. LinkedIn, Slack, Teams and iMessage previews do
+      not run JavaScript, so this head is what they see. These are the home
+      page's values; the build gives each page's static copy its own title,
+      description, canonical and og:url (vite.config.ts). data-rh marks the
+      tags as Helmet's: once the app runs, the SEO component replaces them
+      with the current page's values instead of adding duplicates.
+    -->
+    <meta data-rh="true" name="description" content="A virtual reality job-interview practice simulator. The learner sits in a virtual conference room, answers spoken questions from an AI interviewer, and gets feedback on each answer from an AI job coach." />
+    <meta data-rh="true" name="author" content="W. Jordan Charles" />
+    <meta data-rh="true" property="og:type" content="website" />
+    <meta data-rh="true" property="og:site_name" content="W. Jordan Charles Portfolio" />
+    <meta data-rh="true" property="og:title" content="VR Interview Simulator for Meta Quest | W. Jordan Charles" />
+    <meta data-rh="true" property="og:description" content="A virtual reality job-interview practice simulator. The learner sits in a virtual conference room, answers spoken questions from an AI interviewer, and gets feedback on each answer from an AI job coach." />
+    <meta data-rh="true" property="og:url" content="https://williamthe5thc.github.io/Portfolio/portfolio/vr-interview-simulator/" />
+    <meta data-rh="true" property="og:image" content="https://williamthe5thc.github.io/Portfolio/og-image.jpg" />
+    <meta data-rh="true" property="og:image:width" content="1200" />
+    <meta data-rh="true" property="og:image:height" content="630" />
+    <meta data-rh="true" property="og:image:alt" content="W. Jordan Charles, Instructional Designer. Needs analysis, course design, LMS implementation. M.Ed., University of Utah." />
+    <meta data-rh="true" name="twitter:card" content="summary_large_image" />
+    <meta data-rh="true" name="twitter:title" content="VR Interview Simulator for Meta Quest | W. Jordan Charles" />
+    <meta data-rh="true" name="twitter:description" content="A virtual reality job-interview practice simulator. The learner sits in a virtual conference room, answers spoken questions from an AI interviewer, and gets feedback on each answer from an AI job coach." />
+    <meta data-rh="true" name="twitter:image" content="https://williamthe5thc.github.io/Portfolio/og-image.jpg" />
+    <meta data-rh="true" name="twitter:image:alt" content="W. Jordan Charles, Instructional Designer. Needs analysis, course design, LMS implementation. M.Ed., University of Utah." />
+    <link data-rh="true" rel="canonical" href="https://williamthe5thc.github.io/Portfolio/portfolio/vr-interview-simulator/" />
+
+    <!-- Built only from facts in src/content (siteData.ts, education.ts); keep in step with them. -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "W. Jordan Charles",
+        "jobTitle": "Instructional Designer",
+        "url": "https://williamthe5thc.github.io/Portfolio/",
+        "sameAs": [
+          "https://linkedin.com/in/jordan-charles",
+          "https://github.com/williamthe5thc"
+        ],
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Salt Lake City",
+          "addressRegion": "Utah",
+          "addressCountry": "US"
+        },
+        "alumniOf": [
+          { "@type": "CollegeOrUniversity", "name": "University of Utah" },
+          { "@type": "CollegeOrUniversity", "name": "Brigham Young University - Idaho" }
+        ],
+        "knowsAbout": [
+          "Instructional Design",
+          "Learning Experience Design",
+          "Learning Technology"
+        ]
+      }
+    </script>
+
+    <!--
+      Google tag (gtag.js). send_page_view: false because the app sends every
+      page view itself (GoogleAnalytics.tsx), including the first one, with
+      the route as the page path. Letting config send one as well counted the
+      landing page twice.
+    -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LG6RT04XLW"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-LG6RT04XLW', {
+        send_page_view: false,
+        cookie_domain: 'williamthe5thc.github.io'
+      });
+    </script>
+    <script type="module" crossorigin src="/Portfolio/assets/index-Bm1gQCrz.js"></script>
+    <link rel="modulepreload" crossorigin href="/Portfolio/assets/react-vendor-sK6oOukr.js">
+    <link rel="modulepreload" crossorigin href="/Portfolio/assets/ui-vendor-UMbqYK0l.js">
+    <link rel="stylesheet" crossorigin href="/Portfolio/assets/index-BM7zaPNg.css">
+  </head>
+  <body>
+    <!-- The build fills #root with a plain copy of the page's text. -->
+    <div id="root"><div data-static-page><header><nav aria-label="Primary"><ul><li><a href="/Portfolio/">Home</a></li><li><a href="/Portfolio/about/">About</a></li><li><a href="/Portfolio/portfolio/">Portfolio</a></li><li><a href="/Portfolio/resume/">Resume</a></li><li><a href="/Portfolio/contact/">Contact</a></li></ul></nav></header><main><nav aria-label="Breadcrumb"><ol><li><a href="/Portfolio/portfolio/">Portfolio</a></li><li aria-current="page">VR Interview Simulator for Meta Quest</li></ol></nav><h1>VR Interview Simulator for Meta Quest</h1><p>A virtual reality job-interview practice simulator. The learner sits in a virtual conference room, answers spoken questions from an AI interviewer, and gets feedback on each answer from an AI job coach.</p><p>A scripted browser demo. It runs entirely in your browser with no AI and no server, so anyone can try it at no cost; the full version is powered by an AI interviewer and coach through the Anthropic API. Type your answers (or opt in to the microphone). Best on desktop Chrome or Edge; about 20 MB to load.</p><p><a href="https://williamthe5thc.github.io/vr-interview-demo/">Try the web demo</a></p><p>The README covers how it works, with an architecture diagram.</p><p><a href="https://github.com/williamthe5thc/vr-interview-simulator">View the code on GitHub</a></p><h2>The problem</h2><p>Job seekers can read about interviews, but answering out loud under pressure is a different skill, and most people only practice it in the real interview. The goal is a place to practice speaking answers, in a setting that feels like the real thing, with feedback afterwards.</p><ul><li>A conversation only feels real if the interviewer answers quickly</li><li>An avatar that talks without moving its mouth, looking at you or reacting feels lifeless</li><li>The headset has little computing power, and a hosted AI service can be slow or down</li></ul><h2>What I did</h2><ul><li>A conference-room scene with 11 rotating interviewer avatars (Microsoft Rocketbox) and 7 job types, including nurse, teacher, software engineer and restaurant server</li><li>Push-to-talk speech, turned into text with faster-whisper</li><li>An AI interviewer on Claude through the Anthropic API, with a local model (Ollama) that takes over automatically if the API is slow or unavailable</li><li>Spoken replies with Kokoro text-to-speech and Rhubarb lip-sync, plus interviewer eye gaze, blinks, nods and breathing</li><li>An AI job coach that scores each answer and gives specific feedback, and an export of the interview to Markdown and JSON</li><li>The headset is the Unity client; a Python server on a PC does the speech and AI work, and the two talk over a private Tailscale network</li></ul><h2>What happened</h2><ul><li>Working on a Meta Quest 1, checked in October 2026</li><li>About 2 seconds from the end of an answer to the interviewer&#39;s first word</li><li>A scripted web demo anyone can try in a browser: pre-recorded interviewer lines with lip-sync, typed or spoken answers, and a rule-based coach, for two job types (software engineer and customer service). Scripting it means it needs no server or AI calls, so it can serve any number of visitors for free; the full version on the headset uses the live AI interviewer and coach</li><li>In progress: bare-hand tracking with pinch input (works in a test build), a blind comparison of language models rated by people, and a prototype of a second scenario for parent-child conversation practice</li></ul><h2>Inside the course</h2><ul><li><a href="/Portfolio/images/projects/vr-web-demo.jpg">The scripted web demo, running in a browser.</a><p>The web demo in a browser: the interviewer seated in the conference room, a caption reading &quot;To begin, tell me about yourself, and the kind of software work you&#39;ve done&quot;, a transcript panel on the right, and a typed-answer box with Send and End interview buttons. A banner at the top says it is a scripted demo and the full version uses a live AI interviewer on Meta Quest.</p></li><li><a href="/Portfolio/images/projects/vr-editor_title_screen.jpg">Pick a job, then start the interview. (Editor capture, not headset footage.)</a><p>Start screen floating in the virtual conference room: &quot;VR Interview Practice&quot;, seven job buttons (Software Engineer, Customer Service, Retail Associate, Restaurant Server, Registered Nurse, Speech Therapist, Teacher), and Start Interview and Job Coach Review buttons. Labelled editor capture.</p></li><li><a href="/Portfolio/images/projects/vr-editor_interviewer_closeup_viseme.jpg">The interviewer&#39;s mouth follows the speech. (Editor capture.)</a><p>Close-up of an interviewer avatar in a dark suit, mid-word, with her mouth shaped by lip-sync. Labelled editor capture.</p></li><li><a href="/Portfolio/images/projects/vr-editor_room_overview.jpg">The conference room. (Editor capture.)</a><p>Overview of the virtual conference room: a long table with chairs, a whiteboard roadmap, a bookshelf, plants, and an interviewer seated at the far end. Labelled editor capture.</p></li></ul><h2>About this Project</h2><p>Interview answers are a spoken skill, and they improve with practice out loud. This simulator puts that practice in a realistic setting: a conference room, an interviewer who listens and replies, and a coach who reviews every answer afterwards. In progress since 2025.</p><h3>Project Details</h3><dl><dt>Status</dt><dd>In progress</dd><dt>Date</dt><dd>2025 - present</dd><dt>Category</dt><dd>Learning Technology</dd></dl><h4>Skills &amp; Topics</h4><ul><li>Virtual Reality</li><li>Meta Quest</li><li>Unity</li><li>Conversational AI</li><li>Speech Recognition</li><li>Python</li></ul></main><footer><p><a href="https://linkedin.com/in/jordan-charles">LinkedIn</a> · <a href="https://github.com/williamthe5thc">GitHub</a> · <a href="/Portfolio/llms.txt">Plain-text summary (llms.txt)</a></p></footer></div></div>
+  </body>
+</html>

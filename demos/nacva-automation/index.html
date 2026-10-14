@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NACVA Course Automation Demo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .context-banner {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 25px;
+            border-left: 5px solid #667eea;
+        }
+        
+        .context-banner h2 {
+            color: #4c51bf;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .context-banner p {
+            color: #666;
+            font-size: 0.95rem;
+            margin-bottom: 8px;
+        }
+        
+        .demo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .demo-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .demo-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+        
+        .demo-card h2 {
+            color: #4c51bf;
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+        
+        .demo-card p {
+            margin-bottom: 20px;
+            color: #666;
+        }
+        
+        .input-section {
+            margin: 20px 0;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border: 2px dashed #dee2e6;
+        }
+        
+        .input-section.dragover {
+            border-color: #667eea;
+            background: #e3f2fd;
+        }
+        
+        .file-input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+        
+        textarea {
+            width: 100%;
+            height: 200px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: monospace;
+            font-size: 0.9rem;
+            resize: none;
+            overflow-y: hidden;
+        }
+        
+        .demo-button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin: 10px 0;
+        }
+        
+        .demo-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+        
+        .demo-button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .processing-steps {
+            margin: 20px 0;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            display: none;
+        }
+        
+        .processing-steps.active {
+            display: block;
+        }
+        
+        .step {
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+        }
+        
+        .step:last-child {
+            border-bottom: none;
+        }
+        
+        .step-icon {
+            margin-right: 10px;
+            width: 20px;
+        }
+        
+        .demo-output {
+            margin-top: 20px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            display: none;
+        }
+        
+        .demo-output.active {
+            display: block;
+        }
+        
+        .sample-data-button {
+            background: #1e7e34;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+            font-size: 0.9rem;
+        }
+        
+        /* Keep the sizes the headings had before they moved up a level. */
+        .container h2 { font-size: 1.17em; }
+        .container h3 { font-size: 1em; }
+        
+        .download-button {
+            background: #117a8b;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+            font-size: 0.9rem;
+            text-decoration: none;
+            display: inline-block;
+            font-family: inherit;
+        }
+        
+        .loading {
+            display: inline-block;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .highlight {
+            background: linear-gradient(120deg, #a8edea 0%, #fed6e3 100%);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+        
+        .tabs {
+            display: flex;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #eee;
+        }
+        
+        .tab {
+            padding: 12px 20px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            border-bottom: 3px solid transparent;
+            font: inherit;
+            color: inherit;
+            transition: all 0.3s ease;
+        }
+        
+        .tab.active {
+            border-bottom-color: #667eea;
+            color: #4c51bf;
+            font-weight: bold;
+        }
+        
+        .tab:focus-visible {
+            outline: 2px solid #4c51bf;
+            outline-offset: 2px;
+        }
+        
+        .field-label {
+            display: block;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .methodology-section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 25px;
+        }
+        
+        .methodology-section h2 {
+            color: #4c51bf;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+        
+        .methodology-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 15px;
+        }
+        
+        .methodology-item {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .methodology-item h3 {
+            color: #4c51bf;
+            margin-bottom: 8px;
+            font-size: 1rem;
+        }
+        
+        .methodology-item p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" role="main">
+        <div class="header">
+            <h1>NACVA Course Automation Demo</h1>
+            <p>Simplified browser versions of scripts I wrote at NACVA, running on sample data</p>
+        </div>
+        
+        <div class="context-banner">
+            <h2>About this demo</h2>
+            <p>At NACVA, adding a course to the website meant typing its details in by hand. I wrote Python scripts that took over that data entry, checked the data for errors, and converted Word and Excel files into formats the site could use.</p>
+            <p>The originals ran on NACVA's own files and systems, so they can't be shared. These two tools are simplified recreations of the idea that run in your browser. Nothing you type or upload leaves this page.</p>
+        </div>
+        
+        <div class="methodology-section">
+            <h2>What the original scripts did</h2>
+            <div class="methodology-grid">
+                <div class="methodology-item">
+                    <h3>Replaced manual entry</h3>
+                    <p>Course details that staff used to key in by hand went in through a script instead.</p>
+                </div>
+                <div class="methodology-item">
+                    <h3>Checked the data</h3>
+                    <p>Each record was checked for missing or malformed values before it was entered.</p>
+                </div>
+                <div class="methodology-item">
+                    <h3>Converted files</h3>
+                    <p>Word and Excel source files were converted into the formats the website needed.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="demo-grid">
+            <!-- Question Format Converter -->
+            <div class="demo-card">
+                <h2>Assessment Question Converter</h2>
+                <p>Paste multiple-choice questions in the usual numbered format and get a CSV file an LMS can import. It picks out <span class="highlight">each question, its answer choices and the correct answer</span>, and flags any question that is missing one.</p>
+                
+                <div class="tabs" role="tablist" aria-label="Question input">
+                    <button type="button" class="tab active" role="tab" id="converter-paste-tab" aria-selected="true" aria-controls="converter-paste" onclick="switchTab('converter', 'paste')">Paste Text</button>
+                    <button type="button" class="tab" role="tab" id="converter-upload-tab" aria-selected="false" aria-controls="converter-upload" tabindex="-1" onclick="switchTab('converter', 'upload')">Upload File</button>
+                </div>
+                
+                <div id="converter-paste" class="tab-content active" role="tabpanel" aria-labelledby="converter-paste-tab">
+                    <label for="question-input" class="field-label">Questions to convert</label>
+                    <textarea id="question-input">1. What is the primary purpose of business valuation standards?
+a) To increase company value
+b) To provide consistency in valuation practices
+c) To reduce tax liability
+d) To satisfy regulatory requirements
+Correct answer: b
+
+2. Which valuation approach considers future cash flows?
+a) Market approach
+b) Income approach
+c) Asset approach
+d) Cost approach
+Correct answer: b
+
+3. What does DLOM stand for in valuation?
+a) Discount for Lack of Management
+b) Discount for Lack of Marketability
+c) Discount for Limited Operations
+d) Discount for Low Margins
+Correct answer: b</textarea>
+                    <button class="sample-data-button" onclick="loadSampleQuestions()">Reload Sample Questions</button>
+                </div>
+                
+                <div id="converter-upload" class="tab-content" role="tabpanel" aria-labelledby="converter-upload-tab">
+                    <div class="input-section" ondrop="handleFileDrop(event, 'questions')" ondragover="handleDragOver(event)">
+                        <p id="question-file-hint">Drop a plain-text (.txt) file of questions here, or click to browse</p>
+                        <input type="file" class="file-input" accept=".txt,text/plain" aria-label="Question file" aria-describedby="question-file-hint" onchange="handleFileSelect(event, 'questions')">
+                    </div>
+                </div>
+                
+                <button class="demo-button" onclick="processQuestions()">
+                    <span id="converter-text">Convert to LMS Format</span>
+                </button>
+                
+                
+                <div id="converter-output" class="demo-output" aria-live="polite"></div>
+            </div>
+            
+            <!-- Course Data Processor -->
+            <div class="demo-card">
+                <h2>Course Data Processor</h2>
+                <p>Enter one course, or paste a spreadsheet of courses as CSV. It checks <span class="highlight">each title, price and CPE credit value</span> and returns clean rows ready to upload, or tells you which rows need fixing.</p>
+                
+                <div class="tabs" role="tablist" aria-label="Course data input">
+                    <button type="button" class="tab active" role="tab" id="processor-manual-tab" aria-selected="true" aria-controls="processor-manual" onclick="switchTab('processor', 'manual')">Manual Entry</button>
+                    <button type="button" class="tab" role="tab" id="processor-bulk-tab" aria-selected="false" aria-controls="processor-bulk" tabindex="-1" onclick="switchTab('processor', 'bulk')">Bulk Upload</button>
+                </div>
+                
+                <div id="processor-manual" class="tab-content active" role="tabpanel" aria-labelledby="processor-manual-tab">
+                    <label for="course-title" class="field-label">Course title</label>
+                    <input type="text" id="course-title" value="Business Valuation Fundamentals" placeholder="Course Title" class="file-input">
+                    <label for="course-price" class="field-label">Price ($)</label>
+                    <input type="number" id="course-price" value="95" placeholder="Price ($)" class="file-input">
+                    <label for="course-credits" class="field-label">CPE credits</label>
+                    <input type="number" id="course-credits" value="8" placeholder="CPE Credits" class="file-input">
+                    <button class="sample-data-button" onclick="loadSampleCourse()">Reload Sample Course</button>
+                </div>
+                
+                <div id="processor-bulk" class="tab-content" role="tabpanel" aria-labelledby="processor-bulk-tab">
+                    <label for="bulk-course-data" class="field-label">Course data (CSV)</label>
+                    <textarea id="bulk-course-data">Title,Price,Credits,Category
+Business Valuation Fundamentals,95,8,Finance
+Advanced Financial Analysis,140,12,Analysis
+Cash Flow Modeling Techniques,180,16,Advanced Finance</textarea>
+                </div>
+                
+                <button class="demo-button" onclick="processCourseData()">
+                    <span id="processor-text">Process Course Data</span>
+                </button>
+                
+                
+                <div id="processor-output" class="demo-output" aria-live="polite"></div>
+            </div>
+        </div>
+        
+    </div>
+    
+    <script>
+        let processedData = {};
+        
+        // Auto-resize textarea
+        function autoResize(textarea) {
+            textarea.style.height = 'auto';
+            textarea.style.height = Math.min(textarea.scrollHeight, 300) + 'px';
+        }
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            const textareas = document.querySelectorAll('textarea');
+            textareas.forEach(textarea => {
+                autoResize(textarea);
+                textarea.addEventListener('input', function() {
+                    autoResize(this);
+                });
+            });
+        });
+        
+        function switchTab(demo, tabName) {
+            // Hide all tab contents for this demo
+            const contents = document.querySelectorAll(`#${demo}-paste, #${demo}-upload, #${demo}-manual, #${demo}-bulk`);
+            contents.forEach(content => content.classList.remove('active'));
+            
+            // Deselect every tab in the current demo
+            const demoCard = document.getElementById(`${demo}-${tabName}`).closest('.demo-card');
+            const tabs = demoCard.querySelectorAll('.tab');
+            tabs.forEach(tab => {
+                tab.classList.remove('active');
+                tab.setAttribute('aria-selected', 'false');
+                tab.tabIndex = -1;
+            });
+            
+            // Show selected tab content
+            document.getElementById(`${demo}-${tabName}`).classList.add('active');
+            
+            // Select the tab for this panel (found by id, so keyboard
+            // activation works the same as a click)
+            const selected = document.getElementById(`${demo}-${tabName}-tab`);
+            selected.classList.add('active');
+            selected.setAttribute('aria-selected', 'true');
+            selected.tabIndex = 0;
+        }
+        
+        // Arrow keys move between tabs, per the ARIA tabs pattern; Enter and
+        // Space activate them because they are buttons.
+        document.querySelectorAll('[role="tablist"]').forEach(tablist => {
+            tablist.addEventListener('keydown', e => {
+                if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
+                const tabs = [...tablist.querySelectorAll('[role="tab"]')];
+                const i = tabs.indexOf(document.activeElement);
+                if (i === -1) return;
+                const next = tabs[(i + (e.key === 'ArrowRight' ? 1 : tabs.length - 1)) % tabs.length];
+                next.focus();
+                e.preventDefault();
+            });
+        });
+        
+        function loadSampleQuestions() {
+            const sampleText = `1. What is the primary purpose of business valuation standards?
+a) To increase company value
+b) To provide consistency in valuation practices
+c) To reduce tax liability
+d) To satisfy regulatory requirements
+Correct answer: b
+
+2. Which valuation approach considers future cash flows?
+a) Market approach
+b) Income approach
+c) Asset approach
+d) Cost approach
+Correct answer: b
+
+3. What does DLOM stand for in valuation?
+a) Discount for Lack of Management
+b) Discount for Lack of Marketability
+c) Discount for Limited Operations
+d) Discount for Low Margins
+Correct answer: b`;
+            
+            const textarea = document.getElementById('question-input');
+            textarea.value = sampleText;
+            autoResize(textarea);
+        }
+        
+        function loadSampleCourse() {
+            document.getElementById('course-title').value = 'Business Valuation Fundamentals';
+            document.getElementById('course-price').value = '95';
+            document.getElementById('course-credits').value = '8';
+        }
+        
+        // Appends text (as a text node, so it is never parsed as HTML)
+        // followed by a line break.
+        // Shows a short message in the results area (announced to screen
+        // readers, which is why it is used instead of alert()).
+        function showMessage(output, text) {
+            output.textContent = text;
+            output.classList.add('active');
+        }
+        
+        function addTextLine(parent, text) {
+            parent.appendChild(document.createTextNode(text));
+            parent.appendChild(document.createElement('br'));
+        }
+        
+        function processQuestions() {
+            const button = document.getElementById('converter-text');
+            const output = document.getElementById('converter-output');
+            const input = document.getElementById('question-input').value;
+            
+            if (!input.trim()) {
+                showMessage(output, 'Paste some questions to convert first.');
+                return;
+            }
+            
+                
+                // Process the actual input
+                const result = parseQuestions(input);
+                
+                // The visitor's questions and answers go in as text nodes,
+                // never as HTML: they are typed or uploaded, and this page
+                // shares the portfolio's origin. The sample rows are built
+                // inside their white box; appending '<div>' and '</div>' to
+                // innerHTML separately closed the box at once and left the
+                // rows below it.
+                output.innerHTML = `<strong>Conversion Results:</strong><br><br>`;
+                // Flag questions the parser could not complete, rather than
+                // claiming an accuracy figure.
+                const incomplete = result.questions.filter(q => !q.correct || q.answers.length < 2);
+                addTextLine(output, `Questions found: ${result.questions.length}`);
+                addTextLine(output, `Format: CSV, one row per question`);
+                addTextLine(output, `Missing choices or a correct answer: ${incomplete.length}`);
+                incomplete.forEach(q => addTextLine(output, `⚠️ "${q.question}"`));
+                output.appendChild(document.createElement('br'));
+                
+                output.insertAdjacentHTML('beforeend', `<strong>Sample CSV Output:</strong><br>`);
+                const sample = document.createElement('div');
+                sample.style.cssText = 'background: white; padding: 10px; border-radius: 5px; margin: 10px 0; font-size: 0.8em; overflow-x: auto; white-space: nowrap;';
+                addTextLine(sample, `ID,Question,AnswerA,AnswerB,AnswerC,AnswerD,Correct`);
+                
+                result.questions.slice(0, 3).forEach((q, i) => {
+                    const truncatedQuestion = q.question.length > 40 ? q.question.substring(0, 40) + '...' : q.question;
+                    const a = n => q.answers[n] ?? '';
+                    addTextLine(sample, `Q${i+1},"${truncatedQuestion}","${a(0)}","${a(1)}","${a(2)}","${a(3)}","${q.correct}"`);
+                });
+                
+                if (result.questions.length > 3) {
+                    addTextLine(sample, `... and ${result.questions.length - 3} more questions`);
+                }
+                
+                output.appendChild(sample);
+                output.insertAdjacentHTML('beforeend', `<button type="button" class="download-button" onclick="downloadCSV()">Download the complete CSV file</button>`);
+                
+                output.classList.add('active');
+                button.innerHTML = 'Convert to LMS Format';
+                
+                // Store for download
+                processedData.csv = generateCSV(result.questions);
+        }
+        
+        function parseQuestions(text) {
+            const lines = text.split('\n');
+            const questions = [];
+            let currentQuestion = null;
+            
+            lines.forEach(line => {
+                line = line.trim();
+                if (!line) return;
+                
+                // Check if it's a question (starts with number)
+                if (/^\d+\./.test(line)) {
+                    if (currentQuestion) {
+                        questions.push(currentQuestion);
+                    }
+                    currentQuestion = {
+                        question: line.replace(/^\d+\.\s*/, ''),
+                        answers: [],
+                        correct: ''
+                    };
+                }
+                // Check if it's an answer choice
+                else if (/^[a-d]\)/i.test(line)) {
+                    if (currentQuestion) {
+                        currentQuestion.answers.push(line.replace(/^[a-d]\)\s*/i, ''));
+                    }
+                }
+                // Check if it's the correct answer
+                else if (/correct answer:/i.test(line)) {
+                    if (currentQuestion) {
+                        const match = line.match(/correct answer:\s*([a-d])/i);
+                        if (match) {
+                            currentQuestion.correct = match[1].toUpperCase();
+                        }
+                    }
+                }
+            });
+            
+            if (currentQuestion) {
+                questions.push(currentQuestion);
+            }
+            
+            return { questions };
+        }
+        
+        function generateCSV(questions) {
+            let csv = 'ID,Question,AnswerA,AnswerB,AnswerC,AnswerD,Correct\n';
+            questions.forEach((q, i) => {
+                const escapedQuestion = `"${q.question.replace(/"/g, '""')}"`;
+                const escapedAnswers = q.answers.map(a => `"${a.replace(/"/g, '""')}"`);
+                while (escapedAnswers.length < 4) {
+                    escapedAnswers.push('""');
+                }
+                csv += `Q${i+1},${escapedQuestion},${escapedAnswers.join(',')},${q.correct}\n`;
+            });
+            return csv;
+        }
+        
+        function processCourseData() {
+            const button = document.getElementById('processor-text');
+            const output = document.getElementById('processor-output');
+            
+            // Get data from inputs. The visible tab decides what is checked:
+            // the manual fields are pre-filled, so testing them first meant
+            // the Bulk Upload tab was never used.
+            const bulk = document.getElementById('processor-bulk').classList.contains('active');
+            const title = document.getElementById('course-title').value.trim();
+            const price = document.getElementById('course-price').value.trim();
+            const credits = document.getElementById('course-credits').value.trim();
+            const bulkLines = document.getElementById('bulk-course-data').value
+                .split('\n').map(line => line.trim()).filter(Boolean);
+            
+            if (bulk ? bulkLines.length < 2 : !title) {
+                showMessage(output, bulk ? 'Paste at least one course row under the header row.' : 'Enter a course title first.');
+                return;
+            }
+            
+                
+                const rows = bulk
+                    ? bulkLines.slice(1).map(line => line.split(','))
+                    : [[title, price, credits, '']];
+                const ready = [];
+                const problems = [];
+                rows.forEach((cells, i) => {
+                    const [t = '', p = '', c = '', category = ''] = cells.map(cell => cell.trim());
+                    const issues = [];
+                    if (!t) issues.push('title is missing');
+                    if (p === '' || isNaN(Number(p)) || Number(p) < 0) issues.push(`price "${p}" is not a valid amount`);
+                    if (c === '' || isNaN(Number(c)) || Number(c) <= 0) issues.push(`CPE credits "${c}" is not a positive number`);
+                    if (issues.length) {
+                        problems.push(`${bulk ? `Row ${i + 1}` : 'Course'}: ${issues.join('; ')}`);
+                    } else {
+                        ready.push(`${t},${Number(p).toFixed(2)},${Number(c)},${category}`);
+                    }
+                });
+                
+                // Typed and pasted values go in as text, never as HTML; only
+                // the fixed labels below are markup.
+                output.innerHTML = `<strong>Results:</strong><br><br>`;
+                addTextLine(output, `Courses checked: ${rows.length}`);
+                addTextLine(output, `Ready to upload: ${ready.length}`);
+                addTextLine(output, `Need fixing: ${problems.length}`);
+                problems.forEach(message => addTextLine(output, `⚠️ ${message}`));
+                
+                if (ready.length) {
+                    output.appendChild(document.createElement('br'));
+                    output.insertAdjacentHTML('beforeend', `<strong>Upload rows (CSV):</strong><br>`);
+                    const table = document.createElement('div');
+                    table.style.cssText = 'background: white; padding: 10px; border-radius: 5px; margin: 10px 0; font-size: 0.8em; overflow-x: auto; white-space: nowrap;';
+                    addTextLine(table, 'Title,Price,Credits,Category');
+                    ready.forEach(row => addTextLine(table, row));
+                    output.appendChild(table);
+                }
+                
+                output.classList.add('active');
+                button.innerHTML = 'Process Course Data';
+        }
+        
+        function downloadCSV() {
+            if (processedData.csv) {
+                const blob = new Blob([processedData.csv], { type: 'text/csv' });
+                const url = window.URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.style.display = 'none';
+                a.href = url;
+                a.download = 'converted_assessment_questions.csv';
+                document.body.appendChild(a);
+                a.click();
+                window.URL.revokeObjectURL(url);
+                document.body.removeChild(a);
+            }
+        }
+        
+        function handleDragOver(e) {
+            e.preventDefault();
+            e.currentTarget.classList.add('dragover');
+        }
+        
+        function handleFileDrop(e, type) {
+            e.preventDefault();
+            e.currentTarget.classList.remove('dragover');
+            const files = e.dataTransfer.files;
+            if (files.length > 0) {
+                handleFile(files[0], type);
+            }
+        }
+        
+        function handleFileSelect(e, type) {
+            if (e.target.files.length > 0) {
+                handleFile(e.target.files[0], type);
+            }
+        }
+        
+        function handleFile(file, type) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const content = e.target.result;
+                if (type === 'questions') {
+                    const textarea = document.getElementById('question-input');
+                    textarea.value = content;
+                    switchTab('converter', 'paste');
+                    autoResize(textarea);
+                }
+            };
+            reader.readAsText(file);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,1940 @@
+<?xml version="1.0" encoding="utf-8"?>
+<bwFrame xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" default_layout="pxabnsnfns10111100101" textdirection="ltr" textengine="DirectWrite" device="false" fontscale="100" captionFontScale="100" kbshortcuts="false" skip_nav_enabled="true" chromeless="false" outputtype="undefined" theme="unified" themeAccentColor="0x4FBDF4">
+  <layouts>
+    <layout name="npnxnanbsnfns10111100101" font="Lato" controllayout="npnxnanbsnfns10111100101" colorscheme="pxabnsnfns10111100101" string_table="pxabnsnfns10111100101" />
+    <layout name="pxabnsnfns10111100101" font="Lato" controllayout="pxabnsnfns10111100101" colorscheme="pxabnsnfns10111100101" string_table="pxabnsnfns10111100101" />
+    <layout name="npxnabnsnfns10111100101" font="Lato" controllayout="npxnabnsnfns10111100101" colorscheme="pxabnsnfns10111100101" string_table="pxabnsnfns10111100101" />
+    <layout name="npnxnanbnsnfns10111100101" font="Lato" controllayout="npnxnanbnsnfns10111100101" colorscheme="pxabnsnfns10111100101" string_table="pxabnsnfns10111100101" />
+    <layout name="pxabnsnfns10111100100" font="Lato" controllayout="pxabnsnfns10111100100" colorscheme="pxabnsnfns10111100101" string_table="pxabnsnfns10111100101" />
+  </layouts>
+  <control_options>
+    <optiongroups>
+      <optiongroup name="sidebaroptions">
+        <options>
+          <option name="title_enabled" value="true">
+            <options>
+              <option name="title_text" value="How to Date More Effectively" />
+            </options>
+          </option>
+          <option name="logo_enabled" value="false">
+            <options />
+          </option>
+          <option name="sidebar_enabled" value="true">
+            <options>
+              <option name="sidebarpos" value="left" />
+              <option name="closed" value="true" />
+            </options>
+          </option>
+          <optionlist name="tabs">
+            <listitems>
+              <listitem name="resources" value="true" group="linkright" />
+              <listitem name="outline" value="true" group="sidebar" />
+              <listitem name="glossary" value="false" group="sidebar" />
+              <listitem name="transcript" value="false" group="sidebar" />
+            </listitems>
+          </optionlist>
+          <option name="time_enabled" value="false">
+            <options>
+              <option name="time_format" value="none" />
+            </options>
+          </option>
+          <option name="video_enabled" value="false">
+            <options>
+              <option name="height" value="135" />
+            </options>
+          </option>
+          <option name="logoAltText" />
+        </options>
+      </optiongroup>
+      <optiongroup name="menuoptions">
+        <options>
+          <option name="flow" value="free" />
+          <option name="wraplistitems" value="false" />
+          <option name="tooltips" value="true" />
+          <option name="autocollapse" value="true" />
+          <option name="autonumber" value="true" />
+          <option name="enableresultsicons" value="true" />
+        </options>
+      </optiongroup>
+      <optiongroup name="controls">
+        <options>
+          <option name="volume" value="true" />
+          <option name="seekbar" value="true">
+            <options>
+              <option name="readonly" value="true" />
+              <option name="readonlyOnce" value="false" />
+            </options>
+          </option>
+          <option name="pauseplay" value="true" />
+          <option name="replay" value="true" />
+          <option name="search" value="false" />
+          <option name="closed_captions" value="true" />
+          <option name="settings" value="true" />
+          <option name="fullScreenToggle" value="true" />
+          <option name="playbackSpeedControl" value="true" />
+        </options>
+      </optiongroup>
+      <optiongroup name="bottombaroptions">
+        <options>
+          <option name="bottombar_enabled" value="true" />
+        </options>
+      </optiongroup>
+      <optiongroup name="buttonoptions">
+        <options>
+          <option name="next" value="icontext" />
+          <option name="previous" value="icontext" />
+          <option name="submit" value="icontext" />
+        </options>
+      </optiongroup>
+      <optiongroup name="ccOptions">
+        <options>
+          <option name="font" value="Lato" />
+          <option name="size" value="100" />
+          <option name="placement" value="100" />
+          <option name="backgroundColor" value="#000000FF" />
+          <option name="color" value="#FFFFFFFF" />
+        </options>
+      </optiongroup>
+    </optiongroups>
+  </control_options>
+  <control_layouts>
+    <control_layout name="npnxnanbsnfns10111100101">
+      <control name="volume" enabled="true" />
+      <control name="seekbar" enabled="true" />
+      <control name="replay" enabled="true" />
+      <control name="pauseplay" enabled="true" />
+      <control name="logo" enabled="false" />
+      <control name="previous" enabled="false" />
+      <control name="next" enabled="false" />
+      <control name="swipeleft" enabled="false" />
+      <control name="swiperight" enabled="false" />
+      <control name="fullScreenToggle" enabled="true" />
+      <control name="playbackSpeedControl" enabled="true" />
+      <control name="submit" enabled="true" />
+      <control name="finish" enabled="false" />
+      <control name="submitall" enabled="false" />
+      <control name="resources" enabled="true" />
+      <control name="glossary" enabled="false" />
+      <control name="transcript" enabled="false" />
+      <control name="outline" enabled="true">
+        <controls>
+          <control name="search" enabled="false" />
+        </controls>
+      </control>
+      <control name="close_btn" enabled="true" />
+    </control_layout>
+    <control_layout name="pxabnsnfns10111100101">
+      <control name="volume" enabled="true" />
+      <control name="seekbar" enabled="true" />
+      <control name="replay" enabled="true" />
+      <control name="pauseplay" enabled="true" />
+      <control name="logo" enabled="false" />
+      <control name="previous" enabled="true" />
+      <control name="next" enabled="true" />
+      <control name="swipeleft" enabled="true" />
+      <control name="swiperight" enabled="true" />
+      <control name="fullScreenToggle" enabled="true" />
+      <control name="playbackSpeedControl" enabled="true" />
+      <control name="submit" enabled="false" />
+      <control name="finish" enabled="false" />
+      <control name="submitall" enabled="false" />
+      <control name="resources" enabled="true" />
+      <control name="glossary" enabled="false" />
+      <control name="transcript" enabled="false" />
+      <control name="outline" enabled="true">
+        <controls>
+          <control name="search" enabled="false" />
+        </controls>
+      </control>
+      <control name="close_btn" enabled="true" />
+    </control_layout>
+    <control_layout name="npxnabnsnfns10111100101">
+      <control name="volume" enabled="true" />
+      <control name="seekbar" enabled="true" />
+      <control name="replay" enabled="true" />
+      <control name="pauseplay" enabled="true" />
+      <control name="logo" enabled="false" />
+      <control name="previous" enabled="false" />
+      <control name="next" enabled="true" />
+      <control name="swipeleft" enabled="false" />
+      <control name="swiperight" enabled="true" />
+      <control name="fullScreenToggle" enabled="true" />
+      <control name="playbackSpeedControl" enabled="true" />
+      <control name="submit" enabled="false" />
+      <control name="finish" enabled="false" />
+      <control name="submitall" enabled="false" />
+      <control name="resources" enabled="true" />
+      <control name="glossary" enabled="false" />
+      <control name="transcript" enabled="false" />
+      <control name="outline" enabled="true">
+        <controls>
+          <control name="search" enabled="false" />
+        </controls>
+      </control>
+      <control name="close_btn" enabled="true" />
+    </control_layout>
+    <control_layout name="npnxnanbnsnfns10111100101">
+      <control name="volume" enabled="true" />
+      <control name="seekbar" enabled="true" />
+      <control name="replay" enabled="true" />
+      <control name="pauseplay" enabled="true" />
+      <control name="logo" enabled="false" />
+      <control name="previous" enabled="false" />
+      <control name="next" enabled="false" />
+      <control name="swipeleft" enabled="false" />
+      <control name="swiperight" enabled="false" />
+      <control name="fullScreenToggle" enabled="true" />
+      <control name="playbackSpeedControl" enabled="true" />
+      <control name="submit" enabled="false" />
+      <control name="finish" enabled="false" />
+      <control name="submitall" enabled="false" />
+      <control name="resources" enabled="true" />
+      <control name="glossary" enabled="false" />
+      <control name="transcript" enabled="false" />
+      <control name="outline" enabled="true">
+        <controls>
+          <control name="search" enabled="false" />
+        </controls>
+      </control>
+      <control name="close_btn" enabled="true" />
+    </control_layout>
+    <control_layout name="pxabnsnfns10111100100">
+      <control name="volume" enabled="true" />
+      <control name="seekbar" enabled="true" />
+      <control name="replay" enabled="true" />
+      <control name="pauseplay" enabled="true" />
+      <control name="logo" enabled="false" />
+      <control name="previous" enabled="true" />
+      <control name="next" enabled="true" />
+      <control name="swipeleft" enabled="true" />
+      <control name="swiperight" enabled="true" />
+      <control name="fullScreenToggle" enabled="true" />
+      <control name="playbackSpeedControl" enabled="true" />
+      <control name="submit" enabled="false" />
+      <control name="finish" enabled="false" />
+      <control name="submitall" enabled="false" />
+      <control name="resources" enabled="true" />
+      <control name="glossary" enabled="false" />
+      <control name="transcript" enabled="false" />
+      <control name="outline" enabled="true">
+        <controls>
+          <control name="search" enabled="false" />
+        </controls>
+      </control>
+      <control name="close_btn" enabled="false" />
+    </control_layout>
+  </control_layouts>
+  <colorschemes>
+    <colorscheme name="pxabnsnfns10111100101">
+      <color_group name="accessibility">
+        <group_colors>
+          <color name="focus_rect">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0xFFFF00" alpha="100" stop="0" />
+              </colors>
+            </fill>
+          </color>
+          <color name="focus_rect_secondary">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0x002060" alpha="100" stop="0" />
+              </colors>
+            </fill>
+          </color>
+        </group_colors>
+      </color_group>
+      <color_group name="HTML">
+        <group_colors>
+          <color name="htmlpage_bg_color">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0x282828" alpha="100" stop="0" />
+              </colors>
+            </fill>
+          </color>
+          <color name="preloader">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0xFFFFFF" alpha="100" stop="0" />
+              </colors>
+            </fill>
+          </color>
+        </group_colors>
+      </color_group>
+      <color_group name="infopanel">
+        <group_colors>
+          <color name="link_text">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0xBABBBA" alpha="100" stop="0" />
+              </colors>
+            </fill>
+          </color>
+          <color name="link_hover">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0xFFFFFF" alpha="100" stop="0" />
+              </colors>
+            </fill>
+          </color>
+          <color name="shadow">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0x000000" alpha="0" stop="0" />
+              </colors>
+            </fill>
+          </color>
+          <color name="bg">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0xFFFFFF" alpha="100" stop="0" />
+              </colors>
+            </fill>
+          </color>
+          <color name="name_text">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0x444444" alpha="100" stop="0" />
+              </colors>
+            </fill>
+          </color>
+          <color name="title_text">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0x999999" alpha="100" stop="0" />
+              </colors>
+            </fill>
+          </color>
+        </group_colors>
+      </color_group>
+      <color_group name="infopanelpopup">
+        <group_colors>
+          <color name="link_text">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0xFF0000" alpha="100" stop="0" />
+              </colors>
+            </fill>
+          </color>
+          <color name="link_hover">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0xFFFFFF" alpha="100" stop="0" />
+              </colors>
+            </fill>
+          </color>
+          <color name="bg">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0x000000" alpha="0" stop="0" />
+              </colors>
+            </fill>
+          </color>
+          <color name="shadow">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0x000000" alpha="0" stop="0" />
+              </colors>
+            </fill>
+          </color>
+          <color name="name_text">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0xFFFFFF" alpha="100" stop="0" />
+              </colors>
+            </fill>
+          </color>
+          <color name="bio_text">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0xBABBBA" alpha="100" stop="0" />
+              </colors>
+            </fill>
+          </color>
+        </group_colors>
+      </color_group>
+      <color_group name="timer">
+        <group_colors>
+          <color name="duration">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0x3C3C3C" alpha="100" stop="0" />
+              </colors>
+            </fill>
+          </color>
+          <color name="elapsed">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0xFEE347" alpha="100" stop="0" />
+              </colors>
+            </fill>
+          </color>
+          <color name="stroke">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0xC7C7C7" alpha="100" stop="0" />
+              </colors>
+            </fill>
+          </color>
+          <color name="inner">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0xFFFFFF" alpha="100" stop="0" />
+              </colors>
+            </fill>
+          </color>
+          <color name="text">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0xBABBBA" alpha="100" stop="0" />
+              </colors>
+            </fill>
+          </color>
+        </group_colors>
+      </color_group>
+      <color_group name="window">
+        <group_colors>
+          <color name="text">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0xF8F8F8" alpha="100" stop="0" />
+              </colors>
+            </fill>
+          </color>
+          <color name="btn_text">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0xF8F8F8" alpha="100" stop="0" />
+              </colors>
+            </fill>
+          </color>
+          <color name="inner">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0x316300" alpha="0" stop="0" />
+              </colors>
+            </fill>
+          </color>
+          <color name="bg">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0x212121" alpha="100" stop="0" />
+              </colors>
+            </fill>
+          </color>
+          <color name="diva">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0x4E4E4E" alpha="100" stop="0" />
+              </colors>
+            </fill>
+          </color>
+          <color name="divb">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0x4E4E4E" alpha="0" stop="0" />
+              </colors>
+            </fill>
+          </color>
+          <color name="shadow">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0x000000" alpha="20" stop="0" />
+              </colors>
+            </fill>
+          </color>
+          <color name="border">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0x454545" alpha="100" stop="0" />
+              </colors>
+            </fill>
+          </color>
+          <color name="separator">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0xFFFFFF" alpha="100" stop="0" />
+              </colors>
+            </fill>
+          </color>
+          <color name="selected_border">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0xFFFFFF" alpha="100" stop="0" />
+              </colors>
+            </fill>
+          </color>
+        </group_colors>
+      </color_group>
+      <color_group name="editor">
+        <group_colors>
+          <color name="slide_text">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0xE2E2E2" alpha="100" stop="0" />
+              </colors>
+            </fill>
+          </color>
+          <color name="html_text">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0xBABBBA" alpha="100" stop="0" />
+              </colors>
+            </fill>
+          </color>
+          <color name="btn_text_shadow">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0x000000" alpha="0" stop="0" />
+              </colors>
+            </fill>
+          </color>
+          <color name="btn_text">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0xFFFFFF" alpha="100" stop="0" />
+              </colors>
+            </fill>
+          </color>
+          <color name="btn_border">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0xD3D3D3" alpha="100" stop="0" />
+              </colors>
+            </fill>
+          </color>
+          <color name="btn_hover">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0x444444" alpha="100" stop="0" />
+              </colors>
+            </fill>
+          </color>
+          <color name="btn_down">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0x444444" alpha="100" stop="0" />
+              </colors>
+            </fill>
+          </color>
+          <color name="btn_bg">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0x222222" alpha="100" stop="0" />
+              </colors>
+            </fill>
+          </color>
+        </group_colors>
+      </color_group>
+      <color_group name="listitem">
+        <group_colors>
+          <color name="scene_text">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0xF8F8F8" alpha="100" stop="0" />
+              </colors>
+            </fill>
+          </color>
+          <color name="selected_text">
+            <fill type="linear" rotation="90" />
+          </color>
+          <color name="shadow">
+            <fill type="linear" rotation="90" />
+          </color>
+          <color name="selected">
+            <fill type="linear" rotation="90" />
+          </color>
+          <color name="text">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0xBABBBA" alpha="100" stop="0" />
+              </colors>
+            </fill>
+          </color>
+          <color name="viewed">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0xBABBBA" alpha="100" stop="0" />
+              </colors>
+            </fill>
+          </color>
+          <color name="hover">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0xFFFFFF" alpha="6" stop="0" />
+              </colors>
+            </fill>
+          </color>
+          <color name="lines">
+            <fill type="linear" rotation="90" />
+          </color>
+          <color name="selected_hover_border">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0x6C6C6C" alpha="100" stop="0" />
+              </colors>
+            </fill>
+          </color>
+        </group_colors>
+      </color_group>
+      <color_group name="glossary">
+        <group_colors>
+          <color name="selected_text">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0xFFFFFF" alpha="100" stop="0" />
+              </colors>
+            </fill>
+          </color>
+          <color name="selected">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0xFFFFFF" alpha="100" stop="0" />
+              </colors>
+            </fill>
+          </color>
+          <color name="text">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0xBABBBA" alpha="100" stop="0" />
+              </colors>
+            </fill>
+          </color>
+          <color name="hover">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0xBABBBA" alpha="100" stop="0" />
+              </colors>
+            </fill>
+          </color>
+          <color name="heading_text">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0xF8F8F8" alpha="100" stop="0" />
+              </colors>
+            </fill>
+          </color>
+          <color name="diva">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0x000000" alpha="0" stop="0" />
+              </colors>
+            </fill>
+          </color>
+          <color name="divb">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0x000000" alpha="0" stop="0" />
+              </colors>
+            </fill>
+          </color>
+          <color name="divc">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0x000000" alpha="0" stop="0" />
+              </colors>
+            </fill>
+          </color>
+          <color name="bg">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0x000000" alpha="0" stop="0" />
+              </colors>
+            </fill>
+          </color>
+        </group_colors>
+      </color_group>
+      <color_group name="notes">
+        <group_colors>
+          <color name="text">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0xBABBBA" alpha="100" stop="0" />
+              </colors>
+            </fill>
+          </color>
+        </group_colors>
+      </color_group>
+      <color_group name="resource">
+        <group_colors>
+          <color name="separator">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0x000000" alpha="0" stop="0" />
+              </colors>
+            </fill>
+          </color>
+          <color name="hover">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0xFFFFFF" alpha="6" stop="0" />
+              </colors>
+            </fill>
+          </color>
+        </group_colors>
+      </color_group>
+      <color_group name="outline">
+        <group_colors>
+          <color name="search_hover">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0x000000" alpha="0" stop="0" />
+              </colors>
+            </fill>
+          </color>
+          <color name="search_text">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0x2D2D2D" alpha="100" stop="0" />
+              </colors>
+            </fill>
+          </color>
+          <color name="divc">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0x000000" alpha="0" stop="0" />
+              </colors>
+            </fill>
+          </color>
+          <color name="divb">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0x000000" alpha="0" stop="0" />
+              </colors>
+            </fill>
+          </color>
+          <color name="diva">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0x000000" alpha="0" stop="0" />
+              </colors>
+            </fill>
+          </color>
+        </group_colors>
+      </color_group>
+      <color_group name="transcript">
+        <group_colors>
+          <color name="heading_text">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0xFFFFFF" alpha="100" stop="0" />
+              </colors>
+            </fill>
+          </color>
+          <color name="div">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0x000000" alpha="0" stop="0" />
+              </colors>
+            </fill>
+          </color>
+        </group_colors>
+      </color_group>
+      <color_group name="tabs">
+        <group_colors>
+          <color name="shadow">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0x000000" alpha="0" stop="0" />
+              </colors>
+            </fill>
+          </color>
+          <color name="hover">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0xF8F8F8" alpha="100" stop="0" />
+              </colors>
+            </fill>
+          </color>
+          <color name="selected">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0xF8F8F8" alpha="100" stop="0" />
+              </colors>
+            </fill>
+          </color>
+          <color name="text">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0xBABBBA" alpha="100" stop="0" />
+              </colors>
+            </fill>
+          </color>
+          <color name="bg">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0x000000" alpha="0" stop="0" />
+              </colors>
+            </fill>
+          </color>
+          <color name="panel_bg">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0x212121" alpha="100" stop="0" />
+              </colors>
+            </fill>
+          </color>
+          <color name="bottom_border">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0x6C6C6C" alpha="100" stop="0" />
+              </colors>
+            </fill>
+          </color>
+        </group_colors>
+      </color_group>
+      <color_group name="seekcontrol">
+        <group_colors>
+          <color name="btn_icon_color">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0xB4B4B4" alpha="100" stop="0" />
+              </colors>
+            </fill>
+          </color>
+          <color name="seek_position">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0xFFFFFF" alpha="60" stop="0" />
+              </colors>
+            </fill>
+          </color>
+          <color name="seek_bg">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0x6C6C6C" alpha="100" stop="0" />
+              </colors>
+            </fill>
+          </color>
+          <color name="seek_border">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0x000000" alpha="0" stop="0" />
+              </colors>
+            </fill>
+          </color>
+          <color name="border">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0x000000" alpha="0" stop="0" />
+              </colors>
+            </fill>
+          </color>
+          <color name="bg">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0x000000" alpha="0" stop="0" />
+              </colors>
+            </fill>
+          </color>
+          <color name="btn_icon_hover">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0xFFFFFF" alpha="100" stop="0" />
+              </colors>
+            </fill>
+          </color>
+          <color name="btn_icon_shadow">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0x000000" alpha="0" stop="0" />
+              </colors>
+            </fill>
+          </color>
+        </group_colors>
+      </color_group>
+      <color_group name="searchinput">
+        <group_colors>
+          <color name="text_active">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0xF8F8F8" alpha="100" stop="0" />
+              </colors>
+            </fill>
+          </color>
+          <color name="bg_active">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0x292929" alpha="100" stop="0" />
+              </colors>
+            </fill>
+          </color>
+          <color name="search_text">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0xBABBBA" alpha="100" stop="0" />
+              </colors>
+            </fill>
+          </color>
+          <color name="hover_glow">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0x457E13" alpha="0" stop="0" />
+              </colors>
+            </fill>
+          </color>
+          <color name="button_hover">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0x3F8500" alpha="100" stop="0" />
+              </colors>
+            </fill>
+          </color>
+          <color name="icon">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0xBABBBA" alpha="100" stop="0" />
+              </colors>
+            </fill>
+          </color>
+          <color name="border">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0x000000" alpha="0" stop="0" />
+              </colors>
+            </fill>
+          </color>
+          <color name="outer_border">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0x6C6C6C" alpha="100" stop="0" />
+              </colors>
+            </fill>
+          </color>
+          <color name="bg">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0xFFFFFF" alpha="6" stop="0" />
+              </colors>
+            </fill>
+          </color>
+          <color name="bg_in_tab">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0x545454" alpha="100" stop="0" />
+              </colors>
+            </fill>
+          </color>
+        </group_colors>
+      </color_group>
+      <color_group name="scrollarea">
+        <group_colors>
+          <color name="detailb">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0x6AA242" alpha="100" stop="0" />
+              </colors>
+            </fill>
+          </color>
+          <color name="detaila">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0x2A5400" alpha="100" stop="0" />
+              </colors>
+            </fill>
+          </color>
+          <color name="shadow">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0x275000" alpha="100" stop="0" />
+              </colors>
+            </fill>
+          </color>
+          <color name="icons">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0xFFFFFF" alpha="100" stop="0" />
+              </colors>
+            </fill>
+          </color>
+          <color name="button_border">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0x2A5500" alpha="100" stop="0" />
+              </colors>
+            </fill>
+          </color>
+          <color name="button_inner">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0x4B8A16" alpha="100" stop="0" />
+              </colors>
+            </fill>
+          </color>
+          <color name="button_bg">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0xB3B4B3" alpha="75" stop="0" />
+              </colors>
+            </fill>
+          </color>
+          <color name="button_bg_hover">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0xB3B4B3" alpha="75" stop="0" />
+              </colors>
+            </fill>
+          </color>
+          <color name="border">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0x479901" alpha="100" stop="0" />
+              </colors>
+            </fill>
+          </color>
+          <color name="bg">
+            <fill type="linear" rotation="0">
+              <colors>
+                <color rgb="0x366F00" alpha="100" stop="0" />
+              </colors>
+            </fill>
+          </color>
+        </group_colors>
+      </color_group>
+      <color_group name="menu">
+        <group_colors>
+          <color name="shadow">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0x000000" alpha="0" stop="0" />
+              </colors>
+            </fill>
+          </color>
+          <color name="bg">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0x212121" alpha="100" stop="0" />
+              </colors>
+            </fill>
+          </color>
+          <color name="generic_shadow">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0x000000" alpha="94" stop="0" />
+              </colors>
+            </fill>
+          </color>
+          <color name="right_shadow">
+            <fill type="linear" rotation="0">
+              <colors>
+                <color rgb="0x000000" alpha="0" stop="0" />
+                <color rgb="0x000000" alpha="30" stop="255" />
+              </colors>
+            </fill>
+          </color>
+          <color name="border">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0x454545" alpha="100" stop="0" />
+              </colors>
+            </fill>
+          </color>
+        </group_colors>
+      </color_group>
+      <color_group name="logo">
+        <group_colors>
+          <color name="shadow">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0x254B00" alpha="100" stop="0" />
+              </colors>
+            </fill>
+          </color>
+          <color name="bg">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0xFFFFFF" alpha="0" stop="0" />
+              </colors>
+            </fill>
+          </color>
+        </group_colors>
+      </color_group>
+      <color_group name="checkbox">
+        <group_colors>
+          <color name="hover">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0xAFDD82" alpha="100" stop="0" />
+              </colors>
+            </fill>
+          </color>
+          <color name="text">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0xFFFFFF" alpha="100" stop="0" />
+              </colors>
+            </fill>
+          </color>
+          <color name="check">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0x2BC400" alpha="100" stop="0" />
+              </colors>
+            </fill>
+          </color>
+          <color name="bg">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0xFFFFFF" alpha="100" stop="0" />
+              </colors>
+            </fill>
+          </color>
+          <color name="border">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0x2A5300" alpha="100" stop="0" />
+              </colors>
+            </fill>
+          </color>
+        </group_colors>
+      </color_group>
+      <color_group name="button">
+        <group_colors>
+          <color name="btn_icon_color">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0xBABBBA" alpha="100" stop="0" />
+              </colors>
+            </fill>
+          </color>
+          <color name="btn_text_shadow">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0x000000" alpha="0" stop="0" />
+              </colors>
+            </fill>
+          </color>
+          <color name="btn_text">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0xBABBBA" alpha="100" stop="0" />
+              </colors>
+            </fill>
+          </color>
+          <color name="btn_border">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0x000000" alpha="0" stop="0" />
+              </colors>
+            </fill>
+          </color>
+          <color name="btn_hover">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0xF8F8F8" alpha="100" stop="0" />
+              </colors>
+            </fill>
+          </color>
+          <color name="btn_down">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0x000000" alpha="0" stop="0" />
+              </colors>
+            </fill>
+          </color>
+          <color name="btn_bg">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0x000000" alpha="0" stop="0" />
+              </colors>
+            </fill>
+          </color>
+          <color name="btn_glow">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0x000000" alpha="0" stop="0" />
+              </colors>
+            </fill>
+          </color>
+          <color name="btn_on_dark_background">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0xBABBBA" alpha="100" stop="0" />
+              </colors>
+            </fill>
+          </color>
+          <color name="btn_on_dark_background_hover">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0xF8F8F8" alpha="100" stop="0" />
+              </colors>
+            </fill>
+          </color>
+        </group_colors>
+      </color_group>
+      <color_group name="base">
+        <group_colors>
+          <color name="brandhighlight">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0x4FBDF4" alpha="100" stop="0" />
+              </colors>
+            </fill>
+          </color>
+          <color name="brandhighlight_secondary">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0xFFFFFF" alpha="100" stop="0" />
+              </colors>
+            </fill>
+          </color>
+          <color name="text">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0xBABBBA" alpha="100" stop="0" />
+              </colors>
+            </fill>
+          </color>
+          <color name="text_hover">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0xF8F8F8" alpha="100" stop="0" />
+              </colors>
+            </fill>
+          </color>
+          <color name="text_selected">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0xF8F8F8" alpha="100" stop="0" />
+              </colors>
+            </fill>
+          </color>
+          <color name="diva">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0x454545" alpha="100" stop="0" />
+              </colors>
+            </fill>
+          </color>
+          <color name="divb">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0x000000" alpha="0" stop="0" />
+              </colors>
+            </fill>
+          </color>
+          <color name="menu_shade">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0x212121" alpha="100" stop="0" />
+              </colors>
+            </fill>
+          </color>
+          <color name="border">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0x282828" alpha="100" stop="0" />
+              </colors>
+            </fill>
+          </color>
+          <color name="bg">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0x282828" alpha="100" stop="0" />
+              </colors>
+            </fill>
+          </color>
+          <color name="slide_bg">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0x282828" alpha="100" stop="0" />
+              </colors>
+            </fill>
+          </color>
+          <color name="overlay_message">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0x000000" alpha="85" stop="0" />
+              </colors>
+            </fill>
+          </color>
+          <color name="selected_bg">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0xFFFFFF" alpha="6" stop="0" />
+              </colors>
+            </fill>
+          </color>
+          <color name="selected_border">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0x6C6C6C" alpha="100" stop="0" />
+              </colors>
+            </fill>
+          </color>
+          <color name="separator">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0x454545" alpha="100" stop="0" />
+              </colors>
+            </fill>
+          </color>
+          <color name="control_border">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0x6C6C6C" alpha="100" stop="0" />
+              </colors>
+            </fill>
+          </color>
+        </group_colors>
+      </color_group>
+      <color_group name="settings">
+        <group_colors>
+          <color name="panel_bg">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0x212121" alpha="100" stop="0" />
+              </colors>
+            </fill>
+          </color>
+          <color name="panel_shadow">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0x000000" alpha="35" stop="0" />
+              </colors>
+            </fill>
+          </color>
+          <color name="toggle_border">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0x7C7C7C" alpha="100" stop="0" />
+              </colors>
+            </fill>
+          </color>
+          <color name="toggle_thumb_off">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0xA2A2A2" alpha="100" stop="0" />
+              </colors>
+            </fill>
+          </color>
+          <color name="toggle_track_on">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0x4FBDF4" alpha="100" stop="0" />
+              </colors>
+            </fill>
+          </color>
+          <color name="toggle_track_off">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0xFFFFFF" alpha="10" stop="0" />
+              </colors>
+            </fill>
+          </color>
+          <color name="toggle_label">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0xBABBBA" alpha="100" stop="0" />
+              </colors>
+            </fill>
+          </color>
+          <color name="settings_border_color">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0x454545" alpha="100" stop="0" />
+              </colors>
+            </fill>
+          </color>
+        </group_colors>
+      </color_group>
+      <color_group name="volume">
+        <group_colors>
+          <color name="panel_bg">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0x212121" alpha="100" stop="0" />
+              </colors>
+            </fill>
+          </color>
+          <color name="thumb_border">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0x2B5500" alpha="100" stop="0" />
+              </colors>
+            </fill>
+          </color>
+          <color name="thumb_inner">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0x2B5500" alpha="100" stop="0" />
+              </colors>
+            </fill>
+          </color>
+          <color name="thumb_bg">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0xFFFFFF" alpha="100" stop="0" />
+              </colors>
+            </fill>
+          </color>
+          <color name="slider_border">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0x428C01" alpha="100" stop="0" />
+              </colors>
+            </fill>
+          </color>
+          <color name="slider_bg">
+            <fill type="linear" rotation="0">
+              <colors>
+                <color rgb="0x6C6C6C" alpha="100" stop="0" />
+              </colors>
+            </fill>
+          </color>
+          <color name="slider_shadow">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0x000000" alpha="40" stop="0" />
+              </colors>
+            </fill>
+          </color>
+          <color name="volume_border_color">
+            <fill type="linear" rotation="90">
+              <colors>
+                <color rgb="0x454545" alpha="100" stop="0" />
+              </colors>
+            </fill>
+          </color>
+        </group_colors>
+      </color_group>
+    </colorscheme>
+  </colorschemes>
+  <string_tables>
+    <string_table name="pxabnsnfns10111100101">
+      <string id="acc_cc_hide">Hide captions (Ctrl+Alt+C)</string>
+      <string id="acc_cc_show">Show captions (Ctrl+Alt+C)</string>
+      <string id="acc_enter_fullscreen">Enter full-screen (Ctrl+Alt+F)</string>
+      <string id="acc_exit_fullscreen">Exit full-screen (Ctrl+Alt+F)</string>
+      <string id="acc_locked">locked</string>
+      <string id="acc_modern_video_captions">video captions</string>
+      <string id="acc_modern_video_fullscreen">full-screen video</string>
+      <string id="acc_modern_video_mute">mute video</string>
+      <string id="acc_modern_video_pause">pause video</string>
+      <string id="acc_modern_video_pip">picture-in-picture</string>
+      <string id="acc_modern_video_play">play video</string>
+      <string id="acc_modern_video_playback_speed">playback speed</string>
+      <string id="acc_modern_video_settings">video settings</string>
+      <string id="acc_modern_video_transcript">Open</string>
+      <string id="acc_modern_video_volume">video volume</string>
+      <string id="acc_mute">Mute (Ctrl+Alt+M)</string>
+      <string id="acc_next">Next (Ctrl+Alt+Period)</string>
+      <string id="acc_next_visual">Next (Ctrl+Alt+.)</string>
+      <string id="acc_pause">Pause (Ctrl+Alt+P)</string>
+      <string id="acc_play">Play (Ctrl+Alt+P)</string>
+      <string id="acc_playback_speed">Playback speed</string>
+      <string id="acc_previous">Previous (Ctrl+Alt+Comma)</string>
+      <string id="acc_previous_visual">Previous (Ctrl+Alt+,)</string>
+      <string id="acc_replay">Replay (Ctrl+Alt+R)</string>
+      <string id="acc_search_input">search</string>
+      <string id="acc_settings">Settings</string>
+      <string id="acc_skipnavigation">Back to top</string>
+      <string id="acc_slide_progress">slide progress</string>
+      <string id="acc_submit">Submit (Ctrl+Alt+S)</string>
+      <string id="acc_three_image_count_of_total_item_visited">%count% of %total% item visited</string>
+      <string id="acc_three_image_count_of_total_items_visited">%count% of %total% items visited</string>
+      <string id="acc_three_image_step_count_of_total">step %count% of %total%</string>
+      <string id="acc_unmute">Unmute (Ctrl+Alt+M)</string>
+      <string id="acc_video_transcript_list">Transcript</string>
+      <string id="acc_visited">visited</string>
+      <string id="acc_window_close">Close</string>
+      <string id="acc_window_move">Move window</string>
+      <string id="acc_window_options">Options</string>
+      <string id="acc_window_resize">Resize window</string>
+      <string id="accessible_text">Accessible text</string>
+      <string id="acctext_shortcut">Toggle accessible text</string>
+      <string id="action">Action</string>
+      <string id="alt_key">Alt</string>
+      <string id="background_audio">Background audio</string>
+      <string id="background_audio_shortcut">Toggle background audio</string>
+      <string id="clear">Clear and return to menu</string>
+      <string id="close">Close</string>
+      <string id="closed_captions">Captions</string>
+      <string id="closedcaptions_shortcut">Toggle captions</string>
+      <string id="continueresponsive">Continue</string>
+      <string id="ctrl_key">Ctrl</string>
+      <string id="desktop_start">Start Course</string>
+      <string id="disabled_orientation">Please rotate your device</string>
+      <string id="enable_keyboardshortcuts">Enable keyboard shortcuts</string>
+      <string id="filter">Filter</string>
+      <string id="fullscreen_shortcut">Toggle full-screen</string>
+      <string id="glossary">Glossary</string>
+      <string id="keyboardshortcuts">Keyboard Shortcuts</string>
+      <string id="keyboardshortcuts_lower">Keyboard shortcuts</string>
+      <string id="mobile_start">Start Course</string>
+      <string id="modern_video_captions_label">Captions</string>
+      <string id="modern_video_captions_off">Off</string>
+      <string id="modern_video_captions_on">On</string>
+      <string id="modern_video_normal_speed">Normal</string>
+      <string id="modern_video_playback_settings">Video Playback Settings</string>
+      <string id="modern_video_playback_speed_title">Playback Speed</string>
+      <string id="modern_video_settings_close">close video settings</string>
+      <string id="mute_shortcut">Mute / unmute</string>
+      <string id="next">NEXT</string>
+      <string id="next_shortcut">Next</string>
+      <string id="outline">Menu</string>
+      <string id="playback_speed_normal">Normal</string>
+      <string id="playback_speed_title">Playback Speed</string>
+      <string id="playpause_shortcut">Play / pause</string>
+      <string id="prev">PREV</string>
+      <string id="previous_shortcut">Previous</string>
+      <string id="progress_hour">hour</string>
+      <string id="progress_hours">hours</string>
+      <string id="progress_minute">minute</string>
+      <string id="progress_minutes">minutes</string>
+      <string id="progress_second">second</string>
+      <string id="progress_seconds">seconds</string>
+      <string id="replay_shortcut">Replay</string>
+      <string id="resources">Resources</string>
+      <string id="restart">Restart</string>
+      <string id="resume">Resume</string>
+      <string id="search">Search...</string>
+      <string id="search_in">Search in:</string>
+      <string id="search_results">Search Results</string>
+      <string id="search_toggle">Search</string>
+      <string id="shift_key">Shift</string>
+      <string id="shortcut">Shortcut</string>
+      <string id="shortcuthelp">List keyboard shortcuts</string>
+      <string id="sidebar_toggle">Sidebar Toggle</string>
+      <string id="slide_text_chk">Slide Text</string>
+      <string id="streaming_video_local_playback_learn_more">Learn More</string>
+      <string id="streaming_video_local_playback_republish">To watch this video, use the preview feature in Storyline 360, upload your published output to a server, publish to Review 360, or switch to static video quality.</string>
+      <string id="streaming_video_local_playback_title">Streaming video is unavailable for local playback.</string>
+      <string id="submit">SUBMIT</string>
+      <string id="submit_shortcut">Submit</string>
+      <string id="terms">Terms</string>
+      <string id="three_image_audio">audio</string>
+      <string id="three_image_camera_down">camera moved down</string>
+      <string id="three_image_camera_left">camera moved left</string>
+      <string id="three_image_camera_right">camera moved right</string>
+      <string id="three_image_camera_up">camera moved up</string>
+      <string id="three_image_count_of_total">%count% of %total%</string>
+      <string id="three_image_count_of_total_visited">%count% of %total% visited</string>
+      <string id="three_image_hotspot">hotspot</string>
+      <string id="three_image_instructions">Use the w, a, s, and d keys to move around the 360 degree image. Press the tab key to jump to interactive markers and hotspots.</string>
+      <string id="three_image_interaction">360 degree image interaction</string>
+      <string id="three_image_interaction_free">free exploration mode</string>
+      <string id="three_image_interaction_guided">guided tour mode</string>
+      <string id="three_image_interaction_next">next</string>
+      <string id="three_image_interaction_prev">previous</string>
+      <string id="three_image_label">label</string>
+      <string id="three_image_marker">marker</string>
+      <string id="three_image_pause_audio">pause audio</string>
+      <string id="three_image_pause_video">pause video</string>
+      <string id="three_image_play_audio">play audio</string>
+      <string id="three_image_play_video">play video</string>
+      <string id="three_image_progress_audio">progress</string>
+      <string id="three_image_progress_video">progress</string>
+      <string id="three_image_tooltip">tooltip</string>
+      <string id="three_image_total_item">%total% item</string>
+      <string id="three_image_total_items">%total% items</string>
+      <string id="three_image_video">video</string>
+      <string id="three_image_video_volume">video volume</string>
+      <string id="togglezoom">Toggle zoom to fit</string>
+      <string id="transcript">Notes</string>
+      <string id="transcript_auto_scroll">Autoscroll</string>
+      <string id="transcript_chk">Notes</string>
+      <string id="transcript_show_timestamp">Show timestamps</string>
+      <string id="video_transcript_resume_autoscroll">Resume autoscroll</string>
+      <string id="video_transcript_select_track">Select track</string>
+      <string id="video_transcript_title">Transcripts</string>
+      <string id="zoom_to_fit">Zoom to fit</string>
+      <string id="continue">Continue</string>
+    </string_table>
+  </string_tables>
+  <fonts>
+    <font name="Lato">
+      <files>
+        <file bold="true" italic="false" />
+        <file bold="false" italic="false" />
+      </files>
+    </font>
+  </fonts>
+  <sounds enabled="true" />
+  <nav_data>
+    <outline>
+      <links>
+        <slidelink slideid="_player.5mdKPrCt4hI" displaytext="Introduction to Mutual Dating" expand="true" type="slide">
+          <links>
+            <slidelink slideid="_player.5mdKPrCt4hI.5aWWO9rRACV" displaytext="WELCOME LAYOUT" expand="false" type="slide" />
+            <slidelink slideid="_player.5mdKPrCt4hI.6TPRhyAEtbf" displaytext="OBJECTIVES LAYOUT" expand="false" type="slide" />
+            <slidelink slideid="_player.5mdKPrCt4hI.5wGixdEQFWO" displaytext="Untitled Slide" expand="false" type="slide" />
+          </links>
+        </slidelink>
+        <slidelink slideid="_player.5pW7YRcD7ac" displaytext="Module 1" expand="false" type="slide">
+          <links>
+            <slidelink slideid="_player.5pW7YRcD7ac.6OCAgRSXL57" displaytext="Module 1 Introduction" expand="false" type="slide" />
+            <slidelink slideid="_player.5pW7YRcD7ac.5km3pmaPTDD" displaytext="Untitled Slide" expand="false" type="slide" />
+            <slidelink slideid="_player.5pW7YRcD7ac.6l3IP7R5SJD" displaytext="Untitled Slide" expand="false" type="slide" />
+            <slidelink slideid="_player.5pW7YRcD7ac.6qq6qPjTU58" displaytext="Untitled Slide" expand="false" type="slide" />
+            <slidelink slideid="_player.6rh1yAourCu" displaytext="Module 1 Lesson 1" expand="false" type="slide">
+              <links>
+                <slidelink slideid="_player.6rh1yAourCu.5jvVfAwb8IO" displaytext="Module 1 Lesson 1" expand="false" type="slide" />
+                <slidelink slideid="_player.6rh1yAourCu.5nQDrI9d1gU" displaytext="Lesson 1 Objectives" expand="false" type="slide" />
+                <slidelink slideid="_player.6rh1yAourCu.66H0zzxjzcd" displaytext="EQ definition" expand="false" type="slide" />
+                <slidelink slideid="_player.6rh1yAourCu.5fxalyGZDN4" displaytext="Aspects of EQ" expand="false" type="slide" />
+                <slidelink slideid="_player.6rh1yAourCu.5qJxI2Ml46h" displaytext="Self-Awareness" expand="false" type="slide" />
+                <slidelink slideid="_player.6rh1yAourCu.5neAOQp7HDm" displaytext="Self-Regulation" expand="false" type="slide" />
+                <slidelink slideid="_player.6rh1yAourCu.5WiLPjABeSH" displaytext="Untitled Slide" expand="false" type="slide" />
+                <slidelink slideid="_player.6rh1yAourCu.5zWQxYXwR0U" displaytext="Untitled Slide" expand="false" type="slide" />
+                <slidelink slideid="_player.6rh1yAourCu.6535lXoTmqb" displaytext="Untitled Slide" expand="false" type="slide" />
+                <slidelink slideid="_player.6rh1yAourCu.5rBOP5LnhMh" displaytext="Untitled Slide" expand="false" type="slide" />
+                <slidelink slideid="_player.6rh1yAourCu.6E0rOptV0NT" displaytext="Untitled Slide" expand="false" type="slide" />
+                <slidelink slideid="_player.6rh1yAourCu.5XMTgDMW72A" displaytext="Untitled Slide" expand="false" type="slide" />
+                <slidelink slideid="_player.6rh1yAourCu.6rS3JiRbsfn" displaytext="If a date cancels a date at the last minute (leaving you without any plans for the night and feeling frustrated), you could use self-regulation to" expand="false" type="slide" />
+                <slidelink slideid="_player.6rh1yAourCu.6drn22I5whz" displaytext="You&amp;apos;re on a first date and your date seems nervous and quiet. Which EQ component would be most helpful in this situation?" expand="false" type="slide" />
+                <slidelink slideid="_player.6rh1yAourCu.6hz7Pu1F8lt" displaytext="How does empathy contribute to emotional intelligence in dating?" expand="false" type="slide" />
+                <slidelink slideid="_player.6rh1yAourCu.6aPokE91DqZ" displaytext="Multiple Choice" expand="false" type="slide" />
+                <slidelink slideid="_player.6rh1yAourCu.5rzBfXdl44m" displaytext="Multiple Choice" expand="false" type="slide" />
+                <slidelink slideid="_player.6rh1yAourCu.5u0G2X6yotc" displaytext="Multiple Choice" expand="false" type="slide" />
+                <slidelink slideid="_player.6rh1yAourCu.5hOrJeRqo7W" displaytext="Knowledge check" expand="false" type="slide" />
+                <slidelink slideid="_player.6rh1yAourCu.5ertXQYkXAH" displaytext="Pick One" expand="false" type="slide" />
+                <slidelink slideid="_player.6rh1yAourCu.6K4YUnDPE3n" displaytext="Knowledge check 2" expand="false" type="slide" />
+              </links>
+            </slidelink>
+            <slidelink slideid="_player.5XI3p8Kx0SX" displaytext="Module 1 Lesson 2" expand="false" type="slide">
+              <links>
+                <slidelink slideid="_player.5XI3p8Kx0SX.6lR25TIxqvy" displaytext="Lesson 1.2: Improving Self-Awareness and Self-Regulation in Dating" expand="false" type="slide" />
+                <slidelink slideid="_player.5XI3p8Kx0SX.5is5kR61khW" displaytext="Lesson Objective" expand="false" type="slide" />
+                <slidelink slideid="_player.5XI3p8Kx0SX.6Hn9gpBHwYO" displaytext="Review" expand="false" type="slide" />
+                <slidelink slideid="_player.5XI3p8Kx0SX.6nuGfpqYmVM" displaytext="Self-Awareness in Dating" expand="false" type="slide" />
+                <slidelink slideid="_player.5XI3p8Kx0SX.63EmaSZpwsw" displaytext="Strategies for Improving Self-Awareness" expand="false" type="slide" />
+                <slidelink slideid="_player.5XI3p8Kx0SX.5pVBRhJyWWi" displaytext="Practicing Mindfulness" expand="false" type="slide" />
+                <slidelink slideid="_player.5XI3p8Kx0SX.5u7Gbfc8gQU" displaytext="Checking in with Your Emotions Regularly" expand="false" type="slide" />
+                <slidelink slideid="_player.5XI3p8Kx0SX.6S2712QRW3v" displaytext="Asking for Feedback from Trusted Friends" expand="false" type="slide" />
+                <slidelink slideid="_player.5XI3p8Kx0SX.6TEJLFq6Rsd" displaytext="Keeping a Dating Journal" expand="false" type="slide" />
+                <slidelink slideid="_player.5XI3p8Kx0SX.6J5nuc1hwcZ" displaytext="Emotional Self-Regulation in Dating" expand="false" type="slide" />
+                <slidelink slideid="_player.5XI3p8Kx0SX.5x7MKaHmOML" displaytext="Strategies for Improving Emotional Self-Regulation" expand="false" type="slide" />
+                <slidelink slideid="_player.5XI3p8Kx0SX.6U2NozD4n61" displaytext="1. Use the Pause Technique." expand="false" type="slide" />
+                <slidelink slideid="_player.5XI3p8Kx0SX.6ak3z1sL16h" displaytext="2. Practice Deep Breathing Exercises." expand="false" type="slide" />
+                <slidelink slideid="_player.5XI3p8Kx0SX.5V1PqOYdTTF" displaytext="3. Reframe Negative Thoughts" expand="false" type="slide" />
+                <slidelink slideid="_player.5XI3p8Kx0SX.5ln2mNCWxnQ" displaytext="4. Set Clear Boundaries" expand="false" type="slide" />
+                <slidelink slideid="_player.5XI3p8Kx0SX.6Ep3zOeuZs1" displaytext="Scenario Practice" expand="false" type="slide" />
+                <slidelink slideid="_player.5XI3p8Kx0SX.6UAeUUtJ9Fy" displaytext="Reflection" expand="false" type="slide" />
+                <slidelink slideid="_player.5XI3p8Kx0SX.6qcZgndgik6" displaytext="Conclusion" expand="false" type="slide" />
+                <slidelink slideid="_player.5XI3p8Kx0SX.69UiXW1MjMt" displaytext="Preview" expand="false" type="slide" />
+                <slidelink slideid="_player.5XI3p8Kx0SX.5tPJPEf8NZp" displaytext="Assessment" expand="false" type="slide" />
+                <slidelink slideid="_player.5XI3p8Kx0SX.612NasDor20" displaytext="Assessment" expand="false" type="slide" />
+                <slidelink slideid="_player.5XI3p8Kx0SX.5aci3kynMIh" displaytext="Assessment" expand="false" type="slide" />
+              </links>
+            </slidelink>
+            <slidelink slideid="_player.6habngLvSOt" displaytext="Module 1 Lesson 3" expand="false" type="slide">
+              <links>
+                <slidelink slideid="_player.6habngLvSOt.6jplLq3GmyL" displaytext="Module 1: Lesson 3" expand="false" type="slide" />
+                <slidelink slideid="_player.6habngLvSOt.65qiuvdVSaZ" displaytext="Lesson 1 Objectives" expand="false" type="slide" />
+                <slidelink slideid="_player.6habngLvSOt.6RqjRhXL7tP" displaytext="Introduction" expand="false" type="slide" />
+                <slidelink slideid="_player.6habngLvSOt.6GxMh7psgI0" displaytext="Understanding Empathy in Dating" expand="false" type="slide" />
+                <slidelink slideid="_player.6habngLvSOt.5s5r2e2AGRs" displaytext="Understanding Empathy in Dating" expand="false" type="slide" />
+                <slidelink slideid="_player.6habngLvSOt.6gvVa0bkwCL" displaytext="Understanding Empathy in Dating" expand="false" type="slide" />
+                <slidelink slideid="_player.6habngLvSOt.6JrPpfw1ET1" displaytext="The Power of Active Listening" expand="false" type="slide" />
+                <slidelink slideid="_player.6habngLvSOt.6YTTaxjgsWS" displaytext="The Power of Active Listening" expand="false" type="slide" />
+                <slidelink slideid="_player.6habngLvSOt.6mWYgoeNGW1" displaytext="Activity: Empathy in Action" expand="false" type="slide" />
+                <slidelink slideid="_player.6habngLvSOt.6eFqtOkYdBa" displaytext="Scenario 1: Your date says, &amp;quot;I had a really stressful day at work.&amp;quot;" expand="false" type="slide" />
+                <slidelink slideid="_player.6habngLvSOt.63w7Ndh2221" displaytext="Scenario 2: Your date mentions they&amp;apos;re nervous about an upcoming job interview." expand="false" type="slide" />
+                <slidelink slideid="_player.6habngLvSOt.5ph3oBHTdIa" displaytext="Untitled Slide" expand="false" type="slide" />
+                <slidelink slideid="_player.6habngLvSOt.5bsyNL87JN3" displaytext="Conclusion" expand="false" type="slide" />
+                <slidelink slideid="_player.6habngLvSOt.5m61OA5wr2g" displaytext="Draw from Lesson 3 Questions" expand="false" type="slide" />
+              </links>
+            </slidelink>
+            <slidelink slideid="_player.64ynZLExWEs" displaytext="Module 1 Lesson 4" expand="false" type="slide">
+              <links>
+                <slidelink slideid="_player.64ynZLExWEs.66ERY55D8hH" displaytext="Module 1: Lesson 4" expand="false" type="slide" />
+                <slidelink slideid="_player.64ynZLExWEs.5ojYAEf8R54" displaytext="Lesson 1 Objectives" expand="false" type="slide" />
+                <slidelink slideid="_player.64ynZLExWEs.61wU15efQGW" displaytext="Understanding Common Dating Challenges" expand="false" type="slide" />
+                <slidelink slideid="_player.64ynZLExWEs.5mgbfhWHRJR" displaytext="Untitled Slide" expand="false" type="slide" />
+                <slidelink slideid="_player.64ynZLExWEs.6bouce7bnGZ" displaytext="Applying EQ to Dating Conflicts" expand="false" type="slide" />
+                <slidelink slideid="_player.64ynZLExWEs.66KC5VOgc7I" displaytext="Strategies for Emotional Balance" expand="false" type="slide" />
+                <slidelink slideid="_player.64ynZLExWEs.6MOve3Dynw4" displaytext="Activity: Resolving Dating Conflicts" expand="false" type="slide" />
+                <slidelink slideid="_player.64ynZLExWEs.5l6xjGwiS7c" displaytext="Scenario 1: Your date consistently arrives late to your meetups." expand="false" type="slide" />
+                <slidelink slideid="_player.64ynZLExWEs.6IhHLjxVGsB" displaytext="Scenario 2: You and your date have different ideas about how often to communicate between dates." expand="false" type="slide" />
+                <slidelink slideid="_player.64ynZLExWEs.5vi2ysA6s4t" displaytext="Untitled Slide" expand="false" type="slide" />
+                <slidelink slideid="_player.64ynZLExWEs.5pLTBpedNfa" displaytext="Which of the following is NOT a common dating challenge?" expand="false" type="slide" />
+                <slidelink slideid="_player.64ynZLExWEs.5ecs5Xn1dFb" displaytext="How does empathy contribute to resolving dating challenges?" expand="false" type="slide" />
+                <slidelink slideid="_player.64ynZLExWEs.6jHgEbSKyw9" displaytext="Which of the following is an example of using good social skills in dating?" expand="false" type="slide" />
+                <slidelink slideid="_player.64ynZLExWEs.5zZwXcaEa1O" displaytext="When faced with a dating conflict, which approach demonstrates the best use of emotional intelligence?" expand="false" type="slide" />
+              </links>
+            </slidelink>
+          </links>
+        </slidelink>
+        <slidelink slideid="_player.6bAMbeQUyOS" displaytext="Module 2" expand="false" type="slide">
+          <links>
+            <slidelink slideid="_player.6bAMbeQUyOS.6R7IMixzxwG" displaytext="Module 1 Introduction" expand="false" type="slide" />
+            <slidelink slideid="_player.6bAMbeQUyOS.5hbXQ4HpFOO" displaytext="Untitled Slide" expand="false" type="slide" />
+            <slidelink slideid="_player.5ZSGLNBMid1" displaytext="Module 2, Lesson 1" expand="false" type="slide">
+              <links>
+                <slidelink slideid="_player.5ZSGLNBMid1.6OrpHTcsmKe" displaytext="Lesson intro" expand="false" type="slide" />
+                <slidelink slideid="_player.5ZSGLNBMid1.6kobpkvf7eZ" displaytext="Module 2 lesson 1 Overview" expand="false" type="slide" />
+                <slidelink slideid="_player.5ZSGLNBMid1.6p5jjnFyxYJ" displaytext="Objectives" expand="false" type="slide" />
+                <slidelink slideid="_player.5ZSGLNBMid1.64qJBLWlgpc" displaytext="The Importance of a Great Opening Message" expand="false" type="slide" />
+                <slidelink slideid="_player.5ZSGLNBMid1.6hU1VgQvjtF" displaytext="The Importance of a Great Opening Message" expand="false" type="slide" />
+                <slidelink slideid="_player.5ZSGLNBMid1.6khG35gk77W" displaytext="Crafting Personalized Opening Messages" expand="false" type="slide" />
+                <slidelink slideid="_player.5ZSGLNBMid1.6Dpi9NR7d74" displaytext="Examples of Engaging Opening Messages" expand="false" type="slide" />
+                <slidelink slideid="_player.5ZSGLNBMid1.6eP7ljywzlw" displaytext="Let&amp;apos;s practice identifying effective opening messages. For each pair, choose the more engaging option:" expand="false" type="slide" />
+                <slidelink slideid="_player.5ZSGLNBMid1.699LX6b6rlN" displaytext="Untitled Slide" expand="false" type="slide" />
+              </links>
+            </slidelink>
+            <slidelink slideid="_player.6efw4MJqETO" displaytext="Module 2 Lesson 3" expand="false" type="slide">
+              <links>
+                <slidelink slideid="_player.6efw4MJqETO.6WLqJtG6keT" displaytext="Lesson intro" expand="false" type="slide" />
+                <slidelink slideid="_player.6efw4MJqETO.5Y2kv6CXtNG" displaytext="Module 2 Lesson 3 Overview" expand="false" type="slide" />
+                <slidelink slideid="_player.6efw4MJqETO.5VQM1h54pHd" displaytext="Objective" expand="false" type="slide" />
+                <slidelink slideid="_player.6efw4MJqETO.6fkIQwaPI1Y" displaytext="The Power of Humor in Online Dating" expand="false" type="slide" />
+                <slidelink slideid="_player.6efw4MJqETO.5hFeP8m2GYv" displaytext="The Power of Humor in Online Dating" expand="false" type="slide" />
+                <slidelink slideid="_player.6efw4MJqETO.6ePt4ABjsx9" displaytext="Types of Humor for Online Dating" expand="false" type="slide" />
+                <slidelink slideid="_player.6efw4MJqETO.5VIQv6fgwGU" displaytext="Crafting Light-Hearted Conversation Starters" expand="false" type="slide" />
+                <slidelink slideid="_player.6efw4MJqETO.6KNv7HM4HvW" displaytext="Examples of Humorous Conversation Starters" expand="false" type="slide" />
+                <slidelink slideid="_player.6efw4MJqETO.5jfurK6AimI" displaytext="Boundaries of Humor in Online Dating" expand="false" type="slide" />
+                <slidelink slideid="_player.6efw4MJqETO.6ngMmsBUWL3" displaytext="Untitled Slide" expand="false" type="slide" />
+              </links>
+            </slidelink>
+            <slidelink slideid="_player.6MWeuLLgYT9" displaytext="Module 2 Lesson 4" expand="false" type="slide">
+              <links>
+                <slidelink slideid="_player.6MWeuLLgYT9.639p6QOx7hx" displaytext="Lesson Intro" expand="false" type="slide" />
+                <slidelink slideid="_player.6MWeuLLgYT9.6jkGlVQXutl" displaytext="Untitled Slide" expand="false" type="slide" />
+                <slidelink slideid="_player.6MWeuLLgYT9.6LymcvqCRk3" displaytext="Untitled Slide" expand="false" type="slide" />
+                <slidelink slideid="_player.6MWeuLLgYT9.5yGPNppzG7B" displaytext="The Power of Humor in Face-to-Face Dating" expand="false" type="slide" />
+                <slidelink slideid="_player.6MWeuLLgYT9.6ZNlwyRkpKA" displaytext="The Power of Humor in Face-to-Face Dating" expand="false" type="slide" />
+                <slidelink slideid="_player.6MWeuLLgYT9.5nHVgzE0VmE" displaytext="Types of Humor for In-Person Dating" expand="false" type="slide" />
+                <slidelink slideid="_player.6MWeuLLgYT9.6CoT3jT6zap" displaytext="Crafting Light-Hearted In-Person Conversation Starters" expand="false" type="slide" />
+                <slidelink slideid="_player.6MWeuLLgYT9.6DKhPLOrqRN" displaytext="Examples of In-Person Humorous Interactions" expand="false" type="slide" />
+                <slidelink slideid="_player.6MWeuLLgYT9.6aEMQENyWU1" displaytext="The Importance of Non-Verbal Cues" expand="false" type="slide" />
+                <slidelink slideid="_player.6MWeuLLgYT9.6CvGSOqUuJW" displaytext="Boundaries of Humor in In-Person Dating" expand="false" type="slide" />
+                <slidelink slideid="_player.6MWeuLLgYT9.6btwEnLZG1G" displaytext="Untitled Slide" expand="false" type="slide" />
+                <slidelink slideid="_player.6MWeuLLgYT9.5YvN4V7XfDp" displaytext="Untitled Slide" expand="false" type="slide" />
+              </links>
+            </slidelink>
+            <slidelink slideid="_player.5ayCOUJ2ECt" displaytext="Module 2 Lesson 5" expand="false" type="slide">
+              <links>
+                <slidelink slideid="_player.5ayCOUJ2ECt.6JLNeyHYi11" displaytext="Lesson Intro" expand="false" type="slide" />
+                <slidelink slideid="_player.5ayCOUJ2ECt.5u67EZ3zpSH" displaytext="Untitled Slide" expand="false" type="slide" />
+                <slidelink slideid="_player.5ayCOUJ2ECt.5hvo2FTfUcd" displaytext="Untitled Slide" expand="false" type="slide" />
+                <slidelink slideid="_player.5ayCOUJ2ECt.62JdaEcOcOf" displaytext="The Importance of Digital Communication Style" expand="false" type="slide" />
+                <slidelink slideid="_player.5ayCOUJ2ECt.5yYJIEbYloD" displaytext="The Importance of Digital Communication Style" expand="false" type="slide" />
+                <slidelink slideid="_player.5ayCOUJ2ECt.6pyho7tacIO" displaytext="Analyzing Your Current Communication Style" expand="false" type="slide" />
+                <slidelink slideid="_player.5ayCOUJ2ECt.5WKeoLMpQL1" displaytext="Techniques to Enhance Digital Communication" expand="false" type="slide" />
+                <slidelink slideid="_player.5ayCOUJ2ECt.6iuHBT86CLo" displaytext="Activity: Communication Style Makeover" expand="false" type="slide" />
+                <slidelink slideid="_player.5ayCOUJ2ECt.6AAqxDASRDh" displaytext="Untitled Slide" expand="false" type="slide" />
+              </links>
+            </slidelink>
+          </links>
+        </slidelink>
+        <slidelink slideid="_player.6PsNhe6LSy6" displaytext="Module 3" expand="false" type="slide">
+          <links>
+            <slidelink slideid="_player.6PsNhe6LSy6.5qCGmfWFeNJ" displaytext="Module 3 Introduction" expand="false" type="slide" />
+            <slidelink slideid="_player.6PsNhe6LSy6.6avUBxt4A9d" displaytext="Untitled Slide" expand="false" type="slide" />
+            <slidelink slideid="_player.5ta2fnH7ynG" displaytext="Module 3 Lesson 1" expand="false" type="slide">
+              <links>
+                <slidelink slideid="_player.5ta2fnH7ynG.6MIdnLFJi6N" displaytext="Lesson Intro" expand="false" type="slide" />
+                <slidelink slideid="_player.5ta2fnH7ynG.6ZIPmdw6I2Y" displaytext="Module 3 lesson 1 Overview" expand="false" type="slide" />
+                <slidelink slideid="_player.5ta2fnH7ynG.6SlWTzIC6gQ" displaytext="Objectives" expand="false" type="slide" />
+                <slidelink slideid="_player.5ta2fnH7ynG.5pc1lWvabYS" displaytext="Introduction to Active Listening" expand="false" type="slide" />
+                <slidelink slideid="_player.5ta2fnH7ynG.5kJ9KnorGpV" displaytext="Why Active Listening Matters in Dating" expand="false" type="slide" />
+                <slidelink slideid="_player.5ta2fnH7ynG.6RIOUPalWgb" displaytext="Key Active Listening Techniques" expand="false" type="slide" />
+                <slidelink slideid="_player.5ta2fnH7ynG.5a4HsAQDhHk" displaytext="Key Active Listening Techniques" expand="false" type="slide" />
+                <slidelink slideid="_player.5ta2fnH7ynG.6lvyGtGFo6p" displaytext="Key Active Listening Techniques" expand="false" type="slide" />
+                <slidelink slideid="_player.5ta2fnH7ynG.5hkLkoupICz" displaytext="Key Active Listening Techniques" expand="false" type="slide" />
+                <slidelink slideid="_player.5ta2fnH7ynG.6rdVg2HqdDi" displaytext="Key Active Listening Techniques" expand="false" type="slide" />
+                <slidelink slideid="_player.5ta2fnH7ynG.5rwjOIyhxK1" displaytext="Key Active Listening Techniques" expand="false" type="slide" />
+                <slidelink slideid="_player.5ta2fnH7ynG.6ifgUoXDmQ6" displaytext="Key Active Listening Techniques" expand="false" type="slide" />
+                <slidelink slideid="_player.5ta2fnH7ynG.6S9Wpq7tz7B" displaytext="Untitled Slide" expand="false" type="slide" />
+                <slidelink slideid="_player.5ta2fnH7ynG.5pHMQGe7EBL" displaytext="Untitled Slide" expand="false" type="slide" />
+                <slidelink slideid="_player.5ta2fnH7ynG.6hJ0nfNFDBh" displaytext="Scenario 1: During a video call, Jamie nods and says &amp;quot;I see&amp;quot; as their date describes a recent work challenge." expand="false" type="slide" />
+              </links>
+            </slidelink>
+            <slidelink slideid="_player.66BgE3zrZWu" displaytext="Module 3 Lesson 2" expand="false" type="slide">
+              <links>
+                <slidelink slideid="_player.66BgE3zrZWu.5a7Fk8Gp64e" displaytext="Lesson Intro" expand="false" type="slide" />
+                <slidelink slideid="_player.66BgE3zrZWu.5eBNNMkZIwV" displaytext="Untitled Slide" expand="false" type="slide" />
+                <slidelink slideid="_player.66BgE3zrZWu.64YHf6GIWc9" displaytext="Objectives" expand="false" type="slide" />
+                <slidelink slideid="_player.66BgE3zrZWu.5jlEwaDX8Op" displaytext="Introduction to Open-Ended Questions" expand="false" type="slide" />
+                <slidelink slideid="_player.66BgE3zrZWu.62hIE6piH16" displaytext="Untitled Slide" expand="false" type="slide" />
+                <slidelink slideid="_player.66BgE3zrZWu.5xpfaFZGQS6" displaytext="Untitled Slide" expand="false" type="slide" />
+                <slidelink slideid="_player.66BgE3zrZWu.5f3TVvLlfZu" displaytext="Untitled Slide" expand="false" type="slide" />
+              </links>
+            </slidelink>
+            <slidelink slideid="_player.5bg7skwu5ke" displaytext="Module 3 Lesson 3" expand="false" type="slide">
+              <links>
+                <slidelink slideid="_player.5bg7skwu5ke.5s0fUKaWmd0" displaytext="Lesson Intro" expand="false" type="slide" />
+                <slidelink slideid="_player.5bg7skwu5ke.6dpOaYSxsAS" displaytext="Untitled Slide" expand="false" type="slide" />
+                <slidelink slideid="_player.5bg7skwu5ke.6QoCutklMvK" displaytext="Untitled Slide" expand="false" type="slide" />
+                <slidelink slideid="_player.5bg7skwu5ke.6rKLUokHbJw" displaytext="Untitled Slide" expand="false" type="slide" />
+                <slidelink slideid="_player.5bg7skwu5ke.5rQ4VU043dI" displaytext="Untitled Slide" expand="false" type="slide" />
+                <slidelink slideid="_player.5bg7skwu5ke.6GmuF6gvuKa" displaytext="Untitled Slide" expand="false" type="slide" />
+                <slidelink slideid="_player.5bg7skwu5ke.6DXHttGD2ll" displaytext="Untitled Slide" expand="false" type="slide" />
+                <slidelink slideid="_player.5bg7skwu5ke.5wmwqPQXooY" displaytext="Untitled Slide" expand="false" type="slide" />
+                <slidelink slideid="_player.5bg7skwu5ke.5n2aRIqT5Cv" displaytext="Untitled Slide" expand="false" type="slide" />
+                <slidelink slideid="_player.5bg7skwu5ke.6dAKQPR8vya" displaytext="Untitled Slide" expand="false" type="slide" />
+                <slidelink slideid="_player.5bg7skwu5ke.5dZR9a7ogkh" displaytext="Untitled Slide" expand="false" type="slide" />
+                <slidelink slideid="_player.5bg7skwu5ke.5tPbUBhnfkc" displaytext="Untitled Slide" expand="false" type="slide" />
+              </links>
+            </slidelink>
+            <slidelink slideid="_player.6pYJz2H4gdg" displaytext="Module 3 Lesson 4" expand="false" type="slide">
+              <links>
+                <slidelink slideid="_player.6pYJz2H4gdg.6PZnQXdw0Uv" displaytext="Lesson Intro" expand="false" type="slide" />
+                <slidelink slideid="_player.6pYJz2H4gdg.6E02DnCgOGz" displaytext="Untitled Slide" expand="false" type="slide" />
+                <slidelink slideid="_player.6pYJz2H4gdg.63ttnHu4KZU" displaytext="Objectives" expand="false" type="slide" />
+                <slidelink slideid="_player.6pYJz2H4gdg.5ZyLpMyPoQD" displaytext="Introduction to Conversational Balance" expand="false" type="slide" />
+                <slidelink slideid="_player.6pYJz2H4gdg.5qzvw4vygaQ" displaytext="Untitled Slide" expand="false" type="slide" />
+                <slidelink slideid="_player.6pYJz2H4gdg.5qsj2vMYrho" displaytext="Techniques for Balancing Self-Disclosure and Interest" expand="false" type="slide" />
+                <slidelink slideid="_player.6pYJz2H4gdg.6rHdV1qYrDQ" displaytext="Techniques for Balancing Self-Disclosure and Interest" expand="false" type="slide" />
+                <slidelink slideid="_player.6pYJz2H4gdg.6B8l0Y2ybSI" displaytext="Techniques for Balancing Self-Disclosure and Interest" expand="false" type="slide" />
+                <slidelink slideid="_player.6pYJz2H4gdg.5lJytTrnpuL" displaytext="Techniques for Balancing Self-Disclosure and Interest" expand="false" type="slide" />
+                <slidelink slideid="_player.6pYJz2H4gdg.6bhNLD2SVMB" displaytext="Techniques for Balancing Self-Disclosure and Interest" expand="false" type="slide" />
+                <slidelink slideid="_player.6pYJz2H4gdg.699Raj7opOJ" displaytext="Techniques for Balancing Self-Disclosure and Interest" expand="false" type="slide" />
+                <slidelink slideid="_player.6pYJz2H4gdg.6HkD6OiPhbY" displaytext="Techniques for Balancing Self-Disclosure and Interest" expand="false" type="slide" />
+              </links>
+            </slidelink>
+          </links>
+        </slidelink>
+        <slidelink slideid="_player.6lVIbWRRV4k" displaytext="Module 4" expand="false" type="slide">
+          <links>
+            <slidelink slideid="_player.6lVIbWRRV4k.5ohSUxyqIcl" displaytext="Module 4 Introduction" expand="false" type="slide" />
+            <slidelink slideid="_player.6lVIbWRRV4k.5WU15fVp1fE" displaytext="Untitled Slide" expand="false" type="slide" />
+            <slidelink slideid="_player.6mdTZB2M7Gm" displaytext="Module 4 Lesson 1" expand="false" type="slide">
+              <links>
+                <slidelink slideid="_player.6mdTZB2M7Gm.60daS6D7GhP" displaytext="Lesson Intro" expand="false" type="slide" />
+                <slidelink slideid="_player.6mdTZB2M7Gm.6nhN8kQ4zqf" displaytext="Untitled Slide" expand="false" type="slide" />
+                <slidelink slideid="_player.6mdTZB2M7Gm.5sPSZOM3D5m" displaytext="Untitled Slide" expand="false" type="slide" />
+                <slidelink slideid="_player.6mdTZB2M7Gm.6auUiELnEis" displaytext="Introduction to Personal Boundaries" expand="false" type="slide" />
+                <slidelink slideid="_player.6mdTZB2M7Gm.6Dw8aalywYs" displaytext="Why Personal Boundaries Matter in Dating" expand="false" type="slide" />
+                <slidelink slideid="_player.6mdTZB2M7Gm.5aFQfQO95jS" displaytext="Types of Boundaries in Dating" expand="false" type="slide" />
+                <slidelink slideid="_player.6mdTZB2M7Gm.5l6B9vc5Fri" displaytext="Techniques for Establishing and Communicating Boundaries" expand="false" type="slide" />
+                <slidelink slideid="_player.6mdTZB2M7Gm.64FMXPvPxgL" displaytext="Techniques for Establishing and Communicating Boundaries" expand="false" type="slide" />
+                <slidelink slideid="_player.6mdTZB2M7Gm.6WrcrXz0WMq" displaytext="Techniques for Establishing and Communicating Boundaries" expand="false" type="slide" />
+                <slidelink slideid="_player.6mdTZB2M7Gm.5Wv3DJ7CWMJ" displaytext="Techniques for Establishing and Communicating Boundaries" expand="false" type="slide" />
+                <slidelink slideid="_player.6mdTZB2M7Gm.6kzaKKQfLB4" displaytext="Techniques for Establishing and Communicating Boundaries" expand="false" type="slide" />
+                <slidelink slideid="_player.6mdTZB2M7Gm.6da8fjtoQ1C" displaytext="Techniques for Establishing and Communicating Boundaries" expand="false" type="slide" />
+                <slidelink slideid="_player.6mdTZB2M7Gm.5xTf6jrdRM1" displaytext="Techniques for Establishing and Communicating Boundaries" expand="false" type="slide" />
+              </links>
+            </slidelink>
+            <slidelink slideid="_player.6dJp2c5HpzV" displaytext="Module 4 Lesson 2" expand="false" type="slide">
+              <links>
+                <slidelink slideid="_player.6dJp2c5HpzV.6WipQ8XO32W" displaytext="Lesson Introduction" expand="false" type="slide" />
+                <slidelink slideid="_player.6dJp2c5HpzV.5bKJSEPcSrT" displaytext="Untitled Slide" expand="false" type="slide" />
+                <slidelink slideid="_player.6dJp2c5HpzV.6KC7H3BJsXg" displaytext="Untitled Slide" expand="false" type="slide" />
+                <slidelink slideid="_player.6dJp2c5HpzV.6XrD6mlkPgp" displaytext="Untitled Slide" expand="false" type="slide" />
+                <slidelink slideid="_player.6dJp2c5HpzV.6fFoGWp45zR" displaytext="Untitled Slide" expand="false" type="slide" />
+                <slidelink slideid="_player.6dJp2c5HpzV.5f6xhnA70vN" displaytext="Common Red Flags in Dating" expand="false" type="slide" />
+                <slidelink slideid="_player.6dJp2c5HpzV.6GoSNM4D9DY" displaytext="Common Red Flags in Dating" expand="false" type="slide" />
+                <slidelink slideid="_player.6dJp2c5HpzV.6kVmWHRRlDe" displaytext="Common Red Flags in Dating" expand="false" type="slide" />
+                <slidelink slideid="_player.6dJp2c5HpzV.5VYdZC7AZal" displaytext="Common Red Flags in Dating" expand="false" type="slide" />
+                <slidelink slideid="_player.6dJp2c5HpzV.5hyw2VVjriX" displaytext="Common Red Flags in Dating" expand="false" type="slide" />
+                <slidelink slideid="_player.6dJp2c5HpzV.5kSFeETe3we" displaytext="Untitled Slide" expand="false" type="slide" />
+                <slidelink slideid="_player.6dJp2c5HpzV.5t74MWM0K8Q" displaytext="Common Red Flags in Dating" expand="false" type="slide" />
+                <slidelink slideid="_player.6dJp2c5HpzV.606qYsoajou" displaytext="Common Red Flags in Dating" expand="false" type="slide" />
+                <slidelink slideid="_player.6dJp2c5HpzV.5X2CPHMoAdm" displaytext="Strategies for Addressing Red Flags" expand="false" type="slide" />
+                <slidelink slideid="_player.6dJp2c5HpzV.5bD3repGCoj" displaytext="Strategies for Addressing Red Flags" expand="false" type="slide" />
+                <slidelink slideid="_player.6dJp2c5HpzV.5mGiUsepg97" displaytext="Strategies for Addressing Red Flags" expand="false" type="slide" />
+                <slidelink slideid="_player.6dJp2c5HpzV.6GW0jz8EH9Y" displaytext="Strategies for Addressing Red Flags" expand="false" type="slide" />
+                <slidelink slideid="_player.6dJp2c5HpzV.6Xemzw8xuWU" displaytext="Strategies for Addressing Red Flags" expand="false" type="slide" />
+                <slidelink slideid="_player.6dJp2c5HpzV.6WibuzEhhpI" displaytext="Strategies for Addressing Red Flags" expand="false" type="slide" />
+                <slidelink slideid="_player.6dJp2c5HpzV.6VEX1N4dkZz" displaytext="Strategies for Addressing Red Flags" expand="false" type="slide" />
+              </links>
+            </slidelink>
+            <slidelink slideid="_player.5hxk8CwCBtH" displaytext="Module 4 Lesson 3" expand="false" type="slide">
+              <links>
+                <slidelink slideid="_player.5hxk8CwCBtH.67JJMUHXr50" displaytext="Lesson Introduction" expand="false" type="slide" />
+                <slidelink slideid="_player.5hxk8CwCBtH.5zKUForLs2E" displaytext="Untitled Slide" expand="false" type="slide" />
+                <slidelink slideid="_player.5hxk8CwCBtH.5u8tvd1jjsX" displaytext="Untitled Slide" expand="false" type="slide" />
+                <slidelink slideid="_player.5hxk8CwCBtH.5tnI16v96lt" displaytext="Untitled Slide" expand="false" type="slide" />
+                <slidelink slideid="_player.5hxk8CwCBtH.6kehJ35DgZh" displaytext="Untitled Slide" expand="false" type="slide" />
+                <slidelink slideid="_player.5hxk8CwCBtH.6Yh2HJmJFhS" displaytext="Untitled Slide" expand="false" type="slide" />
+                <slidelink slideid="_player.5hxk8CwCBtH.66wyfTfYXRm" displaytext="Untitled Slide" expand="false" type="slide" />
+                <slidelink slideid="_player.5hxk8CwCBtH.6YXvu9xUrou" displaytext="Untitled Slide" expand="false" type="slide" />
+                <slidelink slideid="_player.5hxk8CwCBtH.6iMRO7svub5" displaytext="Untitled Slide" expand="false" type="slide" />
+                <slidelink slideid="_player.5hxk8CwCBtH.5VXDlX9UGle" displaytext="Untitled Slide" expand="false" type="slide" />
+                <slidelink slideid="_player.5hxk8CwCBtH.5UlVDn6HAtG" displaytext="Strategies for Preventing Dating Burnout" expand="false" type="slide" />
+                <slidelink slideid="_player.5hxk8CwCBtH.5rgXTKunbvv" displaytext="Strategies for Preventing Dating Burnout" expand="false" type="slide" />
+                <slidelink slideid="_player.5hxk8CwCBtH.6ZPGCB2PuMP" displaytext="Strategies for Preventing Dating Burnout" expand="false" type="slide" />
+                <slidelink slideid="_player.5hxk8CwCBtH.6aKW5aRUgaS" displaytext="Strategies for Preventing Dating Burnout" expand="false" type="slide" />
+                <slidelink slideid="_player.5hxk8CwCBtH.6d1xAx73eUg" displaytext="Strategies for Preventing Dating Burnout" expand="false" type="slide" />
+                <slidelink slideid="_player.5hxk8CwCBtH.5abiGnsQugZ" displaytext="Strategies for Preventing Dating Burnout" expand="false" type="slide" />
+                <slidelink slideid="_player.5hxk8CwCBtH.6NBCUDBs3KX" displaytext="Strategies for Preventing Dating Burnout" expand="false" type="slide" />
+              </links>
+            </slidelink>
+            <slidelink slideid="_player.65lHEzRCByx" displaytext="Module 4 Lesson 4" expand="false" type="slide">
+              <links>
+                <slidelink slideid="_player.65lHEzRCByx.639sTTGw2OM" displaytext="Lesson Introduction" expand="false" type="slide" />
+                <slidelink slideid="_player.65lHEzRCByx.6eK4cbu5uqw" displaytext="Untitled Slide" expand="false" type="slide" />
+                <slidelink slideid="_player.65lHEzRCByx.65RnLjcHzZh" displaytext="Objectives Slide" expand="false" type="slide" />
+                <slidelink slideid="_player.65lHEzRCByx.6HRpEFOivKo" displaytext="Untitled Slide" expand="false" type="slide" />
+                <slidelink slideid="_player.65lHEzRCByx.6osQPvpypKJ" displaytext="Untitled Slide" expand="false" type="slide" />
+                <slidelink slideid="_player.65lHEzRCByx.6WhBSIoJJIe" displaytext="Untitled Slide" expand="false" type="slide" />
+                <slidelink slideid="_player.65lHEzRCByx.5vIU345BWYx" displaytext="Untitled Slide" expand="false" type="slide" />
+                <slidelink slideid="_player.65lHEzRCByx.67YSWAT43VK" displaytext="Untitled Slide" expand="false" type="slide" />
+                <slidelink slideid="_player.65lHEzRCByx.6gM0zHU8Nsi" displaytext="Untitled Slide" expand="false" type="slide" />
+              </links>
+            </slidelink>
+            <slidelink slideid="_player.5V8cAChBTV0" displaytext="Articulate questions importing" expand="true" type="slide">
+              <links>
+                <slidelink slideid="_player.5V8cAChBTV0.5ewXywqj8DN" displaytext="Multiple Choice" expand="false" type="slide" />
+                <slidelink slideid="_player.5V8cAChBTV0.5sW06DuoSWd" displaytext="Multiple Choice" expand="false" type="slide" />
+                <slidelink slideid="_player.5V8cAChBTV0.5civ2i0CC38" displaytext="Multiple Choice" expand="false" type="slide" />
+                <slidelink slideid="_player.5V8cAChBTV0.6GOmpfoYRr0" displaytext="Multiple Choice" expand="false" type="slide" />
+                <slidelink slideid="_player.5V8cAChBTV0.5dAxojuarAy" displaytext="Multiple Choice" expand="false" type="slide" />
+                <slidelink slideid="_player.5V8cAChBTV0.6E3rSQeBGTS" displaytext="Multiple Choice" expand="false" type="slide" />
+              </links>
+            </slidelink>
+            <slidelink slideid="_player.5swJlXJkQV6" displaytext="Articulate questions importing" expand="true" type="slide">
+              <links>
+                <slidelink slideid="_player.5swJlXJkQV6.5nIgeX6gKtL" displaytext="recall: Which of the following is NOT mentioned as a key active listening technique in the lesson?" expand="false" type="slide" />
+                <slidelink slideid="_player.5swJlXJkQV6.6kkj7CLnHF0" displaytext="What is the primary purpose of active listening in dating scenarios?" expand="false" type="slide" />
+                <slidelink slideid="_player.5swJlXJkQV6.6ZApuKCkp3V" displaytext=" According to the lesson, what should you avoid when practicing empathy and active listening in dating scenarios?" expand="false" type="slide" />
+                <slidelink slideid="_player.5swJlXJkQV6.6TStO5n3YWG" displaytext="recall: What is the first step in applying empathy in dating scenarios, as mentioned in the lesson?" expand="false" type="slide" />
+                <slidelink slideid="_player.5swJlXJkQV6.5wczjwUEPH9" displaytext="understand: Why is it important to validate your date&amp;apos;s feelings, even if you don&amp;apos;t fully agree?" expand="false" type="slide" />
+                <slidelink slideid="_player.5swJlXJkQV6.6kGfwqndy15" displaytext="understand: How does asking open-ended questions contribute to empathy in dating?" expand="false" type="slide" />
+                <slidelink slideid="_player.5swJlXJkQV6.6V71sVE0S5D" displaytext="understand: Why is it beneficial to share your own experiences when appropriate during a date?" expand="false" type="slide" />
+                <slidelink slideid="_player.5swJlXJkQV6.5i1tW1h8CRJ" displaytext="understand: How does maintaining eye contact during a conversation demonstrate active listening?" expand="false" type="slide" />
+                <slidelink slideid="_player.5swJlXJkQV6.6TlR5ovulWt" displaytext="apply: Your date mentions they&amp;apos;re feeling anxious about meeting your friends for the first time. Which response best demonstrates empathy and active listening?" expand="false" type="slide" />
+                <slidelink slideid="_player.5swJlXJkQV6.5W8jgDkXU2H" displaytext="apply: During a conversation, you realize you&amp;apos;ve been talking about yourself for a while. How would you apply the active listening skills learned in this lesson?" expand="false" type="slide" />
+                <slidelink slideid="_player.5swJlXJkQV6.6iMVmthRnCF" displaytext="apply: Your date expresses disappointment about not getting a job they really wanted. Which response shows the best use of empathy and active listening?" expand="false" type="slide" />
+                <slidelink slideid="_player.5swJlXJkQV6.6TqCi2oU1rO" displaytext="apply: You&amp;apos;re on a date and notice your partner seems distracted and keeps checking their phone. How would you address this using the empathy and active listening skills from the lesson?" expand="false" type="slide" />
+              </links>
+            </slidelink>
+            <slidelink slideid="_player.5ytsGmOVQVC" displaytext="Module 2 lesson 2" expand="true" type="slide">
+              <links>
+                <slidelink slideid="_player.5ytsGmOVQVC.6mHqRWHZ23T" displaytext="Lesson Intro" expand="false" type="slide" />
+                <slidelink slideid="_player.5ytsGmOVQVC.5ePH9aY9SYz" displaytext="Module 2 Lesson 2 Overview" expand="false" type="slide" />
+                <slidelink slideid="_player.5ytsGmOVQVC.6YfNWdDPDlC" displaytext="Untitled Slide" expand="false" type="slide" />
+                <slidelink slideid="_player.5ytsGmOVQVC.5gtYj3imUDd" displaytext="Keeping the Conversation Flowing" expand="false" type="slide" />
+                <slidelink slideid="_player.5ytsGmOVQVC.5peGVw7HFOc" displaytext="Common Pitfalls in Online Dating Communication" expand="false" type="slide" />
+                <slidelink slideid="_player.5ytsGmOVQVC.5pk5wYntyyx" displaytext="Overcoming Conversation Lulls" expand="false" type="slide" />
+                <slidelink slideid="_player.5ytsGmOVQVC.6ZcoC55xHnK" displaytext="Navigating Awkward Moments" expand="false" type="slide" />
+                <slidelink slideid="_player.5ytsGmOVQVC.6ePbUzfssln" displaytext="Untitled Slide" expand="false" type="slide" />
+                <slidelink slideid="_player.5ytsGmOVQVC.6DZuF7wxAQL" displaytext="Untitled Slide" expand="false" type="slide" />
+              </links>
+            </slidelink>
+            <slidelink slideid="_player.6ctznBRdeIq" displaytext="Module 1 Assessment" expand="true" type="slide">
+              <links>
+                <slidelink slideid="_player.6ctznBRdeIq.6RolfFZA43K" displaytext="Which of the following best defines emotional intelligence?" expand="false" type="slide" />
+                <slidelink slideid="_player.6ctznBRdeIq.5gh9KIhO8sQ" displaytext="Self-awareness in emotional intelligence refers to: " expand="false" type="slide" />
+                <slidelink slideid="_player.6ctznBRdeIq.6VOG1UmYo8P" displaytext="Which of the following is NOT a component of emotional intelligence? " expand="false" type="slide" />
+                <slidelink slideid="_player.6ctznBRdeIq.6N5HOn6rffF" displaytext="How can improving your emotional intelligence benefit your dating life?" expand="false" type="slide" />
+                <slidelink slideid="_player.6ctznBRdeIq.6E0nkD0sa0Q" displaytext="Which of the following is an example of good self-regulation? " expand="false" type="slide" />
+                <slidelink slideid="_player.6ctznBRdeIq.6iVhBfNJMu7" displaytext="Empathy in dating involves: " expand="false" type="slide" />
+                <slidelink slideid="_player.6ctznBRdeIq.5aFs0BtGTDp" displaytext="Which of the following is NOT an active listening technique? " expand="false" type="slide" />
+                <slidelink slideid="_player.6ctznBRdeIq.6naZe1SmKds" displaytext="How can self-awareness help in dating situations? " expand="false" type="slide" />
+                <slidelink slideid="_player.6ctznBRdeIq.5ZofF9EAHXY" displaytext="Which of the following demonstrates good social skills in dating? " expand="false" type="slide" />
+                <slidelink slideid="_player.6ctznBRdeIq.6VqXpf7FnDj" displaytext="When facing a dating challenge, which approach shows the best use of emotional intelligence? " expand="false" type="slide" />
+                <slidelink slideid="_player.6ctznBRdeIq.6C1tDEOgn7Z" displaytext="How can empathy improve your dating experiences? " expand="false" type="slide" />
+                <slidelink slideid="_player.6ctznBRdeIq.6Xic9boBxxd" displaytext="Which of the following is a healthy way to express emotions in a dating context? " expand="false" type="slide" />
+                <slidelink slideid="_player.6ctznBRdeIq.5wnILPH3ldN" displaytext="How can self-regulation help in managing dating anxiety? " expand="false" type="slide" />
+                <slidelink slideid="_player.6ctznBRdeIq.5uUmrEzbxvd" displaytext="Which of the following is NOT a benefit of developing emotional intelligence in dating? " expand="false" type="slide" />
+                <slidelink slideid="_player.6ctznBRdeIq.5q7iH929Hee" displaytext="How can active listening improve your dating experiences? " expand="false" type="slide" />
+                <slidelink slideid="_player.6ctznBRdeIq.6H78OeR33Dl" displaytext="Which of the following is an example of applying emotional intelligence to a dating conflict? " expand="false" type="slide" />
+                <slidelink slideid="_player.6ctznBRdeIq.68FkgjRhEGp" displaytext="How can developing empathy help in understanding dating rejection? " expand="false" type="slide" />
+                <slidelink slideid="_player.6ctznBRdeIq.6pVG27ekdel" displaytext="Which of the following demonstrates good self-awareness in dating? " expand="false" type="slide" />
+                <slidelink slideid="_player.6ctznBRdeIq.68kpzDx9KnN" displaytext="How can emotional intelligence help in maintaining a healthy work-life-dating balance? " expand="false" type="slide" />
+                <slidelink slideid="_player.6ctznBRdeIq.6Xea6Rgz3NF" displaytext="Which of the following best describes the role of social skills in emotional intelligence? " expand="false" type="slide" />
+              </links>
+            </slidelink>
+          </links>
+        </slidelink>
+      </links>
+    </outline>
+  </nav_data>
+  <resource_data description="&lt;p align='left'&gt;&lt;font face='Lato' style='font-size: 11px;' size='11' color='#BABBBA'&gt;Here are some useful links and documents:&lt;/font&gt;&lt;/p&gt;" />
+  <transcript_data />
+  <glossary_data />
+</bwFrame>

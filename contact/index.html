@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!--
+      Old links put the route after "#/" (/Portfolio/#/portfolio/teaching-waltz,
+      on resumes, LinkedIn and bookmarks). Send them to the page's real URL
+      (/Portfolio/portfolio/teaching-waltz/) before anything else loads. The
+      route in the fragment wins over the path, so this also works when an old
+      fragment lands on a page's static copy or on 404.html. A query inside the
+      fragment (#/portfolio?category=id) and a section after it
+      (#/about#design-process) move across with it. /Portfolio/ is the deploy
+      base, filled in by Vite.
+    -->
+    <script>
+      (function () {
+        var base = '/Portfolio/';
+        var l = window.location;
+        if (l.hash.indexOf('#/') === 0) {
+          var route = l.hash.slice(2);
+          var hashAt = route.indexOf('#');
+          var hash = hashAt < 0 ? '' : route.slice(hashAt);
+          if (hashAt >= 0) route = route.slice(0, hashAt);
+          var queryAt = route.indexOf('?');
+          var search = queryAt < 0 ? l.search : route.slice(queryAt);
+          var path = queryAt < 0 ? route : route.slice(0, queryAt);
+          if (path && !/\/$/.test(path)) path += '/';
+          l.replace(base + path + search + hash);
+        } else if (l.pathname + '/' === base) {
+          // "/Portfolio" without the slash is outside the router's base.
+          l.replace(base + l.search + l.hash);
+        }
+      })();
+    </script>
+    <!--
+      The build puts a plain copy of each page's text in #root for crawlers
+      and tools that don't run JavaScript (see vite.config.ts). Where the app
+      will run, keep that copy hidden until React replaces it, so visitors
+      don't see unstyled text flash up first. If the app hasn't started after
+      4 seconds, show the copy after all.
+    -->
+    <style>.app-pending #root > [data-static-page] { visibility: hidden; }</style>
+    <script>
+      if ('noModule' in document.createElement('script')) {
+        document.documentElement.classList.add('app-pending');
+        setTimeout(function () {
+          document.documentElement.classList.remove('app-pending');
+        }, 4000);
+      }
+    </script>
+    <!--
+      Root-relative, so Vite adds the deploy base (/Portfolio/,
+      /Portfolio-Staging/). Relative "./" paths broke once pages had their
+      own URLs: on /Portfolio/about/ they pointed into /Portfolio/about/.
+    -->
+    <link rel="icon" type="image/svg+xml" href="/Portfolio/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="96x96" href="/Portfolio/favicon-96x96.png" />
+    <link rel="shortcut icon" href="/Portfolio/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/Portfolio/apple-touch-icon.png" />
+    <link rel="manifest" href="/Portfolio/site.webmanifest" />
+    <meta name="theme-color" content="#ffffff" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--
+      Send only the origin to other sites (LinkedIn, GitHub, EmailJS), never
+      the full URL, and nothing on a downgrade to http. This is the browser
+      default today; stating it keeps it if the default ever changes. No
+      Content-Security-Policy: the inline Google Analytics snippet below
+      would need 'unsafe-inline' or a hash kept in step with it.
+    -->
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+
+    <title>Contact | W. Jordan Charles</title>
+
+    <!--
+      Static share metadata. LinkedIn, Slack, Teams and iMessage previews do
+      not run JavaScript, so this head is what they see. These are the home
+      page's values; the build gives each page's static copy its own title,
+      description, canonical and og:url (vite.config.ts). data-rh marks the
+      tags as Helmet's: once the app runs, the SEO component replaces them
+      with the current page's values instead of adding duplicates.
+    -->
+    <meta data-rh="true" name="description" content="Get in touch with W. Jordan Charles to discuss your instructional design needs" />
+    <meta data-rh="true" name="author" content="W. Jordan Charles" />
+    <meta data-rh="true" property="og:type" content="website" />
+    <meta data-rh="true" property="og:site_name" content="W. Jordan Charles Portfolio" />
+    <meta data-rh="true" property="og:title" content="Contact | W. Jordan Charles" />
+    <meta data-rh="true" property="og:description" content="Get in touch with W. Jordan Charles to discuss your instructional design needs" />
+    <meta data-rh="true" property="og:url" content="https://williamthe5thc.github.io/Portfolio/contact/" />
+    <meta data-rh="true" property="og:image" content="https://williamthe5thc.github.io/Portfolio/og-image.jpg" />
+    <meta data-rh="true" property="og:image:width" content="1200" />
+    <meta data-rh="true" property="og:image:height" content="630" />
+    <meta data-rh="true" property="og:image:alt" content="W. Jordan Charles, Instructional Designer. Needs analysis, course design, LMS implementation. M.Ed., University of Utah." />
+    <meta data-rh="true" name="twitter:card" content="summary_large_image" />
+    <meta data-rh="true" name="twitter:title" content="Contact | W. Jordan Charles" />
+    <meta data-rh="true" name="twitter:description" content="Get in touch with W. Jordan Charles to discuss your instructional design needs" />
+    <meta data-rh="true" name="twitter:image" content="https://williamthe5thc.github.io/Portfolio/og-image.jpg" />
+    <meta data-rh="true" name="twitter:image:alt" content="W. Jordan Charles, Instructional Designer. Needs analysis, course design, LMS implementation. M.Ed., University of Utah." />
+    <link data-rh="true" rel="canonical" href="https://williamthe5thc.github.io/Portfolio/contact/" />
+
+    <!-- Built only from facts in src/content (siteData.ts, education.ts); keep in step with them. -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "W. Jordan Charles",
+        "jobTitle": "Instructional Designer",
+        "url": "https://williamthe5thc.github.io/Portfolio/",
+        "sameAs": [
+          "https://linkedin.com/in/jordan-charles",
+          "https://github.com/williamthe5thc"
+        ],
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Salt Lake City",
+          "addressRegion": "Utah",
+          "addressCountry": "US"
+        },
+        "alumniOf": [
+          { "@type": "CollegeOrUniversity", "name": "University of Utah" },
+          { "@type": "CollegeOrUniversity", "name": "Brigham Young University - Idaho" }
+        ],
+        "knowsAbout": [
+          "Instructional Design",
+          "Learning Experience Design",
+          "Learning Technology"
+        ]
+      }
+    </script>
+
+    <!--
+      Google tag (gtag.js). send_page_view: false because the app sends every
+      page view itself (GoogleAnalytics.tsx), including the first one, with
+      the route as the page path. Letting config send one as well counted the
+      landing page twice.
+    -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LG6RT04XLW"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-LG6RT04XLW', {
+        send_page_view: false,
+        cookie_domain: 'williamthe5thc.github.io'
+      });
+    </script>
+    <script type="module" crossorigin src="/Portfolio/assets/index-Bm1gQCrz.js"></script>
+    <link rel="modulepreload" crossorigin href="/Portfolio/assets/react-vendor-sK6oOukr.js">
+    <link rel="modulepreload" crossorigin href="/Portfolio/assets/ui-vendor-UMbqYK0l.js">
+    <link rel="stylesheet" crossorigin href="/Portfolio/assets/index-BM7zaPNg.css">
+  </head>
+  <body>
+    <!-- The build fills #root with a plain copy of the page's text. -->
+    <div id="root"><div data-static-page><header><nav aria-label="Primary"><ul><li><a href="/Portfolio/">Home</a></li><li><a href="/Portfolio/about/">About</a></li><li><a href="/Portfolio/portfolio/">Portfolio</a></li><li><a href="/Portfolio/resume/">Resume</a></li><li><a href="/Portfolio/contact/">Contact</a></li></ul></nav></header><main><h1>Let's Connect</h1><h2>Get in Touch</h2><ul><li>LinkedIn: <a href="https://linkedin.com/in/jordan-charles">linkedin.com/in/jordan-charles</a></li><li>Location: Salt Lake City, Utah</li></ul><h2>Frequently Asked Questions</h2><h3>How do you approach instructional design?</h3><p>I start with the problem: who the learners are, what they can&#39;t yet do, and what is getting in the way. My M.Ed. in Instructional Design and Educational Technology at the University of Utah, and my psychology research background, shape how I choose formats and test them. I also build and run the platforms the courses live on, so I can follow a course from the first interview through to the learner&#39;s screen.</p><h3>What roles are you looking for?</h3><p>I&#39;m looking for instructional design, learning experience design and learning technology roles. I selected and now run the LMS for a youth nonprofit. During my internship at a credit union, I ran a needs analysis for their certification-prep program; they implemented the recommendations and reported better exam results afterward, though the figures stay confidential to protect employee privacy. I&#39;m drawn to organizations that treat evaluation as part of the work rather than an afterthought.</p><h3>What tools do you use?</h3><p>Articulate Storyline 360 and Rise, LearnWorlds, Canvas, Moodle, Adobe Creative Suite and Camtasia. For code, Python and Selenium for automation, and HTML, CSS, JavaScript, TypeScript and React for the web. I design to WCAG 2.1 AA accessibility standards.</p><h3>How do you approach measuring learning effectiveness?</h3><p>I write the objectives first, then build the quizzes, activities and surveys that show whether learners met them, and I put those checks inside the course so weak spots show up while a cohort is still running. For the waltz course I ran a small-group evaluation and planned revisions from it. For the law course we ran a cognitive walkthrough, a think-aloud and a usability survey.</p></main><footer><p><a href="https://linkedin.com/in/jordan-charles">LinkedIn</a> · <a href="https://github.com/williamthe5thc">GitHub</a> · <a href="/Portfolio/llms.txt">Plain-text summary (llms.txt)</a></p></footer></div></div>
+  </body>
+</html>

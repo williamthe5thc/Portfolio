@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!--
+      Old links put the route after "#/" (/Portfolio/#/portfolio/teaching-waltz,
+      on resumes, LinkedIn and bookmarks). Send them to the page's real URL
+      (/Portfolio/portfolio/teaching-waltz/) before anything else loads. The
+      route in the fragment wins over the path, so this also works when an old
+      fragment lands on a page's static copy or on 404.html. A query inside the
+      fragment (#/portfolio?category=id) and a section after it
+      (#/about#design-process) move across with it. /Portfolio/ is the deploy
+      base, filled in by Vite.
+    -->
+    <script>
+      (function () {
+        var base = '/Portfolio/';
+        var l = window.location;
+        if (l.hash.indexOf('#/') === 0) {
+          var route = l.hash.slice(2);
+          var hashAt = route.indexOf('#');
+          var hash = hashAt < 0 ? '' : route.slice(hashAt);
+          if (hashAt >= 0) route = route.slice(0, hashAt);
+          var queryAt = route.indexOf('?');
+          var search = queryAt < 0 ? l.search : route.slice(queryAt);
+          var path = queryAt < 0 ? route : route.slice(0, queryAt);
+          if (path && !/\/$/.test(path)) path += '/';
+          l.replace(base + path + search + hash);
+        } else if (l.pathname + '/' === base) {
+          // "/Portfolio" without the slash is outside the router's base.
+          l.replace(base + l.search + l.hash);
+        }
+      })();
+    </script>
+    <!--
+      The build puts a plain copy of each page's text in #root for crawlers
+      and tools that don't run JavaScript (see vite.config.ts). Where the app
+      will run, keep that copy hidden until React replaces it, so visitors
+      don't see unstyled text flash up first. If the app hasn't started after
+      4 seconds, show the copy after all.
+    -->
+    <style>.app-pending #root > [data-static-page] { visibility: hidden; }</style>
+    <script>
+      if ('noModule' in document.createElement('script')) {
+        document.documentElement.classList.add('app-pending');
+        setTimeout(function () {
+          document.documentElement.classList.remove('app-pending');
+        }, 4000);
+      }
+    </script>
+    <!--
+      Root-relative, so Vite adds the deploy base (/Portfolio/,
+      /Portfolio-Staging/). Relative "./" paths broke once pages had their
+      own URLs: on /Portfolio/about/ they pointed into /Portfolio/about/.
+    -->
+    <link rel="icon" type="image/svg+xml" href="/Portfolio/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="96x96" href="/Portfolio/favicon-96x96.png" />
+    <link rel="shortcut icon" href="/Portfolio/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/Portfolio/apple-touch-icon.png" />
+    <link rel="manifest" href="/Portfolio/site.webmanifest" />
+    <meta name="theme-color" content="#ffffff" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--
+      Send only the origin to other sites (LinkedIn, GitHub, EmailJS), never
+      the full URL, and nothing on a downgrade to http. This is the browser
+      default today; stating it keeps it if the default ever changes. No
+      Content-Security-Policy: the inline Google Analytics snippet below
+      would need 'unsafe-inline' or a hash kept in step with it.
+    -->
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+
+    <title>Graduate Curriculum Design Project - AI &amp; Law Course | W. Jordan Charles</title>
+
+    <!--
+      Static share metadata. LinkedIn, Slack, Teams and iMessage previews do
+      not run JavaScript, so this head is what they see. These are the home
+      page's values; the build gives each page's static copy its own title,
+      description, canonical and og:url (vite.config.ts). data-rh marks the
+      tags as Helmet's: once the app runs, the SEO component replaces them
+      with the current page's values instead of adding duplicates.
+    -->
+    <meta data-rh="true" name="description" content="A three-person graduate capstone team designed and built this ten-module AI and Law course in Canvas for Master of Legal Studies students. We ran a client interview with the faculty sponsor, developed personas, ran a cognitive walkthrough on our own design, and validated it with a stakeholder review before handover. The course was not taught while I was in the program." />
+    <meta data-rh="true" name="author" content="W. Jordan Charles" />
+    <meta data-rh="true" property="og:type" content="website" />
+    <meta data-rh="true" property="og:site_name" content="W. Jordan Charles Portfolio" />
+    <meta data-rh="true" property="og:title" content="Graduate Curriculum Design Project - AI &amp; Law Course | W. Jordan Charles" />
+    <meta data-rh="true" property="og:description" content="A three-person graduate capstone team designed and built this ten-module AI and Law course in Canvas for Master of Legal Studies students. We ran a client interview with the faculty sponsor, developed personas, ran a cognitive walkthrough on our own design, and validated it with a stakeholder review before handover. The course was not taught while I was in the program." />
+    <meta data-rh="true" property="og:url" content="https://williamthe5thc.github.io/Portfolio/portfolio/ai-law-course/" />
+    <meta data-rh="true" property="og:image" content="https://williamthe5thc.github.io/Portfolio/og-image.jpg" />
+    <meta data-rh="true" property="og:image:width" content="1200" />
+    <meta data-rh="true" property="og:image:height" content="630" />
+    <meta data-rh="true" property="og:image:alt" content="W. Jordan Charles, Instructional Designer. Needs analysis, course design, LMS implementation. M.Ed., University of Utah." />
+    <meta data-rh="true" name="twitter:card" content="summary_large_image" />
+    <meta data-rh="true" name="twitter:title" content="Graduate Curriculum Design Project - AI &amp; Law Course | W. Jordan Charles" />
+    <meta data-rh="true" name="twitter:description" content="A three-person graduate capstone team designed and built this ten-module AI and Law course in Canvas for Master of Legal Studies students. We ran a client interview with the faculty sponsor, developed personas, ran a cognitive walkthrough on our own design, and validated it with a stakeholder review before handover. The course was not taught while I was in the program." />
+    <meta data-rh="true" name="twitter:image" content="https://williamthe5thc.github.io/Portfolio/og-image.jpg" />
+    <meta data-rh="true" name="twitter:image:alt" content="W. Jordan Charles, Instructional Designer. Needs analysis, course design, LMS implementation. M.Ed., University of Utah." />
+    <link data-rh="true" rel="canonical" href="https://williamthe5thc.github.io/Portfolio/portfolio/ai-law-course/" />
+
+    <!-- Built only from facts in src/content (siteData.ts, education.ts); keep in step with them. -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "W. Jordan Charles",
+        "jobTitle": "Instructional Designer",
+        "url": "https://williamthe5thc.github.io/Portfolio/",
+        "sameAs": [
+          "https://linkedin.com/in/jordan-charles",
+          "https://github.com/williamthe5thc"
+        ],
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Salt Lake City",
+          "addressRegion": "Utah",
+          "addressCountry": "US"
+        },
+        "alumniOf": [
+          { "@type": "CollegeOrUniversity", "name": "University of Utah" },
+          { "@type": "CollegeOrUniversity", "name": "Brigham Young University - Idaho" }
+        ],
+        "knowsAbout": [
+          "Instructional Design",
+          "Learning Experience Design",
+          "Learning Technology"
+        ]
+      }
+    </script>
+
+    <!--
+      Google tag (gtag.js). send_page_view: false because the app sends every
+      page view itself (GoogleAnalytics.tsx), including the first one, with
+      the route as the page path. Letting config send one as well counted the
+      landing page twice.
+    -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LG6RT04XLW"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-LG6RT04XLW', {
+        send_page_view: false,
+        cookie_domain: 'williamthe5thc.github.io'
+      });
+    </script>
+    <script type="module" crossorigin src="/Portfolio/assets/index-Bm1gQCrz.js"></script>
+    <link rel="modulepreload" crossorigin href="/Portfolio/assets/react-vendor-sK6oOukr.js">
+    <link rel="modulepreload" crossorigin href="/Portfolio/assets/ui-vendor-UMbqYK0l.js">
+    <link rel="stylesheet" crossorigin href="/Portfolio/assets/index-BM7zaPNg.css">
+  </head>
+  <body>
+    <!-- The build fills #root with a plain copy of the page's text. -->
+    <div id="root"><div data-static-page><header><nav aria-label="Primary"><ul><li><a href="/Portfolio/">Home</a></li><li><a href="/Portfolio/about/">About</a></li><li><a href="/Portfolio/portfolio/">Portfolio</a></li><li><a href="/Portfolio/resume/">Resume</a></li><li><a href="/Portfolio/contact/">Contact</a></li></ul></nav></header><main><nav aria-label="Breadcrumb"><ol><li><a href="/Portfolio/portfolio/">Portfolio</a></li><li aria-current="page">Graduate Curriculum Design Project - AI &amp; Law Course</li></ol></nav><h1>Graduate Curriculum Design Project - AI &amp; Law Course</h1><p>A three-person graduate capstone team designed and built this ten-module AI and Law course in Canvas for Master of Legal Studies students. We ran a client interview with the faculty sponsor, developed personas, ran a cognitive walkthrough on our own design, and validated it with a stakeholder review before handover. The course was not taught while I was in the program.</p><p>The course lives in Canvas and cannot be linked publicly, so this opens the design record instead.</p><p><a href="/Portfolio/demos/ai-law-course/index.html">View design record</a></p><p><strong>My role:</strong> One of three designers on a graduate capstone team. I did most of the Canvas build and wrote the assessment design for the advanced prompting week.</p><ul><li>10 Graduate modules designed</li><li>16 Graded pieces in the course syllabus</li></ul><h2>The problem</h2><p>The faculty sponsor taught a course on AI and law and wanted an online, asynchronous course in Canvas for Master of Legal Studies students. The learners are legal professionals without technical training. At the client interview the sponsor&#39;s brief was plain: keep it simple and not too technical, teach strategies rather than platforms, use cheap or free tools, and don&#39;t make learners create accounts on a long list of AI sites.</p><ul><li>Learners with legal backgrounds and no technical training, who would lose interest if the course went too deep</li><li>Every new AI tool meant another account to create, so the course had to lean on strategies more than tools</li><li>AI tools change quickly, so anything tied to one platform would date fast</li><li>Online and asynchronous, so every instruction had to work without a live class</li></ul><h2>What I did</h2><ul><li>Sequenced prompting from basic (Module 2) to advanced (Module 6), then applied it to ethics (Module 7) and legal tools (Modules 5 and 8)</li><li>In my assessment plan for the advanced prompting week, an AI use policy that asks learners to name the tool and submit their prompt, instead of banning AI</li><li>A syllabus with low-stakes quizzes about every other week and the lowest score dropped, so most of the grade (80%) rests on applied work: assignments, a midterm project and a final portfolio</li><li>A final portfolio learners build across the semester, with assignments in Modules 4, 7, 8 and 9 feeding into it</li><li>I set up a test module in Canvas to try embeds (video, iFrames, JavaScript, an AI chatbot) before adding them to the course</li><li>Checked the content and design with the faculty sponsor, from the client interview through a stakeholder review before handover</li></ul><h2>What happened</h2><ul><li>Built ten modules in Canvas for an online, asynchronous MLS course. It had not been taught by the time I finished the program</li><li>Tested the prototype with a cognitive walkthrough, a think-aloud session and a 10-question usability survey, then built four high-priority recommendations into the revision plan</li><li>Wrote the assessment design for the advanced prompting week myself: specifications by cognitive level, rubrics and item analysis (see the work below)</li><li>At the final stakeholder review, the faculty sponsor said the course covered the learning goals and liked the layout. Their suggestions: fewer overlapping quizzes, more scholarly readings, quicker feedback than essays allow, and a more readable banner font</li></ul><h2>Inside the course</h2><ul><li><a href="/Portfolio/images/projects/ai-law-module1-welcome.jpg">Each module opens with a welcome page that sets out what it covers.</a><p>Module 1 Welcome Page in Canvas: a &quot;Welcome to Module 1&quot; banner, the heading &quot;The Evolution of AI - Foundations and Fundamentals&quot; and an introduction to the module.</p></li><li><a href="/Portfolio/images/projects/ai-law-module2-objectives.jpg">Objectives first, then the activities that meet them (Module 2, basic prompting).</a><p>Module 2 page listing learning objectives for prompt engineering, such as creating zero-shot, one-shot and few-shot prompts, followed by the learning activities that meet them.</p></li><li><a href="/Portfolio/images/projects/ai-law-module-structure.jpg">Every module follows the same Learn, Practice, Assess pattern.</a><p>Canvas modules list showing the end of Module 5, with Practice and Assess sections, and the start of Module 6, Advanced Prompting for Working Professionals, with a welcome page and a Learn section.</p></li><li><a href="/Portfolio/images/projects/ai-law-rise-lesson.jpg">An interactive lesson embedded in Canvas for the advanced prompting week.</a><p>Opening screen of an interactive lesson: &quot;After this learning, you will be able to: define advanced prompting strategies, identify when to use advanced prompting techniques, create advanced prompts for specific tasks.&quot;</p></li></ul><h2>See the work</h2><ul><li><p><a href="/Portfolio/case-studies/ai-law/client-interview.html">Client Interview</a></p><p>The scoping conversation with the faculty sponsor that set what the course had to do.</p></li><li><p><a href="/Portfolio/case-studies/ai-law/cognitive-walkthrough.html">HCI Cognitive Walkthrough</a></p><p>A usability walkthrough of our own course build, a step most course design skips.</p></li><li><p><a href="/Portfolio/case-studies/ai-law/instructional-strategies.html">Instructional Strategies</a></p><p>The instructional approach chosen for each part of the course, with the reasoning behind it.</p></li><li><p><a href="/Portfolio/case-studies/ai-law/media-selection.html">Media Selection</a></p><p>Why we chose each medium for each kind of content.</p></li><li><p><a href="/Portfolio/case-studies/advanced-prompting-assessment-design.pdf">Assessment design, advanced prompting week</a></p><p>My own assessment plan for the advanced prompting week: a table of specifications mapped to cognitive levels, rubrics, an AI usage policy built on disclosure rather than prohibition, and item difficulty and discrimination indices for reviewing the questions afterwards.</p></li></ul><h2>What I'd change</h2><p>The AI content dated faster than the design did. Anything naming a specific model or tool needed revising within months, while the module sequence and the assessment mix held up. Next time I would keep tool-specific material separate from the core lessons so it can be swapped without redesigning the course, and I would cut the overlap the sponsor pointed out between quizzes and matching activities.</p><h2>About this Project</h2><p>A graduate capstone, built by a team of three for the University of Utah&#39;s S.J. Quinney College of Law. The job was to teach artificial intelligence to Master of Legal Studies students without technical backgrounds, working with a faculty sponsor who was both our client and our subject matter expert, and reviewed by a two-person capstone committee. We used a competency-based design to build ten modules for a 13-week online course, covering AI foundations, prompt engineering, legal research, media, and professional ethics. The syllabus assesses learners through five quizzes, five discussions, four assignments, a midterm project and a final project. The course was built in Canvas but not taught while I was in the program.</p><h3>Project Details</h3><dl><dt>Status</dt><dd>Completed</dd><dt>Date</dt><dd>Fall 2024 - Spring 2025</dd><dt>Category</dt><dd>Instructional Design</dd></dl><h4>Skills &amp; Topics</h4><ul><li>Canvas LMS</li><li>Graduate Course Design</li><li>Assessment Design</li><li>AI Literacy</li><li>SME Collaboration</li><li>Usability Testing</li><li>Universal Design for Learning</li></ul></main><footer><p><a href="https://linkedin.com/in/jordan-charles">LinkedIn</a> · <a href="https://github.com/williamthe5thc">GitHub</a> · <a href="/Portfolio/llms.txt">Plain-text summary (llms.txt)</a></p></footer></div></div>
+  </body>
+</html>

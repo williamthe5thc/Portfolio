@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!--
+      Old links put the route after "#/" (/Portfolio/#/portfolio/teaching-waltz,
+      on resumes, LinkedIn and bookmarks). Send them to the page's real URL
+      (/Portfolio/portfolio/teaching-waltz/) before anything else loads. The
+      route in the fragment wins over the path, so this also works when an old
+      fragment lands on a page's static copy or on 404.html. A query inside the
+      fragment (#/portfolio?category=id) and a section after it
+      (#/about#design-process) move across with it. /Portfolio/ is the deploy
+      base, filled in by Vite.
+    -->
+    <script>
+      (function () {
+        var base = '/Portfolio/';
+        var l = window.location;
+        if (l.hash.indexOf('#/') === 0) {
+          var route = l.hash.slice(2);
+          var hashAt = route.indexOf('#');
+          var hash = hashAt < 0 ? '' : route.slice(hashAt);
+          if (hashAt >= 0) route = route.slice(0, hashAt);
+          var queryAt = route.indexOf('?');
+          var search = queryAt < 0 ? l.search : route.slice(queryAt);
+          var path = queryAt < 0 ? route : route.slice(0, queryAt);
+          if (path && !/\/$/.test(path)) path += '/';
+          l.replace(base + path + search + hash);
+        } else if (l.pathname + '/' === base) {
+          // "/Portfolio" without the slash is outside the router's base.
+          l.replace(base + l.search + l.hash);
+        }
+      })();
+    </script>
+    <!--
+      The build puts a plain copy of each page's text in #root for crawlers
+      and tools that don't run JavaScript (see vite.config.ts). Where the app
+      will run, keep that copy hidden until React replaces it, so visitors
+      don't see unstyled text flash up first. If the app hasn't started after
+      4 seconds, show the copy after all.
+    -->
+    <style>.app-pending #root > [data-static-page] { visibility: hidden; }</style>
+    <script>
+      if ('noModule' in document.createElement('script')) {
+        document.documentElement.classList.add('app-pending');
+        setTimeout(function () {
+          document.documentElement.classList.remove('app-pending');
+        }, 4000);
+      }
+    </script>
+    <!--
+      Root-relative, so Vite adds the deploy base (/Portfolio/,
+      /Portfolio-Staging/). Relative "./" paths broke once pages had their
+      own URLs: on /Portfolio/about/ they pointed into /Portfolio/about/.
+    -->
+    <link rel="icon" type="image/svg+xml" href="/Portfolio/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="96x96" href="/Portfolio/favicon-96x96.png" />
+    <link rel="shortcut icon" href="/Portfolio/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/Portfolio/apple-touch-icon.png" />
+    <link rel="manifest" href="/Portfolio/site.webmanifest" />
+    <meta name="theme-color" content="#ffffff" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--
+      Send only the origin to other sites (LinkedIn, GitHub, EmailJS), never
+      the full URL, and nothing on a downgrade to http. This is the browser
+      default today; stating it keeps it if the default ever changes. No
+      Content-Security-Policy: the inline Google Analytics snippet below
+      would need 'unsafe-inline' or a hash kept in step with it.
+    -->
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+
+    <title>W. Jordan Charles - Instructional Designer &amp; Learning Technologist</title>
+
+    <!--
+      Static share metadata. LinkedIn, Slack, Teams and iMessage previews do
+      not run JavaScript, so this head is what they see. These are the home
+      page's values; the build gives each page's static copy its own title,
+      description, canonical and og:url (vite.config.ts). data-rh marks the
+      tags as Helmet's: once the app runs, the SEO component replaces them
+      with the current page's values instead of adding duplicates.
+    -->
+    <meta data-rh="true" name="description" content="Portfolio of W. Jordan Charles: instructional design, learning experience design and learning technology. Case studies, interactive demos and resumes." />
+    <meta data-rh="true" name="author" content="W. Jordan Charles" />
+    <meta data-rh="true" property="og:type" content="website" />
+    <meta data-rh="true" property="og:site_name" content="W. Jordan Charles Portfolio" />
+    <meta data-rh="true" property="og:title" content="W. Jordan Charles - Instructional Designer &amp; Learning Technologist" />
+    <meta data-rh="true" property="og:description" content="Portfolio of W. Jordan Charles: instructional design, learning experience design and learning technology. Case studies, interactive demos and resumes." />
+    <meta data-rh="true" property="og:url" content="https://williamthe5thc.github.io/Portfolio/" />
+    <meta data-rh="true" property="og:image" content="https://williamthe5thc.github.io/Portfolio/og-image.jpg" />
+    <meta data-rh="true" property="og:image:width" content="1200" />
+    <meta data-rh="true" property="og:image:height" content="630" />
+    <meta data-rh="true" property="og:image:alt" content="W. Jordan Charles, Instructional Designer. Needs analysis, course design, LMS implementation. M.Ed., University of Utah." />
+    <meta data-rh="true" name="twitter:card" content="summary_large_image" />
+    <meta data-rh="true" name="twitter:title" content="W. Jordan Charles - Instructional Designer &amp; Learning Technologist" />
+    <meta data-rh="true" name="twitter:description" content="Portfolio of W. Jordan Charles: instructional design, learning experience design and learning technology. Case studies, interactive demos and resumes." />
+    <meta data-rh="true" name="twitter:image" content="https://williamthe5thc.github.io/Portfolio/og-image.jpg" />
+    <meta data-rh="true" name="twitter:image:alt" content="W. Jordan Charles, Instructional Designer. Needs analysis, course design, LMS implementation. M.Ed., University of Utah." />
+    <link data-rh="true" rel="canonical" href="https://williamthe5thc.github.io/Portfolio/" />
+
+    <!-- Built only from facts in src/content (siteData.ts, education.ts); keep in step with them. -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "W. Jordan Charles",
+        "jobTitle": "Instructional Designer",
+        "url": "https://williamthe5thc.github.io/Portfolio/",
+        "sameAs": [
+          "https://linkedin.com/in/jordan-charles",
+          "https://github.com/williamthe5thc"
+        ],
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Salt Lake City",
+          "addressRegion": "Utah",
+          "addressCountry": "US"
+        },
+        "alumniOf": [
+          { "@type": "CollegeOrUniversity", "name": "University of Utah" },
+          { "@type": "CollegeOrUniversity", "name": "Brigham Young University - Idaho" }
+        ],
+        "knowsAbout": [
+          "Instructional Design",
+          "Learning Experience Design",
+          "Learning Technology"
+        ]
+      }
+    </script>
+
+    <!--
+      Google tag (gtag.js). send_page_view: false because the app sends every
+      page view itself (GoogleAnalytics.tsx), including the first one, with
+      the route as the page path. Letting config send one as well counted the
+      landing page twice.
+    -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LG6RT04XLW"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-LG6RT04XLW', {
+        send_page_view: false,
+        cookie_domain: 'williamthe5thc.github.io'
+      });
+    </script>
+    <script type="module" crossorigin src="/Portfolio/assets/index-Bm1gQCrz.js"></script>
+    <link rel="modulepreload" crossorigin href="/Portfolio/assets/react-vendor-sK6oOukr.js">
+    <link rel="modulepreload" crossorigin href="/Portfolio/assets/ui-vendor-UMbqYK0l.js">
+    <link rel="stylesheet" crossorigin href="/Portfolio/assets/index-BM7zaPNg.css">
+  </head>
+  <body>
+    <!-- The build fills #root with a plain copy of the page's text. -->
+    <div id="root"><div data-static-page><header><nav aria-label="Primary"><ul><li><a href="/Portfolio/">Home</a></li><li><a href="/Portfolio/about/">About</a></li><li><a href="/Portfolio/portfolio/">Portfolio</a></li><li><a href="/Portfolio/resume/">Resume</a></li><li><a href="/Portfolio/contact/">Contact</a></li></ul></nav></header><main><p>W. Jordan Charles, Instructional Designer &amp; Learning Technologist</p><h1>Learning Experiences That Work</h1><p>Instructional Design · Learning Experience Design · Learning Technology</p><p>I&#39;m an instructional designer who works on both the learning design and the technology that delivers it. At WeYouth, a youth nonprofit, I chose the learning platform and build and run its courses. Before that I ran a needs analysis for Chartway Credit Union&#39;s certification program, automated course setup at NACVA, and helped build a graduate AI and law course in Canvas. I have a psychology research background and an M.Ed. in Instructional Design and Educational Technology from the University of Utah.</p><h2>Featured Projects</h2><ul><li><h3><a href="/Portfolio/portfolio/vr-interview-simulator/">VR Interview Simulator (In progress)</a></h3><p>A virtual reality job-interview practice simulator. The learner sits in a virtual conference room, answers spoken questions from an AI interviewer, and gets feedback on each answer from an AI job coach.</p></li><li><h3><a href="/Portfolio/portfolio/chartway-ficep-enhanced/">FiCEP Needs Analysis</a></h3><p>As part of my internship with Chartway, I conducted a systematic needs analysis for the company&#39;s FiCEP program, which prepares employees for a financial counseling certification exam. The analysis showed what was holding learners back, and I recommended changes to the curriculum and to the support around it.</p></li><li><h3><a href="/Portfolio/portfolio/ai-law-course/">AI &amp; Law Graduate Course</a></h3><p>A three-person graduate capstone team designed and built this ten-module AI and Law course in Canvas for Master of Legal Studies students. We ran a client interview with the faculty sponsor, developed personas, ran a cognitive walkthrough on our own design, and validated it with a stakeholder review before handover. The course was not taught while I was in the program.</p></li></ul><p><a href="/Portfolio/portfolio/">All projects</a></p><h2>What I Bring</h2><h3>Learning platforms</h3><ul><li>Chose LearnWorlds for a youth nonprofit and built its courses and learner tracks <a href="/Portfolio/portfolio/weyouth-mpcc/">See the work</a></li><li>Built ten Canvas modules for a graduate law course, on a team of three <a href="/Portfolio/portfolio/ai-law-course/">See the work</a></li><li>Installed and configured Moodle on my own computer to learn it</li></ul><h3>Support and troubleshooting</h3><ul><li>Technical support for WeYouth&#39;s administrators, learners and coaches <a href="/Portfolio/portfolio/weyouth-mpcc/">See the work</a></li><li>Tested video, iFrames, JavaScript and an AI chatbot in a Canvas test module before adding them to a course <a href="/Portfolio/portfolio/ai-law-course/">See the work</a></li><li>Three years on a help desk, explaining technical problems in plain language <a href="/Portfolio/resume/technology/">See the work</a></li></ul><h3>Accessibility</h3><ul><li>Recommended WCAG 2.1 AA changes for a credit union&#39;s certification program <a href="/Portfolio/portfolio/chartway-ficep-enhanced/">See the work</a></li><li>Captions, transcripts, alt text and an alternate assignment in a self-paced Canvas course <a href="/Portfolio/portfolio/teaching-waltz/">See the work</a></li></ul><h3>AI in learning</h3><ul><li>An assessment plan for a graduate AI course where learners name the tool and submit their prompt instead of being told not to use AI <a href="/Portfolio/portfolio/ai-law-course/">See the work</a></li><li>A VR interview-practice simulator on a local AI model (in progress)</li></ul><h3>Automation and web development</h3><ul><li>Python scripts that did about 80 manual steps per course at a certification body <a href="/Portfolio/portfolio/nacva-automation/">See the work</a></li><li>HTML for Canvas pages; React and TypeScript for this site</li></ul><h3>Needs analysis and evaluation</h3><ul><li>Interviews and a survey that found the real barrier to a certification program: study time <a href="/Portfolio/portfolio/chartway-ficep-enhanced/">See the work</a></li><li>Usability testing on the law course; a four-person evaluation of the waltz course <a href="/Portfolio/portfolio/teaching-waltz/">See the work</a></li></ul></main><footer><p><a href="https://linkedin.com/in/jordan-charles">LinkedIn</a> · <a href="https://github.com/williamthe5thc">GitHub</a> · <a href="/Portfolio/llms.txt">Plain-text summary (llms.txt)</a></p></footer></div></div>
+  </body>
+</html>

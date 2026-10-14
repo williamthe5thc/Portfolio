@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!--
+      Old links put the route after "#/" (/Portfolio/#/portfolio/teaching-waltz,
+      on resumes, LinkedIn and bookmarks). Send them to the page's real URL
+      (/Portfolio/portfolio/teaching-waltz/) before anything else loads. The
+      route in the fragment wins over the path, so this also works when an old
+      fragment lands on a page's static copy or on 404.html. A query inside the
+      fragment (#/portfolio?category=id) and a section after it
+      (#/about#design-process) move across with it. /Portfolio/ is the deploy
+      base, filled in by Vite.
+    -->
+    <script>
+      (function () {
+        var base = '/Portfolio/';
+        var l = window.location;
+        if (l.hash.indexOf('#/') === 0) {
+          var route = l.hash.slice(2);
+          var hashAt = route.indexOf('#');
+          var hash = hashAt < 0 ? '' : route.slice(hashAt);
+          if (hashAt >= 0) route = route.slice(0, hashAt);
+          var queryAt = route.indexOf('?');
+          var search = queryAt < 0 ? l.search : route.slice(queryAt);
+          var path = queryAt < 0 ? route : route.slice(0, queryAt);
+          if (path && !/\/$/.test(path)) path += '/';
+          l.replace(base + path + search + hash);
+        } else if (l.pathname + '/' === base) {
+          // "/Portfolio" without the slash is outside the router's base.
+          l.replace(base + l.search + l.hash);
+        }
+      })();
+    </script>
+    <!--
+      The build puts a plain copy of each page's text in #root for crawlers
+      and tools that don't run JavaScript (see vite.config.ts). Where the app
+      will run, keep that copy hidden until React replaces it, so visitors
+      don't see unstyled text flash up first. If the app hasn't started after
+      4 seconds, show the copy after all.
+    -->
+    <style>.app-pending #root > [data-static-page] { visibility: hidden; }</style>
+    <script>
+      if ('noModule' in document.createElement('script')) {
+        document.documentElement.classList.add('app-pending');
+        setTimeout(function () {
+          document.documentElement.classList.remove('app-pending');
+        }, 4000);
+      }
+    </script>
+    <!--
+      Root-relative, so Vite adds the deploy base (/Portfolio/,
+      /Portfolio-Staging/). Relative "./" paths broke once pages had their
+      own URLs: on /Portfolio/about/ they pointed into /Portfolio/about/.
+    -->
+    <link rel="icon" type="image/svg+xml" href="/Portfolio/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="96x96" href="/Portfolio/favicon-96x96.png" />
+    <link rel="shortcut icon" href="/Portfolio/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/Portfolio/apple-touch-icon.png" />
+    <link rel="manifest" href="/Portfolio/site.webmanifest" />
+    <meta name="theme-color" content="#ffffff" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--
+      Send only the origin to other sites (LinkedIn, GitHub, EmailJS), never
+      the full URL, and nothing on a downgrade to http. This is the browser
+      default today; stating it keeps it if the default ever changes. No
+      Content-Security-Policy: the inline Google Analytics snippet below
+      would need 'unsafe-inline' or a hash kept in step with it.
+    -->
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+
+    <title>About | W. Jordan Charles</title>
+
+    <!--
+      Static share metadata. LinkedIn, Slack, Teams and iMessage previews do
+      not run JavaScript, so this head is what they see. These are the home
+      page's values; the build gives each page's static copy its own title,
+      description, canonical and og:url (vite.config.ts). data-rh marks the
+      tags as Helmet's: once the app runs, the SEO component replaces them
+      with the current page's values instead of adding duplicates.
+    -->
+    <meta data-rh="true" name="description" content="W. Jordan Charles&#39;s background, skills and approach to instructional design" />
+    <meta data-rh="true" name="author" content="W. Jordan Charles" />
+    <meta data-rh="true" property="og:type" content="website" />
+    <meta data-rh="true" property="og:site_name" content="W. Jordan Charles Portfolio" />
+    <meta data-rh="true" property="og:title" content="About | W. Jordan Charles" />
+    <meta data-rh="true" property="og:description" content="W. Jordan Charles&#39;s background, skills and approach to instructional design" />
+    <meta data-rh="true" property="og:url" content="https://williamthe5thc.github.io/Portfolio/about/" />
+    <meta data-rh="true" property="og:image" content="https://williamthe5thc.github.io/Portfolio/og-image.jpg" />
+    <meta data-rh="true" property="og:image:width" content="1200" />
+    <meta data-rh="true" property="og:image:height" content="630" />
+    <meta data-rh="true" property="og:image:alt" content="W. Jordan Charles, Instructional Designer. Needs analysis, course design, LMS implementation. M.Ed., University of Utah." />
+    <meta data-rh="true" name="twitter:card" content="summary_large_image" />
+    <meta data-rh="true" name="twitter:title" content="About | W. Jordan Charles" />
+    <meta data-rh="true" name="twitter:description" content="W. Jordan Charles&#39;s background, skills and approach to instructional design" />
+    <meta data-rh="true" name="twitter:image" content="https://williamthe5thc.github.io/Portfolio/og-image.jpg" />
+    <meta data-rh="true" name="twitter:image:alt" content="W. Jordan Charles, Instructional Designer. Needs analysis, course design, LMS implementation. M.Ed., University of Utah." />
+    <link data-rh="true" rel="canonical" href="https://williamthe5thc.github.io/Portfolio/about/" />
+
+    <!-- Built only from facts in src/content (siteData.ts, education.ts); keep in step with them. -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "W. Jordan Charles",
+        "jobTitle": "Instructional Designer",
+        "url": "https://williamthe5thc.github.io/Portfolio/",
+        "sameAs": [
+          "https://linkedin.com/in/jordan-charles",
+          "https://github.com/williamthe5thc"
+        ],
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Salt Lake City",
+          "addressRegion": "Utah",
+          "addressCountry": "US"
+        },
+        "alumniOf": [
+          { "@type": "CollegeOrUniversity", "name": "University of Utah" },
+          { "@type": "CollegeOrUniversity", "name": "Brigham Young University - Idaho" }
+        ],
+        "knowsAbout": [
+          "Instructional Design",
+          "Learning Experience Design",
+          "Learning Technology"
+        ]
+      }
+    </script>
+
+    <!--
+      Google tag (gtag.js). send_page_view: false because the app sends every
+      page view itself (GoogleAnalytics.tsx), including the first one, with
+      the route as the page path. Letting config send one as well counted the
+      landing page twice.
+    -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LG6RT04XLW"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-LG6RT04XLW', {
+        send_page_view: false,
+        cookie_domain: 'williamthe5thc.github.io'
+      });
+    </script>
+    <script type="module" crossorigin src="/Portfolio/assets/index-Bm1gQCrz.js"></script>
+    <link rel="modulepreload" crossorigin href="/Portfolio/assets/react-vendor-sK6oOukr.js">
+    <link rel="modulepreload" crossorigin href="/Portfolio/assets/ui-vendor-UMbqYK0l.js">
+    <link rel="stylesheet" crossorigin href="/Portfolio/assets/index-BM7zaPNg.css">
+  </head>
+  <body>
+    <!-- The build fills #root with a plain copy of the page's text. -->
+    <div id="root"><div data-static-page><header><nav aria-label="Primary"><ul><li><a href="/Portfolio/">Home</a></li><li><a href="/Portfolio/about/">About</a></li><li><a href="/Portfolio/portfolio/">Portfolio</a></li><li><a href="/Portfolio/resume/">Resume</a></li><li><a href="/Portfolio/contact/">Contact</a></li></ul></nav></header><main><h1>About Me</h1><p>I&#39;m an instructional designer who works on both the learning design and the technology that delivers it. At WeYouth, a youth nonprofit, I chose the learning platform and build and run its courses. Before that I ran a needs analysis for Chartway Credit Union&#39;s certification program, automated course setup at NACVA, and helped build a graduate AI and law course in Canvas. I have a psychology research background and an M.Ed. in Instructional Design and Educational Technology from the University of Utah.</p><h2>Cognitive Science-Based Instructional Design</h2><p>I start with a needs analysis, structure the course around research on how people learn, and build in the checks that show whether it works from the beginning. My psychology research background means I can read the evidence myself, and my technical side means I can set up the platform a course runs on instead of handing it off.</p><h3>Andragogy-Centered Adult Learning</h3><p>Using Knowles&#39; adult learning principles, self-directed learning strategies and the ARCS motivation model to design professional development that keeps adult learners engaged</p><h3>Cognitive Load Theory Application</h3><p>Trained in Sweller&#39;s cognitive load theory, Mayer&#39;s multimedia learning principles and evidence-based instructional design in the University of Utah&#39;s IDET program, which focuses on cognitive science</p><h3>Universal Design for Learning (UDL)</h3><p>Offering multiple means of representation, engagement, and action and expression, so courses are accessible and inclusive for adult learners with different needs</p><h3>Systematic ADDIE Methodology</h3><p>Trained in the instructional design process, including learner analysis, scaffolding and formative evaluation; applied in the Waltz, FiCEP and AI &amp; Law projects</p><section id="design-process"><h3>Design Process</h3><h4>Analysis &amp; Planning</h4><ul><li>Conduct needs assessments and learner analysis</li><li>Define clear learning objectives</li><li>Select appropriate instructional strategies</li><li>Plan evaluation methods</li></ul><h4>Design &amp; Development</h4><ul><li>Create user-centered learning experiences</li><li>Develop multimedia content using Adobe Creative Suite</li><li>Apply UI/UX principles for engagement</li><li>Meet accessibility standards</li></ul><h4>Implementation</h4><ul><li>Deploy learning solutions</li><li>Monitor user experience</li><li>Gather feedback</li><li>Support learner progress</li></ul><h4>Evaluation</h4><ul><li>Measure learning outcomes</li><li>Analyze performance data</li><li>Make evidence-based improvements</li><li>Document lessons learned</li></ul></section><h3>Professional Skills</h3><h4>Instructional Design</h4><ul><li>ADDIE Framework, with working knowledge of SAM</li><li>Learner Analysis using Andragogy Principles</li><li>Cognitive Load Theory Application</li><li>Bloom&#39;s Taxonomy for Learning Objectives</li><li>ARCS Motivation Model Integration</li><li>Scaffolding &amp; Zone of Proximal Development</li><li>Universal Design for Learning (UDL)</li></ul><h4>Learning Theory</h4><ul><li>Adult Learning Theory (Andragogy)</li><li>Constructivist Learning Approaches</li><li>Social Cognitive Theory Application</li><li>Multimedia Learning Principles (Mayer)</li><li>Authentic Assessment Design</li><li>Formative &amp; Summative Evaluation</li><li>Transfer Theory &amp; Application</li><li>Cognitive Psychology Foundations</li></ul><h4>Technical Competencies</h4><ul><li>Articulate Storyline 360 &amp; Rise 360</li><li>LearnWorlds LMS Selection, Implementation &amp; Administration</li><li>Canvas LMS Administration</li><li>SCORM Packaging</li><li>Python &amp; Selenium Automation for Learning Systems</li><li>Moodle Installation &amp; Configuration</li><li>Web Development: HTML, CSS, JavaScript, TypeScript, React, Next.js</li><li>VR Prototyping in Unity for Meta Quest</li><li>Accessibility Standards (WCAG 2.1)</li><li>Responsive E-learning Development</li><li>Multimedia Content Creation</li></ul><h3>Technical Tools</h3><h4>Articulate Suite</h4><ul><li>Storyline 360 - Interactive e-learning development</li><li>Rise 360 - Responsive course creation</li></ul><h4>Learning Technology</h4><ul><li>LearnWorlds - LMS selection, implementation &amp; administration</li><li>Canvas LMS - Course management &amp; delivery</li><li>Moodle - Installation &amp; configuration</li><li>Assessment Design - Competency-based evaluation</li></ul><h4>Automation &amp; Efficiency</h4><ul><li>Python &amp; Selenium - Course setup automation &amp; data processing</li><li>Process Optimization - Streamlining content development</li><li>Quality Assurance - Building validation checks</li></ul><h4>Professional Content</h4><ul><li>Adobe Creative Suite - Multimedia content creation</li><li>Camtasia - Video production &amp; demonstrations</li><li>Microsoft 365 - Professional documentation</li></ul><h4>Web &amp; VR</h4><ul><li>HTML, CSS, JavaScript, TypeScript &amp; React - Web front ends</li><li>Next.js - Learning platform development</li><li>Unity &amp; Meta Quest - VR prototyping</li></ul><h4>Professional Certification Support</h4><ul><li>FiCEP Needs Analysis - Barriers and recommendations for a certification program</li><li>Adult Learning Design - Evidence-based curriculum development for professional certifications</li><li>Assessment Alignment - Learning objectives matched to certification requirements</li></ul><h4>Learning Measurement</h4><ul><li>Data Analysis - Measuring learning effectiveness</li><li>Stakeholder Reporting - Explaining results to stakeholders</li></ul><h2>Education &amp; Experience</h2><h3>Education</h3><h4>Master of Education (M.Ed.)</h4><p>University of Utah, August 2023 - May 2025</p><p>Instructional Design and Educational Technology (IDET) · GPA 3.9</p><ul><li>30 credit hours across five semesters (two academic years and a summer)</li><li>Combines instructional design (identifying learner needs and goals, then building instruction to meet them) with educational technology (technology-based learning environments that support those needs)</li><li>Capstone: the AI &amp; Law course for the S.J. Quinney College of Law, built in Canvas with a team of three</li><li>Trained in evidence-based learning theory, cognitive load theory, and Universal Design for Learning</li><li>Intensive small cohort collaborative learning environment (6 students total)</li></ul><h4>Bachelor of Science</h4><p>Brigham Young University - Idaho, 2012 - 2018</p><p>Psychology</p><ul><li>Undergraduate research in research methods and statistics, presented at conferences</li><li>Certificate in Programming</li></ul><h3>Experience</h3><h4>Instructional Designer</h4><p>WeYouth, February 2026 - Present</p><ul><li>Researched learning management systems, scored them against the organization&#39;s constraints, and delivered the platform recommendation the nonprofit adopted and runs on today</li><li>Implemented SME-authored curriculum into the LMS as enrollable, self-paced courses: module architecture, self-assessments, evaluation surveys, and cohort enrollment</li><li>Built separate learner tracks for athletes, coaches, and captains supporting Mental Performance Connection Coaching, the organization&#39;s primary program</li><li>Collaborate with subject matter experts (founders, a licensed clinician and coaching staff) on restructuring written curriculum to work without a live facilitator</li><li>Provide the platform&#39;s technical support, onboarding administrators and maintaining the system as cohorts move through it</li></ul><h4>Instructional Design Intern</h4><p>Chartway Credit Union, May 2025 - July 2025</p><ul><li>Conducted a mixed-methods needs analysis for the FiCEP certification program, which prepares employees for America&#39;s Credit Unions (ACU) financial counseling exam: five semi-structured interviews and a survey returning 21 responses</li><li>Applied thematic analysis to identify limited protected study time as the top barrier to certification (23 mentions)</li><li>Applied the ADDIE framework and adult learning theory to deliver evidence-based curriculum recommendations</li><li>Worked with the Financial Wellness manager, the program&#39;s subject matter expert, to keep the recommendations aligned with certification requirements</li><li>Recommended WCAG 2.1 AA accessibility standards for the curriculum</li><li>Chartway implemented the redesigned program and reported improved exam results (figures withheld to protect employee privacy)</li></ul><h4>Learning Technology Specialist (Contract)</h4><p>National Association of Certified Valuators and Analysts (NACVA), via Robert Half, March 2023 - August 2023</p><ul><li>Turned 50+ recorded webinars into on-demand continuing-education courses in Camtasia, published as SCORM packages with Articulate Presenter</li><li>Wrote Python and Selenium scripts that set up each course in the learning platform and online store, automating about 80 hand steps per course</li><li>Wrote a converter that imported each exam&#39;s questions from Word instead of retyping them</li></ul><p><a href="/Portfolio/contact/">Get in touch</a></p></main><footer><p><a href="https://linkedin.com/in/jordan-charles">LinkedIn</a> · <a href="https://github.com/williamthe5thc">GitHub</a> · <a href="/Portfolio/llms.txt">Plain-text summary (llms.txt)</a></p></footer></div></div>
+  </body>
+</html>

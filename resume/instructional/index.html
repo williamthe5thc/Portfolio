@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!--
+      Old links put the route after "#/" (/Portfolio/#/portfolio/teaching-waltz,
+      on resumes, LinkedIn and bookmarks). Send them to the page's real URL
+      (/Portfolio/portfolio/teaching-waltz/) before anything else loads. The
+      route in the fragment wins over the path, so this also works when an old
+      fragment lands on a page's static copy or on 404.html. A query inside the
+      fragment (#/portfolio?category=id) and a section after it
+      (#/about#design-process) move across with it. /Portfolio/ is the deploy
+      base, filled in by Vite.
+    -->
+    <script>
+      (function () {
+        var base = '/Portfolio/';
+        var l = window.location;
+        if (l.hash.indexOf('#/') === 0) {
+          var route = l.hash.slice(2);
+          var hashAt = route.indexOf('#');
+          var hash = hashAt < 0 ? '' : route.slice(hashAt);
+          if (hashAt >= 0) route = route.slice(0, hashAt);
+          var queryAt = route.indexOf('?');
+          var search = queryAt < 0 ? l.search : route.slice(queryAt);
+          var path = queryAt < 0 ? route : route.slice(0, queryAt);
+          if (path && !/\/$/.test(path)) path += '/';
+          l.replace(base + path + search + hash);
+        } else if (l.pathname + '/' === base) {
+          // "/Portfolio" without the slash is outside the router's base.
+          l.replace(base + l.search + l.hash);
+        }
+      })();
+    </script>
+    <!--
+      The build puts a plain copy of each page's text in #root for crawlers
+      and tools that don't run JavaScript (see vite.config.ts). Where the app
+      will run, keep that copy hidden until React replaces it, so visitors
+      don't see unstyled text flash up first. If the app hasn't started after
+      4 seconds, show the copy after all.
+    -->
+    <style>.app-pending #root > [data-static-page] { visibility: hidden; }</style>
+    <script>
+      if ('noModule' in document.createElement('script')) {
+        document.documentElement.classList.add('app-pending');
+        setTimeout(function () {
+          document.documentElement.classList.remove('app-pending');
+        }, 4000);
+      }
+    </script>
+    <!--
+      Root-relative, so Vite adds the deploy base (/Portfolio/,
+      /Portfolio-Staging/). Relative "./" paths broke once pages had their
+      own URLs: on /Portfolio/about/ they pointed into /Portfolio/about/.
+    -->
+    <link rel="icon" type="image/svg+xml" href="/Portfolio/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="96x96" href="/Portfolio/favicon-96x96.png" />
+    <link rel="shortcut icon" href="/Portfolio/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/Portfolio/apple-touch-icon.png" />
+    <link rel="manifest" href="/Portfolio/site.webmanifest" />
+    <meta name="theme-color" content="#ffffff" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--
+      Send only the origin to other sites (LinkedIn, GitHub, EmailJS), never
+      the full URL, and nothing on a downgrade to http. This is the browser
+      default today; stating it keeps it if the default ever changes. No
+      Content-Security-Policy: the inline Google Analytics snippet below
+      would need 'unsafe-inline' or a hash kept in step with it.
+    -->
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+
+    <title>Instructional Design Resume | W. Jordan Charles</title>
+
+    <!--
+      Static share metadata. LinkedIn, Slack, Teams and iMessage previews do
+      not run JavaScript, so this head is what they see. These are the home
+      page's values; the build gives each page's static copy its own title,
+      description, canonical and og:url (vite.config.ts). data-rh marks the
+      tags as Helmet's: once the app runs, the SEO component replaces them
+      with the current page's values instead of adding duplicates.
+    -->
+    <meta data-rh="true" name="description" content="The full resume: design and delivery work, research background, education and skills." />
+    <meta data-rh="true" name="author" content="W. Jordan Charles" />
+    <meta data-rh="true" property="og:type" content="website" />
+    <meta data-rh="true" property="og:site_name" content="W. Jordan Charles Portfolio" />
+    <meta data-rh="true" property="og:title" content="Instructional Design Resume | W. Jordan Charles" />
+    <meta data-rh="true" property="og:description" content="The full resume: design and delivery work, research background, education and skills." />
+    <meta data-rh="true" property="og:url" content="https://williamthe5thc.github.io/Portfolio/resume/instructional/" />
+    <meta data-rh="true" property="og:image" content="https://williamthe5thc.github.io/Portfolio/og-image.jpg" />
+    <meta data-rh="true" property="og:image:width" content="1200" />
+    <meta data-rh="true" property="og:image:height" content="630" />
+    <meta data-rh="true" property="og:image:alt" content="W. Jordan Charles, Instructional Designer. Needs analysis, course design, LMS implementation. M.Ed., University of Utah." />
+    <meta data-rh="true" name="twitter:card" content="summary_large_image" />
+    <meta data-rh="true" name="twitter:title" content="Instructional Design Resume | W. Jordan Charles" />
+    <meta data-rh="true" name="twitter:description" content="The full resume: design and delivery work, research background, education and skills." />
+    <meta data-rh="true" name="twitter:image" content="https://williamthe5thc.github.io/Portfolio/og-image.jpg" />
+    <meta data-rh="true" name="twitter:image:alt" content="W. Jordan Charles, Instructional Designer. Needs analysis, course design, LMS implementation. M.Ed., University of Utah." />
+    <link data-rh="true" rel="canonical" href="https://williamthe5thc.github.io/Portfolio/resume/instructional/" />
+
+    <!-- Built only from facts in src/content (siteData.ts, education.ts); keep in step with them. -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "W. Jordan Charles",
+        "jobTitle": "Instructional Designer",
+        "url": "https://williamthe5thc.github.io/Portfolio/",
+        "sameAs": [
+          "https://linkedin.com/in/jordan-charles",
+          "https://github.com/williamthe5thc"
+        ],
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Salt Lake City",
+          "addressRegion": "Utah",
+          "addressCountry": "US"
+        },
+        "alumniOf": [
+          { "@type": "CollegeOrUniversity", "name": "University of Utah" },
+          { "@type": "CollegeOrUniversity", "name": "Brigham Young University - Idaho" }
+        ],
+        "knowsAbout": [
+          "Instructional Design",
+          "Learning Experience Design",
+          "Learning Technology"
+        ]
+      }
+    </script>
+
+    <!--
+      Google tag (gtag.js). send_page_view: false because the app sends every
+      page view itself (GoogleAnalytics.tsx), including the first one, with
+      the route as the page path. Letting config send one as well counted the
+      landing page twice.
+    -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LG6RT04XLW"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-LG6RT04XLW', {
+        send_page_view: false,
+        cookie_domain: 'williamthe5thc.github.io'
+      });
+    </script>
+    <script type="module" crossorigin src="/Portfolio/assets/index-Bm1gQCrz.js"></script>
+    <link rel="modulepreload" crossorigin href="/Portfolio/assets/react-vendor-sK6oOukr.js">
+    <link rel="modulepreload" crossorigin href="/Portfolio/assets/ui-vendor-UMbqYK0l.js">
+    <link rel="stylesheet" crossorigin href="/Portfolio/assets/index-BM7zaPNg.css">
+  </head>
+  <body>
+    <!-- The build fills #root with a plain copy of the page's text. -->
+    <div id="root"><div data-static-page><header><nav aria-label="Primary"><ul><li><a href="/Portfolio/">Home</a></li><li><a href="/Portfolio/about/">About</a></li><li><a href="/Portfolio/portfolio/">Portfolio</a></li><li><a href="/Portfolio/resume/">Resume</a></li><li><a href="/Portfolio/contact/">Contact</a></li></ul></nav></header><main><nav aria-label="Breadcrumb"><ol><li><a href="/Portfolio/resume/">Resumes</a></li><li aria-current="page">Instructional Design Resume</li></ol></nav><h1>Instructional Design Resume</h1><p>Instructional Design · Learning Experience Design · Learning Technology</p><p>Instructional designer who takes learning programs from needs analysis through evidence-based design to the platform work that gets them to learners. Psychology research background; M.Ed. from the University of Utah.</p><p><a href="/Portfolio/documents/Instructional_Design_Resume.pdf">Download PDF Version</a></p><h2>Professional Experience</h2><h3>Instructional Designer</h3><p>WeYouth (501(c)(3) nonprofit), North Salt Lake, UT | February 2026 - Present</p><ul><li>Ran LMS market research against the organization&#39;s constraints and delivered the platform recommendation the nonprofit adopted and runs on today</li><li>Implemented SME-authored curriculum into the LMS as enrollable self-paced courses with module architecture, self-assessments, and evaluation surveys</li><li>Built separate learner tracks supporting Mental Performance Connection Coaching for young people ages 12-24</li><li>Collaborate with founders, a licensed clinician, and coaching staff as subject matter experts on restructuring curriculum for self-paced online delivery</li><li>Provide the technical support for the platform and its administrators</li></ul><h3>Instructional Design Intern</h3><p>Chartway Credit Union (Financial Wellness team), South Jordan, UT | May 2025 - July 2025</p><ul><li>Conducted a mixed-methods needs analysis for the FiCEP certification program: five semi-structured interviews and a survey returning 21 responses</li><li>Applied thematic analysis to identify limited protected study time as the top barrier to certification (23 mentions)</li><li>Applied the ADDIE framework and adult learning theory to deliver evidence-based curriculum recommendations</li><li>Recommended WCAG 2.1 AA accessibility standards for the curriculum</li><li>Chartway implemented the redesigned program and reported improved exam results (figures withheld to protect employee privacy)</li></ul><h3>Learning Technology Specialist (Contract)</h3><p>National Association of Certified Valuators and Analysts (NACVA), via Robert Half, Sandy, UT | March 2023 - August 2023</p><ul><li>Turned 50+ recorded webinars into on-demand continuing-education courses in Camtasia, published as SCORM packages with Articulate Presenter</li><li>Wrote Python and Selenium scripts that set up each course in the learning platform and online store, automating about 80 hand steps per course</li><li>Wrote a converter that imported each exam&#39;s questions from Word instead of retyping them</li></ul><h3>Help Desk Specialist</h3><p>All Season Control Cover, Salt Lake City, UT | January 2021 - May 2024</p><ul><li>Diagnosed user-reported problems and implemented fixes, translating technical detail into plain guidance</li></ul><h2>Research Experience</h2><h3>Graduate Research Assistant</h3><p>Florida State University | August 2018 - December 2018</p><ul><li>Supported development of educational software for stealth assessment in children&#39;s learning</li></ul><h3>Research Associate</h3><p>Research &amp; Business Development Center, Rexburg, ID | January 2017 - April 2017</p><ul><li>Designed a pilot study, administered a survey to over one thousand participants, and presented findings to a city committee</li></ul><h3>Undergraduate Researcher</h3><p>BYU-Idaho Psychology Department | April 2013 - July 2015</p><ul><li>Conducted literature reviews, generated testable hypotheses, gathered and analyzed data, and presented findings at conferences</li></ul><h2>Selected Projects</h2><h3><a href="/Portfolio/portfolio/ai-law-course/">AI &amp; Law, S.J. Quinney College of Law</a></h3><p>Ten-module graduate course for Master of Legal Studies students, built in Canvas by a three-person capstone team</p><h3><a href="/Portfolio/portfolio/chartway-ficep-enhanced/">FiCEP Curriculum Needs Analysis</a></h3><p>Mixed-methods needs analysis for a credit union&#39;s certification-preparation program, with evidence-based redesign recommendations</p><h3><a href="/Portfolio/portfolio/professional-communication-training/">Articulate Storyline 360 course</a></h3><p>278-slide branching scenario build with consequential decision points</p><h3><a href="/Portfolio/portfolio/teaching-waltz/">Teaching the Waltz</a></h3><p>Self-paced Canvas course for a physical skill, co-designed with a classmate, assessed by learner-submitted video and tested in a small-group formative evaluation</p><h2>Presentations</h2><ul><li>Charles, W.J. (2014, Dec). Does Money Inequality Affect Empathy and Compassion? Poster session, Research &amp; Creative Works Conference, Rexburg, ID.</li><li>North, A.J., &amp; Charles, W.J. (2014, Apr). The Effects of PowerPoint on Student-Teacher Connection. Poster session, Rocky Mountain Psychological Association, Salt Lake City, UT.</li></ul><h2>Education</h2><h3>Master of Education (M.Ed.)</h3><p>Instructional Design &amp; Educational Technology</p><p>University of Utah | August 2023 - May 2025</p><p>GPA 3.9. 30 credit hours across five semesters.</p><h3>Bachelor of Science</h3><p>Psychology</p><p>Brigham Young University - Idaho | 2012 - 2018</p><p>Certificate in Programming.</p><h2>Skills &amp; Expertise</h2><h3>Authoring</h3><ul><li>Articulate Storyline 360</li><li>Rise</li><li>Camtasia</li><li>Adobe Creative Suite</li></ul><h3>Platforms</h3><ul><li>LearnWorlds (selection, implementation, administration)</li><li>Canvas LMS</li></ul><h3>Methodology</h3><ul><li>ADDIE</li><li>SAM</li><li>Backward design</li><li>Formative and summative evaluation</li><li>Cognitive walkthrough</li></ul><h3>Research</h3><ul><li>Experimental design</li><li>Survey design</li><li>Semi-structured interviewing</li><li>Thematic analysis</li><li>Statistical analysis (SPSS)</li></ul><h3>Theory</h3><ul><li>Cognitive load theory</li><li>Andragogy</li><li>Mayer&#39;s multimedia principles</li><li>Universal Design for Learning</li><li>Bloom&#39;s taxonomy</li></ul><h3>Technical</h3><ul><li>Python</li><li>JavaScript</li><li>TypeScript</li><li>React</li><li>HTML/CSS</li></ul><h2>Honors</h2><ul><li>Research &amp; Creative Works Conference: Finalist and 1st Place; Finalist and 3rd Place in a separate year</li></ul></main><footer><p><a href="https://linkedin.com/in/jordan-charles">LinkedIn</a> · <a href="https://github.com/williamthe5thc">GitHub</a> · <a href="/Portfolio/llms.txt">Plain-text summary (llms.txt)</a></p></footer></div></div>
+  </body>
+</html>

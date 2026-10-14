@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!--
+      Old links put the route after "#/" (/Portfolio/#/portfolio/teaching-waltz,
+      on resumes, LinkedIn and bookmarks). Send them to the page's real URL
+      (/Portfolio/portfolio/teaching-waltz/) before anything else loads. The
+      route in the fragment wins over the path, so this also works when an old
+      fragment lands on a page's static copy or on 404.html. A query inside the
+      fragment (#/portfolio?category=id) and a section after it
+      (#/about#design-process) move across with it. /Portfolio/ is the deploy
+      base, filled in by Vite.
+    -->
+    <script>
+      (function () {
+        var base = '/Portfolio/';
+        var l = window.location;
+        if (l.hash.indexOf('#/') === 0) {
+          var route = l.hash.slice(2);
+          var hashAt = route.indexOf('#');
+          var hash = hashAt < 0 ? '' : route.slice(hashAt);
+          if (hashAt >= 0) route = route.slice(0, hashAt);
+          var queryAt = route.indexOf('?');
+          var search = queryAt < 0 ? l.search : route.slice(queryAt);
+          var path = queryAt < 0 ? route : route.slice(0, queryAt);
+          if (path && !/\/$/.test(path)) path += '/';
+          l.replace(base + path + search + hash);
+        } else if (l.pathname + '/' === base) {
+          // "/Portfolio" without the slash is outside the router's base.
+          l.replace(base + l.search + l.hash);
+        }
+      })();
+    </script>
+    <!--
+      The build puts a plain copy of each page's text in #root for crawlers
+      and tools that don't run JavaScript (see vite.config.ts). Where the app
+      will run, keep that copy hidden until React replaces it, so visitors
+      don't see unstyled text flash up first. If the app hasn't started after
+      4 seconds, show the copy after all.
+    -->
+    <style>.app-pending #root > [data-static-page] { visibility: hidden; }</style>
+    <script>
+      if ('noModule' in document.createElement('script')) {
+        document.documentElement.classList.add('app-pending');
+        setTimeout(function () {
+          document.documentElement.classList.remove('app-pending');
+        }, 4000);
+      }
+    </script>
+    <!--
+      Root-relative, so Vite adds the deploy base (/Portfolio/,
+      /Portfolio-Staging/). Relative "./" paths broke once pages had their
+      own URLs: on /Portfolio/about/ they pointed into /Portfolio/about/.
+    -->
+    <link rel="icon" type="image/svg+xml" href="/Portfolio/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="96x96" href="/Portfolio/favicon-96x96.png" />
+    <link rel="shortcut icon" href="/Portfolio/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/Portfolio/apple-touch-icon.png" />
+    <link rel="manifest" href="/Portfolio/site.webmanifest" />
+    <meta name="theme-color" content="#ffffff" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--
+      Send only the origin to other sites (LinkedIn, GitHub, EmailJS), never
+      the full URL, and nothing on a downgrade to http. This is the browser
+      default today; stating it keeps it if the default ever changes. No
+      Content-Security-Policy: the inline Google Analytics snippet below
+      would need 'unsafe-inline' or a hash kept in step with it.
+    -->
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+
+    <title>Learning Technology Resume | W. Jordan Charles</title>
+
+    <!--
+      Static share metadata. LinkedIn, Slack, Teams and iMessage previews do
+      not run JavaScript, so this head is what they see. These are the home
+      page's values; the build gives each page's static copy its own title,
+      description, canonical and og:url (vite.config.ts). data-rh marks the
+      tags as Helmet's: once the app runs, the SEO component replaces them
+      with the current page's values instead of adding duplicates.
+    -->
+    <meta data-rh="true" name="description" content="The same experience, told from the technical side: platforms, automation and front-end work." />
+    <meta data-rh="true" name="author" content="W. Jordan Charles" />
+    <meta data-rh="true" property="og:type" content="website" />
+    <meta data-rh="true" property="og:site_name" content="W. Jordan Charles Portfolio" />
+    <meta data-rh="true" property="og:title" content="Learning Technology Resume | W. Jordan Charles" />
+    <meta data-rh="true" property="og:description" content="The same experience, told from the technical side: platforms, automation and front-end work." />
+    <meta data-rh="true" property="og:url" content="https://williamthe5thc.github.io/Portfolio/resume/technology/" />
+    <meta data-rh="true" property="og:image" content="https://williamthe5thc.github.io/Portfolio/og-image.jpg" />
+    <meta data-rh="true" property="og:image:width" content="1200" />
+    <meta data-rh="true" property="og:image:height" content="630" />
+    <meta data-rh="true" property="og:image:alt" content="W. Jordan Charles, Instructional Designer. Needs analysis, course design, LMS implementation. M.Ed., University of Utah." />
+    <meta data-rh="true" name="twitter:card" content="summary_large_image" />
+    <meta data-rh="true" name="twitter:title" content="Learning Technology Resume | W. Jordan Charles" />
+    <meta data-rh="true" name="twitter:description" content="The same experience, told from the technical side: platforms, automation and front-end work." />
+    <meta data-rh="true" name="twitter:image" content="https://williamthe5thc.github.io/Portfolio/og-image.jpg" />
+    <meta data-rh="true" name="twitter:image:alt" content="W. Jordan Charles, Instructional Designer. Needs analysis, course design, LMS implementation. M.Ed., University of Utah." />
+    <link data-rh="true" rel="canonical" href="https://williamthe5thc.github.io/Portfolio/resume/technology/" />
+
+    <!-- Built only from facts in src/content (siteData.ts, education.ts); keep in step with them. -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "W. Jordan Charles",
+        "jobTitle": "Instructional Designer",
+        "url": "https://williamthe5thc.github.io/Portfolio/",
+        "sameAs": [
+          "https://linkedin.com/in/jordan-charles",
+          "https://github.com/williamthe5thc"
+        ],
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Salt Lake City",
+          "addressRegion": "Utah",
+          "addressCountry": "US"
+        },
+        "alumniOf": [
+          { "@type": "CollegeOrUniversity", "name": "University of Utah" },
+          { "@type": "CollegeOrUniversity", "name": "Brigham Young University - Idaho" }
+        ],
+        "knowsAbout": [
+          "Instructional Design",
+          "Learning Experience Design",
+          "Learning Technology"
+        ]
+      }
+    </script>
+
+    <!--
+      Google tag (gtag.js). send_page_view: false because the app sends every
+      page view itself (GoogleAnalytics.tsx), including the first one, with
+      the route as the page path. Letting config send one as well counted the
+      landing page twice.
+    -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LG6RT04XLW"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-LG6RT04XLW', {
+        send_page_view: false,
+        cookie_domain: 'williamthe5thc.github.io'
+      });
+    </script>
+    <script type="module" crossorigin src="/Portfolio/assets/index-Bm1gQCrz.js"></script>
+    <link rel="modulepreload" crossorigin href="/Portfolio/assets/react-vendor-sK6oOukr.js">
+    <link rel="modulepreload" crossorigin href="/Portfolio/assets/ui-vendor-UMbqYK0l.js">
+    <link rel="stylesheet" crossorigin href="/Portfolio/assets/index-BM7zaPNg.css">
+  </head>
+  <body>
+    <!-- The build fills #root with a plain copy of the page's text. -->
+    <div id="root"><div data-static-page><header><nav aria-label="Primary"><ul><li><a href="/Portfolio/">Home</a></li><li><a href="/Portfolio/about/">About</a></li><li><a href="/Portfolio/portfolio/">Portfolio</a></li><li><a href="/Portfolio/resume/">Resume</a></li><li><a href="/Portfolio/contact/">Contact</a></li></ul></nav></header><main><nav aria-label="Breadcrumb"><ol><li><a href="/Portfolio/resume/">Resumes</a></li><li aria-current="page">Learning Technology Resume</li></ol></nav><h1>Learning Technology Resume</h1><p>Learning Technology · LMS Implementation · Front-End Development</p><p>Learning technologist who builds the technical layer of learning programs: LMS selection and administration, Python automation for course operations, and React and TypeScript front ends. An M.Ed. in instructional design and a psychology background mean I can talk to both designers and engineers.</p><p><a href="/Portfolio/documents/Learning_Technology_Resume.pdf">Download PDF Version</a></p><h2>Professional Experience</h2><h3>Instructional Designer</h3><p>WeYouth (501(c)(3) nonprofit), North Salt Lake, UT | February 2026 - Present</p><ul><li>Evaluated learning management systems against organizational requirements and delivered the platform recommendation the nonprofit adopted and runs on</li><li>Implemented the platform end to end: course and module architecture, assessment configuration, and cohort enrollment across three learner tracks</li><li>Own technical support for the platform, from administrator onboarding to resolving learner and coach access issues</li></ul><h3>Instructional Design Intern</h3><p>Chartway Credit Union (Financial Wellness team), South Jordan, UT | May 2025 - July 2025</p><ul><li>Ran a mixed-methods needs analysis (five interviews, 21 survey responses) for a certification-preparation program and delivered evidence-based recommendations</li></ul><h3>Learning Technology Specialist (Contract)</h3><p>National Association of Certified Valuators and Analysts (NACVA), via Robert Half, Sandy, UT | March 2023 - August 2023</p><ul><li>Automated about 80 hand steps per course in the LMS and online store with Python and Selenium</li><li>Wrote a converter that imported exam questions from Word instead of retyping them</li><li>Turned 50+ webinars into on-demand CE courses in Camtasia, published as SCORM via Articulate Presenter</li></ul><h3>Help Desk Specialist</h3><p>All Season Control Cover, Salt Lake City, UT | January 2021 - May 2024</p><ul><li>Diagnosed user-reported problems and implemented fixes, translating technical detail into plain guidance</li></ul><h2>Selected Technical Work</h2><h3><a href="/Portfolio/portfolio/weyouth-mpcc/">LMS implementation</a></h3><p>Platform evaluation, course architecture, assessment and enrollment configuration, and ongoing administration for a youth nonprofit</p><h3><a href="/Portfolio/portfolio/nacva-automation/">Course processing automation</a></h3><p>Python and Selenium scripts that automated course setup at a certification body</p><h3><a href="/Portfolio/portfolio/variable-timer/">Variable-interval timer</a></h3><p>Unfinished Android app for timing variable-interval reinforcement in ABA therapy</p><h3><a href="/Portfolio/portfolio/professional-communication-training/">Articulate Storyline 360 course</a></h3><p>278-slide branching scenario build</p><h3><a href="https://github.com/williamthe5thc/Portfolio">This portfolio site</a></h3><p>React 18, TypeScript, Vite and Tailwind, with a typed content layer, automated tests and CI</p><h2>Education</h2><h3>Master of Education (M.Ed.)</h3><p>Instructional Design &amp; Educational Technology</p><p>University of Utah | August 2023 - May 2025</p><p>GPA 3.9. 30 credit hours across five semesters.</p><h3>Bachelor of Science</h3><p>Psychology</p><p>Brigham Young University - Idaho | 2012 - 2018</p><p>Certificate in Programming.</p><h2>Skills &amp; Expertise</h2><h3>Languages</h3><ul><li>Python</li><li>JavaScript</li><li>TypeScript</li><li>C++</li><li>HTML/CSS</li></ul><h3>Frameworks</h3><ul><li>React</li><li>Node.js</li><li>Tailwind CSS</li><li>Vite</li></ul><h3>Learning platforms</h3><ul><li>LearnWorlds</li><li>Canvas LMS</li><li>Articulate Storyline 360</li><li>SCORM packaging</li></ul><h3>Tools</h3><ul><li>Git</li><li>VS Code</li><li>Camtasia</li><li>Adobe Creative Suite</li></ul></main><footer><p><a href="https://linkedin.com/in/jordan-charles">LinkedIn</a> · <a href="https://github.com/williamthe5thc">GitHub</a> · <a href="/Portfolio/llms.txt">Plain-text summary (llms.txt)</a></p></footer></div></div>
+  </body>
+</html>

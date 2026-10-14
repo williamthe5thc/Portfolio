@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!--
+      Old links put the route after "#/" (/Portfolio/#/portfolio/teaching-waltz,
+      on resumes, LinkedIn and bookmarks). Send them to the page's real URL
+      (/Portfolio/portfolio/teaching-waltz/) before anything else loads. The
+      route in the fragment wins over the path, so this also works when an old
+      fragment lands on a page's static copy or on 404.html. A query inside the
+      fragment (#/portfolio?category=id) and a section after it
+      (#/about#design-process) move across with it. /Portfolio/ is the deploy
+      base, filled in by Vite.
+    -->
+    <script>
+      (function () {
+        var base = '/Portfolio/';
+        var l = window.location;
+        if (l.hash.indexOf('#/') === 0) {
+          var route = l.hash.slice(2);
+          var hashAt = route.indexOf('#');
+          var hash = hashAt < 0 ? '' : route.slice(hashAt);
+          if (hashAt >= 0) route = route.slice(0, hashAt);
+          var queryAt = route.indexOf('?');
+          var search = queryAt < 0 ? l.search : route.slice(queryAt);
+          var path = queryAt < 0 ? route : route.slice(0, queryAt);
+          if (path && !/\/$/.test(path)) path += '/';
+          l.replace(base + path + search + hash);
+        } else if (l.pathname + '/' === base) {
+          // "/Portfolio" without the slash is outside the router's base.
+          l.replace(base + l.search + l.hash);
+        }
+      })();
+    </script>
+    <!--
+      The build puts a plain copy of each page's text in #root for crawlers
+      and tools that don't run JavaScript (see vite.config.ts). Where the app
+      will run, keep that copy hidden until React replaces it, so visitors
+      don't see unstyled text flash up first. If the app hasn't started after
+      4 seconds, show the copy after all.
+    -->
+    <style>.app-pending #root > [data-static-page] { visibility: hidden; }</style>
+    <script>
+      if ('noModule' in document.createElement('script')) {
+        document.documentElement.classList.add('app-pending');
+        setTimeout(function () {
+          document.documentElement.classList.remove('app-pending');
+        }, 4000);
+      }
+    </script>
+    <!--
+      Root-relative, so Vite adds the deploy base (/Portfolio/,
+      /Portfolio-Staging/). Relative "./" paths broke once pages had their
+      own URLs: on /Portfolio/about/ they pointed into /Portfolio/about/.
+    -->
+    <link rel="icon" type="image/svg+xml" href="/Portfolio/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="96x96" href="/Portfolio/favicon-96x96.png" />
+    <link rel="shortcut icon" href="/Portfolio/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/Portfolio/apple-touch-icon.png" />
+    <link rel="manifest" href="/Portfolio/site.webmanifest" />
+    <meta name="theme-color" content="#ffffff" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--
+      Send only the origin to other sites (LinkedIn, GitHub, EmailJS), never
+      the full URL, and nothing on a downgrade to http. This is the browser
+      default today; stating it keeps it if the default ever changes. No
+      Content-Security-Policy: the inline Google Analytics snippet below
+      would need 'unsafe-inline' or a hash kept in step with it.
+    -->
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+
+    <title>Teaching the Waltz Online Course | W. Jordan Charles</title>
+
+    <!--
+      Static share metadata. LinkedIn, Slack, Teams and iMessage previews do
+      not run JavaScript, so this head is what they see. These are the home
+      page's values; the build gives each page's static copy its own title,
+      description, canonical and og:url (vite.config.ts). data-rh marks the
+      tags as Helmet's: once the app runs, the SEO component replaces them
+      with the current page's values instead of adding duplicates.
+    -->
+    <meta data-rh="true" name="description" content="A classmate and I designed a self-paced Canvas course that teaches complete beginners to dance the waltz. I filmed the lessons with a dancer, showing common mistakes next to the correct form, and we tested the course with a small group of four learners." />
+    <meta data-rh="true" name="author" content="W. Jordan Charles" />
+    <meta data-rh="true" property="og:type" content="website" />
+    <meta data-rh="true" property="og:site_name" content="W. Jordan Charles Portfolio" />
+    <meta data-rh="true" property="og:title" content="Teaching the Waltz Online Course | W. Jordan Charles" />
+    <meta data-rh="true" property="og:description" content="A classmate and I designed a self-paced Canvas course that teaches complete beginners to dance the waltz. I filmed the lessons with a dancer, showing common mistakes next to the correct form, and we tested the course with a small group of four learners." />
+    <meta data-rh="true" property="og:url" content="https://williamthe5thc.github.io/Portfolio/portfolio/teaching-waltz/" />
+    <meta data-rh="true" property="og:image" content="https://williamthe5thc.github.io/Portfolio/og-image.jpg" />
+    <meta data-rh="true" property="og:image:width" content="1200" />
+    <meta data-rh="true" property="og:image:height" content="630" />
+    <meta data-rh="true" property="og:image:alt" content="W. Jordan Charles, Instructional Designer. Needs analysis, course design, LMS implementation. M.Ed., University of Utah." />
+    <meta data-rh="true" name="twitter:card" content="summary_large_image" />
+    <meta data-rh="true" name="twitter:title" content="Teaching the Waltz Online Course | W. Jordan Charles" />
+    <meta data-rh="true" name="twitter:description" content="A classmate and I designed a self-paced Canvas course that teaches complete beginners to dance the waltz. I filmed the lessons with a dancer, showing common mistakes next to the correct form, and we tested the course with a small group of four learners." />
+    <meta data-rh="true" name="twitter:image" content="https://williamthe5thc.github.io/Portfolio/og-image.jpg" />
+    <meta data-rh="true" name="twitter:image:alt" content="W. Jordan Charles, Instructional Designer. Needs analysis, course design, LMS implementation. M.Ed., University of Utah." />
+    <link data-rh="true" rel="canonical" href="https://williamthe5thc.github.io/Portfolio/portfolio/teaching-waltz/" />
+
+    <!-- Built only from facts in src/content (siteData.ts, education.ts); keep in step with them. -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "W. Jordan Charles",
+        "jobTitle": "Instructional Designer",
+        "url": "https://williamthe5thc.github.io/Portfolio/",
+        "sameAs": [
+          "https://linkedin.com/in/jordan-charles",
+          "https://github.com/williamthe5thc"
+        ],
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Salt Lake City",
+          "addressRegion": "Utah",
+          "addressCountry": "US"
+        },
+        "alumniOf": [
+          { "@type": "CollegeOrUniversity", "name": "University of Utah" },
+          { "@type": "CollegeOrUniversity", "name": "Brigham Young University - Idaho" }
+        ],
+        "knowsAbout": [
+          "Instructional Design",
+          "Learning Experience Design",
+          "Learning Technology"
+        ]
+      }
+    </script>
+
+    <!--
+      Google tag (gtag.js). send_page_view: false because the app sends every
+      page view itself (GoogleAnalytics.tsx), including the first one, with
+      the route as the page path. Letting config send one as well counted the
+      landing page twice.
+    -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LG6RT04XLW"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-LG6RT04XLW', {
+        send_page_view: false,
+        cookie_domain: 'williamthe5thc.github.io'
+      });
+    </script>
+    <script type="module" crossorigin src="/Portfolio/assets/index-Bm1gQCrz.js"></script>
+    <link rel="modulepreload" crossorigin href="/Portfolio/assets/react-vendor-sK6oOukr.js">
+    <link rel="modulepreload" crossorigin href="/Portfolio/assets/ui-vendor-UMbqYK0l.js">
+    <link rel="stylesheet" crossorigin href="/Portfolio/assets/index-BM7zaPNg.css">
+  </head>
+  <body>
+    <!-- The build fills #root with a plain copy of the page's text. -->
+    <div id="root"><div data-static-page><header><nav aria-label="Primary"><ul><li><a href="/Portfolio/">Home</a></li><li><a href="/Portfolio/about/">About</a></li><li><a href="/Portfolio/portfolio/">Portfolio</a></li><li><a href="/Portfolio/resume/">Resume</a></li><li><a href="/Portfolio/contact/">Contact</a></li></ul></nav></header><main><nav aria-label="Breadcrumb"><ol><li><a href="/Portfolio/portfolio/">Portfolio</a></li><li aria-current="page">Teaching the Waltz Online Course</li></ol></nav><h1>Teaching the Waltz Online Course</h1><p>A classmate and I designed a self-paced Canvas course that teaches complete beginners to dance the waltz. I filmed the lessons with a dancer, showing common mistakes next to the correct form, and we tested the course with a small group of four learners.</p><p>The complete formative evaluation report, including the assessment design.</p><p><a href="/Portfolio/case-studies/waltz-formative-evaluation.pdf">View document (PDF)</a></p><p><strong>My role:</strong> Co-designer with a classmate. I handled the video and our subject matter expert: I coordinated with the dancer who taught in our videos, filmed the lessons with him, turned the footage into course videos with transcripts and optional captions, and proofed the finished course. My classmate built the Canvas pages, assessments and rubrics.</p><ul><li>4 Participants in small-group formative evaluation</li><li>2 Modules tested</li></ul><h2>The problem</h2><p>The course was for adults who want to learn the waltz but don&#39;t have the time or access for in-person classes. They are complete beginners, may not have a partner, and have no instructor there to correct their form. The project was also our chance to run the whole instructional design process, from course goals through evaluation. Our own constraint was the end-of-semester deadline.</p><ul><li>Teaching a physical, partnered skill through a self-paced online course, with no instructor in the room to correct form</li><li>Showing learners what common mistakes look like, and asking them to spot those mistakes</li><li>Including learners who don&#39;t have a partner, or who can&#39;t dance themselves</li><li>Keeping learners part of a dancing community while they study on their own</li></ul><h2>What I found</h2><p>The gap was the skill itself: beginners who can&#39;t yet dance the box step, the progressive basic or the underarm turn. The two course outcomes follow from that: perform the basic steps, and explain the waltz&#39;s historical, social and physical context. The needs assessment also named motivation as a cause, since ballroom dancing isn&#39;t a skill most people need, so the design builds in contact with other learners and regular feedback from the instructor.</p><h2>What I did</h2><ul><li>Lesson videos alongside written lead and follow instructions, so learners can use whichever helps them</li><li>Videos filmed for the course that show common mistakes next to the correct form</li><li>Discussions where learners share challenges and successes and reply to each other</li><li>A video submission graded by rubric, with an alternative for learners who can&#39;t dance</li></ul><h2>What happened</h2><ul><li>Tested with a small group of four participants, who agreed the modules were well organized, clear and easy to get to. <a href="/Portfolio/case-studies/waltz-formative-evaluation.pdf">View the evaluation report</a></li><li>Interviews found the assessments matched the learning objectives and the grading criteria were clear</li><li>Every participant said they wanted more video, especially of the whole dance</li><li>The results led to a revision plan for the videos, captions, diagrams and wording</li></ul><h2>Inside the course</h2><ul><li><a href="/Portfolio/images/projects/waltz-modules.jpg">Module 1: step pages first, then the assessments that check them.</a><p>Canvas modules page. Module 1, Dance the Waltz: an overview, four step pages (Basic Box Step, Basic Progressive Step, Underarm Turn, Common Mistakes), then the assessments: Performance of the waltz (9 points), Quiz: Basic Steps of the Waltz (15 points) and Discussion: Struggles and Successes (4 points). Module 2, Impact of the Waltz, begins below.</p></li><li><a href="/Portfolio/images/projects/waltz-box-step-page.jpg">A step page: written lead and follow instructions, a diagram and the lesson video.</a><p>The Basic Box Step page: an introduction, a note that the course uses lead and follow because either role can be danced by anyone, a numbered six-step list for the lead beside a footprint diagram, and a 17-second lesson video.</p></li><li><a href="/Portfolio/images/projects/waltz-quiz-feedback.jpg">Quiz feedback: every wrong answer links back to the page to review.</a><p>A quiz question in Canvas: &quot;When dancing the basic box step, the follow should do which of the following first?&quot; Each wrong answer shows the feedback &quot;To review the basic box step, refer to the box step page,&quot; with a link.</p></li><li><a href="/Portfolio/images/projects/waltz-essay-rubric.jpg">The essay rubric, part of the 70% summative weight.</a><p>The essay rubric in Canvas. Criteria rows for content, organization and style, each with ratings from Exceeds Standard (3 points) to No Marks (0 points) and a description of each level.</p></li></ul><h2>See the work</h2><ul><li><p><a href="/Portfolio/case-studies/waltz-blueprint-storyboard.pdf">Module Blueprint &amp; Storyboard</a></p><p>The 17-page build plan for both modules: objectives, assessments and learning activities, then the page-by-page content, rubrics and quiz.</p></li><li><p><a href="/Portfolio/case-studies/waltz-formative-evaluation.pdf">Assessment &amp; Evaluation Plan</a></p><p>A one-page summary, then the assessment design, the evaluation plan, and the results of testing the course with four participants.</p></li></ul><h2>What I'd change</h2><p>Next time I would give the dancer a script, so what he says in the videos lines up with the assignments, and film more of the dance with a partner. I would also record somewhere quiet: background noise was the one problem we chose not to fix, because it meant re-filming.</p><h2>About this Project</h2><p>Graduate final project at the University of Utah, co-designed with a classmate. The course has two modules. The first teaches the box step, the progressive basic and the underarm turn; the second covers the dance&#39;s history, its health benefits and its place in social life. Dance is learned by doing, and an online course can&#39;t correct anyone in the moment, so the design plans for mistakes instead: the lesson videos show common errors next to the correct form, and learners send in a video of their own dancing for instructor feedback.</p><h3>ADDIE Methodology</h3><h4>Analysis</h4><p><strong>Needs Assessment:</strong> We worked from a written needs assessment. The evidence for the need came from my own experience: at dances, the people I asked to dance often didn&#39;t know the waltz, and I ended up teaching them. No survey of prospective learners was run.</p><p><strong>Learner Analysis:</strong> Able-bodied adults of any age and background who want to learn a ballroom dance, with little or no dance experience, a computer and an internet connection. They can watch, read or listen to instruction. We wrote personas for them and kept referring back to them while designing.</p><p><strong>Context Analysis:</strong> A self-paced course in Canvas. Learners practice at home, alone or with a partner, and send in video for feedback.</p><h4>Design</h4><p><strong>Instructional Strategy:</strong> Module 1 builds from the box step to the progressive basic to the underarm turn with a partner, and ends with a video submission. Each step has a video and written instructions for the lead and the follow. The motivation plan follows the ARCS model: physical activity and varied lessons for attention, dancing in real settings for relevance, instructor feedback for confidence, and clear rubrics for satisfaction.</p><p><strong>Assessment Strategy:</strong> Module 1 has a video of the learner dancing all three steps, graded by rubric with instructor feedback; a Common Mistakes page with a video of typical errors (the plan&#39;s graded assignment to spot mistakes in a dance video wasn&#39;t built); a five-question quiz with two attempts and a 15-minute limit, where each wrong answer links to the page to review; and a discussion on challenges and successes. Module 2 has a 500 to 1,000 word essay on the history of the waltz, a concept map on the health benefits of dancing, and a discussion where learners share a waltz from a film, a piece of music or social life. Discussions and the concept map count for 30% of the grade, and the video, essay and quiz for 70%.</p><p><strong>Universal Design:</strong> Captions and transcripts on every video, written instructions next to the videos, alt text on images, sans-serif type, good contrast and no tables. Learners who can&#39;t dance can instead film themselves talking another person through the steps.</p><h4>Development</h4><p><strong>Content Creation:</strong> I filmed a dancer, a friend who agreed to be our instructor, instead of using existing footage, so the videos could show common mistakes next to the correct form. I cut the footage into a separate video for each step and one for the mistakes, and wrote a transcript for each.</p><h4>Implementation</h4><p><strong>Pilot Testing:</strong> We tested both modules with a small group of four participants, using a feedback survey and interviews.</p><h4>Evaluation</h4><p><strong>Formative Assessment:</strong> Participants took 5 to 30 minutes per module, with averages of 10.75 minutes for the first and 14.75 for the second. They felt at least somewhat competent afterwards. Opinions were split on whether there were enough visual aids, and the common suggestion was more step diagrams.</p><p><strong>Continuous Improvement:</strong> The revisions we planned from the results: fix the title slides on the common-mistakes video, correct the captions and let learners turn them off, split the videos into lead and follow, add diagrams for the progressive basic and the underarm turn, and use &quot;lead&quot; and &quot;follow&quot; throughout instead of gendered terms. We decided not to re-film for better audio, because it didn&#39;t get in the way of understanding.</p><h3>Project Details</h3><dl><dt>Status</dt><dd>Completed</dd><dt>Date</dt><dd>2023</dd><dt>Category</dt><dd>Instructional Design</dd></dl><h4>Skills &amp; Topics</h4><ul><li>Instructional Design</li><li>Online Learning</li><li>Dance Education</li><li>Canvas LMS</li><li>Video Production</li><li>Formative Evaluation</li></ul></main><footer><p><a href="https://linkedin.com/in/jordan-charles">LinkedIn</a> · <a href="https://github.com/williamthe5thc">GitHub</a> · <a href="/Portfolio/llms.txt">Plain-text summary (llms.txt)</a></p></footer></div></div>
+  </body>
+</html>

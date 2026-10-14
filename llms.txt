@@ -1,0 +1,150 @@
+# W. Jordan Charles
+
+> Instructional Designer & Learning Technologist. I'm an instructional designer who works on both the learning design and the technology that delivers it. At WeYouth, a youth nonprofit, I chose the learning platform and build and run its courses. Before that I ran a needs analysis for Chartway Credit Union's certification program, automated course setup at NACVA, and helped build a graduate AI and law course in Canvas. I have a psychology research background and an M.Ed. in Instructional Design and Educational Technology from the University of Utah.
+
+This file summarizes the portfolio at https://williamthe5thc.github.io/Portfolio/ for AI assistants and search tools. Every page linked below also reads without JavaScript, and the documents and demos are plain files.
+
+## Experience
+
+- Instructional Designer, WeYouth (February 2026 - Present)
+- Instructional Design Intern, Chartway Credit Union (May 2025 - July 2025)
+- Learning Technology Specialist (Contract), National Association of Certified Valuators and Analysts (NACVA), via Robert Half (March 2023 - August 2023)
+
+## Education
+
+- Master of Education (M.Ed.), Instructional Design and Educational Technology (IDET), University of Utah (August 2023 - May 2025)
+- Bachelor of Science, Psychology, Brigham Young University - Idaho (2012 - 2018)
+
+## Projects
+
+### Instructional Design Internship - FiCEP Curriculum Needs Analysis
+
+As part of my internship with Chartway, I conducted a systematic needs analysis for the company's FiCEP program, which prepares employees for a financial counseling certification exam. The analysis showed what was holding learners back, and I recommended changes to the curriculum and to the support around it.
+
+- Role: Instructional design intern, working under professional supervision. I ran the needs analysis and wrote the recommendations; Chartway carried out the redesign
+- Dates: May 2025 - July 2025
+- Status: Completed
+- Result: Chartway implemented the redesigned program and reported improved examination results. Specific pass rates and cohort figures are not shared here to protect employee privacy
+- Result: Delivered the needs analysis report. The top barrier was managers not setting aside study time (23 mentions)
+- Case study: https://williamthe5thc.github.io/Portfolio/portfolio/chartway-ficep-enhanced/
+- Needs Analysis Report: https://williamthe5thc.github.io/Portfolio/case-studies/ficep-needs-analysis.pdf
+
+### LMS Selection & Implementation - Nonprofit Youth Coaching Program
+
+WeYouth had curriculum and no way to deliver it. I ran the market research on learning platforms against their specific constraints, recommended the one they adopted, then implemented their SMEs' curriculum into it as enrollable courses. I run the platform and its technical support.
+
+- Role: Instructional designer. I chose the platform, build the courses in it and run it; WeYouth's subject matter experts write the content
+- Dates: February 2026 - Present
+- Status: In progress
+- Result: Platform recommendation adopted: the organization delivers its programs on the LMS I evaluated and selected
+- Result: The organization is set up to enroll learners and run a season without a founder personally delivering every session, which is what limited delivery before
+- Result: Per-module surveys are collecting feedback while cohorts run; effectiveness data comes when the current seasons end
+- Result: Enrollment figures, course counts and partner names are WeYouth's operating data, so they aren't published here
+- Case study: https://williamthe5thc.github.io/Portfolio/portfolio/weyouth-mpcc/
+
+### Articulate Storyline 360 Demonstration - Interactive E-learning Course
+
+A 278-slide interactive course I built in Articulate Storyline 360. Learners make choices in branching scenarios, and the scenarios and feedback draw on behavioral psychology research.
+
+- Role: Academic project. I built the course in Articulate Storyline 360
+- Dates: 2024
+- Status: Completed
+- Result: Built a 278-slide interactive course in Storyline 360
+- Result: 26 minutes of scenario-based content with branching
+- Result: Tested with fellow students
+- Result: Built with Storyline variables, triggers and states
+- Case study: https://williamthe5thc.github.io/Portfolio/portfolio/professional-communication-training/
+- Interactive demo: https://williamthe5thc.github.io/Portfolio/demos/professional-communication-training/story.html
+
+### Graduate Curriculum Design Project - AI & Law Course
+
+A three-person graduate capstone team designed and built this ten-module AI and Law course in Canvas for Master of Legal Studies students. We ran a client interview with the faculty sponsor, developed personas, ran a cognitive walkthrough on our own design, and validated it with a stakeholder review before handover. The course was not taught while I was in the program.
+
+- Role: One of three designers on a graduate capstone team. I did most of the Canvas build and wrote the assessment design for the advanced prompting week
+- Dates: Fall 2024 - Spring 2025
+- Status: Completed
+- Result: Built ten modules in Canvas for an online, asynchronous MLS course. It had not been taught by the time I finished the program
+- Result: Tested the prototype with a cognitive walkthrough, a think-aloud session and a 10-question usability survey, then built four high-priority recommendations into the revision plan
+- Result: Wrote the assessment design for the advanced prompting week myself: specifications by cognitive level, rubrics and item analysis (see the work below)
+- Result: At the final stakeholder review, the faculty sponsor said the course covered the learning goals and liked the layout. Their suggestions: fewer overlapping quizzes, more scholarly readings, quicker feedback than essays allow, and a more readable banner font
+- Case study: https://williamthe5thc.github.io/Portfolio/portfolio/ai-law-course/
+- View design record: https://williamthe5thc.github.io/Portfolio/demos/ai-law-course/index.html
+- Client Interview: https://williamthe5thc.github.io/Portfolio/case-studies/ai-law/client-interview.html
+- HCI Cognitive Walkthrough: https://williamthe5thc.github.io/Portfolio/case-studies/ai-law/cognitive-walkthrough.html
+- Instructional Strategies: https://williamthe5thc.github.io/Portfolio/case-studies/ai-law/instructional-strategies.html
+- Media Selection: https://williamthe5thc.github.io/Portfolio/case-studies/ai-law/media-selection.html
+- Assessment design, advanced prompting week: https://williamthe5thc.github.io/Portfolio/case-studies/advanced-prompting-assessment-design.pdf
+
+### Teaching the Waltz Online Course
+
+A classmate and I designed a self-paced Canvas course that teaches complete beginners to dance the waltz. I filmed the lessons with a dancer, showing common mistakes next to the correct form, and we tested the course with a small group of four learners.
+
+- Role: Co-designer with a classmate. I handled the video and our subject matter expert: I coordinated with the dancer who taught in our videos, filmed the lessons with him, turned the footage into course videos with transcripts and optional captions, and proofed the finished course. My classmate built the Canvas pages, assessments and rubrics
+- Dates: 2023
+- Status: Completed
+- Result: Tested with a small group of four participants, who agreed the modules were well organized, clear and easy to get to
+- Result: Interviews found the assessments matched the learning objectives and the grading criteria were clear
+- Result: Every participant said they wanted more video, especially of the whole dance
+- Result: The results led to a revision plan for the videos, captions, diagrams and wording
+- Case study: https://williamthe5thc.github.io/Portfolio/portfolio/teaching-waltz/
+- Assessment & Evaluation Plan: https://williamthe5thc.github.io/Portfolio/case-studies/waltz-formative-evaluation.pdf
+- Module Blueprint & Storyboard: https://williamthe5thc.github.io/Portfolio/case-studies/waltz-blueprint-storyboard.pdf
+
+### Conflict Resolution Trainer: Branching Workplace Scenarios
+
+A branching-scenario simulator for practicing workplace conflict. Learners choose how to respond, see how the choice plays out, and get feedback on the conflict strategy they used.
+
+- Dates: 2025
+- Status: Completed
+- Result: Live on GitHub Pages, with all three scenarios playable from start to finish
+- Result: Includes screen-reader announcements for story changes, and turns animations off for people who ask their device for reduced motion
+- Case study: https://williamthe5thc.github.io/Portfolio/portfolio/conflict-trainer/
+- Try the simulator: https://williamthe5thc.github.io/Portfolio/https://williamthe5thc.github.io/ConflictGame/
+- Document: https://williamthe5thc.github.io/Portfolio/https://github.com/williamthe5thc/ConflictGame
+
+### VR Interview Simulator for Meta Quest
+
+A virtual reality job-interview practice simulator. The learner sits in a virtual conference room, answers spoken questions from an AI interviewer, and gets feedback on each answer from an AI job coach.
+
+- Dates: 2025 - present
+- Status: In progress
+- Result: Working on a Meta Quest 1, checked in October 2026
+- Result: About 2 seconds from the end of an answer to the interviewer's first word
+- Result: A scripted web demo anyone can try in a browser: pre-recorded interviewer lines with lip-sync, typed or spoken answers, and a rule-based coach, for two job types (software engineer and customer service). Scripting it means it needs no server or AI calls, so it can serve any number of visitors for free; the full version on the headset uses the live AI interviewer and coach
+- Result: In progress: bare-hand tracking with pinch input (works in a test build), a blind comparison of language models rated by people, and a prototype of a second scenario for parent-child conversation practice
+- Case study: https://williamthe5thc.github.io/Portfolio/portfolio/vr-interview-simulator/
+- Try the web demo: https://williamthe5thc.github.io/Portfolio/https://williamthe5thc.github.io/vr-interview-demo/
+- Document: https://williamthe5thc.github.io/Portfolio/https://github.com/williamthe5thc/vr-interview-simulator
+
+### NACVA Course Automation
+
+A contract role at the National Association of Certified Valuators and Analysts (NACVA). I turned recorded webinars into on-demand continuing-education courses and wrote scripts that automated each course's setup.
+
+- Role: Contractor at NACVA, placed through Robert Half. I wrote the automation scripts and turned recorded webinars into courses
+- Dates: March 2023 - August 2023
+- Status: Completed
+- Result: Turned 50+ recorded webinars into on-demand continuing-education courses, each with its exam
+- Result: Automated about 80 clicks and entries per course that had been done by hand
+- Result: Exam questions were imported from Word instead of retyped
+- Case study: https://williamthe5thc.github.io/Portfolio/portfolio/nacva-automation/
+- Interactive demo: https://williamthe5thc.github.io/Portfolio/demos/nacva-automation/index.html
+
+### Variable-Interval Timer for ABA Therapy
+
+An unfinished Android app I built for a client to time variable-interval reinforcement for Registered Behavior Technicians (RBTs) during ABA therapy sessions.
+
+- Role: Solo developer, working for a client
+- Dates: May 2019 - August 2019
+- Status: Unfinished
+- Result: The prototype generated random intervals and sent a notification as each one ended
+- Result: Never finished or released
+- Case study: https://williamthe5thc.github.io/Portfolio/portfolio/variable-timer/
+
+## Links
+
+- [Portfolio](https://williamthe5thc.github.io/Portfolio/)
+- [About](https://williamthe5thc.github.io/Portfolio/about/)
+- [Resumes](https://williamthe5thc.github.io/Portfolio/resume/)
+- [Contact](https://williamthe5thc.github.io/Portfolio/contact/)
+- [LinkedIn](https://linkedin.com/in/jordan-charles)
+- [GitHub](https://github.com/williamthe5thc)

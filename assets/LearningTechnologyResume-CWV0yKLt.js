@@ -1,0 +1,1 @@
+import{j as o}from"./ui-vendor-UMbqYK0l.js";import{R as e}from"./ResumeDetailPage-6ONJGO59.js";import{l as m}from"./resumes-3gXn4TLM.js";import"./react-vendor-sK6oOukr.js";import"./BasePage-njipkwsE.js";import"./index-Bm1gQCrz.js";import"./Card-BLQ2XOeg.js";import"./documents-BI-OB5ih.js";const u=()=>o.jsx(e,{resume:m});export{u as default};

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!--
+      Old links put the route after "#/" (/Portfolio/#/portfolio/teaching-waltz,
+      on resumes, LinkedIn and bookmarks). Send them to the page's real URL
+      (/Portfolio/portfolio/teaching-waltz/) before anything else loads. The
+      route in the fragment wins over the path, so this also works when an old
+      fragment lands on a page's static copy or on 404.html. A query inside the
+      fragment (#/portfolio?category=id) and a section after it
+      (#/about#design-process) move across with it. /Portfolio/ is the deploy
+      base, filled in by Vite.
+    -->
+    <script>
+      (function () {
+        var base = '/Portfolio/';
+        var l = window.location;
+        if (l.hash.indexOf('#/') === 0) {
+          var route = l.hash.slice(2);
+          var hashAt = route.indexOf('#');
+          var hash = hashAt < 0 ? '' : route.slice(hashAt);
+          if (hashAt >= 0) route = route.slice(0, hashAt);
+          var queryAt = route.indexOf('?');
+          var search = queryAt < 0 ? l.search : route.slice(queryAt);
+          var path = queryAt < 0 ? route : route.slice(0, queryAt);
+          if (path && !/\/$/.test(path)) path += '/';
+          l.replace(base + path + search + hash);
+        } else if (l.pathname + '/' === base) {
+          // "/Portfolio" without the slash is outside the router's base.
+          l.replace(base + l.search + l.hash);
+        }
+      })();
+    </script>
+    <!--
+      The build puts a plain copy of each page's text in #root for crawlers
+      and tools that don't run JavaScript (see vite.config.ts). Where the app
+      will run, keep that copy hidden until React replaces it, so visitors
+      don't see unstyled text flash up first. If the app hasn't started after
+      4 seconds, show the copy after all.
+    -->
+    <style>.app-pending #root > [data-static-page] { visibility: hidden; }</style>
+    <script>
+      if ('noModule' in document.createElement('script')) {
+        document.documentElement.classList.add('app-pending');
+        setTimeout(function () {
+          document.documentElement.classList.remove('app-pending');
+        }, 4000);
+      }
+    </script>
+    <!--
+      Root-relative, so Vite adds the deploy base (/Portfolio/,
+      /Portfolio-Staging/). Relative "./" paths broke once pages had their
+      own URLs: on /Portfolio/about/ they pointed into /Portfolio/about/.
+    -->
+    <link rel="icon" type="image/svg+xml" href="/Portfolio/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="96x96" href="/Portfolio/favicon-96x96.png" />
+    <link rel="shortcut icon" href="/Portfolio/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/Portfolio/apple-touch-icon.png" />
+    <link rel="manifest" href="/Portfolio/site.webmanifest" />
+    <meta name="theme-color" content="#ffffff" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--
+      Send only the origin to other sites (LinkedIn, GitHub, EmailJS), never
+      the full URL, and nothing on a downgrade to http. This is the browser
+      default today; stating it keeps it if the default ever changes. No
+      Content-Security-Policy: the inline Google Analytics snippet below
+      would need 'unsafe-inline' or a hash kept in step with it.
+    -->
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+
+    <title>LMS Selection &amp; Implementation - Nonprofit Youth Coaching Program | W. Jordan Charles</title>
+
+    <!--
+      Static share metadata. LinkedIn, Slack, Teams and iMessage previews do
+      not run JavaScript, so this head is what they see. These are the home
+      page's values; the build gives each page's static copy its own title,
+      description, canonical and og:url (vite.config.ts). data-rh marks the
+      tags as Helmet's: once the app runs, the SEO component replaces them
+      with the current page's values instead of adding duplicates.
+    -->
+    <meta data-rh="true" name="description" content="WeYouth had curriculum and no way to deliver it. I ran the market research on learning platforms against their specific constraints, recommended the one they adopted, then implemented their SMEs&#39; curriculum into it as enrollable courses. I run the platform and its technical support." />
+    <meta data-rh="true" name="author" content="W. Jordan Charles" />
+    <meta data-rh="true" property="og:type" content="website" />
+    <meta data-rh="true" property="og:site_name" content="W. Jordan Charles Portfolio" />
+    <meta data-rh="true" property="og:title" content="LMS Selection &amp; Implementation - Nonprofit Youth Coaching Program | W. Jordan Charles" />
+    <meta data-rh="true" property="og:description" content="WeYouth had curriculum and no way to deliver it. I ran the market research on learning platforms against their specific constraints, recommended the one they adopted, then implemented their SMEs&#39; curriculum into it as enrollable courses. I run the platform and its technical support." />
+    <meta data-rh="true" property="og:url" content="https://williamthe5thc.github.io/Portfolio/portfolio/weyouth-mpcc/" />
+    <meta data-rh="true" property="og:image" content="https://williamthe5thc.github.io/Portfolio/og-image.jpg" />
+    <meta data-rh="true" property="og:image:width" content="1200" />
+    <meta data-rh="true" property="og:image:height" content="630" />
+    <meta data-rh="true" property="og:image:alt" content="W. Jordan Charles, Instructional Designer. Needs analysis, course design, LMS implementation. M.Ed., University of Utah." />
+    <meta data-rh="true" name="twitter:card" content="summary_large_image" />
+    <meta data-rh="true" name="twitter:title" content="LMS Selection &amp; Implementation - Nonprofit Youth Coaching Program | W. Jordan Charles" />
+    <meta data-rh="true" name="twitter:description" content="WeYouth had curriculum and no way to deliver it. I ran the market research on learning platforms against their specific constraints, recommended the one they adopted, then implemented their SMEs&#39; curriculum into it as enrollable courses. I run the platform and its technical support." />
+    <meta data-rh="true" name="twitter:image" content="https://williamthe5thc.github.io/Portfolio/og-image.jpg" />
+    <meta data-rh="true" name="twitter:image:alt" content="W. Jordan Charles, Instructional Designer. Needs analysis, course design, LMS implementation. M.Ed., University of Utah." />
+    <link data-rh="true" rel="canonical" href="https://williamthe5thc.github.io/Portfolio/portfolio/weyouth-mpcc/" />
+
+    <!-- Built only from facts in src/content (siteData.ts, education.ts); keep in step with them. -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "W. Jordan Charles",
+        "jobTitle": "Instructional Designer",
+        "url": "https://williamthe5thc.github.io/Portfolio/",
+        "sameAs": [
+          "https://linkedin.com/in/jordan-charles",
+          "https://github.com/williamthe5thc"
+        ],
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Salt Lake City",
+          "addressRegion": "Utah",
+          "addressCountry": "US"
+        },
+        "alumniOf": [
+          { "@type": "CollegeOrUniversity", "name": "University of Utah" },
+          { "@type": "CollegeOrUniversity", "name": "Brigham Young University - Idaho" }
+        ],
+        "knowsAbout": [
+          "Instructional Design",
+          "Learning Experience Design",
+          "Learning Technology"
+        ]
+      }
+    </script>
+
+    <!--
+      Google tag (gtag.js). send_page_view: false because the app sends every
+      page view itself (GoogleAnalytics.tsx), including the first one, with
+      the route as the page path. Letting config send one as well counted the
+      landing page twice.
+    -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LG6RT04XLW"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-LG6RT04XLW', {
+        send_page_view: false,
+        cookie_domain: 'williamthe5thc.github.io'
+      });
+    </script>
+    <script type="module" crossorigin src="/Portfolio/assets/index-Bm1gQCrz.js"></script>
+    <link rel="modulepreload" crossorigin href="/Portfolio/assets/react-vendor-sK6oOukr.js">
+    <link rel="modulepreload" crossorigin href="/Portfolio/assets/ui-vendor-UMbqYK0l.js">
+    <link rel="stylesheet" crossorigin href="/Portfolio/assets/index-BM7zaPNg.css">
+  </head>
+  <body>
+    <!-- The build fills #root with a plain copy of the page's text. -->
+    <div id="root"><div data-static-page><header><nav aria-label="Primary"><ul><li><a href="/Portfolio/">Home</a></li><li><a href="/Portfolio/about/">About</a></li><li><a href="/Portfolio/portfolio/">Portfolio</a></li><li><a href="/Portfolio/resume/">Resume</a></li><li><a href="/Portfolio/contact/">Contact</a></li></ul></nav></header><main><nav aria-label="Breadcrumb"><ol><li><a href="/Portfolio/portfolio/">Portfolio</a></li><li aria-current="page">LMS Selection &amp; Implementation - Nonprofit Youth Coaching Program</li></ol></nav><h1>LMS Selection &amp; Implementation - Nonprofit Youth Coaching Program</h1><p>WeYouth had curriculum and no way to deliver it. I ran the market research on learning platforms against their specific constraints, recommended the one they adopted, then implemented their SMEs&#39; curriculum into it as enrollable courses. I run the platform and its technical support.</p><p><strong>My role:</strong> Instructional designer. I chose the platform, build the courses in it and run it; WeYouth&#39;s subject matter experts write the content.</p><h2>The problem</h2><p>WeYouth&#39;s subject matter experts had written the curriculum, but the organization had no learning platform. Without one, students couldn&#39;t be enrolled, content couldn&#39;t reach anyone between live sessions, and a season couldn&#39;t run without a founder in the room. Delivery was limited to the founders&#39; own calendars, and a nonprofit can&#39;t scale or sell team contracts on that basis.</p><ul><li>There was no platform yet, so the first problem was choosing one</li><li>Nonprofit budget constraints ruled out most enterprise LMS options</li><li>Three audiences each needed their own track</li><li>Seasons start on fixed dates, so the platform had to be live before a season began or miss it</li><li>The SMEs&#39; content wasn&#39;t written for self-paced online delivery, so it needed restructuring to work without a facilitator</li><li>A very small team meant the platform had to be administrable by one person alongside other responsibilities</li></ul><h2>What I found</h2><p>The coaching method and the curriculum already existed, but there was no system to deliver them. The platform evaluation showed the deciding requirements were multi-audience tracks, cohort-based enrollment, e-commerce for team contracts, and low administrative overhead for a very small team. That combination ruled out most candidates, however many features they had.</p><p>With no LMS, delivery could not scale beyond the founders. Students could not be enrolled, content could not reach anyone between live sessions, and there was no consistent instrument for measuring whether the program worked.</p><h2>What I did</h2><ul><li>Scored LMS options against WeYouth&#39;s constraints: budget, multi-audience tracks, cohort enrollment, e-commerce for team contracts, and administrative overhead</li><li>Stood up the LMS and built the course architecture: separate athlete, coach, and captain tracks sharing an underlying model</li><li>Implemented SME curriculum as sequential modules with a consistent internal pattern, so learners and administrators both learn the format once</li><li>Configured self-assessments for learner reflection and separate short evaluation surveys for program feedback, kept as distinct instruments</li><li>Set up cohort and team-based enrollment so partner organizations onboard as groups, including team-specific course builds</li><li>Provide ongoing technical support for the platform and its users</li></ul><h2>What happened</h2><ul><li>Platform recommendation adopted: the organization delivers its programs on the LMS I evaluated and selected</li><li>The organization is set up to enroll learners and run a season without a founder personally delivering every session, which is what limited delivery before</li><li>Per-module surveys are collecting feedback while cohorts run; effectiveness data comes when the current seasons end</li><li>Enrollment figures, course counts and partner names are WeYouth&#39;s operating data, so they aren&#39;t published here</li></ul><h2>About this Project</h2><p>WeYouth is a 501(c)(3) addressing youth disconnection through Connection Coaching for young people ages 12-24. Its primary program, Mental Performance Connection Coaching (MPCC), reaches athletes through a &quot;whole-team&quot; model that trains coaches, equips captains, and gives athletes and parents shared language.
+
+The SMEs write the content. I chose the platform, build their material into it as self-paced courses, and support everyone who uses it.</p><h3>ADDIE Methodology</h3><h4>Analysis</h4><p><strong>Process:</strong> Two analyses ran in sequence: a platform requirements analysis for the LMS selection, and an ongoing content analysis with SMEs on what restructuring their material needed to work self-paced.</p><p><strong>Learner Characteristics:</strong> Coaches are busy adult professionals who must learn the model and then teach it. Athletes are 12-24 and reached through a sport they already care about. Captains are peer leaders with influence but no formal training. Each needed a different track.</p><h4>Design</h4><p><strong>Instructional Strategy:</strong> Separate self-paced tracks per audience over a shared underlying model, with SME content restructured into short sequential modules that follow a consistent internal pattern.</p><p><strong>Assessment Strategy:</strong> Self-assessment questions within modules for learner reflection, plus short evaluation surveys for program feedback, kept separate because they serve different purposes.</p><p><strong>Media Selection:</strong> Video modules for concept delivery, written activities for application, and printable discussion cards for captain-led sessions that happen away from screens.</p><h4>Development</h4><p><strong>Content Creation:</strong> SMEs author the curriculum content. I implement it in the platform (module architecture, assessments, surveys, enrollment) and work with them on how material needs to change to function without a live facilitator.</p><p><strong>Prototyping:</strong> Private test courses in the LMS used to trial module structures and question types before publishing to live cohorts.</p><p><strong>Quality Assurance:</strong> SME review of every implemented module to confirm the restructured version still says what the domain experts intended.</p><h4>Implementation</h4><p><strong>Pilot Testing:</strong> Rolled out cohort by cohort and audience by audience, with earlier tracks live while later ones were still being built, and partner-specific cohorts staged ahead of their seasons.</p><p><strong>Change Management:</strong> A hybrid model: the platform carries the content, and live team sessions and check-ins carry the relationship work, so each coach has less to prepare.</p><p><strong>Support Systems:</strong> I am the platform&#39;s technical support: onboarding administrators, resolving learner and coach access issues, and maintaining the system as cohorts move through it.</p><h4>Evaluation</h4><p><strong>Formative Assessment:</strong> Per-module evaluation surveys and self-assessments collect data throughout delivery, so weak modules show up while cohorts are still running.</p><p><strong>Summative Assessment:</strong> Pending. Cohorts are mid-training; effectiveness measurement is scheduled once current seasons complete.</p><p><strong>Continuous Improvement:</strong> Courses are revised in place as survey data arrives, and the changes go straight to live cohorts.</p><h3>Project Details</h3><dl><dt>Status</dt><dd>In progress</dd><dt>Date</dt><dd>February 2026 - Present</dd><dt>Category</dt><dd>Learning Technology</dd></dl><h4>Skills &amp; Topics</h4><ul><li>LMS Selection</li><li>LMS Implementation</li><li>LearnWorlds</li><li>Learning Technology</li><li>SME Collaboration</li><li>Nonprofit</li><li>Technical Support</li><li>Course Architecture</li></ul></main><footer><p><a href="https://linkedin.com/in/jordan-charles">LinkedIn</a> · <a href="https://github.com/williamthe5thc">GitHub</a> · <a href="/Portfolio/llms.txt">Plain-text summary (llms.txt)</a></p></footer></div></div>
+  </body>
+</html>

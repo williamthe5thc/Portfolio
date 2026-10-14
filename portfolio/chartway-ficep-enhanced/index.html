@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!--
+      Old links put the route after "#/" (/Portfolio/#/portfolio/teaching-waltz,
+      on resumes, LinkedIn and bookmarks). Send them to the page's real URL
+      (/Portfolio/portfolio/teaching-waltz/) before anything else loads. The
+      route in the fragment wins over the path, so this also works when an old
+      fragment lands on a page's static copy or on 404.html. A query inside the
+      fragment (#/portfolio?category=id) and a section after it
+      (#/about#design-process) move across with it. /Portfolio/ is the deploy
+      base, filled in by Vite.
+    -->
+    <script>
+      (function () {
+        var base = '/Portfolio/';
+        var l = window.location;
+        if (l.hash.indexOf('#/') === 0) {
+          var route = l.hash.slice(2);
+          var hashAt = route.indexOf('#');
+          var hash = hashAt < 0 ? '' : route.slice(hashAt);
+          if (hashAt >= 0) route = route.slice(0, hashAt);
+          var queryAt = route.indexOf('?');
+          var search = queryAt < 0 ? l.search : route.slice(queryAt);
+          var path = queryAt < 0 ? route : route.slice(0, queryAt);
+          if (path && !/\/$/.test(path)) path += '/';
+          l.replace(base + path + search + hash);
+        } else if (l.pathname + '/' === base) {
+          // "/Portfolio" without the slash is outside the router's base.
+          l.replace(base + l.search + l.hash);
+        }
+      })();
+    </script>
+    <!--
+      The build puts a plain copy of each page's text in #root for crawlers
+      and tools that don't run JavaScript (see vite.config.ts). Where the app
+      will run, keep that copy hidden until React replaces it, so visitors
+      don't see unstyled text flash up first. If the app hasn't started after
+      4 seconds, show the copy after all.
+    -->
+    <style>.app-pending #root > [data-static-page] { visibility: hidden; }</style>
+    <script>
+      if ('noModule' in document.createElement('script')) {
+        document.documentElement.classList.add('app-pending');
+        setTimeout(function () {
+          document.documentElement.classList.remove('app-pending');
+        }, 4000);
+      }
+    </script>
+    <!--
+      Root-relative, so Vite adds the deploy base (/Portfolio/,
+      /Portfolio-Staging/). Relative "./" paths broke once pages had their
+      own URLs: on /Portfolio/about/ they pointed into /Portfolio/about/.
+    -->
+    <link rel="icon" type="image/svg+xml" href="/Portfolio/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="96x96" href="/Portfolio/favicon-96x96.png" />
+    <link rel="shortcut icon" href="/Portfolio/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/Portfolio/apple-touch-icon.png" />
+    <link rel="manifest" href="/Portfolio/site.webmanifest" />
+    <meta name="theme-color" content="#ffffff" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--
+      Send only the origin to other sites (LinkedIn, GitHub, EmailJS), never
+      the full URL, and nothing on a downgrade to http. This is the browser
+      default today; stating it keeps it if the default ever changes. No
+      Content-Security-Policy: the inline Google Analytics snippet below
+      would need 'unsafe-inline' or a hash kept in step with it.
+    -->
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+
+    <title>Instructional Design Internship - FiCEP Curriculum Needs Analysis | W. Jordan Charles</title>
+
+    <!--
+      Static share metadata. LinkedIn, Slack, Teams and iMessage previews do
+      not run JavaScript, so this head is what they see. These are the home
+      page's values; the build gives each page's static copy its own title,
+      description, canonical and og:url (vite.config.ts). data-rh marks the
+      tags as Helmet's: once the app runs, the SEO component replaces them
+      with the current page's values instead of adding duplicates.
+    -->
+    <meta data-rh="true" name="description" content="As part of my internship with Chartway, I conducted a systematic needs analysis for the company&#39;s FiCEP program, which prepares employees for a financial counseling certification exam. The analysis showed what was holding learners back, and I recommended changes to the curriculum and to the support around it." />
+    <meta data-rh="true" name="author" content="W. Jordan Charles" />
+    <meta data-rh="true" property="og:type" content="website" />
+    <meta data-rh="true" property="og:site_name" content="W. Jordan Charles Portfolio" />
+    <meta data-rh="true" property="og:title" content="Instructional Design Internship - FiCEP Curriculum Needs Analysis | W. Jordan Charles" />
+    <meta data-rh="true" property="og:description" content="As part of my internship with Chartway, I conducted a systematic needs analysis for the company&#39;s FiCEP program, which prepares employees for a financial counseling certification exam. The analysis showed what was holding learners back, and I recommended changes to the curriculum and to the support around it." />
+    <meta data-rh="true" property="og:url" content="https://williamthe5thc.github.io/Portfolio/portfolio/chartway-ficep-enhanced/" />
+    <meta data-rh="true" property="og:image" content="https://williamthe5thc.github.io/Portfolio/og-image.jpg" />
+    <meta data-rh="true" property="og:image:width" content="1200" />
+    <meta data-rh="true" property="og:image:height" content="630" />
+    <meta data-rh="true" property="og:image:alt" content="W. Jordan Charles, Instructional Designer. Needs analysis, course design, LMS implementation. M.Ed., University of Utah." />
+    <meta data-rh="true" name="twitter:card" content="summary_large_image" />
+    <meta data-rh="true" name="twitter:title" content="Instructional Design Internship - FiCEP Curriculum Needs Analysis | W. Jordan Charles" />
+    <meta data-rh="true" name="twitter:description" content="As part of my internship with Chartway, I conducted a systematic needs analysis for the company&#39;s FiCEP program, which prepares employees for a financial counseling certification exam. The analysis showed what was holding learners back, and I recommended changes to the curriculum and to the support around it." />
+    <meta data-rh="true" name="twitter:image" content="https://williamthe5thc.github.io/Portfolio/og-image.jpg" />
+    <meta data-rh="true" name="twitter:image:alt" content="W. Jordan Charles, Instructional Designer. Needs analysis, course design, LMS implementation. M.Ed., University of Utah." />
+    <link data-rh="true" rel="canonical" href="https://williamthe5thc.github.io/Portfolio/portfolio/chartway-ficep-enhanced/" />
+
+    <!-- Built only from facts in src/content (siteData.ts, education.ts); keep in step with them. -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "W. Jordan Charles",
+        "jobTitle": "Instructional Designer",
+        "url": "https://williamthe5thc.github.io/Portfolio/",
+        "sameAs": [
+          "https://linkedin.com/in/jordan-charles",
+          "https://github.com/williamthe5thc"
+        ],
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Salt Lake City",
+          "addressRegion": "Utah",
+          "addressCountry": "US"
+        },
+        "alumniOf": [
+          { "@type": "CollegeOrUniversity", "name": "University of Utah" },
+          { "@type": "CollegeOrUniversity", "name": "Brigham Young University - Idaho" }
+        ],
+        "knowsAbout": [
+          "Instructional Design",
+          "Learning Experience Design",
+          "Learning Technology"
+        ]
+      }
+    </script>
+
+    <!--
+      Google tag (gtag.js). send_page_view: false because the app sends every
+      page view itself (GoogleAnalytics.tsx), including the first one, with
+      the route as the page path. Letting config send one as well counted the
+      landing page twice.
+    -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LG6RT04XLW"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-LG6RT04XLW', {
+        send_page_view: false,
+        cookie_domain: 'williamthe5thc.github.io'
+      });
+    </script>
+    <script type="module" crossorigin src="/Portfolio/assets/index-Bm1gQCrz.js"></script>
+    <link rel="modulepreload" crossorigin href="/Portfolio/assets/react-vendor-sK6oOukr.js">
+    <link rel="modulepreload" crossorigin href="/Portfolio/assets/ui-vendor-UMbqYK0l.js">
+    <link rel="stylesheet" crossorigin href="/Portfolio/assets/index-BM7zaPNg.css">
+  </head>
+  <body>
+    <!-- The build fills #root with a plain copy of the page's text. -->
+    <div id="root"><div data-static-page><header><nav aria-label="Primary"><ul><li><a href="/Portfolio/">Home</a></li><li><a href="/Portfolio/about/">About</a></li><li><a href="/Portfolio/portfolio/">Portfolio</a></li><li><a href="/Portfolio/resume/">Resume</a></li><li><a href="/Portfolio/contact/">Contact</a></li></ul></nav></header><main><nav aria-label="Breadcrumb"><ol><li><a href="/Portfolio/portfolio/">Portfolio</a></li><li aria-current="page">Instructional Design Internship - FiCEP Curriculum Needs Analysis</li></ol></nav><h1>Instructional Design Internship - FiCEP Curriculum Needs Analysis</h1><p>As part of my internship with Chartway, I conducted a systematic needs analysis for the company&#39;s FiCEP program, which prepares employees for a financial counseling certification exam. The analysis showed what was holding learners back, and I recommended changes to the curriculum and to the support around it.</p><p>The complete needs analysis report, from the interviews and survey through to the training recommendations.</p><p><a href="/Portfolio/case-studies/ficep-needs-analysis.pdf">View document (PDF)</a></p><p><strong>My role:</strong> Instructional design intern, working under professional supervision. I ran the needs analysis and wrote the recommendations; Chartway carried out the redesign.</p><ul><li>21 Survey responses analyzed</li><li>5 Semi-structured participant interviews</li></ul><h2>The problem</h2><p>America&#39;s Credit Unions (ACU) released the sixth edition of the FiCEP materials, and pass rates fell for Chartway Credit Union employees taking the certification exam. The ten-week preparation program needed an analysis of what was holding learners back, and recommendations for what to change.</p><ul><li>Pass rates fell after the sixth-edition materials came in</li><li>Little protected study time at work: participants reported 10 to 12 hours of unpaid study</li><li>The practice exam and materials didn&#39;t match what the real exam asked</li><li>Learners wanted examples from their own organization</li><li>Collecting enough data from working professionals who were already short on time</li></ul><h2>What I found</h2><p>The five most common themes across the interviews and the survey: managers need to set aside more time (23 mentions), the study guide was helpful (17), content should be tailored to the organization (16), &quot;I had management support&quot; (15), and the practice exam needs to be better (12). Time was the main barrier. Participants reported studying 10 to 12 hours on their own unpaid time to pass.</p><p>After the sixth edition came in, pass rates fell well below the 2023 baseline and kept falling through 2024, across monthly cohorts. A drop that lasting pointed to problems in the program itself, and it needed fixing soon.</p><h2>What I did</h2><ul><li>Interviewed 5 participants and surveyed recent participants (21 responses)</li><li>Sorted the answers into themes to find the barriers and what learners preferred</li><li>Recommended changes to study time, the practice exam and tailored content</li><li>Proposed ways for leaders to support learners, including protected study time</li><li>Wrote a training materials proposal: leadership support, mandatory success sessions, an organization-specific curriculum, better practice exams, and feedback surveys</li></ul><h2>What happened</h2><ul><li>Chartway implemented the redesigned program and reported improved examination results. Specific pass rates and cohort figures are not shared here to protect employee privacy.</li><li>Delivered the needs analysis report. The top barrier was managers not setting aside study time (23 mentions). <a href="/Portfolio/case-studies/ficep-needs-analysis.pdf">View the needs analysis report</a></li></ul><h2>See the work</h2><ul><li><p><a href="/Portfolio/case-studies/ficep-needs-analysis.pdf">Needs Analysis Report</a></p><p>Report with a one-page summary up front: data collection from 5 interviews and a 21-response survey, theme and audience analysis, and the proposed training materials.</p></li></ul><h2>About this Project</h2><p>A needs analysis for Chartway Credit Union&#39;s Financial Counseling Examination Preparation (FiCEP) program, done under professional supervision during my instructional design internship. Pass rates on the certification exam had dropped after America&#39;s Credit Unions (ACU) updated the materials to a sixth edition. I interviewed five program participants, surveyed recent participants (21 responses), and reviewed the ten-week program and the new materials. The most common theme was that managers need to set aside more study time (23 mentions). Others were that the study guide helped (17), that content should be tailored to the organization (16), and that the practice exam needed to be better (12). I recommended changes to the curriculum, the practice exam and the support learners get around it, to help bring pass rates back up and improve the experience for learners.</p><h3>ADDIE Methodology</h3><h4>Analysis</h4><p><strong>Process:</strong> Mixed-methods needs analysis: semi-structured interviews with five program participants, a survey of recent participants (21 responses), and a review of the existing ten-week program and the sixth-edition materials.</p><p><strong>Learner Characteristics:</strong> Chartway Credit Union employees from retail, the call center and member services, with different backgrounds and levels of experience. All of them need FiCEP certification for financial counseling roles.</p><h4>Design</h4><p><strong>Instructional Strategy:</strong> Recommended turning the existing check-ins into mandatory &quot;FiCEP Success Sessions&quot; that teach each chapter through the credit union&#39;s own products, services and practices, with time for learners&#39; questions.</p><p><strong>Assessment Strategy:</strong> Recommended low-stakes knowledge checks throughout the course, building to a practice exam that matches the real exam&#39;s complexity and question formats: double negatives, similar answer choices and reading-comprehension items.</p><p><strong>Media Selection:</strong> Recommended a mix learners can choose from: Rise activities (matching exercises and choose-your-own-adventure branching scenarios), branded flash cards in print or in Anki for spaced repetition, and role plays.</p><p><strong>Accessibility Design:</strong> Recommended WCAG 2.1 AA compliance: screen reader compatibility, color contrast ratios above 4.5:1, keyboard navigation, and closed captioning for all video content.</p><h4>Development</h4><p><strong>Content Creation:</strong> Worked with the Financial Wellness manager, the program&#39;s primary subject matter expert.</p><p><strong>Prototyping:</strong> Drafted examples to show what the recommendations would look like: Chapter 4 rewritten side by side with the credit union&#39;s own approach, and a sample flash card.</p><h4>Implementation</h4><p><strong>Change Management:</strong> Recommended leadership support: a meeting that asks managers to schedule at least 2 hours a week per team member for the program, a short weekly update on their team members in a leaders&#39; chat, a leaders&#39; guide with talking points, and a mid-program check-in with leaders.</p><p><strong>Support Systems:</strong> Recommended an initial meeting to set expectations with learners, flexible check-in formats for people who want more or fewer, and office hours for one-on-one help.</p><h4>Evaluation</h4><p><strong>Formative Assessment:</strong> Recommended feedback surveys for learners and for their managers at the middle and end of the program, to track what works and carry it forward to later cohorts.</p><p><strong>Summative Assessment:</strong> The report&#39;s success measure: first-attempt pass rates back to the April 2023 baseline or higher.</p><h3>Project Details</h3><dl><dt>Status</dt><dd>Completed</dd><dt>Date</dt><dd>May 2025 - July 2025</dd><dt>Category</dt><dd>Instructional Design</dd></dl><h4>Skills &amp; Topics</h4><ul><li>Financial Wellness</li><li>ADDIE Framework</li><li>Needs Analysis</li><li>Adult Learning Theory</li><li>Accessibility</li></ul></main><footer><p><a href="https://linkedin.com/in/jordan-charles">LinkedIn</a> · <a href="https://github.com/williamthe5thc">GitHub</a> · <a href="/Portfolio/llms.txt">Plain-text summary (llms.txt)</a></p></footer></div></div>
+  </body>
+</html>

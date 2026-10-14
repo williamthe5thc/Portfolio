@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Every page of the app, at the trailing-slash URL GitHub Pages serves it
+  from (the build writes each one as <route>/index.html), then the case-study
+  pages, demos and documents under public/. Resume PDFs are left out on
+  purpose: they carry a phone number, and search results don't need them.
+  test/content/prerender.test.tsx fails if a page is missing here.
+  No <lastmod>: a hand-written date goes stale and misstates freshness.
+  Crawlers only read robots.txt at the host root, so the root site
+  (repo williamthe5thc.github.io) carries the Sitemap: line that points here.
+  It is also submitted in Google Search Console.
+-->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://williamthe5thc.github.io/Portfolio/</loc>
+  </url>
+  <url>
+    <loc>https://williamthe5thc.github.io/Portfolio/about/</loc>
+  </url>
+  <url>
+    <loc>https://williamthe5thc.github.io/Portfolio/portfolio/</loc>
+  </url>
+  <url>
+    <loc>https://williamthe5thc.github.io/Portfolio/portfolio/chartway-ficep-enhanced/</loc>
+  </url>
+  <url>
+    <loc>https://williamthe5thc.github.io/Portfolio/portfolio/weyouth-mpcc/</loc>
+  </url>
+  <url>
+    <loc>https://williamthe5thc.github.io/Portfolio/portfolio/professional-communication-training/</loc>
+  </url>
+  <url>
+    <loc>https://williamthe5thc.github.io/Portfolio/portfolio/ai-law-course/</loc>
+  </url>
+  <url>
+    <loc>https://williamthe5thc.github.io/Portfolio/portfolio/teaching-waltz/</loc>
+  </url>
+  <url>
+    <loc>https://williamthe5thc.github.io/Portfolio/portfolio/nacva-automation/</loc>
+  </url>
+  <url>
+    <loc>https://williamthe5thc.github.io/Portfolio/portfolio/variable-timer/</loc>
+  </url>
+  <url>
+    <loc>https://williamthe5thc.github.io/Portfolio/portfolio/conflict-trainer/</loc>
+  </url>
+  <url>
+    <loc>https://williamthe5thc.github.io/Portfolio/portfolio/vr-interview-simulator/</loc>
+  </url>
+  <url>
+    <loc>https://williamthe5thc.github.io/Portfolio/resume/</loc>
+  </url>
+  <url>
+    <loc>https://williamthe5thc.github.io/Portfolio/resume/instructional/</loc>
+  </url>
+  <url>
+    <loc>https://williamthe5thc.github.io/Portfolio/resume/technology/</loc>
+  </url>
+  <url>
+    <loc>https://williamthe5thc.github.io/Portfolio/contact/</loc>
+  </url>
+  <url>
+    <loc>https://williamthe5thc.github.io/Portfolio/case-studies/ai-law/client-interview.html</loc>
+  </url>
+  <url>
+    <loc>https://williamthe5thc.github.io/Portfolio/case-studies/ai-law/cognitive-walkthrough.html</loc>
+  </url>
+  <url>
+    <loc>https://williamthe5thc.github.io/Portfolio/case-studies/ai-law/instructional-strategies.html</loc>
+  </url>
+  <url>
+    <loc>https://williamthe5thc.github.io/Portfolio/case-studies/ai-law/media-selection.html</loc>
+  </url>
+  <url>
+    <loc>https://williamthe5thc.github.io/Portfolio/case-studies/advanced-prompting-assessment-design.pdf</loc>
+  </url>
+  <url>
+    <loc>https://williamthe5thc.github.io/Portfolio/case-studies/ficep-needs-analysis.pdf</loc>
+  </url>
+  <url>
+    <loc>https://williamthe5thc.github.io/Portfolio/case-studies/waltz-blueprint-storyboard.pdf</loc>
+  </url>
+  <url>
+    <loc>https://williamthe5thc.github.io/Portfolio/case-studies/waltz-formative-evaluation.pdf</loc>
+  </url>
+  <url>
+    <loc>https://williamthe5thc.github.io/Portfolio/demos/ai-law-course/index.html</loc>
+  </url>
+  <url>
+    <loc>https://williamthe5thc.github.io/Portfolio/demos/nacva-automation/index.html</loc>
+  </url>
+  <url>
+    <loc>https://williamthe5thc.github.io/Portfolio/demos/professional-communication-training/story.html</loc>
+  </url>
+  <url>
+    <loc>https://williamthe5thc.github.io/Portfolio/llms.txt</loc>
+  </url>
+</urlset>
