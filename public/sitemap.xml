@@ -6,9 +6,9 @@
   purpose: they carry a phone number, and search results don't need them.
   test/content/prerender.test.tsx fails if a page is missing here.
   No <lastmod>: a hand-written date goes stale and misstates freshness.
-  robots.txt can't point here: crawlers only read it at the host root
-  (williamthe5thc.github.io/robots.txt), not under /Portfolio/, so submit this
-  file in Google Search Console instead.
+  Crawlers only read robots.txt at the host root, so the root site
+  (repo williamthe5thc.github.io) carries the Sitemap: line that points here.
+  It is also submitted in Google Search Console.
 -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
